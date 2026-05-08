@@ -1,0 +1,193 @@
+/* ========= Services Page ========= */
+
+.services-hero {
+  padding-top: 160px;
+  padding-bottom: var(--space-xl);
+  background: var(--off-white);
+}
+
+.services-hero__content {
+  max-width: 700px;
+}
+
+.services-hero__content h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.services-hero__content p {
+  font-size: 1.15rem;
+}
+
+/* Bento Grid */
+.services-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  grid-auto-rows: 320px;
+}
+
+.services-bento__card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+}
+
+.services-bento__card--large {
+  grid-column: span 2;
+}
+
+.services-bento__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.services-bento__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-smooth);
+}
+
+.services-bento__card:hover .services-bento__bg img {
+  transform: scale(1.08);
+}
+
+.services-bento__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--royal-blue-rgb), 0.1) 0%,
+    rgba(var(--deep-navy-rgb), 0.85) 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.services-bento__card:hover .services-bento__gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--royal-blue-rgb), 0.2) 0%,
+    rgba(var(--deep-navy-rgb), 0.92) 100%
+  );
+}
+
+.services-bento__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-lg);
+  color: #fff;
+  z-index: 2;
+  transform: translateY(16px);
+  transition: transform 0.5s var(--ease-smooth);
+}
+
+.services-bento__card:hover .services-bento__content {
+  transform: translateY(0);
+}
+
+.services-bento__tagline {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--electric-blue);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.services-bento__content h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.services-bento__content p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.5s var(--ease-smooth) 0.1s;
+}
+
+.services-bento__card:hover .services-bento__content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .services-bento {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 280px;
+  }
+  .services-bento__card--large {
+    grid-column: span 1;
+  }
+}
+
+/* Why HanovaDevs */
+.services-why__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.services-why__text h2 {
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+.services-why__text p {
+  font-size: 1.05rem;
+}
+
+.services-why__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.services-why__stat {
+  padding: var(--space-md);
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.services-why__stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--royal-blue);
+  margin-bottom: 0.25rem;
+}
+
+.services-why__stat-label {
+  font-size: 0.8rem;
+  color: var(--blue-grey);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .services-why__inner {
+    grid-template-columns: 1fr;
+  }
+  .services-why__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-why__stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA */
+.services-cta {
+  background: var(--white);
+}
