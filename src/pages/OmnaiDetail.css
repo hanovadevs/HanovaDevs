@@ -1,0 +1,443 @@
+/* ===== OMNAI DETAIL PAGE ===== */
+
+/* --- Hero --- */
+.omnai-hero {
+  position: relative;
+  padding: clamp(8rem, 18vh, 12rem) 0 var(--space-3xl);
+  background: var(--deep-navy);
+  color: var(--white);
+  overflow: hidden;
+}
+.omnai-hero__bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 30%, rgba(var(--royal-blue-rgb), 0.25), transparent 55%),
+              radial-gradient(ellipse at 80% 70%, rgba(var(--electric-blue-rgb), 0.12), transparent 50%);
+}
+.omnai-hero__layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+.omnai-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(var(--royal-blue-rgb), 0.2);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.35);
+  color: var(--electric-blue);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+.omnai-hero__pulse {
+  width: 8px; height: 8px;
+  background: var(--electric-blue);
+  border-radius: 50%;
+  animation: heroPulse 2s ease-in-out infinite;
+}
+@keyframes heroPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(var(--electric-blue-rgb), 0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(var(--electric-blue-rgb), 0); }
+}
+.omnai-hero__logo {
+  width: 52px; height: 52px;
+  margin-bottom: var(--space-sm);
+  border-radius: var(--radius-md);
+}
+.omnai-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  margin-bottom: var(--space-sm);
+  line-height: 1.15;
+}
+.omnai-hero__tagline {
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: var(--space-xs);
+}
+.omnai-hero__sub-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+.omnai-hero__actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+.omnai-hero__btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.omnai-hero__btn-outline:hover {
+  border-color: var(--electric-blue);
+  color: var(--electric-blue);
+  transform: translateY(-2px);
+}
+.omnai-hero__visual {
+  position: relative;
+}
+.omnai-hero__preview {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* --- Stats Banner --- */
+.omnai-stats-banner {
+  background: var(--royal-blue);
+  padding: var(--space-lg) 0;
+}
+.omnai-stats-banner__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  text-align: center;
+}
+.omnai-stats-banner__item {
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+}
+.omnai-stats-banner__item strong {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.omnai-stats-banner__item span {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.25rem;
+}
+
+/* --- Gallery --- */
+.omnai-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+.omnai-gallery__item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: var(--white);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.omnai-gallery__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.omnai-gallery__item img {
+  width: 100%;
+  display: block;
+}
+.omnai-gallery__caption {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.82rem;
+  color: var(--blue-grey);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* --- Opportunity --- */
+.omnai-opportunity__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+  margin-top: var(--space-lg);
+}
+.omnai-opportunity__text p {
+  color: var(--blue-grey);
+  line-height: 1.75;
+  margin-bottom: var(--space-sm);
+  font-size: 0.95rem;
+}
+.omnai-opportunity__stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.omnai-opportunity__stat {
+  background: var(--off-white);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--royal-blue);
+}
+.omnai-opportunity__stat strong {
+  font-size: 1.5rem;
+  color: var(--royal-blue);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.omnai-opportunity__stat span {
+  font-size: 0.82rem;
+  color: var(--blue-grey);
+  line-height: 1.5;
+}
+
+/* --- Features Grid --- */
+.omnai-features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+.omnai-features__card {
+  background: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.omnai-features__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+.omnai-features__tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--royal-blue);
+  background: rgba(var(--royal-blue-rgb), 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: var(--space-sm);
+}
+.omnai-features__card--highlight {
+  background: var(--deep-navy);
+  color: var(--white);
+  border-color: rgba(var(--royal-blue-rgb), 0.3);
+  grid-column: span 2;
+}
+.omnai-features__card--highlight .omnai-features__tag {
+  background: rgba(var(--electric-blue-rgb), 0.2);
+  color: var(--electric-blue);
+}
+.omnai-features__card--highlight p {
+  color: rgba(255,255,255,0.7);
+}
+.omnai-features__card h4 {
+  font-size: 1rem;
+  margin-bottom: var(--space-xs);
+}
+.omnai-features__card p {
+  font-size: 0.82rem;
+  color: var(--blue-grey);
+  line-height: 1.65;
+}
+
+/* --- Technical Architecture --- */
+.omnai-tech__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+.omnai-tech__card {
+  background: var(--off-white);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.omnai-tech__label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue-grey);
+  margin-bottom: 0.3rem;
+}
+.omnai-tech__value {
+  font-size: 0.9rem;
+  color: var(--deep-navy);
+}
+.omnai-tech__principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+.omnai-tech__principle {
+  padding: var(--space-lg);
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.omnai-tech__principle h4 {
+  font-size: 0.95rem;
+  margin-bottom: var(--space-xs);
+  color: var(--deep-navy);
+}
+.omnai-tech__principle p {
+  font-size: 0.82rem;
+  color: var(--blue-grey);
+  line-height: 1.65;
+}
+
+/* --- Roadmap --- */
+.omnai-roadmap__timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+.omnai-roadmap__phase {
+  background: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.omnai-roadmap__phase--active {
+  border-color: var(--royal-blue);
+  border-width: 2px;
+}
+.omnai-roadmap__phase--active::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--electric-blue));
+}
+.omnai-roadmap__phase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+.omnai-roadmap__phase-header h3 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+.omnai-roadmap__timeline-badge {
+  font-size: 0.72rem;
+  background: rgba(var(--royal-blue-rgb), 0.1);
+  color: var(--royal-blue);
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.omnai-roadmap__phase ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.omnai-roadmap__phase li {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; color: var(--blue-grey);
+}
+
+/* --- CTA --- */
+.omnai-cta {
+  padding: var(--space-3xl) 0;
+  background: var(--deep-navy);
+  color: var(--white);
+}
+.omnai-cta__logo {
+  width: 48px; height: 48px;
+  margin-bottom: var(--space-md);
+  border-radius: var(--radius-md);
+}
+.omnai-cta h2 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  margin-bottom: var(--space-sm);
+}
+.omnai-cta p {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: var(--space-lg);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+/* --- Product Gallery (Products page) --- */
+.product-gallery {
+  margin-bottom: var(--space-lg);
+}
+.product-gallery__main {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.product-gallery__main img {
+  width: 100%; display: block;
+}
+.product-gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+.product-gallery__thumb {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.product-gallery__thumb:hover {
+  transform: translateY(-3px);
+}
+.product-gallery__thumb img {
+  width: 100%; display: block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .omnai-hero__layout {
+    grid-template-columns: 1fr;
+  }
+  .omnai-hero__visual {
+    max-width: 600px;
+  }
+  .omnai-features__card--highlight {
+    grid-column: span 1;
+  }
+  .omnai-tech__principles {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .omnai-opportunity__inner {
+    grid-template-columns: 1fr;
+  }
+  .omnai-stats-banner__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  .product-gallery__thumbs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .omnai-stats-banner__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

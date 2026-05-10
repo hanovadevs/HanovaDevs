@@ -124,28 +124,25 @@ export default function Products() {
             </p>
           </div>
 
-          {/* Product Mockup */}
-          <div className="product-mockup reveal reveal-delay-1">
-            <div className="product-mockup__frame">
-              <div className="product-mockup__toolbar">
-                <div className="product-mockup__dots">
-                  <span /><span /><span />
+          {/* Product Screenshots Gallery */}
+          <div className="product-gallery reveal reveal-delay-1">
+            <div className="product-gallery__main">
+              <img
+                src="/products/omnai/B1.png"
+                alt="Omnai Browser — Main Interface"
+                loading="lazy"
+              />
+            </div>
+            <div className="product-gallery__thumbs">
+              {['B2', 'B3', 'B4', 'B5'].map((img, i) => (
+                <div key={i} className="product-gallery__thumb">
+                  <img
+                    src={`/products/omnai/${img}.png`}
+                    alt={`Omnai Browser screenshot ${i + 2}`}
+                    loading="lazy"
+                  />
                 </div>
-                <div className="product-mockup__url-bar">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  <span>omnai://newtab</span>
-                </div>
-              </div>
-              <div className="product-mockup__screen">
-                <img
-                  src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&q=80"
-                  alt="Omnai Browser interface concept"
-                  loading="lazy"
-                />
-                <div className="product-mockup__screen-overlay">
-                  <h3>Your intelligent browsing companion</h3>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -180,8 +177,11 @@ export default function Products() {
             </div>
           </div>
 
-          {/* Waitlist */}
+          {/* Learn More + Waitlist */}
           <div className="product-waitlist reveal">
+            <Link to="/products/omnai" className="btn btn-ghost" style={{ marginBottom: 'var(--space-md)' }}>
+              Read Full Strategy & Features →
+            </Link>
             {omnaiSubmitted ? (
               <div className="product-waitlist__success">
                 <span className="product-waitlist__check">
