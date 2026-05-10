@@ -109,6 +109,24 @@ const projects = [
     metric: '15K Users',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
   },
+  {
+    title: 'Lumina Fashion Store',
+    category: 'E-Commerce',
+    metric: '+145% Sales',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop'
+  },
+  {
+    title: 'NexLogistics Automation',
+    category: 'Custom Software',
+    metric: '-30% Costs',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c83f12?w=600&h=400&fit=crop'
+  },
+  {
+    title: 'CryptoBridge SEO',
+    category: 'SEO',
+    metric: 'Page 1 Rankings',
+    image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=600&h=400&fit=crop'
+  }
 ]
 
 const processSteps = [
@@ -158,19 +176,19 @@ const processSteps = [
 
 const testimonials = [
   {
-    quote: "HanovaDevs transformed our online presence completely. Traffic grew 230% in the first quarter and conversions followed.",
+    quote: "Honestly, we were skeptical at first because we've been burned by agencies before. But the HanovaDevs team actually listened to what we needed. They rebuilt our app from scratch and the difference in speed is insane. Highly recommend them.",
     author: 'Michael Rivera',
     role: 'CEO, TechVault',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'
   },
   {
-    quote: "The team delivered our rebrand ahead of schedule with incredible attention to detail. Genuinely world-class work.",
+    quote: "Working with them was super smooth. They didn't just give us a cookie-cutter site; they took the time to understand our messy backend and integrated everything perfectly. Our sales team loves the new lead flow.",
     author: 'Lisa Chen',
     role: 'Head of Marketing, FinEdge',
     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face'
   },
   {
-    quote: "We went from zero digital presence to a fully optimized marketing machine. Best investment we ever made.",
+    quote: "Man, these guys know their stuff when it comes to SEO and design. We barely had any traffic before, and within a few months of their campaign, our organic leads literally tripled. Really glad we partnered with them.",
     author: 'James Okafor',
     role: 'Founder, GreenGrow',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face'

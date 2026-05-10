@@ -45,7 +45,7 @@ const services = [
     title: 'Digital Advertising',
     tagline: 'Facebook, Google, TikTok Ads',
     desc: 'Precision-targeted ad campaigns that maximize ROI across all platforms.',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
   },
 ]
 
