@@ -24,6 +24,16 @@ const servicesData = {
         desc: 'Seamless integration with Sanity, WordPress, or custom backends.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
       }
+    ],
+    advancements: [
+      'Server-Side Rendering (SSR) for ultimate SEO',
+      'Advanced Edge caching networks (Cloudflare/Vercel)',
+      'Headless architecture separating frontend from backend',
+      'Micro-animations for superior user engagement'
+    ],
+    relatedLinks: [
+      { title: 'Custom Software Development', path: '/services/software-development' },
+      { title: 'SEO & Performance Marketing', path: '/services/seo' }
     ]
   },
   'social-media': {
@@ -47,6 +57,16 @@ const servicesData = {
         desc: 'Monthly insights, engagement metrics, and growth tracking.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
       }
+    ],
+    advancements: [
+      'AI-driven sentiment analysis',
+      'Cross-platform audience retargeting',
+      'Automated social listening pipelines',
+      'A/B tested viral content hooks'
+    ],
+    relatedLinks: [
+      { title: 'Brand Identity & Strategy', path: '/services/branding' },
+      { title: 'Digital Advertising', path: '/services/digital-advertising' }
     ]
   },
   'seo': {
@@ -70,6 +90,16 @@ const servicesData = {
         desc: 'Updating and structuring your content to align with search intent.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
       }
+    ],
+    advancements: [
+      'Core Web Vitals auditing and remediation',
+      'Programmatic SEO at scale',
+      'Competitor backlink gap analysis',
+      'Advanced semantic schema structuring'
+    ],
+    relatedLinks: [
+      { title: 'Web Design & Development', path: '/services/web-design' },
+      { title: 'Digital Advertising', path: '/services/digital-advertising' }
     ]
   },
   'branding': {
@@ -93,6 +123,16 @@ const servicesData = {
         desc: 'Comprehensive rulebooks ensuring consistency everywhere.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
       }
+    ],
+    advancements: [
+      'Psychological color mapping',
+      'Interactive digital brand books',
+      'Motion identity and UI animation guidelines',
+      'Omnichannel voice synchronization'
+    ],
+    relatedLinks: [
+      { title: 'Web Design & Development', path: '/services/web-design' },
+      { title: 'Social Media Marketing', path: '/services/social-media' }
     ]
   },
   'software-development': {
@@ -116,6 +156,16 @@ const servicesData = {
         desc: 'Reliable infrastructure deployment on AWS, Google Cloud, or Azure.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" /></svg>
       }
+    ],
+    advancements: [
+      'Serverless function deployment',
+      'Real-time WebSocket integrations',
+      'CI/CD pipeline automation',
+      'Containerization via Docker & Kubernetes'
+    ],
+    relatedLinks: [
+      { title: 'Web Design & Development', path: '/services/web-design' },
+      { title: 'SEO & Performance Marketing', path: '/services/seo' }
     ]
   },
   'digital-advertising': {
@@ -139,6 +189,16 @@ const servicesData = {
         desc: 'Landing page design and split testing to maximize ad performance.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
       }
+    ],
+    advancements: [
+      'Machine-learning bid optimization',
+      'Dynamic creative testing (DCT)',
+      'Advanced pixel tracking & server-side API',
+      'Multi-touch attribution modeling'
+    ],
+    relatedLinks: [
+      { title: 'SEO & Performance Marketing', path: '/services/seo' },
+      { title: 'Social Media Marketing', path: '/services/social-media' }
     ]
   }
 }
@@ -213,9 +273,9 @@ export default function ServiceDetail() {
       {/* Features Section */}
       <section className="service-detail__features section bg-off-white">
         <div className="container">
-          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
+          <div className="text-center reveal" style={{ marginBottom: '3rem' }}>
             <h2>What We Offer</h2>
-            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto', fontSize: '0.9rem' }}>
               Comprehensive solutions tailored to your specific business requirements.
             </p>
           </div>
@@ -230,6 +290,33 @@ export default function ServiceDetail() {
               </div>
             ))}
           </div>
+
+          <div className="service-detail__advancements-wrap reveal">
+            <div className="service-detail__advancements">
+              <h3>Advanced Capabilities</h3>
+              <ul>
+                {service.advancements.map((adv, i) => (
+                  <li key={i}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    {adv}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="service-detail__related">
+              <h3>Related Services</h3>
+              <div className="service-detail__related-links">
+                {service.relatedLinks.map((link, i) => (
+                  <Link key={i} to={link.path} className="service-detail__r-link hoverable">
+                    {link.title}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
