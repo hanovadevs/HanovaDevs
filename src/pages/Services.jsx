@@ -3,6 +3,7 @@ import './Services.css'
 
 const services = [
   {
+    id: 'web-design',
     title: 'Web Design & Development',
     tagline: 'Fast, Responsive, Scalable',
     desc: 'We build beautiful, high-performance websites that convert visitors into customers.',
@@ -10,18 +11,21 @@ const services = [
     large: true,
   },
   {
+    id: 'social-media',
     title: 'Social Media Marketing',
     tagline: 'Grow your brand organically',
     desc: 'Engage your audience across every platform with content that resonates.',
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
   },
   {
+    id: 'seo',
     title: 'SEO & Performance Marketing',
     tagline: 'Rank higher, get found',
     desc: 'Data-driven SEO strategies that put you on page one and keep you there.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   },
   {
+    id: 'branding',
     title: 'Brand Identity & Strategy',
     tagline: 'Logos, positioning, messaging',
     desc: 'Craft a brand identity that stands out and tells your story with clarity.',
@@ -29,12 +33,14 @@ const services = [
     large: true,
   },
   {
+    id: 'software-development',
     title: 'Custom Software Development',
     tagline: 'Apps, tools, automation',
     desc: 'Bespoke software solutions designed to solve your toughest business challenges.',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
   },
   {
+    id: 'digital-advertising',
     title: 'Digital Advertising',
     tagline: 'Facebook, Google, TikTok Ads',
     desc: 'Precision-targeted ad campaigns that maximize ROI across all platforms.',
@@ -61,9 +67,11 @@ export default function Services() {
         <div className="container">
           <div className="services-bento">
             {services.map((service, i) => (
-              <div
+              <Link 
+                to={`/services/${service.id}`}
                 key={i}
-                className={`services-bento__card reveal reveal-delay-${(i % 4) + 1} ${service.large ? 'services-bento__card--large' : ''}`}
+                className={`services-bento__card hoverable reveal reveal-delay-${(i % 4) + 1} ${service.large ? 'services-bento__card--large' : ''}`}
+                style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <div className="services-bento__bg">
                   <img src={service.image} alt={service.title} loading="lazy" />
@@ -74,7 +82,7 @@ export default function Services() {
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

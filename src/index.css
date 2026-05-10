@@ -24,14 +24,14 @@
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 
-  /* Spacing Scale */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
-  --space-2xl: 6rem;
-  --space-3xl: 8rem;
+  /* Spacing Scale (Scaled Down) */
+  --space-xs: 0.4rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6rem;
 
   /* Border Radius */
   --radius-sm: 8px;
@@ -61,8 +61,8 @@
   --z-cursor: 9999;
 
   /* Container */
-  --container-max: 1280px;
-  --container-padding: clamp(1.25rem, 4vw, 3rem);
+  --container-max: 1200px;
+  --container-padding: clamp(1rem, 3vw, 2rem);
 }
 
 /* --- Reset & Base --- */
@@ -76,7 +76,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 14px; /* Scaled down base size */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -87,41 +87,38 @@ body {
   background-color: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
+  cursor: default;
 }
 
-/* Custom Cursor */
-.custom-cursor {
-  position: fixed;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(var(--royal-blue-rgb), 0.3);
-  border: 2px solid var(--royal-blue);
-  pointer-events: none;
-  z-index: var(--z-cursor);
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--ease-smooth),
-              height 0.3s var(--ease-smooth),
-              background 0.3s var(--ease-smooth),
-              border-color 0.3s var(--ease-smooth);
-  mix-blend-mode: difference;
+/* Refined cursor behavior on interactive elements */
+a, button, [role="button"], select, label[for],
+input[type="submit"], input[type="button"], .hoverable {
+  cursor: pointer;
 }
 
-.custom-cursor.hovering {
-  width: 48px;
-  height: 48px;
-  background: rgba(var(--electric-blue-rgb), 0.15);
-  border-color: var(--electric-blue);
+/* Subtle lift + glow effect on interactive elements */
+a:hover, button:hover, .hoverable:hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  body {
-    cursor: auto;
-  }
-  .custom-cursor {
-    display: none;
-  }
+/* Focus-visible ring for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth active press effect on buttons */
+.btn:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* Text selection color */
+::selection {
+  background: rgba(var(--royal-blue-rgb), 0.15);
+  color: var(--deep-navy);
 }
 
 /* --- Typography --- */

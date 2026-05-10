@@ -1,27 +1,63 @@
-/* ========= Contact Page ========= */
+/* ========= Contact Page — Premium Redesign ========= */
 
 .contact-hero {
+  position: relative;
   padding-top: 160px;
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-2xl);
   background: var(--off-white);
+  overflow: hidden;
+}
+
+.contact-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(var(--royal-blue-rgb), 0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(var(--electric-blue-rgb), 0.03) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .contact-hero__content {
   max-width: 700px;
+  position: relative;
 }
 
-.contact-hero__content h1 { margin-bottom: var(--space-sm); }
+.contact-hero__content h1 {
+  margin-bottom: var(--space-sm);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.contact-hero__subtitle {
+  font-size: 1.15rem;
+  color: var(--blue-grey);
+  line-height: 1.65;
+  max-width: 560px;
+}
 
 /* Layout */
 .contact-layout {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: var(--space-xl);
   align-items: start;
 }
 
 @media (max-width: 900px) {
   .contact-layout { grid-template-columns: 1fr; }
+}
+
+/* Form Header */
+.contact-form-header {
+  margin-bottom: var(--space-lg);
+}
+
+.contact-form-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.contact-form-header p {
+  font-size: 0.95rem;
+  color: var(--blue-grey);
 }
 
 /* Form */
@@ -158,6 +194,38 @@
   gap: var(--space-md);
 }
 
+/* Response Badge */
+.contact-response-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  color: var(--deep-navy);
+}
+
+.contact-response-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: dotPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+.contact-response-badge strong {
+  color: #059669;
+}
+
+/* Info Card */
 .contact-info-card {
   padding: var(--space-lg);
   display: flex;
@@ -207,6 +275,39 @@
   color: var(--royal-blue);
 }
 
+/* Office Hours Card */
+.contact-hours-card {
+  padding: var(--space-lg);
+}
+
+.contact-hours-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.contact-hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact-hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.contact-hours-row span {
+  color: var(--blue-grey);
+}
+
+.contact-hours-row strong {
+  color: var(--deep-navy);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 /* Social Card */
 .contact-social-card {
   padding: var(--space-lg);
@@ -238,4 +339,83 @@
 .contact-social-link:hover {
   background: rgba(var(--royal-blue-rgb), 0.06);
   color: var(--royal-blue);
+}
+
+/* FAQ Section */
+.contact-faq {
+  margin-top: var(--space-3xl);
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-faq__title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: var(--space-lg);
+}
+
+.contact-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.contact-faq__item {
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.contact-faq__item:first-child {
+  border-top: 1px solid var(--light-grey);
+}
+
+.contact-faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.contact-faq__question:hover {
+  color: var(--royal-blue);
+}
+
+.contact-faq__chevron {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--medium-grey);
+}
+
+.contact-faq__item--open .contact-faq__chevron {
+  transform: rotate(180deg);
+  color: var(--royal-blue);
+}
+
+.contact-faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0;
+}
+
+.contact-faq__item--open .contact-faq__answer {
+  max-height: 200px;
+  padding-bottom: 1.25rem;
+}
+
+.contact-faq__answer p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--blue-grey);
 }

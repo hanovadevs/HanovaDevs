@@ -1,24 +1,38 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import ParticleMesh from '../components/ParticleMesh'
 import './Home.css'
 
 /* ─── DATA ─── */
-const services = [
-  'Web Design', 'SEO', 'Digital Marketing', 'Custom Software',
-  'Brand Strategy', 'Performance Marketing', 'UI/UX Design',
-  'Social Media', 'App Development', 'Data Analytics'
-]
-
 const stats = [
-  { number: '40+', label: 'Projects Delivered' },
-  { number: '98%', label: 'Client Satisfaction' },
-  { number: '3+', label: 'Products Launched' },
-  { number: '∞', label: 'Global Reach' },
+  { 
+    number: '40+', 
+    label: 'Projects Delivered',
+    desc: 'Custom solutions deployed globally.',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+  },
+  { 
+    number: '98%', 
+    label: 'Client Satisfaction',
+    desc: 'Long-term partnerships built on trust.',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg>
+  },
+  { 
+    number: '3+', 
+    label: 'Products Launched',
+    desc: 'In-house innovations scaling fast.',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+  },
+  { 
+    number: '∞', 
+    label: 'Global Reach',
+    desc: 'Impacting businesses worldwide.',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  },
 ]
 
 const serviceCards = [
   {
+    id: 'web-design',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -31,6 +45,7 @@ const serviceCards = [
     features: ['React / Next.js', 'Responsive Design', 'CMS Integration']
   },
   {
+    id: 'digital-advertising',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -41,6 +56,7 @@ const serviceCards = [
     features: ['Google Ads', 'Social Media', 'Content Strategy']
   },
   {
+    id: 'seo',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" />
@@ -53,6 +69,7 @@ const serviceCards = [
     features: ['Technical SEO', 'Keyword Research', 'Reporting']
   },
   {
+    id: 'branding',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -161,16 +178,8 @@ const testimonials = [
 
 /* ─── COMPONENT ─── */
 export default function Home() {
-  const [heroRevealed, setHeroRevealed] = useState(false)
-  const [logoDrawn, setLogoDrawn] = useState(false)
   const [activeTestimonial, setActiveTestimonial] = useState(0)
   const projectsScrollRef = useRef(null)
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setLogoDrawn(true), 300)
-    const t2 = setTimeout(() => setHeroRevealed(true), 1200)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
-  }, [])
 
   // Testimonial auto-rotation
   useEffect(() => {
@@ -183,36 +192,31 @@ export default function Home() {
   return (
     <div className="home-page">
       {/* ===== HERO ===== */}
-      <section className={`hero ${heroRevealed ? 'hero--revealed' : ''}`} id="hero">
-        <div className="hero__overlay" />
-        <ParticleMesh />
-        <div className="hero__bg-image" />
+      <section className="hero" id="hero">
+        {/* Glass crystal background */}
+        <div className="hero__glass-bg">
+          <img src="/hero-glass-bg.png" alt="" className="hero__glass-img" />
+        </div>
 
         <div className="hero__content container">
-          <div className={`hero__logo-reveal ${logoDrawn ? 'drawn' : ''}`}>
-            <img
-              src="/octopus.png"
-              alt="HanovaDevs octopus logo"
-              className="hero__octopus-img"
-            />
-          </div>
-
-          <h1 className="hero__headline">
-            <span className="hero__headline-word">Engineering</span>{' '}
-            <span className="hero__headline-word">the</span>{' '}
-            <span className="hero__headline-word hero__headline-word--accent">Future.</span>
-          </h1>
-          <p className="hero__subheadline">
-            We design, develop, and market digital products that drive measurable growth for ambitious businesses worldwide.
-          </p>
-          <div className="hero__cta-row">
-            <Link to="/contact" className="btn btn-primary btn--hero">
-              Start a Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </Link>
-            <Link to="/projects" className="btn btn-ghost btn--hero">
-              View Our Work
-            </Link>
+          <div className="hero__text-panel">
+            <h1 className="hero__headline">
+              <span className="hero__headline-line">Engineering</span>
+              <span className="hero__headline-line hero__headline-line--accent">the Future.</span>
+            </h1>
+            <p className="hero__subheadline">
+              We design, develop, and market digital products that drive
+              measurable growth for ambitious businesses worldwide.
+            </p>
+            <div className="hero__cta-row">
+              <Link to="/contact" className="btn btn-primary btn--hero">
+                Start a Project
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </Link>
+              <Link to="/projects" className="btn btn-outline btn--hero">
+                View Our Work
+              </Link>
+            </div>
           </div>
 
           {/* Hero social proof strip */}
@@ -233,30 +237,29 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Scroll indicator */}
         <div className="hero__scroll-hint">
+          <span className="hero__scroll-label">Scroll</span>
           <div className="hero__scroll-line" />
         </div>
       </section>
 
-      {/* ===== MARQUEE ===== */}
-      <div className="marquee-strip" id="services-marquee">
-        <div className="marquee-track">
-          {[...services, ...services, ...services].map((s, i) => (
-            <span key={i} className="marquee-item">
-              {s} <span className="marquee-dot">·</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ===== STATS BANNER ===== */}
-      <section className="stats-strip" id="stats">
+      {/* ===== IMPACT STATS ===== */}
+      <section className="stats-section" id="stats">
         <div className="container">
+          <div className="stats-section__header reveal">
+            <span className="section-label">Our Impact</span>
+            <h2>Proven results, <em>measurable growth.</em></h2>
+          </div>
           <div className="stats__grid">
             {stats.map((stat, i) => (
-              <div key={i} className={`stats__item reveal reveal-delay-${i + 1}`}>
-                <span className="stats__number">{stat.number}</span>
-                <span className="stats__label">{stat.label}</span>
+              <div key={i} className={`stats__card reveal reveal-delay-${i + 1}`}>
+                <div className="stats__icon">{stat.icon}</div>
+                <div className="stats__number">{stat.number}</div>
+                <div className="stats__content">
+                  <h4 className="stats__label">{stat.label}</h4>
+                  <p className="stats__desc">{stat.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -335,7 +338,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/services" className="services-teaser__link">
+                <Link to={`/services/${card.id}`} className="services-teaser__link hoverable">
                   Learn more
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </Link>
@@ -492,8 +495,11 @@ export default function Home() {
               Let's Talk
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </Link>
-            <a href="mailto:hello@hanovadevs.com" className="final-cta__email">
-              or email us at <strong>hello@hanovadevs.com</strong>
+            <a href="mailto:hanovadevs@gmail.com" className="final-cta__email">
+              or email us at <strong>hanovadevs@gmail.com</strong>
+            </a>
+            <a href="tel:+19177355385" className="final-cta__email">
+              call us at <strong>+1 (917) 735-5385</strong>
             </a>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Contact.css'
 
 const budgetOptions = [
@@ -10,39 +11,85 @@ const budgetOptions = [
   '$50,000+',
 ]
 
+const faqs = [
+  {
+    q: 'How long does a typical project take?',
+    a: 'Most projects take 4–12 weeks depending on scope and complexity. We provide a detailed timeline during our discovery phase.',
+  },
+  {
+    q: 'Do you work with startups?',
+    a: 'Absolutely! We work with businesses of all sizes — from early-stage startups to established enterprises looking to scale.',
+  },
+  {
+    q: 'What happens after the project is delivered?',
+    a: 'We offer ongoing maintenance and support packages to keep your product running smoothly and growing with your business.',
+  },
+]
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
     budget: '',
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
+  const [openFaq, setOpenFaq] = useState(null)
 
   const handleChange = (e) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setSending(true)
-    // Simulate submission
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            phone: form.phone || "Not provided",
+            company: form.company || "Not provided",
+            budget: form.budget !== 'Select budget range' ? form.budget : "Not provided",
+            message: form.message,
+            _subject: `New Lead: ${form.name} from HanovaDevs Website`
+        })
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        alert("Something went wrong with the submission. Please try again later.")
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Something went wrong. Please try again later.")
+    } finally {
       setSending(false)
-      setSubmitted(true)
-    }, 1500)
+    }
   }
 
   return (
     <div className="contact-page">
       {/* Hero */}
       <section className="contact-hero" id="contact-hero">
+        <div className="contact-hero__bg" />
         <div className="container">
           <div className="contact-hero__content reveal">
             <span className="section-label">Get in Touch</span>
             <h1>Let's build something <span className="gradient-text">great.</span></h1>
+            <p className="contact-hero__subtitle">
+              Have a project in mind? We'd love to hear about it. Fill out the form below and our team will get back to you within 24 hours.
+            </p>
           </div>
         </div>
       </section>
@@ -53,6 +100,10 @@ export default function Contact() {
           <div className="contact-layout">
             {/* Form */}
             <div className="contact-form-wrap reveal">
+              <div className="contact-form-header">
+                <h3>Send us a message</h3>
+                <p>Fill in the details and we'll be in touch soon.</p>
+              </div>
               {submitted ? (
                 <div className="contact-success">
                   <div className="contact-success__icon">
@@ -63,7 +114,7 @@ export default function Contact() {
                   </div>
                   <h3>Message Sent!</h3>
                   <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-                  <button className="btn btn-ghost" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', company: '', budget: '', message: '' }) }}>
+                  <button className="btn btn-ghost" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' }) }}>
                     Send Another Message
                   </button>
                 </div>
@@ -71,7 +122,7 @@ export default function Contact() {
                 <form className="contact-form" onSubmit={handleSubmit} id="contact-form">
                   <div className="contact-form__row">
                     <div className="contact-form__field">
-                      <label htmlFor="contact-name">Name</label>
+                      <label htmlFor="contact-name">Full Name *</label>
                       <input
                         type="text"
                         id="contact-name"
@@ -83,7 +134,7 @@ export default function Contact() {
                       />
                     </div>
                     <div className="contact-form__field">
-                      <label htmlFor="contact-email">Email</label>
+                      <label htmlFor="contact-email">Email Address *</label>
                       <input
                         type="email"
                         id="contact-email"
@@ -98,6 +149,17 @@ export default function Contact() {
 
                   <div className="contact-form__row">
                     <div className="contact-form__field">
+                      <label htmlFor="contact-phone">Phone Number</label>
+                      <input
+                        type="tel"
+                        id="contact-phone"
+                        name="phone"
+                        placeholder="+1 (555) 000-0000"
+                        value={form.phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="contact-form__field">
                       <label htmlFor="contact-company">Company</label>
                       <input
                         type="text"
@@ -108,26 +170,27 @@ export default function Contact() {
                         onChange={handleChange}
                       />
                     </div>
-                    <div className="contact-form__field">
-                      <label htmlFor="contact-budget">Budget Range</label>
-                      <select
-                        id="contact-budget"
-                        name="budget"
-                        value={form.budget}
-                        onChange={handleChange}
-                        required
-                      >
-                        {budgetOptions.map((opt, i) => (
-                          <option key={i} value={i === 0 ? '' : opt} disabled={i === 0}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
                   </div>
 
                   <div className="contact-form__field">
-                    <label htmlFor="contact-message">Project Description</label>
+                    <label htmlFor="contact-budget">Budget Range *</label>
+                    <select
+                      id="contact-budget"
+                      name="budget"
+                      value={form.budget}
+                      onChange={handleChange}
+                      required
+                    >
+                      {budgetOptions.map((opt, i) => (
+                        <option key={i} value={i === 0 ? '' : opt} disabled={i === 0}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="contact-form__field">
+                    <label htmlFor="contact-message">Project Description *</label>
                     <textarea
                       id="contact-message"
                       name="message"
@@ -158,24 +221,37 @@ export default function Contact() {
 
             {/* Sidebar */}
             <div className="contact-sidebar reveal reveal-delay-2">
+              {/* Response time badge */}
+              <div className="contact-response-badge">
+                <div className="contact-response-badge__dot" />
+                <span>Avg. response time: <strong>under 4 hours</strong></span>
+              </div>
+
               <div className="contact-info-card card card-glass">
-                <h4>Contact Info</h4>
+                <h4>Contact Information</h4>
                 <div className="contact-info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   <div>
                     <span className="contact-info-label">Email</span>
-                    <a href="mailto:hello@hanovadevs.com">hello@hanovadevs.com</a>
+                    <a href="mailto:hanovadevs@gmail.com">hanovadevs@gmail.com</a>
                   </div>
                 </div>
                 <div className="contact-info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <div>
+                    <span className="contact-info-label">Phone</span>
+                    <a href="tel:+19177355385">+1 (917) 735-5385</a>
+                  </div>
+                </div>
+                <div className="contact-info-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                   <div>
                     <span className="contact-info-label">Instagram</span>
                     <a href="https://instagram.com/hanovadevs" target="_blank" rel="noopener noreferrer">@hanovadevs</a>
                   </div>
                 </div>
                 <div className="contact-info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   <div>
                     <span className="contact-info-label">Location</span>
                     <span>Global — Remote First</span>
@@ -183,6 +259,26 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Office hours */}
+              <div className="contact-hours-card card card-glass">
+                <h4>Office Hours</h4>
+                <div className="contact-hours-list">
+                  <div className="contact-hours-row">
+                    <span>Monday – Friday</span>
+                    <strong>9:00 AM – 6:00 PM EST</strong>
+                  </div>
+                  <div className="contact-hours-row">
+                    <span>Saturday</span>
+                    <strong>10:00 AM – 2:00 PM EST</strong>
+                  </div>
+                  <div className="contact-hours-row">
+                    <span>Sunday</span>
+                    <strong>Closed</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social */}
               <div className="contact-social-card card card-glass">
                 <h4>Follow Us</h4>
                 <div className="contact-social-links">
@@ -204,6 +300,26 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="contact-faq reveal">
+            <h3 className="contact-faq__title">Frequently Asked Questions</h3>
+            <div className="contact-faq__list">
+              {faqs.map((faq, i) => (
+                <div key={i} className={`contact-faq__item ${openFaq === i ? 'contact-faq__item--open' : ''}`}>
+                  <button className="contact-faq__question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                    <span>{faq.q}</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="contact-faq__chevron">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                  <div className="contact-faq__answer">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,0 +1,208 @@
+/* ========= Service Detail Page ========= */
+
+.service-detail__hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.service-detail__hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.service-detail__hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-detail__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10, 22, 40, 0.9) 0%, rgba(10, 22, 40, 0.6) 100%);
+}
+
+.service-detail__hero-content {
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+  max-width: 800px;
+}
+
+.service-detail__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.service-detail__back-link:hover {
+  color: var(--white);
+}
+
+.service-detail__hero-content h1 {
+  color: var(--white);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  margin-bottom: var(--space-sm);
+}
+
+.service-detail__hero-content p {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Intro */
+.service-detail__intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.service-detail__intro-text h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--space-md);
+}
+
+.service-detail__intro-text em {
+  color: var(--royal-blue);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.service-detail__intro-text .lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--blue-grey);
+}
+
+.service-detail__intro-image {
+  position: relative;
+}
+
+.service-detail__showcase-img {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 2;
+}
+
+.service-detail__img-backdrop {
+  position: absolute;
+  inset: -15px;
+  background: rgba(var(--royal-blue-rgb), 0.05);
+  border-radius: var(--radius-xl);
+  z-index: 1;
+  transform: translate(-15px, 15px);
+}
+
+/* Features */
+.service-detail__features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.service-detail__feature-card {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-detail__feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-detail__feature-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(var(--royal-blue-rgb), 0.06);
+  color: var(--royal-blue);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.service-detail__feature-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.service-detail__feature-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-detail__feature-card p {
+  color: var(--blue-grey);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* CTA */
+.service-detail__cta {
+  background: linear-gradient(135deg, var(--deep-navy), #12284b);
+  color: var(--white);
+  padding: var(--space-3xl) 0;
+}
+
+.service-detail__cta h2 {
+  color: var(--white);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-sm);
+}
+
+.service-detail__cta p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.15rem;
+}
+
+.service-detail__cta .btn-primary {
+  background: var(--royal-blue);
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+.service-detail__cta .btn-primary:hover {
+  background: var(--electric-blue);
+}
+
+@media (max-width: 992px) {
+  .service-detail__intro-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-detail__features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .service-detail__features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-detail__hero {
+    min-height: 50vh;
+  }
+}

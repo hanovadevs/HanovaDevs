@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './About.css'
 
 const values = [
@@ -32,12 +33,7 @@ const values = [
   }
 ]
 
-const team = [
-  { name: 'Alex Mwangi', role: 'Founder & CEO', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face' },
-  { name: 'Sarah Chen', role: 'Head of Design', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face' },
-  { name: 'David Okafor', role: 'Lead Developer', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face' },
-  { name: 'Maria Santos', role: 'Marketing Director', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face' },
-]
+
 
 const milestones = [
   { year: '2022', title: 'Founded', desc: 'HanovaDevs launches as a two-person agency.' },
@@ -47,7 +43,36 @@ const milestones = [
   { year: '2025', title: 'Eunoia Launch', desc: 'Preparing to release our AI desktop assistant.' },
 ]
 
+const faqs = [
+  {
+    question: "Do you build custom websites or use templates?",
+    answer: "We strictly build custom, highly-optimized websites. Every business is unique, and templates often come with bloated code that slows down performance and hurts SEO. We engineer our sites from scratch using modern frameworks like React and Next.js."
+  },
+  {
+    question: "What size companies do you typically work with?",
+    answer: "We partner with a wide range of clients, from ambitious startups looking to establish their initial digital footprint, to large enterprises requiring complex, scalable custom software and high-volume marketing strategies."
+  },
+  {
+    question: "How long does a typical project take?",
+    answer: "Project timelines depend heavily on scope. A marketing website might take 4-6 weeks, while a custom web application or comprehensive rebranding could take 3-6 months. We always establish clear milestones before we begin."
+  },
+  {
+    question: "Do you provide ongoing support after a project launches?",
+    answer: "Absolutely. Launching is just the beginning. We offer monthly retainers for ongoing maintenance, security updates, SEO optimization, and feature enhancements to ensure your digital assets continue to perform at their peak."
+  },
+  {
+    question: "Why should we choose HanovaDevs over a specialized marketing or dev shop?",
+    answer: "Because we understand the entire ecosystem. Great code means nothing if nobody sees it, and great marketing fails if the website doesn't convert. By combining high-end engineering with data-driven digital marketing, we eliminate the friction between your tech and your growth."
+  }
+]
+
 export default function About() {
+  const [openFaq, setOpenFaq] = useState(null)
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
+
   return (
     <div className="about-page">
       {/* Hero */}
@@ -85,10 +110,13 @@ export default function About() {
                 HanovaDevs was founded with a simple mission: to bridge the gap between businesses and the digital world. We saw too many companies struggling with outdated websites, ineffective marketing, and clunky software — and we knew we could do better.
               </p>
               <p>
-                Today, we're a full-service digital agency and software studio, helping businesses of all sizes transform their online presence. From startups needing their first website to enterprises requiring custom software solutions, we deliver work that drives real results.
+                Today, we're a full-service digital agency and software studio, helping businesses of all sizes transform their online presence. From startups needing their first website to enterprises requiring custom software solutions, we deliver work that drives real results. Our approach is deeply collaborative, meaning we treat every client's business as if it were our own.
               </p>
               <p>
-                But we don't stop at client work. We're also building our own products — tools we wish existed, designed to push the boundaries of what's possible in tech.
+                But we don't stop at client work. We're also building our own products — tools we wish existed, designed to push the boundaries of what's possible in tech. We believe that innovation is a continuous journey, not a destination. Our internal products allow us to experiment with bleeding-edge technology, and we bring those learnings directly to our clients' projects.
+              </p>
+              <p>
+                Whether it's building a complex web application from scratch, designing a beautiful, highly-converting marketing site, or developing custom internal tooling to scale operations, HanovaDevs is the partner you can trust to deliver excellence at every step.
               </p>
             </div>
           </div>
@@ -114,35 +142,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="about-team" id="about-team">
-        <div className="container">
-          <div className="section-header reveal">
-            <span className="section-label">Our Team</span>
-            <h2>The people behind the pixels</h2>
-            <p>A team of designers, developers, and strategists united by a passion for great work.</p>
-          </div>
-          <div className="about-team__grid">
-            {team.map((member, i) => (
-              <div key={i} className={`about-team__card reveal reveal-delay-${i + 1}`}>
-                <div className="about-team__photo">
-                  <img src={member.image} alt={member.name} loading="lazy" />
-                </div>
-                <h4>{member.name}</h4>
-                <span className="about-team__role">{member.role}</span>
-                <div className="about-team__socials">
-                  <a href="#" aria-label="LinkedIn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                  </a>
-                  <a href="#" aria-label="Twitter">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Timeline */}
       <section className="about-timeline bg-off-white" id="about-timeline">
@@ -163,6 +162,49 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="about-faq section" id="about-faq">
+        <div className="container">
+          <div className="section-header reveal">
+            <span className="section-label">Common Questions</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Authentic answers to the things our clients ask us most.</p>
+          </div>
+          
+          <div className="about-faq__list">
+            {faqs.map((faq, i) => (
+              <div 
+                key={i} 
+                className={`about-faq__item reveal reveal-delay-${(i % 4) + 1} ${openFaq === i ? 'is-open' : ''}`}
+              >
+                <button 
+                  className="about-faq__question hoverable" 
+                  onClick={() => toggleFaq(i)}
+                  aria-expanded={openFaq === i}
+                >
+                  <h3>{faq.question}</h3>
+                  <span className="about-faq__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                </button>
+                <div 
+                  className="about-faq__answer"
+                  style={{ 
+                    maxHeight: openFaq === i ? '200px' : '0',
+                    opacity: openFaq === i ? 1 : 0
+                  }}
+                >
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
