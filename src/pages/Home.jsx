@@ -272,6 +272,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== TECH STACK ===== */}
+      <section className="tech-stack-section" id="tech-stack">
+        <div className="container">
+          <p className="tech-stack__label">Powered by modern technologies</p>
+          <div className="tech-stack__grid">
+            {['React', 'Next.js', 'Node.js', 'TypeScript', 'AWS', 'Python', 'TailwindCSS'].map((tech, i) => (
+              <div key={i} className="tech-stack__badge">
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== ABOUT TEASER ===== */}
       <section className="about-teaser section" id="about-teaser">
         <div className="container">
@@ -452,6 +466,23 @@ export default function Home() {
                 />
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== INDUSTRIES WE SERVE ===== */}
+      <section className="industries-section section" id="industries">
+        <div className="container">
+          <div className="section-header reveal text-center" style={{ margin: '0 auto var(--space-xl)' }}>
+            <span className="section-label">Expertise</span>
+            <h2>Industries we serve</h2>
+          </div>
+          <div className="industries__grid">
+            {['Healthcare', 'FinTech', 'E-Commerce', 'SaaS & Tech', 'Real Estate', 'Logistics'].map((industry, i) => (
+              <div key={i} className={`industries__card reveal reveal-delay-${i}`}>
+                <h4>{industry}</h4>
+              </div>
+            ))}
           </div>
         </div>
       </section>
