@@ -277,7 +277,7 @@ export default function Home() {
           </div>
           <div className="stats__grid">
             {stats.map((stat, i) => (
-              <div key={i} className={`stats__card reveal reveal-delay-${i + 1}`}>
+              <div key={i} className={`stats__card reveal-scale reveal-delay-${i + 1}`}>
                 <div className="stats__icon">{stat.icon}</div>
                 <div className="stats__number">{stat.number}</div>
                 <div className="stats__content">
@@ -308,7 +308,7 @@ export default function Home() {
       <section className="about-teaser section" id="about-teaser">
         <div className="container">
           <div className="about-teaser__inner">
-            <div className="about-teaser__visual reveal">
+            <div className="about-teaser__visual reveal-left">
               <div className="about-teaser__img-stack">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=500&fit=crop"
@@ -325,7 +325,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="about-teaser__content reveal reveal-delay-2">
+            <div className="about-teaser__content reveal-right reveal-delay-2">
               <span className="section-label">Who We Are</span>
               <h2>A studio built on <span className="gradient-text">craft & ambition.</span></h2>
               <p>
@@ -502,7 +502,7 @@ export default function Home() {
               'Education & EdTech', 'Hospitality', 'Manufacturing',
               'Entertainment', 'Automotive', 'Web3 & Crypto'
             ].map((industry, i) => (
-              <div key={i} className={`industries__card reveal reveal-delay-${i % 6}`}>
+              <div key={i} className={`industries__card reveal-scale reveal-delay-${i % 6}`}>
                 <h4>{industry}</h4>
               </div>
             ))}
@@ -514,13 +514,13 @@ export default function Home() {
       <section className="products-teaser section bg-off-white" id="products-teaser">
         <div className="container">
           <div className="products-teaser__inner">
-            <div className="products-teaser__text reveal">
+            <div className="products-teaser__text reveal-left">
               <span className="section-label">Our Products</span>
               <h2>We don't just build for clients. <span className="gradient-text">We build for the world.</span></h2>
               <p>Beyond agency work, we're creating our own tools — products we wish existed, designed to push the boundaries of what's possible.</p>
             </div>
             <div className="products-teaser__cards">
-              <div className="products-teaser__card card card-glass reveal reveal-delay-1">
+              <div className="products-teaser__card card card-glass reveal-right reveal-delay-1">
                 <div className="products-teaser__badge products-teaser__badge--dev">
                   <span className="products-teaser__pulse" /> In Development
                 </div>
@@ -528,7 +528,7 @@ export default function Home() {
                 <p>A next-generation AI-powered browser built for the modern web. Smart tabs, native AI chat, and blazing-fast performance.</p>
                 <Link to="/products" className="btn btn-ghost" style={{marginTop: 'auto'}}>Learn More</Link>
               </div>
-              <div className="products-teaser__card card card-glass reveal reveal-delay-2">
+              <div className="products-teaser__card card card-glass reveal-right reveal-delay-2">
                 <div className="products-teaser__badge products-teaser__badge--launch">
                   <span className="products-teaser__pulse products-teaser__pulse--green" /> Ready to Launch
                 </div>
@@ -545,7 +545,7 @@ export default function Home() {
       <section className="final-cta" id="final-cta">
         <div className="final-cta__bg" />
         <div className="container text-center">
-          <img src="/octopus.png" alt="" className="final-cta__icon reveal" />
+          <img src="/octopus.png" alt="" className="final-cta__icon reveal-scale" />
           <h2 className="final-cta__headline reveal reveal-delay-1">Ready to go digital?</h2>
           <p className="final-cta__sub reveal reveal-delay-2">
             Let's turn your vision into a digital reality. No jargon, just results.

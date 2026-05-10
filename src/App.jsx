@@ -27,7 +27,7 @@ function App() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     )
 
-    const elements = document.querySelectorAll('.reveal')
+    const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
     elements.forEach(el => observer.observe(el))
 
     return () => observer.disconnect()
