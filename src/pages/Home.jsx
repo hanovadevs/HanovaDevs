@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import './Home.css'
 
 /* ─── DATA ─── */
@@ -191,6 +192,11 @@ export default function Home() {
 
   return (
     <div className="home-page">
+      <SEO 
+        title="Digital Marketing Agency & Custom Software Studio"
+        description="HanovaDevs engineers scalable web applications, executes high-converting digital marketing campaigns, and builds powerful brand identities to drive your business growth."
+        url=""
+      />
       {/* ===== HERO ===== */}
       <section className="hero" id="hero">
         {/* Glass crystal background */}

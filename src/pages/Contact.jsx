@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import './Contact.css'
 
 const budgetOptions = [
@@ -80,6 +81,11 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with HanovaDevs. We are ready to discuss your next digital project, from custom software to comprehensive marketing campaigns."
+        url="/contact"
+      />
       {/* Hero */}
       <section className="contact-hero" id="contact-hero">
         <div className="contact-hero__bg" />

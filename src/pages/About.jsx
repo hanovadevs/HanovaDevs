@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SEO from '../components/SEO'
 import './About.css'
 
 const values = [
@@ -75,6 +76,11 @@ export default function About() {
 
   return (
     <div className="about-page">
+      <SEO 
+        title="About Us"
+        description="Learn about HanovaDevs' mission to bridge the gap between businesses and the digital world through world-class software engineering and digital marketing."
+        url="/about"
+      />
       {/* Hero */}
       <section className="about-hero" id="about-hero">
         <div className="about-hero__bg">

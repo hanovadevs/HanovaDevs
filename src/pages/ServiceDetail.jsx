@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import SEO from '../components/SEO'
 import './ServiceDetail.css'
 
 const servicesData = {
@@ -225,6 +226,7 @@ export default function ServiceDetail() {
   if (!service) {
     return (
       <div className="service-not-found">
+        <SEO title="Service Not Found" />
         <div className="container text-center" style={{ paddingTop: '200px', paddingBottom: '100px' }}>
           <h2>Service not found.</h2>
           <Link to="/services" className="btn btn-primary" style={{ marginTop: '2rem' }}>Back to Services</Link>
@@ -233,8 +235,44 @@ export default function ServiceDetail() {
     )
   }
 
+  // Generate Answer Engine Optimization (AEO) JSON-LD for this specific service
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": service.title,
+    "provider": {
+      "@type": "Organization",
+      "name": "HanovaDevs"
+    },
+    "description": service.intro,
+    "offers": {
+      "@type": "Offer",
+      "description": service.tagline
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Service Features",
+      "itemListElement": service.features.map((feat, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": feat.title,
+          "description": feat.desc
+        },
+        "position": index + 1
+      }))
+    }
+  }
+
   return (
     <div className="service-detail-page">
+      <SEO 
+        title={service.title} 
+        description={service.intro.substring(0, 160) + '...'}
+        url={`/services/${id}`}
+        schemaMarkup={serviceSchema}
+      />
+      
       {/* Hero Section */}
       <section className="service-detail__hero">
         <div className="service-detail__hero-bg">

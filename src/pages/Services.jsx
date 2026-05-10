@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import './Services.css'
 
 const services = [
@@ -51,6 +52,11 @@ const services = [
 export default function Services() {
   return (
     <div className="services-page">
+      <SEO 
+        title="Our Services"
+        description="Explore HanovaDevs' premium digital services, from web design and scalable custom software to enterprise-grade SEO and social media marketing."
+        url="/services"
+      />
       {/* Hero */}
       <section className="services-hero" id="services-hero">
         <div className="container">
