@@ -478,8 +478,13 @@ export default function Home() {
             <h2>Industries we serve</h2>
           </div>
           <div className="industries__grid">
-            {['Healthcare', 'FinTech', 'E-Commerce', 'SaaS & Tech', 'Real Estate', 'Logistics'].map((industry, i) => (
-              <div key={i} className={`industries__card reveal reveal-delay-${i}`}>
+            {[
+              'Healthcare', 'FinTech', 'E-Commerce', 
+              'SaaS & Tech', 'Real Estate', 'Logistics',
+              'Education & EdTech', 'Hospitality', 'Manufacturing',
+              'Entertainment', 'Automotive', 'Web3 & Crypto'
+            ].map((industry, i) => (
+              <div key={i} className={`industries__card reveal reveal-delay-${i % 6}`}>
                 <h4>{industry}</h4>
               </div>
             ))}
