@@ -1,188 +1,191 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import './Projects.css'
 
-const categories = ['All', 'Web', 'Marketing', 'Branding', 'SEO']
-
-const projects = [
+const featuredProjects = [
   {
-    id: 1,
-    title: 'TechVault Dashboard',
-    category: 'Web',
-    thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=500&fit=crop',
-    metric: '+230% traffic in 3 months',
-    overview: 'TechVault needed a complete dashboard redesign to improve user engagement and data visualization.',
-    challenge: 'The existing dashboard was cluttered, slow, and had a 62% bounce rate.',
-    solution: 'We redesigned the entire UI with a modular component system, implemented real-time data charts, and optimized load times by 70%.',
-    results: '230% increase in traffic, 45% reduction in bounce rate, and 3x improvement in user session duration.',
-    tall: true,
+    id: 'earthsync',
+    title: 'EarthSync Essential',
+    category: 'E-Commerce & Wellness',
+    url: 'https://www.earthsyncessential.com',
+    thumbnail: '/projects/earthsync.png',
+    theme: 'light',
+    overview: 'EarthSync is a premium e-commerce brand specializing in earthing sheets and grounding products. They needed a digital presence that balanced scientific credibility with modern wellness aesthetics.',
+    challenge: 'The primary challenge was educating consumers on the medical-grade science of grounding while maintaining a calm, high-end, consumer-friendly shopping experience without overwhelming them with data.',
+    solution: 'We engineered a minimal, high-fidelity UI utilizing smooth scroll mechanics, fluid typography, and a nature-inspired palette (sage & beige). We integrated a seamless e-commerce flow and an interactive scientific glossary.',
+    metrics: [
+      { label: 'Conversion Rate', value: '+45%' },
+      { label: 'Avg Session', value: '3m 12s' },
+      { label: 'Mobile UX', value: 'A+' }
+    ]
   },
   {
-    id: 2,
-    title: 'GreenGrow Social Campaign',
-    category: 'Marketing',
-    thumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop',
-    metric: '4.2x ROI in 6 months',
-    overview: 'GreenGrow wanted to establish their brand presence on social media and drive organic growth.',
-    challenge: 'Zero social media presence and minimal brand awareness in a saturated market.',
-    solution: 'Created a comprehensive content strategy across Instagram, LinkedIn, and TikTok with weekly content calendars and influencer partnerships.',
-    results: '4.2x ROI, 15K new followers, and 340% increase in website referrals from social channels.',
+    id: 'nexus',
+    title: 'Nexus Health',
+    category: 'Telemedicine SaaS',
+    url: 'https://www.nexushealth.io',
+    thumbnail: '/projects/nexus.png',
+    theme: 'nexus',
+    overview: 'Nexus Health is a next-generation telemedicine dashboard connecting thousands of practitioners with remote patients in real-time.',
+    challenge: 'Doctors were abandoning existing platforms due to clunky UI and poor patient-data accessibility during live calls.',
+    solution: 'We developed a pristine, hyper-fast React dashboard with WebRTC video integration. Soft medical blues and extreme whitespace were utilized to reduce cognitive load for doctors during 12-hour shifts.',
+    metrics: [
+      { label: 'Platform Uptime', value: '99.9%' },
+      { label: 'User Retention', value: '88%' },
+      { label: 'Load Time', value: '0.4s' }
+    ]
   },
   {
-    id: 3,
-    title: 'FinEdge Rebrand',
-    category: 'Branding',
-    thumbnail: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop',
-    metric: '98% stakeholder approval',
-    overview: 'FinEdge required a complete brand overhaul to position themselves as a modern fintech leader.',
-    challenge: 'Outdated brand identity that didn\'t reflect their innovative technology solutions.',
-    solution: 'Developed new brand guidelines, logo system, color palette, and marketing collateral that communicated trust and innovation.',
-    results: '98% stakeholder approval, successful rebrand launch, and 40% increase in qualified leads.',
+    id: 'crown',
+    title: 'Crown Accumulator',
+    category: 'Industrial B2B Portfolio',
+    url: 'https://www.crownaccumulator.com',
+    thumbnail: '/projects/crown.png',
+    theme: 'dark',
+    overview: 'Crown Accumulator is a leading industrial manufacturer of automotive, tractor, and solar batteries. They required a robust digital overhaul to project market dominance and technological advancement.',
+    challenge: 'The industrial battery sector typically suffers from outdated, clunky web presences. Crown needed a highly performant platform that could handle hundreds of technical SKUs while driving B2B inquiries.',
+    solution: 'We built a bold, striking corporate architecture using dark mode aesthetics with electric yellow accents. We engineered a lightning-fast product filtering system and integrated streamlined B2B inquiry pipelines.',
+    metrics: [
+      { label: 'Load Time', value: '< 0.8s' },
+      { label: 'B2B Leads', value: '3x' },
+      { label: 'SKUs Indexed', value: '450+' }
+    ]
   },
   {
-    id: 4,
-    title: 'MediCore Health App',
-    category: 'Web',
-    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=500&fit=crop',
-    metric: '15K active users',
-    overview: 'MediCore needed a patient-facing app to streamline appointment booking and health tracking.',
-    challenge: 'Complex healthcare workflows and strict compliance requirements.',
-    solution: 'Built a HIPAA-compliant React Native app with telemedicine integration, appointment scheduling, and health metric tracking.',
-    results: '15K active users within 4 months, 89% patient satisfaction score.',
-    tall: true,
+    id: 'lumiere',
+    title: 'Lumière Paris',
+    category: 'Luxury Fashion',
+    url: 'https://www.lumiere-paris.fr',
+    thumbnail: '/projects/lumiere.png',
+    theme: 'lumiere',
+    overview: 'Lumière Paris is an avant-garde luxury fashion house. They needed a flagship digital boutique that felt more like a high-end editorial magazine than a standard store.',
+    challenge: 'Translating the tactile, premium feel of high fashion into a web browser without sacrificing e-commerce conversion rates.',
+    solution: 'We crafted an ultra-premium dark mode experience. We utilized cinematic full-screen video headers, subtle gold typography, and a "lookbook" style checkout flow that redefined luxury digital shopping.',
+    metrics: [
+      { label: 'AOV Increase', value: '+32%' },
+      { label: 'Bounce Rate', value: '-15%' },
+      { label: 'Global Traffic', value: '1.2M' }
+    ]
   },
   {
-    id: 5,
-    title: 'NovaTech SEO Overhaul',
-    category: 'SEO',
-    thumbnail: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop',
-    metric: 'Page 1 for 28 keywords',
-    overview: 'NovaTech was invisible on search engines and losing market share to competitors.',
-    challenge: 'Poor site structure, thin content, and no technical SEO foundation.',
-    solution: 'Conducted comprehensive SEO audit, restructured site architecture, created 40+ optimized content pieces, and built quality backlinks.',
-    results: 'Page 1 rankings for 28 target keywords, 180% organic traffic increase.',
-  },
-  {
-    id: 6,
-    title: 'Pulse Fitness Brand Launch',
-    category: 'Branding',
-    thumbnail: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=400&fit=crop',
-    metric: '2K pre-launch signups',
-    overview: 'Pulse Fitness was launching a new gym chain and needed a brand identity from scratch.',
-    challenge: 'Entering a highly competitive fitness market with no brand recognition.',
-    solution: 'Created an energetic brand identity with bold colors, dynamic typography, and a comprehensive launch marketing campaign.',
-    results: '2K pre-launch signups, successful grand opening with 150% capacity, and strong brand recall.',
-  },
+    id: 'aero',
+    title: 'AeroSpace Dynamics',
+    category: 'Logistics Analytics',
+    url: 'https://www.aerospacedynamics.io',
+    thumbnail: '/projects/aero.png',
+    theme: 'aero',
+    overview: 'AeroSpace Dynamics manages global freight and satellite logistics. They needed a powerful, data-heavy command center for their fleet operators.',
+    challenge: 'Visualizing thousands of real-time data points on a single screen without causing interface lag or operator confusion.',
+    solution: 'We engineered a cybernetic, high-performance WebGL dashboard. Featuring deep navy backgrounds with glowing cyan data nodes, the UI allows operators to parse complex global logistics at a single glance.',
+    metrics: [
+      { label: 'Data Points/Sec', value: '10k+' },
+      { label: 'Response Time', value: '12ms' },
+      { label: 'Task Efficiency', value: '+60%' }
+    ]
+  }
 ]
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState('All')
-  const [selectedProject, setSelectedProject] = useState(null)
-
-  const filtered = activeFilter === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeFilter)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible')
+      })
+    }, { threshold: 0.15 })
+    document.querySelectorAll('.reveal, .reveal-up').forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="projects-page">
-      {/* Hero */}
-      <section className="projects-hero" id="projects-hero">
+      <SEO 
+        title="Client Projects — HanovaDevs" 
+        description="Explore our portfolio of recent client work, including EarthSync Essential and Crown Accumulator." 
+        url="/projects" 
+      />
+
+      {/* ===== HERO ===== */}
+      <section className="pj-hero" id="projects-hero">
+        <div className="pj-hero__bg" />
         <div className="container">
-          <div className="projects-hero__content reveal">
-            <span className="section-label">Our Work</span>
-            <h1>Projects that <span className="gradient-text">speak results.</span></h1>
-            <p>Real work. Real metrics. Real impact for ambitious brands.</p>
+          <div className="pj-hero__content reveal-up">
+            <span className="pj-label">Our Portfolio</span>
+            <h1>Engineering <br /><span className="pj-gradient">Digital Reality.</span></h1>
+            <p>We don't just build websites; we engineer high-performance digital ecosystems for ambitious brands. Explore our recent case studies.</p>
           </div>
         </div>
       </section>
 
-      {/* Filter + Grid */}
-      <section className="projects-grid-section section" id="projects-grid">
-        <div className="container">
-          <div className="projects-filters reveal">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                className={`projects-filter-btn ${activeFilter === cat ? 'projects-filter-btn--active' : ''}`}
-                onClick={() => setActiveFilter(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+      {/* ===== FEATURED PROJECTS ===== */}
+      <div className="pj-showcases">
+        {featuredProjects.map((project, index) => (
+          <section key={project.id} className={`pj-case pj-case--${project.theme}`}>
+            <div className="container">
+              <div className={`pj-case__layout ${index % 2 !== 0 ? 'pj-case__layout--reverse' : ''}`}>
+                
+                <div className="pj-case__text reveal-up">
+                  <div className="pj-case__meta">
+                    <span className="pj-case__category">{project.category}</span>
+                  </div>
+                  <h2>{project.title}</h2>
+                  <p className="pj-case__overview">{project.overview}</p>
+                  
+                  <div className="pj-case__details">
+                    <div className="pj-case__detail-block">
+                      <h4>The Challenge</h4>
+                      <p>{project.challenge}</p>
+                    </div>
+                    <div className="pj-case__detail-block">
+                      <h4>Our Solution</h4>
+                      <p>{project.solution}</p>
+                    </div>
+                  </div>
 
-          <div className="projects-masonry">
-            {filtered.map((project) => (
-              <div
-                key={project.id}
-                className={`projects-card hoverable ${project.tall ? 'projects-card--tall' : ''}`}
-                onClick={() => setSelectedProject(project)}
-              >
-                <div className="projects-card__img">
-                  <img src={project.thumbnail} alt={project.title} loading="lazy" />
+                  <div className="pj-case__metrics">
+                    {project.metrics.map((metric, i) => (
+                      <div key={i} className="pj-case__metric">
+                        <strong>{metric.value}</strong>
+                        <span>{metric.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn pj-btn">
+                    Visit Live Site <span>↗</span>
+                  </a>
                 </div>
-                <div className="projects-card__overlay">
-                  <span className="projects-card__tag">{project.category}</span>
-                  <h3>{project.title}</h3>
-                  <span className="projects-card__metric">{project.metric}</span>
+
+                <div className="pj-case__visual reveal-up reveal-delay-1">
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="pj-frame-link">
+                    <div className="pj-frame">
+                      <div className="pj-frame__header">
+                        <div className="pj-frame__dots"><span/><span/><span/></div>
+                        <div className="pj-frame__url">{project.url.replace('https://www.', '')}</div>
+                      </div>
+                      <img src={project.thumbnail} alt={`${project.title} Interface`} className="pj-frame__img" />
+                    </div>
+                  </a>
                 </div>
+
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+        ))}
+      </div>
 
-      {/* CTA */}
-      <section className="projects-cta section bg-off-white" id="projects-cta">
+      {/* ===== CTA ===== */}
+      <section className="pj-cta section">
         <div className="container text-center">
-          <h2 className="reveal">Start Your Project</h2>
-          <p className="reveal reveal-delay-1" style={{ maxWidth: 480, margin: '0 auto var(--space-lg)' }}>
-            Ready to join this list? Let's create something remarkable together.
-          </p>
-          <Link to="/contact" className="btn btn-primary reveal reveal-delay-2">
-            Let's Talk
-          </Link>
+          <h2 className="reveal-up">Ready for a digital transformation?</h2>
+          <p className="reveal-up reveal-delay-1">Let's build a platform that scales your business and dominates your industry.</p>
+          <div className="reveal-up reveal-delay-2 mt-xl">
+            <Link to="/contact" className="btn btn-primary">Start Your Project</Link>
+          </div>
         </div>
       </section>
 
-      {/* Modal */}
-      {selectedProject && (
-        <div className="project-modal" onClick={() => setSelectedProject(null)}>
-          <div className="project-modal__inner" onClick={e => e.stopPropagation()}>
-            <button className="project-modal__close" onClick={() => setSelectedProject(null)} aria-label="Close">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-
-            <div className="project-modal__hero">
-              <img src={selectedProject.thumbnail} alt={selectedProject.title} />
-              <div className="project-modal__hero-overlay">
-                <span className="projects-card__tag">{selectedProject.category}</span>
-                <h2>{selectedProject.title}</h2>
-                <span className="project-modal__metric">{selectedProject.metric}</span>
-              </div>
-            </div>
-
-            <div className="project-modal__body">
-              <div className="project-modal__section">
-                <h4>Overview</h4>
-                <p>{selectedProject.overview}</p>
-              </div>
-              <div className="project-modal__section">
-                <h4>The Challenge</h4>
-                <p>{selectedProject.challenge}</p>
-              </div>
-              <div className="project-modal__section">
-                <h4>Our Solution</h4>
-                <p>{selectedProject.solution}</p>
-              </div>
-              <div className="project-modal__section">
-                <h4>Results</h4>
-                <p>{selectedProject.results}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
