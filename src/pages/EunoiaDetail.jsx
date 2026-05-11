@@ -349,7 +349,7 @@ export default function EunoiaDetail() {
           <h2>Ready to clear your mind?</h2>
           <p>Get Eunoia today and take control of your daily routine. Available for Windows, macOS, and Linux.</p>
           <div className="ed-cta__actions">
-            <a href="/products/eunoia/Eunoia Setup 0.1.0.exe" download className="btn btn-primary">Download Eunoia</a>
+            <a href="https://drive.google.com/file/d/1Iw_OCgwdYqC1RniTpbyxdIj_ZSMi4X2o/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
             <Link to="/products" className="ed-cta__back">← Back to Products</Link>
           </div>
         </div>
