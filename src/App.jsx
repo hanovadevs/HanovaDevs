@@ -11,7 +11,7 @@ import Products from './pages/Products'
 import Contact from './pages/Contact'
 import ServiceDetail from './pages/ServiceDetail'
 import OmnaiDetail from './pages/OmnaiDetail'
-
+import EunoiaDetail from './pages/EunoiaDetail'
 function App() {
   const location = useLocation()
 
@@ -47,6 +47,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/omnai" element={<OmnaiDetail />} />
+          <Route path="/products/eunoia" element={<EunoiaDetail />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

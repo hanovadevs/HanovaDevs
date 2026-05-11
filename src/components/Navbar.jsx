@@ -31,8 +31,11 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  const darkPages = ['/products/omnai', '/products/eunoia']
+  const isDarkPage = darkPages.includes(location.pathname)
+
   return (
-    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} id="main-nav">
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''}`} id="main-nav">
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" aria-label="HanovaDevs Home">
           <img src="/octopus.png" alt="HanovaDevs octopus" className="navbar__logo-icon" width="36" height="36" />

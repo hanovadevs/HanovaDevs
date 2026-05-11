@@ -84,6 +84,29 @@
   width: 100%;
 }
 
+/* Dark Theme Variant (for dark hero sections before scroll) */
+.navbar--dark .navbar__brand-name {
+  color: var(--white);
+}
+
+.navbar--dark .navbar__link {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar--dark .navbar__link:hover,
+.navbar--dark .navbar__link--active {
+  color: var(--white);
+}
+
+.navbar--dark .navbar__link::after {
+  background: var(--white);
+}
+
+.navbar--dark .navbar__burger span {
+  background: var(--white);
+}
+
+
 .navbar__cta {
   font-size: 0.8rem;
   padding: 0.5rem 1.25rem;
