@@ -12,6 +12,8 @@ import Contact from './pages/Contact'
 import ServiceDetail from './pages/ServiceDetail'
 import OmnaiDetail from './pages/OmnaiDetail'
 import EunoiaDetail from './pages/EunoiaDetail'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 function App() {
   const location = useLocation()
 
@@ -49,6 +51,8 @@ function App() {
           <Route path="/products/omnai" element={<OmnaiDetail />} />
           <Route path="/products/eunoia" element={<EunoiaDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </main>
       <Footer />

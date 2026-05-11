@@ -993,17 +993,19 @@
   gap: var(--space-sm);
 }
 .industries__card {
-  background: var(--off-white);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
+  background: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
   text-align: center;
-  border: 1px solid rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: all 0.4s var(--ease-smooth);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 .industries__card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   background: var(--white);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 12px 30px rgba(var(--royal-blue-rgb), 0.08);
+  border-color: rgba(var(--royal-blue-rgb), 0.1);
 }
 .industries__card h4 {
   margin: 0;
@@ -1022,3 +1024,169 @@
   }
 }
 
+}
+
+/* ===== HOME PROCESS SECTION ===== */
+.home-process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+@media (max-width: 1024px) {
+  .home-process__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .home-process__grid { grid-template-columns: 1fr; }
+}
+
+.home-process__card {
+  position: relative;
+  padding: var(--space-xl);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.home-process__step {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(var(--royal-blue-rgb), 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.home-process__card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-process__card p {
+  font-size: 0.95rem;
+  color: var(--blue-grey);
+  line-height: 1.6;
+}
+
+/* ===== HOME TECH SECTION ===== */
+.home-tech__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.home-tech__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.tech-tag {
+  padding: 0.5rem 1.25rem;
+  background: var(--off-white);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--royal-blue);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.1);
+}
+
+.home-tech__visual {
+  position: relative;
+  height: 400px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  height: 100%;
+}
+
+.tech-grid__item {
+  background: linear-gradient(135deg, rgba(var(--royal-blue-rgb), 0.1) 0%, rgba(var(--royal-blue-rgb), 0.05) 100%);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.05);
+}
+
+@media (max-width: 900px) {
+  .home-tech__inner { grid-template-columns: 1fr; }
+  .home-tech__visual { height: 300px; order: -1; }
+}
+
+/* ===== HOME INSIGHTS SECTION ===== */
+.home-insights__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.home-insights__card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.home-insights__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(var(--royal-blue-rgb), 0.1);
+}
+
+.insights-card__image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.insights-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insights-card__category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--royal-blue);
+  color: var(--white);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.insights-card__content {
+  padding: var(--space-lg);
+}
+
+.insights-card__date {
+  font-size: 0.8rem;
+  color: var(--blue-grey);
+}
+
+.insights-card__content h3 {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.insights-card__link {
+  font-weight: 700;
+  color: var(--royal-blue);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .home-insights__grid { grid-template-columns: 1fr; }
+}

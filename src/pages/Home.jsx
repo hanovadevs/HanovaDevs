@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import { blogPosts } from './Blog'
 import './Home.css'
 
 /* ─── DATA ─── */
@@ -537,6 +538,86 @@ export default function Home() {
                 <Link to="/products" className="btn btn-primary" style={{marginTop: 'auto'}}>Join Waitlist</Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PROCESS SECTION ===== */}
+      <section className="home-process section" id="process">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
+            <span className="section-label">Our Philosophy</span>
+            <h2>The Engineering <span className="gradient-text">Mindset</span></h2>
+            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto' }}>
+              We follow a rigorous, data-driven methodology to ensure every line of code serves your business objectives.
+            </p>
+          </div>
+          <div className="home-process__grid">
+            {[
+              { step: '01', title: 'Strategic Discovery', desc: 'We audit your current state and map out a precise roadmap to your goals.' },
+              { step: '02', title: 'Iterative Engineering', desc: 'Agile development cycles with continuous feedback and transparency.' },
+              { step: '03', title: 'Quality Assurance', desc: 'Rigorous stress testing for performance, security, and accessibility.' },
+              { step: '04', title: 'Global Scale', desc: 'Deployment on high-availability cloud infrastructure for worldwide reach.' }
+            ].map((p, i) => (
+              <div key={i} className={`home-process__card reveal-up reveal-delay-${i}`}>
+                <div className="home-process__step">{p.step}</div>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TECH STACK SECTION ===== */}
+      <section className="home-tech section bg-white">
+        <div className="container">
+          <div className="home-tech__inner">
+            <div className="home-tech__text reveal-left">
+              <span className="section-label">Tech Stack</span>
+              <h2>Powered by the <br /><span className="gradient-text">Best in Class</span></h2>
+              <p>We use the most robust and modern technologies to build software that is future-proof.</p>
+              <div className="home-tech__list">
+                {['Next.js', 'React', 'Node.js', 'PostgreSQL', 'AWS', 'TensorFlow', 'Electron', 'TypeScript'].map((tech, i) => (
+                  <span key={i} className="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+            <div className="home-tech__visual reveal-right">
+              <div className="tech-grid">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => (
+                  <div key={i} className="tech-grid__item" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== RECENT INSIGHTS SECTION ===== */}
+      <section className="home-insights section bg-off-white">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
+            <span className="section-label">The Lab</span>
+            <h2>Latest from our <span className="gradient-text">Journal</span></h2>
+          </div>
+          <div className="home-insights__grid">
+            {blogPosts.slice(0, 3).map((post, i) => (
+              <Link to={`/blog/${post.slug}`} key={i} className={`home-insights__card reveal-up reveal-delay-${i}`}>
+                <div className="insights-card__image">
+                  <img src={post.image} alt={post.title} />
+                  <div className="insights-card__category">{post.category}</div>
+                </div>
+                <div className="insights-card__content">
+                  <span className="insights-card__date">{post.date}</span>
+                  <h3>{post.title}</h3>
+                  <div className="insights-card__link">Read More <span>→</span></div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center reveal" style={{ marginTop: '3rem' }}>
+            <Link to="/blog" className="btn btn-ghost">View All Posts</Link>
           </div>
         </div>
       </section>

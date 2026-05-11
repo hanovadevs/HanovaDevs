@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import SEO from '../components/SEO'
+import { blogPosts } from './Blog'
 import './ServiceDetail.css'
 
 const servicesData = {
@@ -26,6 +27,13 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
       }
     ],
+    process: [
+      { step: '01', title: 'Strategy', desc: 'Deep dive into your business goals and user personas.' },
+      { step: '02', title: 'Design', desc: 'Crafting the visual identity and user experience flow.' },
+      { step: '03', title: 'Engineering', desc: 'Writing clean, scalable, and high-performance code.' },
+      { step: '04', title: 'Launch', desc: 'Final testing, optimization, and production deployment.' }
+    ],
+    blogs: ['future-of-web-dev'],
     advancements: [
       'Server-Side Rendering (SSR) for ultimate SEO',
       'Advanced Edge caching networks (Cloudflare/Vercel)',
@@ -59,6 +67,13 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
       }
     ],
+    process: [
+      { step: '01', title: 'Audit', desc: 'Analyzing your current social presence and competitors.' },
+      { step: '02', title: 'Strategy', desc: 'Defining content pillars and channel priorities.' },
+      { step: '03', title: 'Creation', desc: 'Producing high-quality visuals and storytelling copy.' },
+      { step: '04', title: 'Growth', desc: 'Daily engagement and performance scaling.' }
+    ],
+    blogs: ['humanizing-brands'],
     advancements: [
       'AI-driven sentiment analysis',
       'Cross-platform audience retargeting',
@@ -92,6 +107,13 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
       }
     ],
+    process: [
+      { step: '01', title: 'Analyze', desc: 'Technical audit and competitor landscape mapping.' },
+      { step: '02', title: 'Optimize', desc: 'Fixing technical debt and on-page structures.' },
+      { step: '03', title: 'Build', desc: 'Creating authority via content and high-quality links.' },
+      { step: '04', title: 'Iterate', desc: 'Data-driven refinements based on ranking trends.' }
+    ],
+    blogs: ['seo-trap-2026'],
     advancements: [
       'Core Web Vitals auditing and remediation',
       'Programmatic SEO at scale',
@@ -125,6 +147,13 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
       }
     ],
+    process: [
+      { step: '01', title: 'Discovery', desc: 'Understanding your mission, values, and vision.' },
+      { step: '02', title: 'Ideation', desc: 'Exploring visual concepts and naming strategies.' },
+      { step: '03', title: 'Refinement', desc: 'Perfecting the final mark and supporting systems.' },
+      { step: '04', title: 'Handover', desc: 'Delivering full asset kits and usage guides.' }
+    ],
+    blogs: [],
     advancements: [
       'Psychological color mapping',
       'Interactive digital brand books',
@@ -158,6 +187,13 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" /></svg>
       }
     ],
+    process: [
+      { step: '01', title: 'Architecture', desc: 'Designing the data flow and system structure.' },
+      { step: '02', title: 'Development', desc: 'Agile sprints with regular milestone reviews.' },
+      { step: '03', title: 'Security', desc: 'Rigorous testing and penetration auditing.' },
+      { step: '04', title: 'Deployment', desc: 'Zero-downtime scaling and cloud setup.' }
+    ],
+    blogs: ['ai-privacy-first'],
     advancements: [
       'Serverless function deployment',
       'Real-time WebSocket integrations',
@@ -191,6 +227,13 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
       }
     ],
+    process: [
+      { step: '01', title: 'Targeting', desc: 'Defining granular audience segments.' },
+      { step: '02', title: 'Creatives', desc: 'Developing high-impact visual and copy assets.' },
+      { step: '03', title: 'Testing', desc: 'Small-scale tests to identify winning patterns.' },
+      { step: '04', title: 'Scaling', desc: 'Increasing budget on high-performing segments.' }
+    ],
+    blogs: [],
     advancements: [
       'Machine-learning bid optimization',
       'Dynamic creative testing (DCT)',
@@ -207,6 +250,7 @@ const servicesData = {
 export default function ServiceDetail() {
   const { id } = useParams()
   const service = servicesData[id]
+  const relatedPosts = service ? blogPosts.filter(p => service.blogs.includes(p.slug)) : []
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -308,6 +352,28 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Process Section */}
+      <section className="service-detail__process section">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
+            <span className="section-label">Workflow</span>
+            <h2>Our <em>Process</em></h2>
+            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto' }}>
+              A systematic approach to engineering excellence and creative growth.
+            </p>
+          </div>
+          <div className="service-detail__process-grid">
+            {service.process.map((p, i) => (
+              <div key={i} className={`service-detail__process-card reveal reveal-delay-${i + 1}`}>
+                <div className="service-detail__process-step">{p.step}</div>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="service-detail__features section bg-off-white">
         <div className="container">
@@ -357,6 +423,31 @@ export default function ServiceDetail() {
 
         </div>
       </section>
+
+      {/* Recent Insights (Blog Links) */}
+      {relatedPosts.length > 0 && (
+        <section className="service-detail__insights section">
+          <div className="container">
+            <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
+              <span className="section-label">Resources</span>
+              <h2>Recent <em>Insights</em></h2>
+            </div>
+            <div className="service-detail__insights-grid">
+              {relatedPosts.map((post, i) => (
+                <Link to={`/blog/${post.slug}`} key={i} className="service-detail__insight-card reveal reveal-delay-1">
+                  <div className="insight-card__image">
+                    <img src={post.image} alt={post.title} />
+                  </div>
+                  <div className="insight-card__content">
+                    <h3>{post.title}</h3>
+                    <div className="insight-card__link">Read Article <span>→</span></div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="service-detail__cta section">
