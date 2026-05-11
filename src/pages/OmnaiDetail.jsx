@@ -118,6 +118,12 @@ const roadmapPhases = [
   },
 ]
 
+const omnaiReviews = [
+  { id: 1, author: "Elena R.", role: "Lead Researcher", avatar: "E", rating: 5, date: "2 days ago", text: "The persistent memory feature is a game changer. I used to keep 50 tabs open just to remember contexts. Now, Omnai just knows what I was working on last week. The local AI is shockingly fast." },
+  { id: 2, author: "David T.", role: "Software Engineer", avatar: "D", rating: 5, date: "1 week ago", text: "Finally, a browser that doesn't feel like a memory hog. The zero-config ad blocking is aggressive in the best way possible, and having the AI orchestrate my dev workflows right in the sidebar saves me hours." },
+  { id: 3, author: "Sarah K.", role: "Product Manager", avatar: "S", rating: 4, date: "2 weeks ago", text: "I've tried Arc, Chrome, Edge... Omnai is the first one that actually feels 'smart'. The interface is stunning. My only wish is for mobile syncing, but for desktop, it's unmatched." }
+]
+
 const stats = [
   { value: 3, suffix: 'x', label: 'Faster than Chrome' },
   { value: 98, suffix: '%', label: 'Ads Blocked' },
@@ -470,6 +476,37 @@ export default function OmnaiDetail() {
                     ))}
                   </ul>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== REVIEWS ===== */}
+      <section className="od-reviews section" id="reviews">
+        <div className="container">
+          <div className="section-header reveal">
+            <span className="section-label">Testimonials</span>
+            <h2>What early testers are saying</h2>
+            <p>Real feedback from our private beta group.</p>
+          </div>
+          <div className="od-reviews__grid">
+            {omnaiReviews.map((review, i) => (
+              <div key={review.id} className={`od-review-card reveal reveal-delay-${i + 1}`}>
+                <div className="od-review-card__header">
+                  <div className="od-review-card__avatar">{review.avatar}</div>
+                  <div className="od-review-card__meta">
+                    <h4>{review.author}</h4>
+                    <span>{review.role}</span>
+                  </div>
+                  <div className="od-review-card__rating">
+                    {[...Array(5)].map((_, idx) => (
+                      <svg key={idx} width="14" height="14" viewBox="0 0 24 24" fill={idx < review.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                  </div>
+                </div>
+                <p className="od-review-card__text">"{review.text}"</p>
+                <div className="od-review-card__date">{review.date}</div>
               </div>
             ))}
           </div>

@@ -31,7 +31,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  const darkPages = ['/products/omnai', '/products/eunoia']
+  const darkPages = ['/products/omnai', '/products/eunoia', '/about', '/products']
   const isDarkPage = darkPages.includes(location.pathname)
 
   return (

@@ -64,6 +64,12 @@ const techCards = [
 
 const screenshots = ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9']
 
+const eunoiaReviews = [
+  { id: 1, author: "Marcus B.", role: "Creative Director", avatar: "M", rating: 5, date: "3 days ago", text: "Eunoia is exactly what I needed to cut out the noise. The lo-fi soundscapes combined with the Pomodoro timer get me into a flow state instantly. Plus, knowing my journal is completely local gives me peace of mind." },
+  { id: 2, author: "Jenny L.", role: "PhD Student", avatar: "J", rating: 5, date: "5 days ago", text: "The offline voice transcripts are flawless. I just ramble my thoughts, and the AI categorizes them into my tasks and notes. It feels like having an actual assistant sitting next to me without the privacy concerns of the cloud." },
+  { id: 3, author: "Tom W.", role: "Freelancer", avatar: "T", rating: 5, date: "1 week ago", text: "I've replaced Notion, Obsidian, and Todoist with this single app. The aesthetic is beautiful, it never lags, and the local file vault keeps my client contracts organized perfectly." }
+]
+
 // --- Stat Counter Component ---
 function AnimatedCounter({ value, suffix = '' }) {
   const [count, setCount] = useState(0)
@@ -300,6 +306,37 @@ export default function EunoiaDetail() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== REVIEWS ===== */}
+      <section className="ed-reviews section" id="reviews">
+        <div className="container">
+          <div className="section-header reveal">
+            <span className="section-label">Community Love</span>
+            <h2 style={{color: 'var(--white)'}}>What our users say</h2>
+            <p style={{color: 'rgba(255,255,255,0.6)'}}>Real stories from people who found their focus.</p>
+          </div>
+          <div className="ed-reviews__grid">
+            {eunoiaReviews.map((review, i) => (
+              <div key={review.id} className={`ed-review-card reveal reveal-delay-${i + 1}`}>
+                <div className="ed-review-card__header">
+                  <div className="ed-review-card__avatar">{review.avatar}</div>
+                  <div className="ed-review-card__meta">
+                    <h4>{review.author}</h4>
+                    <span>{review.role}</span>
+                  </div>
+                  <div className="ed-review-card__rating">
+                    {[...Array(5)].map((_, idx) => (
+                      <svg key={idx} width="14" height="14" viewBox="0 0 24 24" fill={idx < review.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                  </div>
+                </div>
+                <p className="ed-review-card__text">"{review.text}"</p>
+                <div className="ed-review-card__date">{review.date}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
