@@ -1,139 +1,201 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './OmnaiDetail.css'
 
+/* ─── DATA ─── */
 const screenshots = [
-  { src: '/products/omnai/B1.png', caption: 'New Tab — AI Tool Marketplace' },
-  { src: '/products/omnai/B2.png', caption: 'Browsing with AI Sidebar' },
-  { src: '/products/omnai/B3.png', caption: 'AI Orchestrator Pipeline' },
-  { src: '/products/omnai/B4.png', caption: 'Privacy Intelligence Dashboard' },
-  { src: '/products/omnai/B5.png', caption: 'Developer Tools AI Layer' },
+  { src: '/products/omnai/B1.png', caption: 'New Tab — AI Tool Marketplace', desc: 'The default new tab experience. Access 50+ AI tools from a single, searchable interface.' },
+  { src: '/products/omnai/B2.png', caption: 'Browsing with AI Sidebar', desc: 'Chat with AI about any page you\'re viewing. Summarize, translate, or ask questions in real-time.' },
+  { src: '/products/omnai/B3.png', caption: 'AI Orchestrator Pipeline', desc: 'Chain multiple AI tools into automated workflows. Save, share, and re-run your pipelines.' },
+  { src: '/products/omnai/B4.png', caption: 'Privacy Intelligence Dashboard', desc: 'Real-time privacy scoring for every website. Track trackers, cookies, and data exposure.' },
+  { src: '/products/omnai/B5.png', caption: 'Developer Tools AI Layer', desc: 'AI-powered error explanations, network analysis, and accessibility auditing built right in.' },
 ]
 
-const coreFeatures = [
+const featureCategories = [
   {
-    title: 'AI Task Orchestration',
-    desc: 'Describe a task in plain language and Omnai chains multiple AI tools together to complete it. Save, share, and re-run named pipelines. Run steps in parallel. If one tool fails, Omnai auto-suggests an alternative and shows estimated API costs before execution.',
-    highlight: true,
-    tag: 'Core Differentiator'
+    id: 'orchestration',
+    label: 'AI Orchestration',
+    icon: (<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>),
+    features: [
+      { title: 'Pipeline Builder', desc: 'Describe a task in plain language and Omnai chains multiple AI tools together to complete it. Save, share, and re-run named pipelines like "My YouTube Workflow".' },
+      { title: 'Parallel Execution', desc: 'Run independent steps simultaneously, not just sequentially. Omnai optimizes pipeline execution for maximum speed.' },
+      { title: 'Error Recovery', desc: 'If one AI tool fails mid-pipeline, Omnai auto-suggests an alternative and continues execution without losing progress.' },
+      { title: 'Cost Estimator', desc: 'Before executing, see the estimated API cost of any pipeline. Set budget limits so you never get a surprise bill.' },
+    ]
   },
   {
-    title: 'Persistent Contextual Memory',
-    desc: 'Researching a topic across 3 tabs? Omnai summarizes all of them together. It remembers what you worked on yesterday and resumes context. Smart Tab Groups auto-organize your workspace with a Memory Dashboard for full transparency.',
-    tag: 'AI Memory'
+    id: 'memory',
+    label: 'AI Memory',
+    icon: (<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>),
+    features: [
+      { title: 'Cross-Tab Memory', desc: 'Research a topic across 3 tabs — AI summarizes all of them together on request. No more copy-pasting between windows.' },
+      { title: 'Session Memory', desc: 'AI remembers what you were working on yesterday and resumes context. Edge Copilot resets every session — Omnai doesn\'t.' },
+      { title: 'Smart Tab Groups', desc: 'AI automatically groups related tabs and names them (e.g., "Competitor Research — July"). Your workspace organizes itself.' },
+      { title: 'Semantic Bookmarks', desc: 'Describe what you remember about a page ("that article about sleep and memory") and Omnai finds it instantly.' },
+    ]
   },
   {
-    title: 'AI-Enhanced Reading Mode',
-    desc: 'Every long article gets a 3-sentence TL;DR. Highlight any statement and instantly see sources that confirm or contradict it. Multi-article synthesis, instant glossary for jargon, one-click citation generator (APA, MLA, Chicago).',
-    tag: 'Research'
+    id: 'privacy',
+    label: 'Privacy & Security',
+    icon: (<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>),
+    features: [
+      { title: 'Privacy Score', desc: 'Every website gets a real-time privacy grade (A–F) based on trackers, cookies, fingerprinting, and data sold.' },
+      { title: 'Phishing Intelligence', desc: 'Goes beyond URL blacklists — uses AI to analyze page content and visual design to detect sophisticated phishing attacks.' },
+      { title: 'Cookie Negotiator', desc: 'Automatically accepts only essential cookies on every site, rejecting marketing/tracking cookies without any user interaction.' },
+      { title: 'Data Broker Scanner', desc: 'Periodically scans the web to find where your email/name appears and offers one-click opt-out links.' },
+    ]
   },
   {
-    title: 'Privacy Intelligence',
-    desc: 'Every website gets a real-time privacy score (A–F) based on trackers, cookies, fingerprinting, and data sold. AI-powered phishing detection that analyzes visual design, not just URL blacklists. Cookie Negotiator auto-rejects tracking.',
-    tag: 'Security'
+    id: 'devtools',
+    label: 'Developer Tools',
+    icon: (<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>),
+    features: [
+      { title: 'AI Console', desc: 'Explain any error in plain English with fix suggestions. No more Googling cryptic error messages.' },
+      { title: 'Network Inspector AI', desc: 'Explain why a request is slow, what\'s blocking it, and exactly what to fix. Performance debugging in seconds.' },
+      { title: 'Accessibility Auditor', desc: 'AI scans any page and lists WCAG violations with ready-to-use fix code. Built in, no extensions needed.' },
+      { title: 'Performance Copilot', desc: 'Auto-profiles Core Web Vitals and suggests optimizations specific to the current page\'s code.' },
+    ]
   },
   {
-    title: 'AI-Native Developer Tools',
-    desc: 'AI Console explains any error in plain English with fix suggestions. Network Inspector AI tells you why a request is slow. Accessibility Auditor scans pages for WCAG violations and generates fix code. Performance Copilot auto-profiles Core Web Vitals.',
-    tag: 'DevTools'
+    id: 'research',
+    label: 'Research & Reading',
+    icon: (<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>),
+    features: [
+      { title: 'Auto TL;DR', desc: 'Every long article gets a 3-sentence summary floating at the top. Save hours of reading time.' },
+      { title: 'Claim Checker', desc: 'Highlight a statement and instantly see sources that confirm or contradict it. Fact-checking in one click.' },
+      { title: 'Multi-Article Synthesis', desc: 'Select 3–5 tabs and ask "What do all these articles agree on?" or "What are the key disagreements?"' },
+      { title: 'Citation Generator', desc: 'One click to generate a properly formatted citation (APA, MLA, Chicago) for any page you\'re reading.' },
+    ]
   },
   {
-    title: 'Intelligent Search Bar',
-    desc: 'Omnai detects intent — search, navigate, or ask. Type a question and get an AI answer right in the URL bar without loading a search page. Multi-engine search queries Google, Stack Overflow, and AI simultaneously.',
-    tag: 'Navigation'
-  },
-  {
-    title: 'Browser Automation',
-    desc: 'Record your actions and replay them as automations. Chain automations with AI decisions for intelligent web scraping, form filling, and monitoring. Non-technical users can automate workflows through natural language.',
-    tag: 'Automation'
-  },
-  {
-    title: 'Semantic Memory Engine',
-    desc: 'Describe what you remember about a page ("that article about sleep and memory") and Omnai finds it. Ask "What was I researching last Tuesday?" and get a real answer. Proactive suggestions surface related resources without being asked.',
-    tag: 'Search'
-  },
-  {
-    title: 'Integrated Productivity Layer',
-    desc: 'Focus Mode blocks distracting sites when you\'re in a work session. Reading List saves articles with AI summaries. Inline Translator preserves page formatting and context. Built-in note-taking layer with clip, annotate, and organize.',
-    tag: 'Productivity'
-  },
-  {
-    title: 'Data Broker Scanner',
-    desc: 'Periodically scans the web to find where your email and name appear, and offers one-click opt-out links. AI reviews which sites have camera, mic, and location access and flags suspicious permissions.',
-    tag: 'Privacy'
-  },
-  {
-    title: 'Cross-Tab AI Collaboration',
-    desc: 'Select multiple tabs and ask "What do all these articles agree on?" or "What are the key disagreements?" Omnai synthesizes information across your open sessions into structured summaries.',
-    tag: 'Research'
-  },
-  {
-    title: 'AI Cost Estimator',
-    desc: 'Before executing any AI pipeline, Omnai shows the estimated API cost. Track your AI spending across sessions. Set budget limits so you never get a surprise bill from your model provider.',
-    tag: 'Cost Control'
+    id: 'productivity',
+    label: 'Productivity',
+    icon: (<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>),
+    features: [
+      { title: 'Focus Mode', desc: 'Block distracting sites with AI that detects when you\'re in a work session. Not a timer — an intelligent work detector.' },
+      { title: 'Note-Taking Layer', desc: 'Clip, annotate, and organize content from anywhere on the web. Built-in, not an extension.' },
+      { title: 'Browser Automation', desc: 'Record your actions and replay them. Chain automations with AI decisions for intelligent web scraping and monitoring.' },
+      { title: 'Inline Translator', desc: 'AI translation that preserves page formatting and context. Far beyond Chrome\'s literal, crude translations.' },
+    ]
   },
 ]
 
-const techHighlights = [
-  { label: 'Architecture', value: 'Electron + Chromium' },
-  { label: 'AI Layer', value: 'Isolated service module' },
-  { label: 'Tab Engine', value: 'Separate BrowserView per tab' },
-  { label: 'Local Storage', value: 'SQLite (better-sqlite3)' },
-  { label: 'Extension Support', value: 'Designed from Day 1' },
-  { label: 'Security', value: 'contextBridge isolation' },
+const comparisonData = [
+  { feature: 'AI Task Orchestration',   omnai: true,  chrome: false, edge: false, brave: false },
+  { feature: 'Cross-Tab AI Memory',     omnai: true,  chrome: false, edge: false, brave: false },
+  { feature: 'Privacy Score per Site',   omnai: true,  chrome: false, edge: false, brave: true  },
+  { feature: 'AI Dev Tools',            omnai: true,  chrome: false, edge: false, brave: false },
+  { feature: 'Built-in Ad Blocker',     omnai: true,  chrome: false, edge: false, brave: true  },
+  { feature: 'Pipeline Automation',     omnai: true,  chrome: false, edge: false, brave: false },
+  { feature: 'Semantic Bookmarks',      omnai: true,  chrome: false, edge: false, brave: false },
+  { feature: 'Claim Checker',           omnai: true,  chrome: false, edge: false, brave: false },
+  { feature: 'Cookie Auto-Negotiator',  omnai: true,  chrome: false, edge: false, brave: true  },
+  { feature: 'Local-First Storage',     omnai: true,  chrome: false, edge: false, brave: true  },
+]
+
+const techCards = [
+  { label: 'Core Engine', value: 'Chromium', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>) },
+  { label: 'Framework', value: 'Electron', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>) },
+  { label: 'AI Layer', value: 'Isolated Service', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><path d="M12 8v3"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/><path d="M9 18h6"/></svg>) },
+  { label: 'Tab Engine', value: 'BrowserView', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 3H3v18h18V3zM21 9H3M9 21V9"/></svg>) },
+  { label: 'Local DB', value: 'SQLite', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>) },
+  { label: 'Security', value: 'contextBridge', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>) },
 ]
 
 const roadmapPhases = [
   {
-    phase: 'Phase 1 — Core Product',
-    timeline: 'Now',
-    status: 'active',
-    items: [
-      'AI Tool Marketplace (default new tab)',
-      'AI Orchestrator — pipeline builder and executor',
-      'AI Chatbot sidebar — injected via preload.js',
-      'Basic privacy features — tracker blocking, privacy score',
-      'Built-in ad blocker with zero configuration'
-    ]
+    phase: 'Phase 1', title: 'Core Product', timeline: 'Now', status: 'active',
+    items: ['AI Tool Marketplace (default new tab)', 'AI Orchestrator — pipeline builder', 'AI Chatbot sidebar via preload.js', 'Tracker blocking & privacy score', 'Built-in zero-config ad blocker']
   },
   {
-    phase: 'Phase 2 — Power User Features',
-    timeline: '3–6 months',
-    status: 'upcoming',
-    items: [
-      'Cross-tab AI memory and session summaries',
-      'AI Reading Mode with claim checker and synthesis',
-      'Intelligent search bar with intent detection',
-      'Developer tools AI layer (error explainer, network AI)',
-      'Data Broker Scanner and Permission Auditor'
-    ]
+    phase: 'Phase 2', title: 'Power User Features', timeline: '3–6 mo', status: 'upcoming',
+    items: ['Cross-tab AI memory & sessions', 'AI Reading Mode + claim checker', 'Intelligent search bar', 'Developer tools AI layer', 'Data Broker Scanner']
   },
   {
-    phase: 'Phase 3 — Platform',
-    timeline: '6–12 months',
-    status: 'future',
-    items: [
-      'Cloud sync (after 1K+ active users)',
-      'Browser automation builder with natural language',
-      'Collaborative browsing and shared annotations',
-      'Extension API for third-party developers',
-      'Mobile companion app'
-    ]
-  }
+    phase: 'Phase 3', title: 'Platform', timeline: '6–12 mo', status: 'future',
+    items: ['Cloud sync (post 1K users)', 'Browser automation builder', 'Collaborative browsing', 'Extension API for 3rd parties', 'Mobile companion app']
+  },
 ]
 
+const stats = [
+  { value: 3, suffix: 'x', label: 'Faster than Chrome' },
+  { value: 98, suffix: '%', label: 'Ads Blocked' },
+  { value: 0, suffix: '', label: 'Data Collected' },
+  { value: 50, suffix: 'ms', label: 'AI Response' },
+]
+
+/* ─── ANIMATED COUNTER ─── */
+function AnimatedCounter({ value, suffix }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const animated = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !animated.current) {
+        animated.current = true
+        const duration = 1500
+        const start = performance.now()
+        const animate = (now) => {
+          const progress = Math.min((now - start) / duration, 1)
+          const eased = 1 - Math.pow(1 - progress, 3)
+          setCount(Math.round(eased * value))
+          if (progress < 1) requestAnimationFrame(animate)
+        }
+        requestAnimationFrame(animate)
+      }
+    }, { threshold: 0.5 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [value])
+
+  return <span ref={ref}>{count}{suffix}</span>
+}
+
+/* ─── COMPONENT ─── */
 export default function OmnaiDetail() {
+  const [activeScreenshot, setActiveScreenshot] = useState(0)
+  const [activeCategory, setActiveCategory] = useState('orchestration')
+  const [expandedFeature, setExpandedFeature] = useState(null)
+  const heroRef = useRef(null)
+
+  // Parallax tilt on hero image
+  const handleMouseMove = useCallback((e) => {
+    const el = heroRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    el.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg)`
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    if (heroRef.current) heroRef.current.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)'
+  }, [])
+
   useEffect(() => {
     window.scrollTo(0, 0)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible')
       })
-    }, { threshold: 0.1 })
+    }, { threshold: 0.08 })
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el))
     return () => observer.disconnect()
   }, [])
+
+  // Auto-rotate gallery
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveScreenshot(prev => (prev + 1) % screenshots.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const activeCat = featureCategories.find(c => c.id === activeCategory)
 
   return (
     <div className="omnai-detail-page">
@@ -143,195 +205,287 @@ export default function OmnaiDetail() {
         url="/products/omnai"
       />
 
-      {/* Hero */}
-      <section className="omnai-hero" id="omnai-hero">
-        <div className="omnai-hero__bg" />
+      {/* ===== HERO ===== */}
+      <section className="od-hero" id="omnai-hero">
+        <div className="od-hero__grid-bg" />
+        <div className="od-hero__glow od-hero__glow--1" />
+        <div className="od-hero__glow od-hero__glow--2" />
         <div className="container">
-          <div className="omnai-hero__layout">
-            <div className="omnai-hero__content reveal">
-              <div className="omnai-hero__badge">
-                <span className="omnai-hero__pulse" />
+          <div className="od-hero__layout">
+            <div className="od-hero__text reveal">
+              <div className="od-hero__badge">
+                <span className="od-hero__pulse" />
                 In Active Development
               </div>
-              <img src="/products/omnai/logo.png" alt="Omnai Logo" className="omnai-hero__logo" />
-              <h1>Omnai <span className="gradient-text">Browser</span></h1>
-              <p className="omnai-hero__tagline">
-                Every major browser — Chrome, Edge, Firefox, Safari — was designed in the pre-AI era. They bolt AI on top of old architectures as an afterthought. Omnai is the first browser where AI is the foundation, not a sidebar.
+              <h1>The browser, <span className="od-gradient">reimagined</span> with AI.</h1>
+              <p className="od-hero__tagline">
+                Every major browser was built before AI existed. They bolt chatbots onto old architectures as an afterthought. Omnai is different — AI isn't a feature, it's the foundation.
               </p>
-              <p className="omnai-hero__sub-desc">
-                Built on Electron and Chromium with an isolated AI service layer, Omnai connects your favorite AI tools into automated pipelines, remembers your research across sessions, and gives you privacy intelligence no other browser offers.
+              <p className="od-hero__sub">
+                Chain AI tools into automated pipelines. Remember your research across sessions. Get real-time privacy intelligence. Debug code with AI-powered dev tools. All in one browser.
               </p>
-              <div className="omnai-hero__actions">
+              <div className="od-hero__actions">
                 <Link to="/contact" className="btn btn-glow">Join the Waitlist</Link>
-                <a href="#features" className="btn omnai-hero__btn-outline">Explore Features</a>
+                <a href="#gallery" className="od-hero__link">
+                  See it in action
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </a>
               </div>
             </div>
-            <div className="omnai-hero__visual reveal-right reveal-delay-2">
-              <img src="/products/omnai/B1.png" alt="Omnai Browser Interface" className="omnai-hero__preview" />
+            <div
+              className="od-hero__visual reveal-right reveal-delay-2"
+              ref={heroRef}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="od-hero__frame">
+                <div className="od-hero__toolbar">
+                  <div className="od-hero__dots"><span /><span /><span /></div>
+                  <div className="od-hero__url">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    omnai://newtab
+                  </div>
+                </div>
+                <img src="/products/omnai/B1.png" alt="Omnai Browser" className="od-hero__img" />
+              </div>
+              <div className="od-hero__float-card od-hero__float-card--1">
+                <span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><path d="M12 8v3"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/><path d="M9 18h6"/></svg></span> AI Pipeline Active
+              </div>
+              <div className="od-hero__float-card od-hero__float-card--2">
+                <span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> Privacy: A+
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Stats Banner */}
-      <section className="omnai-stats-banner">
+      {/* ===== STATS COUNTER ===== */}
+      <section className="od-stats">
         <div className="container">
-          <div className="omnai-stats-banner__grid">
-            <div className="omnai-stats-banner__item reveal-scale reveal-delay-1">
-              <strong>3x</strong><span>Faster than Chrome</span>
-            </div>
-            <div className="omnai-stats-banner__item reveal-scale reveal-delay-2">
-              <strong>98%</strong><span>Ads Blocked</span>
-            </div>
-            <div className="omnai-stats-banner__item reveal-scale reveal-delay-3">
-              <strong>0</strong><span>Data Collected</span>
-            </div>
-            <div className="omnai-stats-banner__item reveal-scale reveal-delay-4">
-              <strong>50ms</strong><span>AI Response Time</span>
-            </div>
+          <div className="od-stats__grid">
+            {stats.map((s, i) => (
+              <div key={i} className="od-stats__item">
+                <div className="od-stats__value">
+                  <AnimatedCounter value={s.value} suffix={s.suffix} />
+                </div>
+                <div className="od-stats__label">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Screenshot Gallery */}
-      <section className="omnai-gallery section" id="omnai-screenshots">
+      {/* ===== INTERACTIVE GALLERY ===== */}
+      <section className="od-gallery section" id="gallery">
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">Preview</span>
             <h2>See Omnai in action</h2>
-            <p>Real screenshots from the development build — not mockups, not concepts.</p>
+            <p>Real screenshots from active development — not mockups, not concepts.</p>
           </div>
-          <div className="omnai-gallery__grid">
-            {screenshots.map((shot, i) => (
-              <div key={i} className={`omnai-gallery__item reveal reveal-delay-${(i % 4) + 1}`}>
-                <img src={shot.src} alt={shot.caption} loading="lazy" />
-                <p className="omnai-gallery__caption">{shot.caption}</p>
+          <div className="od-gallery__viewer reveal">
+            <div className="od-gallery__main">
+              <div className="od-gallery__main-frame">
+                <img
+                  src={screenshots[activeScreenshot].src}
+                  alt={screenshots[activeScreenshot].caption}
+                  key={activeScreenshot}
+                  className="od-gallery__main-img"
+                />
               </div>
-            ))}
+              <div className="od-gallery__info">
+                <h3>{screenshots[activeScreenshot].caption}</h3>
+                <p>{screenshots[activeScreenshot].desc}</p>
+              </div>
+            </div>
+            <div className="od-gallery__thumbs">
+              {screenshots.map((shot, i) => (
+                <button
+                  key={i}
+                  className={`od-gallery__thumb ${i === activeScreenshot ? 'od-gallery__thumb--active' : ''}`}
+                  onClick={() => setActiveScreenshot(i)}
+                >
+                  <img src={shot.src} alt={shot.caption} />
+                  <span className="od-gallery__thumb-label">{shot.caption}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* The Opportunity */}
-      <section className="omnai-opportunity section" id="opportunity">
+      {/* ===== OPPORTUNITY ===== */}
+      <section className="od-opportunity section" id="opportunity">
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-label">The Opportunity</span>
-            <h2>Why the world needs a <span className="gradient-text">new browser</span></h2>
-          </div>
-          <div className="omnai-opportunity__inner">
-            <div className="omnai-opportunity__text reveal-left">
-              <p>The browser is the most-used app on every device in the world. But it has seen almost zero fundamental innovation in 15 years. Chrome added a chatbot. Edge got a sidebar. That's not innovation — that's decoration.</p>
-              <p>A 2024 survey by Andreessen Horowitz found that the #1 friction point for AI power users is switching between 5–10 different AI tools to complete a single project. No browser connects them. Until now.</p>
+          <div className="od-opportunity__layout">
+            <div className="od-opportunity__text reveal-left">
+              <span className="section-label">The Problem</span>
+              <h2>Browsers haven't changed in <span className="od-gradient">15 years.</span></h2>
+              <p>Chrome added a chatbot. Edge got a sidebar. That's not innovation — that's decoration. The core browsing experience remains the same isolated, forgetful, dumb window it was in 2010.</p>
+              <p>A 2024 survey by Andreessen Horowitz found that the #1 friction point for AI power users is switching between 5–10 different AI tools to complete a single project. People are desperate for something that connects these tools. No browser does this.</p>
             </div>
-            <div className="omnai-opportunity__stats reveal-right reveal-delay-2">
-              <div className="omnai-opportunity__stat">
-                <strong>5–10</strong>
-                <span>AI tools the average power user juggles daily</span>
-              </div>
-              <div className="omnai-opportunity__stat">
-                <strong>#1</strong>
-                <span>Pain point: switching between disconnected AI tools</span>
-              </div>
-              <div className="omnai-opportunity__stat">
-                <strong>0</strong>
-                <span>Browsers that chain AI tools into automated pipelines</span>
-              </div>
+            <div className="od-opportunity__cards reveal-right reveal-delay-2">
+              {[
+                { num: '5–10', text: 'AI tools the average power user juggles daily' },
+                { num: '#1', text: 'Friction: switching between disconnected AI tools' },
+                { num: '0', text: 'Browsers that chain AI tools into pipelines' },
+              ].map((card, i) => (
+                <div key={i} className="od-opportunity__card">
+                  <strong>{card.num}</strong>
+                  <span>{card.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="omnai-features section bg-off-white" id="features">
+      {/* ===== TABBED FEATURES ===== */}
+      <section className="od-features section" id="features">
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">Capabilities</span>
             <h2>Features no browser has</h2>
-            <p>Real pain points sourced from user research, developer forums, and AI productivity gaps. These aren't moonshots — they're gaps every user feels every day.</p>
+            <p>Real pain points sourced from user research, developer forums, and AI productivity gaps.</p>
           </div>
-          <div className="omnai-features__grid">
-            {coreFeatures.map((feat, i) => (
-              <div key={i} className={`omnai-features__card ${feat.highlight ? 'omnai-features__card--highlight' : ''} reveal reveal-delay-${(i % 4) + 1}`}>
-                <span className="omnai-features__tag">{feat.tag}</span>
-                <h4>{feat.title}</h4>
-                <p>{feat.desc}</p>
+
+          <div className="od-features__tabs reveal">
+            {featureCategories.map(cat => (
+              <button
+                key={cat.id}
+                className={`od-features__tab ${activeCategory === cat.id ? 'od-features__tab--active' : ''}`}
+                onClick={() => { setActiveCategory(cat.id); setExpandedFeature(null) }}
+              >
+                <span className="od-features__tab-icon">{cat.icon}</span>
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="od-features__panel reveal">
+            {activeCat && activeCat.features.map((feat, i) => (
+              <div
+                key={`${activeCategory}-${i}`}
+                className={`od-features__item ${expandedFeature === i ? 'od-features__item--expanded' : ''}`}
+                onClick={() => setExpandedFeature(expandedFeature === i ? null : i)}
+              >
+                <div className="od-features__item-header">
+                  <h4>{feat.title}</h4>
+                  <span className="od-features__item-toggle">{expandedFeature === i ? '−' : '+'}</span>
+                </div>
+                <div className="od-features__item-body">
+                  <p>{feat.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Technical Architecture */}
-      <section className="omnai-tech section" id="architecture">
+      {/* ===== COMPARISON TABLE ===== */}
+      <section className="od-comparison section" id="comparison">
+        <div className="container">
+          <div className="section-header reveal">
+            <span className="section-label">Comparison</span>
+            <h2>Omnai vs. everyone else</h2>
+          </div>
+          <div className="od-comparison__table-wrap reveal">
+            <table className="od-comparison__table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th className="od-comparison__th--omnai">Omnai</th>
+                  <th>Chrome</th>
+                  <th>Edge</th>
+                  <th>Brave</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, i) => (
+                  <tr key={i}>
+                    <td>{row.feature}</td>
+                    <td className="od-comparison__td--omnai">{row.omnai ? '✓' : '—'}</td>
+                    <td>{row.chrome ? '✓' : '—'}</td>
+                    <td>{row.edge ? '✓' : '—'}</td>
+                    <td>{row.brave ? '✓' : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TECH ARCHITECTURE ===== */}
+      <section className="od-tech section" id="architecture">
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">Under the Hood</span>
-            <h2>Built for performance and security</h2>
-            <p>Every architectural decision is made with speed, privacy, and extensibility in mind.</p>
+            <h2>Engineered for speed & security</h2>
           </div>
-          <div className="omnai-tech__grid">
-            {techHighlights.map((item, i) => (
-              <div key={i} className={`omnai-tech__card reveal-scale reveal-delay-${(i % 4) + 1}`}>
-                <span className="omnai-tech__label">{item.label}</span>
-                <strong className="omnai-tech__value">{item.value}</strong>
+          <div className="od-tech__grid">
+            {techCards.map((card, i) => (
+              <div key={i} className={`od-tech__card reveal-scale reveal-delay-${(i % 4) + 1}`}>
+                <span className="od-tech__icon">{card.icon}</span>
+                <span className="od-tech__label">{card.label}</span>
+                <strong className="od-tech__value">{card.value}</strong>
               </div>
             ))}
           </div>
-          <div className="omnai-tech__principles reveal reveal-delay-2">
-            <div className="omnai-tech__principle">
-              <h4>Local-First Storage</h4>
-              <p>Zero latency. No network round trips. Your data stays on your machine. Privacy by default, not by policy. Everything works offline.</p>
-            </div>
-            <div className="omnai-tech__principle">
-              <h4>Lazy-Loaded AI</h4>
-              <p>AI services initialize only when first used, not on browser launch. Responses are cached aggressively. Background tasks throttle to idle CPU only.</p>
-            </div>
-            <div className="omnai-tech__principle">
-              <h4>Cloud-Ready Architecture</h4>
-              <p>Abstracted data layer designed so cloud sync is a 2-week migration, not a 6-month rewrite. When the time comes, Supabase + Cloudflare R2 is the stack.</p>
-            </div>
+          <div className="od-tech__principles reveal">
+            {[
+              { title: 'Local-First Storage', desc: 'Zero latency. No network round trips. Your data stays on your machine. Privacy by default. Everything works offline. When you\'re ready for cloud sync, the abstracted data layer makes migration a 2-week job.' },
+              { title: 'Lazy-Loaded AI', desc: 'AI services initialize only when first used, not on browser launch. Responses are cached aggressively to save API costs. Background AI tasks only run when CPU is idle.' },
+              { title: 'Extension-Ready', desc: 'Even though extensions aren\'t shipping at launch, the architecture supports them from day one. Retrofitting extensions later is extremely painful — we planned ahead.' },
+            ].map((p, i) => (
+              <div key={i} className="od-tech__principle">
+                <h4>{p.title}</h4>
+                <p>{p.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Roadmap */}
-      <section className="omnai-roadmap section bg-off-white" id="roadmap">
+      {/* ===== VERTICAL ROADMAP ===== */}
+      <section className="od-roadmap section" id="roadmap">
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">Roadmap</span>
             <h2>The path to launch</h2>
-            <p>A pragmatic build order that maximizes learning while shipping real value.</p>
           </div>
-          <div className="omnai-roadmap__timeline">
+          <div className="od-roadmap__timeline">
+            <div className="od-roadmap__line" />
             {roadmapPhases.map((phase, i) => (
-              <div key={i} className={`omnai-roadmap__phase omnai-roadmap__phase--${phase.status} reveal reveal-delay-${i + 1}`}>
-                <div className="omnai-roadmap__phase-header">
-                  <h3>{phase.phase}</h3>
-                  <span className="omnai-roadmap__timeline-badge">{phase.timeline}</span>
+              <div key={i} className={`od-roadmap__phase od-roadmap__phase--${phase.status} reveal reveal-delay-${i + 1}`}>
+                <div className="od-roadmap__dot" />
+                <div className="od-roadmap__content">
+                  <div className="od-roadmap__header">
+                    <span className="od-roadmap__badge">{phase.timeline}</span>
+                    <h3>{phase.phase}: {phase.title}</h3>
+                  </div>
+                  <ul>
+                    {phase.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
-                <ul>
-                  {phase.items.map((item, j) => (
-                    <li key={j}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="omnai-cta" id="omnai-cta">
+      {/* ===== CTA ===== */}
+      <section className="od-cta" id="omnai-cta">
+        <div className="od-cta__bg" />
         <div className="container text-center">
-          <img src="/products/omnai/logo.png" alt="" className="omnai-cta__logo reveal-scale" />
-          <h2 className="reveal reveal-delay-1">The browser hasn't fundamentally changed in <span className="gradient-text">15 years.</span></h2>
-          <p className="reveal reveal-delay-2">Omnai has a real chance to change that — not by adding more buttons, but by making the browser genuinely intelligent. The features on this page are not moonshots. They are gaps that every user feels every day.</p>
-          <div className="reveal reveal-delay-3">
+          <img src="/products/omnai/logo.png" alt="" className="od-cta__logo reveal-scale" />
+          <h2 className="reveal reveal-delay-1">Ready to browse <span className="od-gradient">intelligently?</span></h2>
+          <p className="reveal reveal-delay-2">The features on this page are not moonshots. They are gaps that every user feels every day. We're building them one at a time.</p>
+          <div className="od-cta__actions reveal reveal-delay-3">
             <Link to="/contact" className="btn btn-glow">Join the Waitlist</Link>
+            <Link to="/products" className="od-cta__back">← Back to Products</Link>
           </div>
         </div>
       </section>
