@@ -2,14 +2,15 @@ import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import SEO from '../components/SEO'
 import { blogPosts } from './Blog'
-import './ServiceDetail.css'
+import './ServiceDetail_v2.css'
 
 const servicesData = {
   'web-design': {
     title: 'Web Design & Development',
+    category: 'Engineering',
     tagline: 'We build digital experiences that perform and convert.',
     heroImage: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=80',
-    intro: 'Your website is the digital storefront of your business. We engineer lightning-fast, highly responsive, and visually stunning websites that capture attention and drive measurable growth. Using modern frameworks like React and Next.js, we ensure your site is secure, scalable, and built for the future.',
+    intro: 'Your website is the digital storefront of your business. We engineer lightning-fast, highly responsive, and visually stunning websites that capture attention and drive measurable growth. Using modern frameworks like React and Next.js, we ensure your site is secure, scalable, and built for the future. Our development philosophy centers on performance-first engineering, ensuring that every byte of code serves a purpose and every interaction feels fluid and intuitive.',
     features: [
       {
         title: 'Custom UI/UX Design',
@@ -26,6 +27,13 @@ const servicesData = {
         desc: 'Seamless integration with Sanity, WordPress, or custom backends.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
       }
+    ],
+    technicalSpecs: [
+      { key: 'Frameworks', value: 'React, Next.js, Vite' },
+      { key: 'Styling', value: 'Vanilla CSS, Tailwind, Styled Components' },
+      { key: 'Performance', value: '100/100 Lighthouse Scores' },
+      { key: 'Accessibility', value: 'WCAG 2.1 Compliant' },
+      { key: 'Deployment', value: 'Vercel, Netlify, AWS' }
     ],
     process: [
       { step: '01', title: 'Strategy', desc: 'Deep dive into your business goals and user personas.' },
@@ -47,9 +55,10 @@ const servicesData = {
   },
   'social-media': {
     title: 'Social Media Marketing',
+    category: 'Marketing',
     tagline: 'Grow your brand organically and engage your community.',
     heroImage: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&q=80',
-    intro: 'Social media is more than just posting — it’s about starting conversations. We create data-driven content strategies that resonate with your target audience across Instagram, LinkedIn, TikTok, and Twitter. We turn passive scrollers into active brand advocates.',
+    intro: 'Social media is more than just posting — it’s about starting conversations. We create data-driven content strategies that resonate with your target audience across Instagram, LinkedIn, TikTok, and Twitter. We turn passive scrollers into active brand advocates. Our team focuses on high-impact storytelling and visual excellence, ensuring that your brand doesn\'t just exist on social media, but dominates it.',
     features: [
       {
         title: 'Content Strategy',
@@ -67,13 +76,20 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
       }
     ],
+    technicalSpecs: [
+      { key: 'Channels', value: 'Instagram, LinkedIn, TikTok, X' },
+      { key: 'Tools', value: 'Hootsuite, Buffer, Canva Pro' },
+      { key: 'Ad Formats', value: 'Reels, Carousels, Static Posts' },
+      { key: 'Reporting', value: 'Weekly Sentiment Analysis' },
+      { key: 'Growth', value: 'Organic & Paid Integration' }
+    ],
     process: [
       { step: '01', title: 'Audit', desc: 'Analyzing your current social presence and competitors.' },
       { step: '02', title: 'Strategy', desc: 'Defining content pillars and channel priorities.' },
       { step: '03', title: 'Creation', desc: 'Producing high-quality visuals and storytelling copy.' },
       { step: '04', title: 'Growth', desc: 'Daily engagement and performance scaling.' }
     ],
-    blogs: ['humanizing-brands'],
+    blogs: [],
     advancements: [
       'AI-driven sentiment analysis',
       'Cross-platform audience retargeting',
@@ -87,9 +103,10 @@ const servicesData = {
   },
   'seo': {
     title: 'SEO & Performance Marketing',
+    category: 'Growth',
     tagline: 'Rank higher, get found, and dominate search results.',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80',
-    intro: 'Visibility is everything. Our SEO and performance marketing strategies are designed to put your business in front of the people actively searching for it. Through technical optimization, targeted keyword strategies, and high-quality backlinking, we ensure long-term organic growth.',
+    intro: 'Visibility is everything. Our SEO and performance marketing strategies are designed to put your business in front of the people actively searching for it. Through technical optimization, targeted keyword strategies, and high-quality backlinking, we ensure long-term organic growth. We treat SEO as a continuous engineering challenge, monitoring thousands of data points to stay ahead of algorithm shifts.',
     features: [
       {
         title: 'Technical SEO',
@@ -106,6 +123,13 @@ const servicesData = {
         desc: 'Updating and structuring your content to align with search intent.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
       }
+    ],
+    technicalSpecs: [
+      { key: 'Audits', value: 'Core Web Vitals, Tech Debt' },
+      { key: 'Schema', value: 'JSON-LD, Microdata, RDFa' },
+      { key: 'Analytics', value: 'GA4, GSC, SEMrush, Ahrefs' },
+      { key: 'Content', value: 'Semantic Clustering' },
+      { key: 'Backlinking', value: 'Authority-Based White-Hat' }
     ],
     process: [
       { step: '01', title: 'Analyze', desc: 'Technical audit and competitor landscape mapping.' },
@@ -127,9 +151,10 @@ const servicesData = {
   },
   'branding': {
     title: 'Brand Identity & Strategy',
+    category: 'Design',
     tagline: 'Craft a memorable brand that tells your unique story.',
     heroImage: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1600&q=80',
-    intro: 'A great brand is more than just a logo — it is the feeling people get when they interact with your business. We craft cohesive brand identities encompassing logos, typography, color palettes, and messaging strategies that stand out in crowded markets.',
+    intro: 'A great brand is more than just a logo — it is the feeling people get when they interact with your business. We craft cohesive brand identities encompassing logos, typography, color palettes, and messaging strategies that stand out in crowded markets. Our approach is deeply psychological, ensuring that your visual identity triggers the right emotions and builds long-term trust with your audience.',
     features: [
       {
         title: 'Logo & Visual Identity',
@@ -146,6 +171,13 @@ const servicesData = {
         desc: 'Comprehensive rulebooks ensuring consistency everywhere.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
       }
+    ],
+    technicalSpecs: [
+      { key: 'Deliverables', value: 'Vector Logos, Font Kits' },
+      { key: 'Color Modes', value: 'CMYK, RGB, HEX, Pantone' },
+      { key: 'Strategy', value: 'Competitive Mapping' },
+      { key: 'Psychology', value: 'Emotional Resonance Mapping' },
+      { key: 'Assets', value: 'Social Kits, Stationeries' }
     ],
     process: [
       { step: '01', title: 'Discovery', desc: 'Understanding your mission, values, and vision.' },
@@ -167,9 +199,10 @@ const servicesData = {
   },
   'software-development': {
     title: 'Custom Software Development',
+    category: 'Engineering',
     tagline: 'Bespoke applications designed to scale your operations.',
     heroImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80',
-    intro: 'Off-the-shelf software rarely fits perfectly. We design and engineer bespoke web and mobile applications that solve your specific business challenges. From complex dashboards to native mobile apps, we build tools that make your business faster and more efficient.',
+    intro: 'Off-the-shelf software rarely fits perfectly. We design and engineer bespoke web and mobile applications that solve your specific business challenges. From complex dashboards to native mobile apps, we build tools that make your business faster and more efficient. Our team specializes in high-availability systems that can handle massive throughput while maintaining bank-grade security.',
     features: [
       {
         title: 'Web Applications',
@@ -187,13 +220,20 @@ const servicesData = {
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" /></svg>
       }
     ],
+    technicalSpecs: [
+      { key: 'Languages', value: 'Node.js, Python, Rust, Go' },
+      { key: 'Databases', value: 'PostgreSQL, MongoDB, Redis' },
+      { key: 'Cloud', value: 'AWS, GCP, Kubernetes' },
+      { key: 'Security', value: 'SOC2, Zero-Trust, OAuth2' },
+      { key: 'Testing', value: 'Jest, Playwright, Cypress' }
+    ],
     process: [
       { step: '01', title: 'Architecture', desc: 'Designing the data flow and system structure.' },
       { step: '02', title: 'Development', desc: 'Agile sprints with regular milestone reviews.' },
       { step: '03', title: 'Security', desc: 'Rigorous testing and penetration auditing.' },
       { step: '04', title: 'Deployment', desc: 'Zero-downtime scaling and cloud setup.' }
     ],
-    blogs: ['ai-privacy-first'],
+    blogs: ['ai-privacy-first', 'custom-software-advantage'],
     advancements: [
       'Serverless function deployment',
       'Real-time WebSocket integrations',
@@ -207,9 +247,10 @@ const servicesData = {
   },
   'digital-advertising': {
     title: 'Digital Advertising',
+    category: 'Growth',
     tagline: 'Maximize ROI with precision-targeted ad campaigns.',
     heroImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1600&q=80',
-    intro: 'Stop wasting budget on ads that don\'t convert. Our digital advertising team creates high-converting campaigns across Google, Meta, TikTok, and LinkedIn. We constantly A/B test creatives and refine audiences to ensure every dollar you spend generates measurable return.',
+    intro: 'Stop wasting budget on ads that don\'t convert. Our digital advertising team creates high-converting campaigns across Google, Meta, TikTok, and LinkedIn. We constantly A/B test creatives and refine audiences to ensure every dollar you spend generates measurable return. We use advanced machine-learning algorithms to predict high-performing segments before you even spend a dollar.',
     features: [
       {
         title: 'PPC Campaigns',
@@ -226,6 +267,13 @@ const servicesData = {
         desc: 'Landing page design and split testing to maximize ad performance.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
       }
+    ],
+    technicalSpecs: [
+      { key: 'Platforms', value: 'Google, Meta, TikTok, LinkedIn' },
+      { key: 'Attribution', value: 'Multi-Touch, First-Click' },
+      { key: 'Pixels', value: 'CAPI, Pixel, GTM' },
+      { key: 'Creatives', value: 'Dynamic, A/B Tested' },
+      { key: 'Optimization', value: 'LTV-Based Bidding' }
     ],
     process: [
       { step: '01', title: 'Targeting', desc: 'Defining granular audience segments.' },
@@ -325,10 +373,14 @@ export default function ServiceDetail() {
         </div>
         <div className="container">
           <div className="service-detail__hero-content reveal">
-            <Link to="/services" className="service-detail__back-link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-              All Services
-            </Link>
+            <div className="service-detail__breadcrumbs">
+              <Link to="/">Home</Link>
+              <span>/</span>
+              <Link to="/services">Services</Link>
+              <span>/</span>
+              <span className="current">{service.category}</span>
+            </div>
+            <span className="service-detail__tag card-glass">{service.category}</span>
             <h1>{service.title}</h1>
             <p>{service.tagline}</p>
           </div>
@@ -343,8 +395,20 @@ export default function ServiceDetail() {
               <span className="section-label">Overview</span>
               <h2>Driving results through <em>expert execution.</em></h2>
               <p className="lead">{service.intro}</p>
+              
+              <div className="service-detail__specs-table reveal reveal-delay-1">
+                <h3>Technical Specifications</h3>
+                <div className="specs-grid">
+                  {service.technicalSpecs.map((spec, i) => (
+                    <div key={i} className="spec-item">
+                      <span className="spec-label">{spec.key}</span>
+                      <span className="spec-value">{spec.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="service-detail__intro-image reveal reveal-delay-1">
+            <div className="service-detail__intro-image reveal reveal-right reveal-delay-1">
               <img src={service.heroImage} alt="Service Overview" className="service-detail__showcase-img" />
               <div className="service-detail__img-backdrop"></div>
             </div>
@@ -368,6 +432,7 @@ export default function ServiceDetail() {
                 <div className="service-detail__process-step">{p.step}</div>
                 <h3>{p.title}</h3>
                 <p>{p.desc}</p>
+                {i < service.process.length - 1 && <div className="process-path" />}
               </div>
             ))}
           </div>
@@ -430,7 +495,7 @@ export default function ServiceDetail() {
           <div className="container">
             <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
               <span className="section-label">Resources</span>
-              <h2>Recent <em>Insights</em></h2>
+              <h2>Related <em>Lab Insights</em></h2>
             </div>
             <div className="service-detail__insights-grid">
               {relatedPosts.map((post, i) => (

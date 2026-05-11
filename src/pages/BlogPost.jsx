@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
 import { blogPosts } from './Blog'
 import './Blog.css'
@@ -7,15 +7,27 @@ import './Blog.css'
 export default function BlogPost() {
   const { slug } = useParams()
   const post = blogPosts.find(p => p.slug === slug)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = (window.scrollY / totalHeight) * 100
+      setScrollProgress(progress)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [slug])
 
   if (!post) return <Navigate to="/blog" replace />
 
   return (
     <div className="blog-post-page">
+      <div className="blog-progress-bar" style={{ width: `${scrollProgress}%` }} />
+      
       <SEO 
         title={`${post.title} — HanovaDevs Blog`}
         description={post.excerpt}

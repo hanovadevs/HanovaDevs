@@ -199,7 +199,21 @@ const testimonials = [
 /* ─── COMPONENT ─── */
 export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
+  const [particles, setParticles] = useState([])
   const projectsScrollRef = useRef(null)
+
+  // Initialize particles
+  useEffect(() => {
+    const p = Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: Math.random() * 4 + 1,
+      duration: Math.random() * 20 + 10,
+      delay: Math.random() * 10
+    }))
+    setParticles(p)
+  }, [])
 
   // Testimonial auto-rotation
   useEffect(() => {
@@ -218,6 +232,23 @@ export default function Home() {
       />
       {/* ===== HERO ===== */}
       <section className="hero" id="hero">
+        <div className="hero__particles">
+          {particles.map(p => (
+            <div 
+              key={p.id} 
+              className="hero__particle" 
+              style={{
+                left: `${p.left}%`,
+                top: `${p.top}%`,
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                animationDuration: `${p.duration}s`,
+                animationDelay: `${p.delay}s`
+              }}
+            />
+          ))}
+        </div>
+
         {/* Glass crystal background */}
         <div className="hero__glass-bg">
           <img src="/hero-glass-bg.png" alt="" className="hero__glass-img" />
@@ -269,6 +300,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== MISSION STATEMENT ===== */}
+      <section className="mission-statement section">
+        <div className="container">
+          <div className="mission-statement__content reveal-up">
+            <span className="section-label">Our Philosophy</span>
+            <h2 className="mission-statement__text">
+              "We believe that great software is more than just code — it's the <em>invisible bridge</em> between human ambition and digital reality."
+            </h2>
+            <div className="mission-statement__author">
+              <img src="/octopus.png" alt="" width="24" height="24" />
+              <span>HanovaDevs Leadership</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== IMPACT STATS ===== */}
       <section className="stats-section" id="stats">
         <div className="container">
@@ -285,20 +332,6 @@ export default function Home() {
                   <h4 className="stats__label">{stat.label}</h4>
                   <p className="stats__desc">{stat.desc}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== TECH STACK ===== */}
-      <section className="tech-stack-section" id="tech-stack">
-        <div className="container">
-          <p className="tech-stack__label">Powered by modern technologies</p>
-          <div className="tech-stack__grid">
-            {['React', 'Next.js', 'Node.js', 'TypeScript', 'AWS', 'Python', 'TailwindCSS'].map((tech, i) => (
-              <div key={i} className="tech-stack__badge">
-                {tech}
               </div>
             ))}
           </div>
@@ -383,6 +416,31 @@ export default function Home() {
                 </Link>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== GLOBAL NETWORK ===== */}
+      <section className="global-network section">
+        <div className="container">
+          <div className="global-network__inner">
+            <div className="global-network__text reveal-left">
+              <span className="section-label">Network</span>
+              <h2>Global Reach, <span className="gradient-text">Local Impact.</span></h2>
+              <p>Our engineers and strategists operate across 4 continents, providing 24/7 support and localized market expertise.</p>
+              <div className="global-network__cities">
+                {['New York', 'London', 'Dubai', 'Singapore', 'Lagos', 'Berlin'].map((city, i) => (
+                  <span key={i} className="city-tag">{city}</span>
+                ))}
+              </div>
+            </div>
+            <div className="global-network__map reveal-right">
+              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80" alt="World Map" className="global-map-img" />
+              <div className="map-point map-point--ny" />
+              <div className="map-point map-point--london" />
+              <div className="map-point map-point--dubai" />
+              <div className="map-point map-point--singapore" />
+            </div>
           </div>
         </div>
       </section>
@@ -636,12 +694,15 @@ export default function Home() {
               Let's Talk
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </Link>
-            <a href="mailto:hanovadevs@gmail.com" className="final-cta__email">
-              or email us at <strong>hanovadevs@gmail.com</strong>
-            </a>
-            <a href="tel:+19177355385" className="final-cta__email">
-              call us at <strong>+1 (917) 735-5385</strong>
-            </a>
+            <div className="final-cta__contact-info">
+              <a href="mailto:hanovadevs@gmail.com" className="final-cta__email">
+                <strong>hanovadevs@gmail.com</strong>
+              </a>
+              <span className="divider">|</span>
+              <a href="tel:+19177355385" className="final-cta__email">
+                <strong>+1 (917) 735-5385</strong>
+              </a>
+            </div>
           </div>
         </div>
       </section>
