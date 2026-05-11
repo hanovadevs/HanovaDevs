@@ -37,7 +37,7 @@
   border-radius: 100px;
 }
 .cp-hero h1 {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   line-height: 1.1; margin-bottom: var(--space-md);
   color: var(--white);
 }
@@ -48,7 +48,7 @@
   background-clip: text;
 }
 .cp-hero p {
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
   color: rgba(255,255,255,0.6);
   max-width: 600px; margin: 0 auto;
 }
@@ -111,7 +111,7 @@
 }
 
 .cp-showcase__text h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   color: var(--white); margin-bottom: var(--space-sm);
 }
 .cp-showcase__desc {
@@ -197,6 +197,7 @@
   border-top: 1px solid rgba(255,255,255,0.05);
   background: #040812;
 }
+.cp-cta h2 { color: var(--white); }
 
 /* ════════════════════════════
    RESPONSIVE
@@ -210,3 +211,4 @@
   .cp-logo-icon { margin: 0 auto 0.5rem; }
   .cp-showcase--omnai .cp-frame-link, .cp-showcase--eunoia .cp-frame-link { transform: none; }
 }
+

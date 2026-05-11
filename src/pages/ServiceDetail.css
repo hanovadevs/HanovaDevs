@@ -54,12 +54,12 @@
 
 .service-detail__hero-content h1 {
   color: var(--white);
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
   margin-bottom: var(--space-sm);
 }
 
 .service-detail__hero-content p {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -72,7 +72,7 @@
 }
 
 .service-detail__intro-text h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   margin-bottom: var(--space-md);
 }
 
@@ -251,7 +251,7 @@
 
 .service-detail__cta h2 {
   color: var(--white);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   margin-bottom: var(--space-sm);
 }
 
@@ -294,3 +294,4 @@
     min-height: 50vh;
   }
 }
+

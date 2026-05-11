@@ -75,14 +75,14 @@
   50% { box-shadow: 0 0 0 8px rgba(196, 181, 253, 0); }
 }
 .ed-hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1.15; margin-bottom: var(--space-md);
   font-weight: 800;
   color: var(--white);
   letter-spacing: -0.03em;
 }
 .ed-hero__tagline {
-  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
   color: rgba(255,255,255,0.8); line-height: 1.75;
   margin-bottom: var(--space-sm);
 }
@@ -440,7 +440,7 @@
   position: relative;
 }
 .ed-cta h2 {
-  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   margin-bottom: var(--space-sm); position: relative;
   color: var(--white);
 }
@@ -492,3 +492,4 @@
   .ed-hero__float-card { display: none; }
   .ed-features__tab-icon { display: none; }
 }
+

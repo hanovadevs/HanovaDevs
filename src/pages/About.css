@@ -58,7 +58,7 @@
 
 .about-hero__content h1 {
   color: #fff;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.6rem, 4vw, 3.2rem);
 }
 
 .about-hero__content h1 .gradient-text {
@@ -69,7 +69,7 @@
 }
 
 .about-hero__subtitle {
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
   color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -91,7 +91,7 @@
 
 .about-story__quote blockquote {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
   font-weight: 700;
   color: var(--royal-blue);
   line-height: 1.35;
@@ -301,3 +301,4 @@
   margin: 0;
   line-height: 1.6;
 }
+

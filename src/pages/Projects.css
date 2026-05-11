@@ -38,7 +38,7 @@
   border-radius: 100px;
 }
 .pj-hero h1 {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   line-height: 1.1; margin-bottom: var(--space-md);
   color: var(--white);
   letter-spacing: -0.02em;
@@ -50,7 +50,7 @@
   background-clip: text;
 }
 .pj-hero p {
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
   color: rgba(255,255,255,0.5);
   max-width: 600px; margin: 0 auto;
   line-height: 1.7;
@@ -107,12 +107,13 @@
 .pj-case--dark .pj-case__category { color: #facc15; /* Electric Yellow */ }
 
 .pj-case__text h2 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 3vw, 2.8rem);
   margin-bottom: var(--space-sm);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 .pj-case--light .pj-case__text h2 { color: #1a1a1a; }
+.pj-case--dark .pj-case__text h2 { color: #fff; }
 
 .pj-case__overview {
   font-size: 1.1rem;
@@ -296,6 +297,7 @@
   padding: var(--space-3xl) 0;
   border-top: 1px solid rgba(255,255,255,0.05);
 }
+.pj-cta h2 { color: var(--white); }
 .pj-cta p {
   color: rgba(255,255,255,0.5);
   max-width: 600px; margin: 0 auto; font-size: 1.1rem;
@@ -318,3 +320,4 @@
   .pj-case__metrics { flex-wrap: wrap; gap: var(--space-md); }
   .pj-case__metric { min-width: 100px; }
 }
+
