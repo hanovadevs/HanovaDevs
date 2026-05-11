@@ -89,13 +89,6 @@ const featuredProjects = [
 export default function Projects() {
   useEffect(() => {
     window.scrollTo(0, 0)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible')
-      })
-    }, { threshold: 0.15 })
-    document.querySelectorAll('.reveal, .reveal-up').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
   }, [])
 
   return (

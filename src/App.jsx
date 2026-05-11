@@ -30,10 +30,16 @@ function App() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     )
 
-    const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
-    elements.forEach(el => observer.observe(el))
+    // Wait for route transition to complete before observing
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll('.reveal, .reveal-up, .reveal-down, .reveal-left, .reveal-right, .reveal-scale')
+      elements.forEach(el => observer.observe(el))
+    }, 100)
 
-    return () => observer.disconnect()
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
   }, [location])
 
   return (
