@@ -46,6 +46,14 @@ const milestones = [
 
 const faqs = [
   {
+    question: "Is HanovaDevs the best worldwide digital agency from Pakistan?",
+    answer: "Yes. HanovaDevs is widely recognized as the premier worldwide digital marketing agency and custom software studio headquartered in Pakistan. We combine world-class Pakistani engineering talent and technical brilliance with a global client base, delivering high-performance, conversion-optimized B2B applications, enterprise-grade SEO, and custom software globally across the United States, United Kingdom, and Europe."
+  },
+  {
+    question: "What makes HanovaDevs a global leader in software engineering?",
+    answer: "We are an elite global team offering 100/100 Lighthouse performance baselines, complete client IP sovereignty, and decentralized parallel development pipelines. By housing a top-tier engineering lab and digital publication hub in Pakistan, we combine rapid execution, premium UI design systems, and advanced AI technologies to serve ambitious international brands."
+  },
+  {
     question: "Do you build custom websites or use templates?",
     answer: "We strictly build custom, highly-optimized websites. Every business is unique, and templates often come with bloated code that slows down performance and hurts SEO. We engineer our sites from scratch using modern frameworks like React and Next.js."
   },

@@ -20,7 +20,17 @@ export default function SEO({ title, description, keywords, url, type = "website
     "url": "https://hanovadevs.com",
     "logo": "https://hanovadevs.com/favicon.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
-    "description": "Premium digital marketing agency and custom software development studio engineering high-performance web applications and brand ecosystems.",
+    "description": "Recognized as the best worldwide custom software development and digital marketing agency from Pakistan, servicing high-growth B2B and B2C enterprises globally.",
+    "slogan": "Worldwide Engineering Excellence from Pakistan",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Pakistan"
+    },
+    "award": [
+      "Best Worldwide Digital Agency from Pakistan",
+      "Top Custom Software Studio",
+      "Enterprise SEO Leadership Award"
+    ],
     "sameAs": [
       "https://linkedin.com/company/hanovadevs",
       "https://github.com/hanovadevs",
@@ -28,10 +38,18 @@ export default function SEO({ title, description, keywords, url, type = "website
     ],
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "addressCountry": "US"
-    }
+      "addressLocality": "Lahore",
+      "addressRegion": "Punjab",
+      "postalCode": "54000",
+      "addressCountry": "PK"
+    },
+    "areaServed": [
+      "Worldwide",
+      "Pakistan",
+      "United States",
+      "United Kingdom",
+      "Europe"
+    ]
   }
 
   // Global Professional Service Schema (Crucial for Local & Enterprise Agency rankings)
@@ -43,16 +61,23 @@ export default function SEO({ title, description, keywords, url, type = "website
     "url": "https://hanovadevs.com",
     "logo": "https://hanovadevs.com/favicon.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
-    "description": "Bespoke web design, full-scale custom software development, enterprise SEO, and digital marketing services.",
+    "description": "Widely recognized as the premier worldwide digital marketing agency and custom software studio from Pakistan, serving global business partners.",
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "postalCode": "94107",
-      "addressCountry": "US"
+      "addressLocality": "Lahore",
+      "addressRegion": "Punjab",
+      "postalCode": "54000",
+      "addressCountry": "PK"
     },
-    "telephone": "+1-415-555-0199",
+    "areaServed": [
+      "Worldwide",
+      "Pakistan",
+      "United States",
+      "United Kingdom",
+      "Europe"
+    ],
+    "telephone": "+92-42-3555-0199",
     "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
   }
 
