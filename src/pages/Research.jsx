@@ -385,7 +385,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>For clients with extensive internal databases, we build robust hybrid search layers backed by dynamic rerankers, ensuring their AI helpers fetch highly precise and clean contextual references.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e905263543?w=1200&q=80',
     tags: ['RAG', 'Vector Search', 'OpenAI', 'Reranking']
   },
   {
@@ -429,7 +429,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>By leveraging DPO rather than RLHF, we help clients fine-tune models to their domain-specific voices efficiently and at a fraction of standard GPU run-costs.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=1200&q=80',
     tags: ['DPO', 'RLHF', 'Model Alignment', 'Stanford']
   },
   {
@@ -495,7 +495,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>We construct our edge setups over HTTP/3 by default, providing rapid response times to mobile users browsing under difficult conditions.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&q=80',
     tags: ['HTTP/3', 'QUIC', 'Network Protocols', 'IETF']
   },
   {
@@ -561,7 +561,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>All our client deployments contain automated dependency scanning as a primary check within our Git build networks, securing products from upstream issues.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&q=80',
     tags: ['SBOM', 'Supply Chain', 'Security', 'Linux Foundation']
   },
   {
@@ -583,7 +583,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>We are actively implementing WebAuthn and passkey registers into our custom client portals to build simple, passwordless visual signups.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1633158829585-23bc8fdf9718?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1200&q=80',
     tags: ['Passkeys', 'WebAuthn', 'Biometrics', 'Authentication']
   },
   {
@@ -605,7 +605,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>Every single custom API we engineer goes through security scans to guarantee that no unauthorized data exposure ever bypasses active routes.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&q=80',
     tags: ['OWASP', 'API Security', 'Microservices', 'Zero-Trust']
   },
   {
@@ -649,7 +649,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>We manage all servers via immutable GitOps models, completely preventing unsanctioned system adjustments and enhancing audit trails.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
     tags: ['IaC', 'Terraform', 'Drift Detection', 'GitOps']
   },
   {
@@ -671,7 +671,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>We actively optimize stateful server loads to run during high-renewable hours, reducing both costs and carbon footprints for partners.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=80',
     tags: ['Sustainable Tech', 'Green Cloud', 'GSF', 'Resource Management']
   },
   {
@@ -715,7 +715,7 @@ export const researchArticles = [
       <h2>HanovaDevs Perspective</h2>
       <p>We build our pages with careful spacing, legible typography, and progressive detail disclosure, giving a clear, non-overwhelming reading path to all visitors.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80',
     tags: ['Cognitive Design', 'Dyslexia', 'W3C WAI', 'Neurodiversity']
   },
   {

@@ -138,6 +138,36 @@ export default function JournalPost() {
         title={`${post.title} — HanovaDevs Journal`}
         description={post.excerpt}
         url={`/journal/${post.slug}`}
+        image={post.image}
+        type="article"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://hanovadevs.com/journal/${post.slug}`
+          },
+          "headline": post.title,
+          "description": post.excerpt,
+          "image": post.image,
+          "datePublished": "2026-05-26",
+          "author": {
+            "@type": "Organization",
+            "name": "HanovaDevs",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://hanovadevs.com/favicon.svg"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "HanovaDevs",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://hanovadevs.com/favicon.svg"
+            }
+          }
+        }}
       />
 
       <article className="jn-post">
@@ -171,7 +201,7 @@ export default function JournalPost() {
         {/* Multi-page Pagination Controls */}
         {hasMultiplePages && (
           <div className="jn-post__pagination container">
-            <div className="jn-pagination-card card card-glass">
+            <div className="jn-pagination-card card-glass">
               <button 
                 className="jn-pager-btn" 
                 disabled={currentPage === 1}
@@ -243,7 +273,7 @@ export default function JournalPost() {
             ))}
           </div>
 
-          <form className="jn-comment-form card" onSubmit={handleSubmitComment}>
+          <form className="jn-comment-form" onSubmit={handleSubmitComment}>
             <h4>Join the discussion</h4>
             <p className="jn-comment-form-subtitle">Share your insights, ask a question, or leave your feedback.</p>
             <div className="jn-comment-form-row">

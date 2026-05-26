@@ -15,10 +15,15 @@ export const journalPosts = [
     content: `
       <p>Web development is evolving faster than ever. In 2026, the focus has shifted from mere functionality to extreme performance and user experience. At HanovaDevs, we believe that a website isn't just a collection of pages—it's a high-performance engine for your business. The paradigm shift we are witnessing is not just incremental; it's a fundamental restructuring of how data travels from servers to the user's eyeballs.</p>
       
-      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80" alt="Code on screen" class="blog-inline-img" />
-
-      <h2>What is Modern Web Development?</h2>
-      <p>Modern web development involves using advanced frameworks like React and Next.js to build applications that are fast, secure, and SEO-friendly. The "Edge" refers to running code closer to the user, reducing latency to near-zero. This shift means that the traditional barrier between client and server is blurring, leading to more fluid, app-like experiences on the web.</p>
+      <div class="jn-split-layout">
+        <div class="jn-split-left">
+          <h2>What is Modern Web Development?</h2>
+          <p>Modern web development involves using advanced frameworks like React and Next.js to build applications that are fast, secure, and SEO-friendly. The "Edge" refers to running code closer to the user, reducing latency to near-zero. This shift means that the traditional barrier between client and server is blurring, leading to more fluid, app-like experiences on the web.</p>
+        </div>
+        <div class="jn-split-right">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80" alt="Code on screen" class="blog-inline-img" style="margin: 0;" />
+        </div>
+      </div>
       
       <p>Furthermore, the rise of specialized hosting platforms has made it easier than ever to deploy global-scale applications with a single command. We leverage these platforms to ensure our clients' sites are always available and lightning-fast, regardless of where their users are located. But performance is only half the battle. The real magic happens when you combine speed with an AI-native user interface.</p>
 
@@ -98,10 +103,17 @@ export const journalPosts = [
     content: `
       <p>For nearly two decades, digital marketers and engineers lived by a simple, transactional law: identify high-volume search queries, sprinkle them systematically across title tags, headings, and body paragraphs, and wait for the traffic to roll in. It was a mechanical game of matching strings. But in 2026, that playbook is not just outdated — it is actively penalizing the platforms that continue to run it. Welcome to the era of semantic search, where keywords have become the trap, and true domain authority is the only path out.</p>
       
-      <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80" alt="Person working on SEO" class="blog-inline-img" />
-
-      <h2>The Collapse of 'Strings' and the Rise of 'Things'</h2>
-      <p>The pivot away from lexical matching (finding exact words) to semantic search (understanding concept meaning) was accelerated by Google's deployment of transformer-based neural architectures, specifically BERT, MUM, and their latest deep-learning models. Search engines no longer view a query as a collection of character strings. Instead, they translate words into multi-dimensional mathematical coordinates (embeddings) representing core conceptual nodes.</p>
+      <div class="jn-split-layout jn-split-layout--reversed">
+        <div class="jn-split-left">
+          <blockquote class="jn-split-quote">
+            "Search engines no longer view a query as a collection of character strings. They translate words into mathematical coordinates representing core conceptual nodes."
+          </blockquote>
+        </div>
+        <div class="jn-split-right">
+          <h2>The Collapse of 'Strings' and the Rise of 'Things'</h2>
+          <p>The pivot away from lexical matching (finding exact words) to semantic search (understanding concept meaning) was accelerated by Google's deployment of transformer-based neural architectures, specifically BERT, MUM, and their latest deep-learning models. Search engines no longer view a query as a collection of character strings. Instead, they translate words into multi-dimensional mathematical coordinates (embeddings) representing core conceptual nodes.</p>
+        </div>
+      </div>
       
       <p>When a user types a query, the search engine map-plots the underlying intent, context, and user history to find matching entity matrices. For example, if a user searches for <em>"how to stop my React app from lagging on scroll,"</em> the engine doesn't just scan for that exact phrase. It maps the query to concepts like 'React performance,' 'passive event listeners,' 'virtualized lists,' and 'browser main-thread rendering.' If your site contains a generic, keyword-stuffed page repeating "React app lagging on scroll" without resolving the underlying technical parameters, you will disappear from results.</p>
 
@@ -241,7 +253,7 @@ export const journalPosts = [
     content: `
       <p>Spatial computing is no longer just about strapping a headset to your face. In 2026, it encompasses a broad spectrum of technologies that understand and interact with the physical world — from Apple Vision Pro and Meta Quest to LiDAR-equipped smartphones, smart glasses, and ambient room-scale displays.</p>
 
-      <img src="https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800&q=80" alt="Spatial computing" class="blog-inline-img" />
+      <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&q=80" alt="Spatial computing" class="blog-inline-img" />
 
       <h2>Beyond the Headset</h2>
       <p>The most interesting development in spatial computing isn't the hardware — it's the software layer. Spatial understanding APIs now allow any device with a camera to build a real-time 3D map of its environment. This means your phone can become a portal into a digitally augmented world without any special equipment.</p>
@@ -255,7 +267,7 @@ export const journalPosts = [
       <h2>HanovaDevs Perspective</h2>
       <p>We're investing heavily in WebXR capabilities. For our e-commerce clients, spatial product visualization has shown a 94% increase in buyer confidence and a 40% reduction in returns. The technology is mature enough for production use today, and the development cost is dropping rapidly.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=1200&q=80'
+    image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80'
   },
   {
     slug: 'rust-eating-the-web',

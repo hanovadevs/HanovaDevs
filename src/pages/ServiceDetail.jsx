@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import SEO from '../components/SEO'
 import { journalPosts } from './Journal'
 import './ServiceDetail_v2.css'
@@ -35,6 +35,26 @@ const servicesData = {
       { key: 'Accessibility', value: 'WCAG 2.1 Compliant' },
       { key: 'Deployment', value: 'Vercel, Netlify, AWS' }
     ],
+    deliverables: [
+      { title: 'Interactive High-Fidelity Prototypes', desc: 'Complete interactive Figma wireframes and visual UI mockups highlighting precise brand spacing guidelines.' },
+      { title: 'Core Web Vitals Optimizations', desc: '100% optimized image delivery pipelines, static site generation mechanisms, and sub-second caching routing.' },
+      { title: 'Automated Accessibility Scans', desc: 'Full compliance checking meeting WCAG 2.1 AA parameters for semantic screen readers and keyboards.' },
+      { title: 'Modern CI/CD Deployment Sync', desc: 'Automated continuous integration and deployment pipelines syncing code updates directly onto Vercel or AWS.' },
+      { title: 'Interactive Client Asset Handover', desc: 'Structured handover packages including code files, custom component sets, and localized styling assets.' }
+    ],
+    caseStudy: {
+      clientName: 'Terra Sol Grounding',
+      logo: '/projects/terrasol.png',
+      summary: 'Re-engineered an immersive grounding sheet product showcase that bridges education and instant purchasing.',
+      metrics: [
+        { label: 'Conversion Lift', value: '+142%' },
+        { label: 'Bounce Rate Reduction', value: '-38%' },
+        { label: 'Lighthouse Page Speed', value: '100/100' }
+      ],
+      challenge: 'Slow load speeds and weak educational copywriting failed to build trust with curious buyers, causing high cart abandonment.',
+      solution: 'Engineered a bespoke React frontend with localized edge rendering, glassmorphic interactive benefit maps, and friction-free direct Amazon checkouts.',
+      link: '/projects'
+    },
     process: [
       { step: '01', title: 'Strategy', desc: 'Deep dive into your business goals and user personas.' },
       { step: '02', title: 'Design', desc: 'Crafting the visual identity and user experience flow.' },
@@ -51,6 +71,24 @@ const servicesData = {
     relatedLinks: [
       { title: 'Custom Software Development', path: '/services/software-development' },
       { title: 'SEO & Performance Marketing', path: '/services/seo' }
+    ],
+    faqs: [
+      {
+        question: 'How do you ensure 100/100 Lighthouse performance scores?',
+        answer: 'We write custom semantic HTML and minimize client-side Javascript. By using modern frameworks like React and Next.js, along with server-side rendering, specialized edge caching networks, and automated next-gen image compression, we ensure page loads are virtually instantaneous on all cellular connections.'
+      },
+      {
+        question: 'Will I own the source code and designs once the site launches?',
+        answer: 'Absolutely. We believe in complete IP sovereignty. You own 100% of the custom code, raw assets, Figma designs, and configurations. We host everything directly under your accounts with no recurring developer maintenance locks.'
+      },
+      {
+        question: 'Do you build on standard templates or customize every page?',
+        answer: 'Every page is hand-crafted from scratch based on custom UI/UX design tokens tailored strictly to your brand messaging. We never utilize generic WordPress templates or pre-made drag-and-drop frameworks.'
+      },
+      {
+        question: 'How long does a custom web design and development project take?',
+        answer: 'A typical comprehensive project ranges between 4 to 8 weeks, covering complete competitive discovery, responsive layout prototyping, engineering, quality testing, and SEO launching.'
+      }
     ]
   },
   'social-media': {
@@ -83,6 +121,26 @@ const servicesData = {
       { key: 'Reporting', value: 'Weekly Sentiment Analysis' },
       { key: 'Growth', value: 'Organic & Paid Integration' }
     ],
+    deliverables: [
+      { title: 'Competitor Brand Sentiment Audit', desc: 'Thorough landscape evaluation of competitors, keyword engagement gaps, and messaging style guides.' },
+      { title: 'Comprehensive Content Pillar Blueprint', desc: 'A multi-tier guide mapping your themes directly to viral hooks and structural platform trends.' },
+      { title: 'Custom Assets & Graphics Creation', desc: 'Bespoke high-quality graphics, branded templates, and motion video assets tailored for engagement.' },
+      { title: 'Active Community Outreach System', desc: 'Coordinated proactive messaging and engagement strategies with developers and wellness personas.' },
+      { title: 'Monthly Insights Pipeline', desc: 'Detailed tracking dashboards breaking down conversion paths, follower expansion, and real ROI.' }
+    ],
+    caseStudy: {
+      clientName: 'EarthSync Wellness',
+      logo: '/projects/earthsync.png',
+      summary: 'Cultivated a highly engaged spatial community around modern lifestyle grounding and wellness routines.',
+      metrics: [
+        { label: 'Organic Engagement', value: '+210%' },
+        { label: 'Viral Impressions', value: '1.2M+' },
+        { label: 'Brand Trust Score', value: '+85%' }
+      ],
+      challenge: 'Struggled to gain organic traction in the saturated fitness market, relying solely on expensive paid search ads.',
+      solution: 'Launched micro-narrative video series showcasing grounding products in real-world scenarios, paired with an active developer community outreach plan.',
+      link: '/projects'
+    },
     process: [
       { step: '01', title: 'Audit', desc: 'Analyzing your current social presence and competitors.' },
       { step: '02', title: 'Strategy', desc: 'Defining content pillars and channel priorities.' },
@@ -99,6 +157,24 @@ const servicesData = {
     relatedLinks: [
       { title: 'Brand Identity & Strategy', path: '/services/branding' },
       { title: 'Digital Advertising', path: '/services/digital-advertising' }
+    ],
+    faqs: [
+      {
+        question: 'What channels do you specialize in for B2B and B2C brands?',
+        answer: 'We customize platforms to match consumer behavior. For B2C brands we focus heavily on high-engagement visual hooks across Instagram and TikTok. For complex B2B enterprises we build authoritative thought leadership scripts on LinkedIn.'
+      },
+      {
+        question: 'How do you define organic brand voice guidelines?',
+        answer: 'We hold discovery sessions to map your target audience personas. We then define structured content pillars, visual assets guides, brand sentiment responses, and vocabulary sheets to align all content under a unified brand tone.'
+      },
+      {
+        question: 'Do you provide full video scripting and creative editing?',
+        answer: 'Yes. Our multidisciplinary team handles the full content lifecycle, including professional storyboarding, scripts, custom transitions, voiceovers, and post-production scaling optimized for modern attention spans.'
+      },
+      {
+        question: 'How do you measure campaign success and organic growth?',
+        answer: 'We focus on valuable engagement metrics (shares, saves, direct comments) and brand traffic growth over vanity metrics. You receive a monthly data pipeline illustrating lead generation and customer attribution.'
+      }
     ]
   },
   'seo': {
@@ -131,6 +207,26 @@ const servicesData = {
       { key: 'Content', value: 'Semantic Clustering' },
       { key: 'Backlinking', value: 'Authority-Based White-Hat' }
     ],
+    deliverables: [
+      { title: 'Core Web Vitals Technical Remediation', desc: 'Rewriting critical asset loading mechanisms and adjusting code bloat to hit sub-second LCP speeds.' },
+      { title: 'Semantic Keyword Silo Maps', desc: 'Comprehensive structures targeting high-intent clusters and eliminating keyword cannibalization friction.' },
+      { title: 'Rich Schema JSON-LD Deployments', desc: 'Bespoke markup definitions communicating your product, organization, and FAQ sets directly to Google search bots.' },
+      { title: 'Niche Authority Editorial Links', desc: 'Manual white-hat backlink campaigns sourcing natural anchor-text placements from high-DR websites.' },
+      { title: 'Competitive Ranking Dashboard', desc: 'Live monitoring setup mapping your keyword trajectory against major direct competitors.' }
+    ],
+    caseStudy: {
+      clientName: 'Crown Accumulator Corp',
+      logo: '/projects/crown.png',
+      summary: 'Dominated industrial energy and heavy machinery search queries with strategic content clustering.',
+      metrics: [
+        { label: 'Organic Traffic', value: '+340%' },
+        { label: 'Page 1 Rankings', value: '180+' },
+        { label: 'Inbound Sales Pipe', value: '+122%' }
+      ],
+      challenge: 'B2B pipeline was highly dependent on field sales reps. Visual brand search was virtually non-existent for key heavy equipment queries.',
+      solution: 'Engineered a semantic keyword silo structure coupled with advanced Schema JSON-LD, driving their technical specs to Google rich snippets.',
+      link: '/projects'
+    },
     process: [
       { step: '01', title: 'Analyze', desc: 'Technical audit and competitor landscape mapping.' },
       { step: '02', title: 'Optimize', desc: 'Fixing technical debt and on-page structures.' },
@@ -147,6 +243,24 @@ const servicesData = {
     relatedLinks: [
       { title: 'Web Design & Development', path: '/services/web-design' },
       { title: 'Digital Advertising', path: '/services/digital-advertising' }
+    ],
+    faqs: [
+      {
+        question: "What is 'The SEO Trap' and how do you bypass it?",
+        answer: 'Traditional agencies focus purely on high-volume keyword stuffing. We focus on semantic keyword clustering, high-intent user search alignment, and rich schema markup. This drives high-quality organic traffic that actually wants to buy.'
+      },
+      {
+        question: 'What tools do you use to map out industry trends and search intents?',
+        answer: 'We run enterprise research pipelines using Google Analytics 4, Search Console, Ahrefs, SEMrush, and custom scripts to map search volume gaps before producing content.'
+      },
+      {
+        question: 'How long before we start seeing organic ranking results on Google?',
+        answer: 'Technical optimizations (speed, schema, indexing) yield improvements in 2-4 weeks. Extensive semantic content campaigns typically compound authority and double traffic over a 3 to 6-month timeline.'
+      },
+      {
+        question: 'Do you conduct manual authority link building?',
+        answer: 'Yes, we only participate in white-hat authority outreach. We construct high-quality, relevant editorial mentions from high-domain-rating publications in your specific niche.'
+      }
     ]
   },
   'branding': {
@@ -179,6 +293,26 @@ const servicesData = {
       { key: 'Psychology', value: 'Emotional Resonance Mapping' },
       { key: 'Assets', value: 'Social Kits, Stationeries' }
     ],
+    deliverables: [
+      { title: 'Signature Adaptive Vector Mark', desc: 'Highly scalable custom-engineered vector logo configurations tailored perfectly for responsive digital layouts and layouts.' },
+      { title: 'Design System & Typography Token Book', desc: 'Handpicked typography hierarchies and CSS variable mappings that anchor layouts consistently across devices.' },
+      { title: 'Omnichannel Brand Voice Blueprint', desc: 'Comprehensive messaging sheets defining syntax rules, active vocabulary, and targeted emotional response hooks.' },
+      { title: 'Interactive Web Brand Guidelines', desc: 'A pristine live or digital handbook presenting styling tokens, do-and-do-not parameters, and layouts.' },
+      { title: 'Social & Stationery Asset Kits', desc: 'Ready-to-use vector shapes, banners, letterheads, and business card layouts matching the target brand tokens.' }
+    ],
+    caseStudy: {
+      clientName: 'Eunoia Spatial Systems',
+      logo: '/projects/earthsync.png',
+      summary: 'Rebranded an emerging spatial platform to stand out as a highly credible premium enterprise tool.',
+      metrics: [
+        { label: 'Enterprise Pipeline', value: '+180%' },
+        { label: 'Brand Recall Score', value: '+95%' },
+        { label: 'Valuation Increase', value: '+45%' }
+      ],
+      challenge: 'A generic crypto design style made them look like a speculative asset rather than a serious enterprise-ready infrastructure software.',
+      solution: 'Crafted a premium, mathematical brand identity, styled around subtle gradients, clean geometric letterforms, and solid brand voice guidelines.',
+      link: '/projects'
+    },
     process: [
       { step: '01', title: 'Discovery', desc: 'Understanding your mission, values, and vision.' },
       { step: '02', title: 'Ideation', desc: 'Exploring visual concepts and naming strategies.' },
@@ -195,6 +329,24 @@ const servicesData = {
     relatedLinks: [
       { title: 'Web Design & Development', path: '/services/web-design' },
       { title: 'Social Media Marketing', path: '/services/social-media' }
+    ],
+    faqs: [
+      {
+        question: 'What exactly is included in a complete Brand Identity kit?',
+        answer: 'Our standard kit contains vector signature logos, full typography systems, a responsive color palette book, a brand voice tone guide, localized asset templates, and digital-ready design token guides.'
+      },
+      {
+        question: 'How do you execute psychological color mapping?',
+        answer: 'We analyze consumer psychological behaviors, competitor color palettes, and cultural references to curate custom color combinations that evoke trust, premium security, or vibrant innovation.'
+      },
+      {
+        question: 'Can you help us refresh our existing brand without losing legacy equity?',
+        answer: 'Yes. We specialize in strategic brand refreshes, preserving your recognizable legacy visual elements while modernizing typography grids, contrast guidelines, and digital readability layers.'
+      },
+      {
+        question: 'How long is the discovery and concept phase?',
+        answer: 'It takes 2-3 weeks, during which we explore parallel moodboards, visual concepts, and competitor landscape mapping to anchor your brand identity.'
+      }
     ]
   },
   'software-development': {
@@ -227,6 +379,26 @@ const servicesData = {
       { key: 'Security', value: 'SOC2, Zero-Trust, OAuth2' },
       { key: 'Testing', value: 'Jest, Playwright, Cypress' }
     ],
+    deliverables: [
+      { title: 'Interactive High-Availability Diagrams', desc: 'Visual blueprints mapped to multi-region cloud servers displaying microservice layers and failover paths.' },
+      { title: 'Robust Custom API Nodes', desc: 'Secure, production-grade endpoints documented via Swagger, optimizing transactional latency below 30ms.' },
+      { title: 'Automated Infrastructure Setup', desc: 'Infrastructure as Code scripts (Terraform/Docker) initializing cloud databases, storage nodes, and caching relays.' },
+      { title: 'Rigorous Security Assessments', desc: 'Comprehensive penetration validation maps checking for XSS, SQLi, and authentication bypass vulnerabilities.' },
+      { title: 'Rigorous Automated Test Coverage', desc: 'Complete test suites (Jest/Playwright) covering core patient/user routes to ensure long-term runtime reliability.' }
+    ],
+    caseStudy: {
+      clientName: 'Nexus Health Systems',
+      logo: '/projects/nexus.png',
+      summary: 'Engineered a real-time hospital inventory and patient intake cloud dashboard.',
+      metrics: [
+        { label: 'Intake Wait Times', value: '-52%' },
+        { label: 'Uptime Reliability', value: '99.99%' },
+        { label: 'Data Sync Latency', value: '<15ms' }
+      ],
+      challenge: 'An outdated legacy database system caused lag spikes and synchronization conflicts across parallel nursing stations.',
+      solution: 'Designed a custom Node.js and Rust backend powered by WebSockets, microservices, and absolute SOC2 data compliance layouts.',
+      link: '/projects'
+    },
     process: [
       { step: '01', title: 'Architecture', desc: 'Designing the data flow and system structure.' },
       { step: '02', title: 'Development', desc: 'Agile sprints with regular milestone reviews.' },
@@ -243,6 +415,24 @@ const servicesData = {
     relatedLinks: [
       { title: 'Web Design & Development', path: '/services/web-design' },
       { title: 'SEO & Performance Marketing', path: '/services/seo' }
+    ],
+    faqs: [
+      {
+        question: 'Which backend languages and cloud infrastructure do you rely on?',
+        answer: 'We build high-availability backends using Node.js, Python, and Rust, supported by PostgreSQL or Redis databases. Our cloud environments are automated via Docker containers and Kubernetes on AWS or Google Cloud.'
+      },
+      {
+        question: 'How do you audit custom software for SOC2 and security compliance?',
+        answer: 'We enforce Zero-Trust architecture, secure JWT session management, input validation, parameter sanitization, TLS/HTTPS data transport encryption, and integrate Automated E2E testing systems (Jest/Playwright).'
+      },
+      {
+        question: 'Can you integrate legacy third-party APIs and old database structures?',
+        answer: 'Yes, we specialize in building highly resilient API proxy layers and secure data migrations to bridge old legacy hardware with modern cloud frameworks.'
+      },
+      {
+        question: 'How do you support custom software post-launch?',
+        answer: 'We provide flexible, long-term Service Level Agreements (SLAs) including weekly cloud telemetry checks, database backup automations, and immediate security patch updates.'
+      }
     ]
   },
   'digital-advertising': {
@@ -275,6 +465,26 @@ const servicesData = {
       { key: 'Creatives', value: 'Dynamic, A/B Tested' },
       { key: 'Optimization', value: 'LTV-Based Bidding' }
     ],
+    deliverables: [
+      { title: 'High-Resolution Visual Creative Packs', desc: 'Bespoke high-converting design layouts and custom video cuts optimized strictly to platform algorithms.' },
+      { title: 'Conversions API (CAPI) Pixel Setup', desc: 'Advanced server-to-server connection bypassing ad-blockers and capturing 100% accurate buyer event mapping.' },
+      { title: 'Rigorous Structured A/B Pipelines', desc: 'Weekly testing schedules checking copy variations, benefit highlights, and targeted hooks.' },
+      { title: 'Targeted Lead Magnet Funnel Design', desc: 'Frictionless, fully-responsive lead capture forms and conversion-ready landing designs.' },
+      { title: 'LTV-Based Scaling Map', desc: 'Precise financial models displaying how to optimize budgets cleanly as customer acquisition costs scale.' }
+    ],
+    caseStudy: {
+      clientName: 'TechVault Enterprise',
+      logo: '/projects/crown.png',
+      summary: 'Scaled search and native ad campaigns targeting enterprise data managers.',
+      metrics: [
+        { label: 'Cost-Per-Acquisition', value: '-45%' },
+        { label: 'Return On Ad Spend', value: '4.8x' },
+        { label: 'Qualified Lead Vol', value: '+300%' }
+      ],
+      challenge: 'Inefficient keyword targeting led to high ad costs with unqualified consumer clicks instead of high-value business leads.',
+      solution: 'Built precision-targeted LinkedIn and Meta ad structures coupled with server-side Conversions API (CAPI) tracking to feed absolute attribution models.',
+      link: '/projects'
+    },
     process: [
       { step: '01', title: 'Targeting', desc: 'Defining granular audience segments.' },
       { step: '02', title: 'Creatives', desc: 'Developing high-impact visual and copy assets.' },
@@ -291,6 +501,24 @@ const servicesData = {
     relatedLinks: [
       { title: 'SEO & Performance Marketing', path: '/services/seo' },
       { title: 'Social Media Marketing', path: '/services/social-media' }
+    ],
+    faqs: [
+      {
+        question: 'How do you prevent client budgets from being wasted on cold ads?',
+        answer: 'We enforce strict dynamic A/B creative testing (DCT) with low testing budgets, analyzing initial engagement before scaling up budgets on verified high-ROI ad groups.'
+      },
+      {
+        question: 'What is the Conversions API (CAPI) and why is it mandatory?',
+        answer: 'Traditional browser pixels are blocked by modern browsers (iOS 14+, ad blockers). CAPI sends conversion events directly from our servers to platforms (Meta/Google), restoring complete conversion tracking accuracy.'
+      },
+      {
+        question: 'Do you write and produce the visual assets for the ad groups?',
+        answer: 'Yes, we design all ad assets, including custom conversion hooks, responsive vector layout graphics, dynamic video cuts, and target-audience-centric copywriting.'
+      },
+      {
+        question: 'What metrics do you prioritize in monthly ad reports?',
+        answer: 'We focus strictly on business growth numbers: Cost-Per-Acquisition (CPA), Return On Ad Spend (ROAS), and final Marketing Qualified Leads (MQL).'
+      }
     ]
   }
 }
@@ -299,6 +527,7 @@ export default function ServiceDetail() {
   const { id } = useParams()
   const service = servicesData[id]
   const relatedPosts = service ? journalPosts.filter(p => service.blogs.includes(p.slug)) : []
+  const [activeFaq, setActiveFaq] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -314,6 +543,10 @@ export default function ServiceDetail() {
         </div>
       </div>
     )
+  }
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index)
   }
 
   // Generate Answer Engine Optimization (AEO) JSON-LD for this specific service
@@ -405,6 +638,35 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Deliverables Checklist Section (NEW) */}
+      <section className="service-detail__deliverables section bg-off-white">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
+            <span className="section-label">Scope of Work</span>
+            <h2>Granular <em>Deliverables Checklist</em></h2>
+            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
+              Every package is engineered with clear checklists and milestones. Here is exactly what we deliver.
+            </p>
+          </div>
+          
+          <div className="deliverables-grid">
+            {service.deliverables.map((item, i) => (
+              <div key={i} className={`deliverable-card reveal reveal-delay-${(i % 3) + 1}`}>
+                <div className="deliverable-check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div className="deliverable-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Process Section */}
       <section className="service-detail__process section">
         <div className="container">
@@ -424,6 +686,60 @@ export default function ServiceDetail() {
                 {i < service.process.length - 1 && <div className="process-path" />}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Spotlight Section (NEW) */}
+      <section className="service-detail__case-study section">
+        <div className="container">
+          <div className="case-study-spotlight reveal">
+            <div className="case-study-spotlight__grid">
+              <div className="case-study-spotlight__info">
+                <span className="case-study-label">Client Success Spotlight</span>
+                <div className="case-study-brand">
+                  <div className="case-study-brand-badge">✓</div>
+                  <h3>{service.caseStudy.clientName}</h3>
+                </div>
+                <p className="case-study-summary">{service.caseStudy.summary}</p>
+                
+                <div className="case-study-challenge-solution">
+                  <div className="cs-block">
+                    <h4>The Challenge</h4>
+                    <p>{service.caseStudy.challenge}</p>
+                  </div>
+                  <div className="cs-block">
+                    <h4>The Solution</h4>
+                    <p>{service.caseStudy.solution}</p>
+                  </div>
+                </div>
+                
+                <Link to={service.caseStudy.link} className="btn btn-secondary cs-btn">
+                  View All Projects
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+              
+              <div className="case-study-spotlight__metrics">
+                <h3>Key Metrics Compounded</h3>
+                <div className="cs-metrics-grid">
+                  {service.caseStudy.metrics.map((metric, i) => (
+                    <div key={i} className="cs-metric-card">
+                      <span className="cs-metric-value">{metric.value}</span>
+                      <span className="cs-metric-label">{metric.label}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="cs-badge-strip">
+                  <span>✓ Verified Outcomes</span>
+                  <span>✓ Real-World Impact</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -478,9 +794,56 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Collapsible FAQ Accordion Section (NEW) */}
+      <section className="service-detail__faq section">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
+            <span className="section-label">FAQ</span>
+            <h2>Frequently Asked <em>Questions</em></h2>
+            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
+              Have questions about our operations? Here are direct answers to our most common operational inquiries.
+            </p>
+          </div>
+          
+          <div className="jn-faq-accordion reveal">
+            {service.faqs.map((faq, i) => {
+              const isOpen = activeFaq === i;
+              return (
+                <div key={i} className={`jn-faq-item ${isOpen ? 'active' : ''}`}>
+                  <button 
+                    className="jn-faq-trigger" 
+                    onClick={() => toggleFaq(i)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="jn-faq-question">{faq.question}</span>
+                    <span className="jn-faq-icon-wrap">
+                      <svg 
+                        className="jn-faq-icon" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2.5"
+                      >
+                        <line x1="12" y1="5" x2="12" y2="19" className="line-vertical"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                    </span>
+                  </button>
+                  <div className="jn-faq-content" style={{ maxHeight: isOpen ? '350px' : '0' }}>
+                    <div className="jn-faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Recent Insights (Blog Links) */}
       {relatedPosts.length > 0 && (
-        <section className="service-detail__insights section">
+        <section className="service-detail__insights section bg-off-white">
           <div className="container">
             <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
               <span className="section-label">Resources</span>

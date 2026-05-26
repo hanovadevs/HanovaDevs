@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /scratch
+
+# Host
+Host: https://hanovadevs.com
+
+# Sitemap Link
+Sitemap: https://hanovadevs.com/sitemap.xml
