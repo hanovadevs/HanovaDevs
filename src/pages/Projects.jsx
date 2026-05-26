@@ -21,6 +21,22 @@ const featuredProjects = [
     ]
   },
   {
+    id: 'terrasol',
+    title: 'Terra Sol Grounding',
+    category: 'E-Commerce & Wellness',
+    url: 'https://www.terrasolgrounding.com',
+    thumbnail: '/projects/terrasol.png',
+    theme: 'terrasol',
+    overview: 'Terra Sol is a premium grounding products brand offering earthing sheets, mats, and accessories — all linked directly to its Amazon storefront. This was a massive, full-scale e-commerce build combining scientific authority with a serene wellness aesthetic.',
+    challenge: 'Building a comprehensive platform that could house a full product catalog, peer-reviewed research library, interactive science explainers, a wellness journal, and seamless Amazon integration — all while maintaining a calm, trustworthy brand experience.',
+    solution: 'We engineered a rich, multi-section ecosystem featuring dynamic product pages with real-time Amazon connectivity, an indexed research database with 20+ published studies, Gemini AI-powered content, and a conversion-optimized UX with nature-inspired earth tones and premium typography.',
+    metrics: [
+      { label: 'Product Pages', value: '6+' },
+      { label: 'Research Studies', value: '20+' },
+      { label: 'Avg. Rating', value: '4.8★' }
+    ]
+  },
+  {
     id: 'nexus',
     title: 'Nexus Health',
     category: 'Telemedicine SaaS',

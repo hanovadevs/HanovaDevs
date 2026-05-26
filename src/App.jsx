@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -12,8 +12,10 @@ import Contact from './pages/Contact'
 import ServiceDetail from './pages/ServiceDetail'
 import OmnaiDetail from './pages/OmnaiDetail'
 import EunoiaDetail from './pages/EunoiaDetail'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
+import Journal from './pages/Journal'
+import JournalPost from './pages/JournalPost'
+import Research from './pages/Research'
+
 function App() {
   const location = useLocation()
 
@@ -57,13 +59,24 @@ function App() {
           <Route path="/products/omnai" element={<OmnaiDetail />} />
           <Route path="/products/eunoia" element={<EunoiaDetail />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/journal/:slug" element={<JournalPost />} />
+          <Route path="/research" element={<Research />} />
+          {/* Blog → Journal redirects for SEO */}
+          <Route path="/blog" element={<Navigate to="/journal" replace />} />
+          <Route path="/blog/:slug" element={<BlogRedirect />} />
         </Routes>
       </main>
       <Footer />
     </>
   )
+}
+
+/* Redirect /blog/:slug → /journal/:slug */
+function BlogRedirect() {
+  const location = useLocation()
+  const slug = location.pathname.replace('/blog/', '')
+  return <Navigate to={`/journal/${slug}`} replace />
 }
 
 export default App

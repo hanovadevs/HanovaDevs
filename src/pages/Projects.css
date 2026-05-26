@@ -270,6 +270,26 @@
 .pj-case--lumiere .pj-frame__dots span { background: rgba(255,255,255,0.1); border-radius: 0; }
 .pj-case--lumiere .pj-frame__url { background: #000; color: #d4af37; border-radius: 0; font-family: 'Times New Roman', serif; font-style: italic; }
 
+
+/* ════════════════════════════
+   THEME: TERRASOL (Earth & Wellness)
+   ════════════════════════════ */
+.pj-case--terrasol { background: #f5f0e8; color: #1b3a2d; }
+.pj-case--terrasol .pj-case__category { color: #c87b2e; }
+.pj-case--terrasol .pj-case__text h2 { color: #1b3a2d; }
+.pj-case--terrasol .pj-case__overview { color: #4a5a50; }
+.pj-case--terrasol .pj-case__detail-block h4 { color: #1b3a2d; }
+.pj-case--terrasol .pj-case__detail-block p { color: #5c6b60; }
+.pj-case--terrasol .pj-case__metrics { border-top: 1px solid rgba(27, 58, 45, 0.15); }
+.pj-case--terrasol .pj-case__metric strong { color: #1b3a2d; }
+.pj-case--terrasol .pj-case__metric span { color: #6b7d70; }
+.pj-case--terrasol .pj-btn { background: #1b3a2d; color: #f5f0e8; }
+.pj-case--terrasol .pj-btn:hover { background: #c87b2e; box-shadow: 0 10px 20px rgba(200, 123, 46, 0.2); }
+.pj-case--terrasol .pj-frame { border: 1px solid rgba(27, 58, 45, 0.1); box-shadow: 0 30px 60px rgba(27, 58, 45, 0.1); }
+.pj-case--terrasol .pj-frame__header { background: #ebe5d9; border-bottom: 1px solid rgba(27, 58, 45, 0.08); }
+.pj-case--terrasol .pj-frame__dots span { background: rgba(27, 58, 45, 0.2); }
+.pj-case--terrasol .pj-frame__url { background: #f5f0e8; color: #6b7d70; }
+
 /* ════════════════════════════
    THEME: AERO (Cyber Logistics)
    ════════════════════════════ */

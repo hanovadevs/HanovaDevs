@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import { blogPosts } from './Blog'
+import { journalPosts } from './Journal'
+import { researchArticles } from './Research'
 import './Home.css'
 
 /* ─── DATA ─── */
@@ -86,6 +87,13 @@ const serviceCards = [
 ]
 
 const projects = [
+  {
+    title: 'Terra Sol Grounding',
+    category: 'E-Commerce',
+    metric: '6+ Products',
+    image: '/projects/terrasol.png',
+    url: 'https://www.terrasolgrounding.com'
+  },
   {
     title: 'TechVault Dashboard',
     category: 'Web Design',
@@ -297,6 +305,26 @@ export default function Home() {
         <div className="hero__scroll-hint">
           <span className="hero__scroll-label">Scroll</span>
           <div className="hero__scroll-line" />
+        </div>
+      </section>
+
+      {/* ===== CLIENT LOGOS MARQUEE ===== */}
+      <section className="client-marquee" id="client-marquee">
+        <div className="container">
+          <span className="client-marquee__label">Trusted by ambitious brands</span>
+        </div>
+        <div className="client-marquee__track">
+          <div className="client-marquee__inner">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="client-marquee__set">
+                {['EarthSync Essential', 'Terra Sol Grounding', 'Crown Accumulator', 'Nexus Health', 'Lumière Paris', 'AeroSpace Dynamics'].map((name, i) => (
+                  <div key={`${setIndex}-${i}`} className="client-marquee__item">
+                    <span>{name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -656,12 +684,12 @@ export default function Home() {
       <section className="home-insights section bg-off-white">
         <div className="container">
           <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
-            <span className="section-label">The Lab</span>
+            <span className="section-label">The Journal</span>
             <h2>Latest from our <span className="gradient-text">Journal</span></h2>
           </div>
           <div className="home-insights__grid">
-            {blogPosts.slice(0, 3).map((post, i) => (
-              <Link to={`/blog/${post.slug}`} key={i} className={`home-insights__card reveal-up reveal-delay-${i}`}>
+            {journalPosts.slice(0, 3).map((post, i) => (
+              <Link to={`/journal/${post.slug}`} key={i} className={`home-insights__card reveal-up reveal-delay-${i}`}>
                 <div className="insights-card__image">
                   <img src={post.image} alt={post.title} />
                   <div className="insights-card__category">{post.category}</div>
@@ -675,7 +703,62 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center reveal" style={{ marginTop: '3rem' }}>
-            <Link to="/blog" className="btn btn-ghost">View All Posts</Link>
+            <Link to="/journal" className="btn btn-ghost">View All Articles</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== RESEARCH PREVIEW ===== */}
+      <section className="home-research section">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
+            <span className="section-label">Research Hub</span>
+            <h2>Curated <span className="gradient-text">Knowledge</span></h2>
+            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto' }}>Industry-leading research and technical papers, annotated by our engineering team.</p>
+          </div>
+          <div className="home-research__grid">
+            {researchArticles.slice(0, 3).map((article, i) => (
+              <Link to="/research" key={article.id} className={`home-research__card reveal-up reveal-delay-${i}`}>
+                <div className="home-research__image">
+                  <img src={article.image} alt={article.title} loading="lazy" />
+                  <div className="home-research__source">{article.source}</div>
+                </div>
+                <div className="home-research__content">
+                  <span className="home-research__category">{article.category}</span>
+                  <h4>{article.title}</h4>
+                  <span className="home-research__readtime">{article.readTime} read</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center reveal" style={{ marginTop: '3rem' }}>
+            <Link to="/research" className="btn btn-ghost">Explore All Research</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AWARDS & RECOGNITION ===== */}
+      <section className="home-awards section bg-off-white">
+        <div className="container">
+          <div className="text-center reveal" style={{ marginBottom: '3rem' }}>
+            <span className="section-label">Recognition</span>
+            <h2>Built with <span className="gradient-text">Excellence</span></h2>
+          </div>
+          <div className="home-awards__grid reveal-up">
+            {[
+              { icon: '🏆', title: 'Top Web Agency', sub: '2025 Digital Awards' },
+              { icon: '⚡', title: '99.9% Uptime', sub: 'Infrastructure SLA' },
+              { icon: '🛡️', title: 'SOC 2 Practices', sub: 'Security Compliant' },
+              { icon: '🌍', title: 'Global Delivery', sub: '4 Continents' },
+              { icon: '⭐', title: '5-Star Reviews', sub: 'Client Satisfaction' },
+              { icon: '🚀', title: '40+ Launches', sub: 'Successful Deployments' }
+            ].map((award, i) => (
+              <div key={i} className="home-awards__card">
+                <span className="home-awards__icon">{award.icon}</span>
+                <strong>{award.title}</strong>
+                <span>{award.sub}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

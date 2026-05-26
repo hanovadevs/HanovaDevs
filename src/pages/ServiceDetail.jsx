@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import SEO from '../components/SEO'
-import { blogPosts } from './Blog'
+import { journalPosts } from './Journal'
 import './ServiceDetail_v2.css'
 
 const servicesData = {
@@ -298,7 +298,7 @@ const servicesData = {
 export default function ServiceDetail() {
   const { id } = useParams()
   const service = servicesData[id]
-  const relatedPosts = service ? blogPosts.filter(p => service.blogs.includes(p.slug)) : []
+  const relatedPosts = service ? journalPosts.filter(p => service.blogs.includes(p.slug)) : []
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -488,7 +488,7 @@ export default function ServiceDetail() {
             </div>
             <div className="service-detail__insights-grid">
               {relatedPosts.map((post, i) => (
-                <Link to={`/blog/${post.slug}`} key={i} className="service-detail__insight-card reveal reveal-delay-1">
+                <Link to={`/journal/${post.slug}`} key={i} className="service-detail__insight-card reveal reveal-delay-1">
                   <div className="insight-card__image">
                     <img src={post.image} alt={post.title} />
                   </div>

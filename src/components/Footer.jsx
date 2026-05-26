@@ -1,12 +1,51 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+  const [subscribing, setSubscribing] = useState(false)
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault()
+    if (!email) return
+    setSubscribing(true)
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: `New Newsletter Subscriber: ${email}`
+        })
+      })
+
+      if (response.ok) {
+        setSubscribed(true)
+        setEmail('')
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setSubscribing(false)
+    }
+  }
+
   const quickLinks = [
     { path: '/', label: 'Home' },
     { path: '/services', label: 'Services' },
     { path: '/about', label: 'About Us' },
     { path: '/projects', label: 'Projects' },
+  ]
+
+  const insightLinks = [
+    { path: '/journal', label: 'Journal' },
+    { path: '/research', label: 'Research Hub' },
   ]
 
   const productLinks = [
@@ -23,6 +62,38 @@ export default function Footer() {
   return (
     <footer className="footer" id="site-footer">
       <div className="container">
+        {/* Newsletter Section */}
+        <div className="footer__newsletter">
+          <div className="footer__newsletter-text">
+            <h4>Stay ahead of the curve</h4>
+            <p>Get the latest insights on tech, engineering, and digital growth — straight to your inbox.</p>
+          </div>
+          <form className="footer__newsletter-form" onSubmit={handleSubscribe}>
+            {subscribed ? (
+              <div className="footer__newsletter-success">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>You're in! Welcome to the HanovaDevs community.</span>
+              </div>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="footer__newsletter-input"
+                />
+                <button type="submit" className="btn btn-primary footer__newsletter-btn" disabled={subscribing}>
+                  {subscribing ? 'Joining...' : 'Subscribe'}
+                </button>
+              </>
+            )}
+          </form>
+        </div>
+
+        <div className="footer__divider" />
+
         <div className="footer__top">
           <div className="footer__brand">
             <div className="footer__logo">
@@ -66,7 +137,11 @@ export default function Footer() {
           </div>
 
           <div className="footer__col">
-            <h5 className="footer__col-title">Products</h5>
+            <h5 className="footer__col-title">Insights</h5>
+            {insightLinks.map(link => (
+              <Link key={link.label} to={link.path} className="footer__link">{link.label}</Link>
+            ))}
+            <h5 className="footer__col-title" style={{ marginTop: '1rem' }}>Products</h5>
             {productLinks.map(link => (
               <Link key={link.label} to={link.path} className="footer__link">{link.label}</Link>
             ))}
@@ -84,7 +159,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © 2025 HanovaDevs. All rights reserved.
+            © 2026 HanovaDevs. All rights reserved.
           </p>
           <p className="footer__motto">
             Engineering the Future.

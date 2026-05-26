@@ -106,6 +106,87 @@
   background: var(--white);
 }
 
+/* Dropdown */
+.navbar__dropdown-wrap {
+  position: relative;
+}
+.navbar__link--dropdown {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  cursor: pointer; background: none; border: none;
+  font-family: var(--font-body);
+}
+.navbar__chevron {
+  transition: transform 0.3s ease;
+}
+.navbar__chevron--open {
+  transform: rotate(180deg);
+}
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  width: 240px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+.navbar__dropdown--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.navbar__dropdown-item {
+  display: flex; flex-direction: column;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.navbar__dropdown-item:hover {
+  background: rgba(var(--royal-blue-rgb), 0.05);
+}
+.navbar__dropdown-item strong {
+  font-size: 0.9rem; color: var(--heading-color);
+  margin-bottom: 0.15rem;
+}
+.navbar__dropdown-item span {
+  font-size: 0.75rem; color: var(--blue-grey);
+}
+.navbar--dark .navbar__dropdown {
+  background: rgba(15, 17, 21, 0.98);
+  border-color: rgba(255,255,255,0.08);
+}
+.navbar--dark .navbar__dropdown-item strong { color: #fff; }
+.navbar--dark .navbar__dropdown-item span { color: #94a3b8; }
+.navbar--dark .navbar__dropdown-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Mobile Menu Group */
+.mobile-menu__group {
+  width: 100%;
+}
+.mobile-menu__group-label {
+  display: block;
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--blue-grey);
+  padding: 0.5rem 0.75rem 0.2rem;
+  opacity: 0.6;
+}
+.mobile-menu__link--sub {
+  padding-left: 1.5rem;
+  font-size: 0.85rem;
+}
+
 
 .navbar__cta {
   font-size: 0.8rem;
