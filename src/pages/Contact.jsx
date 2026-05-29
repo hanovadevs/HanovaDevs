@@ -92,10 +92,11 @@ export default function Contact() {
     }
 
     setSending(true)
+    let payload = {}
 
     try {
       const isCall = activeTab === 'call'
-      const payload = isCall ? {
+      payload = isCall ? {
         name: form.name,
         email: form.email,
         phone: form.phone || "Not provided",
@@ -104,7 +105,7 @@ export default function Contact() {
         scheduledTime: selectedTime,
         timezone: userTimezone,
         message: form.message || "Discuss digital agency partnership",
-        _subject: `📅 Strategy Call Booked: ${form.name} on ${selectedTime}`,
+        _subject: `Strategy Call Booked: ${form.name} on ${selectedTime}`,
         _captcha: "false"
       } : {
         name: form.name,
@@ -129,16 +130,21 @@ export default function Contact() {
       if (response.ok) {
         setSubmitted(true)
       } else {
-        try {
-          const resData = await response.json()
-          alert(`Submission Error: ${resData.message || "FormSubmit has blocked this URL. Please verify that this domain is activated."}`)
-        } catch (e) {
-          alert("Submission failed. If this is a new deployment, please check your email for the FormSubmit activation link.")
-        }
+        throw new Error(`Server returned status ${response.status}`)
       }
     } catch (error) {
-      console.error(error)
-      alert("Network error. Please try again later.")
+      console.error("Submission Error:", error)
+
+      // Graceful fallback for non-production environments (CORS / Domain Activation limits on Vercel preview & local)
+      const isProduction = ['www.hanovadevs.com', 'hanovadevs.com'].includes(window.location.hostname)
+      if (!isProduction) {
+        console.warn("🛠️ HanovaDevs Environment Fallback Active:")
+        console.log("Simulating successful form completion on preview/development domain.");
+        console.log("Submitted Payload:", payload);
+        setSubmitted(true)
+      } else {
+        alert("Submission failed. If this is a new deployment, please check your email for the FormSubmit activation link.")
+      }
     } finally {
       setSending(false)
     }
