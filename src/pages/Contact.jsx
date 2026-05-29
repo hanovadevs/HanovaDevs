@@ -41,6 +41,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
+  const [submissionFailed, setSubmissionFailed] = useState(false)
 
   // Call Scheduler States
   const [activeTab, setActiveTab] = useState('message') // 'message' or 'call'
@@ -178,7 +179,7 @@ export default function Contact() {
                         {/* Form */}
             <div className="contact-form-wrap reveal">
               {/* Tab Switcher */}
-              {!submitted && (
+              {!submitted && !submissionFailed && (
                 <div className="contact-tabs">
                   <button
                     type="button"
@@ -203,7 +204,44 @@ export default function Contact() {
                 </div>
               )}
 
-              {submitted ? (
+              {submissionFailed ? (
+                <div className="contact-success" style={{ background: 'var(--off-white)', border: '2px solid rgba(var(--royal-blue-rgb), 0.15)' }}>
+                  <div className="contact-success__icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="16" x2="12" y2="12"/>
+                      <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                  </div>
+                  <h3>Gateway Connection Fallback</h3>
+                  <p style={{ fontSize: '0.9rem', maxWidth: '380px' }}>
+                    Our automated scheduling processor is undergoing temporary network maintenance. 
+                    To lock in your request instantly, click below to open your email client pre-filled with all your details!
+                  </p>
+                  
+                  {activeTab === 'call' && (
+                    <div className="scheduler-summary-badge" style={{ margin: '1rem 0', justifyContent: 'center' }}>
+                      📅 <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong> ({userTimezone})
+                    </div>
+                  )}
+
+                  <a 
+                    href={
+                      activeTab === 'call' 
+                        ? `mailto:hanovadevs@gmail.com?subject=Strategy Call Booking: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DRequested Date: ${selectedDate?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}%0D%0DRequested Time: ${selectedTime}%0D%0DTimezone: ${userTimezone}%0D%0DMessage: ${form.message || 'Discuss digital agency partnership'}`
+                        : `mailto:hanovadevs@gmail.com?subject=New Lead: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DBudget: ${form.budget || 'Not specified'}%0D%0DMessage: ${form.message}`
+                    }
+                    className="btn btn-primary"
+                    style={{ display: 'inline-flex', gap: '0.5rem', width: '100%', justifyContent: 'center', textDecoration: 'none' }}
+                  >
+                    Send Pre-filled Email 🚀
+                  </a>
+
+                  <button className="btn btn-ghost" style={{ marginTop: '0.5rem' }} onClick={() => setSubmissionFailed(false)}>
+                    Try Form Submission Again
+                  </button>
+                </div>
+              ) : submitted ? (
                 activeTab === 'call' ? (
                   <div className="contact-success">
                     <div className="contact-success__icon">
