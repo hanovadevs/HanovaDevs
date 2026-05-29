@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './Contact.css'
@@ -27,6 +27,8 @@ const faqs = [
   },
 ]
 
+const timeSlots = ['09:30 AM', '11:00 AM', '01:30 PM', '03:00 PM', '04:30 PM']
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: '',
@@ -40,30 +42,86 @@ export default function Contact() {
   const [sending, setSending] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
 
+  // Call Scheduler States
+  const [activeTab, setActiveTab] = useState('message') // 'message' or 'call'
+  const [selectedDate, setSelectedDate] = useState(null)
+  const [selectedTime, setSelectedTime] = useState('')
+
+  // Generate next 5 business days
+  const businessDays = useMemo(() => {
+    const days = []
+    let current = new Date()
+    // If after 5 PM, start from tomorrow
+    if (current.getHours() >= 17) {
+      current.setDate(current.getDate() + 1)
+    }
+    while (days.length < 5) {
+      if (current.getDay() !== 0 && current.getDay() !== 6) {
+        days.push(new Date(current))
+      }
+      current.setDate(current.getDate() + 1)
+    }
+    return days
+  }, [])
+
+  // Auto-select first date on load
+  useEffect(() => {
+    if (businessDays.length > 0 && !selectedDate) {
+      setSelectedDate(businessDays[0])
+    }
+  }, [businessDays, selectedDate])
+
+  const userTimezone = useMemo(() => {
+    try {
+      return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+    } catch (e) {
+      return 'UTC'
+    }
+  }, [])
+
   const handleChange = (e) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (activeTab === 'call' && !selectedTime) {
+      alert("Please select a convenient time slot for your call.")
+      return
+    }
+
     setSending(true)
-    
+
     try {
+      const isCall = activeTab === 'call'
+      const payload = isCall ? {
+        name: form.name,
+        email: form.email,
+        phone: form.phone || "Not provided",
+        company: form.company || "Not provided",
+        scheduledDate: selectedDate ? selectedDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : '',
+        scheduledTime: selectedTime,
+        timezone: userTimezone,
+        message: form.message || "Discuss digital agency partnership",
+        _subject: `📅 Strategy Call Booked: ${form.name} on ${selectedTime}`
+      } : {
+        name: form.name,
+        email: form.email,
+        phone: form.phone || "Not provided",
+        company: form.company || "Not provided",
+        budget: form.budget !== 'Select budget range' ? form.budget : "Not provided",
+        message: form.message,
+        _subject: `New Lead: ${form.name} from HanovaDevs Website`
+      }
+
       const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            phone: form.phone || "Not provided",
-            company: form.company || "Not provided",
-            budget: form.budget !== 'Select budget range' ? form.budget : "Not provided",
-            message: form.message,
-            _subject: `New Lead: ${form.name} from HanovaDevs Website`
-        })
+        body: JSON.stringify(payload)
       })
 
       if (response.ok) {
@@ -104,123 +162,329 @@ export default function Contact() {
       <section className="contact-section section" id="contact-form-section">
         <div className="container">
           <div className="contact-layout">
-            {/* Form */}
+                        {/* Form */}
             <div className="contact-form-wrap reveal">
-              <div className="contact-form-header">
-                <h3>Send us a message</h3>
-                <p>Fill in the details and we'll be in touch soon.</p>
-              </div>
-              {submitted ? (
-                <div className="contact-success">
-                  <div className="contact-success__icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                      <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
-                  </div>
-                  <h3>Message Sent!</h3>
-                  <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-                  <button className="btn btn-ghost" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' }) }}>
-                    Send Another Message
+              {/* Tab Switcher */}
+              {!submitted && (
+                <div className="contact-tabs">
+                  <button
+                    type="button"
+                    className={`contact-tab-btn ${activeTab === 'message' ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveTab('message')
+                      setSubmitted(false)
+                    }}
+                  >
+                    ✉️ Send a Message
+                  </button>
+                  <button
+                    type="button"
+                    className={`contact-tab-btn ${activeTab === 'call' ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveTab('call')
+                      setSubmitted(false)
+                    }}
+                  >
+                    📅 Book a Call
                   </button>
                 </div>
+              )}
+
+              {submitted ? (
+                activeTab === 'call' ? (
+                  <div className="contact-success">
+                    <div className="contact-success__icon">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                    </div>
+                    <h3>Call Scheduled!</h3>
+                    <p>Your strategy session has been successfully booked for:</p>
+                    <div className="scheduler-summary-badge" style={{ margin: '1rem 0', justifyContent: 'center' }}>
+                      📅 <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong> ({userTimezone})
+                    </div>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--blue-grey)', maxWidth: '350px' }}>
+                      A confirmation email has been sent. Our team will meet you at the scheduled time via Google Meet.
+                    </p>
+                    <button className="btn btn-ghost" onClick={() => { setSubmitted(false); setSelectedTime(''); setForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' }) }}>
+                      Schedule Another Call
+                    </button>
+                  </div>
+                ) : (
+                  <div className="contact-success">
+                    <div className="contact-success__icon">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                      </svg>
+                    </div>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                    <button className="btn btn-ghost" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' }) }}>
+                      Send Another Message
+                    </button>
+                  </div>
+                )
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} id="contact-form">
-                  <div className="contact-form__row">
-                    <div className="contact-form__field">
-                      <label htmlFor="contact-name">Full Name *</label>
-                      <input
-                        type="text"
-                        id="contact-name"
-                        name="name"
-                        placeholder="John Doe"
-                        value={form.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="contact-form__field">
-                      <label htmlFor="contact-email">Email Address *</label>
-                      <input
-                        type="email"
-                        id="contact-email"
-                        name="email"
-                        placeholder="john@company.com"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
+                  
+                  {activeTab === 'message' ? (
+                    <>
+                      <div className="contact-form-header">
+                        <h3>Send us a message</h3>
+                        <p>Fill in the details and we'll be in touch soon.</p>
+                      </div>
 
-                  <div className="contact-form__row">
-                    <div className="contact-form__field">
-                      <label htmlFor="contact-phone">Phone Number</label>
-                      <input
-                        type="tel"
-                        id="contact-phone"
-                        name="phone"
-                        placeholder="+1 (555) 000-0000"
-                        value={form.phone}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="contact-form__field">
-                      <label htmlFor="contact-company">Company</label>
-                      <input
-                        type="text"
-                        id="contact-company"
-                        name="company"
-                        placeholder="Your Company"
-                        value={form.company}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
+                      <div className="contact-form__row">
+                        <div className="contact-form__field">
+                          <label htmlFor="contact-name">Full Name *</label>
+                          <input
+                            type="text"
+                            id="contact-name"
+                            name="name"
+                            placeholder="John Doe"
+                            value={form.name}
+                            onChange={handleChange}
+                            required
+                          />
+                        </div>
+                        <div className="contact-form__field">
+                          <label htmlFor="contact-email">Email Address *</label>
+                          <input
+                            type="email"
+                            id="contact-email"
+                            name="email"
+                            placeholder="john@company.com"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                          />
+                        </div>
+                      </div>
 
-                  <div className="contact-form__field">
-                    <label htmlFor="contact-budget">Budget Range *</label>
-                    <select
-                      id="contact-budget"
-                      name="budget"
-                      value={form.budget}
-                      onChange={handleChange}
-                      required
-                    >
-                      {budgetOptions.map((opt, i) => (
-                        <option key={i} value={i === 0 ? '' : opt} disabled={i === 0}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                      <div className="contact-form__row">
+                        <div className="contact-form__field">
+                          <label htmlFor="contact-phone">Phone Number</label>
+                          <input
+                            type="tel"
+                            id="contact-phone"
+                            name="phone"
+                            placeholder="+1 (555) 000-0000"
+                            value={form.phone}
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className="contact-form__field">
+                          <label htmlFor="contact-company">Company</label>
+                          <input
+                            type="text"
+                            id="contact-company"
+                            name="company"
+                            placeholder="Your Company"
+                            value={form.company}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
 
-                  <div className="contact-form__field">
-                    <label htmlFor="contact-message">Project Description *</label>
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      placeholder="Tell us about your project, goals, and timeline..."
-                      rows="5"
-                      value={form.message}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+                      <div className="contact-form__field">
+                        <label htmlFor="contact-budget">Budget Range *</label>
+                        <select
+                          id="contact-budget"
+                          name="budget"
+                          value={form.budget}
+                          onChange={handleChange}
+                          required
+                        >
+                          {budgetOptions.map((opt, i) => (
+                            <option key={i} value={i === 0 ? '' : opt} disabled={i === 0}>
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
-                  <button type="submit" className="btn btn-primary contact-form__submit" disabled={sending}>
-                    {sending ? (
-                      <>
-                        <span className="contact-form__spinner" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                      </>
-                    )}
-                  </button>
+                      <div className="contact-form__field">
+                        <label htmlFor="contact-message">Project Description *</label>
+                        <textarea
+                          id="contact-message"
+                          name="message"
+                          placeholder="Tell us about your project, goals, and timeline..."
+                          rows="5"
+                          value={form.message}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="contact-form-header">
+                        <h3>Book a Strategy Call</h3>
+                        <p>Select a date and time to speak with our technical team.</p>
+                      </div>
+
+                      {/* Step 1: Date selection */}
+                      <div className="scheduler-step">
+                        <h4>
+                          <span className="scheduler-step-num">1</span>
+                          Select a Date
+                        </h4>
+                        <div className="scheduler-days">
+                          {businessDays.map((day, idx) => {
+                            const isSelected = selectedDate && selectedDate.toDateString() === day.toDateString()
+                            const weekdayName = day.toLocaleDateString('en-US', { weekday: 'short' })
+                            const dateNum = day.getDate()
+                            const monthName = day.toLocaleDateString('en-US', { month: 'short' })
+
+                            return (
+                              <div
+                                key={idx}
+                                className={`scheduler-day-card ${isSelected ? 'active' : ''}`}
+                                onClick={() => setSelectedDate(day)}
+                              >
+                                <span className="scheduler-day-card__weekday">{weekdayName}</span>
+                                <span className="scheduler-day-card__date">{dateNum}</span>
+                                <span className="scheduler-day-card__month">{monthName}</span>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Step 2: Time slot selection */}
+                      <div className="scheduler-step">
+                        <h4>
+                          <span className="scheduler-step-num">2</span>
+                          Choose Time Slot
+                          <span className="scheduler-timezone">
+                            🌐 {userTimezone} timezone
+                          </span>
+                        </h4>
+                        <div className="scheduler-slots">
+                          {timeSlots.map((slot) => (
+                            <button
+                              key={slot}
+                              type="button"
+                              className={`scheduler-slot-btn ${selectedTime === slot ? 'active' : ''}`}
+                              onClick={() => setSelectedTime(slot)}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Step 3: Contact Details */}
+                      {selectedTime && (
+                        <div className="scheduler-step" style={{ marginTop: '0.5rem' }}>
+                          <h4>
+                            <span className="scheduler-step-num">3</span>
+                            Confirm Your Information
+                          </h4>
+                          
+                          <div className="scheduler-summary-badge">
+                            <span>📅 Booking call for: <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong></span>
+                          </div>
+
+                          <div className="contact-form__row">
+                            <div className="contact-form__field">
+                              <label htmlFor="contact-name">Full Name *</label>
+                              <input
+                                type="text"
+                                id="contact-name"
+                                name="name"
+                                placeholder="John Doe"
+                                value={form.name}
+                                onChange={handleChange}
+                                required
+                              />
+                            </div>
+                            <div className="contact-form__field">
+                              <label htmlFor="contact-email">Email Address *</label>
+                              <input
+                                type="email"
+                                id="contact-email"
+                                name="email"
+                                placeholder="john@company.com"
+                                value={form.email}
+                                onChange={handleChange}
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div className="contact-form__row">
+                            <div className="contact-form__field">
+                              <label htmlFor="contact-phone">Phone Number</label>
+                              <input
+                                type="tel"
+                                id="contact-phone"
+                                name="phone"
+                                placeholder="+1 (555) 000-0000"
+                                value={form.phone}
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="contact-form__field">
+                              <label htmlFor="contact-company">Company</label>
+                              <input
+                                type="text"
+                                id="contact-company"
+                                name="company"
+                                placeholder="Your Company"
+                                value={form.company}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="contact-form__field">
+                            <label htmlFor="contact-message">What would you like to cover? *</label>
+                            <textarea
+                              id="contact-message"
+                              name="message"
+                              placeholder="Briefly describe your goals, app/website features, or marketing questions..."
+                              rows="3"
+                              value={form.message}
+                              onChange={handleChange}
+                              required
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {/* Submit Button */}
+                  {(activeTab === 'message' || selectedTime) && (
+                    <button type="submit" className="btn btn-primary contact-form__submit" disabled={sending}>
+                      {sending ? (
+                        <>
+                          <span className="contact-form__spinner" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          {activeTab === 'call' ? 'Confirm & Book Strategy Session' : 'Send Message'}
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            {activeTab === 'call' ? (
+                              <>
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                              </>
+                            ) : (
+                              <>
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                              </>
+                            )}
+                          </svg>
+                        </>
+                      )}
+                    </button>
+                  )}
                 </form>
               )}
             </div>

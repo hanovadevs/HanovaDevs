@@ -420,3 +420,212 @@
   color: var(--blue-grey);
 }
 
+/* Tab Switching System */
+.contact-tabs {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid var(--light-grey);
+  margin-bottom: var(--space-lg);
+  gap: var(--space-sm);
+}
+
+.contact-tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--blue-grey);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contact-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--royal-blue);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.contact-tab-btn:hover {
+  color: var(--deep-navy);
+}
+
+.contact-tab-btn.active {
+  color: var(--royal-blue);
+}
+
+.contact-tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+/* Call Scheduler Light Theme Components */
+.scheduler-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.scheduler-step h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: -0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scheduler-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(var(--royal-blue-rgb), 0.1);
+  color: var(--royal-blue);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Days Carousel/Grid */
+.scheduler-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .scheduler-days {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.scheduler-day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem var(--space-sm);
+  background: var(--white);
+  border: 2px solid var(--light-grey);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.scheduler-day-card:hover {
+  border-color: var(--royal-blue);
+  background: rgba(var(--royal-blue-rgb), 0.02);
+  transform: translateY(-2px);
+}
+
+.scheduler-day-card.active {
+  border-color: var(--royal-blue);
+  background: rgba(var(--royal-blue-rgb), 0.05);
+  box-shadow: 0 4px 12px rgba(var(--royal-blue-rgb), 0.1);
+}
+
+.scheduler-day-card__weekday {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--blue-grey);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.scheduler-day-card.active .scheduler-day-card__weekday {
+  color: var(--royal-blue);
+}
+
+.scheduler-day-card__date {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+
+.scheduler-day-card__month {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--blue-grey);
+  margin-top: 0.1rem;
+}
+
+/* Time Slots Grid */
+.scheduler-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.5rem;
+}
+
+.scheduler-slot-btn {
+  background: var(--white);
+  border: 1.5px solid var(--light-grey);
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.scheduler-slot-btn:hover {
+  border-color: var(--royal-blue);
+  color: var(--royal-blue);
+  background: rgba(var(--royal-blue-rgb), 0.02);
+}
+
+.scheduler-slot-btn.active {
+  background: var(--royal-blue);
+  border-color: var(--royal-blue);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(var(--royal-blue-rgb), 0.2);
+}
+
+/* Details Summary Badge */
+.scheduler-summary-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(var(--royal-blue-rgb), 0.05);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.15);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--deep-navy);
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+}
+
+.scheduler-summary-badge strong {
+  color: var(--royal-blue);
+}
+
+.scheduler-timezone {
+  font-size: 0.72rem;
+  color: var(--blue-grey);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: -0.25rem;
+}
+
+

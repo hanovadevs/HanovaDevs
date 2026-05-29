@@ -12,11 +12,11 @@ const navLinks = [
     label: 'Insights',
     dropdown: [
       { path: '/journal', label: 'Journal', desc: 'Original articles by our team' },
-      { path: '/research', label: 'Research', desc: 'Curated industry research' },
+      { path: '/research', label: 'Research Hub', desc: 'Curated industry research' },
       { path: '/news', label: 'News', desc: 'Latest technology headlines' },
+      { path: '/stack', label: 'Tech Stack', desc: 'Our interactive arsenal' },
     ]
   },
-  { path: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -53,10 +53,10 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news'].some(p => 
+  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news', '/stack'].some(p =>
     location.pathname === p || location.pathname.startsWith(p + '/')
   )
-  const isInsightsActive = ['/journal', '/research', '/news'].some(p => location.pathname.startsWith(p))
+  const isInsightsActive = ['/journal', '/research', '/news', '/stack'].some(p => location.pathname.startsWith(p))
 
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''}`} id="main-nav">
@@ -78,7 +78,7 @@ export default function Navbar() {
                   aria-expanded={dropdownOpen}
                 >
                   {link.label}
-                  <svg className={`navbar__chevron ${dropdownOpen ? 'navbar__chevron--open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  <svg className={`navbar__chevron ${dropdownOpen ? 'navbar__chevron--open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9" /></svg>
                 </button>
                 <div className={`navbar__dropdown ${dropdownOpen ? 'navbar__dropdown--open' : ''}`}>
                   {link.dropdown.map(item => (

@@ -47,6 +47,7 @@ export default function Footer() {
     { path: '/journal', label: 'Journal' },
     { path: '/research', label: 'Research Hub' },
     { path: '/news', label: 'Tech News' },
+    { path: '/stack', label: 'Tech Stack' },
   ]
 
   const productLinks = [
