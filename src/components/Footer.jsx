@@ -46,6 +46,7 @@ export default function Footer() {
   const insightLinks = [
     { path: '/journal', label: 'Journal' },
     { path: '/research', label: 'Research Hub' },
+    { path: '/news', label: 'Tech News' },
   ]
 
   const productLinks = [

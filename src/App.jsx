@@ -17,6 +17,7 @@ import EunoiaDetail from './pages/EunoiaDetail'
 import Journal from './pages/Journal'
 import JournalPost from './pages/JournalPost'
 import Research from './pages/Research'
+import News from './pages/News'
 
 function App() {
   const location = useLocation()
@@ -64,6 +65,7 @@ function App() {
           <Route path="/journal" element={<Journal />} />
           <Route path="/journal/:slug" element={<JournalPost />} />
           <Route path="/research" element={<Research />} />
+          <Route path="/news" element={<News />} />
           {/* Blog → Journal redirects for SEO */}
           <Route path="/blog" element={<Navigate to="/journal" replace />} />
           <Route path="/blog/:slug" element={<BlogRedirect />} />

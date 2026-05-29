@@ -13,6 +13,7 @@ const navLinks = [
     dropdown: [
       { path: '/journal', label: 'Journal', desc: 'Original articles by our team' },
       { path: '/research', label: 'Research', desc: 'Curated industry research' },
+      { path: '/news', label: 'News', desc: 'Latest technology headlines' },
     ]
   },
   { path: '/contact', label: 'Contact' },
@@ -52,10 +53,10 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal'].some(p => 
+  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news'].some(p => 
     location.pathname === p || location.pathname.startsWith(p + '/')
   )
-  const isInsightsActive = ['/journal', '/research'].some(p => location.pathname.startsWith(p))
+  const isInsightsActive = ['/journal', '/research', '/news'].some(p => location.pathname.startsWith(p))
 
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''}`} id="main-nav">
