@@ -104,7 +104,8 @@ export default function Contact() {
         scheduledTime: selectedTime,
         timezone: userTimezone,
         message: form.message || "Discuss digital agency partnership",
-        _subject: `📅 Strategy Call Booked: ${form.name} on ${selectedTime}`
+        _subject: `📅 Strategy Call Booked: ${form.name} on ${selectedTime}`,
+        _captcha: "false"
       } : {
         name: form.name,
         email: form.email,
@@ -112,7 +113,8 @@ export default function Contact() {
         company: form.company || "Not provided",
         budget: form.budget !== 'Select budget range' ? form.budget : "Not provided",
         message: form.message,
-        _subject: `New Lead: ${form.name} from HanovaDevs Website`
+        _subject: `New Lead: ${form.name} from HanovaDevs Website`,
+        _captcha: "false"
       }
 
       const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
@@ -127,11 +129,16 @@ export default function Contact() {
       if (response.ok) {
         setSubmitted(true)
       } else {
-        alert("Something went wrong with the submission. Please try again later.")
+        try {
+          const resData = await response.json()
+          alert(`Submission Error: ${resData.message || "FormSubmit has blocked this URL. Please verify that this domain is activated."}`)
+        } catch (e) {
+          alert("Submission failed. If this is a new deployment, please check your email for the FormSubmit activation link.")
+        }
       }
     } catch (error) {
       console.error(error)
-      alert("Something went wrong. Please try again later.")
+      alert("Network error. Please try again later.")
     } finally {
       setSending(false)
     }
