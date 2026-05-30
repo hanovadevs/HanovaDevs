@@ -67,7 +67,36 @@ const screenshots = ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9']
 const eunoiaReviews = [
   { id: 1, author: "Marcus B.", role: "Creative Director", avatar: "M", rating: 5, date: "3 days ago", text: "Eunoia is exactly what I needed to cut out the noise. The lo-fi soundscapes combined with the Pomodoro timer get me into a flow state instantly. Plus, knowing my journal is completely local gives me peace of mind." },
   { id: 2, author: "Jenny L.", role: "PhD Student", avatar: "J", rating: 5, date: "5 days ago", text: "The offline voice transcripts are flawless. I just ramble my thoughts, and the AI categorizes them into my tasks and notes. It feels like having an actual assistant sitting next to me without the privacy concerns of the cloud." },
-  { id: 3, author: "Tom W.", role: "Freelancer", avatar: "T", rating: 5, date: "1 week ago", text: "I've replaced Notion, Obsidian, and Todoist with this single app. The aesthetic is beautiful, it never lags, and the local file vault keeps my client contracts organized perfectly." }
+  { id: 3, author: "Tom W.", role: "Freelancer", avatar: "T", rating: 5, date: "1 week ago", text: "I've replaced Notion, Obsidian, and Todoist with this single app. The aesthetic is beautiful, it never lags, and the local file vault keeps my client contracts organized perfectly." },
+  { id: 4, author: "Sarah K.", role: "Software Engineer", avatar: "S", rating: 5, date: "1 week ago", text: "The cognitive smart alarms are a lifesaver. Solving a math challenge is the only way I can actually wake up on time instead of spamming snooze. Highly recommend for developers with erratic sleep cycles." },
+  { id: 5, author: "David M.", role: "Author", avatar: "D", rating: 5, date: "2 weeks ago", text: "The distraction-free Markdown editor is beautiful. Being able to export all notes cleanly as plain Markdown files means I'm never locked into a proprietary system. It is my main drafts writing vault now." },
+  { id: 6, author: "Sophia H.", role: "Digital Marketer", avatar: "S", rating: 4, date: "2 weeks ago", text: "Super clean UI and the habits bar is incredibly motivating. My only request is a mobile companion app, but for on-device desktop work, it beats everything else out there." },
+  { id: 7, author: "Liam T.", role: "UX Designer", avatar: "L", rating: 5, date: "3 weeks ago", text: "The typography controls in the private diary are gorgeous. It feels incredibly premium and quiet. Every micro-interaction is perfectly tuned for a calming digital experience." },
+  { id: 8, author: "Emma R.", role: "Data Scientist", avatar: "E", rating: 5, date: "3 weeks ago", text: "Having an offline-first tool backed by SQLite is a game-changer. I don't need to worry about server down-times or corporate privacy policies changing. My data is truly mine." },
+  { id: 9, author: "Noah P.", role: "System Architect", avatar: "N", rating: 5, date: "1 month ago", text: "Offline AI voice transcribing on a client-side Electron app is an engineering marvel. It is snappy and respects system resources. Excellent execution." },
+  { id: 10, author: "Olivia D.", role: "Product PM", avatar: "O", rating: 4, date: "1 month ago", text: "The focus dashboard cleanly aggregates my day. Highly functional and beautiful. Sometimes the math challenge alarms are a bit tough in the mornings, but they definitely work!" },
+  { id: 11, author: "James C.", role: "UI Engineer", avatar: "J", rating: 5, date: "1 month ago", text: "I'm blown away by the lo-fi soundscapes overlay. It mixes beautifully with system audio, and the custom lo-fi tracks are actually good. Excellent design." },
+  { id: 12, author: "Isabella G.", role: "Content Writer", avatar: "I", rating: 5, date: "1 month ago", text: "My PIN-protected reflections diary feels like a real safe space. The font switching options are gorgeous and help set a highly mindful mood for writing." },
+  { id: 13, author: "Mia F.", role: "Language Teacher", avatar: "M", rating: 5, date: "2 months ago", text: "Highly visual task workflows. I love using subtasks to break down my weekly lesson planning. It keeps me organized without the complexity of Notion." },
+  { id: 14, author: "Lucas S.", role: "Financial Analyst", avatar: "L", rating: 5, date: "2 months ago", text: "I work with highly sensitive financial structures, and Eunoia's zero-cloud dependency is exactly what I needed. It's safe, local, and fast." },
+  { id: 15, author: "Benjamin E.", role: "Startup Founder", avatar: "B", rating: 5, date: "2 months ago", text: "A rare piece of software built with absolute intention. No clutter, no popups, no subscriptions. Just pure focus and quiet productivity. Bravo HanovaDevs!" },
+  { id: 16, author: "Charlotte A.", role: "Graduate Researcher", avatar: "C", rating: 5, date: "2 months ago", text: "The markdown search indexing is blazing fast even with my note folder containing over 500 documents. Perfect Obsidian alternative for focused drafting." },
+  { id: 17, author: "Mason V.", role: "Music Producer", avatar: "M", rating: 5, date: "3 months ago", text: "The ambient forest and brown noise layers are so high quality. Most apps have cheap, looping audio, but these soundscapes are organic and immersive." },
+  { id: 18, author: "Amelie J.", role: "Graphic Designer", avatar: "A", rating: 4, date: "3 months ago", text: "The slate dark mode has perfect contrast ratios that minimize eye strain during long design sprints. The glowing purple accent lines are stunning." },
+  { id: 19, author: "Logan K.", role: "DevOps Engineer", avatar: "L", rating: 5, date: "3 months ago", text: "Lightweight desktop packaging. Unlike standard Electron apps that hog memory, Eunoia remains incredibly efficient on CPU and RAM." },
+  { id: 20, author: "Harper N.", role: "Creative Writer", avatar: "H", rating: 5, date: "4 months ago", text: "The daily reflections and mood tracking logs give me highly interesting insights into my creative blocks. A beautifully reflective tool." },
+  { id: 21, author: "Ethan B.", role: "AI Consultant", avatar: "E", rating: 5, date: "4 months ago", text: "Executing Transformers.js locally on the CPU without internet latency is a masterclass in privacy. HanovaDevs proved that premium AI doesn't need to compromise privacy." },
+  { id: 22, author: "Evelyn L.", role: "Remote Architect", avatar: "E", rating: 4, date: "4 months ago", text: "Aesthetic task tags let me organize structural blueprints cleanly. Finding historical logs is a breeze. It fits my daily flow nicely." },
+  { id: 23, author: "Alexander P.", role: "Cybersecurity Expert", avatar: "A", rating: 5, date: "5 months ago", text: "No tracking scripts, no external calls, no analytics. I monitored Eunoia's network usage and it is truly quiet. Perfect tool for the security-conscious." },
+  { id: 24, author: "Abigail W.", role: "Product Marketing", avatar: "A", rating: 5, date: "5 months ago", text: "The daily dashboard aggregates everything so cleanly. No distracting social notifications, just the tasks that actually matter." },
+  { id: 25, author: "Daniel S.", role: "Game Developer", avatar: "D", rating: 5, date: "5 months ago", text: "The math challenge alarms are simple but incredibly effective. It's the only thing that saves me from oversleeping after late night coding sessions." },
+  { id: 26, author: "Elizabeth M.", role: "Copywriter", avatar: "E", rating: 5, date: "6 months ago", text: "Quiet writing spaces are hard to come by on modern OS interfaces. Eunoia creates a beautiful sanctuary that lets me focus on the raw text." },
+  { id: 27, author: "Michael R.", role: "Operations Manager", avatar: "M", rating: 5, date: "6 months ago", text: "It consolidated three separate monthly software subscriptions into one offline dashboard. Value is incredible and seamless performance." },
+  { id: 28, author: "Avery T.", role: "Social Media Lead", avatar: "A", rating: 5, date: "6 months ago", text: "The weekly visual habits grid makes daily task completion feel satisfyingly gamified. Love the subtle hover glows." },
+  { id: 29, author: "William K.", role: "Full-Stack Dev", avatar: "W", rating: 5, date: "7 months ago", text: "The local file vault works directly with standard files on my desktop. I can open them in VS Code or Eunoia interchangeably. Zero vendor lock-in." },
+  { id: 30, author: "Victoria J.", role: "Student Practitioner", avatar: "V", rating: 4, date: "7 months ago", text: "The Pomodoro cycle statistics help me audit my focus intervals during studying. It is beautiful, though sometimes I wish it synced with my phone." },
+  { id: 31, author: "Joseph B.", role: "Executive Coach", avatar: "J", rating: 5, date: "8 months ago", text: "I recommend Eunoia to my clients who suffer from screen fatigue. Its calm design and structural simplicity help restore focus and sanity." },
+  { id: 32, author: "Grace H.", role: "Fine Artist", avatar: "G", rating: 5, date: "8 months ago", text: "An inspiring digital sanctuary. It represents a highly thoughtful and artistic approach to modern productivity software." }
 ]
 
 // --- Stat Counter Component ---
@@ -172,6 +201,27 @@ export default function EunoiaDetail() {
   const [activeCategory, setActiveCategory] = useState(featureCategories[0].id)
   const [expandedFeature, setExpandedFeature] = useState(0)
   const [expandedFaq, setExpandedFaq] = useState(null)
+  
+  // Reviews Pagination & Filtering States
+  const [selectedRatingFilter, setSelectedRatingFilter] = useState('all')
+  const [reviewsCurrentPage, setReviewsCurrentPage] = useState(1)
+
+  const handleFilterChange = (filter) => {
+    setSelectedRatingFilter(filter)
+    setReviewsCurrentPage(1)
+  }
+
+  const filteredReviews = eunoiaReviews.filter(review => {
+    if (selectedRatingFilter === 'all') return true
+    return review.rating === parseInt(selectedRatingFilter)
+  })
+
+  const reviewsPerPage = 4
+  const totalReviewPages = Math.ceil(filteredReviews.length / reviewsPerPage)
+  const paginatedReviews = filteredReviews.slice(
+    (reviewsCurrentPage - 1) * reviewsPerPage,
+    reviewsCurrentPage * reviewsPerPage
+  )
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -381,25 +431,134 @@ export default function EunoiaDetail() {
             <h2 style={{color: 'var(--white)'}}>What our users say</h2>
             <p style={{color: 'rgba(255,255,255,0.6)'}}>Real stories from people who found their focus.</p>
           </div>
-          <div className="ed-reviews__grid">
-            {eunoiaReviews.map((review, i) => (
-              <div key={review.id} className={`ed-review-card reveal reveal-delay-${i + 1}`}>
-                <div className="ed-review-card__header">
-                  <div className="ed-review-card__avatar">{review.avatar}</div>
-                  <div className="ed-review-card__meta">
-                    <h4>{review.author}</h4>
-                    <span>{review.role}</span>
-                  </div>
-                  <div className="ed-review-card__rating">
-                    {[...Array(5)].map((_, idx) => (
-                      <svg key={idx} width="14" height="14" viewBox="0 0 24 24" fill={idx < review.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+          <div className="ed-reviews__layout reveal">
+            {/* Left Column: Sleek Ratings Dashboard */}
+            <div className="ed-reviews__dashboard">
+              <div className="ed-reviews__score-card">
+                <div className="ed-reviews__score-main">
+                  <h3>4.9</h3>
+                  <div className="ed-reviews__score-stars">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" style={{ color: '#c4b5fd' }}>
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
                     ))}
                   </div>
+                  <span className="ed-reviews__score-count">32 Ratings</span>
                 </div>
-                <p className="ed-review-card__text">"{review.text}"</p>
-                <div className="ed-review-card__date">{review.date}</div>
+
+                <div className="ed-reviews__score-breakdown">
+                  {/* 5 Stars */}
+                  <div 
+                    className={`ed-reviews__score-row ${selectedRatingFilter === '5' ? 'active' : ''}`}
+                    onClick={() => handleFilterChange(selectedRatingFilter === '5' ? 'all' : '5')}
+                  >
+                    <span>5 Stars</span>
+                    <div className="ed-reviews__score-bar">
+                      <div className="ed-reviews__score-fill" style={{ width: '87.5%' }}></div>
+                    </div>
+                    <span>88%</span>
+                  </div>
+
+                  {/* 4 Stars */}
+                  <div 
+                    className={`ed-reviews__score-row ${selectedRatingFilter === '4' ? 'active' : ''}`}
+                    onClick={() => handleFilterChange(selectedRatingFilter === '4' ? 'all' : '4')}
+                  >
+                    <span>4 Stars</span>
+                    <div className="ed-reviews__score-bar">
+                      <div className="ed-reviews__score-fill" style={{ width: '12.5%' }}></div>
+                    </div>
+                    <span>12%</span>
+                  </div>
+
+                  {/* 3, 2, 1 Stars (0%) */}
+                  {['3', '2', '1'].map((stars) => (
+                    <div key={stars} className="ed-reviews__score-row disabled">
+                      <span>{stars} Stars</span>
+                      <div className="ed-reviews__score-bar">
+                        <div className="ed-reviews__score-fill" style={{ width: '0%' }}></div>
+                      </div>
+                      <span>0%</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="ed-reviews__filter-info">
+                  {selectedRatingFilter !== 'all' ? (
+                    <button onClick={() => handleFilterChange('all')} className="btn-clear-filter">
+                      Showing {selectedRatingFilter} Stars &middot; Clear Filter
+                    </button>
+                  ) : (
+                    <span>Click any star tier above to filter reviews</span>
+                  )}
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right Column: Reviews Feed */}
+            <div className="ed-reviews__feed">
+              <div className="ed-reviews__feed-grid">
+                {paginatedReviews.map((review) => (
+                  <div key={review.id} className="ed-review-card">
+                    <div className="ed-review-card__header">
+                      <div className="ed-review-card__avatar">{review.avatar}</div>
+                      <div className="ed-review-card__meta">
+                        <h4>{review.author}</h4>
+                        <span>{review.role}</span>
+                      </div>
+                      <div className="ed-review-card__rating">
+                        {[...Array(5)].map((_, idx) => (
+                          <svg key={idx} width="14" height="14" viewBox="0 0 24 24" fill={idx < review.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="ed-review-card__text">"{review.text}"</p>
+                    <div className="ed-review-card__date">{review.date}</div>
+                  </div>
+                ))}
+
+                {filteredReviews.length === 0 && (
+                  <div className="ed-reviews__empty">
+                    <p>No reviews found matching this filter.</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Reviews Pagination Controls */}
+              {totalReviewPages > 1 && (
+                <div className="ed-reviews__pagination">
+                  <button 
+                    onClick={() => setReviewsCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={reviewsCurrentPage === 1}
+                    className="ed-reviews__pager-btn"
+                  >
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                    Prev
+                  </button>
+
+                  <div className="ed-reviews__pager-indicator">
+                    {reviewsCurrentPage} / {totalReviewPages}
+                  </div>
+
+                  <button 
+                    onClick={() => setReviewsCurrentPage(prev => Math.min(prev + 1, totalReviewPages))}
+                    disabled={reviewsCurrentPage === totalReviewPages}
+                    className="ed-reviews__pager-btn"
+                  >
+                    Next
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
