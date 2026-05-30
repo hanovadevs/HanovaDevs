@@ -7,6 +7,63 @@ import './News.css'
    ═════════════════════════════════════ */
 const newsArticles = [
   {
+    id: 'openai-gpt5-orion',
+    title: 'OpenAI Launches GPT-5: Multi-Agent Collaboration and Sandbox Self-Debugging',
+    excerpt: 'OpenAI\'s latest foundation model introduces autonomous cognitive agents, infinite cross-session memory layers, and fully persistent execution environments.',
+    description: `OpenAI has officially launched GPT-5 (internally code-named "Orion"), marking a watershed moment in the field of general-purpose AI. The new model departs from traditional static conversational interfaces, shifting to a multi-agent orchestration framework where independent cognitive units collaborate in parallel to solve complex user tasks. GPT-5 also implements fully persistent cross-session memory, allowing the model to recall, adapt, and build upon past developer discussions indefinitely.
+
+In testing, GPT-5 achieved state-of-the-art results on several challenging reasoning and coding benchmarks, including SWE-bench Verified (84.6%) and the new Olympiad Physics Reasoning benchmark (89.1%). The model introduces a self-debugging capability that allows it to spin up sandboxed environments to verify, compile, and debug generated source code before presenting it to the user.
+
+Sam Altman stated, "GPT-5 is not just a language model—it is a cognitive team. You describe the goal, and it will coordinate, build, and deploy the entire solution." The model is now available to Enterprise and Plus developers, with an API tier supporting up to 5 million input tokens per call.`,
+    category: 'AI & Robotics',
+    date: 'May 29, 2026',
+    source: 'Wired',
+    sourceUrl: 'https://wired.com',
+    region: 'USA',
+    regionFlag: '🇺🇸',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
+    tags: ['OpenAI', 'GPT-5', 'Agents', 'Deep Learning'],
+    variant: 'featured'
+  },
+  {
+    id: 'intel-silicon-qubits',
+    title: 'Intel Achieves 99.9% Gate Fidelity on 128-Qubit Silicon Spin Processor',
+    excerpt: 'Intel\'s "Tunnel Falls II" processor leverages standard commercial extreme ultraviolet (EUV) lithography to manufacture highly stable qubits on standard 300mm silicon wafers.',
+    description: `Intel has announced a major breakthrough in quantum manufacturing by achieving 99.9% single-qubit and two-qubit gate fidelity on its 128-qubit "Tunnel Falls II" silicon spin qubit processor. This achievement is a critical threshold required for fault-tolerant quantum error correction, bringing commercial-scale quantum systems closer to practical utility.
+
+Crucially, Intel manufactured the Tunnel Falls II processor using standard extreme ultraviolet (EUV) lithography on its commercial 300mm wafer fabrication lines in Oregon. By leveraging existing semiconductor manufacturing infrastructures instead of custom boutique processes, Intel claims it can scale up qubit counts with dramatically higher yield and lower thermal variation than superconducting or trapped-ion competitors.
+
+Intel plans to ship beta hardware kits to academic and corporate partners by Q4 2026, with cloud integrations slated for early 2027. The company's quantum roadmap projects scaling to a 10,000 physical qubit chip by 2028.`,
+    category: 'Quantum Computing',
+    date: 'May 29, 2026',
+    source: 'IEEE Spectrum',
+    sourceUrl: 'https://spectrum.ieee.org',
+    region: 'USA',
+    regionFlag: '🇺🇸',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+    tags: ['Intel', 'Quantum Computing', 'Silicon Qubits', 'EUV'],
+    variant: 'standard'
+  },
+  {
+    id: 'nasa-artemis-iv-gateway',
+    title: 'NASA Artemis IV Lunar Gateway module enters final assembly in Italy',
+    excerpt: 'The ESA-designed Habitation and Logistics Outpost completed critical static load tests, preparing for a scheduled launch to lunar orbit in late 2026.',
+    description: `NASA and the European Space Agency (ESA) have announced that the Habitation and Logistics Outpost (HALO), the foundational crew quarter module for the Lunar Gateway station, has officially entered final assembly. The module successfully completed structural static load and hermetic seal verification tests at Thales Alenia Space's high-tech facility in Turin, Italy.
+
+The HALO module will act as the command and habitation center for the Gateway station, which will hover in a Near-Rectilinear Halo Orbit (NRHO) around the Moon. HALO will provide living quarters, life support systems, power distribution networks, and communications routing for visiting astronauts as they prepare to descent to the lunar south pole.
+
+The module is scheduled to be shipped to the Kennedy Space Center in Florida by July 2026, where it will be integrated with the Power and Propulsion Element (PPE) before launching on a SpaceX Falcon Heavy rocket.`,
+    category: 'Space Tech',
+    date: 'May 29, 2026',
+    source: 'NASA Spaceflight',
+    sourceUrl: 'https://nasa.gov',
+    region: 'Europe',
+    regionFlag: '🇪🇺',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+    tags: ['NASA', 'Artemis', 'Lunar Gateway', 'ESA'],
+    variant: 'compact'
+  },
+  {
     id: 'nvidia-blackwell-ultra',
     title: 'NVIDIA Unveils Blackwell Ultra B300: 1.5 Trillion Transistors and 288GB HBM4',
     excerpt: 'NVIDIA\'s next-gen GPU pushes AI training speeds 4x beyond the H100, with a unified memory fabric designed for trillion-parameter models.',

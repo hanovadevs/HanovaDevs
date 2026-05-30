@@ -161,11 +161,80 @@ function AnimatedCounter({ value, suffix }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
+const omnaiFaqs = [
+  {
+    q: "What is Omnai Browser?",
+    a: "Omnai is a next-generation, AI-native desktop browser developed by HanovaDevs. Unlike traditional browsers that bolt chatbots onto decades-old architectures, Omnai integrates artificial intelligence as a core infrastructural layer. It features advanced AI Task Orchestration pipelines, semantic search bookmarks, cross-tab persistent memory, and integrated developer tooling."
+  },
+  {
+    q: "How does the AI Orchestrator Pipeline work in Omnai?",
+    a: "Omnai includes a visual Pipeline Builder where users can describe a complex task in plain language (e.g., 'Summarize these three tabs, convert the summaries into an HTML table, and prepare a research digest'). Omnai then chains multiple AI models and web tools together, executes the steps in parallel, handles API rate-limits, and automates the entire sequence seamlessly."
+  },
+  {
+    q: "What is the difference between Omnai's persistent cross-tab memory and standard AI sidebars?",
+    a: "Traditional AI browser sidebars exist in isolation and treat each web page independently. Omnai's AI Memory layer acts as a shared context engine. It continuously tracks your research topic across dozens of open tabs, aggregates information, and lets you ask questions like 'Synthesize the arguments across all my open competitor tabs.' It remembers context from previous sessions, eliminating repetitive copy-pasting."
+  },
+  {
+    q: "Does Omnai gather my browsing data to train AI models?",
+    a: "Absolutely not. Omnai operates on a strict data-sovereignty model. Your browsing history, semantic bookmarks, and session transcripts are stored in an encrypted local database (SQLite) using Electron contextBridge isolation. We collect zero analytics or telemetry on your browsing habits, and local models are utilized for on-device categorization wherever possible."
+  },
+  {
+    q: "Is Omnai built on top of Chromium? Can I install my Chrome extensions?",
+    a: "Yes. Under the hood, Omnai is powered by a custom Chromium engine combined with an Electron framework using secure BrowserView sub-frames. This ensures complete compatibility with modern web standards, extremely fast page rendering, and future compatibility with standard WebExtension APIs."
+  },
+  {
+    q: "How can I get access to Omnai Browser?",
+    a: "Omnai is currently in active development and undergoing private beta testing with our developer community. You can apply to join our priority waitlist by visiting the Contact Page, choosing 'Book a Strategy Session' or 'Send a Message,' and selecting the Product Waitlist option. We are letting in new testers in weekly batches."
+  }
+]
+
+const omnaiSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://hanovadevs.com/products/omnai/#software",
+    "name": "Omnai Browser",
+    "operatingSystem": "Windows, macOS, Linux",
+    "applicationCategory": "BrowserApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://hanovadevs.com/#organization"
+    },
+    "description": "Omnai is a next-generation AI-powered browser engineered by HanovaDevs. It incorporates AI Task Orchestration, cross-tab AI persistent memory, native cookie/tracker blocking, and built-in developer tools.",
+    "featureList": [
+      "AI Task Orchestration pipeline runner that chains multiple models automatically.",
+      "Persistent cross-tab AI context memory for deep collaborative research.",
+      "Built-in privacy intelligence with real-time website scoring.",
+      "Developer tools AI assistant to explain and debug errors instantly.",
+      "Chromium core engine with isolated contextBridge Electron security."
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://hanovadevs.com/products/omnai/#faq",
+    "mainEntity": omnaiFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  }
+]
+
 /* ─── COMPONENT ─── */
 export default function OmnaiDetail() {
   const [activeScreenshot, setActiveScreenshot] = useState(0)
   const [activeCategory, setActiveCategory] = useState('orchestration')
   const [expandedFeature, setExpandedFeature] = useState(null)
+  const [expandedFaq, setExpandedFaq] = useState(null)
   const heroRef = useRef(null)
 
   // Parallax tilt on hero image
@@ -202,6 +271,7 @@ export default function OmnaiDetail() {
         title="Omnai Browser — AI-Native Browser"
         description="Omnai is a next-generation AI-powered browser. AI Task Orchestration, Persistent Memory, Privacy Intelligence, and Developer Tools — built from the ground up."
         url="/products/omnai"
+        schemaMarkup={omnaiSchema}
       />
 
       {/* ===== HERO ===== */}
@@ -500,6 +570,40 @@ export default function OmnaiDetail() {
                 </div>
                 <p className="od-review-card__text">"{review.text}"</p>
                 <div className="od-review-card__date">{review.date}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FAQ SECTION ===== */}
+      <section className="od-faq section" id="faq">
+        <div className="container">
+          <div className="section-header reveal">
+            <span className="section-label">FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about Omnai Browser's infrastructure, security, waitlist, and AI capabilities.</p>
+          </div>
+
+          <div className="od-faq__grid reveal">
+            {omnaiFaqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className={`od-faq__item ${expandedFaq === idx ? 'od-faq__item--expanded' : ''}`}
+                onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+              >
+                <div className="od-faq__item-header">
+                  <h4>{faq.q}</h4>
+                  <div className="od-faq__item-toggle">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"/>
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                  </div>
+                </div>
+                <div className="od-faq__item-body">
+                  <p>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>

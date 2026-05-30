@@ -99,10 +99,79 @@ function AnimatedCounter({ value, suffix = '' }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
+const eunoiaFaqs = [
+  {
+    q: "What is Eunoia?",
+    a: "Eunoia is an AI-powered local-first desktop productivity companion developed by HanovaDevs. It is designed to combine daily task planning, a markdown-based rich note vault, a secure PIN-protected private diary, a Pomodoro focus engine with offline ambient soundscapes, and an on-device conversational AI assistant."
+  },
+  {
+    q: "How does Eunoia ensure my privacy and data security?",
+    a: "Unlike cloud-first tools that store your journals and notes on remote servers, Eunoia prioritizes local storage. All data is written directly to your local storage using SQLite and custom JSON structures. It does not sync to the cloud unless you explicitly configure a backup, meaning your sensitive thoughts, plans, and PIN-protected private diaries remain fully under your control."
+  },
+  {
+    q: "Does Eunoia's AI assistant send my data to external servers?",
+    a: "No. Eunoia leverages localized execution using client-side AI models. Voice transcription is handled completely offline using optimized on-device models via Transformers.js. Conversational actions and planning automation run locally, ensuring that your voice recordings and text prompts never leak to external servers."
+  },
+  {
+    q: "What platforms is Eunoia available on, and what is its pricing?",
+    a: "Eunoia is built using Electron and is fully compatible with Windows, macOS, and Linux platforms. The core application, including all local-first database tools, markdown notes, journal tracking, custom ambient soundscapes, and advanced alarm challenges, is completely free to use."
+  },
+  {
+    q: "What makes Eunoia's smart alarm engine unique?",
+    a: "Eunoia includes a cognitive alarm system built specifically to eliminate oversleeping and mindless snoozing. To dismiss an alarm, the app prompts you with gamified challenges—such as solving complex mental math equations or typing random text strings—ensuring your brain is active and engaged."
+  },
+  {
+    q: "Can I export my notes and database from Eunoia?",
+    a: "Yes! Your notes and reflections are not trapped in a proprietary container. Eunoia allows you to export your entire rich notes database as structured Markdown files and your planner logs as clean JSON datasets. This ensures your knowledge base remains readable on any other platform now and in the future."
+  }
+]
+
+const eunoiaSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://hanovadevs.com/products/eunoia/#software",
+    "name": "Eunoia App",
+    "operatingSystem": "Windows, macOS, Linux",
+    "applicationCategory": "ProductivityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://hanovadevs.com/#organization"
+    },
+    "description": "Eunoia is a calm, local-first desktop productivity companion developed by HanovaDevs. It integrates daily task planning, a rich Markdown-based notes database, a PIN-protected personal diary, lo-fi and nature soundscapes, and client-side AI processing.",
+    "featureList": [
+      "Local-first SQLite and JSON database storage ensuring total data privacy.",
+      "Built-in offline conversational AI assistant utilizing on-device Transformers.js models.",
+      "Secure PIN-protected private daily diary and mental health mood-tracking utility.",
+      "Pomodoro engine with curated lo-fi, forest, rain, and brown noise soundscapes.",
+      "Cognitive smart alarms with customizable mathematical or text challenges."
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://hanovadevs.com/products/eunoia/#faq",
+    "mainEntity": eunoiaFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  }
+]
+
 export default function EunoiaDetail() {
   const [activeScreenshot, setActiveScreenshot] = useState(0)
   const [activeCategory, setActiveCategory] = useState(featureCategories[0].id)
   const [expandedFeature, setExpandedFeature] = useState(0)
+  const [expandedFaq, setExpandedFaq] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -123,6 +192,7 @@ export default function EunoiaDetail() {
         title="Eunoia — AI Productivity Companion"
         description="Eunoia is a local-first desktop productivity companion. Planning, notes, journaling, focus sessions, and AI built for your everyday life."
         url="/products/eunoia"
+        schemaMarkup={eunoiaSchema}
       />
 
       {/* ===== HERO ===== */}
@@ -328,6 +398,39 @@ export default function EunoiaDetail() {
                 </div>
                 <p className="ed-review-card__text">"{review.text}"</p>
                 <div className="ed-review-card__date">{review.date}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* ===== FAQ SECTION ===== */}
+      <section className="ed-faq section bg-light" id="faq">
+        <div className="container">
+          <div className="section-header reveal">
+            <span className="section-label">FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about Eunoia's design, security, capabilities, and offline intelligence.</p>
+          </div>
+
+          <div className="ed-faq__grid reveal">
+            {eunoiaFaqs.map((faq, idx) => (
+              <div 
+                key={idx} 
+                className={`ed-faq__item ${expandedFaq === idx ? 'ed-faq__item--expanded' : ''}`}
+                onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+              >
+                <div className="ed-faq__item-header">
+                  <h4>{faq.q}</h4>
+                  <div className="ed-faq__item-toggle">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </div>
+                </div>
+                <div className="ed-faq__item-body">
+                  <p>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>

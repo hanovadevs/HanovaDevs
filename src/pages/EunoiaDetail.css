@@ -467,6 +467,92 @@
 .ed-cta__back:hover { color: #f472b6; }
 
 /* ════════════════════════════
+   FAQ ACCORDION
+   ════════════════════════════ */
+.ed-faq {
+  padding: var(--space-3xl) 0;
+}
+.ed-faq__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.ed-faq__item {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+.ed-faq__item:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.04);
+}
+.ed-faq__item--expanded {
+  border-color: #a78bfa;
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.08);
+}
+.ed-faq__item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  user-select: none;
+}
+.ed-faq__item-header h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  margin: 0;
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+.ed-faq__item--expanded .ed-faq__item-header h4 {
+  color: #8b5cf6;
+}
+.ed-faq__item-toggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--off-white);
+  border-radius: 50%;
+  color: #8b5cf6;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  margin-left: var(--space-md);
+}
+.ed-faq__item-toggle svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ed-faq__item--expanded .ed-faq__item-toggle {
+  transform: rotate(180deg);
+  background: #8b5cf6;
+  color: var(--white);
+}
+.ed-faq__item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 var(--space-lg);
+}
+.ed-faq__item--expanded .ed-faq__item-body {
+  max-height: 250px;
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+.ed-faq__item-body p {
+  font-size: 0.88rem;
+  color: var(--blue-grey);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ════════════════════════════
    RESPONSIVE
    ════════════════════════════ */
 @media (max-width: 1024px) {
