@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-
+import { journalPosts } from './Journal'
+import { researchArticles } from './Research'
+import './Home.css'
 
 /* ─── DATA ─── */
 const stats = [
