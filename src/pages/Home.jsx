@@ -1,35 +1,33 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import { journalPosts } from './Journal'
-import { researchArticles } from './Research'
-import './Home.css'
+
 
 /* ─── DATA ─── */
 const stats = [
-  { 
-    number: '40+', 
+  {
+    number: '40+',
     label: 'Projects Delivered',
     desc: 'Custom solutions deployed globally.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
   },
-  { 
-    number: '98%', 
+  {
+    number: '98%',
     label: 'Client Satisfaction',
     desc: 'Long-term partnerships built on trust.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg>
   },
-  { 
-    number: '3+', 
+  {
+    number: '3+',
     label: 'Products Launched',
     desc: 'In-house innovations scaling fast.',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
   },
-  { 
-    number: '∞', 
+  {
+    number: '∞',
     label: 'Global Reach',
     desc: 'Impacting businesses worldwide.',
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
   },
 ]
 
@@ -233,7 +231,7 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      <SEO 
+      <SEO
         title="Digital Marketing Agency & Custom Software Studio"
         description="HanovaDevs engineers scalable web applications, executes high-converting digital marketing campaigns, and builds powerful brand identities to drive your business growth."
         url=""
@@ -242,9 +240,9 @@ export default function Home() {
       <section className="hero" id="hero">
         <div className="hero__particles">
           {particles.map(p => (
-            <div 
-              key={p.id} 
-              className="hero__particle" 
+            <div
+              key={p.id}
+              className="hero__particle"
               style={{
                 left: `${p.left}%`,
                 top: `${p.top}%`,
@@ -275,7 +273,7 @@ export default function Home() {
             <div className="hero__cta-row">
               <Link to="/contact" className="btn btn-primary btn--hero">
                 Start a Project
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </Link>
               <Link to="/projects" className="btn btn-outline btn--hero">
                 View Our Work
@@ -409,7 +407,7 @@ export default function Home() {
               </div>
               <Link to="/about" className="btn btn-ghost">
                 Our Story
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </Link>
             </div>
           </div>
@@ -433,14 +431,14 @@ export default function Home() {
                 <ul className="services-teaser__features">
                   {card.features.map((f, j) => (
                     <li key={j}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
                       {f}
                     </li>
                   ))}
                 </ul>
                 <Link to={`/services/${card.id}`} className="services-teaser__link hoverable">
                   Learn more
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                 </Link>
               </div>
             ))}
@@ -521,7 +519,7 @@ export default function Home() {
                   <h4>{project.title}</h4>
                   <Link to="/projects" className="featured-projects__link">
                     View Case Study
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                   </Link>
                 </div>
               </div>
@@ -531,7 +529,7 @@ export default function Home() {
         <div className="container" style={{ marginTop: 'var(--space-lg)', textAlign: 'center' }}>
           <Link to="/projects" className="btn btn-ghost reveal">
             View All Projects
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
           </Link>
         </div>
       </section>
@@ -545,7 +543,7 @@ export default function Home() {
           </div>
           <div className="testimonials__carousel reveal reveal-delay-1">
             <div className="testimonials__card">
-              <svg className="testimonials__quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="rgba(var(--royal-blue-rgb), 0.1)"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.689 11 13.186 11 15c0 1.933-1.567 3.5-3.5 3.5-1.248 0-2.349-.63-2.917-1.179zM14.583 17.321C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.689 21 13.186 21 15c0 1.933-1.567 3.5-3.5 3.5-1.248 0-2.349-.63-2.917-1.179z"/></svg>
+              <svg className="testimonials__quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="rgba(var(--royal-blue-rgb), 0.1)"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.689 11 13.186 11 15c0 1.933-1.567 3.5-3.5 3.5-1.248 0-2.349-.63-2.917-1.179zM14.583 17.321C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.689 21 13.186 21 15c0 1.933-1.567 3.5-3.5 3.5-1.248 0-2.349-.63-2.917-1.179z" /></svg>
               <blockquote className="testimonials__text">
                 "{testimonials[activeTestimonial].quote}"
               </blockquote>
@@ -584,7 +582,7 @@ export default function Home() {
           </div>
           <div className="industries__grid">
             {[
-              'Healthcare', 'FinTech', 'E-Commerce', 
+              'Healthcare', 'FinTech', 'E-Commerce',
               'SaaS & Tech', 'Real Estate', 'Logistics',
               'Education & EdTech', 'Hospitality', 'Manufacturing',
               'Entertainment', 'Automotive', 'Web3 & Crypto'
@@ -613,7 +611,7 @@ export default function Home() {
                 </div>
                 <h3>Omnai Browser</h3>
                 <p>A next-generation AI-powered browser built for the modern web. Smart tabs, native AI chat, and blazing-fast performance.</p>
-                <Link to="/products" className="btn btn-ghost" style={{marginTop: 'auto'}}>Learn More</Link>
+                <Link to="/products" className="btn btn-ghost" style={{ marginTop: 'auto' }}>Learn More</Link>
               </div>
               <div className="products-teaser__card card card-glass reveal-right reveal-delay-2">
                 <div className="products-teaser__badge products-teaser__badge--launch">
@@ -621,7 +619,7 @@ export default function Home() {
                 </div>
                 <h3>Eunoia</h3>
                 <p>Your personal AI desktop assistant — think, organize, and execute at peak performance with beautiful design.</p>
-                <Link to="/products" className="btn btn-primary" style={{marginTop: 'auto'}}>Join Waitlist</Link>
+                <Link to="/products" className="btn btn-primary" style={{ marginTop: 'auto' }}>Join Waitlist</Link>
               </div>
             </div>
           </div>
@@ -775,7 +773,7 @@ export default function Home() {
           <div className="final-cta__actions reveal reveal-delay-3">
             <Link to="/contact" className="btn btn-glow final-cta__btn">
               Let's Talk
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
             </Link>
             <div className="final-cta__contact-info">
               <a href="mailto:hanovadevs@gmail.com" className="final-cta__email">
