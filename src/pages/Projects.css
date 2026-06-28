@@ -310,6 +310,25 @@
 .pj-case--aero .pj-frame__url { background: #020617; color: #22d3ee; font-family: monospace; }
 
 /* ════════════════════════════
+   THEME: RAQS (Luxury Editorial)
+   ════════════════════════════ */
+.pj-case--raqs { background: #fbfaf8; color: #1a1a1a; }
+.pj-case--raqs .pj-case__category { color: #8c7853; font-weight: 600; letter-spacing: 0.15em; }
+.pj-case--raqs .pj-case__text h2 { color: #111111; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; letter-spacing: 0.02em; }
+.pj-case--raqs .pj-case__overview { color: #444444; font-family: 'Inter', sans-serif; font-size: 1.05rem; }
+.pj-case--raqs .pj-case__detail-block h4 { color: #8c7853; font-weight: 600; }
+.pj-case--raqs .pj-case__detail-block p { color: #666666; }
+.pj-case--raqs .pj-case__metrics { border-top: 1px solid rgba(0, 0, 0, 0.08); }
+.pj-case--raqs .pj-case__metric strong { color: #111; font-weight: 400; font-family: 'Playfair Display', Georgia, serif; }
+.pj-case--raqs .pj-case__metric span { color: #777777; letter-spacing: 0.08em; }
+.pj-case--raqs .pj-btn { background: #111111; color: #fbfaf8; border-radius: 0; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; border: 1px solid #111111; }
+.pj-case--raqs .pj-btn:hover { background: transparent; color: #111111; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05); }
+.pj-case--raqs .pj-frame { border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 0; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.04); }
+.pj-case--raqs .pj-frame__header { background: #f5f4f0; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+.pj-case--raqs .pj-frame__dots span { background: rgba(0, 0, 0, 0.1); border-radius: 0; }
+.pj-case--raqs .pj-frame__url { background: #ffffff; color: #8c7853; border-radius: 0; font-family: Georgia, serif; font-style: italic; }
+
+/* ════════════════════════════
    CTA
    ════════════════════════════ */
 .pj-cta {

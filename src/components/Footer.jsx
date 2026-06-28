@@ -39,6 +39,8 @@ export default function Footer() {
   const quickLinks = [
     { path: '/', label: 'Home' },
     { path: '/services', label: 'Services' },
+    { path: '/services/graphic-design', label: 'Graphic Design' },
+    { path: '/services/ai-automation', label: 'AI Automation' },
     { path: '/about', label: 'About Us' },
     { path: '/projects', label: 'Projects' },
   ]

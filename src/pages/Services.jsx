@@ -53,6 +53,24 @@ const services = [
     image: 'https://images.unsplash.com/photo-1542744173-05336fcc7ad4?w=800&q=80',
     techStack: ['Google Ads', 'Meta Ads', 'TikTok Ads', 'Conversations API', 'GTM']
   },
+  {
+    id: 'graphic-design',
+    title: 'Graphic Design Services',
+    tagline: 'Logos, Packaging, Marketing Assets',
+    desc: 'Stunning visual identities and print-ready designs that make your brand unforgettable.',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80',
+    large: true,
+    techStack: ['Adobe Suite', 'Figma', 'Illustrator', 'Photoshop', 'After Effects']
+  },
+  {
+    id: 'ai-automation',
+    title: 'AI Automation & Business Bots',
+    tagline: 'Smarter ops, less manual work',
+    desc: 'Custom AI-powered tools and bots that streamline operations and amplify efficiency.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    large: true,
+    techStack: ['GPT-4o', 'LangChain', 'Python', 'TensorFlow', 'Zapier', 'n8n']
+  },
 ]
 
 export default function Services() {

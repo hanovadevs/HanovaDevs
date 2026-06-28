@@ -520,6 +520,230 @@ const servicesData = {
         answer: 'We focus strictly on business growth numbers: Cost-Per-Acquisition (CPA), Return On Ad Spend (ROAS), and final Marketing Qualified Leads (MQL).'
       }
     ]
+  },
+  'graphic-design': {
+    title: 'Graphic Design Services',
+    category: 'Creative',
+    tagline: 'Visual storytelling that makes your brand impossible to ignore.',
+    heroImage: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1600&q=80',
+    intro: 'Great design is the silent ambassador of your brand. At HanovaDevs, we don\'t just create graphics — we engineer visual systems that communicate your brand\'s DNA at every touchpoint. From premium logo marks and business identity kits to eye-catching social media posts, packaging designs, apparel graphics, and large-format marketing collateral, our design studio delivers production-ready assets that feel alive and demand attention. Every pixel is intentional, every composition is strategically crafted, and every deliverable is print-ready and digital-optimized from day one.',
+    gallery: [
+      {
+        title: 'Aether AI Identity',
+        category: 'Logo Design',
+        image: '/projects/design_logo.png',
+        desc: 'A premium minimalist geometric logo mark and branding system developed for a next-generation AI platform.'
+      },
+      {
+        title: 'Cypher Exhibition Poster',
+        category: 'Poster Design',
+        image: '/projects/design_poster.png',
+        desc: 'A high-impact Swiss-punk fusion design poster highlighting spatial typography and neon color contrasts.'
+      },
+      {
+        title: 'Bloom Botanical Packaging',
+        category: 'Packaging Design',
+        image: '/projects/design_packaging.png',
+        desc: 'Premium sustainable amber glass cosmetics bottle labeling with minimalist botanical illustration line art.'
+      }
+    ],
+    features: [
+      {
+        title: 'Logo & Brand Identity',
+        desc: 'Custom logo marks, wordmarks, monograms, and complete brand identity kits with usage guidelines.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+      },
+      {
+        title: 'Marketing Collateral',
+        desc: 'Posters, flyers, social media graphics, business cards, infographics, and presentation decks.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
+      },
+      {
+        title: 'Packaging & Apparel',
+        desc: 'Product packaging, label design, T-shirt graphics, merchandise mockups, and retail-ready assets.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+      }
+    ],
+    technicalSpecs: [
+      { key: 'Design Tools', value: 'Adobe Illustrator, Photoshop, InDesign' },
+      { key: 'Prototyping', value: 'Figma, Adobe XD' },
+      { key: 'Motion', value: 'After Effects, Lottie' },
+      { key: 'File Formats', value: 'AI, EPS, SVG, PDF, PNG, PSD' },
+      { key: 'Print Standards', value: 'CMYK, 300 DPI, Bleed-Ready' }
+    ],
+    deliverables: [
+      { title: 'Complete Logo Identity Suite', desc: 'Primary logo, secondary marks, icon variations, monochrome versions, and a comprehensive brand guidelines document covering spacing, sizing, and usage rules.' },
+      { title: 'Social Media Asset Library', desc: 'Custom-designed templates for Instagram posts, stories, LinkedIn banners, Facebook covers, and TikTok thumbnails — all sized and exported for immediate publishing.' },
+      { title: 'Print-Ready Marketing Kit', desc: 'Professional posters, flyers, brochures, business cards, letterheads, and presentation decks formatted to CMYK print standards with proper bleed and crop marks.' },
+      { title: 'Product Packaging & Label Design', desc: 'Retail-quality packaging dielines, label artwork, and unboxing presentation designs with photorealistic 3D mockup renders for stakeholder review.' },
+      { title: 'Apparel & Merchandise Graphics', desc: 'High-resolution T-shirt prints, hoodie graphics, cap embroidery files, and promotional merchandise designs with garment-specific color separations.' }
+    ],
+    caseStudy: {
+      clientName: 'Bloom Botanicals',
+      logo: '/projects/crown.png',
+      summary: 'Created a complete visual identity system for a premium plant-based wellness brand launch.',
+      metrics: [
+        { label: 'Brand Recognition', value: '+185%' },
+        { label: 'Retail Shelf Standout', value: 'Top 3' },
+        { label: 'Social Engagement', value: '+240%' }
+      ],
+      challenge: 'Generic templated packaging failed to differentiate products on crowded retail shelves, while inconsistent social media graphics diluted the brand message.',
+      solution: 'Engineered a cohesive botanical illustration system spanning logo, packaging, social templates, and in-store signage — creating instant brand recognition and premium shelf appeal.',
+      link: '/projects'
+    },
+    process: [
+      { step: '01', title: 'Discovery', desc: 'Understanding your brand vision, audience, and competitive landscape.' },
+      { step: '02', title: 'Concepts', desc: 'Exploring multiple creative directions with mood boards and sketches.' },
+      { step: '03', title: 'Refinement', desc: 'Iterating on the chosen direction with pixel-perfect precision.' },
+      { step: '04', title: 'Delivery', desc: 'Exporting production-ready files across all required formats and sizes.' }
+    ],
+    blogs: [],
+    advancements: [
+      'AI-assisted generative design exploration',
+      'Variable font systems for responsive brand identities',
+      '3D packaging visualization with photorealistic rendering',
+      'Motion design tokens for animated brand guidelines'
+    ],
+    relatedLinks: [
+      { title: 'Brand Identity & Strategy', path: '/services/branding' },
+      { title: 'Social Media Marketing', path: '/services/social-media' }
+    ],
+    faqs: [
+      {
+        question: 'How many logo concepts will I receive before we finalize the design?',
+        answer: 'We present 3 to 5 unique creative directions in the initial round, each fully explored with mock applications. After you select a direction, we provide 2 to 3 iterative refinement rounds to perfect every detail — from kerning and weight to colorway and icon proportions.'
+      },
+      {
+        question: 'What file formats do you deliver, and are they print-ready?',
+        answer: 'Every project includes vector-based source files (AI, EPS, SVG), raster exports (PNG, JPEG at 72 DPI for web and 300 DPI for print), and fully layered PSD/PDF files. Print assets are prepared in CMYK color mode with proper bleed margins and crop marks for commercial offset printing.'
+      },
+      {
+        question: 'Can you design packaging for products that require specific dieline templates?',
+        answer: 'Absolutely. We work with your manufacturer\'s dieline specifications or create custom dielines from scratch. Our packaging designs include 3D mockup renders so you can see exactly how the product will look on shelf before committing to production runs.'
+      },
+      {
+        question: 'Do you create social media content calendars alongside the design assets?',
+        answer: 'Yes — if paired with our Social Media Marketing service, we provide a complete content strategy with themed visual templates, caption copy, hashtag clusters, and a monthly publishing calendar. Standalone design clients receive ready-to-use template packs with editable Figma/Canva files for in-house content teams.'
+      },
+      {
+        question: 'What is included in a complete brand identity kit?',
+        answer: 'Our brand identity kits include primary and secondary logos, approved color palettes with HEX/RGB/CMYK codes, typography pairings with licensing guidance, iconography systems, business cards, email signatures, social media templates, letterhead and envelope designs, and a comprehensive brand guidelines PDF covering spacing rules, minimum sizing, and do\'s and don\'ts for usage.'
+      },
+      {
+        question: 'Can you design T-shirt graphics and apparel-ready artwork?',
+        answer: 'Yes, we specialize in high-resolution apparel graphics optimized for DTG (direct-to-garment), screen printing, and embroidery production. We provide color-separated files, placement guides, and garment mockups so you can visualize the final product before going to print.'
+      },
+      {
+        question: 'How do you ensure design consistency across all brand touchpoints?',
+        answer: 'We build unified design systems with shared color tokens, typographic scales, and component libraries stored in Figma. Every asset — from social posts to packaging — references these shared tokens, ensuring visual cohesion no matter where your brand appears.'
+      },
+      {
+        question: 'Do you offer infographic and data visualization design?',
+        answer: 'Yes, we create visually compelling infographics, report layouts, and data dashboards that transform complex information into clean, shareable visual stories. These are optimized for both digital sharing (social media, presentations) and high-resolution print output.'
+      }
+    ]
+  },
+  'ai-automation': {
+    title: 'AI Automation & Business Bots',
+    category: 'AI & Automation',
+    tagline: 'Intelligent systems that work for you around the clock.',
+    heroImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80',
+    intro: 'The businesses that thrive in the next decade won\'t just use technology — they\'ll be powered by it. HanovaDevs builds custom AI-powered automation systems designed to eliminate repetitive manual tasks, accelerate decision-making, and unlock operational efficiency that was previously impossible. From intelligent chatbots that handle customer support 24/7 to workflow automation pipelines that process documents, route leads, manage inventory, and generate reports — we implement AI where it matters most. Our solutions aren\'t theoretical; they\'re production-grade systems deployed into your existing tech stack, delivering measurable ROI from week one.',
+    features: [
+      {
+        title: 'Conversational AI Bots',
+        desc: 'Custom chatbots and virtual assistants for customer support, lead qualification, and sales.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+      },
+      {
+        title: 'Workflow Automation',
+        desc: 'End-to-end process automation for data entry, document processing, and task routing.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" /><polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" /><line x1="4" y1="4" x2="9" y2="9" /></svg>
+      },
+      {
+        title: 'Predictive Analytics',
+        desc: 'ML-driven forecasting dashboards for sales, inventory, and customer behavior.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+      }
+    ],
+    technicalSpecs: [
+      { key: 'AI Models', value: 'GPT-4o, Claude, Gemini, Custom Fine-Tuned' },
+      { key: 'Frameworks', value: 'LangChain, LlamaIndex, CrewAI' },
+      { key: 'Automation', value: 'n8n, Zapier, Make, Custom APIs' },
+      { key: 'Languages', value: 'Python, Node.js, TypeScript' },
+      { key: 'Deployment', value: 'AWS Lambda, GCP Cloud Run, Docker' }
+    ],
+    deliverables: [
+      { title: 'Custom AI Chatbot Deployment', desc: 'A production-ready conversational AI bot trained on your business data, integrated with your website, WhatsApp, Slack, or internal tools — handling customer queries, lead qualification, and appointment booking autonomously.' },
+      { title: 'Workflow Automation Pipeline', desc: 'Fully automated multi-step business workflows connecting your CRM, email, spreadsheets, databases, and third-party APIs — eliminating manual data entry and human bottlenecks with intelligent routing logic.' },
+      { title: 'Predictive Analytics Dashboard', desc: 'Real-time ML-powered dashboards forecasting sales trends, customer churn probability, inventory demands, and revenue projections based on your historical business data.' },
+      { title: 'Document Processing Engine', desc: 'AI-powered document ingestion system that extracts, classifies, and routes information from invoices, contracts, forms, and emails — reducing manual processing time by up to 90%.' },
+      { title: 'Intelligent Lead Scoring System', desc: 'Machine learning model trained on your conversion data that scores and prioritizes incoming leads, automatically routing high-value prospects to your sales team with enriched context and recommended actions.' }
+    ],
+    caseStudy: {
+      clientName: 'LogiTrack Solutions',
+      logo: '/projects/crown.png',
+      summary: 'Deployed an AI-powered logistics optimization system that automated order routing and inventory forecasting.',
+      metrics: [
+        { label: 'Manual Work Reduction', value: '-78%' },
+        { label: 'Order Processing Speed', value: '3x Faster' },
+        { label: 'Forecast Accuracy', value: '94%' }
+      ],
+      challenge: 'Staff spent 6+ hours daily manually routing orders, updating spreadsheets, and generating fulfillment reports — leading to bottlenecks and costly errors.',
+      solution: 'Built an intelligent automation pipeline combining GPT-4o document extraction, custom ML inventory forecasting, and n8n workflow orchestration — turning 6 hours of manual work into a 15-minute automated process.',
+      link: '/projects'
+    },
+    process: [
+      { step: '01', title: 'Audit', desc: 'Mapping your current workflows and identifying high-impact automation opportunities.' },
+      { step: '02', title: 'Architect', desc: 'Designing the AI system architecture and integration points.' },
+      { step: '03', title: 'Build & Train', desc: 'Developing custom models, bots, and automation pipelines.' },
+      { step: '04', title: 'Deploy & Optimize', desc: 'Launching into production with monitoring and continuous improvement.' }
+    ],
+    blogs: [],
+    advancements: [
+      'Retrieval-Augmented Generation (RAG) for business knowledge',
+      'Multi-agent AI orchestration (CrewAI, AutoGen)',
+      'Real-time anomaly detection with streaming ML',
+      'Edge AI for low-latency on-premise processing'
+    ],
+    relatedLinks: [
+      { title: 'Custom Software Development', path: '/services/software-development' },
+      { title: 'Web Design & Development', path: '/services/web-design' }
+    ],
+    faqs: [
+      {
+        question: 'What kind of AI chatbot can you build for my business?',
+        answer: 'We build custom conversational AI bots powered by models like GPT-4o, Claude, or Gemini — trained specifically on your business data, product catalogs, and support documentation. These bots can handle customer inquiries, qualify leads, book appointments, process returns, and escalate complex cases to human agents — all through your website, WhatsApp, Slack, or any messaging platform.'
+      },
+      {
+        question: 'How do you ensure AI automation doesn\'t break our existing workflows?',
+        answer: 'We start with a non-invasive audit of your current tech stack and processes. Our automations are designed as modular additions that integrate through APIs and webhooks — not replacements. We deploy with monitoring dashboards and human-in-the-loop checkpoints so your team maintains oversight while the AI handles the repetitive execution.'
+      },
+      {
+        question: 'What types of repetitive business tasks can AI automation eliminate?',
+        answer: 'The most impactful automations include: data entry and spreadsheet updates, invoice and document processing, email classification and routing, lead scoring and CRM updates, report generation, inventory monitoring, social media scheduling, meeting notes summarization, and customer support ticket triage. If a task follows a pattern, we can likely automate it.'
+      },
+      {
+        question: 'How long does it take to deploy an AI automation system?',
+        answer: 'Simple automations like chatbots and workflow triggers can be deployed in 2 to 3 weeks. More complex systems involving custom ML models, multi-tool integrations, and predictive analytics typically take 4 to 8 weeks depending on data availability and system complexity. We deliver in iterative sprints so you see value early.'
+      },
+      {
+        question: 'Do you use no-code tools or write custom automation code?',
+        answer: 'We use the right tool for the job. For simpler integrations, we leverage platforms like n8n, Zapier, or Make for rapid deployment. For complex, high-volume, or security-sensitive workflows, we write custom Python/Node.js automation code deployed on scalable cloud infrastructure (AWS Lambda, GCP Cloud Run). Most projects combine both approaches for maximum efficiency.'
+      },
+      {
+        question: 'Can you build AI tools that work with our existing CRM and databases?',
+        answer: 'Absolutely. We integrate with all major CRMs (Salesforce, HubSpot, Pipedrive), databases (PostgreSQL, MongoDB, MySQL), productivity suites (Google Workspace, Microsoft 365), and communication tools (Slack, Teams, WhatsApp). Our automation pipelines connect these systems through secure API integrations with proper authentication and error handling.'
+      },
+      {
+        question: 'How do you handle data privacy and security in AI deployments?',
+        answer: 'Security is foundational to our approach. All data is encrypted in transit and at rest. We can deploy models on your private infrastructure for maximum data sovereignty. For cloud-based solutions, we use enterprise-grade providers (AWS, GCP) with role-based access controls, audit logging, and GDPR/SOC 2 compliance frameworks. Your data is never used to train third-party models.'
+      },
+      {
+        question: 'What ROI can I expect from AI automation implementation?',
+        answer: 'Our clients typically see 40% to 80% reduction in manual processing time, 2x to 5x faster task completion, and measurable error rate reduction within the first month. The specific ROI depends on your automation scope, but we provide a detailed impact projection during the initial audit phase and track actual performance metrics post-deployment to demonstrate real value.'
+      }
+    ]
   }
 }
 
@@ -666,6 +890,36 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+
+      {/* Portfolio/Showcase Gallery Section (Optional) */}
+      {service.gallery && (
+        <section className="service-detail__gallery section">
+          <div className="container">
+            <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
+              <span className="section-label">Design Gallery</span>
+              <h2>Our <em>Creative Showcase</em></h2>
+              <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
+                Take a look at some of our recent logo design, branding systems, and premium packaging work.
+              </p>
+            </div>
+            
+            <div className="service-detail__gallery-grid">
+              {service.gallery.map((item, i) => (
+                <div key={i} className={`service-detail__gallery-card reveal reveal-delay-${(i % 3) + 1}`}>
+                  <div className="gallery-card__image-wrapper">
+                    <img src={item.image} alt={item.title} loading="lazy" />
+                    <span className="gallery-card__category">{item.category}</span>
+                  </div>
+                  <div className="gallery-card__info">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Process Section */}
       <section className="service-detail__process section">

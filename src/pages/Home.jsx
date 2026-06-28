@@ -746,12 +746,69 @@ export default function Home() {
           </div>
           <div className="home-awards__grid reveal-up">
             {[
-              { icon: '🏆', title: 'Top Web Agency', sub: '2025 Digital Awards' },
-              { icon: '⚡', title: '99.9% Uptime', sub: 'Infrastructure SLA' },
-              { icon: '🛡️', title: 'SOC 2 Practices', sub: 'Security Compliant' },
-              { icon: '🌍', title: 'Global Delivery', sub: '4 Continents' },
-              { icon: '⭐', title: '5-Star Reviews', sub: 'Client Satisfaction' },
-              { icon: '🚀', title: '40+ Launches', sub: 'Successful Deployments' }
+              { 
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                    <path d="M4 22h16" />
+                    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
+                    <path d="M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4Z" />
+                  </svg>
+                ), 
+                title: 'Top Web Agency', 
+                sub: '2025 Digital Awards' 
+              },
+              { 
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                ), 
+                title: '99.9% Uptime', 
+                sub: 'Infrastructure SLA' 
+              },
+              { 
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                ), 
+                title: 'SOC 2 Practices', 
+                sub: 'Security Compliant' 
+              },
+              { 
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                ), 
+                title: 'Global Delivery', 
+                sub: '4 Continents' 
+              },
+              { 
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                ), 
+                title: '5-Star Reviews', 
+                sub: 'Client Satisfaction' 
+              },
+              { 
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                  </svg>
+                ), 
+                title: '40+ Launches', 
+                sub: 'Successful Deployments' 
+              }
             ].map((award, i) => (
               <div key={i} className="home-awards__card">
                 <span className="home-awards__icon">{award.icon}</span>

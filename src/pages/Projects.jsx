@@ -5,6 +5,22 @@ import './Projects.css'
 
 const featuredProjects = [
   {
+    id: 'raqs',
+    title: 'RAQS Official',
+    category: 'Luxury E-Commerce',
+    url: 'https://www.raqsofficial.store',
+    thumbnail: '/projects/raqs.png',
+    theme: 'raqs',
+    overview: 'RAQS is a premium clothing brand specializing in minimalist couture, currently launching its signature line of shirts. They needed a high-end digital storefront that communicates movement, elegance, and Sufi-inspired artistic expression.',
+    challenge: 'Capturing the spiritual essence of the brand\'s whirling dervish concept while maintaining a high-converting, modern e-commerce checkout flow.',
+    solution: 'We engineered a luxury editorial storefront using absolute minimalism, smooth image transitions, and custom typography pairings. We integrated a seamless Shopify-backed checkout pipeline optimized for upcoming collection drops.',
+    metrics: [
+      { label: 'Page Speed', value: '100/100' },
+      { label: 'Drop System', value: 'Queue-Ready' },
+      { label: 'Mobile UX', value: 'Elite' }
+    ]
+  },
+  {
     id: 'earthsync',
     title: 'EarthSync Essential',
     category: 'E-Commerce & Wellness',
