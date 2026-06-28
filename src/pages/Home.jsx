@@ -88,53 +88,46 @@ const serviceCards = [
 
 const projects = [
   {
+    title: 'RAQS Official',
+    category: 'Luxury E-Commerce',
+    metric: 'Elite UX',
+    image: '/projects/raqs.png',
+    url: 'https://www.raqsofficial.store'
+  },
+  {
+    title: 'EarthSync Essential',
+    category: 'E-Commerce & Wellness',
+    metric: '+45% Conv.',
+    image: '/projects/earthsync.png',
+    url: 'https://www.earthsyncessential.com'
+  },
+  {
     title: 'Terra Sol Grounding',
-    category: 'E-Commerce',
-    metric: '6+ Products',
+    category: 'E-Commerce & Wellness',
+    metric: '20+ Studies',
     image: '/projects/terrasol.png',
     url: 'https://www.terrasolgrounding.com'
   },
   {
-    title: 'TechVault Dashboard',
-    category: 'Web Design',
-    metric: '+230% Traffic',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'
+    title: 'Nexus Health',
+    category: 'Telemedicine SaaS',
+    metric: '99.9% Uptime',
+    image: '/projects/nexus.png',
+    url: 'https://www.nexushealth.io'
   },
   {
-    title: 'GreenGrow Campaign',
-    category: 'Marketing',
-    metric: '4.2x ROI',
-    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop'
+    title: 'Crown Accumulator',
+    category: 'Industrial B2B Portfolio',
+    metric: '3x B2B Leads',
+    image: '/projects/crown.png',
+    url: 'https://www.crownaccumulator.com'
   },
   {
-    title: 'FinEdge Rebrand',
-    category: 'Branding',
-    metric: '98% Approval',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop'
-  },
-  {
-    title: 'MediCore App',
-    category: 'Software',
-    metric: '15K Users',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
-  },
-  {
-    title: 'Lumina Fashion Store',
-    category: 'E-Commerce',
-    metric: '+145% Sales',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop'
-  },
-  {
-    title: 'NexLogistics Automation',
-    category: 'Custom Software',
-    metric: '-30% Costs',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c83f12?w=600&h=400&fit=crop'
-  },
-  {
-    title: 'CryptoBridge SEO',
-    category: 'SEO',
-    metric: 'Page 1 Rankings',
-    image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=600&h=400&fit=crop'
+    title: 'Lumière Paris',
+    category: 'Luxury Fashion',
+    metric: '+32% AOV',
+    image: '/projects/lumiere.png',
+    url: 'https://www.lumiere-paris.fr'
   }
 ]
 
