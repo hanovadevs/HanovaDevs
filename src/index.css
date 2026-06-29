@@ -466,3 +466,214 @@ button {
   background: rgba(var(--royal-blue-rgb), 0.15);
   color: var(--deep-navy);
 }
+
+/* ==========================================
+   Interactive Calculator Promo Section
+========================================== */
+.calc-promo-section {
+  position: relative;
+  background: #f8fafc;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.calc-promo-section::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(var(--royal-blue-rgb), 0.08) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.calc-promo-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 991px) {
+  .calc-promo-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.calc-promo-content {
+  text-align: left;
+}
+
+.calc-promo-content h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--deep-navy);
+}
+
+.calc-promo-content p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--blue-grey);
+  margin-bottom: 2rem;
+}
+
+/* Floating interactive preview card */
+.calc-promo-preview {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.calc-preview-card {
+  background: var(--white);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.08);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  animation: calcFloat 6s ease-in-out infinite;
+}
+
+@keyframes calcFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.calc-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-preview-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--blue-grey);
+  letter-spacing: 0.05em;
+}
+
+.calc-preview-badge {
+  background: rgba(var(--royal-blue-rgb), 0.08);
+  color: var(--royal-blue);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.calc-preview-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.calc-preview-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.calc-preview-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue-grey);
+}
+
+.calc-preview-slider-track {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  position: relative;
+}
+
+.calc-preview-slider-fill {
+  height: 100%;
+  background: var(--royal-blue);
+  border-radius: 3px;
+  width: 60%;
+}
+
+.calc-preview-slider-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border: 3px solid var(--royal-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px rgba(var(--royal-blue-rgb), 0.2);
+}
+
+.calc-preview-results {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  transition: all 0.3s;
+}
+
+.calc-preview-card:hover .calc-preview-results {
+  border-color: rgba(var(--royal-blue-rgb), 0.2);
+  box-shadow: 0 4px 15px rgba(var(--royal-blue-rgb), 0.04);
+}
+
+.calc-preview-result-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--royal-blue);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.calc-preview-result-lbl {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--blue-grey);
+  letter-spacing: 0.05em;
+}
+
+.calc-preview-btn {
+  background: var(--royal-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s;
+}
+
+.calc-preview-card:hover .calc-preview-btn {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--royal-blue-rgb), 0.25);
+}

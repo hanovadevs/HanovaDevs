@@ -1332,6 +1332,50 @@ export default function ServiceDetail() {
           </div>
         </section>
       )}
+      {/* ===== INTERACTIVE CALCULATOR PROMO ===== */}
+      <section className="calc-promo-section section bg-off-white" style={{ borderTop: '1px solid #f1f5f9' }}>
+        <div className="container">
+          <div className="calc-promo-grid">
+            <div className="calc-promo-content reveal">
+              <span className="section-label">Interactive Planner</span>
+              <h2>Project Your <span className="gradient-text">{service.title}</span> Budget</h2>
+              <p>
+                Want a granular cost and timeline estimate for your {service.title.toLowerCase()} project? 
+                Adjust technical stacks, features, and delivery speeds in our interactive calculator to get an instant scope sheet.
+              </p>
+              <Link to="/calculator" className="btn btn-primary" style={{ display: 'inline-flex', gap: '0.5rem', textDecoration: 'none' }}>
+                Estimate {service.title} Cost 🚀
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+              </Link>
+            </div>
+            
+            <div className="calc-promo-preview reveal reveal-right reveal-delay-1">
+              <div className="calc-preview-card">
+                <div className="calc-preview-header">
+                  <span className="calc-preview-title">Scope Calculator</span>
+                  <span className="calc-preview-badge">Live</span>
+                </div>
+                <div className="calc-preview-body">
+                  <div className="calc-preview-row">
+                    <span className="calc-preview-label">Estimated Delivery Speed</span>
+                    <div className="calc-preview-slider-track">
+                      <div className="calc-preview-slider-fill" style={{ width: '85%' }}></div>
+                      <div className="calc-preview-slider-thumb" style={{ left: '85%' }}></div>
+                    </div>
+                  </div>
+                  <div className="calc-preview-results">
+                    <span className="calc-preview-result-val">⚡ Expedited Sprints</span>
+                    <span className="calc-preview-result-lbl">Timeline Reduced by ~35%</span>
+                  </div>
+                  <Link to="/calculator" className="calc-preview-btn">
+                    Configure Scope
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="service-detail__cta section">

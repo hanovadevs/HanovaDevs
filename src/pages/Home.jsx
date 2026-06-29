@@ -813,6 +813,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== INTERACTIVE CALCULATOR PROMO ===== */}
+      <section className="calc-promo-section section bg-off-white">
+        <div className="container">
+          <div className="calc-promo-grid">
+            <div className="calc-promo-content reveal">
+              <span className="section-label">Interactive Tool</span>
+              <h2>Project Your <span className="gradient-text">ROI & Budgets</span> Instantly</h2>
+              <p>
+                Configure project scopes, page counts, or marketing ad spends in real-time. 
+                Our interactive engine computes custom budget ranges and potential revenue lifts 
+                backed by our performance benchmarks.
+              </p>
+              <Link to="/calculator" className="btn btn-primary" style={{ display: 'inline-flex', gap: '0.5rem', textDecoration: 'none' }}>
+                Launch Calculator & Estimator
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+              </Link>
+            </div>
+            
+            <div className="calc-promo-preview reveal reveal-right reveal-delay-1">
+              <div className="calc-preview-card">
+                <div className="calc-preview-header">
+                  <span className="calc-preview-title">Budget Projector</span>
+                  <span className="calc-preview-badge">Interactive</span>
+                </div>
+                <div className="calc-preview-body">
+                  <div className="calc-preview-row">
+                    <span className="calc-preview-label">Project Complexity</span>
+                    <div className="calc-preview-slider-track">
+                      <div className="calc-preview-slider-fill" style={{ width: '75%' }}></div>
+                      <div className="calc-preview-slider-thumb" style={{ left: '75%' }}></div>
+                    </div>
+                  </div>
+                  <div className="calc-preview-results">
+                    <span className="calc-preview-result-val">$1,800 – $4,200</span>
+                    <span className="calc-preview-result-lbl">Estimated Investment</span>
+                  </div>
+                  <Link to="/calculator" className="calc-preview-btn">
+                    Run Scopes 🚀
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== FINAL CTA ===== */}
       <section className="final-cta" id="final-cta">
         <div className="final-cta__bg" />
