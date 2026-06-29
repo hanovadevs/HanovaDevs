@@ -21,6 +21,14 @@ const services = [
     techStack: ['Instagram', 'LinkedIn', 'TikTok', 'Buffer', 'Canva Pro']
   },
   {
+    id: 'ugc-ads',
+    title: 'UGC Ads & Marketing',
+    tagline: 'High-Converting User-Generated Content',
+    desc: 'Data-driven, native-style TikTok and Instagram Reel creatives designed to crush ad fatigue and scale your ROAS.',
+    image: '/projects/ugc_ad_skincare.png',
+    techStack: ['TikTok Spark Ads', 'Meta Reels', 'Creator Sourcing', 'Ad Scripting', 'A/B Hook Testing']
+  },
+  {
     id: 'seo',
     title: 'SEO & Performance Marketing',
     tagline: 'Rank higher, get found',

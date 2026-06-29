@@ -945,4 +945,228 @@
   margin: 0;
 }
 
+/* UGC Ads Specific Grid & Card Styles */
+.ugc-gallery-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+@media (max-width: 1100px) {
+  .ugc-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ugc-gallery-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.ugc-gallery-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.ugc-gallery-card:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* Simulated Smartphone Frame */
+.ugc-phone-frame {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.3s var(--ease-smooth);
+}
+
+.ugc-gallery-card:hover .ugc-phone-frame {
+  box-shadow: 0 20px 45px rgba(var(--royal-blue-rgb), 0.15);
+}
+
+.ugc-phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 16px;
+  background: #1e222d;
+  border-radius: 8px;
+  z-index: 10;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.ugc-phone-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  overflow: hidden;
+  border: 8px solid #1e222d;
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  border-bottom: none;
+}
+
+.ugc-phone-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* UGC Overlays (TikTok / Reels Style) */
+.ugc-overlay-top {
+  position: absolute;
+  top: 32px;
+  left: 14px;
+  z-index: 5;
+}
+
+.ugc-ad-badge {
+  color: var(--white);
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+
+.ugc-creator-badge {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ugc-brand-badge {
+  background: linear-gradient(135deg, #00a896, #02c39a);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ugc-overlay-right {
+  position: absolute;
+  right: 12px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: center;
+  z-index: 5;
+}
+
+.ugc-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.ugc-action-btn:hover {
+  transform: scale(1.15);
+}
+
+.ugc-action-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--white);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.ugc-action-btn .ugc-heart-icon {
+  fill: #ff3b30;
+}
+
+.ugc-action-btn span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.ugc-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 12px 12px 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+  color: var(--white);
+  z-index: 4;
+}
+
+.ugc-creator-handle {
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.ugc-caption {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  margin: 0 0 0.8rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ugc-cta-button {
+  width: 100%;
+  background: #ff3b30;
+  color: var(--white);
+  border: none;
+  padding: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+}
+
+.ugc-cta-button:hover {
+  background: #e03027;
+  transform: translateY(-1px);
+}
+
+.ugc-phone-info-card {
+  padding: 1.25rem;
+  border-top: 1px solid rgba(var(--royal-blue-rgb), 0.06);
+}
+
+.ugc-phone-info-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem 0;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ugc-phone-info-card p {
+  font-size: 0.8rem;
+  color: var(--blue-grey);
+  line-height: 1.5;
+  margin: 0;
+}
+
+
 

@@ -744,8 +744,171 @@ const servicesData = {
         answer: 'Our clients typically see 40% to 80% reduction in manual processing time, 2x to 5x faster task completion, and measurable error rate reduction within the first month. The specific ROI depends on your automation scope, but we provide a detailed impact projection during the initial audit phase and track actual performance metrics post-deployment to demonstrate real value.'
       }
     ]
+  },
+  'ugc-ads': {
+    title: 'UGC Ads & Marketing',
+    category: 'Marketing',
+    tagline: 'Crush ad fatigue and scale your ROAS with high-converting user-generated content.',
+    heroImage: '/projects/ugc_ad_skincare.png',
+    intro: 'In the digital marketing landscape of 2026, traditional high-production commercial ads are no longer effective. Consumers have developed banner blindness, immediately scrolling past anything that feels like a corporate pitch. The solution is User-Generated Content (UGC) — raw, authentic, native-style videos created by real people that blend seamlessly into social feeds. At HanovaDevs, we treat UGC as a data-driven science. We script, cast, shoot, edit, and A/B test high-impact creatives engineered to capture attention in the first 3 seconds and drive immediate conversions.',
+    features: [
+      {
+        title: 'Creator Sourcing & Casting',
+        desc: 'Access to a curated network of creators matching your brand demographics.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><circle cx="9" cy="7" r="4" /><path d="M9 21v-2a4 4 0 0 0-4-4H1v2" /></svg>
+      },
+      {
+        title: 'Data-Driven Scripting',
+        desc: 'Every video is structured with psychological hooks, benefit callouts, and high-intent CTAs.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+      },
+      {
+        title: 'A/B Hook & Angle Testing',
+        desc: 'We produce and test multiple hook variants to maximize CTR and lower customer acquisition costs.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" /><path d="M12 8v8" /><path d="M8 12h8" /></svg>
+      }
+    ],
+    technicalSpecs: [
+      { key: 'Platforms', value: 'TikTok, Instagram Reels, YouTube Shorts' },
+      { key: 'Ad Formats', value: 'Spark Ads, Reels Ads, Dark Posts, Whitelisting' },
+      { key: 'Key Metrics', value: '3-Sec Hook Rate, Hold Rate, CTR, ROAS' },
+      { key: 'Deliverables', value: 'Raw Footage, Polished Edits, Hook Variations' },
+      { key: 'Testing Cycles', value: 'Rapid 7-Day Creative Iteration' }
+    ],
+    deliverables: [
+      { title: 'High-Converting UGC Video Creatives', desc: '6 fully-edited, high-converting social ad creatives ready for launch on TikTok, Meta, or YouTube.' },
+      { title: 'A/B Hook Variations', desc: '3 distinct hook variants for each concept to optimize the crucial first 3 seconds of watch time.' },
+      { title: 'Custom Scripting & Visual Storyboards', desc: 'Psychology-backed scripts written by conversion experts before filming begins.' },
+      { title: 'Professional Creator Sourcing', desc: 'Demographic-targeted casting, contract management, and creative direction.' },
+      { title: 'Post-Campaign Performance Analysis', desc: 'Detailed feedback loop analyzing hook rates, hold rates, and conversion metrics to guide the next batch.' }
+    ],
+    caseStudy: {
+      clientName: 'RAQS Clothing Brand',
+      logo: '/projects/raqs.png',
+      summary: 'Engineered a pre-launch UGC campaign that accumulated over 15,000 email signups with a 4.2x projected return on ad spend.',
+      metrics: [
+        { label: 'Hook Rate (3s)', value: '+48.3%' },
+        { label: 'Cost Per Acquisition', value: '-34%' },
+        { label: 'Email Signups', value: '15,240+' }
+      ],
+      challenge: 'New clothing brand with zero organic presence needing to build trust and gather pre-launch subscribers on a tight budget.',
+      solution: 'Sourced 5 diverse fashion creators to film authentic "unboxing & styling" mirror vlogs. A/B tested 4 different visual hooks, routing winning creatives to high-intent sign-up landing pages.',
+      link: '/projects'
+    },
+    process: [
+      { step: '01', title: 'Concept', desc: 'Analyzing product benefits and writing high-impact scripts.' },
+      { step: '02', title: 'Casting', desc: 'Sourcing and briefing the perfect creators for your brand.' },
+      { step: '03', title: 'Production', desc: 'Filming, editing, and adding native social overlays.' },
+      { step: '04', title: 'Optimization', desc: 'Testing hooks and iterating based on real performance data.' }
+    ],
+    blogs: ['ugc-ads-conversion-science'],
+    advancements: [
+      '3-Second attention hook optimization',
+      'Creator whitelisting and dark post setups',
+      'Dynamic captions and native engagement overlays',
+      'Looming hook analysis for TikTok & Meta algorithms'
+    ],
+    relatedLinks: [
+      { title: 'Digital Advertising', path: '/services/digital-advertising' },
+      { title: 'Social Media Marketing', path: '/services/social-media' }
+    ],
+    faqs: [
+      {
+        question: 'What is UGC and why is it outperforming traditional studio ads?',
+        answer: 'User-Generated Content (UGC) is content created by everyday consumers or content creators that looks organic and native to the platform. Unlike traditional studio ads which trigger "ad fatigue" and skepticism, UGC blends into a user\'s social feed like a recommendation from a friend. This lowers the viewer\'s defensive guard, resulting in significantly higher click-through rates (CTR) and lower acquisition costs (CAC).'
+      },
+      {
+        question: 'Do we have to find the content creators ourselves?',
+        answer: 'No, we handle the entire process end-to-end. We cast, vet, contract, and manage creators from our curated network who match your target audience demographics. You simply approve the creators and the scripts before we begin production.'
+      },
+      {
+        question: 'Can we use these videos for organic posts as well as paid ads?',
+        answer: 'Absolutely. You receive full usage rights for all edited videos. You can post them organically on TikTok, Instagram, and YouTube, or use them as paid creatives. We can also set up "Creator Whitelisting" (Spark Ads) where we run ads directly through the creator\'s social handle for maximum authenticity.'
+      },
+      {
+        question: 'How many hook variations do you provide?',
+        answer: 'By default, we provide 3 distinct hook variations (the first 3 seconds) for each video concept. Since the hook is responsible for over 70% of an ad\'s performance, A/B testing different hooks allows us to find the absolute highest-performing creative angle without paying for entirely new videos.'
+      },
+      {
+        question: 'What is the typical turnaround time for a batch of UGC videos?',
+        answer: 'Our standard turnaround time is 14 days from script approval to final delivered assets. This includes creator sourcing, shipping products, filming, editing, and adding native text overlays/captions.'
+      },
+      {
+        question: 'How do you measure the success of a UGC ad campaign?',
+        answer: 'We analyze key diagnostic metrics: the 3-Second Hook Rate (what % of people watch past 3 seconds), the Hold Rate (average watch time), the Click-Through Rate (CTR), and ultimately, the Return on Ad Spend (ROAS). We use these insights to continuously optimize and script the next batch of creatives.'
+      }
+    ],
+    gallery: [
+      {
+        image: '/projects/ugc_ad_skincare.png',
+        category: 'CREATOR SPARK AD',
+        title: 'SkinGlow Hydration Serum',
+        desc: 'Product review & demonstration by beauty creator. Focused on hydration, texture, and organic morning routine integration.',
+        creator: '@sophia_glows',
+        caption: 'My absolute holy grail for glass skin! ✨ If you want that dewy glow all day, this is your sign. #glassskin #skincaretips #glow',
+        likes: '12.4K',
+        comments: '342',
+        cta: 'Shop Now'
+      },
+      {
+        image: '/projects/ugc_ad_candle.png',
+        category: 'BRAND SPARK AD',
+        title: 'Aura Home Soy Scented Candle',
+        desc: 'Aesthetic mood-setting video showcasing warm atmosphere, premium packaging, and crackling wood-wick sensory experience.',
+        creator: '@cozy_spaces',
+        caption: 'Sundays are for cozy vibes and fresh scents. 🕯️ The new Vanilla Amber candle is literally heaven in a jar. #cozyhome #candlelovers #relax',
+        likes: '8.9K',
+        comments: '184',
+        cta: 'Shop Now'
+      },
+      {
+        image: '/projects/ugc_ad_raqs.png',
+        category: 'CREATOR SPARK AD',
+        title: 'RAQS Minimalist Streetwear',
+        desc: 'Mirror selfie styling guide featuring the upcoming organic cotton oversized tee. Highlights fit, fabric weight, and drape.',
+        creator: '@jaden_styles',
+        caption: 'RAQS is dropping soon and this heavyweight tee is a 10/10. Drape is perfect. Stay tuned for the launch! 🔥 #streetwear #minimalistfashion #raqs',
+        likes: '15.6K',
+        comments: '512',
+        cta: 'Learn More'
+      },
+      {
+        image: '/projects/ugc_ad_terrasol.png',
+        category: 'BRAND SPARK AD',
+        title: 'Terra Sol Grounding Bed Sheet',
+        desc: 'Educational bedroom vlog explaining the science of grounding sheets, showing the silver conductive grid and sleep improvements.',
+        creator: '@mindful_living',
+        caption: 'Honestly, my sleep quality has been on another level since trying out this grounding sheet. Here is how it works. ⚡ #grounding #wellnessjourney #deepsleep',
+        likes: '7.2K',
+        comments: '219',
+        cta: 'Learn More'
+      },
+      {
+        image: '/projects/ugc_ad_tech.png',
+        category: 'CREATOR SPARK AD',
+        title: 'AeroPods Pro Wireless Earbuds',
+        desc: 'Fast-paced street interview & active noise cancellation reaction video. Showcases style, fit, and audio clarity.',
+        creator: '@tech_reviews',
+        caption: 'Testing the ANC on these new AeroPods Pro in the middle of NYC traffic... I am actually shocked. 🤯 #techreview #earbuds #audiophile',
+        likes: '24.1K',
+        comments: '683',
+        cta: 'Shop Now'
+      },
+      {
+        image: '/projects/ugc_ad_fitness.png',
+        category: 'CREATOR SPARK AD',
+        title: 'IronHydrate Insulated Water Bottle',
+        desc: 'Gym bag check & workout hydration vlog. Emphasizes temperature retention, leak-proof lid, and sleek design.',
+        creator: '@fit_life_clara',
+        caption: 'Cold water after a heavy leg day hits different. 💦 Keeping my water ice-cold for 24+ hours. Link in bio! #gymessential #fitnessmotivation #hydrate',
+        likes: '11.3K',
+        comments: '198',
+        cta: 'Shop Now'
+      }
+    ]
   }
 }
+
 
 export default function ServiceDetail() {
   const { id } = useParams()
@@ -896,24 +1059,74 @@ export default function ServiceDetail() {
         <section className="service-detail__gallery section">
           <div className="container">
             <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
-              <span className="section-label">Design Gallery</span>
-              <h2>Our <em>Creative Showcase</em></h2>
+              <span className="section-label">
+                {id === 'ugc-ads' ? 'UGC Ad Creative Examples' : 'Design Gallery'}
+              </span>
+              <h2>
+                {id === 'ugc-ads' ? (
+                  <>High-Converting <em>UGC Ad Showcase</em></>
+                ) : (
+                  <>Our <em>Creative Showcase</em></>
+                )}
+              </h2>
               <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
-                Take a look at some of our recent logo design, branding systems, and premium packaging work.
+                {id === 'ugc-ads' 
+                  ? 'Take a look at some of our high-converting UGC ad creatives, designed to capture attention and drive conversions.'
+                  : 'Take a look at some of our recent logo design, branding systems, and premium packaging work.'
+                }
               </p>
             </div>
             
-            <div className="service-detail__gallery-grid">
+            <div className={`service-detail__gallery-grid ${id === 'ugc-ads' ? 'ugc-gallery-grid' : ''}`}>
               {service.gallery.map((item, i) => (
-                <div key={i} className={`service-detail__gallery-card reveal reveal-delay-${(i % 3) + 1}`}>
-                  <div className="gallery-card__image-wrapper">
-                    <img src={item.image} alt={item.title} loading="lazy" />
-                    <span className="gallery-card__category">{item.category}</span>
-                  </div>
-                  <div className="gallery-card__info">
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
+                <div key={i} className={`service-detail__gallery-card reveal reveal-delay-${(i % 3) + 1} ${id === 'ugc-ads' ? 'ugc-gallery-card' : ''}`}>
+                  {id === 'ugc-ads' ? (
+                    <div className="ugc-phone-frame">
+                      <div className="ugc-phone-notch"></div>
+                      <div className="ugc-phone-screen">
+                        <img src={item.image} alt={item.title} className="ugc-phone-image" loading="lazy" />
+                        <div className="ugc-overlay-top">
+                          <span className={`ugc-ad-badge ${item.category.toLowerCase().includes('creator') ? 'ugc-creator-badge' : 'ugc-brand-badge'}`}>
+                            {item.category}
+                          </span>
+                        </div>
+                        <div className="ugc-overlay-right">
+                          <div className="ugc-action-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor" className="ugc-heart-icon"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <span>{item.likes}</span>
+                          </div>
+                          <div className="ugc-action-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                            <span>{item.comments}</span>
+                          </div>
+                          <div className="ugc-action-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+                            <span>Share</span>
+                          </div>
+                        </div>
+                        <div className="ugc-overlay-bottom">
+                          <span className="ugc-creator-handle">{item.creator}</span>
+                          <p className="ugc-caption">{item.caption}</p>
+                          <button className="ugc-cta-button">{item.cta} ›</button>
+                        </div>
+                      </div>
+                      <div className="ugc-phone-info-card">
+                        <h3>{item.title}</h3>
+                        <p>{item.desc}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="gallery-card__image-wrapper">
+                        <img src={item.image} alt={item.title} loading="lazy" />
+                        <span className="gallery-card__category">{item.category}</span>
+                      </div>
+                      <div className="gallery-card__info">
+                        <h3>{item.title}</h3>
+                        <p>{item.desc}</p>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
