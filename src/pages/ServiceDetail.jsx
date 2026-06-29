@@ -906,6 +906,112 @@ const servicesData = {
         cta: 'Shop Now'
       }
     ]
+  },
+  'shopify-development': {
+    title: 'Shopify Store Development',
+    category: 'E-Commerce',
+    tagline: 'High-converting Shopify stores engineered for maximum sales.',
+    heroImage: '/projects/shopify_store_showcase_1.png',
+    intro: 'Your Shopify store is more than a product catalog — it is a conversion engine. We design and develop custom Shopify OS 2.0 stores that load instantly, tell your brand story, and drive friction-free checkouts. From custom Liquid programming and bespoke cart drawers to advanced app integrations (Klaviyo, Recharge, subscription models) and ERP syncing, we ensure your store is optimized for scale. Our development philosophy centers on maximizing Average Order Value (AOV) and conversion rate, turning window shoppers into loyal subscribers.',
+    features: [
+      {
+        title: 'Custom Liquid & OS 2.0 Coding',
+        desc: 'Bespoke sections and blocks tailored to your brand without slow page-builder apps.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
+      },
+      {
+        title: 'High-Converting Checkout',
+        desc: 'Optimized slide-out cart drawers, upsells, cross-sells, and quick-buy setups.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
+      },
+      {
+        title: 'Tech Stack Integration',
+        desc: 'Seamless setups for Klaviyo email flows, Recharge subscriptions, and custom APIs.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+      }
+    ],
+    technicalSpecs: [
+      { key: 'Platform', value: 'Shopify, Shopify Plus' },
+      { key: 'Architecture', value: 'Online Store 2.0 (OS 2.0)' },
+      { key: 'Theme Base', value: 'Liquid, HTML5, Vanilla CSS, JS' },
+      { key: 'Integrations', value: 'Klaviyo, Recharge, Loop, ERPs' },
+      { key: 'Speed Benchmark', value: 'Sub-second mobile rendering' }
+    ],
+    deliverables: [
+      { title: 'Custom Shopify OS 2.0 Theme Setup', desc: 'A clean, high-speed Shopify setup featuring custom Liquid sections and blocks built for easy client editing.' },
+      { title: 'Optimized AJAX Cart Drawer', desc: 'Bespoke slide-out cart featuring integrated progress bars for free shipping and smart product upsells.' },
+      { title: 'Marketing App Integrations', desc: 'Seamless setup of Klaviyo email flows, review platforms (Judge.me/Yotpo), and subscription widgets.' },
+      { title: 'Bulk Product & SEO Migration', desc: 'Seamless migration of products, collections, customers, and redirect links to preserve search rankings.' },
+      { title: 'Client Handover & Video Training', desc: 'Comprehensive video guides detailing how to update banners, add products, and manage discounts.' }
+    ],
+    caseStudy: {
+      clientName: 'Aura Home Candle Co.',
+      logo: '/projects/aurahome.png',
+      summary: 'Re-engineered a slow e-commerce storefront into a high-speed, subscription-first brand portal.',
+      metrics: [
+        { label: 'Conversion Lift', value: '+58%' },
+        { label: 'AOV Increase', value: '+32%' },
+        { label: 'Mobile Page Speed', value: '94/100' }
+      ],
+      challenge: 'A bloated page-builder app and slow loading speeds caused a 78% cart abandonment rate on mobile devices.',
+      solution: 'Rebuilt the store on a clean Shopify OS 2.0 framework with custom Liquid modules, optimizing assets, and integrating Recharge subscription flows.',
+      link: '/projects'
+    },
+    process: [
+      { step: '01', title: 'Strategy', desc: 'Mapping product catalogs, collection structures, and upsell logic.' },
+      { step: '02', title: 'Theme Code', desc: 'Writing custom Liquid sections and high-speed CSS blocks.' },
+      { step: '03', title: 'App Setup', desc: 'Integrating email, subscriptions, and analytics tools.' },
+      { step: '04', title: 'Optimization', desc: 'Rigorous speed tuning, checkout testing, and live launch.' }
+    ],
+    blogs: ['future-of-web-dev'],
+    advancements: [
+      'Custom Liquid blocks replacing heavy apps',
+      'Advanced e-commerce analytics tracking',
+      'Mobile-first checkout layouts',
+      'Frictionless subscription billing integrations'
+    ],
+    relatedLinks: [
+      { title: 'Web Design & Development', path: '/services/web-design' },
+      { title: 'SEO & Performance Marketing', path: '/services/seo' }
+    ],
+    faqs: [
+      {
+        question: 'Do you use page-builder apps like PageFly or Shogun?',
+        answer: 'No. Page-builder apps inject massive amounts of bloated code that slows down your store and hurts conversion rates. We write clean, custom Liquid sections directly into the Shopify theme, giving you drag-and-drop flexibility in the Shopify customizer with zero performance drag.'
+      },
+      {
+        question: 'Can you migrate my existing store from WooCommerce or Squarespace?',
+        answer: 'Yes, we handle the entire migration process. This includes securely importing your products, customer records, order history, and setting up URL redirects to ensure your Google SEO rankings are completely preserved.'
+      },
+      {
+        question: 'How do you optimize the store for higher Average Order Value (AOV)?',
+        answer: 'We design custom AJAX cart drawers featuring progress bars (e.g. "Spend $15 more for Free Shipping") and smart cross-sells based on what is currently in the cart, making it effortless for customers to add items before checking out.'
+      },
+      {
+        question: 'Can you integrate custom subscription programs?',
+        answer: 'Yes, we specialize in integrating subscription platforms like Recharge and Loop, styling the widgets to match your brand style perfectly for a premium customer experience.'
+      }
+    ],
+    gallery: [
+      {
+        image: '/projects/shopify_store_showcase_1.png',
+        category: 'DESKTOP SHOWCASE',
+        title: 'Bespoke Shopify OS 2.0 Storefront',
+        desc: 'A clean, high-end desktop e-commerce storefront showcasing luxury products and minimalist navigation.'
+      },
+      {
+        image: '/projects/shopify_store_showcase_2.png',
+        category: 'MOBILE OPTIMIZED',
+        title: 'Mobile Product Landing Page',
+        desc: 'A conversion-engineered mobile interface featuring clear pricing, ratings, and a sticky Add to Cart button.'
+      },
+      {
+        image: '/projects/shopify_dashboard.png',
+        category: 'ANALYTICS ENGINE',
+        title: 'Shopify E-Commerce Dashboard',
+        desc: 'Real-time revenue growth, conversion rate optimization telemetry, and sales metrics tracking.'
+      }
+    ]
   }
 }
 

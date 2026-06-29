@@ -56,6 +56,13 @@ export default function Calculator() {
   const [smPlatforms, setSmPlatforms] = useState(2)
   const [smFrequency, setSmFrequency] = useState('medium') // 'low', 'medium', 'high'
 
+  // Shopify Store Options
+  const [shopifyTheme, setShopifyTheme] = useState('standard') // 'standard', 'custom'
+  const [shopifyKlaviyo, setShopifyKlaviyo] = useState(true)
+  const [shopifyRecharge, setShopifyRecharge] = useState(false)
+  const [shopifyReviews, setShopifyReviews] = useState(true)
+  const [shopifyProducts, setShopifyProducts] = useState(20)
+
   // General Estimator Options
   const [projectSpeed, setProjectSpeed] = useState('standard') // 'standard', 'expedited'
   const [projectSupport, setProjectSupport] = useState('none') // 'none', 'basic', 'partnership'
@@ -93,73 +100,85 @@ export default function Calculator() {
     let timelineWeeks = '2-3'
 
     if (serviceType === 'web-design') {
-      basePrice = 1200
-      basePrice += webPages * 120
+      basePrice = 390
+      basePrice += webPages * 45
       
-      if (webComplexity === 'custom') basePrice *= 1.15
-      if (webComplexity === 'cinematic') basePrice *= 1.35
-      if (webCms) basePrice += 400
+      if (webComplexity === 'custom') basePrice *= 1.10
+      if (webComplexity === 'cinematic') basePrice *= 1.20
+      if (webCms) basePrice += 120
 
       // Tech stack adjustments
-      if (webStack === 'nextjs') basePrice += 600
-      if (webStack === 'vanilla') basePrice -= 200
+      if (webStack === 'nextjs') basePrice += 150
+      if (webStack === 'vanilla') basePrice -= 80
 
       // Timeline (Reduced according to user's high speed: 5 weeks -> 2 weeks)
       timelineWeeks = webPages <= 5 ? '1-2' : webPages <= 15 ? '2-3' : '3-4'
     } else if (serviceType === 'software-development') {
       if (softwareScale === 'mvp') {
-        basePrice = 3200
+        basePrice = 950
         timelineWeeks = '2-3'
       } else if (softwareScale === 'professional') {
-        basePrice = 7500
+        basePrice = 2200
         timelineWeeks = '3-5'
       } else {
-        basePrice = 18000
+        basePrice = 4900
         timelineWeeks = '5-8'
       }
-      if (softwareDb) basePrice += 800
+      if (softwareDb) basePrice += 200
 
       // Platform type adjustment
-      if (softwareType === 'mobile') basePrice += 1500
-      if (softwareType === 'desktop') basePrice += 1000
+      if (softwareType === 'mobile') basePrice += 400
+      if (softwareType === 'desktop') basePrice += 300
     } else if (serviceType === 'ugc-ads') {
-      basePrice = ugcVideos * 180
-      basePrice += ugcCreators * 100
+      basePrice = ugcVideos * 50
+      basePrice += ugcCreators * 30
       
       // Counting active platforms
       const activePlatformsCount = Object.values(ugcPlatforms).filter(Boolean).length
-      if (activePlatformsCount > 1) basePrice += (activePlatformsCount - 1) * 150
-      if (ugcScripting) basePrice += 200
+      if (activePlatformsCount > 1) basePrice += (activePlatformsCount - 1) * 40
+      if (ugcScripting) basePrice += 60
 
       timelineWeeks = '5-10 Days'
     } else if (serviceType === 'ai-automation') {
-      basePrice = 1800
-      basePrice += aiWorkflows * 350
+      basePrice = 490
+      basePrice += aiWorkflows * 90
       
-      if (aiIntegrations === 'medium') basePrice += 400
-      if (aiIntegrations === 'complex') basePrice += 1200
+      if (aiIntegrations === 'medium') basePrice += 120
+      if (aiIntegrations === 'complex') basePrice += 350
 
-      if (aiType === 'rag') basePrice += 800
-      if (aiType === 'chatbot') basePrice += 500
+      if (aiType === 'rag') basePrice += 180
+      if (aiType === 'chatbot') basePrice += 120
 
       timelineWeeks = aiWorkflows <= 3 ? '1-2' : '2-4'
     } else if (serviceType === 'graphic-design') {
-      basePrice = 300 // Base for design consultation
-      if (designLogos) basePrice += 250
-      if (designPosters) basePrice += 150
-      if (designPackaging) basePrice += 350
-      if (designApparel) basePrice += 200
+      basePrice = 90 // Base for design consultation
+      if (designLogos) basePrice += 80
+      if (designPosters) basePrice += 45
+      if (designPackaging) basePrice += 120
+      if (designApparel) basePrice += 60
 
       timelineWeeks = '3-7 Days'
     } else if (serviceType === 'social-media') {
       // Calculated as a setup/first-month fee
-      basePrice = 400
-      basePrice += smPlatforms * 150
+      basePrice = 150
+      basePrice += smPlatforms * 45
       
-      if (smFrequency === 'medium') basePrice += 150
-      if (smFrequency === 'high') basePrice += 300
+      if (smFrequency === 'medium') basePrice += 45
+      if (smFrequency === 'high') basePrice += 90
 
       timelineWeeks = 'Setup in 1 Week'
+    } else if (serviceType === 'shopify-development') {
+      basePrice = 490
+      if (shopifyTheme === 'custom') basePrice += 200
+      if (shopifyKlaviyo) basePrice += 60
+      if (shopifyRecharge) basePrice += 80
+      if (shopifyReviews) basePrice += 40
+      
+      if (shopifyProducts <= 20) basePrice += 40
+      else if (shopifyProducts <= 100) basePrice += 80
+      else basePrice += 150
+
+      timelineWeeks = '5-10 Days'
     }
 
     // Adjust for speed
@@ -212,6 +231,12 @@ export default function Calculator() {
       details = `Graphic Design for: ${assets.join(', ') || 'None'}`
     } else if (serviceType === 'social-media') {
       details = `Social Media Setup: ${smPlatforms} platforms, Posting Frequency: ${smFrequency}`
+    } else if (serviceType === 'shopify-development') {
+      const integrations = []
+      if (shopifyKlaviyo) integrations.push('Klaviyo')
+      if (shopifyRecharge) integrations.push('Recharge')
+      if (shopifyReviews) integrations.push('Reviews')
+      details = `Shopify: ${shopifyTheme} theme, ${shopifyProducts} products, Integrations: ${integrations.join('/') || 'None'}`
     }
 
     details += `, Speed: ${projectSpeed}, Support: ${projectSupport}`
@@ -479,12 +504,18 @@ export default function Calculator() {
 
                 <div className="estimator-service-select">
                   <label htmlFor="service-select">Select Service Type</label>
-                  <div className="service-options" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                  <div className="service-options" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '8px' }}>
                     <button 
                       className={`service-opt-btn ${serviceType === 'web-design' ? 'active' : ''}`}
                       onClick={() => setServiceType('web-design')}
                     >
                       💻 Web Dev
+                    </button>
+                    <button 
+                      className={`service-opt-btn ${serviceType === 'shopify-development' ? 'active' : ''}`}
+                      onClick={() => setServiceType('shopify-development')}
+                    >
+                      🛍️ Shopify
                     </button>
                     <button 
                       className={`service-opt-btn ${serviceType === 'software-development' ? 'active' : ''}`}
@@ -892,6 +923,66 @@ export default function Calculator() {
                             Aggressive Scaling (Daily posts / Reels)
                             <span>Daily content calendar, video edits, active community management</span>
                           </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Shopify Store Fields */}
+                  {serviceType === 'shopify-development' && (
+                    <>
+                      <div className="calc-input-group">
+                        <label>Theme Implementation</label>
+                        <div className="toggle-options toggle-options--half">
+                          <button 
+                            className={`toggle-opt-btn ${shopifyTheme === 'standard' ? 'active' : ''}`}
+                            onClick={() => setShopifyTheme('standard')}
+                          >
+                            Shopify OS 2.0 Theme
+                            <span>Standard high-speed theme setup</span>
+                          </button>
+                          <button 
+                            className={`toggle-opt-btn ${shopifyTheme === 'custom' ? 'active' : ''}`}
+                            onClick={() => setShopifyTheme('custom')}
+                          >
+                            Custom Liquid Theme
+                            <span>Bespoke custom-coded Liquid templates</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="calc-input-group">
+                        <div className="calc-input-header">
+                          <label htmlFor="shop-prod">Number of Products</label>
+                          <span className="calc-value-display">{shopifyProducts} Products</span>
+                        </div>
+                        <input 
+                          id="shop-prod"
+                          type="range" 
+                          min="1" 
+                          max="250" 
+                          step="5" 
+                          value={shopifyProducts} 
+                          onChange={(e) => setShopifyProducts(Number(e.target.value))} 
+                        />
+                        <div className="calc-range-bounds"><span>1 Product</span><span>250+ Products</span></div>
+                      </div>
+
+                      <div className="calc-input-group">
+                        <label>Select App Integrations & Setups</label>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '12px' }}>
+                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
+                            <input type="checkbox" checked={shopifyKlaviyo} onChange={(e) => setShopifyKlaviyo(e.target.checked)} />
+                            Klaviyo Email Flows Setup (+Welcome, +Abandoned Cart)
+                          </label>
+                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
+                            <input type="checkbox" checked={shopifyRecharge} onChange={(e) => setShopifyRecharge(e.target.checked)} />
+                            Recharge / Loop Subscriptions Setup
+                          </label>
+                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
+                            <input type="checkbox" checked={shopifyReviews} onChange={(e) => setShopifyReviews(e.target.checked)} />
+                            Judge.me / Yotpo Review Widgets Setup
+                          </label>
                         </div>
                       </div>
                     </>

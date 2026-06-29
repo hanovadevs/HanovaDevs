@@ -13,6 +13,14 @@ const services = [
     techStack: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'Lighthouse']
   },
   {
+    id: 'shopify-development',
+    title: 'Shopify Store Development',
+    tagline: 'E-commerce store setups & custom themes',
+    desc: 'High-speed, conversion-engineered Shopify stores and custom Liquid themes built to scale sales.',
+    image: '/projects/shopify_store_showcase_1.png',
+    techStack: ['Shopify OS 2.0', 'Liquid', 'Checkout Customizer', 'Klaviyo', 'Recharge']
+  },
+  {
     id: 'social-media',
     title: 'Social Media Marketing',
     tagline: 'Grow your brand organically',
