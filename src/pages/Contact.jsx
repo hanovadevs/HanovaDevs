@@ -43,12 +43,35 @@ export default function Contact() {
   const [openFaq, setOpenFaq] = useState(null)
   const [submissionFailed, setSubmissionFailed] = useState(false)
 
+  // Pre-fill form from URL parameters (e.g. from Calculator)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const service = params.get('service')
+    const budget = params.get('budget')
+    const details = params.get('details')
+
+    if (service || budget || details) {
+      let customMessage = `Calculator Projections:\n`
+      if (service) customMessage += `- Service: ${service}\n`
+      if (budget) customMessage += `- Estimated Budget: ${budget}\n`
+      if (details) customMessage += `- Selections: ${details}\n`
+      customMessage += `\nLet's align on these requirements during our call.`
+
+      setForm(prev => ({
+        ...prev,
+        budget: budget || prev.budget,
+        message: customMessage
+      }))
+    }
+  }, [])
+
   // Call Scheduler States
   const [activeTab, setActiveTab] = useState('message') // 'message' or 'call'
+  const [meetingType, setMeetingType] = useState('discovery') // 'discovery', 'tech-review', 'growth-strategy'
   const [selectedDate, setSelectedDate] = useState(null)
   const [selectedTime, setSelectedTime] = useState('')
 
-  // Generate next 5 business days
+  // Generate next 10 business days (2 weeks)
   const businessDays = useMemo(() => {
     const days = []
     let current = new Date()
@@ -56,7 +79,7 @@ export default function Contact() {
     if (current.getHours() >= 17) {
       current.setDate(current.getDate() + 1)
     }
-    while (days.length < 5) {
+    while (days.length < 10) {
       if (current.getDay() !== 0 && current.getDay() !== 6) {
         days.push(new Date(current))
       }
@@ -65,12 +88,65 @@ export default function Contact() {
     return days
   }, [])
 
-  // Auto-select first date on load
-  useEffect(() => {
-    if (businessDays.length > 0 && !selectedDate) {
-      setSelectedDate(businessDays[0])
+  const getGoogleCalendarUrl = () => {
+    if (!selectedDate || !selectedTime) return '';
+    const dateStr = selectedDate.toISOString().split('T')[0].replace(/-/g, '');
+    
+    let durationMin = 15;
+    let title = "HanovaDevs Discovery Session";
+    if (meetingType === 'tech-review') {
+      durationMin = 30;
+      title = "HanovaDevs Tech & Architecture Review";
+    } else if (meetingType === 'growth-strategy') {
+      durationMin = 45;
+      title = "HanovaDevs Growth & UGC Strategy";
     }
-  }, [businessDays, selectedDate])
+    
+    const [hoursStr, minutesStr] = selectedTime.replace(' AM', '').replace(' PM', '').split(':');
+    let hours = Number(hoursStr);
+    const minutes = Number(minutesStr);
+    const isPM = selectedTime.includes('PM');
+    if (isPM && hours !== 12) hours += 12;
+    if (!isPM && hours === 12) hours = 0;
+    
+    const start = new Date(selectedDate);
+    start.setHours(hours, minutes, 0);
+    
+    const end = new Date(start);
+    end.setMinutes(start.getMinutes() + durationMin);
+    
+    const formatUTC = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${formatUTC(start)}/${formatUTC(end)}&details=${encodeURIComponent('Meeting to discuss your digital project with HanovaDevs.')}&location=${encodeURIComponent('Google Meet / Video Call')}`;
+  }
+
+  const getOutlookCalendarUrl = () => {
+    if (!selectedDate || !selectedTime) return '';
+    let durationMin = 15;
+    let title = "HanovaDevs Discovery Session";
+    if (meetingType === 'tech-review') {
+      durationMin = 30;
+      title = "HanovaDevs Tech & Architecture Review";
+    } else if (meetingType === 'growth-strategy') {
+      durationMin = 45;
+      title = "HanovaDevs Growth & UGC Strategy";
+    }
+    
+    const [hoursStr, minutesStr] = selectedTime.replace(' AM', '').replace(' PM', '').split(':');
+    let hours = Number(hoursStr);
+    const minutes = Number(minutesStr);
+    const isPM = selectedTime.includes('PM');
+    if (isPM && hours !== 12) hours += 12;
+    if (!isPM && hours === 12) hours = 0;
+    
+    const start = new Date(selectedDate);
+    start.setHours(hours, minutes, 0);
+    
+    const end = new Date(start);
+    end.setMinutes(start.getMinutes() + durationMin);
+    
+    return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=${encodeURIComponent(title)}&startdt=${start.toISOString()}&enddt=${end.toISOString()}&body=${encodeURIComponent('Meeting to discuss your digital project with HanovaDevs.')}&location=${encodeURIComponent('Google Meet / Video Call')}`;
+  }
 
   const userTimezone = useMemo(() => {
     try {
@@ -102,6 +178,7 @@ export default function Contact() {
         email: form.email,
         phone: form.phone || "Not provided",
         company: form.company || "Not provided",
+        meetingType: meetingType.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
         scheduledDate: selectedDate ? selectedDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : '',
         scheduledTime: selectedTime,
         timezone: userTimezone,
@@ -255,10 +332,18 @@ export default function Contact() {
                     <div className="scheduler-summary-badge" style={{ margin: '1rem 0', justifyContent: 'center' }}>
                       📅 <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong> ({userTimezone})
                     </div>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--blue-grey)', maxWidth: '350px' }}>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--blue-grey)', maxWidth: '350px', margin: '0 auto' }}>
                       A confirmation email has been sent. Our team will meet you at the scheduled time via Google Meet.
                     </p>
-                    <button className="btn btn-ghost" onClick={() => { setSubmitted(false); setSelectedTime(''); setForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' }) }}>
+                    <div className="calendar-add-buttons">
+                      <a href={getGoogleCalendarUrl()} target="_blank" rel="noopener noreferrer" className="calendar-add-btn">
+                        📅 Add to Google
+                      </a>
+                      <a href={getOutlookCalendarUrl()} target="_blank" rel="noopener noreferrer" className="calendar-add-btn">
+                        ✉️ Add to Outlook
+                      </a>
+                    </div>
+                    <button className="btn btn-ghost" style={{ marginTop: '0.5rem' }} onClick={() => { setSubmitted(false); setSelectedTime(''); setForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' }) }}>
                       Schedule Another Call
                     </button>
                   </div>
@@ -373,70 +458,142 @@ export default function Contact() {
                     <>
                       <div className="contact-form-header">
                         <h3>Book a Strategy Call</h3>
-                        <p>Select a date and time to speak with our technical team.</p>
+                        <p>Configure your session and select a convenient date and time.</p>
                       </div>
 
-                      {/* Step 1: Date selection */}
+                      {/* Step 1: Meeting Type selection */}
                       <div className="scheduler-step">
                         <h4>
                           <span className="scheduler-step-num">1</span>
-                          Select a Date
+                          Select Meeting Type
                         </h4>
-                        <div className="scheduler-days">
-                          {businessDays.map((day, idx) => {
-                            const isSelected = selectedDate && selectedDate.toDateString() === day.toDateString()
-                            const weekdayName = day.toLocaleDateString('en-US', { weekday: 'short' })
-                            const dateNum = day.getDate()
-                            const monthName = day.toLocaleDateString('en-US', { month: 'short' })
-
-                            return (
-                              <div
-                                key={idx}
-                                className={`scheduler-day-card ${isSelected ? 'active' : ''}`}
-                                onClick={() => setSelectedDate(day)}
-                              >
-                                <span className="scheduler-day-card__weekday">{weekdayName}</span>
-                                <span className="scheduler-day-card__date">{dateNum}</span>
-                                <span className="scheduler-day-card__month">{monthName}</span>
-                              </div>
-                            )
-                          })}
+                        <div className="scheduler-meeting-types">
+                          <div 
+                            className={`scheduler-meeting-card ${meetingType === 'discovery' ? 'active' : ''}`}
+                            onClick={() => setMeetingType('discovery')}
+                          >
+                            <div className="scheduler-meeting-header">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="meeting-icon-svg">
+                                <path d="M23 7l-7 5 7 5V7z" />
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                              </svg>
+                              <h5>Discovery</h5>
+                            </div>
+                            <p>15m • Goals & fit</p>
+                          </div>
+                          <div 
+                            className={`scheduler-meeting-card ${meetingType === 'tech-review' ? 'active' : ''}`}
+                            onClick={() => setMeetingType('tech-review')}
+                          >
+                            <div className="scheduler-meeting-header">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="meeting-icon-svg">
+                                <polyline points="4 17 10 11 4 5" />
+                                <line x1="12" y1="19" x2="20" y2="19" />
+                              </svg>
+                              <h5>Tech Review</h5>
+                            </div>
+                            <p>30m • Architecture & stack</p>
+                          </div>
+                          <div 
+                            className={`scheduler-meeting-card ${meetingType === 'growth-strategy' ? 'active' : ''}`}
+                            onClick={() => setMeetingType('growth-strategy')}
+                          >
+                            <div className="scheduler-meeting-header">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="meeting-icon-svg">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                <polyline points="17 6 23 6 23 12" />
+                              </svg>
+                              <h5>Growth</h5>
+                            </div>
+                            <p>45m • UGC & channels</p>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Step 2: Time slot selection */}
+                      {/* Step 2: Date selection */}
                       <div className="scheduler-step">
                         <h4>
                           <span className="scheduler-step-num">2</span>
+                          Select a Date
+                        </h4>
+                        <div className="scheduler-days-container">
+                          <div className="scheduler-days-scroll">
+                            {businessDays.map((day, idx) => {
+                              const isSelected = selectedDate && selectedDate.toDateString() === day.toDateString()
+                              const weekdayName = day.toLocaleDateString('en-US', { weekday: 'short' })
+                              const dateNum = day.getDate()
+                              const monthName = day.toLocaleDateString('en-US', { month: 'short' })
+
+                              return (
+                                <div
+                                  key={idx}
+                                  className={`scheduler-day-card ${isSelected ? 'active' : ''}`}
+                                  onClick={() => setSelectedDate(day)}
+                                >
+                                  <span className="scheduler-day-card__weekday">{weekdayName}</span>
+                                  <span className="scheduler-day-card__date">{dateNum}</span>
+                                  <span className="scheduler-day-card__month">{monthName}</span>
+                                  <span className="scheduler-day-card__status">Available</span>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Step 3: Time slot selection */}
+                      <div className="scheduler-step">
+                        <h4>
+                          <span className="scheduler-step-num">3</span>
                           Choose Time Slot
                           <span className="scheduler-timezone">
                             🌐 {userTimezone} timezone
                           </span>
                         </h4>
-                        <div className="scheduler-slots">
-                          {timeSlots.map((slot) => (
-                            <button
-                              key={slot}
-                              type="button"
-                              className={`scheduler-slot-btn ${selectedTime === slot ? 'active' : ''}`}
-                              onClick={() => setSelectedTime(slot)}
-                            >
-                              {slot}
-                            </button>
-                          ))}
+                        <div className="scheduler-slot-groups">
+                          <div className="scheduler-slot-group">
+                            <span className="scheduler-slot-group-title">🌅 Morning</span>
+                            <div className="scheduler-slots">
+                              {['09:30 AM', '11:00 AM'].map((slot) => (
+                                <button
+                                  key={slot}
+                                  type="button"
+                                  className={`scheduler-slot-btn ${selectedTime === slot ? 'active' : ''}`}
+                                  onClick={() => setSelectedTime(slot)}
+                                >
+                                  {slot}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="scheduler-slot-group">
+                            <span className="scheduler-slot-group-title">☀️ Afternoon</span>
+                            <div className="scheduler-slots">
+                              {['01:30 PM', '03:00 PM', '04:30 PM'].map((slot) => (
+                                <button
+                                  key={slot}
+                                  type="button"
+                                  className={`scheduler-slot-btn ${selectedTime === slot ? 'active' : ''}`}
+                                  onClick={() => setSelectedTime(slot)}
+                                >
+                                  {slot}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Step 3: Contact Details */}
+                      {/* Step 4: Contact Details */}
                       {selectedTime && (
                         <div className="scheduler-step" style={{ marginTop: '0.5rem' }}>
                           <h4>
-                            <span className="scheduler-step-num">3</span>
+                            <span className="scheduler-step-num">4</span>
                             Confirm Your Information
                           </h4>
                           
                           <div className="scheduler-summary-badge">
-                            <span>📅 Booking call for: <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong></span>
+                            <span>📅 Booking <strong>{meetingType === 'discovery' ? '15m Discovery' : meetingType === 'tech-review' ? '30m Tech Review' : '45m Growth Strategy'}</strong> call: <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong></span>
                           </div>
 
                           <div className="contact-form__row">

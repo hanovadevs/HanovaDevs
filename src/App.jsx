@@ -19,6 +19,7 @@ import JournalPost from './pages/JournalPost'
 import Research from './pages/Research'
 import News from './pages/News'
 import TechStack from './pages/TechStack'
+import Calculator from './pages/Calculator'
 
 function App() {
   const location = useLocation()
@@ -63,6 +64,7 @@ function App() {
           <Route path="/products/omnai" element={<OmnaiDetail />} />
           <Route path="/products/eunoia" element={<EunoiaDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/calculator" element={<Calculator />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/journal/:slug" element={<JournalPost />} />
           <Route path="/research" element={<Research />} />

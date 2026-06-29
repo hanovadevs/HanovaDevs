@@ -15,6 +15,7 @@ const navLinks = [
       { path: '/research', label: 'Research Hub', desc: 'Curated industry research' },
       { path: '/news', label: 'News', desc: 'Latest technology headlines' },
       { path: '/stack', label: 'Tech Stack', desc: 'Our interactive arsenal' },
+      { path: '/calculator', label: 'Estimator & ROI', desc: 'ROAS & Project Estimator' },
     ]
   },
 ]
@@ -56,7 +57,7 @@ export default function Navbar() {
   const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news', '/stack'].some(p =>
     location.pathname === p || location.pathname.startsWith(p + '/')
   )
-  const isInsightsActive = ['/journal', '/research', '/news', '/stack'].some(p => location.pathname.startsWith(p))
+  const isInsightsActive = ['/journal', '/research', '/news', '/stack', '/calculator'].some(p => location.pathname.startsWith(p))
 
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''}`} id="main-nav">

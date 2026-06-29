@@ -149,25 +149,50 @@ export default function Services() {
           
           <div className="methodology-bento">
             <div className="methodology-card methodology-card--large reveal-up">
-              <span className="methodology-icon">⚡</span>
+              <div className="methodology-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
               <h3>Performance-First Engineering</h3>
               <p>We target 100/100 Lighthouse performance metrics as our coding baseline. By engineering server-side rendered frameworks, optimizing queries, and eliminating blocking client-side JavaScript, we build applications that load instantly and convert passively.</p>
             </div>
             
             <div className="methodology-card reveal-up reveal-delay-1">
-              <span className="methodology-icon">🎯</span>
+              <div className="methodology-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                  <path d="M12 2v20M2 12h20" />
+                </svg>
+              </div>
               <h3>Data-Driven Marketing</h3>
               <p>No assumptions. We map keyword clusters, ad campaigns, and visual assets directly based on verified consumer search behavior and predictive conversion metrics.</p>
             </div>
             
             <div className="methodology-card reveal-up reveal-delay-2">
-              <span className="methodology-icon">🛡️</span>
+              <div className="methodology-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <rect x="9" y="11" width="6" height="5" rx="1" />
+                  <path d="M10 11V9a2 2 0 1 1 4 0v2" />
+                </svg>
+              </div>
               <h3>IP Sovereignty</h3>
               <p>You own 100% of your source code and design tokens. We build clean, highly-documented codebases on cloud providers, completely eliminating licensing fees and vendor locks.</p>
             </div>
             
             <div className="methodology-card methodology-card--large reveal-up reveal-delay-3">
-              <span className="methodology-icon">🐙</span>
+              <div className="methodology-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V11a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V9.5C6.8 8.8 6 7.5 6 6a4 4 0 0 1 4-4h2z" />
+                  <path d="M8 13c-1.5 2.5-4 2.5-4 5s2 3 4 3 3-1.5 3-3.5" />
+                  <path d="M16 13c1.5 2.5 4 2.5 4 5s-2 3-4 3-3-1.5-3-3.5" />
+                  <path d="M10 13c-0.5 3-2 5-2 7s1.5 2 3 2 2-1 2-2.5" />
+                  <path d="M14 13c0.5 3 2 5 2 7s-1.5 2-3 2-2-1-2-2.5" />
+                </svg>
+              </div>
               <h3>Multidisciplinary Cephalopod Execution</h3>
               <p>Inspired by our decentralized mascot, our engineering limbs solve problems in parallel. Visual design, backend scaling, and conversion optimization are planned and launched as a single cohesive network rather than siloed steps.</p>
             </div>

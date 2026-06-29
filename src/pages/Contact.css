@@ -476,77 +476,135 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  margin-bottom: 2rem;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  transition: all 0.3s ease;
 }
 
 .scheduler-step h4 {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 750;
   color: var(--deep-navy);
-  margin-bottom: -0.25rem;
+  margin-bottom: 0.2rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .scheduler-step-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: rgba(var(--royal-blue-rgb), 0.1);
+  width: 26px;
+  height: 26px;
+  background: rgba(var(--royal-blue-rgb), 0.08);
   color: var(--royal-blue);
   border-radius: 50%;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 800;
 }
 
-/* Days Carousel/Grid */
-.scheduler-days {
+/* Meeting Types Grid */
+.scheduler-meeting-types {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-@media (max-width: 500px) {
-  .scheduler-days {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 768px) {
+  .scheduler-meeting-types {
+    grid-template-columns: 1fr;
   }
 }
 
+.scheduler-meeting-card {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  padding: 1.1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.scheduler-meeting-card:hover {
+  border-color: rgba(var(--royal-blue-rgb), 0.3);
+  background: rgba(var(--royal-blue-rgb), 0.01);
+}
+
+.scheduler-meeting-card.active {
+  background: rgba(var(--royal-blue-rgb), 0.04);
+  border-color: var(--royal-blue);
+}
+
+.scheduler-meeting-card h5 {
+  font-size: 0.9rem;
+  font-weight: 750;
+  margin: 0 0 0.25rem 0;
+  color: var(--deep-navy);
+}
+
+.scheduler-meeting-card p {
+  font-size: 0.75rem;
+  color: var(--blue-grey);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Days Carousel/Scroll */
+.scheduler-days-container {
+  position: relative;
+  width: 100%;
+}
+
+.scheduler-days-scroll {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.5rem 0.2rem;
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
+}
+
+.scheduler-days-scroll::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
 .scheduler-day-card {
+  flex: 0 0 76px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.75rem var(--space-sm);
+  padding: 0.85rem 0.5rem;
   background: var(--white);
-  border: 2px solid var(--light-grey);
-  border-radius: var(--radius-md);
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s var(--ease-smooth);
   user-select: none;
 }
 
 .scheduler-day-card:hover {
   border-color: var(--royal-blue);
-  background: rgba(var(--royal-blue-rgb), 0.02);
+  background: rgba(var(--royal-blue-rgb), 0.01);
   transform: translateY(-2px);
 }
 
 .scheduler-day-card.active {
   border-color: var(--royal-blue);
   background: rgba(var(--royal-blue-rgb), 0.05);
-  box-shadow: 0 4px 12px rgba(var(--royal-blue-rgb), 0.1);
+  box-shadow: 0 6px 15px rgba(var(--royal-blue-rgb), 0.12);
 }
 
 .scheduler-day-card__weekday {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--blue-grey);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
 }
 
 .scheduler-day-card.active .scheduler-day-card__weekday {
@@ -554,50 +612,84 @@
 }
 
 .scheduler-day-card__date {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 800;
   color: var(--deep-navy);
+  line-height: 1;
 }
 
 .scheduler-day-card__month {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   color: var(--blue-grey);
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
 }
 
-/* Time Slots Grid */
+.scheduler-day-card__status {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-top: 0.4rem;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Time Slots Grouping */
+.scheduler-slot-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.scheduler-slot-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.scheduler-slot-group-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--blue-grey);
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.25rem;
+}
+
 .scheduler-slots {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
   gap: 0.5rem;
 }
 
 .scheduler-slot-btn {
   background: var(--white);
-  border: 1.5px solid var(--light-grey);
+  border: 1.5px solid #e2e8f0;
   border-radius: var(--radius-pill);
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 0.85rem;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--deep-navy);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s var(--ease-smooth);
   text-align: center;
 }
 
 .scheduler-slot-btn:hover {
   border-color: var(--royal-blue);
   color: var(--royal-blue);
-  background: rgba(var(--royal-blue-rgb), 0.02);
+  background: rgba(var(--royal-blue-rgb), 0.01);
 }
 
 .scheduler-slot-btn.active {
   background: var(--royal-blue);
   border-color: var(--royal-blue);
   color: var(--white);
-  box-shadow: 0 4px 10px rgba(var(--royal-blue-rgb), 0.2);
+  box-shadow: 0 4px 12px rgba(var(--royal-blue-rgb), 0.2);
 }
 
 /* Details Summary Badge */
@@ -605,11 +697,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: rgba(var(--royal-blue-rgb), 0.05);
-  border: 1px solid rgba(var(--royal-blue-rgb), 0.15);
-  border-radius: var(--radius-md);
-  font-size: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(var(--royal-blue-rgb), 0.04);
+  border: 1px solid rgba(var(--royal-blue-rgb), 0.12);
+  border-radius: var(--radius-lg);
+  font-size: 0.88rem;
   color: var(--deep-navy);
   margin-bottom: var(--space-md);
   font-weight: 500;
@@ -620,12 +712,78 @@
 }
 
 .scheduler-timezone {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--blue-grey);
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  margin-top: -0.25rem;
+  margin-top: -0.2rem;
+  font-weight: 500;
 }
+
+/* Calendar Add Buttons */
+.calendar-add-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+.calendar-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.calendar-add-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Scheduler Meeting Header & SVGs */
+.scheduler-meeting-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.meeting-icon-svg {
+  width: 18px;
+  height: 18px;
+  color: var(--royal-blue);
+  flex-shrink: 0;
+}
+
+.scheduler-meeting-card.active .meeting-icon-svg {
+  color: var(--white);
+}
+
+/* Font Family Overrides for Clean Sans-Serif Look */
+.scheduler-step h4,
+.scheduler-meeting-card h5,
+.scheduler-meeting-card p,
+.scheduler-day-card__weekday,
+.scheduler-day-card__date,
+.scheduler-day-card__month,
+.scheduler-day-card__status,
+.scheduler-slot-group-title,
+.scheduler-slot-btn,
+.scheduler-summary-badge,
+.scheduler-timezone {
+  font-family: 'Inter', 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+
 
 
