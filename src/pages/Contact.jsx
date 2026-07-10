@@ -234,6 +234,11 @@ export default function Contact() {
         title="Contact Us"
         description="Get in touch with HanovaDevs. We are ready to discuss your next digital project, from custom software to comprehensive marketing campaigns."
         url="/contact"
+        faqList={faqs.map(f => ({ question: f.q, answer: f.a }))}
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Contact', item: '/contact' }
+        ]}
       />
       {/* Hero */}
       <section className="contact-hero" id="contact-hero">

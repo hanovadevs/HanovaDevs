@@ -270,6 +270,10 @@ export default function Calculator() {
         title="Interactive Growth & Cost Estimator Hub — HanovaDevs"
         description="Calculate your potential revenue lift with optimized UGC ads and high-performance web design, or estimate your custom project budget."
         url="/calculator"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Cost Calculator', item: '/calculator' }
+        ]}
       />
 
       {/* Cinematic Hero */}

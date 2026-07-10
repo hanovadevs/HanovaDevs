@@ -329,6 +329,25 @@
 .pj-case--raqs .pj-frame__url { background: #ffffff; color: #8c7853; border-radius: 0; font-family: Georgia, serif; font-style: italic; }
 
 /* ════════════════════════════
+   THEME: CODATOR (Tech Society Portal)
+   ════════════════════════════ */
+.pj-case--codator { background: #f8fafc; color: #1e293b; }
+.pj-case--codator .pj-case__category { color: #6366f1; }
+.pj-case--codator .pj-case__text h2 { color: #0f172a; }
+.pj-case--codator .pj-case__overview { color: #334155; }
+.pj-case--codator .pj-case__detail-block h4 { color: #4f46e5; }
+.pj-case--codator .pj-case__detail-block p { color: #475569; }
+.pj-case--codator .pj-case__metrics { border-top: 1px solid rgba(99, 102, 241, 0.15); }
+.pj-case--codator .pj-case__metric strong { color: #4f46e5; }
+.pj-case--codator .pj-case__metric span { color: #64748b; }
+.pj-case--codator .pj-btn { background: #6366f1; color: #fff; }
+.pj-case--codator .pj-btn:hover { background: #4f46e5; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2); }
+.pj-case--codator .pj-frame { border: 1px solid rgba(99, 102, 241, 0.1); box-shadow: 0 30px 60px rgba(99, 102, 241, 0.08); }
+.pj-case--codator .pj-frame__header { background: #f1f5f9; border-bottom: 1px solid rgba(99, 102, 241, 0.05); }
+.pj-case--codator .pj-frame__dots span { background: rgba(99, 102, 241, 0.2); }
+.pj-case--codator .pj-frame__url { background: #fff; color: #6366f1; }
+
+/* ════════════════════════════
    CTA
    ════════════════════════════ */
 .pj-cta {

@@ -14,6 +14,10 @@ export default function Products() {
         title="Products — HanovaDevs"
         description="Discover our cutting-edge AI products. Omnai Browser and Eunoia Desktop Companion."
         url="/products"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Products', item: '/products' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

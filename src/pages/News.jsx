@@ -549,6 +549,10 @@ export default function News() {
         description="Stay informed with the latest technology news from around the globe. AI breakthroughs, semiconductor innovations, space missions, cybersecurity alerts, and more — curated by HanovaDevs."
         url="/news"
         keywords="tech news, technology headlines, AI news, semiconductor news, space tech, cybersecurity news, HanovaDevs"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Newsroom', item: '/news' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

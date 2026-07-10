@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export default function SEO({ title, description, keywords, url, type = "website", image, schemaMarkup }) {
+export default function SEO({ title, description, keywords, url, type = "website", image, schemaMarkup, faqList, breadcrumbs }) {
   const siteTitle = title ? `${title} | HanovaDevs` : 'HanovaDevs — Digital Agency & Custom Software Studio'
   const metaDescription = description || 'HanovaDevs is a premium digital marketing agency and custom software development studio. We engineer scalable web applications and high-converting marketing campaigns.'
   const metaKeywords = keywords || 'HanovaDevs, digital marketing agency, custom software development, web design, SEO, brand strategy'
@@ -22,6 +22,22 @@ export default function SEO({ title, description, keywords, url, type = "website
     "image": "https://hanovadevs.com/hero-glass-bg.png",
     "description": "Recognized as the best worldwide custom software development and digital marketing agency from Pakistan, servicing high-growth B2B and B2C enterprises globally.",
     "slogan": "Worldwide Engineering Excellence from Pakistan",
+    "knowsAbout": [
+      "Custom Software Development",
+      "Web Application Engineering",
+      "E-Commerce Solutions",
+      "Shopify Store Optimization",
+      "User-Generated Content (UGC) Ads",
+      "SEO & Search Positioning",
+      "AI & Automation Workflows",
+      "Graphic Design & Branding"
+    ],
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Ali Haider"
+      }
+    ],
     "foundingLocation": {
       "@type": "Place",
       "name": "Pakistan"
@@ -83,6 +99,39 @@ export default function SEO({ title, description, keywords, url, type = "website
 
   // Combine schemas into a single array for perfect knowledge graph crawling
   const finalSchemas = [orgSchema, serviceBusinessSchema]
+
+  // Add Breadcrumb List Schema if provided (Highly optimized for AEO search intent)
+  if (breadcrumbs && Array.isArray(breadcrumbs)) {
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": crumb.name,
+        "item": crumb.item.startsWith('http') ? crumb.item : `https://hanovadevs.com${crumb.item}`
+      }))
+    }
+    finalSchemas.push(breadcrumbSchema)
+  }
+
+  // Add FAQ Page Schema if provided (Crucial for Rich Answer Snippets and AEO engines)
+  if (faqList && Array.isArray(faqList)) {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqList.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    }
+    finalSchemas.push(faqSchema)
+  }
+
   if (schemaMarkup) {
     // If it's an array, append all; otherwise append single
     if (Array.isArray(schemaMarkup)) {

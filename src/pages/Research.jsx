@@ -785,6 +785,10 @@ export default function Research() {
         title="Research Hub — HanovaDevs"
         description="Curated industry research, academic papers, and technical reports from leading institutions. Stay informed on AI, web development, cybersecurity, and more."
         url="/research"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Research Hub', item: '/research' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

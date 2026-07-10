@@ -1078,6 +1078,12 @@ export default function ServiceDetail() {
         description={service.intro.substring(0, 160) + '...'}
         url={`/services/${id}`}
         schemaMarkup={serviceSchema}
+        faqList={service.faqs}
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Services', item: '/services' },
+          { name: service.title, item: `/services/${id}` }
+        ]}
       />
       
       {/* Hero Section */}

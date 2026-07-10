@@ -580,6 +580,10 @@ export default function Journal() {
         title="The HanovaDevs Journal — Tech Insights & Engineering"
         description="Original articles on web development, AI, emerging technology, and digital marketing from the HanovaDevs engineering team."
         url="/journal"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Journal', item: '/journal' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

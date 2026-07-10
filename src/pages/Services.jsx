@@ -96,6 +96,10 @@ export default function Services() {
         title="Our Services — HanovaDevs"
         description="Explore HanovaDevs' premium digital services, from web design and scalable custom software to enterprise-grade SEO and social media marketing."
         url="/services"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Services', item: '/services' }
+        ]}
       />
       
       {/* Cinematic Hero */}

@@ -243,6 +243,11 @@ export default function EunoiaDetail() {
         description="Eunoia is a local-first desktop productivity companion. Planning, notes, journaling, focus sessions, and AI built for your everyday life."
         url="/products/eunoia"
         schemaMarkup={eunoiaSchema}
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Products', item: '/products' },
+          { name: 'Eunoia', item: '/products/eunoia' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

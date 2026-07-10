@@ -115,6 +115,22 @@ const featuredProjects = [
       { label: 'Response Time', value: '12ms' },
       { label: 'Task Efficiency', value: '+60%' }
     ]
+  },
+  {
+    id: 'codator',
+    title: 'CODATOR Core & Portal',
+    category: 'Community OS & SaaS',
+    url: 'https://codator.vercel.app',
+    thumbnail: '/projects/codator.png',
+    theme: 'codator',
+    overview: 'CODATOR is a custom-built, gamified community management portal engineered for a university Computer Science & Computer Engineering society. It features an interactive public CLI terminal landing page, a student portal with digital ID passes, real-time event check-ins, and XP tracking, alongside an administrative control desk.',
+    challenge: 'Handling real-time student check-ins at events, tracking individual engagement dynamically via XP points and levels, and providing secure admin workflows for application reviews and event analytics.',
+    solution: 'We engineered a multi-portal ecosystem utilizing React, featuring clean slate aesthetics, gamification badge rewards, automatic timezone integration, and an AJAX application review interface with real-time analytics.',
+    metrics: [
+      { label: 'Active Members', value: '68+' },
+      { label: 'Attendance Rate', value: '62%' },
+      { label: 'Load Time', value: '0.3s' }
+    ]
   }
 ]
 
@@ -129,6 +145,10 @@ export default function Projects() {
         title="Client Projects — HanovaDevs" 
         description="Explore our portfolio of recent client work, including EarthSync Essential and Crown Accumulator." 
         url="/projects" 
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Projects', item: '/projects' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

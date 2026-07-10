@@ -88,6 +88,11 @@ export default function About() {
         title="About Us"
         description="Learn about HanovaDevs' mission to bridge the gap between businesses and the digital world through world-class software engineering and digital marketing."
         url="/about"
+        faqList={faqs}
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'About', item: '/about' }
+        ]}
       />
       {/* Hero */}
       <section className="about-hero" id="about-hero">

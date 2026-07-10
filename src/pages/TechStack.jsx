@@ -405,6 +405,10 @@ export default function TechStack() {
         title="Our Tech Stack — HanovaDevs"
         description="Explore the interactive developer and marketer arsenal powering HanovaDevs. Browse our frontend, backend, cloud, design, AI, and growth marketing technologies."
         url="/stack"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Tech Stack', item: '/stack' }
+        ]}
       />
 
       {/* Futuristic Orbit Hero */}

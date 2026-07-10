@@ -272,6 +272,11 @@ export default function OmnaiDetail() {
         description="Omnai is a next-generation AI-powered browser. AI Task Orchestration, Persistent Memory, Privacy Intelligence, and Developer Tools — built from the ground up."
         url="/products/omnai"
         schemaMarkup={omnaiSchema}
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Products', item: '/products' },
+          { name: 'Omnai Browser', item: '/products/omnai' }
+        ]}
       />
 
       {/* ===== HERO ===== */}

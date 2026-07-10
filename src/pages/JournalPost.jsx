@@ -203,6 +203,11 @@ export default function JournalPost() {
         url={`/journal/${post.slug}`}
         image={post.image}
         type="article"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Journal', item: '/journal' },
+          { name: post.title, item: `/journal/${post.slug}` }
+        ]}
         schemaMarkup={{
           "@context": "https://schema.org",
           "@type": "TechArticle",

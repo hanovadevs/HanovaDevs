@@ -128,6 +128,20 @@ const projects = [
     metric: '+32% AOV',
     image: '/projects/lumiere.png',
     url: 'https://www.lumiere-paris.fr'
+  },
+  {
+    title: 'AeroSpace Dynamics',
+    category: 'Logistics Analytics',
+    metric: '12ms Resp.',
+    image: '/projects/aero.png',
+    url: 'https://www.aerospacedynamics.io'
+  },
+  {
+    title: 'CODATOR Core & Portal',
+    category: 'Community OS & SaaS',
+    metric: '68+ Members',
+    image: '/projects/codator.png',
+    url: 'https://codator.vercel.app'
   }
 ]
 
@@ -224,12 +238,27 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [])
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://hanovadevs.com/#website",
+    "url": "https://hanovadevs.com",
+    "name": "HanovaDevs",
+    "description": "Worldwide Engineering Excellence and Digital Marketing from Pakistan",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://hanovadevs.com/journal?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+
   return (
     <div className="home-page">
       <SEO
         title="Digital Marketing Agency & Custom Software Studio"
         description="HanovaDevs engineers scalable web applications, executes high-converting digital marketing campaigns, and builds powerful brand identities to drive your business growth."
         url=""
+        schemaMarkup={websiteSchema}
       />
       {/* ===== HERO ===== */}
       <section className="hero" id="hero">
