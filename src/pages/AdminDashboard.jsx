@@ -4,12 +4,42 @@ import SEO from '../components/SEO'
 import './AdminDashboard.css'
 
 export default function AdminDashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem('hanova_admin_auth') === 'true'
+  })
+  const [usernameInput, setUsernameInput] = useState('')
+  const [passwordInput, setPasswordInput] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [loginError, setLoginError] = useState('')
+
   const [appointments, setAppointments] = useState([])
   const [transcripts, setTranscripts] = useState([])
   const [activeTab, setActiveTab] = useState('appointments') // appointments, transcripts, telemetry
   const [selectedTranscript, setSelectedTranscript] = useState(null)
   const [filterQuery, setFilterQuery] = useState('')
   const [refreshTrigger, setRefreshTrigger] = useState(0)
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const targetUser = import.meta.env.VITE_ADMIN_USER || 'hanova_admin'
+    const targetPass = import.meta.env.VITE_ADMIN_PASS || 'HnvaDevsAdmn2026'
+
+    if (usernameInput === targetUser && passwordInput === targetPass) {
+      setIsAuthenticated(true)
+      sessionStorage.setItem('hanova_admin_auth', 'true')
+      setLoginError('')
+    } else {
+      setLoginError('Invalid administrative credentials. Access Denied.')
+    }
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    sessionStorage.removeItem('hanova_admin_auth')
+    setUsernameInput('')
+    setPasswordInput('')
+  }
+
 
   useEffect(() => {
     async function loadData() {
@@ -21,6 +51,10 @@ export default function AdminDashboard() {
     loadData()
   }, [refreshTrigger])
 
+  const [approvingApp, setApprovingApp] = useState(null)
+  const [meetLinkInput, setMeetLinkInput] = useState('')
+  const [isSendingEmail, setIsSendingEmail] = useState(false)
+
   const handleStatusChange = async (id, newStatus) => {
     try {
       await updateAppointmentStatus(id, newStatus)
@@ -29,6 +63,49 @@ export default function AdminDashboard() {
       console.error('Failed to update status:', err)
     }
   }
+
+  const handleConfirmApproval = async (e) => {
+    e.preventDefault()
+    if (!approvingApp || !meetLinkInput.trim()) return
+
+    setIsSendingEmail(true)
+    try {
+      // 1. Update appointment status in database
+      await updateAppointmentStatus(approvingApp.id, 'approved')
+
+      // 2. Dispatch email confirmation via serverless API proxy
+      const emailRes = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: approvingApp.email,
+          name: approvingApp.name,
+          date: approvingApp.date,
+          time: approvingApp.time,
+          service: approvingApp.service,
+          meetLink: meetLinkInput.trim()
+        })
+      })
+
+      if (!emailRes.ok) {
+        const errorData = await emailRes.json()
+        console.error('Failed to dispatch confirmation email:', errorData)
+        alert(`Slot approved in database, but email failed to send: ${errorData.details || errorData.error}`)
+      } else {
+        alert('Booking approved and confirmation email sent successfully!')
+      }
+
+      setApprovingApp(null)
+      setMeetLinkInput('')
+      setRefreshTrigger(prev => prev + 1)
+    } catch (err) {
+      console.error('Error during appointment approval:', err)
+      alert('An error occurred during approval. Please try again.')
+    } finally {
+      setIsSendingEmail(false)
+    }
+  }
+
 
   const exportToJSON = (data, filename) => {
     const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data, null, 2))}`
@@ -61,6 +138,70 @@ export default function AdminDashboard() {
     totalMessages: transcripts.reduce((sum, t) => sum + (t.messages?.length || 0), 0)
   }
 
+  if (!isAuthenticated) {
+    return (
+      <div className="admin-login-overlay">
+        <SEO 
+          title="Secure Operations Login — HanovaDevs"
+          description="Access to administrative panel requires secure sign-in."
+          url="/admin"
+        />
+        <div className="admin-login-card">
+          <div className="admin-login-header">
+            <span className="admin-login-logo">🔒</span>
+            <h2>Operations Portal</h2>
+            <p>Access requires verified administrative authentication.</p>
+          </div>
+          
+          <form onSubmit={handleLogin} className="admin-login-form">
+            <div className="admin-login-group">
+              <label>Administrative Username</label>
+              <div className="admin-login-input-wrap">
+                <input 
+                  type="text" 
+                  required
+                  placeholder="Enter username"
+                  value={usernameInput}
+                  onChange={e => setUsernameInput(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="admin-login-group">
+              <label>Passphrase</label>
+              <div className="admin-login-input-wrap">
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  required
+                  placeholder="Enter passphrase"
+                  value={passwordInput}
+                  onChange={e => setPasswordInput(e.target.value)}
+                />
+                <button 
+                  type="button" 
+                  className="admin-password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? '👁️' : '🙈'}
+                </button>
+              </div>
+            </div>
+
+            {loginError && (
+              <div className="admin-login-error">
+                {loginError}
+              </div>
+            )}
+
+            <button type="submit" className="admin-login-btn">
+              Authenticate Operations 🚀
+            </button>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="admin-page">
       <SEO 
@@ -70,12 +211,15 @@ export default function AdminDashboard() {
       />
 
       <header className="admin-hero">
-        <div className="container">
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem' }}>
           <div className="admin-hero__content">
             <span className="admin-badge">Admin Desk</span>
             <h1>Operations Control <br /><span className="admin-gradient">Portal.</span></h1>
             <p>Review real-time client consultations, audit dynamic AI conversation logs, and verify database sync integrations.</p>
           </div>
+          <button onClick={handleLogout} className="btn-logout">
+            Log Out 🔓
+          </button>
         </div>
       </header>
 
@@ -129,12 +273,6 @@ export default function AdminDashboard() {
                 onClick={() => { setActiveTab('transcripts'); setSelectedTranscript(null) }}
               >
                 Chat Logs
-              </button>
-              <button 
-                className={`admin-tab-btn ${activeTab === 'telemetry' ? 'admin-tab-btn--active' : ''}`}
-                onClick={() => { setActiveTab('telemetry'); setSelectedTranscript(null) }}
-              >
-                Telemetry Info
               </button>
             </div>
 
@@ -205,7 +343,10 @@ export default function AdminDashboard() {
                           {app.status === 'pending' && (
                             <>
                               <button 
-                                onClick={() => handleStatusChange(app.id, 'approved')} 
+                                onClick={() => {
+                                  setApprovingApp(app)
+                                  setMeetLinkInput('https://meet.google.com/')
+                                }} 
                                 className="btn btn-sm btn-approve"
                               >
                                 Approve Slot
@@ -305,57 +446,52 @@ export default function AdminDashboard() {
                 </div>
               )}
 
-              {activeTab === 'telemetry' && (
-                <div className="admin-telemetry-panel card card-glass">
-                  <h4>📡 Database Configuration & Systems Telemetry</h4>
-                  
-                  <div className="telemetry-info-box">
-                    <p>HanovaDevs leverages dynamic state checking to support serverless operations across various deployment pipelines (Vercel, AWS). Review the status parameters below:</p>
-                  </div>
-
-                  <div className="telemetry-grid">
-                    <div className="telemetry-item">
-                      <span className="telemetry-label">Supabase URL configured:</span>
-                      <span className={`telemetry-status ${isSupabaseConfigured ? 'status--active' : 'status--inactive'}`}>
-                        {isSupabaseConfigured ? 'Yes (VITE_SUPABASE_URL found)' : 'No (Using local fallback)'}
-                      </span>
-                    </div>
-
-                    <div className="telemetry-item">
-                      <span className="telemetry-label">Supabase Client initialized:</span>
-                      <span className={`telemetry-status ${isSupabaseConfigured ? 'status--active' : 'status--inactive'}`}>
-                        {isSupabaseConfigured ? 'Active' : 'Offline'}
-                      </span>
-                    </div>
-
-                    <div className="telemetry-item">
-                      <span className="telemetry-label">Aria System Prompt Version:</span>
-                      <span className="telemetry-value">v1.2.6 (Tool Calling enabled)</span>
-                    </div>
-
-                    <div className="telemetry-item">
-                      <span className="telemetry-label">Claude API endpoint:</span>
-                      <span className="telemetry-value">/api/chat (Serverless Proxy Router)</span>
-                    </div>
-
-                    <div className="telemetry-item">
-                      <span className="telemetry-label">Browser Storage Allocation:</span>
-                      <span className="telemetry-value">localStorage (hd_appointments, hd_transcripts)</span>
-                    </div>
-                  </div>
-
-                  <div className="telemetry-footer-box">
-                    <h5>💡 Connection Tips:</h5>
-                    <p>To wire up your production Supabase database, simply add the following environment variables to your deployment settings or local `.env.local` file:</p>
-                    <code>VITE_SUPABASE_URL=your_supabase_project_url</code>
-                    <code>VITE_SUPABASE_ANON_KEY=your_supabase_anon_key</code>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Google Meet Link Input Modal Overlay */}
+      {approvingApp && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal card card-glass">
+            <h4>📅 Confirm Appointment & Create Meeting</h4>
+            <p>Enter the Google Meet link for <strong>{approvingApp.name}</strong>'s consultation. An automated, beautifully formatted confirmation email will be sent to <strong>{approvingApp.email}</strong>.</p>
+            
+            <form onSubmit={handleConfirmApproval} className="admin-modal-form">
+              <div className="admin-modal-group">
+                <label>Google Meet Link *</label>
+                <input 
+                  type="url" 
+                  required
+                  placeholder="https://meet.google.com/xxx-xxxx-xxx"
+                  value={meetLinkInput}
+                  onChange={e => setMeetLinkInput(e.target.value)}
+                  style={{ width: '100%', background: '#fff', border: '1px solid #cbd5e1', color: '#0f172a', padding: '0.65rem', borderRadius: '8px', fontSize: '0.88rem', outline: 'none' }}
+                />
+              </div>
+              
+              <div className="admin-modal-actions" style={{ display: 'flex', gap: '0.75rem', marginTop: '1.25rem' }}>
+                <button 
+                  type="button" 
+                  className="btn btn-sm btn-reset"
+                  onClick={() => { setApprovingApp(null); setMeetLinkInput('') }}
+                  disabled={isSendingEmail}
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  className="btn btn-sm btn-approve"
+                  disabled={isSendingEmail}
+                >
+                  {isSendingEmail ? 'Sending Invitation...' : 'Approve & Send 🚀'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
