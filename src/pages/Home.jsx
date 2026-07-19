@@ -35,6 +35,22 @@ const stats = [
 
 const serviceCards = [
   {
+    id: 'ai-automation',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+        <path d="M12 12L2.1 7.1" />
+        <path d="M12 12l9.9 4.9" />
+        <path d="M12 12V22" stroke="var(--royal-blue)" strokeWidth="2" />
+        <path d="M17 5h.01M19 9h.01M14 8h.01" stroke="var(--royal-blue)" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    ),
+    title: 'AI Automation',
+    desc: 'Intelligent website chatbots, smart calling assistants for booking calls automatically, and custom AI management systems to streamline operations.',
+    features: ['AI Voice Agents', 'Website Chatbots', 'AI Management Portals'],
+    featured: true
+  },
+  {
     id: 'web-design',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -448,7 +464,7 @@ export default function Home() {
           </div>
           <div className="services-teaser__grid">
             {serviceCards.map((card, i) => (
-              <div key={i} className={`services-teaser__card card card-glass reveal reveal-delay-${(i % 4) + 1}`}>
+              <div key={i} className={`services-teaser__card card card-glass reveal reveal-delay-${(i % 4) + 1} ${card.featured ? 'services-teaser__card--featured' : ''}`}>
                 <span className="services-teaser__icon-wrap">{card.icon}</span>
                 <h3 className="services-teaser__title">{card.title}</h3>
                 <p className="services-teaser__desc">{card.desc}</p>

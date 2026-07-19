@@ -4,6 +4,16 @@ import './Services.css'
 
 const services = [
   {
+    id: 'ai-automation',
+    title: 'AI Automation & Calling Assistants',
+    tagline: 'AI chatbots, voice assistants, and business systems',
+    desc: 'Bespoke website AI chatbots, human-like voice assistants for automated call booking, and secure AI management portals to run operations autonomously.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    large: true,
+    featured: true,
+    techStack: ['AI Voice Agents', 'Website Chatbots', 'AI Booking Assistants', 'GPT-4o / Claude 3.5', 'n8n / LangChain']
+  },
+  {
     id: 'web-design',
     title: 'Web Design & Development',
     tagline: 'Fast, Responsive, Scalable',
@@ -78,15 +88,6 @@ const services = [
     large: true,
     techStack: ['Adobe Suite', 'Figma', 'Illustrator', 'Photoshop', 'After Effects']
   },
-  {
-    id: 'ai-automation',
-    title: 'AI Automation & Business Bots',
-    tagline: 'Smarter ops, less manual work',
-    desc: 'Custom AI-powered tools and bots that streamline operations and amplify efficiency.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-    large: true,
-    techStack: ['GPT-4o', 'LangChain', 'Python', 'TensorFlow', 'Zapier', 'n8n']
-  },
 ]
 
 export default function Services() {
@@ -125,7 +126,7 @@ export default function Services() {
               <Link 
                 to={`/services/${service.id}`}
                 key={i}
-                className={`services-bento__card hoverable reveal reveal-delay-${(i % 4) + 1} ${service.large ? 'services-bento__card--large' : ''}`}
+                className={`services-bento__card hoverable reveal reveal-delay-${(i % 4) + 1} ${service.large ? 'services-bento__card--large' : ''} ${service.featured ? 'services-bento__card--featured' : ''}`}
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <div className="services-bento__bg">
@@ -133,6 +134,7 @@ export default function Services() {
                   <div className="services-bento__gradient" />
                 </div>
                 <div className="services-bento__content">
+                  {service.featured && <span className="services-bento__featured-badge">★ Featured Niche</span>}
                   <span className="services-bento__tagline">{service.tagline}</span>
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>

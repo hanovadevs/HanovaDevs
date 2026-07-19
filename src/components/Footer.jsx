@@ -59,6 +59,7 @@ export default function Footer() {
 
   const legalLinks = [
     { path: '/contact', label: 'Contact' },
+    { path: '/admin', label: 'Admin Portal' },
     { path: '#', label: 'Privacy Policy' },
     { path: '#', label: 'Terms of Service' },
   ]

@@ -644,67 +644,67 @@ const servicesData = {
     ]
   },
   'ai-automation': {
-    title: 'AI Automation & Business Bots',
-    category: 'AI & Automation',
-    tagline: 'Intelligent systems that work for you around the clock.',
+    title: 'AI Automation & Calling Assistants',
+    category: 'Featured Niche',
+    tagline: 'AI Chatbots, Smart calling assistants, & business automation.',
     heroImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80',
-    intro: 'The businesses that thrive in the next decade won\'t just use technology — they\'ll be powered by it. HanovaDevs builds custom AI-powered automation systems designed to eliminate repetitive manual tasks, accelerate decision-making, and unlock operational efficiency that was previously impossible. From intelligent chatbots that handle customer support 24/7 to workflow automation pipelines that process documents, route leads, manage inventory, and generate reports — we implement AI where it matters most. Our solutions aren\'t theoretical; they\'re production-grade systems deployed into your existing tech stack, delivering measurable ROI from week one.',
+    intro: 'The businesses that thrive in the next decade won\'t just use technology — they\'ll be powered by it. HanovaDevs builds custom AI-powered automation systems designed to eliminate repetitive manual tasks, accelerate booking funnels, and unlock operational efficiency. From intelligent chatbots that handle website customer support 24/7, to conversational AI voice assistants that call prospects and book meetings automatically, to unified AI management dashboards that run your business operations — we implement AI where it matters most. Our solutions aren\'t theoretical; they\'re production-grade systems deployed into your existing tech stack, delivering measurable ROI from week one.',
     features: [
       {
-        title: 'Conversational AI Bots',
-        desc: 'Custom chatbots and virtual assistants for customer support, lead qualification, and sales.',
+        title: 'Website AI Chatbots',
+        desc: 'Intelligent, context-aware website chatbots trained on your business data to convert visitors, answer support queries, and qualify leads 24/7.',
         icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
       },
       {
-        title: 'Workflow Automation',
-        desc: 'End-to-end process automation for data entry, document processing, and task routing.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" /><polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" /><line x1="4" y1="4" x2="9" y2="9" /></svg>
+        title: 'AI Voice Calling Assistants',
+        desc: 'Human-like conversational voice agents that automatically call prospects, handle booking inquiries, and schedule meetings on autopilot.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
       },
       {
-        title: 'Predictive Analytics',
-        desc: 'ML-driven forecasting dashboards for sales, inventory, and customer behavior.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+        title: 'Unified AI Management',
+        desc: 'Custom management dashboards and dashboards to oversee AI agents, track call transcripts, view chat logs, and automate workflows.',
+        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="3" y1="15" x2="21" y2="15" /></svg>
       }
     ],
     technicalSpecs: [
-      { key: 'AI Models', value: 'GPT-4o, Claude, Gemini, Custom Fine-Tuned' },
-      { key: 'Frameworks', value: 'LangChain, LlamaIndex, CrewAI' },
-      { key: 'Automation', value: 'n8n, Zapier, Make, Custom APIs' },
+      { key: 'AI Models', value: 'GPT-4o, Claude 3.5 Sonnet, Custom Fine-Tuned LLMs' },
+      { key: 'Voice & Speech', value: 'VAPI, Retell AI, ElevenLabs, Deepgram' },
+      { key: 'Orchestration', value: 'n8n, LangChain, Flowise, Custom APIs' },
       { key: 'Languages', value: 'Python, Node.js, TypeScript' },
-      { key: 'Deployment', value: 'AWS Lambda, GCP Cloud Run, Docker' }
+      { key: 'Compliance', value: 'SOC 2, GDPR, Encrypted Data Pipelines' }
     ],
     deliverables: [
-      { title: 'Custom AI Chatbot Deployment', desc: 'A production-ready conversational AI bot trained on your business data, integrated with your website, WhatsApp, Slack, or internal tools — handling customer queries, lead qualification, and appointment booking autonomously.' },
-      { title: 'Workflow Automation Pipeline', desc: 'Fully automated multi-step business workflows connecting your CRM, email, spreadsheets, databases, and third-party APIs — eliminating manual data entry and human bottlenecks with intelligent routing logic.' },
-      { title: 'Predictive Analytics Dashboard', desc: 'Real-time ML-powered dashboards forecasting sales trends, customer churn probability, inventory demands, and revenue projections based on your historical business data.' },
-      { title: 'Document Processing Engine', desc: 'AI-powered document ingestion system that extracts, classifies, and routes information from invoices, contracts, forms, and emails — reducing manual processing time by up to 90%.' },
-      { title: 'Intelligent Lead Scoring System', desc: 'Machine learning model trained on your conversion data that scores and prioritizes incoming leads, automatically routing high-value prospects to your sales team with enriched context and recommended actions.' }
+      { title: 'Interactive Website AI Chatbot', desc: 'A production-ready conversational AI bot trained on your business data, integrated with your website, WhatsApp, Slack, or internal tools — handling customer queries, lead qualification, and appointment booking autonomously.' },
+      { title: 'AI Voice Calling & Booking Assistant', desc: 'Human-like voice synthesis and low-latency speech recognition configured to call leads, answer inquiries, resolve schedules, and automatically book meetings directly into your calendar.' },
+      { title: 'Unified AI Management Portal', desc: 'A custom web dashboard where you can see all your AI agent activities, review call recordings, read chat transcripts, update knowledge bases, and control workflows in one central workspace.' },
+      { title: 'Workflow Automation Pipelines', desc: 'Fully automated multi-step business workflows connecting your CRM, email, databases, and third-party APIs — eliminating manual data entry and routing leads dynamically.' },
+      { title: 'Intelligent Lead Scoring System', desc: 'Machine learning model trained on your conversion data that scores and prioritizes incoming leads, automatically routing high-value prospects to your sales team with enriched context.' }
     ],
     caseStudy: {
-      clientName: 'LogiTrack Solutions',
+      clientName: 'Aura Wellness Group',
       logo: '/projects/crown.png',
-      summary: 'Deployed an AI-powered logistics optimization system that automated order routing and inventory forecasting.',
+      summary: 'Deployed an AI-powered voice assistant and website chatbot that automated lead triage, call booking, and database synchronization.',
       metrics: [
-        { label: 'Manual Work Reduction', value: '-78%' },
-        { label: 'Order Processing Speed', value: '3x Faster' },
-        { label: 'Forecast Accuracy', value: '94%' }
+        { label: 'Manual Work Reduction', value: '-82%' },
+        { label: 'Booking Rate Lift', value: '+45%' },
+        { label: 'Response Time', value: 'Instant' }
       ],
-      challenge: 'Staff spent 6+ hours daily manually routing orders, updating spreadsheets, and generating fulfillment reports — leading to bottlenecks and costly errors.',
-      solution: 'Built an intelligent automation pipeline combining GPT-4o document extraction, custom ML inventory forecasting, and n8n workflow orchestration — turning 6 hours of manual work into a 15-minute automated process.',
+      challenge: 'Staff spent hours daily manually qualification calling, updating spreadsheets, and scheduling discovery calls, leading to delays and missed booking leads.',
+      solution: 'Built an intelligent automation system combining GPT-4o conversational chatbot on the site, a human-like voice calling assistant for phone booking, and a custom dashboard tracking transcripts.',
       link: '/projects'
     },
     process: [
-      { step: '01', title: 'Audit', desc: 'Mapping your current workflows and identifying high-impact automation opportunities.' },
-      { step: '02', title: 'Architect', desc: 'Designing the AI system architecture and integration points.' },
-      { step: '03', title: 'Build & Train', desc: 'Developing custom models, bots, and automation pipelines.' },
-      { step: '04', title: 'Deploy & Optimize', desc: 'Launching into production with monitoring and continuous improvement.' }
+      { step: '01', title: 'Audit', desc: 'Mapping your current booking channels and workflow bottlenecks.' },
+      { step: '02', title: 'Architect', desc: 'Designing the chatbot paths, voice scripts, and database integrations.' },
+      { step: '03', title: 'Build & Train', desc: 'Training LLMs on your company data and setting up voice models.' },
+      { step: '04', title: 'Deploy & Sync', desc: 'Launching into production with CRM synchronization and live dashboard tracking.' }
     ],
     blogs: [],
     advancements: [
       'Retrieval-Augmented Generation (RAG) for business knowledge',
       'Multi-agent AI orchestration (CrewAI, AutoGen)',
-      'Real-time anomaly detection with streaming ML',
-      'Edge AI for low-latency on-premise processing'
+      'Real-time speech-to-text with EleventLabs integration',
+      'Unified admin logging & telemetry data'
     ],
     relatedLinks: [
       { title: 'Custom Software Development', path: '/services/software-development' },
@@ -712,24 +712,24 @@ const servicesData = {
     ],
     faqs: [
       {
-        question: 'What kind of AI chatbot can you build for my business?',
-        answer: 'We build custom conversational AI bots powered by models like GPT-4o, Claude, or Gemini — trained specifically on your business data, product catalogs, and support documentation. These bots can handle customer inquiries, qualify leads, book appointments, process returns, and escalate complex cases to human agents — all through your website, WhatsApp, Slack, or any messaging platform.'
+        question: 'What kind of AI chatbot can you build for my website?',
+        answer: 'We build custom conversational AI bots powered by models like GPT-4o or Claude 3.5 Sonnet — trained specifically on your business data, product catalogs, and support documentation. These bots can handle customer inquiries, qualify leads, book appointments, process returns, and escalate complex cases to human agents — all through your website, WhatsApp, Slack, or any messaging platform.'
       },
       {
-        question: 'How do you ensure AI automation doesn\'t break our existing workflows?',
-        answer: 'We start with a non-invasive audit of your current tech stack and processes. Our automations are designed as modular additions that integrate through APIs and webhooks — not replacements. We deploy with monitoring dashboards and human-in-the-loop checkpoints so your team maintains oversight while the AI handles the repetitive execution.'
+        question: 'How does the AI calling assistant book calls?',
+        answer: 'Our AI calling assistants utilize human-like voice synthesis and low-latency speech recognition to call leads, answer inquiries, resolve schedules, and automatically book calls directly into your calendar (like Google Calendar or Outlook) and update your CRM with the call status and detailed logs.'
       },
       {
-        question: 'What types of repetitive business tasks can AI automation eliminate?',
-        answer: 'The most impactful automations include: data entry and spreadsheet updates, invoice and document processing, email classification and routing, lead scoring and CRM updates, report generation, inventory monitoring, social media scheduling, meeting notes summarization, and customer support ticket triage. If a task follows a pattern, we can likely automate it.'
+        question: 'What is the AI management system?',
+        answer: 'An AI management system is a custom web dashboard where you can see all your AI agent activities, review call recordings, read chat transcripts, update knowledge bases, and control workflows in one central workspace.'
       },
       {
         question: 'How long does it take to deploy an AI automation system?',
-        answer: 'Simple automations like chatbots and workflow triggers can be deployed in 2 to 3 weeks. More complex systems involving custom ML models, multi-tool integrations, and predictive analytics typically take 4 to 8 weeks depending on data availability and system complexity. We deliver in iterative sprints so you see value early.'
+        answer: 'Simple automations like chatbots and workflow triggers can be deployed in 2 to 3 weeks. More complex systems involving voice assistants, custom databases, and predictive analytics dashboards typically take 4 to 6 weeks. We deliver in iterative sprints so you see value early.'
       },
       {
         question: 'Do you use no-code tools or write custom automation code?',
-        answer: 'We use the right tool for the job. For simpler integrations, we leverage platforms like n8n, Zapier, or Make for rapid deployment. For complex, high-volume, or security-sensitive workflows, we write custom Python/Node.js automation code deployed on scalable cloud infrastructure (AWS Lambda, GCP Cloud Run). Most projects combine both approaches for maximum efficiency.'
+        answer: 'We use the right tool for the job. For simpler integrations, we leverage platforms like n8n or Make. For complex, high-volume, or security-sensitive workflows, we write custom Python/Node.js automation code deployed on scalable cloud infrastructure (AWS Lambda, GCP Cloud Run) to guarantee peak performance and security.'
       },
       {
         question: 'Can you build AI tools that work with our existing CRM and databases?',

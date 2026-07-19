@@ -20,6 +20,8 @@ import Research from './pages/Research'
 import News from './pages/News'
 import TechStack from './pages/TechStack'
 import Calculator from './pages/Calculator'
+import AdminDashboard from './pages/AdminDashboard'
+import AIChatbot from './components/AIChatbot'
 
 function App() {
   const location = useLocation()
@@ -70,12 +72,14 @@ function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/news" element={<News />} />
           <Route path="/stack" element={<TechStack />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           {/* Blog → Journal redirects for SEO */}
           <Route path="/blog" element={<Navigate to="/journal" replace />} />
           <Route path="/blog/:slug" element={<BlogRedirect />} />
         </Routes>
       </main>
       <Footer />
+      <AIChatbot />
       <Analytics />
       <SpeedInsights />
     </>
