@@ -53,6 +53,26 @@ OUR SERVICES MATRIX:
 5. Brand Identity & Strategy.
 6. SEO & Analytics.`;
 
+  // Format and sanitize messages for Anthropic Claude (which mandates alternating user/assistant roles starting with a user message)
+  const firstUserIdx = messages.findIndex(m => m.role === 'user');
+  if (firstUserIdx === -1) {
+    return res.status(400).json({ error: 'At least one user message is required to initiate conversation.' });
+  }
+
+  const rawSequence = messages.slice(firstUserIdx);
+  const cleanMessages = [];
+
+  for (const msg of rawSequence) {
+    const role = msg.role === 'user' ? 'user' : 'assistant';
+    const content = typeof msg.content === 'string' ? msg.content : '';
+
+    if (cleanMessages.length > 0 && cleanMessages[cleanMessages.length - 1].role === role) {
+      cleanMessages[cleanMessages.length - 1].content += '\n' + content;
+    } else {
+      cleanMessages.push({ role, content });
+    }
+  }
+
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -65,10 +85,8 @@ OUR SERVICES MATRIX:
         model: 'claude-3-5-sonnet-20241022',
         max_tokens: 1024,
         system: SYSTEM_PROMPT,
-        messages: messages.map(msg => ({
-          role: msg.role === 'user' ? 'user' : 'assistant',
-          content: msg.content
-        })),
+        messages: cleanMessages,
+
         tools: [
           {
             name: 'book_appointment',
