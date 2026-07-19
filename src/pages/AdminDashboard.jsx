@@ -349,8 +349,11 @@ export default function AdminDashboard() {
                           <div className="detail-pill">
                             <strong>Service:</strong> {app.service.replace('-', ' ')}
                           </div>
-                          <div className="detail-pill">
-                            <strong>Slot:</strong> {app.date} @ {app.time} {app.timezone && `(${app.timezone})`}
+                           <div className="detail-pill">
+                            <strong>Slot:</strong> {app.date} @ {app.time} {(() => {
+                              const tz = app.timezone || app.message?.match(/^\[Timezone:\s*([^\]]+)\]/)?.[1];
+                              return tz ? `(${tz})` : '';
+                            })()}
                           </div>
                           {app.budget && (
                             <div className="detail-pill">
@@ -362,7 +365,7 @@ export default function AdminDashboard() {
                         {app.message && (
                           <div className="admin-app-card__message">
                             <strong>Client Message:</strong>
-                            <p>"{app.message}"</p>
+                            <p>"{app.message.replace(/^\[Timezone:\s*[^\]]+\s*\]\s*/, '')}"</p>
                           </div>
                         )}
 

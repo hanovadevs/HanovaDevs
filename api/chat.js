@@ -34,17 +34,26 @@ export default async function handler(req, res) {
     });
   }
 
-  // Construct active bookings context
-  let bookingsContext = "";
+  // Construct active bookings context with today's date and standard working slots
+  const standardSlots = ['09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00'];
+  // Get today's local date string in YYYY-MM-DD
+  const todayStr = new Date().toLocaleDateString('en-CA');
+  
+  let bookingsContext = `\n\nSTANDARD WORKING HOUR SLOTS: ${standardSlots.join(', ')}\nTODAY'S REFERENCE DATE: ${todayStr}\n`;
   if (bookedSlots && Array.isArray(bookedSlots)) {
     const activeBookings = bookedSlots.filter(b => b.status !== 'cancelled');
     if (activeBookings.length > 0) {
-      bookingsContext = "\n\nCURRENTLY BOOKED/UNAVAILABLE SLOTS:\n" + 
+      bookingsContext += "\nCURRENTLY BOOKED/UNAVAILABLE SLOTS:\n" + 
         activeBookings.map(b => `- Date: ${b.date}, Time: ${b.time}`).join('\n') +
-        "\nUse this list to check slot availability in real time. If a user asks for one of these slots, politely inform them it is already booked and suggest alternatives.";
+        "\n\nAVAILABILITY CALCULATION RULES:\n" +
+        "- A slot is AVAILABLE if it is in standard working hour slots and NOT in the booked/unavailable slots list for that date.\n" +
+        "- When asked what slots are available for a specific date (like 'today' or any other day), cross-reference that date with the booked list. Subtract the booked slots from the standard slots, and list all the remaining free slots clearly.\n" +
+        "- If a user asks 'What other booking slots are available for today?', look at the booked slots for today's date, subtract them from the standard slots list, and print the available ones clearly.";
     } else {
-      bookingsContext = "\n\nAll dates and times are currently available for booking.";
+      bookingsContext += "\nAll standard working hour slots are currently available for booking.";
     }
+  } else {
+    bookingsContext += "\nAll standard working hour slots are currently available for booking.";
   }
 
   const SYSTEM_PROMPT = `You are Aria, the official AI Guide & Scheduling Consultant for HanovaDevs, a premium digital product studio and marketing agency founded by Ali Haider.

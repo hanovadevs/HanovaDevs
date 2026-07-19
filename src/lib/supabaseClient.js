@@ -98,11 +98,16 @@ export async function saveAppointment(appointment) {
 
   if (isSupabaseConfigured) {
     try {
+      // Exclude timezone from the payload sent to Supabase to prevent schema mismatch errors
+      const { timezone, ...supabasePayload } = newAppointment
       const { data, error } = await supabase
         .from('appointments')
-        .insert([newAppointment])
+        .insert([supabasePayload])
         .select()
-      if (!error) return data[0]
+      if (!error) {
+        // Return full appointment (with timezone) to keep UI state unified
+        return { ...data[0], timezone }
+      }
       console.error('Supabase save error, falling back to localStorage:', error)
     } catch (err) {
       console.error('Supabase connection error:', err)
