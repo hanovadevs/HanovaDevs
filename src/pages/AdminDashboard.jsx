@@ -91,6 +91,7 @@ export default function AdminDashboard() {
           name: approvingApp.name,
           date: approvingApp.date,
           time: approvingApp.time,
+          timezone: approvingApp.timezone || 'UTC',
           service: approvingApp.service,
           meetLink: meetLinkInput.trim()
         })
@@ -349,7 +350,7 @@ export default function AdminDashboard() {
                             <strong>Service:</strong> {app.service.replace('-', ' ')}
                           </div>
                           <div className="detail-pill">
-                            <strong>Slot:</strong> {app.date} @ {app.time}
+                            <strong>Slot:</strong> {app.date} @ {app.time} {app.timezone && `(${app.timezone})`}
                           </div>
                           {app.budget && (
                             <div className="detail-pill">

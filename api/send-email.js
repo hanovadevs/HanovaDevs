@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { to, name, date, time, service, meetLink } = req.body;
+  const { to, name, date, time, timezone, service, meetLink } = req.body;
 
   if (!to || !name || !date || !time || !service || !meetLink) {
     return res.status(400).json({ error: 'Missing required parameters' });
@@ -191,7 +191,7 @@ export default async function handler(req, res) {
           </div>
           <div class="detail-row">
             <div class="detail-label">Time Slot:</div>
-            <div class="detail-value">${time} (Timezone Localized)</div>
+            <div class="detail-value">${time} (${timezone || 'UTC'})</div>
           </div>
         </div>
         

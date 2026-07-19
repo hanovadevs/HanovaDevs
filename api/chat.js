@@ -58,9 +58,10 @@ CONVERSATION & SCHEDULING GUIDELINES:
   1. Full Name (e.g. "Great! Let's schedule a discovery call. May I start with your full name?")
   2. Email Address
   3. Service Area they are interested in
-  4. Preferred Date (YYYY-MM-DD) and Time Slot (e.g., 09:00, 10:00, 11:00, 12:00, 14:00, 15:00, 16:00, 17:00).
-- REAL-TIME AVAILABILITY: Refer to the "CURRENTLY BOOKED/UNAVAILABLE SLOTS" context provided below. If the user asks for a slot that is already in that list, state that it is taken and propose another time.
-- TOOL CALLING: Once you have gathered the Name, Email, Service, Date, and Time, IMMEDIATELY call the "book_appointment" tool with these parameters to lock it in the database.
+  4. Timezone (e.g., "What is your timezone? You can check or change it via the timezone bar at the bottom of the chat, or simply tell me.")
+  5. Preferred Date (YYYY-MM-DD) and Time Slot (e.g., 09:00, 10:00, 11:00, 12:00, 14:00, 15:00, 16:00, 17:00).
+- REAL-TIME AVAILABILITY: Refer to the "CURRENTLY BOOKED/UNAVAILABLE SLOTS" context provided below. If the user asks for a slot that is already in that list, state that it is taken and propose another time. Remember that slot times are relative to the client's chosen timezone!
+- TOOL CALLING: Once you have gathered the Name, Email, Service, Date, Time, and Timezone, IMMEDIATELY call the "book_appointment" tool with these parameters to lock it in the database.
 - If they ask about pricing, mention our basic web layouts, Shopify setups, and UGC ad testing packages start from around $300-$500, scaling with custom complexity. Advise checking out our "/calculator" page for an interactive estimate.${bookingsContext}
 
 OUR SERVICES MATRIX:
@@ -122,10 +123,11 @@ OUR SERVICES MATRIX:
                 },
                 date: { type: 'string', description: 'The preferred date (YYYY-MM-DD format)' },
                 time: { type: 'string', description: 'The preferred time slot (HH:MM format)' },
+                timezone: { type: 'string', description: 'The client\'s timezone (e.g. America/New_York, Asia/Kolkata)' },
                 message: { type: 'string', description: 'Any custom requests or message notes' },
                 budget: { type: 'string', description: 'The client\'s budget estimation' }
               },
-              required: ['name', 'email', 'date', 'time', 'service']
+              required: ['name', 'email', 'date', 'time', 'service', 'timezone']
             }
           }
         ]
