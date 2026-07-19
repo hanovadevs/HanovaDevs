@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { saveAppointment, saveChatTranscript } from '../lib/supabaseClient'
+import { saveAppointment, saveChatTranscript, getAppointments } from '../lib/supabaseClient'
 import './AIChatbot.css'
 
 // Simulated local intelligence engine for local testing offline/without key
-const generateSimulatedResponse = (userText, history, bookingState, setBookingState, bookingData, setBookingData) => {
+const generateSimulatedResponse = async (userText, history, bookingState, setBookingState, bookingData, setBookingData) => {
   const text = userText.toLowerCase()
   
   // Handlers for the booking state machine in simulated mode
@@ -22,11 +22,75 @@ const generateSimulatedResponse = (userText, history, bookingState, setBookingSt
         content: "Hmm, that doesn't look like a valid email. Could you please double check and type it again?"
       }
     }
-    setBookingData(prev => ({ ...prev, email: userText }))
-    setBookingState('selecting_datetime')
+    setBookingData(prev => ({ ...prev, email: userText.trim() }))
+    setBookingState('collecting_service')
     return {
-      content: "Thank you! Now, let's schedule the date and time. Please pick your preferred slot using the interactive calendar booking panel on the right.",
-      trigger_picker: true
+      content: "Thank you! What service area are you interested in? (e.g. AI Automation, Web Design, Shopify Store Setup, UGC Ads, Branding, SEO)"
+    }
+  }
+
+  if (bookingState === 'collecting_service') {
+    let matchedService = 'ai-automation'
+    if (text.includes('design') || text.includes('web') || text.includes('dev')) matchedService = 'web-design'
+    else if (text.includes('shopify') || text.includes('store') || text.includes('commerce')) matchedService = 'shopify-development'
+    else if (text.includes('ugc') || text.includes('ad') || text.includes('marketing')) matchedService = 'ugc-ads'
+    else if (text.includes('brand') || text.includes('logo')) matchedService = 'branding'
+    else if (text.includes('seo') || text.includes('search')) matchedService = 'seo'
+
+    setBookingData(prev => ({ ...prev, service: matchedService }))
+    setBookingState('collecting_datetime')
+    return {
+      content: `Got it! Let's choose a date and time slot. Please provide your preferred date in YYYY-MM-DD format (e.g., 2026-07-20) and time (e.g. 10:00, 14:00, 16:00).`
+    }
+  }
+
+  if (bookingState === 'collecting_datetime') {
+    // Basic date/time parser
+    const dateMatch = userText.match(/\d{4}-\d{2}-\d{2}/)
+    const timeMatch = userText.match(/\d{2}:\d{2}/)
+
+    const dateStr = dateMatch ? dateMatch[0] : ''
+    const timeStr = timeMatch ? timeMatch[0] : ''
+
+    if (!dateStr || !timeStr) {
+      return {
+        content: "I couldn't quite catch the date and time. Please type the date in YYYY-MM-DD format (e.g., 2026-07-20) and time slot in HH:MM format (e.g. 14:00)."
+      }
+    }
+
+    // Check availability against local mock db/Supabase
+    try {
+      const currentAppointments = await getAppointments()
+      const isTaken = currentAppointments.some(
+        a => a.date === dateStr && a.time === timeStr && a.status !== 'cancelled'
+      )
+      if (isTaken) {
+        return {
+          content: `I'm sorry, the slot on ${dateStr} at ${timeStr} is already booked. Could you please select another date or time slot?`
+        }
+      }
+    } catch (e) {
+      console.warn("DB check bypassed in simulation:", e)
+    }
+
+    const finalBookingData = {
+      ...bookingData,
+      date: dateStr,
+      time: timeStr
+    }
+
+    try {
+      await saveAppointment(finalBookingData)
+      setBookingData(finalBookingData)
+      setBookingState('confirmed')
+      return {
+        content: `🎉 **Booking Confirmed!**\n\nThank you, **${finalBookingData.name}**. I have registered your discovery call on **${finalBookingData.date}** at **${finalBookingData.time}** for your **${finalBookingData.service.replace('-', ' ')}** project. A meeting confirmation has been sent to **${finalBookingData.email}**.`
+      }
+    } catch (err) {
+      console.error(err)
+      return {
+        content: "I processed your request, but was unable to write it to our database. Could you please try again?"
+      }
     }
   }
 
@@ -153,7 +217,7 @@ export default function AIChatbot() {
     setInputValue('')
     setIsLoading(true)
 
-    // Pre-fill booking details from message text if matching name/email patterns
+    // Pre-fill booking details from message text if matching name/email patterns in simulated mode
     if (bookingState === 'collecting_name') {
       setBookingData(prev => ({ ...prev, name: text }))
       setBookingState('collecting_email')
@@ -161,8 +225,23 @@ export default function AIChatbot() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (emailRegex.test(text.trim())) {
         setBookingData(prev => ({ ...prev, email: text }))
-        setBookingState('selecting_datetime')
+        setBookingState('collecting_service')
       }
+    }
+
+    // Fetch active bookings context from database
+    let bookedSlots = []
+    try {
+      const currentAppointments = await getAppointments()
+      if (Array.isArray(currentAppointments)) {
+        bookedSlots = currentAppointments.map(app => ({
+          date: app.date,
+          time: app.time,
+          status: app.status
+        }))
+      }
+    } catch (dbErr) {
+      console.warn("Could not load appointments for context:", dbErr)
     }
 
     try {
@@ -170,7 +249,10 @@ export default function AIChatbot() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [...messages, userMessage] })
+        body: JSON.stringify({ 
+          messages: [...messages, userMessage],
+          bookedSlots: bookedSlots
+        })
       })
 
       if (res.ok) {
@@ -185,23 +267,36 @@ export default function AIChatbot() {
           const toolUse = data.content?.find(c => c.type === 'tool_use')
           if (toolUse && toolUse.name === 'book_appointment') {
             const args = toolUse.input
-            setBookingData(prev => ({
-              ...prev,
-              name: args.name || prev.name || bookingData.name,
-              email: args.email || prev.email || bookingData.email,
-              phone: args.phone || prev.phone,
-              service: args.service || prev.service,
-              date: args.date || prev.date,
-              time: args.time || prev.time,
-              message: args.message || prev.message,
-              budget: args.budget || prev.budget
-            }))
-            setBookingState('selecting_datetime')
-            setIsBookingPanelOpen(true)
-            setMessages(prev => [...prev, {
-              role: 'assistant',
-              content: botText || "Awesome! Let's lock in the details for your booking on the right."
-            }])
+            const fullBookingData = {
+              name: args.name || bookingData.name || 'Valued Client',
+              email: args.email || bookingData.email || 'no-email@example.com',
+              phone: args.phone || '',
+              service: args.service || 'ai-automation',
+              date: args.date || '',
+              time: args.time || '',
+              message: args.message || '',
+              budget: args.budget || 'Not Specified'
+            }
+
+            try {
+              // Save to database
+              await saveAppointment(fullBookingData)
+              setBookingData(fullBookingData)
+              setBookingState('confirmed')
+
+              const confirmationMsg = `🎉 **Booking Confirmed!**\n\nThank you, **${fullBookingData.name}**. I have registered your discovery call on **${fullBookingData.date}** at **${fullBookingData.time}** for your **${fullBookingData.service.replace('-', ' ')}** project. A meeting confirmation has been dispatched to **${fullBookingData.email}**.`
+              
+              setMessages(prev => [...prev, {
+                role: 'assistant',
+                content: botText ? `${botText}\n\n${confirmationMsg}` : confirmationMsg
+              }])
+            } catch (dbErr) {
+              console.error("Failed to save booking:", dbErr)
+              setMessages(prev => [...prev, {
+                role: 'assistant',
+                content: "I processed your booking details, but encountered an error saving it to our database. Please try again."
+              }])
+            }
           } else {
             setMessages(prev => [...prev, { role: 'assistant', content: botText }])
           }
@@ -217,8 +312,8 @@ export default function AIChatbot() {
   }
 
   const triggerSimulationResponse = (text) => {
-    setTimeout(() => {
-      const response = generateSimulatedResponse(
+    setTimeout(async () => {
+      const response = await generateSimulatedResponse(
         text, 
         messages, 
         bookingState, 
@@ -227,42 +322,13 @@ export default function AIChatbot() {
         setBookingData
       )
       
-      if (response.trigger_picker) {
-        setBookingState('selecting_datetime')
-        setIsBookingPanelOpen(true)
-      }
-      
       setMessages(prev => [...prev, { role: 'assistant', content: response.content }])
       setIsLoading(false)
     }, 800)
   }
 
-  const handleBookingSubmit = async (e) => {
-    e.preventDefault()
-    if (!bookingData.name || !bookingData.email || !bookingData.date || !bookingData.time) {
-      alert('Please fill out all required details.')
-      return
-    }
-
-    setIsLoading(true)
-    try {
-      await saveAppointment(bookingData)
-      setBookingState('confirmed')
-      setIsBookingPanelOpen(false)
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: `🎉 **Booking Confirmed!**\n\nThank you, **${bookingData.name}**. I have registered your discovery call on **${bookingData.date}** at **${bookingData.time}** for your **${bookingData.service.replace('-', ' ')}** project. A meeting confirmation has been dispatched to **${bookingData.email}**.`
-      }])
-    } catch (err) {
-      console.error(err)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   const startBookingFlow = () => {
     setBookingState('collecting_name')
-    setIsBookingPanelOpen(true)
     setMessages(prev => [...prev, {
       role: 'assistant',
       content: "Great! Let's schedule a discovery call. May I start with your full name?"
@@ -275,7 +341,6 @@ export default function AIChatbot() {
         { role: 'assistant', content: 'Hello! I am Aria, your AI Guide for HanovaDevs. ⚡ How can I help you automate operations or scale your digital presence today?' }
       ])
       setBookingState('idle')
-      setIsBookingPanelOpen(false)
       setBookingData({
         name: '',
         email: '',
@@ -313,8 +378,8 @@ export default function AIChatbot() {
         )}
       </button>
 
-      {/* Floating Chat Panel (Double width when expanded/booking panel is open) */}
-      <div className={`ai-chatbot-panel ${isOpen ? 'ai-chatbot-panel--open' : ''} ${isBookingPanelOpen ? 'ai-chatbot-panel--expanded' : ''}`}>
+      {/* Floating Chat Panel */}
+      <div className={`ai-chatbot-panel ${isOpen ? 'ai-chatbot-panel--open' : ''}`}>
         
         {/* Panel Header */}
         <div className="ai-chatbot-header">
@@ -331,13 +396,6 @@ export default function AIChatbot() {
           
           <div className="ai-chatbot-header-actions">
             <button 
-              className={`ai-chatbot-calendar-toggle ${isBookingPanelOpen ? 'ai-chatbot-calendar-toggle--active' : ''}`}
-              onClick={() => setIsBookingPanelOpen(!isBookingPanelOpen)}
-              title="Toggle Booking Sheet"
-            >
-              📅
-            </button>
-            <button 
               className="ai-chatbot-reset-btn" 
               onClick={handleResetChat}
               title="Reset Chat"
@@ -347,9 +405,9 @@ export default function AIChatbot() {
           </div>
         </div>
 
-        {/* Body containing left chat pane and right calendar pane */}
+        {/* Body containing chat pane */}
         <div className="ai-chatbot-body">
-          {/* Left Chat Pane */}
+          {/* Chat Pane */}
           <div className="ai-chatbot-chat-pane">
             <div className="ai-chatbot-messages">
               {messages.map((msg, i) => (
@@ -400,109 +458,6 @@ export default function AIChatbot() {
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
               </button>
-            </div>
-          </div>
-
-          {/* Right Booking Calendar Pane */}
-          <div className={`ai-chatbot-booking-pane ${isBookingPanelOpen ? 'ai-chatbot-booking-pane--open' : ''}`}>
-            <div className="ai-chatbot-booking-card-wrapper">
-              <div className="booking-pane-header">
-                <h5>📅 Schedule Call</h5>
-                <p>Fill out details to sync directly with HanovaDevs operations datastore.</p>
-              </div>
-              
-              <form onSubmit={handleBookingSubmit} className="ai-chatbot-booking-form">
-                <div className="ai-chatbot-form-group">
-                  <label>Full Name *</label>
-                  <input 
-                    type="text" 
-                    required 
-                    value={bookingData.name} 
-                    onChange={e => setBookingData(prev => ({ ...prev, name: e.target.value }))} 
-                    placeholder="Ali Haider"
-                  />
-                </div>
-
-                <div className="ai-chatbot-form-group">
-                  <label>Email Address *</label>
-                  <input 
-                    type="email" 
-                    required 
-                    value={bookingData.email} 
-                    onChange={e => setBookingData(prev => ({ ...prev, email: e.target.value }))} 
-                    placeholder="lithedetective@gmail.com"
-                  />
-                </div>
-
-                <div className="ai-chatbot-form-row">
-                  <div className="ai-chatbot-form-group">
-                    <label>Preferred Date *</label>
-                    <input 
-                      type="date" 
-                      required 
-                      min={new Date().toISOString().split('T')[0]}
-                      value={bookingData.date} 
-                      onChange={e => setBookingData(prev => ({ ...prev, date: e.target.value }))} 
-                    />
-                  </div>
-
-                  <div className="ai-chatbot-form-group">
-                    <label>Time Slot *</label>
-                    <select 
-                      required
-                      value={bookingData.time}
-                      onChange={e => setBookingData(prev => ({ ...prev, time: e.target.value }))}
-                    >
-                      <option value="">Select Time</option>
-                      {['09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00'].map(t => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="ai-chatbot-form-group">
-                  <label>Project Budget *</label>
-                  <select 
-                    value={bookingData.budget} 
-                    onChange={e => setBookingData(prev => ({ ...prev, budget: e.target.value }))}
-                  >
-                    <option value="<$1,000">Less than $1,000</option>
-                    <option value="$1,000 - $3,000">$1,000 - $3,000</option>
-                    <option value="$3,000 - $5,000">$3,000 - $5,000</option>
-                    <option value="$5,000+">$5,000+</option>
-                  </select>
-                </div>
-
-                <div className="ai-chatbot-form-group">
-                  <label>Service Area *</label>
-                  <select 
-                    value={bookingData.service} 
-                    onChange={e => setBookingData(prev => ({ ...prev, service: e.target.value }))}
-                  >
-                    <option value="ai-automation">AI Automation (Featured)</option>
-                    <option value="web-design">Web Design & Development</option>
-                    <option value="shopify-development">Shopify Store Setup</option>
-                    <option value="ugc-ads">UGC Ads & Video Creatives</option>
-                    <option value="branding">Brand Design & Identity</option>
-                    <option value="seo">SEO & Analytics</option>
-                  </select>
-                </div>
-
-                <div className="ai-chatbot-form-group">
-                  <label>Notes / Requirements</label>
-                  <textarea 
-                    value={bookingData.message} 
-                    onChange={e => setBookingData(prev => ({ ...prev, message: e.target.value }))} 
-                    placeholder="Describe your goals..."
-                    rows="3"
-                  />
-                </div>
-
-                <button type="submit" className="btn btn-primary btn--block">
-                  Lock in Booking 🚀
-                </button>
-              </form>
             </div>
           </div>
         </div>

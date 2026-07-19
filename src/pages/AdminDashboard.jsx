@@ -69,10 +69,19 @@ export default function AdminDashboard() {
     if (!approvingApp || !meetLinkInput.trim()) return
 
     setIsSendingEmail(true)
+    let dbSuccess = false
     try {
       // 1. Update appointment status in database
       await updateAppointmentStatus(approvingApp.id, 'approved')
+      dbSuccess = true
+    } catch (err) {
+      console.error('Failed to update status in database:', err)
+      alert(`Failed to update booking status in database: ${err.message}`)
+      setIsSendingEmail(false)
+      return
+    }
 
+    try {
       // 2. Dispatch email confirmation via serverless API proxy
       const emailRes = await fetch('/api/send-email', {
         method: 'POST',
@@ -88,21 +97,38 @@ export default function AdminDashboard() {
       })
 
       if (!emailRes.ok) {
-        const errorData = await emailRes.json()
-        console.error('Failed to dispatch confirmation email:', errorData)
-        alert(`Slot approved in database, but email failed to send: ${errorData.details || errorData.error}`)
+        let errMsg = 'Server error'
+        try {
+          const contentType = emailRes.headers.get('content-type')
+          if (contentType && contentType.includes('application/json')) {
+            const errorData = await emailRes.json()
+            errMsg = errorData.details || errorData.error || errMsg
+          } else {
+            const textData = await emailRes.text()
+            if (textData.includes('<!DOCTYPE html>')) {
+              errMsg = 'Vite dev server returned HTML fallback. Ensure you are running "npx vercel dev" and accessing the page on http://localhost:3000 instead of port 5174.'
+            } else {
+              errMsg = textData.substring(0, 100)
+            }
+          }
+        } catch (pErr) {
+          console.error('Failed to parse error response:', pErr)
+        }
+        alert(`Booking approved in database, but invitation email could not be sent:\n\n${errMsg}`)
       } else {
-        alert('Booking approved and confirmation email sent successfully!')
+        alert('Booking approved and confirmation email sent successfully! 🚀')
       }
-
+    } catch (err) {
+      console.error('Error during email dispatch:', err)
+      alert(
+        `Booking approved in database, but network error occurred while sending email invitation.\n\n` +
+        `If you are testing locally, make sure you are running "npx vercel dev" and viewing the site on http://localhost:3000.`
+      )
+    } finally {
       setApprovingApp(null)
       setMeetLinkInput('')
-      setRefreshTrigger(prev => prev + 1)
-    } catch (err) {
-      console.error('Error during appointment approval:', err)
-      alert('An error occurred during approval. Please try again.')
-    } finally {
       setIsSendingEmail(false)
+      setRefreshTrigger(prev => prev + 1)
     }
   }
 

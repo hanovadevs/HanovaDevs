@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages } = req.body;
+  const { messages, bookedSlots } = req.body;
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'Invalid messages body' });
   }
@@ -34,16 +34,34 @@ export default async function handler(req, res) {
     });
   }
 
+  // Construct active bookings context
+  let bookingsContext = "";
+  if (bookedSlots && Array.isArray(bookedSlots)) {
+    const activeBookings = bookedSlots.filter(b => b.status !== 'cancelled');
+    if (activeBookings.length > 0) {
+      bookingsContext = "\n\nCURRENTLY BOOKED/UNAVAILABLE SLOTS:\n" + 
+        activeBookings.map(b => `- Date: ${b.date}, Time: ${b.time}`).join('\n') +
+        "\nUse this list to check slot availability in real time. If a user asks for one of these slots, politely inform them it is already booked and suggest alternatives.";
+    } else {
+      bookingsContext = "\n\nAll dates and times are currently available for booking.";
+    }
+  }
+
   const SYSTEM_PROMPT = `You are Aria, the official AI Guide & Scheduling Consultant for HanovaDevs, a premium digital product studio and marketing agency founded by Ali Haider.
 
 Your primary mission is to help visitors understand how HanovaDevs can scale their business, answer questions about our services (AI Automation, Web Design, Shopify development, UGC Ads, Branding, SEO), and lead them to book a consultation/discovery call.
 
 CONVERSATION & SCHEDULING GUIDELINES:
-- Be highly professional, helpful, polite, and brief. Keep answers under 3-4 sentences when possible.
-- IMPORTANT: As soon as the user expresses interest in booking, scheduling, or scheduling a call, IMMEDIATELY call the "book_appointment" tool. Fill in any parameters you already know (like name, email, or service).
-- DO NOT wait for them to supply all data (name, email, date, time) in chat before calling the tool. Calling the tool will instantly open the interactive calendar booking panel on the right side of the chat widget, allowing them to select slots visually!
-- If the tool is active, politely guide them to select their preferred date/time slot on the calendar panel.
-- If they ask about pricing, mention our simple single-page builds, basic Shopify setups, and UGC ad test packs start from around $300-$500, scaling based on custom needs. Advise checking out our "/calculator" page for an instant interactive estimate.
+- Be highly professional, helpful, polite, and brief. Keep answers under 2-3 sentences.
+- DO NOT display any calendar UI or tell the user to use a calendar panel. Bookings are handled 100% conversationally inside this chat by you asking questions step-by-step.
+- If the user wants to book or schedule a call, ask for their details one-by-one:
+  1. Full Name (e.g. "Great! Let's schedule a discovery call. May I start with your full name?")
+  2. Email Address
+  3. Service Area they are interested in
+  4. Preferred Date (YYYY-MM-DD) and Time Slot (e.g., 09:00, 10:00, 11:00, 12:00, 14:00, 15:00, 16:00, 17:00).
+- REAL-TIME AVAILABILITY: Refer to the "CURRENTLY BOOKED/UNAVAILABLE SLOTS" context provided below. If the user asks for a slot that is already in that list, state that it is taken and propose another time.
+- TOOL CALLING: Once you have gathered the Name, Email, Service, Date, and Time, IMMEDIATELY call the "book_appointment" tool with these parameters to lock it in the database.
+- If they ask about pricing, mention our basic web layouts, Shopify setups, and UGC ad testing packages start from around $300-$500, scaling with custom complexity. Advise checking out our "/calculator" page for an interactive estimate.${bookingsContext}
 
 OUR SERVICES MATRIX:
 1. AI Automation & Calling Assistants (Featured Niche): We construct website chatbots, human-like voice agents for phone bookings, and admin tracking dashboards.
