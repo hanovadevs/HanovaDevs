@@ -94,16 +94,57 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
         message: `[Timezone: ${finalBookingData.timezone || 'UTC'}] ${finalBookingData.message || ''}`.trim()
       }
       await saveAppointment(savePayload)
+
+      // Send initial request notification email to client
+      fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: finalBookingData.email,
+          name: finalBookingData.name,
+          date: finalBookingData.date,
+          time: finalBookingData.time,
+          timezone: finalBookingData.timezone || 'UTC',
+          service: finalBookingData.service || 'ai-automation',
+          type: 'request'
+        })
+      }).catch(e => console.warn("Simulated email send error:", e))
+
       setBookingData(finalBookingData)
       setBookingState('confirmed')
       return {
-        content: `🎉 **Booking Confirmed!**\n\nThank you, **${finalBookingData.name}**. I have registered your discovery call on **${finalBookingData.date}** at **${finalBookingData.time}** (${finalBookingData.timezone}) for your **${finalBookingData.service.replace('-', ' ')}** project. A meeting confirmation has been sent to **${finalBookingData.email}**.`
+        content: `🎉 **Booking Confirmed!**\n\nThank you, **${finalBookingData.name}**. I have registered your discovery call on **${finalBookingData.date}** at **${finalBookingData.time}** (${finalBookingData.timezone}) for your **${finalBookingData.service.replace('-', ' ')}** project.\n\n📬 **Please check your email inbox (and your Spam / Promotions folder just in case!)** for a confirmation note. Our engineering team is reviewing your details, and a **Google Meet link will be shared with you soon**!`
       }
     } catch (err) {
       console.error(err)
       return {
         content: "I processed your request, but was unable to write it to our database. Could you please try again?"
       }
+    }
+  }
+
+  // Joke handler
+  if (text.includes('joke') || text.includes('funny') || text.includes('laugh')) {
+    const jokes = [
+      "Why don't scientists trust atoms? ...Because they make up everything! ⚛️\n\nSpeaking of building things, what kind of digital project are you looking to launch?",
+      "Why do programmers prefer dark mode? ...Because light attracts bugs! 🐛\n\nLuckily, our custom Next.js builds at HanovaDevs are bug-free and lightning fast!",
+      "There are 10 types of people in the world: those who understand binary, and those who don't! 😉\n\nCan I help you automate any tech or design workflows today?"
+    ]
+    const randomJoke = jokes[Math.floor(Math.random() * jokes.length)]
+    return { content: randomJoke }
+  }
+
+  // Refusal / Negative response handler ("no", "nope", "not really")
+  if (text === 'no' || text === 'nope' || text.includes('not now') || text.includes('no thanks') || text.includes('cancel')) {
+    return {
+      content: "No problem at all! 😊 I'm right here whenever you need assistance. Feel free to ask about our projects, estimate costs on our **/calculator** page, or reach out anytime."
+    }
+  }
+
+  // Gratitude / Praise
+  if (text.includes('thank') || text.includes('awesome') || text.includes('great') || text.includes('cool')) {
+    return {
+      content: "You're very welcome! 🚀 We love building high-performance systems. Is there anything else I can assist you with today?"
     }
   }
 
@@ -139,20 +180,20 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
     }
   }
 
-  if (text.includes('work') || text.includes('portfolio') || text.includes('project') || text.includes('done')) {
+  if (text.includes('work') || text.includes('portfolio') || text.includes('project') || text.includes('done') || text.includes('omnai') || text.includes('eunoia') || text.includes('codator')) {
     return {
-      content: "We have built some amazing systems recently! For example, **Omnai** (an AI vector document workspace), **Eunoia** (a premium digital brand showcase), and **CODATOR** (a gamified portal for a university CS society). You can browse our full portfolio on our **/projects** page!"
+      content: "We have built some amazing systems recently!\n• **Omnai**: AI vector document workspace for enterprise research\n• **Eunoia**: Premium luxury brand digital showcase\n• **CODATOR**: Gamified coding league portal for FAST-NUCES\n• **TerraSol**: Real-time solar telemetry monitoring\n\nYou can explore our full interactive gallery on our **/projects** page!"
     }
   }
 
   if (text.includes('hello') || text.includes('hi') || text.includes('hey') || text.includes('greet')) {
     return {
-      content: "Hello! I am Aria, your HanovaDevs AI Guide. I can answer questions about our software development, design, and UGC marketing services, or help you book a discovery call. How can I help you today?"
+      content: "Hello! 👋 I'm Aria, your HanovaDevs AI Guide. How can I help you automate operations or elevate your digital brand today?"
     }
   }
 
   return {
-    content: "I want to make sure I understand correctly. We specialize in custom software engineering, Shopify store setup, UGC ads, and AI automation. Would you like to know more about a specific service, estimate costs using our calculator, or book a consultation call?"
+    content: "Understood! We specialize in custom web apps, AI automation, Shopify development, and UGC marketing. How can I assist you today? Feel free to ask about our projects, calculate costs, or schedule a free 15-minute discovery call!"
   }
 }
 
@@ -174,6 +215,76 @@ const popularTimezones = [
   "Europe/Stockholm", "Europe/Vienna", "Europe/Warsaw", "Europe/Zurich",
   "Pacific/Auckland", "Pacific/Fiji", "Pacific/Honolulu", "UTC"
 ];
+
+// Rich text formatter for chatbot messages
+const renderFormattedText = (text) => {
+  if (!text) return null;
+  if (typeof text !== 'string') return text;
+
+  const lines = text.split('\n');
+
+  return lines.map((line, lineIdx) => {
+    let cleanLine = line;
+    let isBullet = false;
+
+    if (cleanLine.trim().startsWith('• ') || cleanLine.trim().startsWith('- ')) {
+      isBullet = true;
+      cleanLine = cleanLine.trim().substring(2);
+    }
+
+    const regex = /(\*\*(.*?)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)|(\/(?:calculator|projects|services|contact|about)))/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(cleanLine)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(cleanLine.substring(lastIndex, match.index));
+      }
+
+      if (match[2] !== undefined) {
+        // Bold text **...**
+        parts.push(<strong key={match.index}>{match[2]}</strong>);
+      } else if (match[3] !== undefined) {
+        // Code `...`
+        parts.push(<code key={match.index}>{match[3]}</code>);
+      } else if (match[4] !== undefined && match[5] !== undefined) {
+        // Markdown Link [label](url)
+        parts.push(
+          <a key={match.index} href={match[5]} target="_blank" rel="noopener noreferrer" className="ai-chat-link">
+            {match[4]}
+          </a>
+        );
+      } else if (match[6] !== undefined) {
+        // Relative path link
+        parts.push(
+          <a key={match.index} href={match[6]} className="ai-chat-link">
+            {match[6]}
+          </a>
+        );
+      }
+
+      lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < cleanLine.length) {
+      parts.push(cleanLine.substring(lastIndex));
+    }
+
+    const contentElements = parts.length > 0 ? parts : cleanLine;
+
+    if (isBullet) {
+      return (
+        <div key={lineIdx} className="ai-chat-bullet-item">
+          <span className="ai-chat-bullet-dot">•</span>
+          <span>{contentElements}</span>
+        </div>
+      );
+    }
+
+    return <p key={lineIdx}>{contentElements}</p>;
+  });
+};
 
 export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false)
@@ -303,7 +414,8 @@ export default function AIChatbot() {
           triggerSimulationResponse(text)
         } else {
           // Process real Claude API response
-          const botText = data.content?.[0]?.text || ''
+          const textBlock = data.content?.find(c => c.type === 'text')
+          const botText = textBlock ? textBlock.text : ''
           
           // Check for Claude Tool Use (function calling)
           const toolUse = data.content?.find(c => c.type === 'tool_use')
@@ -328,15 +440,87 @@ export default function AIChatbot() {
                 message: `[Timezone: ${fullBookingData.timezone}] ${fullBookingData.message || ''}`.trim()
               }
               await saveAppointment(savePayload)
+
+              // Automatically dispatch initial request notification email to client
+              fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  to: fullBookingData.email,
+                  name: fullBookingData.name,
+                  date: fullBookingData.date,
+                  time: fullBookingData.time,
+                  timezone: fullBookingData.timezone,
+                  service: fullBookingData.service,
+                  type: 'request'
+                })
+              }).catch(emailErr => console.warn("Initial email dispatch error:", emailErr))
+
               setBookingData(fullBookingData)
               setBookingState('confirmed')
 
-              const confirmationMsg = `🎉 **Booking Confirmed!**\n\nThank you, **${fullBookingData.name}**. I have registered your discovery call on **${fullBookingData.date}** at **${fullBookingData.time}** (${fullBookingData.timezone}) for your **${fullBookingData.service.replace('-', ' ')}** project. A meeting confirmation has been dispatched to **${fullBookingData.email}**.`
-              
-              setMessages(prev => [...prev, {
+              // Construct assistant message containing the tool use block
+              const assistantToolUseMsg = {
                 role: 'assistant',
-                content: botText ? `${botText}\n\n${confirmationMsg}` : confirmationMsg
-              }])
+                content: data.content
+              }
+
+              // Construct user message containing the tool result block
+              const userToolResultMsg = {
+                role: 'user',
+                content: [
+                  {
+                    type: 'tool_result',
+                    tool_use_id: toolUse.id,
+                    content: 'success'
+                  }
+                ]
+              }
+
+              // Pre-render the intermediate helper text (if any)
+              const intermediateMsgText = botText || "Booking your call now..."
+              setMessages(prev => [...prev, { role: 'assistant', content: intermediateMsgText }])
+
+              // Make second pass call to `/api/chat` to get Claude's natural confirmation response
+              const secondRes = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                  messages: [...messages, userMessage, assistantToolUseMsg, userToolResultMsg],
+                  bookedSlots: bookedSlots
+                })
+              })
+
+              if (secondRes.ok) {
+                const secondData = await secondRes.json()
+                const secondTextBlock = secondData.content?.find(c => c.type === 'text')
+                const finalBotText = secondTextBlock ? secondTextBlock.text : ''
+                
+                if (finalBotText) {
+                  // Replace the intermediate status with the actual confirmation text
+                  setMessages(prev => {
+                    const next = [...prev];
+                    if (next.length > 0 && next[next.length - 1].role === 'assistant') {
+                      next[next.length - 1].content = finalBotText;
+                    } else {
+                      next.push({ role: 'assistant', content: finalBotText });
+                    }
+                    return next;
+                  });
+                }
+              } else {
+                // Fallback to static confirmation if second pass fails
+                const fallbackConfirm = `🎉 **Booking Confirmed!**\n\nThank you, **${fullBookingData.name}**. I have registered your discovery call on **${fullBookingData.date}** at **${fullBookingData.time}** (${fullBookingData.timezone}) for your **${fullBookingData.service.replace('-', ' ')}** project.\n\n📬 **Please check your email inbox (and your Spam / Promotions folder just in case!)** for a confirmation note. Our engineering team is reviewing your details, and a **Google Meet link will be shared with you soon**!`
+                setMessages(prev => {
+                  const next = [...prev];
+                  if (next.length > 0 && next[next.length - 1].role === 'assistant') {
+                    next[next.length - 1].content = fallbackConfirm;
+                  } else {
+                    next.push({ role: 'assistant', content: fallbackConfirm });
+                  }
+                  return next;
+                });
+              }
             } catch (dbErr) {
               console.error("Failed to save booking:", dbErr)
               setMessages(prev => [...prev, {
@@ -345,7 +529,9 @@ export default function AIChatbot() {
               }])
             }
           } else {
-            setMessages(prev => [...prev, { role: 'assistant', content: botText }])
+            if (botText) {
+              setMessages(prev => [...prev, { role: 'assistant', content: botText }])
+            }
           }
         }
       } else {
@@ -444,8 +630,11 @@ export default function AIChatbot() {
               <span className="ai-chatbot-status-dot" />
             </div>
             <div>
-              <h4>Aria</h4>
-              <span className="ai-chatbot-subtitle">Online & ready to help! ✨</span>
+              <div className="ai-chatbot-name-row">
+                <h4>Aria</h4>
+                <span className="ai-chatbot-badge-tag">⚡ AI Guide</span>
+              </div>
+              <span className="ai-chatbot-subtitle">Online & ready to help!</span>
             </div>
           </div>
           
@@ -471,9 +660,7 @@ export default function AIChatbot() {
               {messages.map((msg, i) => (
                 <div key={i} className={`ai-chatbot-msg-bubble ai-chatbot-msg-bubble--${msg.role}`}>
                   <div className="ai-chatbot-msg-content">
-                    {msg.content.split('\n').map((para, idx) => (
-                      <p key={idx}>{para}</p>
-                    ))}
+                    {renderFormattedText(msg.content)}
                   </div>
                 </div>
               ))}

@@ -22,10 +22,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { to, name, date, time, timezone, service, meetLink } = req.body;
+  const { to, name, date, time, timezone, service, meetLink, type } = req.body;
 
-  if (!to || !name || !date || !time || !service || !meetLink) {
+  const isRequestEmail = type === 'request' || !meetLink;
+
+  if (!to || !name || !date || !time || !service) {
     return res.status(400).json({ error: 'Missing required parameters' });
+  }
+
+  if (!isRequestEmail && !meetLink) {
+    return res.status(400).json({ error: 'Missing meetLink for approval email' });
   }
 
   const emailUser = process.env.EMAIL_USER;
@@ -51,12 +57,12 @@ export default async function handler(req, res) {
 
   const prettyService = service.replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
 
-  // HTML Template for confirmation
+  // HTML Template
   const htmlTemplate = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Consultation Confirmed — HanovaDevs</title>
+  <title>${isRequestEmail ? 'Discovery Call Received' : 'Consultation Confirmed'} — HanovaDevs</title>
   <style>
     body {
       font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
@@ -91,7 +97,7 @@ export default async function handler(req, res) {
       letter-spacing: -0.02em;
     }
     .header h1 {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.95);
       margin: 0;
       font-size: 16px;
       font-weight: 600;
@@ -111,11 +117,12 @@ export default async function handler(req, res) {
       font-size: 15px;
       line-height: 1.6;
       color: #475569;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .details-box {
-      background-color: #f8fafc;
+      background-color: #f5f7ff;
       border: 1px solid #e2e8f0;
+      border-left: 4px solid #1A3EE8;
       border-radius: 8px;
       padding: 20px;
       margin: 24px 0;
@@ -138,7 +145,17 @@ export default async function handler(req, res) {
     }
     .detail-value {
       color: #0f172a;
-      font-weight: 500;
+      font-weight: 600;
+    }
+    .notice-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 24px;
     }
     .btn-wrap {
       text-align: center;
@@ -174,11 +191,16 @@ export default async function handler(req, res) {
     <div class="container">
       <div class="header">
         <div class="logo-text">HanovaDevs</div>
-        <h1>Consultation Confirmed</h1>
+        <h1>${isRequestEmail ? 'Discovery Call Request Received ⚡' : 'Consultation Confirmed 🎉'}</h1>
       </div>
       <div class="content">
         <h2>Hello ${name},</h2>
-        <p>Your discovery call with HanovaDevs has been approved! We are excited to meet you and discuss how we can partner to scale your systems and accelerate digital growth.</p>
+        ${isRequestEmail ? `
+          <p>Thank you for scheduling a discovery call with HanovaDevs! We have successfully registered your request.</p>
+          <p>Our engineering team is reviewing your project details. <strong>A dedicated Google Meet link will be shared with you soon</strong> in a follow-up email once your slot is confirmed.</p>
+        ` : `
+          <p>Your discovery call with HanovaDevs has been approved! We are excited to meet you and discuss how we can partner to scale your systems and accelerate digital growth.</p>
+        `}
         
         <div class="details-box">
           <div class="detail-row">
@@ -195,14 +217,19 @@ export default async function handler(req, res) {
           </div>
         </div>
         
-        <p>Please click the button below to join the virtual call at your scheduled time. We recommend joining from a quiet space with your webcam enabled:</p>
-        
-        <div class="btn-wrap">
-          <a href="${meetLink}" class="btn" target="_blank">Join Google Meet Call 🚀</a>
-        </div>
+        ${isRequestEmail ? `
+          <div class="notice-box">
+            📬 <strong>Spam Folder Reminder:</strong> Please check your <strong>Spam</strong> or <strong>Promotions</strong> folder just in case our emails land there! Add <code>hanovadevs@gmail.com</code> to your contacts to ensure you receive your Google Meet room link.
+          </div>
+        ` : `
+          <p>Please click the button below to join the virtual call at your scheduled time. We recommend joining from a quiet space with your webcam enabled:</p>
+          <div class="btn-wrap">
+            <a href="${meetLink}" class="btn" target="_blank">Join Google Meet Call 🚀</a>
+          </div>
+        `}
       </div>
       <div class="footer">
-        <p>This is a confirmation email for your scheduled consultation slot.<br>If you need to reschedule, please notify us at hanovadevs@gmail.com.</p>
+        <p>This is an automated email from HanovaDevs for your requested consultation slot.<br>If you need to make changes, please reply to this email or reach us at hanovadevs@gmail.com.</p>
         <p>© 2026 HanovaDevs. All rights reserved.</p>
       </div>
     </div>
@@ -211,16 +238,23 @@ export default async function handler(req, res) {
 </html>`;
 
   try {
+    const emailSubject = isRequestEmail
+      ? `Discovery Call Request Received — HanovaDevs (${prettyService})`
+      : `Confirmed: Consultation with HanovaDevs (${prettyService})`;
+
     await transporter.sendMail({
       from: `"HanovaDevs" <${emailUser}>`,
       to,
-      subject: `Confirmed: Consultation with HanovaDevs (${prettyService})`,
+      subject: emailSubject,
       html: htmlTemplate
     });
 
-    return res.status(200).json({ success: true, message: 'Confirmation email dispatched successfully.' });
+    return res.status(200).json({ 
+      success: true, 
+      message: isRequestEmail ? 'Initial booking email sent successfully.' : 'Confirmation email dispatched successfully.' 
+    });
   } catch (error) {
     console.error('SMTP sendMail error:', error);
-    return res.status(502).json({ error: 'Failed to send confirmation email', details: error.message });
+    return res.status(502).json({ error: 'Failed to send email', details: error.message });
   }
 }
