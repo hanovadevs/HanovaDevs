@@ -937,30 +937,43 @@ export default function AdminDashboard() {
         <div className="admin-modal-overlay">
           <div className="admin-modal card card-glass">
             <h4>{editingProject ? '✏️ Edit Project Showcase' : '+ Add New Project Showcase'}</h4>
+            <p>Configure portfolio project details, live URL links, and performance highlight metrics.</p>
             <form onSubmit={handleSaveProjectForm} className="admin-modal-form">
-              <div className="admin-modal-group">
-                <label>Project Title *</label>
-                <input type="text" required value={projectForm.title} onChange={e => setProjectForm({ ...projectForm, title: e.target.value })} />
+              <div className="admin-form-row">
+                <div className="admin-modal-group">
+                  <label>Project Title *</label>
+                  <input type="text" required placeholder="e.g. RAQS Official" value={projectForm.title} onChange={e => setProjectForm({ ...projectForm, title: e.target.value })} />
+                </div>
+                <div className="admin-modal-group">
+                  <label>Category *</label>
+                  <input type="text" required placeholder="e.g. Luxury E-Commerce" value={projectForm.category} onChange={e => setProjectForm({ ...projectForm, category: e.target.value })} />
+                </div>
               </div>
-              <div className="admin-modal-group">
-                <label>Category *</label>
-                <input type="text" required value={projectForm.category} onChange={e => setProjectForm({ ...projectForm, category: e.target.value })} />
+
+              <div className="admin-form-row">
+                <div className="admin-modal-group">
+                  <label>Key Highlight Metrics</label>
+                  <input type="text" placeholder="e.g. 100/100 PageSpeed" value={projectForm.metrics} onChange={e => setProjectForm({ ...projectForm, metrics: e.target.value })} />
+                </div>
+                <div className="admin-modal-group">
+                  <label>Live URL Link</label>
+                  <input type="text" placeholder="https://example.com" value={projectForm.live_url} onChange={e => setProjectForm({ ...projectForm, live_url: e.target.value })} />
+                </div>
               </div>
-              <div className="admin-modal-group">
-                <label>Description *</label>
-                <textarea rows={3} required value={projectForm.description} onChange={e => setProjectForm({ ...projectForm, description: e.target.value })} />
-              </div>
-              <div className="admin-modal-group">
-                <label>Key Highlight Metrics</label>
-                <input type="text" placeholder="e.g. 2.4M Snippets / 99.9% Uptime" value={projectForm.metrics} onChange={e => setProjectForm({ ...projectForm, metrics: e.target.value })} />
-              </div>
+
               <div className="admin-modal-group">
                 <label>Thumbnail / Image URL</label>
-                <input type="text" placeholder="/assets/image.png" value={projectForm.image_url} onChange={e => setProjectForm({ ...projectForm, image_url: e.target.value })} />
+                <input type="text" placeholder="https://images.unsplash.com/... or /projects/image.png" value={projectForm.image_url} onChange={e => setProjectForm({ ...projectForm, image_url: e.target.value })} />
               </div>
+
+              <div className="admin-modal-group">
+                <label>Project Description *</label>
+                <textarea rows={3} required placeholder="Brief summary of the project goals, architecture, and results..." value={projectForm.description} onChange={e => setProjectForm({ ...projectForm, description: e.target.value })} />
+              </div>
+
               <div className="admin-modal-actions">
                 <button type="button" className="btn btn-sm btn-outline" onClick={() => setIsProjectModalOpen(false)}>Cancel</button>
-                <button type="submit" className="btn btn-sm btn-approve">Save Project 🚀</button>
+                <button type="submit" className="btn btn-sm btn-approve">{editingProject ? 'Save Project Changes 🚀' : 'Add Project Showcase 🚀'}</button>
               </div>
             </form>
           </div>
