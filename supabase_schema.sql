@@ -4,7 +4,7 @@
 -- create all required tables for Appointments, Transcripts,
 -- Projects CMS, Chatbot Knowledge Base Q&A, and Config!
 -- ============================================================
-
+--
 -- 1. Appointments Table
 CREATE TABLE IF NOT EXISTS public.appointments (
     id TEXT PRIMARY KEY,
