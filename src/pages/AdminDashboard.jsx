@@ -360,54 +360,95 @@ export default function AdminDashboard() {
         url="/hanova-portal-2026"
       />
 
-      <header className="admin-hero">
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem' }}>
-          <div className="admin-hero__content">
-            <span className="admin-badge">Admin Control Desk</span>
-            <h1>Operations & CMS <br /><span className="admin-gradient">Portal.</span></h1>
-            <p>Full-featured management dashboard for client consultations, AI chatbot persona rules, portfolio projects CMS, and system telemetry.</p>
+      {/* TOP EXECUTIVE NAVIGATION BAR */}
+      <nav className="admin-top-navbar">
+        <div className="admin-top-navbar__inner container">
+          <div className="admin-brand">
+            <span className="admin-brand__logo">⚡ HANOVA DEVS</span>
+            <span className="admin-brand__pill">OPERATIONS DESK</span>
+            <span className="admin-live-pulse" title="System Live">
+              <span className="pulse-dot" /> System Online
+            </span>
           </div>
-          <button onClick={handleLogout} className="btn-logout">
-            Log Out 🔓
-          </button>
+
+          <div className="admin-user-profile">
+            <div className="admin-avatar">A</div>
+            <div className="admin-user-meta">
+              <span className="admin-user-name">Ali Haider</span>
+              <span className="admin-user-role">Super Admin</span>
+            </div>
+            <button onClick={handleLogout} className="btn-logout-sleek">
+              Sign Out 🔓
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* DASHBOARD HERO BANNER */}
+      <header className="admin-hero">
+        <div className="container">
+          <div className="admin-hero__layout">
+            <div className="admin-hero__content">
+              <span className="admin-badge">⚡ Executive Command & CMS Center</span>
+              <h1>Operations & CMS <span className="admin-gradient">Portal.</span></h1>
+              <p>Real-time client lead triage, AI chatbot persona rules, dynamic portfolio CMS, and system infrastructure telemetry.</p>
+            </div>
+            <div className="admin-hero__quick-meta">
+              <div className="meta-box">
+                <label>System Timezone</label>
+                <span>UTC (Auto-synced)</span>
+              </div>
+              <div className="meta-box">
+                <label>Active Engine</label>
+                <span>Claude Sonnet 3.7</span>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
       <section className="admin-dashboard-section">
         <div className="container">
-          {/* Key Metric Strip */}
+          {/* Executive Analytics Metric Cards */}
           <div className="admin-stats-grid">
-            <div className="admin-stat-card card card-glass">
-              <span className="admin-stat-icon">📅</span>
+            <div className="admin-stat-card admin-stat-card--leads card card-glass">
+              <div className="admin-stat-icon admin-stat-icon--blue">📅</div>
               <div className="admin-stat-info">
+                <span className="stat-label">Total Client Inquiries</span>
                 <h3>{stats.totalBookings}</h3>
-                <span>Total Leads ({stats.pendingBookings} Pending)</span>
+                <span className="stat-badge stat-badge--amber">{stats.pendingBookings} Pending Triage</span>
               </div>
             </div>
-            <div className="admin-stat-card card card-glass">
-              <span className="admin-stat-icon">💬</span>
+
+            <div className="admin-stat-card admin-stat-card--chats card card-glass">
+              <div className="admin-stat-icon admin-stat-icon--electric">💬</div>
               <div className="admin-stat-info">
+                <span className="stat-label">Aria AI Chat Logs</span>
                 <h3>{stats.totalChats}</h3>
-                <span>Aria AI Chat Logs</span>
+                <span className="stat-badge stat-badge--blue">Conversational Audit</span>
               </div>
             </div>
-            <div className="admin-stat-card card card-glass">
-              <span className="admin-stat-icon">📂</span>
+
+            <div className="admin-stat-card admin-stat-card--projects card card-glass">
+              <div className="admin-stat-icon admin-stat-icon--purple">📂</div>
               <div className="admin-stat-info">
+                <span className="stat-label">Portfolio Showcases</span>
                 <h3>{stats.totalProjects}</h3>
-                <span>Portfolio Projects</span>
+                <span className="stat-badge stat-badge--purple">Live CMS Synced</span>
               </div>
             </div>
-            <div className="admin-stat-card card card-glass">
-              <span className="admin-stat-icon">⚡</span>
+
+            <div className="admin-stat-card admin-stat-card--qa card card-glass">
+              <div className="admin-stat-icon admin-stat-icon--green">⚡</div>
               <div className="admin-stat-info">
+                <span className="stat-label">Chatbot Knowledge Rules</span>
                 <h3>{stats.totalQAs}</h3>
-                <span>Chatbot Q&A Rules</span>
+                <span className="stat-badge stat-badge--green">Active FAQs</span>
               </div>
             </div>
           </div>
 
-          {/* Tab Navigation Controls */}
+          {/* Segmented Control Toolbar */}
           <div className="admin-controls-row">
             <div className="admin-tabs">
               <button 
@@ -420,7 +461,7 @@ export default function AdminDashboard() {
                 className={`admin-tab-btn ${activeTab === 'transcripts' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('transcripts'); setSelectedTranscript(null) }}
               >
-                💬 Chat Logs ({transcripts.length})
+                💬 Chat Audit ({transcripts.length})
               </button>
               <button 
                 className={`admin-tab-btn ${activeTab === 'projects' ? 'admin-tab-btn--active' : ''}`}
@@ -438,29 +479,32 @@ export default function AdminDashboard() {
                 className={`admin-tab-btn ${activeTab === 'telemetry' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('telemetry'); setSelectedTranscript(null) }}
               >
-                📊 Telemetry & Health
+                📊 Telemetry
               </button>
             </div>
 
             <div className="admin-search-wrap">
               {(activeTab === 'appointments' || activeTab === 'transcripts') && (
-                <input 
-                  type="text" 
-                  placeholder={`Search ${activeTab}...`}
-                  value={filterQuery} 
-                  onChange={e => setFilterQuery(e.target.value)} 
-                  className="admin-search-input"
-                />
+                <div className="admin-search-box">
+                  <span className="search-icon">🔍</span>
+                  <input 
+                    type="text" 
+                    placeholder={`Search ${activeTab}...`}
+                    value={filterQuery} 
+                    onChange={e => setFilterQuery(e.target.value)} 
+                    className="admin-search-input"
+                  />
+                </div>
               )}
               {activeTab === 'appointments' && (
-                <>
+                <div className="admin-export-group">
                   <button className="btn btn-outline btn-export" onClick={exportAppointmentsToCSV}>
                     📥 Export CSV
                   </button>
                   <button className="btn btn-outline btn-export" onClick={() => exportToJSON(appointments, 'hanovadevs_appointments')}>
                     📄 Export JSON
                   </button>
-                </>
+                </div>
               )}
             </div>
           </div>
