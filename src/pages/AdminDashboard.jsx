@@ -573,31 +573,31 @@ export default function AdminDashboard() {
                 className={`admin-tab-btn ${activeTab === 'appointments' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('appointments'); setSelectedTranscript(null) }}
               >
-                📅 Appointments ({appointments.length})
+                <Icons.Calendar /> Appointments ({appointments.length})
               </button>
               <button 
                 className={`admin-tab-btn ${activeTab === 'transcripts' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('transcripts'); setSelectedTranscript(null) }}
               >
-                💬 Chat Audit ({transcripts.length})
+                <Icons.Message /> Chat Audit ({transcripts.length})
               </button>
               <button 
                 className={`admin-tab-btn ${activeTab === 'projects' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('projects'); setSelectedTranscript(null) }}
               >
-                📂 Projects CMS ({projects.length})
+                <Icons.Folder /> Projects CMS ({projects.length})
               </button>
               <button 
                 className={`admin-tab-btn ${activeTab === 'chatbot' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('chatbot'); setSelectedTranscript(null) }}
               >
-                ⚡ AI Chatbot Rules ({chatbotQA.length})
+                <Icons.Zap /> AI Chatbot Rules ({chatbotQA.length})
               </button>
               <button 
                 className={`admin-tab-btn ${activeTab === 'telemetry' ? 'admin-tab-btn--active' : ''}`}
                 onClick={() => { setActiveTab('telemetry'); setSelectedTranscript(null) }}
               >
-                📊 Telemetry
+                <Icons.Activity /> Telemetry
               </button>
             </div>
 
