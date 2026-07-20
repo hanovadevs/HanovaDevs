@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { saveAppointment, saveChatTranscript, getAppointments } from '../lib/supabaseClient'
+import { saveAppointment, saveChatTranscript, getAppointments, getChatbotQA, getChatbotConfig } from '../lib/supabaseClient'
 import './AIChatbot.css'
 
 // Simulated local intelligence engine for local testing offline/without key
@@ -382,8 +382,10 @@ export default function AIChatbot() {
       }
     }
 
-    // Fetch active bookings context from database
+    // Fetch active bookings context & dynamic CMS QA/Config rules
     let bookedSlots = []
+    let customQA = []
+    let customConfig = null
     try {
       const currentAppointments = await getAppointments()
       if (Array.isArray(currentAppointments)) {
@@ -393,8 +395,10 @@ export default function AIChatbot() {
           status: app.status
         }))
       }
+      customQA = await getChatbotQA()
+      customConfig = await getChatbotConfig()
     } catch (dbErr) {
-      console.warn("Could not load appointments for context:", dbErr)
+      console.warn("Could not load context for chat:", dbErr)
     }
 
     try {
@@ -404,7 +408,9 @@ export default function AIChatbot() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           messages: [...messages, userMessage],
-          bookedSlots: bookedSlots
+          bookedSlots: bookedSlots,
+          customQA: customQA,
+          customConfig: customConfig
         })
       })
 

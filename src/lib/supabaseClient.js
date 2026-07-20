@@ -191,6 +191,69 @@ export async function saveChatTranscript(transcript) {
 // ----------------------------------------------------
 // CMS: PROJECTS MANAGEMENT
 // ----------------------------------------------------
+const defaultProjectsList = [
+  {
+    id: 'raqs',
+    title: 'RAQS Official',
+    category: 'Luxury E-Commerce',
+    description: 'Minimalist couture storefront with Sufi-inspired art, Shopify drop pipeline, and high-speed image transitions.',
+    metrics: '100/100 PageSpeed',
+    image_url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    live_url: 'https://www.raqsofficial.store',
+    created_at: new Date(Date.now() - 3600000 * 5).toISOString()
+  },
+  {
+    id: 'earthsync',
+    title: 'EarthSync Essential',
+    category: 'E-Commerce & Wellness',
+    description: 'Earthing sheets and medical-grade grounding shop with scientific explainers and nature-inspired aesthetic.',
+    metrics: '+45% Conversion Rate',
+    image_url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
+    live_url: 'https://www.earthsyncessential.com',
+    created_at: new Date(Date.now() - 3600000 * 4).toISOString()
+  },
+  {
+    id: 'terrasol',
+    title: 'Terra Sol Grounding',
+    category: 'E-Commerce & Wellness',
+    description: 'Multi-section e-commerce ecosystem with Amazon API connectivity, 20+ peer-reviewed studies index, and Gemini AI search.',
+    metrics: '4.8★ Avg Rating',
+    image_url: '/terrasol_thumbnail_1779800151142.png',
+    live_url: 'https://www.terrasolgrounding.com',
+    created_at: new Date(Date.now() - 3600000 * 3).toISOString()
+  },
+  {
+    id: 'omnai',
+    title: 'Omnai Browser Workspace',
+    category: 'AI Desktop App',
+    description: 'An AI-native browser workspace combining real-time search, multi-model execution, and spatial canvas tabs.',
+    metrics: '15,000+ Downloads',
+    image_url: '/codator_thumbnail_1783701656463.png',
+    live_url: '/products/omnai',
+    created_at: new Date(Date.now() - 3600000 * 2).toISOString()
+  },
+  {
+    id: 'eunoia',
+    title: 'Eunoia Mobile App',
+    category: 'React Native & iOS',
+    description: 'AI-driven wellness journal featuring voice sentiment analysis, sleep optimization telemetry, and biometric sync.',
+    metrics: '4.9★ App Store Rating',
+    image_url: '/cute_bot_avatar_1784487626582.png',
+    live_url: '/products/eunoia',
+    created_at: new Date(Date.now() - 3600000 * 1).toISOString()
+  },
+  {
+    id: 'codator',
+    title: 'CODATOR IDE Synthesizer',
+    category: 'Developer Tools',
+    description: 'Intelligent code generation and automated test suite synthesizer built for high-scale TypeScript teams.',
+    metrics: '2.4M Code Snippets',
+    image_url: '/codator_thumbnail_1783701656463.png',
+    live_url: '#',
+    created_at: new Date().toISOString()
+  }
+]
+
 export async function getProjects() {
   if (isSupabaseConfigured) {
     try {
@@ -198,50 +261,20 @@ export async function getProjects() {
         .from('projects')
         .select('*')
         .order('created_at', { ascending: false })
-      if (!error && data) return data
+      if (!error && data && data.length > 0) return data
     } catch (err) {
       console.warn('Supabase projects fetch error, falling back to local:', err)
     }
   }
 
   const local = localStorage.getItem('hd_projects')
-  if (local) return JSON.parse(local)
+  if (local) {
+    const parsed = JSON.parse(local)
+    if (parsed && parsed.length > 0) return parsed
+  }
 
-  // Default initial projects list if empty
-  const defaultProjects = [
-    {
-      id: 'omnai',
-      title: 'Omnai Browser',
-      category: 'AI Desktop App',
-      description: 'An AI-native browser workspace combining real-time search, multi-model execution, and spatial canvas tabs.',
-      metrics: '15,000+ Active Downloads',
-      image_url: '/codator_thumbnail_1783701656463.png',
-      live_url: '/products/omnai',
-      created_at: new Date().toISOString()
-    },
-    {
-      id: 'eunoia',
-      title: 'Eunoia Mobile App',
-      category: 'React Native & iOS',
-      description: 'AI-driven wellness journal featuring voice sentiment analysis, sleep optimization telemetry, and biometric sync.',
-      metrics: '4.9★ App Store Rating',
-      image_url: '/cute_bot_avatar_1784487626582.png',
-      live_url: '/products/eunoia',
-      created_at: new Date().toISOString()
-    },
-    {
-      id: 'codator',
-      title: 'CODATOR IDE Plugin',
-      category: 'Developer Tools',
-      description: 'Intelligent code generation and automated test suite synthesizer built for high-scale TypeScript teams.',
-      metrics: '2.4M Code Snippets Generated',
-      image_url: '/codator_thumbnail_1783701656463.png',
-      live_url: '#',
-      created_at: new Date().toISOString()
-    }
-  ]
-  localStorage.setItem('hd_projects', JSON.stringify(defaultProjects))
-  return defaultProjects
+  localStorage.setItem('hd_projects', JSON.stringify(defaultProjectsList))
+  return defaultProjectsList
 }
 
 export async function saveProject(project) {
@@ -288,6 +321,44 @@ export async function deleteProject(id) {
 // ----------------------------------------------------
 // AI CHATBOT: KNOWLEDGE BASE Q&A & CONFIG
 // ----------------------------------------------------
+const defaultQAList = [
+  {
+    id: 'qa-1',
+    question: 'What is your typical project timeline?',
+    answer: 'Our standard web app development sprint ranges from 2 to 4 weeks. AI automation bots and integrations take between 1 to 2 weeks.',
+    category: 'Timeline',
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'qa-2',
+    question: 'What technology stack do you use?',
+    answer: 'We specialize in Next.js, React, Vanilla CSS, Node.js Serverless Functions, Supabase PostgreSQL, and Anthropic Claude AI.',
+    category: 'Tech Stack',
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'qa-3',
+    question: 'Do you offer ongoing retainer & maintenance plans?',
+    answer: 'Yes! We offer monthly retainer packages for system maintenance, continuous AI fine-tuning, cloud infrastructure monitoring, and feature updates.',
+    category: 'Pricing & Retainers',
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'qa-4',
+    question: 'How does the client discovery call process work?',
+    answer: 'Once you book a consultation slot through Aria or our scheduling page, you receive an instant email confirmation. Our team reviews your goals and emails a dedicated Google Meet room link.',
+    category: 'Process',
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 'qa-5',
+    question: 'Can you build custom AI Chatbots for my existing website?',
+    answer: 'Absolutely! We design 24/7 conversational AI guides tailored to your brand, complete with appointment booking tools, lead capture, and CRM integration.',
+    category: 'AI Chatbots',
+    created_at: new Date().toISOString()
+  }
+]
+
 export async function getChatbotQA() {
   if (isSupabaseConfigured) {
     try {
@@ -295,33 +366,20 @@ export async function getChatbotQA() {
         .from('chatbot_qa')
         .select('*')
         .order('created_at', { ascending: false })
-      if (!error && data) return data
+      if (!error && data && data.length > 0) return data
     } catch (err) {
       console.warn('Supabase chatbot_qa fetch error, falling back to local:', err)
     }
   }
 
   const local = localStorage.getItem('hd_chatbot_qa')
-  if (local) return JSON.parse(local)
+  if (local) {
+    const parsed = JSON.parse(local)
+    if (parsed && parsed.length > 0) return parsed
+  }
 
-  const defaultQA = [
-    {
-      id: 'qa-1',
-      question: 'What is your typical project timeline?',
-      answer: 'Our standard web app development sprint ranges from 2 to 4 weeks. AI automation bots and integrations take between 1 to 2 weeks.',
-      category: 'Services',
-      created_at: new Date().toISOString()
-    },
-    {
-      id: 'qa-2',
-      question: 'Do you offer ongoing retainer & maintenance plans?',
-      answer: 'Yes! We offer monthly retainer packages for system maintenance, continuous AI fine-tuning, and cloud infrastructure monitoring.',
-      category: 'Pricing',
-      created_at: new Date().toISOString()
-    }
-  ]
-  localStorage.setItem('hd_chatbot_qa', JSON.stringify(defaultQA))
-  return defaultQA
+  localStorage.setItem('hd_chatbot_qa', JSON.stringify(defaultQAList))
+  return defaultQAList
 }
 
 export async function saveChatbotQA(item) {

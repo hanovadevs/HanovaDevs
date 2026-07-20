@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getProjects } from '../lib/supabaseClient'
 import SEO from '../components/SEO'
 import './Projects.css'
 
-const featuredProjects = [
+const initialFeaturedProjects = [
   {
     id: 'raqs',
     title: 'RAQS Official',
@@ -165,7 +166,7 @@ export default function Projects() {
 
       {/* ===== FEATURED PROJECTS ===== */}
       <div className="pj-showcases">
-        {featuredProjects.map((project, index) => (
+        {projectList.map((project, index) => (
           <section key={project.id} className={`pj-case pj-case--${project.theme}`}>
             <div className="container">
               <div className={`pj-case__layout ${index % 2 !== 0 ? 'pj-case__layout--reverse' : ''}`}>
