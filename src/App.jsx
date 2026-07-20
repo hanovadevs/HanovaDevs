@@ -51,10 +51,12 @@ function App() {
     }
   }, [location])
 
+  const isAdminRoute = location.pathname.startsWith('/hanova-portal-2026') || location.pathname.startsWith('/admin')
+
   return (
     <>
       <ScrollToTop />
-      <Navbar />
+      {!isAdminRoute && <Navbar />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -79,8 +81,8 @@ function App() {
           <Route path="/blog/:slug" element={<BlogRedirect />} />
         </Routes>
       </main>
-      <Footer />
-      <AIChatbot />
+      {!isAdminRoute && <Footer />}
+      {!isAdminRoute && <AIChatbot />}
       <Analytics />
       <SpeedInsights />
     </>
