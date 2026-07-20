@@ -1479,21 +1479,165 @@
   margin: 0;
 }
 
+/* ===== CHATBOT SPLIT GRID & SANDBOX TESTER ===== */
+.admin-chatbot-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 1.5rem;
+}
+
+.admin-bot-sandbox-card {
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.sandbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.sandbox-header h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.live-pill {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  letter-spacing: 0.06em;
+}
+
+.sandbox-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 1rem 0;
+}
+
+.sandbox-logs-window {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  height: 230px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.sandbox-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  max-width: 85%;
+}
+
+.sandbox-bubble--user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.sandbox-bubble--assistant {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.sandbox-role {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.sandbox-bubble p {
+  margin: 0;
+  font-size: 0.82rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+.sandbox-bubble--user p {
+  background: linear-gradient(135deg, #1A3EE8 0%, #4D79FF 100%);
+  color: #ffffff;
+}
+
+.sandbox-bubble--assistant p {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+.sandbox-input-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sandbox-input-form input {
+  flex-grow: 1;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.84rem;
+  color: #0f172a;
+  outline: none;
+}
+
+.sandbox-input-form input:focus {
+  border-color: #1A3EE8;
+  box-shadow: 0 0 0 3px rgba(26, 62, 232, 0.12);
+}
+
+.btn-sandbox-send {
+  background: linear-gradient(135deg, #1A3EE8 0%, #4D79FF 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-sandbox-send:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 62, 232, 0.3);
+}
+
 /* ===== TELEMETRY & SYSTEM HEALTH ===== */
 .telemetry-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.25rem;
+  margin-bottom: 1.75rem;
 }
 
 .telemetry-card {
   padding: 1.5rem;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
 }
 
 .telemetry-card h4 {
@@ -1506,7 +1650,8 @@
 .telemetry-status-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
+  align-items: center;
+  font-size: 0.82rem;
 }
 
 .telemetry-status-row span {
@@ -1514,16 +1659,72 @@
 }
 
 .telemetry-note {
-  font-size: 0.78rem;
-  color: #94a3b8;
-  line-height: 1.4;
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.45;
   margin: 0;
 }
 
-.admin-modal-group label {
-  font-size: 0.68rem;
-  font-weight: 700;
+/* ===== CYBER LOG TERMINAL MATRIX ===== */
+.admin-terminal-box {
+  background: #090d16 !important;
+  border: 1px solid #1e293b !important;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+  background: #0f172a;
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot--red { background: #ef4444; }
+.dot--yellow { background: #f59e0b; }
+.dot--green { background: #10b981; }
+
+.terminal-title {
+  font-size: 0.72rem;
+  font-family: 'Fira Code', monospace, sans-serif;
   color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+}
+
+.terminal-body {
+  padding: 1.25rem;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.log-line {
+  margin: 0;
+}
+
+.log-line--green { color: #34d399; }
+.log-line--blue { color: #60a5fa; }
+.log-line--purple { color: #c084fc; }
+.log-line--cyan { color: #38bdf8; }
+
+@media (max-width: 900px) {
+  .admin-chatbot-split-grid {
+    grid-template-columns: 1fr;
+  }
 }
