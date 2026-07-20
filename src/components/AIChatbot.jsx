@@ -346,6 +346,34 @@ export default function AIChatbot() {
     return () => clearTimeout(timer)
   }, [isOpen])
 
+  // Listen for Quote Estimator events from /calculator
+  useEffect(() => {
+    const handleQuoteEvent = (e) => {
+      const { service, details, range, timeline } = e.detail || {}
+      setIsOpen(true)
+      setHasNewMessage(false)
+      
+      if (service) {
+        setBookingData(prev => ({
+          ...prev,
+          service: service.toLowerCase().replace(/\s+/g, '-'),
+          budget: range || '$1,000 - $3,000'
+        }))
+        setBookingState('collecting_name')
+      }
+
+      const quoteMessage = `I've configured a custom project estimate for ${service || 'Project'}:\n• Parameters: ${details}\n• Estimated Investment Range: ${range}\n• Estimated Development Timeline: ${timeline}\n\nI'd like to secure this estimate and book a technical alignment call with your team!`
+
+      // Auto-send the configured quote into the chat
+      setTimeout(() => {
+        handleSend(quoteMessage)
+      }, 200)
+    }
+
+    window.addEventListener('hanova_secure_quote', handleQuoteEvent)
+    return () => window.removeEventListener('hanova_secure_quote', handleQuoteEvent)
+  }, [])
+
 
   // Save/update transcript in local storage whenever message list changes
   useEffect(() => {

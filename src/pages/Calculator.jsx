@@ -255,13 +255,18 @@ export default function Calculator() {
       budgetParam = '$50,000+'
     }
 
-    const query = new URLSearchParams({
-      service: serviceType.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-      budget: budgetParam,
-      details: `${details} (Estimated Range: ${range}, Timeline: ${timeline})`
-    }).toString()
+    const serviceName = serviceType.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
 
-    navigate(`/contact?${query}`)
+    // Dispatch event to open AI Chatbot with pre-fed quote parameters
+    window.dispatchEvent(new CustomEvent('hanova_secure_quote', {
+      detail: {
+        service: serviceName,
+        details,
+        range,
+        timeline,
+        minPrice
+      }
+    }))
   }
 
   return (
