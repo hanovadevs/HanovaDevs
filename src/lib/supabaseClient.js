@@ -187,3 +187,237 @@ export async function saveChatTranscript(transcript) {
   localStorage.setItem('hd_transcripts', JSON.stringify(updated))
   return newTranscript
 }
+
+// ----------------------------------------------------
+// CMS: PROJECTS MANAGEMENT
+// ----------------------------------------------------
+export async function getProjects() {
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false })
+      if (!error && data) return data
+    } catch (err) {
+      console.warn('Supabase projects fetch error, falling back to local:', err)
+    }
+  }
+
+  const local = localStorage.getItem('hd_projects')
+  if (local) return JSON.parse(local)
+
+  // Default initial projects list if empty
+  const defaultProjects = [
+    {
+      id: 'omnai',
+      title: 'Omnai Browser',
+      category: 'AI Desktop App',
+      description: 'An AI-native browser workspace combining real-time search, multi-model execution, and spatial canvas tabs.',
+      metrics: '15,000+ Active Downloads',
+      image_url: '/codator_thumbnail_1783701656463.png',
+      live_url: '/products/omnai',
+      created_at: new Date().toISOString()
+    },
+    {
+      id: 'eunoia',
+      title: 'Eunoia Mobile App',
+      category: 'React Native & iOS',
+      description: 'AI-driven wellness journal featuring voice sentiment analysis, sleep optimization telemetry, and biometric sync.',
+      metrics: '4.9★ App Store Rating',
+      image_url: '/cute_bot_avatar_1784487626582.png',
+      live_url: '/products/eunoia',
+      created_at: new Date().toISOString()
+    },
+    {
+      id: 'codator',
+      title: 'CODATOR IDE Plugin',
+      category: 'Developer Tools',
+      description: 'Intelligent code generation and automated test suite synthesizer built for high-scale TypeScript teams.',
+      metrics: '2.4M Code Snippets Generated',
+      image_url: '/codator_thumbnail_1783701656463.png',
+      live_url: '#',
+      created_at: new Date().toISOString()
+    }
+  ]
+  localStorage.setItem('hd_projects', JSON.stringify(defaultProjects))
+  return defaultProjects
+}
+
+export async function saveProject(project) {
+  const item = {
+    id: project.id || Math.random().toString(36).substr(2, 9),
+    created_at: new Date().toISOString(),
+    ...project
+  }
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .upsert([item])
+        .select()
+      if (!error && data) return data[0]
+    } catch (err) {
+      console.warn('Supabase save project error, saving locally:', err)
+    }
+  }
+
+  const current = await getProjects()
+  const filtered = current.filter(p => p.id !== item.id)
+  const updated = [item, ...filtered]
+  localStorage.setItem('hd_projects', JSON.stringify(updated))
+  return item
+}
+
+export async function deleteProject(id) {
+  if (isSupabaseConfigured) {
+    try {
+      await supabase.from('projects').delete().eq('id', id)
+    } catch (err) {
+      console.warn('Supabase delete project error:', err)
+    }
+  }
+
+  const current = await getProjects()
+  const updated = current.filter(p => p.id !== id)
+  localStorage.setItem('hd_projects', JSON.stringify(updated))
+  return { id }
+}
+
+// ----------------------------------------------------
+// AI CHATBOT: KNOWLEDGE BASE Q&A & CONFIG
+// ----------------------------------------------------
+export async function getChatbotQA() {
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from('chatbot_qa')
+        .select('*')
+        .order('created_at', { ascending: false })
+      if (!error && data) return data
+    } catch (err) {
+      console.warn('Supabase chatbot_qa fetch error, falling back to local:', err)
+    }
+  }
+
+  const local = localStorage.getItem('hd_chatbot_qa')
+  if (local) return JSON.parse(local)
+
+  const defaultQA = [
+    {
+      id: 'qa-1',
+      question: 'What is your typical project timeline?',
+      answer: 'Our standard web app development sprint ranges from 2 to 4 weeks. AI automation bots and integrations take between 1 to 2 weeks.',
+      category: 'Services',
+      created_at: new Date().toISOString()
+    },
+    {
+      id: 'qa-2',
+      question: 'Do you offer ongoing retainer & maintenance plans?',
+      answer: 'Yes! We offer monthly retainer packages for system maintenance, continuous AI fine-tuning, and cloud infrastructure monitoring.',
+      category: 'Pricing',
+      created_at: new Date().toISOString()
+    }
+  ]
+  localStorage.setItem('hd_chatbot_qa', JSON.stringify(defaultQA))
+  return defaultQA
+}
+
+export async function saveChatbotQA(item) {
+  const qaItem = {
+    id: item.id || Math.random().toString(36).substr(2, 9),
+    created_at: new Date().toISOString(),
+    ...item
+  }
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from('chatbot_qa')
+        .upsert([qaItem])
+        .select()
+      if (!error && data) return data[0]
+    } catch (err) {
+      console.warn('Supabase save QA error, saving locally:', err)
+    }
+  }
+
+  const current = await getChatbotQA()
+  const filtered = current.filter(q => q.id !== qaItem.id)
+  const updated = [qaItem, ...filtered]
+  localStorage.setItem('hd_chatbot_qa', JSON.stringify(updated))
+  return qaItem
+}
+
+export async function deleteChatbotQA(id) {
+  if (isSupabaseConfigured) {
+    try {
+      await supabase.from('chatbot_qa').delete().eq('id', id)
+    } catch (err) {
+      console.warn('Supabase delete QA error:', err)
+    }
+  }
+
+  const current = await getChatbotQA()
+  const updated = current.filter(q => q.id !== id)
+  localStorage.setItem('hd_chatbot_qa', JSON.stringify(updated))
+  return { id }
+}
+
+export async function getChatbotConfig() {
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from('chatbot_config')
+        .select('*')
+        .single()
+      if (!error && data) return data
+    } catch (err) {
+      console.warn('Supabase config fetch error:', err)
+    }
+  }
+
+  const local = localStorage.getItem('hd_chatbot_config')
+  if (local) return JSON.parse(local)
+
+  const defaultConfig = {
+    persona_mode: 'consultative',
+    promo_banner: '🔥 Q3 Special: Book a free 30-min strategy call today to get 15% off AI Automation implementations!',
+    system_notes: 'Focus on scaling client revenue and highlighting our 2-week turnaround time.'
+  }
+  localStorage.setItem('hd_chatbot_config', JSON.stringify(defaultConfig))
+  return defaultConfig
+}
+
+export async function saveChatbotConfig(config) {
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from('chatbot_config')
+        .upsert([{ id: 1, updated_at: new Date().toISOString(), ...config }])
+        .select()
+      if (!error && data) return data[0]
+    } catch (err) {
+      console.warn('Supabase save config error:', err)
+    }
+  }
+
+  localStorage.setItem('hd_chatbot_config', JSON.stringify(config))
+  return config
+}
+
+// ----------------------------------------------------
+// ADMIN INTERNAL NOTES FOR APPOINTMENTS
+// ----------------------------------------------------
+export async function getAdminNotes() {
+  const local = localStorage.getItem('hd_admin_notes')
+  return local ? JSON.parse(local) : {}
+}
+
+export async function saveAdminNote(appointmentId, noteText) {
+  const current = await getAdminNotes()
+  const updated = { ...current, [appointmentId]: noteText }
+  localStorage.setItem('hd_admin_notes', JSON.stringify(updated))
+  return updated
+}
