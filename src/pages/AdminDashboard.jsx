@@ -3,6 +3,33 @@ import { getAppointments, getChatTranscripts, updateAppointmentStatus, isSupabas
 import SEO from '../components/SEO'
 import './AdminDashboard.css'
 
+// Helper to format string/array/object content in chat transcripts cleanly
+const formatTranscriptMessageContent = (content) => {
+  if (!content) return '';
+  if (typeof content === 'string') return content;
+
+  if (Array.isArray(content)) {
+    return content
+      .map(item => {
+        if (typeof item === 'string') return item;
+        if (item.type === 'text') return item.text || '';
+        if (item.type === 'tool_use') return item.input?.message || `[Requested Action: ${item.name || 'tool_use'}]`;
+        if (item.type === 'tool_result') return '';
+        return item.text || item.content || '';
+      })
+      .filter(Boolean)
+      .join('\n');
+  }
+
+  if (typeof content === 'object') {
+    if (content.text) return content.text;
+    if (content.content) return formatTranscriptMessageContent(content.content);
+    return JSON.stringify(content);
+  }
+
+  return String(content);
+};
+
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return sessionStorage.getItem('hanova_admin_auth') === 'true'
@@ -457,12 +484,18 @@ export default function AdminDashboard() {
                         </div>
 
                         <div className="viewer-messages-log">
-                          {selectedTranscript.messages.map((m, idx) => (
-                            <div key={idx} className={`viewer-msg viewer-msg--${m.role}`}>
-                              <span className="viewer-msg-tag">{m.role === 'user' ? 'Client' : 'Aria'}</span>
-                              <p>{m.content}</p>
-                            </div>
-                          ))}
+                          {selectedTranscript.messages.map((m, idx) => {
+                            const formattedText = formatTranscriptMessageContent(m.content);
+                            if (!formattedText) return null;
+                            return (
+                              <div key={idx} className={`viewer-msg viewer-msg--${m.role}`}>
+                                <span className="viewer-msg-tag">{m.role === 'user' ? 'Client' : 'Aria'}</span>
+                                {formattedText.split('\n').map((para, pIdx) => (
+                                  <p key={pIdx}>{para}</p>
+                                ))}
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     ) : (
