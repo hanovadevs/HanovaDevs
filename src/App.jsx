@@ -72,7 +72,8 @@ function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/news" element={<News />} />
           <Route path="/stack" element={<TechStack />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin" element={<Navigate to="/" replace />} />
+          <Route path="/hanova-portal-2026" element={<AdminDashboard />} />
           {/* Blog → Journal redirects for SEO */}
           <Route path="/blog" element={<Navigate to="/journal" replace />} />
           <Route path="/blog/:slug" element={<BlogRedirect />} />

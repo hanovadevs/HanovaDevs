@@ -198,7 +198,7 @@ export default function AdminDashboard() {
         <SEO 
           title="Secure Operations Login — HanovaDevs"
           description="Access to administrative panel requires secure sign-in."
-          url="/admin"
+          url="/hanova-portal-2026"
         />
         <div className="admin-login-card">
           <div className="admin-login-header">
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
       <SEO 
         title="Admin Control Desk — HanovaDevs"
         description="Review scheduled bookings, audit AI chatbot transcripts, and monitor system telemetry."
-        url="/admin"
+        url="/hanova-portal-2026"
       />
 
       <header className="admin-hero">
