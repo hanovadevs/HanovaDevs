@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /hanova-portal-2026
 Disallow: /private
 Disallow: /scratch
 

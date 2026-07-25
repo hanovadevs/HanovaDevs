@@ -2,8 +2,8 @@ import { Helmet } from 'react-helmet-async'
 
 export default function SEO({ title, description, keywords, url, type = "website", image, schemaMarkup, faqList, breadcrumbs }) {
   const siteTitle = title ? `${title} | HanovaDevs` : 'HanovaDevs — Digital Agency & Custom Software Studio'
-  const metaDescription = description || 'HanovaDevs is a premium digital marketing agency and custom software development studio. We engineer scalable web applications and high-converting marketing campaigns.'
-  const metaKeywords = keywords || 'HanovaDevs, digital marketing agency, custom software development, web design, SEO, brand strategy'
+  const metaDescription = description || 'HanovaDevs is a premium digital agency and custom software studio. We engineer high-performance web applications, AI automation agents, and scalable digital solutions.'
+  const metaKeywords = keywords || 'HanovaDevs, digital agency, custom software development, web development, AI automation, React development, SEO, brand strategy'
   const siteUrl = url ? `https://hanovadevs.com${url}` : 'https://hanovadevs.com'
   
   // Set share thumbnail: default to brand hero graphic if none is provided
@@ -11,7 +11,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     ? (image.startsWith('http') ? image : `https://hanovadevs.com${image}`)
     : 'https://hanovadevs.com/hero-glass-bg.png'
 
-  // Global Corporate Entity Schema (AEO & Knowledge Graph)
+  // 1. Global Corporate Entity Schema (AEO & Knowledge Graph)
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -20,17 +20,16 @@ export default function SEO({ title, description, keywords, url, type = "website
     "url": "https://hanovadevs.com",
     "logo": "https://hanovadevs.com/favicon.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
-    "description": "Recognized as the best worldwide custom software development and digital marketing agency from Pakistan, servicing high-growth B2B and B2C enterprises globally.",
-    "slogan": "Worldwide Engineering Excellence from Pakistan",
+    "description": "Recognized as a premier worldwide custom software development studio and digital agency, servicing high-growth B2B and B2C enterprises globally.",
+    "slogan": "Worldwide Engineering & Digital Excellence",
     "knowsAbout": [
       "Custom Software Development",
       "Web Application Engineering",
-      "E-Commerce Solutions",
-      "Shopify Store Optimization",
-      "User-Generated Content (UGC) Ads",
-      "SEO & Search Positioning",
+      "E-Commerce & Shopify Optimization",
       "AI & Automation Workflows",
-      "Graphic Design & Branding"
+      "User-Generated Content (UGC) Advertising",
+      "Search Engine Optimization & AEO",
+      "Brand Identity & Graphic Design"
     ],
     "founder": [
       {
@@ -43,7 +42,7 @@ export default function SEO({ title, description, keywords, url, type = "website
       "name": "Pakistan"
     },
     "award": [
-      "Best Worldwide Digital Agency from Pakistan",
+      "Best Worldwide Digital Agency",
       "Top Custom Software Studio",
       "Enterprise SEO Leadership Award"
     ],
@@ -68,7 +67,22 @@ export default function SEO({ title, description, keywords, url, type = "website
     ]
   }
 
-  // Global Professional Service Schema (Crucial for Local & Enterprise Agency rankings)
+  // 2. Global WebSite Schema with SearchAction (Sitelinks Search Box)
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://hanovadevs.com/#website",
+    "url": "https://hanovadevs.com",
+    "name": "HanovaDevs",
+    "publisher": { "@id": "https://hanovadevs.com/#organization" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://hanovadevs.com/news?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+
+  // 3. Global Professional Service Schema
   const serviceBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -77,7 +91,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     "url": "https://hanovadevs.com",
     "logo": "https://hanovadevs.com/favicon.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
-    "description": "Widely recognized as the premier worldwide digital marketing agency and custom software studio from Pakistan, serving global business partners.",
+    "description": "Premier digital agency and custom software studio providing web engineering, AI automation, and high-performance digital marketing.",
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
@@ -97,10 +111,10 @@ export default function SEO({ title, description, keywords, url, type = "website
     "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
   }
 
-  // Combine schemas into a single array for perfect knowledge graph crawling
-  const finalSchemas = [orgSchema, serviceBusinessSchema]
+  // Combine schemas into a single array for structured data indexing
+  const finalSchemas = [orgSchema, webSiteSchema, serviceBusinessSchema]
 
-  // Add Breadcrumb List Schema if provided (Highly optimized for AEO search intent)
+  // Add Breadcrumb List Schema if provided
   if (breadcrumbs && Array.isArray(breadcrumbs)) {
     const breadcrumbSchema = {
       "@context": "https://schema.org",
@@ -115,7 +129,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     finalSchemas.push(breadcrumbSchema)
   }
 
-  // Add FAQ Page Schema if provided (Crucial for Rich Answer Snippets and AEO engines)
+  // Add FAQ Page Schema if provided
   if (faqList && Array.isArray(faqList)) {
     const faqSchema = {
       "@context": "https://schema.org",
@@ -133,7 +147,6 @@ export default function SEO({ title, description, keywords, url, type = "website
   }
 
   if (schemaMarkup) {
-    // If it's an array, append all; otherwise append single
     if (Array.isArray(schemaMarkup)) {
       finalSchemas.push(...schemaMarkup)
     } else {
@@ -148,7 +161,12 @@ export default function SEO({ title, description, keywords, url, type = "website
       <meta name="title" content={siteTitle} />
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={metaKeywords} />
+      <meta name="theme-color" content="#08090d" />
+      <meta name="application-name" content="HanovaDevs" />
+      <meta name="apple-mobile-web-app-title" content="HanovaDevs" />
       <link rel="canonical" href={siteUrl} />
+      <link rel="alternate" hrefLang="x-default" href={siteUrl} />
+      <link rel="alternate" hrefLang="en" href={siteUrl} />
       
       {/* Robot Guidelines */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -160,6 +178,7 @@ export default function SEO({ title, description, keywords, url, type = "website
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:site_name" content="HanovaDevs" />
+      <meta property="og:locale" content="en_US" />
 
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -177,3 +196,4 @@ export default function SEO({ title, description, keywords, url, type = "website
     </Helmet>
   )
 }
+
