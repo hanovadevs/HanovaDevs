@@ -191,6 +191,9 @@ export async function saveChatTranscript(transcript) {
 // ----------------------------------------------------
 // CMS: PROJECTS MANAGEMENT
 // ----------------------------------------------------
+// ----------------------------------------------------
+// CMS: PROJECTS MANAGEMENT
+// ----------------------------------------------------
 const defaultProjectsList = [
   {
     id: 'raqs',
@@ -198,9 +201,9 @@ const defaultProjectsList = [
     category: 'Luxury E-Commerce',
     description: 'Minimalist couture storefront with Sufi-inspired art, Shopify drop pipeline, and high-speed image transitions.',
     metrics: '100/100 PageSpeed',
-    image_url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    image_url: '/projects/raqs.png',
     live_url: 'https://www.raqsofficial.store',
-    created_at: new Date(Date.now() - 3600000 * 5).toISOString()
+    created_at: new Date(Date.now() - 3600000 * 7).toISOString()
   },
   {
     id: 'earthsync',
@@ -208,9 +211,9 @@ const defaultProjectsList = [
     category: 'E-Commerce & Wellness',
     description: 'Earthing sheets and medical-grade grounding shop with scientific explainers and nature-inspired aesthetic.',
     metrics: '+45% Conversion Rate',
-    image_url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
+    image_url: '/projects/earthsync.png',
     live_url: 'https://www.earthsyncessential.com',
-    created_at: new Date(Date.now() - 3600000 * 4).toISOString()
+    created_at: new Date(Date.now() - 3600000 * 6).toISOString()
   },
   {
     id: 'terrasol',
@@ -218,38 +221,58 @@ const defaultProjectsList = [
     category: 'E-Commerce & Wellness',
     description: 'Multi-section e-commerce ecosystem with Amazon API connectivity, 20+ peer-reviewed studies index, and Gemini AI search.',
     metrics: '4.8★ Avg Rating',
-    image_url: '/terrasol_thumbnail_1779800151142.png',
+    image_url: '/projects/terrasol.png',
     live_url: 'https://www.terrasolgrounding.com',
+    created_at: new Date(Date.now() - 3600000 * 5).toISOString()
+  },
+  {
+    id: 'nexus',
+    title: 'Nexus Health',
+    category: 'Telemedicine SaaS',
+    description: 'Next-generation telemedicine dashboard connecting practitioners with remote patients in real-time.',
+    metrics: '99.9% Platform Uptime',
+    image_url: '/projects/nexus.png',
+    live_url: 'https://www.nexushealth.io',
+    created_at: new Date(Date.now() - 3600000 * 4).toISOString()
+  },
+  {
+    id: 'crown',
+    title: 'Crown Accumulator',
+    category: 'Industrial B2B Portfolio',
+    description: 'Industrial manufacturer of automotive, tractor, and solar batteries with high-performance B2B filtering.',
+    metrics: '< 0.8s Load Time',
+    image_url: '/projects/crown.png',
+    live_url: 'https://www.crownaccumulator.com',
     created_at: new Date(Date.now() - 3600000 * 3).toISOString()
   },
   {
-    id: 'omnai',
-    title: 'Omnai Browser Workspace',
-    category: 'AI Desktop App',
-    description: 'An AI-native browser workspace combining real-time search, multi-model execution, and spatial canvas tabs.',
-    metrics: '15,000+ Downloads',
-    image_url: '/codator_thumbnail_1783701656463.png',
-    live_url: '/products/omnai',
+    id: 'lumiere',
+    title: 'Lumière Paris',
+    category: 'Luxury Fashion',
+    description: 'Avant-garde luxury fashion house digital boutique with lookbook checkout flow.',
+    metrics: '+32% AOV Increase',
+    image_url: '/projects/lumiere.png',
+    live_url: 'https://www.lumiere-paris.fr',
     created_at: new Date(Date.now() - 3600000 * 2).toISOString()
   },
   {
-    id: 'eunoia',
-    title: 'Eunoia Mobile App',
-    category: 'React Native & iOS',
-    description: 'AI-driven wellness journal featuring voice sentiment analysis, sleep optimization telemetry, and biometric sync.',
-    metrics: '4.9★ App Store Rating',
-    image_url: '/cute_bot_avatar_1784487626582.png',
-    live_url: '/products/eunoia',
+    id: 'aero',
+    title: 'AeroSpace Dynamics',
+    category: 'Logistics Analytics',
+    description: 'Cybernetic fleet operator command center for global freight and satellite logistics.',
+    metrics: '10k+ Data Points/Sec',
+    image_url: '/projects/aero.png',
+    live_url: 'https://www.aerospacedynamics.io',
     created_at: new Date(Date.now() - 3600000 * 1).toISOString()
   },
   {
     id: 'codator',
-    title: 'CODATOR IDE Synthesizer',
-    category: 'Developer Tools',
-    description: 'Intelligent code generation and automated test suite synthesizer built for high-scale TypeScript teams.',
-    metrics: '2.4M Code Snippets',
-    image_url: '/codator_thumbnail_1783701656463.png',
-    live_url: '#',
+    title: 'CODATOR Core & Portal',
+    category: 'Community OS & SaaS',
+    description: 'Gamified community management portal with interactive CLI terminal and real-time event check-ins.',
+    metrics: '68+ Active Members',
+    image_url: '/projects/codator.png',
+    live_url: 'https://codator.vercel.app',
     created_at: new Date().toISOString()
   }
 ]

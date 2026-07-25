@@ -144,26 +144,34 @@ export default function Projects() {
       try {
         const fetched = await getProjects()
         if (fetched && fetched.length > 0) {
-          const normalized = fetched.map(item => {
+          // Filter out products (omnai & eunoia) that belong on /products
+          const validFetched = fetched.filter(item => item.id !== 'omnai' && item.id !== 'eunoia')
+          
+          const normalized = validFetched.map(item => {
             const defaultMatch = initialFeaturedProjects.find(p => p.id === item.id)
             return {
               id: item.id || Math.random().toString(36).substr(2, 9),
-              title: item.title || defaultMatch?.title || 'Featured Showcase',
-              category: item.category || defaultMatch?.category || 'Digital Ecosystem',
-              url: item.live_url || item.url || defaultMatch?.url || '#',
-              thumbnail: item.image_url || item.thumbnail || defaultMatch?.thumbnail || '/projects/raqs.png',
-              theme: item.theme || defaultMatch?.theme || 'dark',
-              overview: item.description || item.overview || defaultMatch?.overview || 'High-performance digital project engineered by HanovaDevs.',
-              challenge: item.challenge || defaultMatch?.challenge || 'Designing scalable digital mechanics with zero performance latency.',
-              solution: item.solution || item.description || defaultMatch?.solution || 'Engineered custom full-stack solutions with ultra-fast page speeds.',
-              metrics: Array.isArray(item.metrics) 
+              title: defaultMatch?.title || item.title || 'Featured Showcase',
+              category: defaultMatch?.category || item.category || 'Digital Ecosystem',
+              url: defaultMatch?.url || item.live_url || item.url || '#',
+              thumbnail: defaultMatch?.thumbnail || item.image_url || item.thumbnail || '/projects/raqs.png',
+              theme: defaultMatch?.theme || item.theme || 'dark',
+              overview: defaultMatch?.overview || item.description || item.overview || 'High-performance digital project engineered by HanovaDevs.',
+              challenge: defaultMatch?.challenge || item.challenge || 'Designing scalable digital mechanics with zero performance latency.',
+              solution: defaultMatch?.solution || item.solution || item.description || 'Engineered custom full-stack solutions with ultra-fast page speeds.',
+              metrics: defaultMatch?.metrics || (Array.isArray(item.metrics) 
                 ? item.metrics 
                 : (typeof item.metrics === 'string' && item.metrics)
                   ? [{ label: 'Metric', value: item.metrics }]
-                  : (defaultMatch?.metrics || [{ label: 'Performance', value: '100/100' }])
+                  : [{ label: 'Performance', value: '100/100' }])
             }
           })
-          setProjectList(normalized)
+
+          // Ensure any initial featured project not in validFetched is still present
+          const existingIds = new Set(normalized.map(p => p.id))
+          const missingDefaults = initialFeaturedProjects.filter(p => !existingIds.has(p.id))
+          
+          setProjectList([...normalized, ...missingDefaults])
         }
       } catch (err) {
         console.error('Failed to load projects from storage:', err)
