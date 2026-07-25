@@ -136,8 +136,40 @@ const initialFeaturedProjects = [
 ]
 
 export default function Projects() {
+  const [projectList, setProjectList] = useState(initialFeaturedProjects)
+
   useEffect(() => {
     window.scrollTo(0, 0)
+    async function fetchProjectsData() {
+      try {
+        const fetched = await getProjects()
+        if (fetched && fetched.length > 0) {
+          const normalized = fetched.map(item => {
+            const defaultMatch = initialFeaturedProjects.find(p => p.id === item.id)
+            return {
+              id: item.id || Math.random().toString(36).substr(2, 9),
+              title: item.title || defaultMatch?.title || 'Featured Showcase',
+              category: item.category || defaultMatch?.category || 'Digital Ecosystem',
+              url: item.live_url || item.url || defaultMatch?.url || '#',
+              thumbnail: item.image_url || item.thumbnail || defaultMatch?.thumbnail || '/projects/raqs.png',
+              theme: item.theme || defaultMatch?.theme || 'dark',
+              overview: item.description || item.overview || defaultMatch?.overview || 'High-performance digital project engineered by HanovaDevs.',
+              challenge: item.challenge || defaultMatch?.challenge || 'Designing scalable digital mechanics with zero performance latency.',
+              solution: item.solution || item.description || defaultMatch?.solution || 'Engineered custom full-stack solutions with ultra-fast page speeds.',
+              metrics: Array.isArray(item.metrics) 
+                ? item.metrics 
+                : (typeof item.metrics === 'string' && item.metrics)
+                  ? [{ label: 'Metric', value: item.metrics }]
+                  : (defaultMatch?.metrics || [{ label: 'Performance', value: '100/100' }])
+            }
+          })
+          setProjectList(normalized)
+        }
+      } catch (err) {
+        console.error('Failed to load projects from storage:', err)
+      }
+    }
+    fetchProjectsData()
   }, [])
 
   return (
@@ -167,7 +199,7 @@ export default function Projects() {
       {/* ===== FEATURED PROJECTS ===== */}
       <div className="pj-showcases">
         {projectList.map((project, index) => (
-          <section key={project.id} className={`pj-case pj-case--${project.theme}`}>
+          <section key={project.id || index} className={`pj-case pj-case--${project.theme || 'dark'}`}>
             <div className="container">
               <div className={`pj-case__layout ${index % 2 !== 0 ? 'pj-case__layout--reverse' : ''}`}>
                 
@@ -190,7 +222,7 @@ export default function Projects() {
                   </div>
 
                   <div className="pj-case__metrics">
-                    {project.metrics.map((metric, i) => (
+                    {Array.isArray(project.metrics) && project.metrics.map((metric, i) => (
                       <div key={i} className="pj-case__metric">
                         <strong>{metric.value}</strong>
                         <span>{metric.label}</span>
@@ -208,7 +240,7 @@ export default function Projects() {
                     <div className="pj-frame">
                       <div className="pj-frame__header">
                         <div className="pj-frame__dots"><span/><span/><span/></div>
-                        <div className="pj-frame__url">{project.url.replace('https://www.', '')}</div>
+                        <div className="pj-frame__url">{(project.url || 'hanovadevs.com').replace('https://www.', '').replace('https://', '')}</div>
                       </div>
                       <img src={project.thumbnail} alt={`${project.title} Interface`} className="pj-frame__img" />
                     </div>
