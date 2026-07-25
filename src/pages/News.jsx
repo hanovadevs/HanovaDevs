@@ -16,7 +16,8 @@ In testing, GPT-5 achieved state-of-the-art results on several challenging reaso
 
 Sam Altman stated, "GPT-5 is not just a language model—it is a cognitive team. You describe the goal, and it will coordinate, build, and deploy the entire solution." The model is now available to Enterprise and Plus developers, with an API tier supporting up to 5 million input tokens per call.`,
     category: 'AI & Robotics',
-    date: 'May 29, 2026',
+    date: 'July 25, 2026',
+    readTime: '4 min read',
     source: 'Wired',
     sourceUrl: 'https://wired.com',
     region: 'USA',
@@ -26,16 +27,37 @@ Sam Altman stated, "GPT-5 is not just a language model—it is a cognitive team.
     variant: 'featured'
   },
   {
+    id: 'anthropic-claude-3-7',
+    title: 'Anthropic Unveils Claude 3.7 Sonnet: Hybrid Reasoning Engine & Adaptive Thinking',
+    excerpt: 'Anthropic\'s hybrid model dynamically switches between instantaneous conversational responses and deep mathematical reasoning chains.',
+    description: `Anthropic has unveiled Claude 3.7 Sonnet, introducing a groundbreaking hybrid architecture that unifies fast conversational responses with extended logical reasoning chains. Developers can configure a "thinking budget" that grants the model up to 128,000 tokens of internal scratchpad reasoning before returning a final answer.
+
+On complex code refactoring, formal verification, and algorithmic synthesis benchmarks, Claude 3.7 Sonnet sets new industry records. The model features enhanced tool-use capabilities, allowing it to control headless browser instances, execute terminal scripts, and inspect database schemas asynchronously.
+
+Dario Amodei, CEO of Anthropic, noted: "Claude 3.7 represents a shift from raw pattern matching to genuine reflective cognition. It thinks before it speaks, evaluating edge cases and system architectures prior to writing a single line of code."`,
+    category: 'AI & Robotics',
+    date: 'July 25, 2026',
+    readTime: '3 min read',
+    source: 'TechCrunch',
+    sourceUrl: 'https://techcrunch.com',
+    region: 'USA',
+    regionFlag: '🇺🇸',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    tags: ['Anthropic', 'Claude', 'AI Reasoning', 'LLM'],
+    variant: 'featured'
+  },
+  {
     id: 'intel-silicon-qubits',
     title: 'Intel Achieves 99.9% Gate Fidelity on 128-Qubit Silicon Spin Processor',
-    excerpt: 'Intel\'s "Tunnel Falls II" processor leverages standard commercial extreme ultraviolet (EUV) lithography to manufacture highly stable qubits on standard 300mm silicon wafers.',
+    excerpt: 'Intel\'s "Tunnel Falls II" processor leverages standard commercial extreme ultraviolet (EUV) lithography to manufacture highly stable qubits on 300mm silicon wafers.',
     description: `Intel has announced a major breakthrough in quantum manufacturing by achieving 99.9% single-qubit and two-qubit gate fidelity on its 128-qubit "Tunnel Falls II" silicon spin qubit processor. This achievement is a critical threshold required for fault-tolerant quantum error correction, bringing commercial-scale quantum systems closer to practical utility.
 
 Crucially, Intel manufactured the Tunnel Falls II processor using standard extreme ultraviolet (EUV) lithography on its commercial 300mm wafer fabrication lines in Oregon. By leveraging existing semiconductor manufacturing infrastructures instead of custom boutique processes, Intel claims it can scale up qubit counts with dramatically higher yield and lower thermal variation than superconducting or trapped-ion competitors.
 
 Intel plans to ship beta hardware kits to academic and corporate partners by Q4 2026, with cloud integrations slated for early 2027. The company's quantum roadmap projects scaling to a 10,000 physical qubit chip by 2028.`,
     category: 'Quantum Computing',
-    date: 'May 29, 2026',
+    date: 'July 24, 2026',
+    readTime: '4 min read',
     source: 'IEEE Spectrum',
     sourceUrl: 'https://spectrum.ieee.org',
     region: 'USA',
@@ -46,15 +68,16 @@ Intel plans to ship beta hardware kits to academic and corporate partners by Q4 
   },
   {
     id: 'nasa-artemis-iv-gateway',
-    title: 'NASA Artemis IV Lunar Gateway module enters final assembly in Italy',
+    title: 'NASA Artemis IV Lunar Gateway Module Enters Final Assembly in Italy',
     excerpt: 'The ESA-designed Habitation and Logistics Outpost completed critical static load tests, preparing for a scheduled launch to lunar orbit in late 2026.',
     description: `NASA and the European Space Agency (ESA) have announced that the Habitation and Logistics Outpost (HALO), the foundational crew quarter module for the Lunar Gateway station, has officially entered final assembly. The module successfully completed structural static load and hermetic seal verification tests at Thales Alenia Space's high-tech facility in Turin, Italy.
 
-The HALO module will act as the command and habitation center for the Gateway station, which will hover in a Near-Rectilinear Halo Orbit (NRHO) around the Moon. HALO will provide living quarters, life support systems, power distribution networks, and communications routing for visiting astronauts as they prepare to descent to the lunar south pole.
+The HALO module will act as the command and habitation center for the Gateway station, which will hover in a Near-Rectilinear Halo Orbit (NRHO) around the Moon. HALO will provide living quarters, life support systems, power distribution networks, and communications routing for visiting astronauts as they prepare to descend to the lunar south pole.
 
 The module is scheduled to be shipped to the Kennedy Space Center in Florida by July 2026, where it will be integrated with the Power and Propulsion Element (PPE) before launching on a SpaceX Falcon Heavy rocket.`,
     category: 'Space Tech',
-    date: 'May 29, 2026',
+    date: 'July 24, 2026',
+    readTime: '3 min read',
     source: 'NASA Spaceflight',
     sourceUrl: 'https://nasa.gov',
     region: 'Europe',
@@ -73,7 +96,8 @@ The B300 is designed specifically for training frontier models exceeding one tri
 
 Major cloud providers including AWS, Azure, and Google Cloud have already committed to deploying B300-based instances in Q3 2026. Meta and xAI have reportedly placed orders for over 400,000 units each. The starting price for an 8-GPU DGX B300 system is expected to exceed $500,000.`,
     category: 'Semiconductors',
-    date: 'May 28, 2026',
+    date: 'July 23, 2026',
+    readTime: '5 min read',
     source: 'The Verge',
     sourceUrl: 'https://theverge.com',
     region: 'USA',
@@ -92,7 +116,8 @@ In benchmark testing, Gemini 3.0 Ultra achieved state-of-the-art results on MMLU
 
 Google has integrated Gemini 3.0 across its entire product suite, including Search, Workspace, Android, and Cloud. The API is available to developers through Vertex AI with pricing starting at $3 per million input tokens.`,
     category: 'AI & Robotics',
-    date: 'May 27, 2026',
+    date: 'July 23, 2026',
+    readTime: '4 min read',
     source: 'TechCrunch',
     sourceUrl: 'https://techcrunch.com',
     region: 'USA',
@@ -105,13 +130,14 @@ Google has integrated Gemini 3.0 across its entire product suite, including Sear
     id: 'spacex-starship-v3',
     title: 'SpaceX Successfully Tests Starship V3 with Full Orbital Refueling',
     excerpt: 'The upgraded Starship completed its first in-orbit propellant transfer, a critical milestone for the Artemis III lunar landing mission.',
-    description: `SpaceX has achieved a historic milestone by successfully completing the first full orbital propellant transfer between two Starship vehicles. The test, conducted 250 km above Earth\'s surface, transferred approximately 150 metric tons of liquid oxygen and methane over a 45-minute window using an automated docking and fluid coupling system.
+    description: `SpaceX has achieved a historic milestone by successfully completing the first full orbital propellant transfer between two Starship vehicles. The test, conducted 250 km above Earth's surface, transferred approximately 150 metric tons of liquid oxygen and methane over a 45-minute window using an automated docking and fluid coupling system.
 
-This capability is essential for NASA\'s Artemis III mission, which will use Starship as the Human Landing System (HLS) to return astronauts to the lunar surface. The refueled Starship must carry enough propellant to perform the translunar injection burn, lunar orbit insertion, powered descent, and return ascent — a total delta-v budget that requires multiple refueling flights.
+This capability is essential for NASA's Artemis III mission, which will use Starship as the Human Landing System (HLS) to return astronauts to the lunar surface. The refueled Starship must carry enough propellant to perform the translunar injection burn, lunar orbit insertion, powered descent, and return ascent — a total delta-v budget that requires multiple refueling flights.
 
 Elon Musk confirmed that SpaceX plans to conduct at least three more refueling demonstrations before the end of 2026, with the Artemis III mission currently targeted for mid-2027.`,
     category: 'Space Tech',
-    date: 'May 26, 2026',
+    date: 'July 22, 2026',
+    readTime: '4 min read',
     source: 'Ars Technica',
     sourceUrl: 'https://arstechnica.com',
     region: 'USA',
@@ -124,13 +150,14 @@ Elon Musk confirmed that SpaceX plans to conduct at least three more refueling d
     id: 'eu-ai-act-enforcement',
     title: 'EU AI Act Enters Full Enforcement: Billion-Euro Fines for Non-Compliance',
     excerpt: 'The European Union\'s comprehensive AI regulation framework is now fully enforceable, with penalties reaching up to 7% of global revenue.',
-    description: `The European Union\'s AI Act has entered full enforcement as of May 2026, establishing the world\'s most comprehensive regulatory framework for artificial intelligence systems. Companies deploying AI within the EU must now comply with a tiered risk classification system that categorizes AI applications from "minimal risk" to "unacceptable risk."
+    description: `The European Union's AI Act has entered full enforcement as of July 2026, establishing the world's most comprehensive regulatory framework for artificial intelligence systems. Companies deploying AI within the EU must now comply with a tiered risk classification system that categorizes AI applications from "minimal risk" to "unacceptable risk."
 
 High-risk AI systems — including those used in healthcare diagnostics, credit scoring, hiring, and law enforcement — must undergo mandatory conformity assessments, maintain detailed technical documentation, and implement continuous monitoring systems. Violations can result in fines of up to €35 million or 7% of global annual revenue, whichever is higher.
 
 The regulation has already prompted significant changes in industry practices. Major tech companies have established dedicated EU compliance teams, and a new ecosystem of "AI auditing" firms has emerged to help organizations navigate the complex requirements.`,
-    category: 'AI & Robotics',
-    date: 'May 25, 2026',
+    category: 'Cybersecurity',
+    date: 'July 22, 2026',
+    readTime: '3 min read',
     source: 'Reuters',
     sourceUrl: 'https://reuters.com',
     region: 'Europe',
@@ -143,13 +170,14 @@ The regulation has already prompted significant changes in industry practices. M
     id: 'tsmc-2nm-production',
     title: 'TSMC Begins Mass Production of 2nm Chips Using Gate-All-Around Transistors',
     excerpt: 'The world\'s largest chipmaker has started volume manufacturing of its N2 process, delivering 25% more performance than the 3nm node.',
-    description: `Taiwan Semiconductor Manufacturing Company has begun mass production of chips using its N2 (2-nanometer) process technology, marking the industry\'s transition from FinFET to Gate-All-Around (GAA) nanosheet transistors. The new architecture wraps the gate material completely around the channel on all four sides, providing dramatically better electrostatic control and reducing leakage current.
+    description: `Taiwan Semiconductor Manufacturing Company has begun mass production of chips using its N2 (2-nanometer) process technology, marking the industry's transition from FinFET to Gate-All-Around (GAA) nanosheet transistors. The new architecture wraps the gate material completely around the channel on all four sides, providing dramatically better electrostatic control and reducing leakage current.
 
-TSMC reports that N2 delivers a 25% speed improvement at the same power, or a 30% power reduction at the same speed, compared to its N3E process. The company\'s Fab 20 in Hsinchu is currently the primary production facility, with Fab 2 in Kaohsiung expected to come online for N2 production by Q4 2026.
+TSMC reports that N2 delivers a 25% speed improvement at the same power, or a 30% power reduction at the same speed, compared to its N3E process. The company's Fab 20 in Hsinchu is currently the primary production facility, with Fab 2 in Kaohsiung expected to come online for N2 production by Q4 2026.
 
 Apple is widely expected to be the first major customer, with the A20 Bionic chip for the iPhone 18 reportedly being manufactured on N2. Qualcomm, MediaTek, and AMD are also confirmed design partners.`,
     category: 'Semiconductors',
-    date: 'May 24, 2026',
+    date: 'July 21, 2026',
+    readTime: '4 min read',
     source: 'Nikkei Asia',
     sourceUrl: 'https://asia.nikkei.com',
     region: 'Taiwan',
@@ -168,7 +196,8 @@ In internal benchmarks, Codex 2 successfully completed 78% of real-world GitHub 
 
 OpenAI is offering Codex 2 through a new "Teams" tier priced at $200 per developer per month. Early adopters including Stripe, Shopify, and Instacart report 40-60% reductions in time-to-ship for routine engineering tasks.`,
     category: 'AI & Robotics',
-    date: 'May 23, 2026',
+    date: 'July 21, 2026',
+    readTime: '4 min read',
     source: 'Wired',
     sourceUrl: 'https://wired.com',
     region: 'USA',
@@ -185,9 +214,10 @@ OpenAI is offering Codex 2 through a new "Teams" tier priced at $200 per develop
 
 Powered by the M5 chip with a dedicated Neural Engine containing 40 TOPS of processing power, Vision Pro 2 doubles the field of view to 120 degrees and introduces "Spatial Persistence" — the ability to leave virtual objects anchored in physical space even after removing the headset. Eye tracking resolution has improved to 0.5 degrees of visual angle.
 
-The starting price has been reduced to $2,499 (from $3,499), and Apple is offering an enterprise tier at $3,999 with MDM integration and multi-user support. Pre-orders begin June 15, with shipping starting July 1.`,
+The starting price has been reduced to $2,499 (from $3,499), and Apple is offering an enterprise tier at $3,999 with MDM integration and multi-user support. Pre-orders begin August 15, with shipping starting September 1.`,
     category: 'Consumer Tech',
-    date: 'May 22, 2026',
+    date: 'July 20, 2026',
+    readTime: '3 min read',
     source: 'Bloomberg',
     sourceUrl: 'https://bloomberg.com',
     region: 'USA',
@@ -206,7 +236,8 @@ The Willow II processor uses 256 superconducting transmon qubits arranged in a s
 
 Google estimates that achieving "quantum advantage" for commercially relevant problems — such as molecular simulation for drug discovery and materials science — will require logical error rates below 10^-10, which they project achieving by 2028 with a 4,000-qubit processor.`,
     category: 'Quantum Computing',
-    date: 'May 21, 2026',
+    date: 'July 20, 2026',
+    readTime: '4 min read',
     source: 'Nature',
     sourceUrl: 'https://nature.com',
     region: 'USA',
@@ -219,13 +250,14 @@ Google estimates that achieving "quantum advantage" for commercially relevant pr
     id: 'toyota-solid-state',
     title: 'Toyota Launches First Mass-Market Solid-State Battery EV with 900-Mile Range',
     excerpt: 'The bZ5X sedan uses solid-state cells that charge from 10% to 80% in under 10 minutes and retain 90% capacity after 1,500 cycles.',
-    description: `Toyota has begun deliveries of the bZ5X, the world\'s first mass-market electric vehicle powered by solid-state batteries. The sedan offers an EPA-estimated range of 900 miles on a single charge, nearly tripling the range of current lithium-ion EVs and eliminating range anxiety as a barrier to EV adoption.
+    description: `Toyota has begun deliveries of the bZ5X, the world's first mass-market electric vehicle powered by solid-state batteries. The sedan offers an EPA-estimated range of 900 miles on a single charge, nearly tripling the range of current lithium-ion EVs and eliminating range anxiety as a barrier to EV adoption.
 
 The solid-state cells, developed in partnership with Panasonic and Idemitsu Kosan, use a sulfide-based solid electrolyte that enables energy density of 500 Wh/kg — roughly double that of the best lithium-ion cells. Charging from 10% to 80% takes under 10 minutes at compatible 350kW DC fast chargers, and Toyota guarantees 90% capacity retention after 1,500 full charge cycles.
 
 The bZ5X launches in Japan at ¥7.5 million (approximately $48,000 USD), with North American and European availability planned for Q1 2027. Toyota plans to expand solid-state technology across its entire EV lineup by 2030.`,
     category: 'Green Tech',
-    date: 'May 20, 2026',
+    date: 'July 19, 2026',
+    readTime: '4 min read',
     source: 'Nikkei Asia',
     sourceUrl: 'https://asia.nikkei.com',
     region: 'Japan',
@@ -238,13 +270,14 @@ The bZ5X launches in Japan at ¥7.5 million (approximately $48,000 USD), with No
     id: 'crowdstrike-supply-chain',
     title: 'CrowdStrike Uncovers State-Sponsored Supply Chain Attack Targeting npm Registry',
     excerpt: 'A sophisticated campaign injected backdoors into 47 popular JavaScript packages, potentially compromising thousands of enterprise applications.',
-    description: `CrowdStrike\'s threat intelligence team has uncovered a major state-sponsored supply chain attack targeting the npm package registry. The campaign, attributed to a nation-state actor designated as VELVET TYPHOON, involved the compromise of maintainer accounts for 47 popular npm packages with a combined weekly download count exceeding 15 million.
+    description: `CrowdStrike's threat intelligence team has uncovered a major state-sponsored supply chain attack targeting the npm package registry. The campaign, attributed to a nation-state actor designated as VELVET TYPHOON, involved the compromise of maintainer accounts for 47 popular npm packages with a combined weekly download count exceeding 15 million.
 
 The attackers injected obfuscated backdoor code into patch version updates, making the changes nearly invisible in standard code review. The backdoor established encrypted command-and-control channels that could exfiltrate environment variables, API keys, and database credentials. CrowdStrike estimates that at least 12,000 enterprise applications may have been affected.
 
 npm Inc. has revoked the compromised versions, and CrowdStrike has released free scanning tools to help organizations identify affected dependencies. The incident has renewed calls for mandatory code signing and reproducible builds in the JavaScript ecosystem.`,
     category: 'Cybersecurity',
-    date: 'May 19, 2026',
+    date: 'July 19, 2026',
+    readTime: '3 min read',
     source: 'CrowdStrike Blog',
     sourceUrl: 'https://crowdstrike.com',
     region: 'USA',
@@ -263,7 +296,8 @@ The Mach-1 delivers 100 trillion operations per second (TOPS) in INT4 precision 
 
 The chip uses a novel "Sparse Attention" architecture that skips zero-valued computations, reducing memory bandwidth requirements by up to 60%. Samsung has also announced a developer SDK that allows third-party apps to leverage the Mach-1 for custom AI features.`,
     category: 'Consumer Tech',
-    date: 'May 18, 2026',
+    date: 'July 18, 2026',
+    readTime: '3 min read',
     source: 'Samsung Newsroom',
     sourceUrl: 'https://news.samsung.com',
     region: 'South Korea',
@@ -282,7 +316,8 @@ On the MATH benchmark, R2 scores 92.1% (vs. GPT-4o's 90.8%). On SWE-bench Verifi
 
 The model weights are released under an MIT license, and DeepSeek has published a detailed technical report describing novel training techniques including "Reinforcement Learning from AI Feedback" (RLAIF) and "Multi-Stage Distillation." The release has intensified the debate about whether open-source models will ultimately commoditize foundation AI.`,
     category: 'AI & Robotics',
-    date: 'May 17, 2026',
+    date: 'July 18, 2026',
+    readTime: '4 min read',
     source: 'South China Morning Post',
     sourceUrl: 'https://scmp.com',
     region: 'China',
@@ -301,7 +336,8 @@ The photonic interconnect specification defines a silicon photonics layer that c
 
 ARMv10 also introduces hardware-level support for Confidential Computing, enabling encrypted computation without trusting the cloud provider. Qualcomm, Samsung, and MediaTek have all announced plans to develop ARMv10-based chips, with first silicon expected in late 2027.`,
     category: 'Semiconductors',
-    date: 'May 16, 2026',
+    date: 'July 17, 2026',
+    readTime: '4 min read',
     source: 'AnandTech',
     sourceUrl: 'https://anandtech.com',
     region: 'UK',
@@ -320,7 +356,8 @@ The Blindsight device bypasses damaged visual pathways entirely, using a head-mo
 
 The FDA granted Blindsight "Breakthrough Device" designation in 2025. Neuralink plans to expand the trial to 50 patients across 10 centers in 2026, with a target of full regulatory approval by 2028.`,
     category: 'Consumer Tech',
-    date: 'May 15, 2026',
+    date: 'July 17, 2026',
+    readTime: '3 min read',
     source: 'MIT Technology Review',
     sourceUrl: 'https://technologyreview.com',
     region: 'USA',
@@ -339,7 +376,8 @@ The merged framework includes abstractions for PCI devices, platform devices, GP
 
 Linus Torvalds commented that while he still considers C the "heart" of the kernel, Rust provides a "safety net" for the most common categories of kernel vulnerabilities — use-after-free, buffer overflows, and data races — which account for approximately 70% of all kernel CVEs.`,
     category: 'Cybersecurity',
-    date: 'May 14, 2026',
+    date: 'July 16, 2026',
+    readTime: '4 min read',
     source: 'LWN.net',
     sourceUrl: 'https://lwn.net',
     region: 'USA',
@@ -352,13 +390,14 @@ Linus Torvalds commented that while he still considers C the "heart" of the kern
     id: 'iter-fusion-milestone',
     title: 'ITER Achieves First Plasma: The Dawn of Commercial Fusion Energy',
     excerpt: 'After decades of delays, the world\'s largest tokamak has produced its first hydrogen plasma, bringing fusion power one step closer to reality.',
-    description: `The International Thermonuclear Experimental Reactor (ITER) in southern France has achieved "first plasma" — the momentous ignition of superheated hydrogen gas inside the world\'s largest tokamak fusion reactor. The milestone, originally scheduled for 2025, was delayed by engineering challenges and the COVID pandemic but represents a pivotal moment in humanity\'s quest for virtually limitless clean energy.
+    description: `The International Thermonuclear Experimental Reactor (ITER) in southern France has achieved "first plasma" — the momentous ignition of superheated hydrogen gas inside the world's largest tokamak fusion reactor. The milestone represents a pivotal moment in humanity's quest for virtually limitless clean energy.
 
-The plasma reached temperatures of approximately 50 million degrees Celsius during the initial commissioning run, though ITER\'s ultimate target is 150 million degrees — ten times hotter than the core of the Sun. At full power, the reactor is designed to produce 500 megawatts of fusion power from 50 megawatts of heating input, demonstrating a Q factor of 10.
+The plasma reached temperatures of approximately 50 million degrees Celsius during the initial commissioning run, though ITER's ultimate target is 150 million degrees — ten times hotter than the core of the Sun. At full power, the reactor is designed to produce 500 megawatts of fusion power from 50 megawatts of heating input, demonstrating a Q factor of 10.
 
-ITER is a collaboration between 35 nations representing over half the world\'s population. Commercial fusion power plants based on ITER\'s design are projected for the 2040s.`,
+ITER is a collaboration between 35 nations representing over half the world's population. Commercial fusion power plants based on ITER's design are projected for the 2040s.`,
     category: 'Green Tech',
-    date: 'May 13, 2026',
+    date: 'July 15, 2026',
+    readTime: '5 min read',
     source: 'BBC News',
     sourceUrl: 'https://bbc.com',
     region: 'France',
@@ -377,7 +416,8 @@ The model supports 12 input modalities natively, including text, images, video, 
 
 Meta has released Scout under a permissive license that allows commercial use, fine-tuning, and redistribution. The company estimates that the open-source AI ecosystem now serves over 1 billion monthly active users across all Llama-derived deployments.`,
     category: 'AI & Robotics',
-    date: 'May 12, 2026',
+    date: 'July 14, 2026',
+    readTime: '4 min read',
     source: 'Meta AI Blog',
     sourceUrl: 'https://ai.meta.com',
     region: 'USA',
@@ -387,35 +427,17 @@ Meta has released Scout under a permissive license that allows commercial use, f
     variant: 'standard'
   },
   {
-    id: 'isro-venus-orbiter',
-    title: 'ISRO Launches Shukrayaan-1: India\'s First Mission to Venus',
-    excerpt: 'The ₹1,200 crore mission will study Venus\'s atmosphere, surface geology, and potential signs of phosphine-based microbial chemistry.',
-    description: `The Indian Space Research Organisation has successfully launched Shukrayaan-1, India\'s first dedicated mission to Venus, aboard a GSLV Mk III rocket from the Satish Dhawan Space Centre in Sriharikota. The orbiter carries 19 scientific instruments, including a synthetic aperture radar capable of penetrating Venus\'s thick cloud cover to map surface features at 30-meter resolution.
-
-The mission\'s primary scientific objectives include studying the super-rotation of Venus\'s atmosphere (which rotates 60 times faster than the planet itself), mapping volcanic activity, and searching for trace gases — particularly phosphine — that some scientists have proposed as potential biosignatures for microbial life in Venus\'s cloud layers.
-
-Shukrayaan-1 will reach Venus orbit in approximately 140 days after performing a series of Earth-bound orbit-raising maneuvers and a Venus orbit insertion burn. The mission is designed to operate for at least 4 years.`,
-    category: 'Space Tech',
-    date: 'May 11, 2026',
-    source: 'The Hindu',
-    sourceUrl: 'https://thehindu.com',
-    region: 'India',
-    regionFlag: '🇮🇳',
-    image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80',
-    tags: ['ISRO', 'Venus', 'Space', 'India'],
-    variant: 'compact'
-  },
-  {
     id: 'cloudflare-workers-gpu',
-    title: 'Cloudflare Launches Workers GPU: Serverless AI Inference at the Edge',
+    title: 'Cloudflare Launches Workers GPU: Serverless AI Inference at 300+ Edge Nodes',
     excerpt: 'Developers can now deploy AI models to 300+ edge locations worldwide with automatic scaling and sub-100ms inference latency.',
     description: `Cloudflare has launched Workers GPU, extending its serverless platform to support GPU-accelerated AI inference at over 300 edge locations worldwide. Developers can deploy quantized models up to 13 billion parameters and receive inference results in under 100 milliseconds from any global location.
 
 The service supports ONNX, GGUF, and SafeTensors model formats, with pre-optimized versions of popular models including Llama 3, Mistral, Stable Diffusion XL, and Whisper available in a one-click model catalog. Pricing starts at $0.01 per 1,000 inference requests for small models, with volume discounts for enterprise customers.
 
-Workers GPU integrates natively with Cloudflare\'s existing developer platform, including KV storage, D1 databases, R2 object storage, and Vectorize for RAG applications. The company positions the service as an alternative to centralized cloud GPU instances for latency-sensitive AI applications.`,
+Workers GPU integrates natively with Cloudflare's existing developer platform, including KV storage, D1 databases, R2 object storage, and Vectorize for RAG applications. The company positions the service as an alternative to centralized cloud GPU instances for latency-sensitive AI applications.`,
     category: 'AI & Robotics',
-    date: 'May 10, 2026',
+    date: 'July 13, 2026',
+    readTime: '3 min read',
     source: 'Cloudflare Blog',
     sourceUrl: 'https://blog.cloudflare.com',
     region: 'USA',
@@ -423,76 +445,19 @@ Workers GPU integrates natively with Cloudflare\'s existing developer platform, 
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
     tags: ['Cloudflare', 'Edge', 'Serverless', 'GPU'],
     variant: 'standard'
-  },
-  {
-    id: 'japan-hydrogen-pipeline',
-    title: 'Japan Completes World\'s First Intercontinental Liquid Hydrogen Pipeline',
-    excerpt: 'A 9,000 km undersea pipeline connecting Australia\'s Pilbara region to Kobe enables continuous green hydrogen delivery for heavy industry.',
-    description: `Japan and Australia have completed the world\'s first intercontinental liquid hydrogen pipeline, a 9,000 km undersea conduit connecting solar-powered electrolysis plants in Australia\'s Pilbara region to industrial consumers in Kobe, Japan. The $47 billion project, jointly funded by both governments and a consortium of private investors, is designed to deliver 300,000 tonnes of green hydrogen annually.
-
-The pipeline uses advanced cryogenic insulation technology developed by Kawasaki Heavy Industries to maintain hydrogen at -253°C throughout the journey. Boil-off losses have been reduced to less than 0.1% per day through a novel re-liquefaction system powered by ocean thermal energy conversion.
-
-The project is a cornerstone of Japan\'s strategy to decarbonize heavy industry, with steel manufacturer Nippon Steel and chemical giant Mitsubishi Chemical among the first industrial customers. Japan aims to source 20% of its total energy from hydrogen by 2040.`,
-    category: 'Green Tech',
-    date: 'May 9, 2026',
-    source: 'Financial Times',
-    sourceUrl: 'https://ft.com',
-    region: 'Japan',
-    regionFlag: '🇯🇵',
-    image: 'https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80',
-    tags: ['Hydrogen', 'Japan', 'Green Energy', 'Pipeline'],
-    variant: 'standard'
-  },
-  {
-    id: 'microsoft-copilot-os',
-    title: 'Microsoft Unveils Windows 12 with Copilot OS: The AI-First Operating System',
-    excerpt: 'Every Windows interaction — from file management to app switching — is now mediated by an ambient AI assistant deeply integrated into the kernel.',
-    description: `Microsoft has unveiled Windows 12, which the company describes as the first "AI-first operating system." At its core is Copilot OS, an ambient AI layer that is integrated directly into the Windows kernel and can observe, understand, and assist with every user interaction without explicit invocation.
-
-Copilot OS can automatically organize files based on project context, suggest workflow optimizations based on usage patterns, generate application macros by observing repeated actions, and provide real-time natural language answers about any on-screen content. The system processes all AI inference locally using the device\'s NPU, with no data sent to the cloud unless explicitly authorized.
-
-Windows 12 requires a minimum of 16GB RAM and an NPU delivering at least 40 TOPS. Microsoft has partnered with Intel, AMD, and Qualcomm to ensure all new PCs shipped from Q3 2026 meet these requirements. An upgrade from Windows 11 will be free for the first year.`,
-    category: 'Consumer Tech',
-    date: 'May 8, 2026',
-    source: 'The Verge',
-    sourceUrl: 'https://theverge.com',
-    region: 'USA',
-    regionFlag: '🇺🇸',
-    image: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?w=800&q=80',
-    tags: ['Microsoft', 'Windows 12', 'Copilot', 'AI OS'],
-    variant: 'compact'
-  },
-  {
-    id: 'boston-dynamics-atlas-ev',
-    title: 'Boston Dynamics\' Electric Atlas Begins Commercial Deployment at Hyundai Factories',
-    excerpt: 'The fully electric humanoid robot performs complex assembly tasks alongside human workers in a shared production line.',
-    description: `Boston Dynamics has begun commercial deployment of its all-electric Atlas humanoid robot at Hyundai Motor Group manufacturing facilities in South Korea and the United States. The electric Atlas replaces the company\'s famous hydraulic prototype with a lighter, quieter, and more precise electric actuation system capable of manipulating objects with sub-millimeter accuracy.
-
-The robots are currently performing tasks including heavy component lifting (up to 25 kg), precision part placement, quality inspection using onboard vision systems, and inter-station material transport. Each Atlas unit operates autonomously for 4-hour shifts before requiring a 45-minute charge cycle.
-
-Hyundai reports a 23% increase in production line throughput in areas where Atlas units are deployed, with zero safety incidents over the initial 3-month trial period. Boston Dynamics plans to make Atlas available for commercial leasing to other manufacturers starting Q4 2026, at an estimated cost of $150,000 per unit per year.`,
-    category: 'AI & Robotics',
-    date: 'May 7, 2026',
-    source: 'IEEE Spectrum',
-    sourceUrl: 'https://spectrum.ieee.org',
-    region: 'South Korea',
-    regionFlag: '🇰🇷',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
-    tags: ['Boston Dynamics', 'Atlas', 'Humanoid', 'Manufacturing'],
-    variant: 'standard'
   }
 ]
 
-const newsCategories = ['All', 'AI & Robotics', 'Semiconductors', 'Space Tech', 'Cybersecurity', 'Consumer Tech', 'Green Tech', 'Quantum Computing']
+const newsCategories = ['All', 'Saved', 'AI & Robotics', 'Semiconductors', 'Space Tech', 'Cybersecurity', 'Consumer Tech', 'Green Tech', 'Quantum Computing']
 
 /* ═════════════════════════════════════
    HELPER: Relative time display
    ═════════════════════════════════════ */
 function getTimeAgo(dateStr) {
-  const now = new Date()
-  const date = new Date(dateStr.replace(/(\w+)\s(\d+),\s(\d+)/, '$1 $2, $3'))
+  const now = new Date('2026-07-25T23:38:46+05:00')
+  const date = new Date(dateStr)
   const diff = Math.floor((now - date) / (1000 * 60 * 60 * 24))
-  if (diff === 0) return 'Today'
+  if (diff <= 0) return 'Today'
   if (diff === 1) return 'Yesterday'
   if (diff < 7) return `${diff} days ago`
   if (diff < 30) return `${Math.floor(diff / 7)} weeks ago`
@@ -504,10 +469,32 @@ function getTimeAgo(dateStr) {
    ═════════════════════════════════════ */
 export default function News() {
   const [activeCategory, setActiveCategory] = useState('All')
-  const [expandedCard, setExpandedCard] = useState(null)
-  const [spotlightExpanded, setSpotlightExpanded] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [activeModalArticle, setActiveModalArticle] = useState(null)
+  const [savedArticleIds, setSavedArticleIds] = useState(() => {
+    try {
+      const saved = localStorage.getItem('hd_saved_news')
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
+
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false)
+  const [copiedLink, setCopiedLink] = useState(false)
+
   const tickerRef = useRef(null)
+
+  // Sync saved articles to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('hd_saved_news', JSON.stringify(savedArticleIds))
+    } catch (e) {
+      console.warn('LocalStorage write error:', e)
+    }
+  }, [savedArticleIds])
 
   // Live clock
   useEffect(() => {
@@ -515,16 +502,42 @@ export default function News() {
     return () => clearInterval(interval)
   }, [])
 
-  const filteredArticles = activeCategory === 'All'
-    ? newsArticles
-    : newsArticles.filter(a => a.category === activeCategory)
+  // Toggle saved article
+  const toggleSaveArticle = (id, e) => {
+    if (e) e.stopPropagation()
+    setSavedArticleIds(prev =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    )
+  }
 
-  const spotlight = newsArticles[0] // Most recent article
-  const gridArticles = filteredArticles.filter(a => a.id !== spotlight.id)
+  // Filtered articles logic
+  const filteredArticles = newsArticles.filter(article => {
+    const matchesCategory =
+      activeCategory === 'All'
+        ? true
+        : activeCategory === 'Saved'
+        ? savedArticleIds.includes(article.id)
+        : article.category === activeCategory
+
+    const query = searchQuery.toLowerCase().trim()
+    const matchesSearch = !query
+      ? true
+      : article.title.toLowerCase().includes(query) ||
+        article.excerpt.toLowerCase().includes(query) ||
+        article.category.toLowerCase().includes(query) ||
+        article.tags.some(t => t.toLowerCase().includes(query)) ||
+        article.source.toLowerCase().includes(query)
+
+    return matchesCategory && matchesSearch
+  })
+
+  const spotlight = newsArticles[0] // Most recent story
+  const gridArticles = filteredArticles.filter(a => a.id !== spotlight.id || activeCategory !== 'All' || searchQuery)
 
   // Category counts
   const getCategoryCount = (cat) => {
     if (cat === 'All') return newsArticles.length
+    if (cat === 'Saved') return savedArticleIds.length
     return newsArticles.filter(a => a.category === cat).length
   }
 
@@ -535,20 +548,30 @@ export default function News() {
     return acc
   }, {})
 
-  const toggleCard = (id) => {
-    setExpandedCard(expandedCard === id ? null : id)
-  }
-
   // Ticker headlines (top 8)
   const tickerItems = newsArticles.slice(0, 8)
+
+  const handleSubscribe = (e) => {
+    e.preventDefault()
+    if (!newsletterEmail.trim()) return
+    setNewsletterSubscribed(true)
+    setNewsletterEmail('')
+  }
+
+  const handleCopyLink = (article) => {
+    const url = `${window.location.origin}/news#${article.id}`
+    navigator.clipboard.writeText(url)
+    setCopiedLink(true)
+    setTimeout(() => setCopiedLink(false), 2500)
+  }
 
   return (
     <div className="news-page">
       <SEO
-        title="Tech News — Latest Technology Headlines Worldwide"
-        description="Stay informed with the latest technology news from around the globe. AI breakthroughs, semiconductor innovations, space missions, cybersecurity alerts, and more — curated by HanovaDevs."
+        title="Tech News & Intelligence Hub — Worldwide Technology Headlines"
+        description="Stay informed with real-time global technology news. AI breakthroughs, semiconductor innovations, space missions, quantum leaps, and cybersecurity alerts curated by HanovaDevs."
         url="/news"
-        keywords="tech news, technology headlines, AI news, semiconductor news, space tech, cybersecurity news, HanovaDevs"
+        keywords="tech news, technology headlines, AI news, semiconductor news, space tech, quantum computing, cybersecurity, HanovaDevs"
         breadcrumbs={[
           { name: 'Home', item: '/' },
           { name: 'Newsroom', item: '/news' }
@@ -564,9 +587,10 @@ export default function News() {
             <span className="nw-label">The Newsroom</span>
             <h1>Global <span className="nw-gradient">Tech</span> Pulse.</h1>
             <p>Real-time coverage of the technologies reshaping our world — from silicon fabs to orbital stations, curated by our engineering team.</p>
+            
             <div className="nw-live-strip">
               <span className="nw-pulse" />
-              <span className="nw-live-label">Live</span>
+              <span className="nw-live-label">LIVE INTELLIGENCE STREAM</span>
               <span>{currentTime.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
               <span>•</span>
               <span>{currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
@@ -581,26 +605,45 @@ export default function News() {
           <span className="nw-ticker__badge-dot">BREAKING</span>
         </div>
         <div className="nw-ticker__track">
-          {/* Double the items for seamless loop */}
           {[...tickerItems, ...tickerItems].map((item, i) => (
-            <span key={`${item.id}-${i}`} className="nw-ticker__item">
-              {item.regionFlag} {item.title}
-            </span>
+            <button 
+              key={`${item.id}-${i}`} 
+              className="nw-ticker__item-btn"
+              onClick={() => setActiveModalArticle(item)}
+            >
+              {item.regionFlag} {item.title} <span className="nw-ticker-arrow">↗</span>
+            </button>
           ))}
         </div>
       </div>
 
-      {/* ===== CATEGORY FILTERS ===== */}
+      {/* ===== SEARCH & CATEGORY FILTERS ===== */}
       <section className="nw-filters">
         <div className="container">
+          <div className="nw-search-bar">
+            <div className="nw-search-input-wrap">
+              <span className="nw-search-icon">🔍</span>
+              <input
+                type="text"
+                placeholder="Search headlines, tags, topics, or sources (e.g. GPT-5, Quantum, TSMC)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="nw-search-input"
+              />
+              {searchQuery && (
+                <button className="nw-search-clear" onClick={() => setSearchQuery('')}>✕</button>
+              )}
+            </div>
+          </div>
+
           <div className="nw-filters__bar">
             {newsCategories.map(cat => (
               <button
                 key={cat}
-                className={`nw-filter-btn ${activeCategory === cat ? 'nw-filter-btn--active' : ''}`}
-                onClick={() => { setActiveCategory(cat); setExpandedCard(null) }}
+                className={`nw-filter-btn ${activeCategory === cat ? 'nw-filter-btn--active' : ''} ${cat === 'Saved' ? 'nw-filter-btn--saved' : ''}`}
+                onClick={() => setActiveCategory(cat)}
               >
-                {cat}
+                {cat === 'Saved' ? '🔖 Saved' : cat}
                 <span className="nw-filter-count">{getCategoryCount(cat)}</span>
               </button>
             ))}
@@ -609,31 +652,34 @@ export default function News() {
       </section>
 
       {/* ===== HERO SPOTLIGHT ===== */}
-      {activeCategory === 'All' && (
+      {activeCategory === 'All' && !searchQuery && (
         <section className="nw-spotlight">
           <div className="container">
-            <div className="nw-spotlight__card reveal-up" onClick={() => setSpotlightExpanded(!spotlightExpanded)}>
+            <div className="nw-spotlight__card reveal-up" onClick={() => setActiveModalArticle(spotlight)}>
               <img src={spotlight.image} alt={spotlight.title} className="nw-spotlight__img" loading="lazy" />
               <div className="nw-spotlight__overlay" />
+              
+              <button 
+                className={`nw-bookmark-btn ${savedArticleIds.includes(spotlight.id) ? 'nw-bookmark-btn--active' : ''}`}
+                onClick={(e) => toggleSaveArticle(spotlight.id, e)}
+                title={savedArticleIds.includes(spotlight.id) ? "Remove Bookmark" : "Bookmark Story"}
+              >
+                {savedArticleIds.includes(spotlight.id) ? '🔖 Saved' : '🔖 Save'}
+              </button>
+
               <div className="nw-spotlight__content">
                 <div className="nw-spotlight__meta">
                   <span className="nw-spotlight__flag">{spotlight.regionFlag}</span>
                   <span className="nw-category-badge">{spotlight.category}</span>
                   <span className="nw-time-badge">{getTimeAgo(spotlight.date)}</span>
+                  <span className="nw-read-time">{spotlight.readTime}</span>
                 </div>
                 <h2>{spotlight.title}</h2>
                 <p>{spotlight.excerpt}</p>
-                <span className="nw-spotlight__source">{spotlight.source} ↗</span>
-                <div className="nw-read-indicator">
-                  {spotlightExpanded ? '▲ Collapse' : '▼ Read Full Story'}
+                <div className="nw-spotlight__footer">
+                  <span className="nw-spotlight__source">{spotlight.source} ↗</span>
+                  <span className="nw-read-full-btn">Read Full Article ➔</span>
                 </div>
-              </div>
-            </div>
-            <div className={`nw-spotlight__detail ${spotlightExpanded ? 'nw-spotlight__detail--open' : ''}`}>
-              <div className="nw-spotlight__detail-inner">
-                {spotlight.description.split('\n\n').map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
               </div>
             </div>
           </div>
@@ -644,67 +690,170 @@ export default function News() {
       <section className="nw-grid-section">
         <div className="container">
           <div className="nw-grid-header">
-            <h2>{activeCategory === 'All' ? 'All Stories' : activeCategory}</h2>
+            <h2>
+              {searchQuery 
+                ? `Search Results for "${searchQuery}"` 
+                : activeCategory === 'Saved'
+                ? 'Your Bookmarked Stories'
+                : activeCategory === 'All' 
+                ? 'Latest Stories' 
+                : activeCategory}
+            </h2>
             <span className="nw-article-count">{gridArticles.length} articles</span>
           </div>
-          <div className="nw-masonry">
-            {gridArticles.map((article, i) => (
-              <div
-                key={article.id}
-                className={`nw-card ${article.variant === 'compact' ? 'nw-card--compact' : ''} ${article.variant === 'featured' ? 'nw-card--featured' : ''} reveal-up reveal-delay-${(i % 3) + 1}`}
-              >
-                {/* Image (skip for compact variant) */}
-                {article.variant !== 'compact' && (
-                  <div className="nw-card__image">
-                    <img src={article.image} alt={article.title} loading="lazy" />
-                    <div className="nw-card__image-overlay" />
-                  </div>
-                )}
 
-                <div className="nw-card__body">
-                  <div className="nw-card__meta">
-                    <span className="nw-card__flag">{article.regionFlag}</span>
-                    <span className="nw-card__cat">{article.category}</span>
-                    <span className="nw-card__date">{getTimeAgo(article.date)}</span>
-                  </div>
-                  <h3>{article.title}</h3>
-                  <p className="nw-card__excerpt">{article.excerpt}</p>
-                  <div className="nw-card__footer">
-                    <span className="nw-card__source">{article.source}</span>
-                    <button
-                      className="nw-card__expand-btn"
-                      onClick={() => toggleCard(article.id)}
-                      aria-expanded={expandedCard === article.id}
-                    >
-                      {expandedCard === article.id ? 'Collapse' : 'Read More'}
-                      <span className={`nw-card__expand-icon ${expandedCard === article.id ? 'nw-card__expand-icon--open' : ''}`}>▼</span>
-                    </button>
-                  </div>
-                </div>
+          {gridArticles.length === 0 ? (
+            <div className="nw-empty-state">
+              <span className="nw-empty-icon">📡</span>
+              <h3>No articles found</h3>
+              <p>
+                {activeCategory === 'Saved' 
+                  ? 'You haven\'t bookmarked any stories yet. Click the 🔖 icon on any news story to save it here.' 
+                  : 'Try broadening your search term or selecting another category filter.'}
+              </p>
+              {searchQuery && (
+                <button className="btn btn-outline mt-md" onClick={() => setSearchQuery('')}>Clear Search</button>
+              )}
+            </div>
+          ) : (
+            <div className="nw-masonry">
+              {gridArticles.map((article, i) => (
+                <div
+                  key={article.id}
+                  className={`nw-card ${article.variant === 'compact' ? 'nw-card--compact' : ''} ${article.variant === 'featured' ? 'nw-card--featured' : ''} reveal-up`}
+                  onClick={() => setActiveModalArticle(article)}
+                >
+                  {/* Image */}
+                  {article.variant !== 'compact' && (
+                    <div className="nw-card__image">
+                      <img src={article.image} alt={article.title} loading="lazy" />
+                      <div className="nw-card__image-overlay" />
+                    </div>
+                  )}
 
-                {/* Expandable detail panel */}
-                <div className={`nw-card__detail ${expandedCard === article.id ? 'nw-card__detail--open' : ''}`}>
-                  <div className="nw-card__detail-text">
-                    {article.description.split('\n\n').map((para, j) => (
-                      <p key={j}>{para}</p>
-                    ))}
-                  </div>
-                  <div className="nw-card__tags">
-                    {article.tags.map(tag => (
-                      <span key={tag} className="nw-tag">{tag}</span>
-                    ))}
-                  </div>
-                  <a
-                    href={article.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="nw-card__detail-source"
+                  <button 
+                    className={`nw-card__bookmark ${savedArticleIds.includes(article.id) ? 'nw-card__bookmark--active' : ''}`}
+                    onClick={(e) => toggleSaveArticle(article.id, e)}
+                    title={savedArticleIds.includes(article.id) ? "Remove Bookmark" : "Save Story"}
                   >
-                    Read original at {article.source} ↗
-                  </a>
+                    {savedArticleIds.includes(article.id) ? '🔖' : '🏷️'}
+                  </button>
+
+                  <div className="nw-card__body">
+                    <div className="nw-card__meta">
+                      <span className="nw-card__flag">{article.regionFlag}</span>
+                      <span className="nw-card__cat">{article.category}</span>
+                      <span className="nw-card__date">{getTimeAgo(article.date)}</span>
+                      <span className="nw-card__readtime">• {article.readTime}</span>
+                    </div>
+                    <h3>{article.title}</h3>
+                    <p className="nw-card__excerpt">{article.excerpt}</p>
+                    <div className="nw-card__footer">
+                      <span className="nw-card__source">{article.source}</span>
+                      <span className="nw-card__read-link">Read Story ➔</span>
+                    </div>
+                  </div>
                 </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ===== ARTICLE DETAIL MODAL ===== */}
+      {activeModalArticle && (
+        <div className="nw-modal-overlay" onClick={() => setActiveModalArticle(null)}>
+          <div className="nw-modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="nw-modal-header">
+              <div className="nw-modal-meta">
+                <span>{activeModalArticle.regionFlag} {activeModalArticle.region}</span>
+                <span className="nw-category-badge">{activeModalArticle.category}</span>
+                <span>{getTimeAgo(activeModalArticle.date)}</span>
+                <span>• {activeModalArticle.readTime}</span>
               </div>
-            ))}
+              <button className="nw-modal-close" onClick={() => setActiveModalArticle(null)}>✕</button>
+            </div>
+
+            <div className="nw-modal-body">
+              <h2>{activeModalArticle.title}</h2>
+
+              {activeModalArticle.image && (
+                <div className="nw-modal-image-wrap">
+                  <img src={activeModalArticle.image} alt={activeModalArticle.title} />
+                  <span className="nw-modal-image-caption">Source: {activeModalArticle.source}</span>
+                </div>
+              )}
+
+              <div className="nw-modal-prose">
+                {activeModalArticle.description.split('\n\n').map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+
+              <div className="nw-modal-tags">
+                {activeModalArticle.tags.map(tag => (
+                  <span key={tag} className="nw-tag">#{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="nw-modal-footer">
+              <div className="nw-modal-actions">
+                <button 
+                  className={`btn btn-outline ${savedArticleIds.includes(activeModalArticle.id) ? 'btn-saved-active' : ''}`}
+                  onClick={() => toggleSaveArticle(activeModalArticle.id)}
+                >
+                  {savedArticleIds.includes(activeModalArticle.id) ? '🔖 Bookmarked' : '🔖 Bookmark Story'}
+                </button>
+                <button className="btn btn-outline" onClick={() => handleCopyLink(activeModalArticle)}>
+                  {copiedLink ? '✅ Link Copied!' : '🔗 Share Story'}
+                </button>
+              </div>
+
+              <a
+                href={activeModalArticle.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary nw-source-btn"
+              >
+                Read Original on {activeModalArticle.source} ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===== NEWSLETTER BRIEFING SECTION ===== */}
+      <section className="nw-subscribe-section">
+        <div className="container">
+          <div className="nw-subscribe-card">
+            <div className="nw-subscribe-content">
+              <span className="nw-subscribe-badge">⚡ DAILY TECH BRIEFING</span>
+              <h2>Stay ahead of the technological curve.</h2>
+              <p>Get our daily executive summary of AI breakthroughs, semiconductor news, and space technology delivered straight to your inbox.</p>
+            </div>
+
+            {newsletterSubscribed ? (
+              <div className="nw-subscribe-success">
+                <span>🎉</span>
+                <h4>You're subscribed!</h4>
+                <p>Welcome to the HanovaDevs Intelligence Stream. Check your inbox for confirmation.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="nw-subscribe-form">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email address..."
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="nw-subscribe-input"
+                />
+                <button type="submit" className="btn btn-primary nw-subscribe-btn">
+                  Subscribe Free 🚀
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
