@@ -1602,3 +1602,52 @@
   }
 }
 
+/* BENCHMARK TABLE & MASTERCLASS FORMATTING */
+.jn-benchmark-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2.25rem 0;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  background: #0d1017;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.jn-benchmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.jn-benchmark-table th {
+  background: #141924;
+  color: #00e5ff;
+  font-weight: 700;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.jn-benchmark-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+}
+
+.jn-benchmark-table tr:last-child td {
+  border-bottom: none;
+}
+
+.jn-benchmark-table tr:hover td {
+  background: rgba(0, 229, 255, 0.04);
+}
+
+.jn-benchmark-table strong {
+  color: #00ff88;
+  font-weight: 700;
+}
+
+
