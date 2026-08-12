@@ -328,15 +328,27 @@ export default function Home() {
       {/* ===== SERVICES ===== */}
       <section className="services-teaser section bg-off-white" id="services-teaser">
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-label">What We Do</span>
-            <h2>Services built for growth</h2>
-            <p>From strategy to execution, we deliver end-to-end digital solutions that move the needle.</p>
+          <div className="services-teaser__header reveal">
+            <div>
+              <span className="section-label">What We Do</span>
+              <h2>One partner for your <span className="gradient-text">digital growth.</span></h2>
+            </div>
+            <div className="services-teaser__intro">
+              <p>Strategy, design, engineering, and acquisition—connected by one team and focused on outcomes.</p>
+              <Link to="/services" className="services-teaser__all-link">
+                Explore all services
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+              </Link>
+            </div>
           </div>
           <div className="services-teaser__grid">
             {serviceCards.map((card, i) => (
               <div key={i} className={`services-teaser__card card card-glass reveal reveal-delay-${(i % 4) + 1} ${card.featured ? 'services-teaser__card--featured' : ''}`}>
-                <span className="services-teaser__icon-wrap">{card.icon}</span>
+                <div className="services-teaser__card-top">
+                  <span className="services-teaser__icon-wrap">{card.icon}</span>
+                  <span className="services-teaser__number">0{i + 1}</span>
+                </div>
+                {card.featured && <span className="services-teaser__featured-label">Most requested</span>}
                 <h3 className="services-teaser__title">{card.title}</h3>
                 <p className="services-teaser__desc">{card.desc}</p>
                 <ul className="services-teaser__features">
@@ -348,7 +360,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <Link to={`/services/${card.id}`} className="services-teaser__link hoverable">
-                  Learn more
+                  Explore service
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                 </Link>
               </div>

@@ -30,7 +30,13 @@ function App() {
   const location = useLocation()
 
   useEffect(() => {
-    // Scroll reveal observer
+    const selector = '.reveal, .reveal-up, .reveal-down, .reveal-left, .reveal-right, .reveal-scale'
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll(selector).forEach(element => element.classList.add('visible'))
+      return undefined
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -42,14 +48,23 @@ function App() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     )
 
-    // Wait for route transition to complete before observing
-    const timer = setTimeout(() => {
-      const elements = document.querySelectorAll('.reveal, .reveal-up, .reveal-down, .reveal-left, .reveal-right, .reveal-scale')
-      elements.forEach(el => observer.observe(el))
-    }, 100)
+    const observeRevealElements = root => {
+      if (root.matches?.(selector)) observer.observe(root)
+      root.querySelectorAll?.(selector).forEach(element => observer.observe(element))
+    }
+
+    // Lazy route chunks can mount after this effect runs. Watch the main tree so
+    // asynchronously inserted reveal elements are registered immediately.
+    observeRevealElements(document)
+    const mutationObserver = new MutationObserver(records => {
+      records.forEach(record => record.addedNodes.forEach(node => {
+        if (node.nodeType === Node.ELEMENT_NODE) observeRevealElements(node)
+      }))
+    })
+    mutationObserver.observe(document.querySelector('main') || document.body, { childList: true, subtree: true })
 
     return () => {
-      clearTimeout(timer)
+      mutationObserver.disconnect()
       observer.disconnect()
     }
   }, [location])
