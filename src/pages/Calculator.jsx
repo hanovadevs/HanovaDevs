@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './Calculator.css'
 
 export default function Calculator() {
-  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('growth') // 'growth' or 'estimator'
 
   // --- Growth Calculator States ---
@@ -242,19 +240,6 @@ export default function Calculator() {
     details += `, Speed: ${projectSpeed}, Support: ${projectSupport}`
 
     // Map minPrice to standard Contact form budget options
-    let budgetParam = ''
-    if (minPrice < 1000) {
-      budgetParam = 'Under $1,000'
-    } else if (minPrice < 5000) {
-      budgetParam = '$1,000 – $5,000'
-    } else if (minPrice < 15000) {
-      budgetParam = '$5,000 – $15,000'
-    } else if (minPrice < 50000) {
-      budgetParam = '$15,000 – $50,000'
-    } else {
-      budgetParam = '$50,000+'
-    }
-
     const serviceName = serviceType.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
 
     // Dispatch event to open AI Chatbot with pre-fed quote parameters

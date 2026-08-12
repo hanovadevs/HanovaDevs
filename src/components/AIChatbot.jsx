@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useId } from 'react'
 import { saveAppointment, saveChatTranscript, getAppointments, getChatbotQA, getChatbotConfig } from '../lib/supabaseClient'
 import './AIChatbot.css'
 
@@ -312,7 +312,7 @@ export default function AIChatbot() {
   })
 
   const messagesEndRef = useRef(null)
-  const chatSessionId = useRef(Math.random().toString(36).substr(2, 9))
+  const chatSessionId = useRef(useId().replaceAll(':', ''))
 
   const filteredTimezones = popularTimezones.filter(tz => 
     tz.toLowerCase().replace('_', ' ').replace('/', ' ').includes(timezoneSearch.toLowerCase())
@@ -323,8 +323,7 @@ export default function AIChatbot() {
     setIsTimezonePickerOpen(false)
     setTimezoneSearch('')
     
-    // Auto-update conversation so Claude knows their timezone immediately
-    handleSend(`I have set my timezone to ${tz}`)
+    setMessages(prev => [...prev, { role: 'user', content: `I have set my timezone to ${tz}` }])
   }
 
 
@@ -571,7 +570,7 @@ export default function AIChatbot() {
       } else {
         triggerSimulationResponse(text)
       }
-    } catch (error) {
+    } catch {
       triggerSimulationResponse(text)
     } finally {
       setIsLoading(false)

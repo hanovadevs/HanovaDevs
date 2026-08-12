@@ -14,6 +14,10 @@ import {
   saveChatbotConfig,
   getAdminNotes,
   saveAdminNote
+  ,supabase
+  ,signInAdmin
+  ,signOutAdmin
+  ,getAdminSession
 } from '../lib/supabaseClient'
 import SEO from '../components/SEO'
 import './AdminDashboard.css'
@@ -121,10 +125,9 @@ const Icons = {
 }
 
 export default function AdminDashboard() {
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return sessionStorage.getItem('hanova_admin_auth') === 'true'
-  })
-  const [usernameInput, setUsernameInput] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthLoading, setIsAuthLoading] = useState(true)
+  const [emailInput, setEmailInput] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loginError, setLoginError] = useState('')
@@ -158,8 +161,7 @@ export default function AdminDashboard() {
   const [editingQA, setEditingQA] = useState(null)
   const [qaForm, setQaForm] = useState({ question: '', answer: '', category: 'General' })
 
-  // Futuristic Command Palette & AI Sandbox Sandbox State
-  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false)
+  // AI sandbox state
   const [sandboxQuery, setSandboxQuery] = useState('')
   const [sandboxLogs, setSandboxLogs] = useState([
     { role: 'assistant', text: 'Hello Ali! I am connected to your live Q&A rules engine. Ask me anything to test my responses!' }
@@ -201,29 +203,45 @@ export default function AdminDashboard() {
     }
   }
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    const targetUser = import.meta.env.VITE_ADMIN_USER || 'hanova_admin'
-    const targetPass = import.meta.env.VITE_ADMIN_PASS || 'HnvaDevsAdmn2026'
+  useEffect(() => {
+    let mounted = true
+    getAdminSession().then(session => {
+      if (mounted) {
+        setIsAuthenticated(Boolean(session))
+        setIsAuthLoading(false)
+      }
+    })
+    const { data } = supabase?.auth.onAuthStateChange((_event, session) => {
+      setIsAuthenticated(session?.user?.app_metadata?.role === 'admin')
+      setIsAuthLoading(false)
+    }) || { data: null }
+    return () => {
+      mounted = false
+      data?.subscription?.unsubscribe()
+    }
+  }, [])
 
-    if (usernameInput === targetUser && passwordInput === targetPass) {
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    setLoginError('')
+    try {
+      await signInAdmin(emailInput, passwordInput)
       setIsAuthenticated(true)
-      sessionStorage.setItem('hanova_admin_auth', 'true')
-      setLoginError('')
-    } else {
-      setLoginError('Invalid administrative credentials. Access Denied.')
+    } catch (error) {
+      setLoginError(error.message || 'Authentication failed.')
     }
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await signOutAdmin()
     setIsAuthenticated(false)
-    sessionStorage.removeItem('hanova_admin_auth')
-    setUsernameInput('')
+    setEmailInput('')
     setPasswordInput('')
   }
 
 
   useEffect(() => {
+    if (!isAuthenticated) return
     async function loadData() {
       const apps = await getAppointments()
       const trans = await getChatTranscripts()
@@ -240,7 +258,7 @@ export default function AdminDashboard() {
       setAdminNotes(notes)
     }
     loadData()
-  }, [refreshTrigger])
+  }, [refreshTrigger, isAuthenticated])
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -406,6 +424,10 @@ export default function AdminDashboard() {
     totalQAs: chatbotQA.length
   }
 
+  if (isAuthLoading) {
+    return <div className="admin-login-overlay" role="status">Verifying secure session…</div>
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="admin-login-overlay">
@@ -423,23 +445,27 @@ export default function AdminDashboard() {
           
           <form onSubmit={handleLogin} className="admin-login-form">
             <div className="admin-login-group">
-              <label>Administrative Username</label>
+              <label htmlFor="admin-email">Administrative email</label>
               <div className="admin-login-input-wrap">
                 <input 
-                  type="text" 
+                  id="admin-email"
+                  type="email" 
+                  autoComplete="username"
                   required
-                  placeholder="Enter username"
-                  value={usernameInput}
-                  onChange={e => setUsernameInput(e.target.value)}
+                  placeholder="admin@example.com"
+                  value={emailInput}
+                  onChange={e => setEmailInput(e.target.value)}
                 />
               </div>
             </div>
 
             <div className="admin-login-group">
-              <label>Passphrase</label>
+              <label htmlFor="admin-password">Passphrase</label>
               <div className="admin-login-input-wrap">
                 <input 
+                  id="admin-password"
                   type={showPassword ? 'text' : 'password'} 
+                  autoComplete="current-password"
                   required
                   placeholder="Enter passphrase"
                   value={passwordInput}
@@ -449,6 +475,7 @@ export default function AdminDashboard() {
                   type="button" 
                   className="admin-password-toggle"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? '👁️' : '🙈'}
                 </button>
@@ -1174,7 +1201,7 @@ export default function AdminDashboard() {
 
               <div className="admin-modal-group">
                 <label>Thumbnail / Image URL</label>
-                <input type="text" placeholder="https://images.unsplash.com/... or /projects/image.png" value={projectForm.image_url} onChange={e => setProjectForm({ ...projectForm, image_url: e.target.value })} />
+                <input type="text" placeholder="https://images.unsplash.com/... or /projects/image.webp" value={projectForm.image_url} onChange={e => setProjectForm({ ...projectForm, image_url: e.target.value })} />
               </div>
 
               <div className="admin-modal-group">

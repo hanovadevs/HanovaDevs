@@ -9,6 +9,27 @@ export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseAnonKey) 
   : null
 
+export async function signInAdmin(email, password) {
+  if (!supabase) throw new Error('Supabase authentication is not configured.')
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+  if (error) throw error
+  if (data.user?.app_metadata?.role !== 'admin') {
+    await supabase.auth.signOut()
+    throw new Error('This account does not have administrator access.')
+  }
+  return data.session
+}
+
+export async function signOutAdmin() {
+  if (supabase) await supabase.auth.signOut()
+}
+
+export async function getAdminSession() {
+  if (!supabase) return null
+  const { data } = await supabase.auth.getSession()
+  return data.session?.user?.app_metadata?.role === 'admin' ? data.session : null
+}
+
 // Helper to seed initial mock data into localStorage if empty
 const seedLocalStorage = () => {
   if (!localStorage.getItem('hd_appointments')) {
@@ -100,13 +121,11 @@ export async function saveAppointment(appointment) {
     try {
       // Exclude timezone from the payload sent to Supabase to prevent schema mismatch errors
       const { timezone, ...supabasePayload } = newAppointment
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('appointments')
         .insert([supabasePayload])
-        .select()
       if (!error) {
-        // Return full appointment (with timezone) to keep UI state unified
-        return { ...data[0], timezone }
+        return { ...newAppointment, timezone }
       }
       console.error('Supabase save error, falling back to localStorage:', error)
     } catch (err) {
@@ -170,11 +189,10 @@ export async function saveChatTranscript(transcript) {
 
   if (isSupabaseConfigured) {
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('chat_transcripts')
         .insert([newTranscript])
-        .select()
-      if (!error) return data[0]
+      if (!error) return newTranscript
       console.error('Supabase save transcript error:', error)
     } catch (err) {
       console.error('Supabase connection error:', err)

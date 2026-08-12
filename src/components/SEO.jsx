@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-export default function SEO({ title, description, keywords, url, type = "website", image, schemaMarkup, faqList, breadcrumbs }) {
+export default function SEO({ title, description, keywords, url, type = "website", image, schemaMarkup, faqList, breadcrumbs, noIndex = false }) {
   const siteTitle = title ? `${title} | HanovaDevs` : 'HanovaDevs — Digital Agency & Custom Software Studio'
   const metaDescription = description || 'HanovaDevs is a premium digital agency and custom software studio. We engineer high-performance web applications, AI automation agents, and scalable digital solutions.'
   const metaKeywords = keywords || 'HanovaDevs, digital agency, custom software development, web development, AI automation, React development, SEO, brand strategy'
@@ -20,8 +20,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     "url": "https://hanovadevs.com",
     "logo": "https://hanovadevs.com/favicon.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
-    "description": "Recognized as a premier worldwide custom software development studio and digital agency, servicing high-growth B2B and B2C enterprises globally.",
-    "slogan": "Worldwide Engineering & Digital Excellence",
+    "description": "Digital agency and custom software studio providing web engineering, AI automation, design, and digital marketing services.",
     "knowsAbout": [
       "Custom Software Development",
       "Web Application Engineering",
@@ -41,15 +40,10 @@ export default function SEO({ title, description, keywords, url, type = "website
       "@type": "Place",
       "name": "Pakistan"
     },
-    "award": [
-      "Best Worldwide Digital Agency",
-      "Top Custom Software Studio",
-      "Enterprise SEO Leadership Award"
-    ],
     "sameAs": [
-      "https://linkedin.com/company/hanovadevs",
-      "https://github.com/hanovadevs",
-      "https://x.com/hanovadevs"
+      "https://www.instagram.com/hanovadevs/",
+      "https://www.linkedin.com/in/hanova-devs-8516073b2/",
+      "https://github.com/hanovadevs/"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -58,13 +52,7 @@ export default function SEO({ title, description, keywords, url, type = "website
       "postalCode": "54000",
       "addressCountry": "PK"
     },
-    "areaServed": [
-      "Worldwide",
-      "Pakistan",
-      "United States",
-      "United Kingdom",
-      "Europe"
-    ]
+    "areaServed": "Worldwide"
   }
 
   // 2. Global WebSite Schema with SearchAction (Sitelinks Search Box)
@@ -74,12 +62,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     "@id": "https://hanovadevs.com/#website",
     "url": "https://hanovadevs.com",
     "name": "HanovaDevs",
-    "publisher": { "@id": "https://hanovadevs.com/#organization" },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://hanovadevs.com/news?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "publisher": { "@id": "https://hanovadevs.com/#organization" }
   }
 
   // 3. Global Professional Service Schema
@@ -91,7 +74,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     "url": "https://hanovadevs.com",
     "logo": "https://hanovadevs.com/favicon.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
-    "description": "Premier digital agency and custom software studio providing web engineering, AI automation, and high-performance digital marketing.",
+    "description": "Digital agency and custom software studio providing web engineering, AI automation, design, and digital marketing.",
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
@@ -100,15 +83,7 @@ export default function SEO({ title, description, keywords, url, type = "website
       "postalCode": "54000",
       "addressCountry": "PK"
     },
-    "areaServed": [
-      "Worldwide",
-      "Pakistan",
-      "United States",
-      "United Kingdom",
-      "Europe"
-    ],
-    "telephone": "+92-42-3555-0199",
-    "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
+    "areaServed": "Worldwide"
   }
 
   // Combine schemas into a single array for structured data indexing
@@ -169,7 +144,7 @@ export default function SEO({ title, description, keywords, url, type = "website
       <link rel="alternate" hrefLang="en" href={siteUrl} />
       
       {/* Robot Guidelines */}
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -196,4 +171,3 @@ export default function SEO({ title, description, keywords, url, type = "website
     </Helmet>
   )
 }
-

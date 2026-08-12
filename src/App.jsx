@@ -1,27 +1,30 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
-import Home from './pages/Home'
-import Services from './pages/Services'
-import About from './pages/About'
-import Projects from './pages/Projects'
-import Products from './pages/Products'
-import Contact from './pages/Contact'
-import ServiceDetail from './pages/ServiceDetail'
-import OmnaiDetail from './pages/OmnaiDetail'
-import EunoiaDetail from './pages/EunoiaDetail'
-import Journal from './pages/Journal'
-import JournalPost from './pages/JournalPost'
-import Research from './pages/Research'
-import News from './pages/News'
-import TechStack from './pages/TechStack'
-import Calculator from './pages/Calculator'
-import AdminDashboard from './pages/AdminDashboard'
-import AIChatbot from './components/AIChatbot'
+import ErrorBoundary from './components/ErrorBoundary'
+
+const Home = lazy(() => import('./pages/Home'))
+const Services = lazy(() => import('./pages/Services'))
+const About = lazy(() => import('./pages/About'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Products = lazy(() => import('./pages/Products'))
+const Contact = lazy(() => import('./pages/Contact'))
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
+const OmnaiDetail = lazy(() => import('./pages/OmnaiDetail'))
+const EunoiaDetail = lazy(() => import('./pages/EunoiaDetail'))
+const Journal = lazy(() => import('./pages/Journal'))
+const JournalPost = lazy(() => import('./pages/JournalPost'))
+const Research = lazy(() => import('./pages/Research'))
+const News = lazy(() => import('./pages/News'))
+const TechStack = lazy(() => import('./pages/TechStack'))
+const Calculator = lazy(() => import('./pages/Calculator'))
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
+const AIChatbot = lazy(() => import('./components/AIChatbot'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   const location = useLocation()
@@ -57,7 +60,9 @@ function App() {
     <>
       <ScrollToTop />
       {!isAdminRoute && <Navbar />}
+      <ErrorBoundary>
       <main>
+        <Suspense fallback={<div className="route-loading" role="status">Loading…</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
@@ -79,12 +84,15 @@ function App() {
           {/* Blog → Journal redirects for SEO */}
           <Route path="/blog" element={<Navigate to="/journal" replace />} />
           <Route path="/blog/:slug" element={<BlogRedirect />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </main>
       {!isAdminRoute && <Footer />}
       {!isAdminRoute && <AIChatbot />}
       <Analytics />
       <SpeedInsights />
+      </ErrorBoundary>
     </>
   )
 }

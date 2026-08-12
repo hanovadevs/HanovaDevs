@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { journalPosts } from './Journal'
@@ -6,32 +6,15 @@ import { researchArticles } from './Research'
 import './Home.css'
 
 /* ─── DATA ─── */
-const stats = [
-  {
-    number: '40+',
-    label: 'Projects Delivered',
-    desc: 'Custom solutions deployed globally.',
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
-  },
-  {
-    number: '98%',
-    label: 'Client Satisfaction',
-    desc: 'Long-term partnerships built on trust.',
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg>
-  },
-  {
-    number: '3+',
-    label: 'Products Launched',
-    desc: 'In-house innovations scaling fast.',
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-  },
-  {
-    number: '∞',
-    label: 'Global Reach',
-    desc: 'Impacting businesses worldwide.',
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-  },
-]
+const SHOW_UNVERIFIED_SECTIONS = false
+const heroParticles = Array.from({ length: 20 }, (_, i) => ({
+  id: i,
+  left: (i * 37) % 100,
+  top: (i * 61) % 100,
+  size: (i % 4) + 1,
+  duration: 10 + (i % 10),
+  delay: i % 8,
+}))
 
 const serviceCards = [
   {
@@ -107,56 +90,56 @@ const projects = [
     title: 'RAQS Official',
     category: 'Luxury E-Commerce',
     metric: 'Elite UX',
-    image: '/projects/raqs.png',
+    image: '/projects/raqs.webp',
     url: 'https://www.raqsofficial.store'
   },
   {
     title: 'EarthSync Essential',
     category: 'E-Commerce & Wellness',
     metric: '+45% Conv.',
-    image: '/projects/earthsync.png',
+    image: '/projects/earthsync.webp',
     url: 'https://www.earthsyncessential.com'
   },
   {
     title: 'Terra Sol Grounding',
     category: 'E-Commerce & Wellness',
     metric: '20+ Studies',
-    image: '/projects/terrasol.png',
+    image: '/projects/terrasol.webp',
     url: 'https://www.terrasolgrounding.com'
   },
   {
     title: 'Nexus Health',
     category: 'Telemedicine SaaS',
     metric: '99.9% Uptime',
-    image: '/projects/nexus.png',
+    image: '/projects/nexus.webp',
     url: 'https://www.nexushealth.io'
   },
   {
     title: 'Crown Accumulator',
     category: 'Industrial B2B Portfolio',
     metric: '3x B2B Leads',
-    image: '/projects/crown.png',
+    image: '/projects/crown.webp',
     url: 'https://www.crownaccumulator.com'
   },
   {
     title: 'Lumière Paris',
     category: 'Luxury Fashion',
     metric: '+32% AOV',
-    image: '/projects/lumiere.png',
+    image: '/projects/lumiere.webp',
     url: 'https://www.lumiere-paris.fr'
   },
   {
     title: 'AeroSpace Dynamics',
     category: 'Logistics Analytics',
     metric: '12ms Resp.',
-    image: '/projects/aero.png',
+    image: '/projects/aero.webp',
     url: 'https://www.aerospacedynamics.io'
   },
   {
     title: 'CODATOR Core & Portal',
     category: 'Community OS & SaaS',
     metric: '68+ Members',
-    image: '/projects/codator.png',
+    image: '/projects/codator.webp',
     url: 'https://codator.vercel.app'
   }
 ]
@@ -206,67 +189,14 @@ const processSteps = [
   },
 ]
 
-const testimonials = [
-  {
-    quote: "Honestly, we were skeptical at first because we've been burned by agencies before. But the HanovaDevs team actually listened to what we needed. They rebuilt our app from scratch and the difference in speed is insane. Highly recommend them.",
-    author: 'Michael Rivera',
-    role: 'CEO, TechVault',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'
-  },
-  {
-    quote: "Working with them was super smooth. They didn't just give us a cookie-cutter site; they took the time to understand our messy backend and integrated everything perfectly. Our sales team loves the new lead flow.",
-    author: 'Lisa Chen',
-    role: 'Head of Marketing, FinEdge',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face'
-  },
-  {
-    quote: "Man, these guys know their stuff when it comes to SEO and design. We barely had any traffic before, and within a few months of their campaign, our organic leads literally tripled. Really glad we partnered with them.",
-    author: 'James Okafor',
-    role: 'Founder, GreenGrow',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face'
-  },
-]
-
 /* ─── COMPONENT ─── */
 export default function Home() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
-  const [particles, setParticles] = useState([])
+  const testimonials = [{ quote: '', author: '', role: '', avatar: '' }]
+  const activeTestimonial = 0
+  const setActiveTestimonial = () => {}
   const projectsScrollRef = useRef(null)
 
-  // Initialize particles
-  useEffect(() => {
-    const p = Array.from({ length: 20 }).map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      duration: Math.random() * 20 + 10,
-      delay: Math.random() * 10
-    }))
-    setParticles(p)
-  }, [])
-
-  // Testimonial auto-rotation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial(prev => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://hanovadevs.com/#website",
-    "url": "https://hanovadevs.com",
-    "name": "HanovaDevs",
-    "description": "Worldwide Engineering Excellence and Digital Marketing from Pakistan",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://hanovadevs.com/journal?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
+  const particles = heroParticles
 
   return (
     <div className="home-page">
@@ -274,7 +204,6 @@ export default function Home() {
         title="Digital Marketing Agency & Custom Software Studio"
         description="HanovaDevs engineers scalable web applications, executes high-converting digital marketing campaigns, and builds powerful brand identities to drive your business growth."
         url=""
-        schemaMarkup={websiteSchema}
       />
       {/* ===== HERO ===== */}
       <section className="hero" id="hero">
@@ -303,12 +232,12 @@ export default function Home() {
         <div className="hero__content container">
           <div className="hero__text-panel">
             <h1 className="hero__headline">
-              <span className="hero__headline-line">Engineering</span>
-              <span className="hero__headline-line hero__headline-line--accent">the Future.</span>
+              <span className="hero__headline-line">Web platforms and</span>
+              <span className="hero__headline-line hero__headline-line--accent">growth systems.</span>
             </h1>
             <p className="hero__subheadline">
-              We design, develop, and market digital products that drive
-              measurable growth for ambitious businesses worldwide.
+              We help ecommerce and service businesses launch faster, automate
+              repetitive work, and turn more visitors into customers.
             </p>
             <div className="hero__cta-row">
               <Link to="/contact" className="btn btn-primary btn--hero">
@@ -321,48 +250,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero social proof strip */}
-          <div className="hero__proof">
-            <div className="hero__proof-avatars">
-              {[
-                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face',
-                'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&fit=crop&crop=face',
-                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face',
-                'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=40&h=40&fit=crop&crop=face',
-              ].map((src, i) => (
-                <img key={i} src={src} alt="" className="hero__proof-avatar" />
-              ))}
-            </div>
-            <span className="hero__proof-text">
-              Trusted by <strong>40+</strong> companies worldwide
-            </span>
-          </div>
         </div>
 
         {/* Scroll indicator */}
         <div className="hero__scroll-hint">
           <span className="hero__scroll-label">Scroll</span>
           <div className="hero__scroll-line" />
-        </div>
-      </section>
-
-      {/* ===== CLIENT LOGOS MARQUEE ===== */}
-      <section className="client-marquee" id="client-marquee">
-        <div className="container">
-          <span className="client-marquee__label">Trusted by ambitious brands</span>
-        </div>
-        <div className="client-marquee__track">
-          <div className="client-marquee__inner">
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="client-marquee__set">
-                {['EarthSync Essential', 'Terra Sol Grounding', 'Crown Accumulator', 'Nexus Health', 'Lumière Paris', 'AeroSpace Dynamics'].map((name, i) => (
-                  <div key={`${setIndex}-${i}`} className="client-marquee__item">
-                    <span>{name}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -378,28 +271,6 @@ export default function Home() {
               <img src="/octopus.png" alt="" width="24" height="24" />
               <span>HanovaDevs Leadership</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== IMPACT STATS ===== */}
-      <section className="stats-section" id="stats">
-        <div className="container">
-          <div className="stats-section__header reveal">
-            <span className="section-label">Our Impact</span>
-            <h2>Proven results, <em>measurable growth.</em></h2>
-          </div>
-          <div className="stats__grid">
-            {stats.map((stat, i) => (
-              <div key={i} className={`stats__card reveal-scale reveal-delay-${i + 1}`}>
-                <div className="stats__icon">{stat.icon}</div>
-                <div className="stats__number">{stat.number}</div>
-                <div className="stats__content">
-                  <h4 className="stats__label">{stat.label}</h4>
-                  <p className="stats__desc">{stat.desc}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -429,7 +300,7 @@ export default function Home() {
               <span className="section-label">Who We Are</span>
               <h2>A studio built on <span className="gradient-text">craft & ambition.</span></h2>
               <p>
-                We're a full-service digital agency and software studio. We don't just design websites — we engineer digital ecosystems that compound growth. From two founders to a team of designers, developers, and strategists, our mission remains the same: bridge businesses and the digital world.
+                We design and build focused digital systems for ecommerce and service businesses. Strategy, interface design, engineering, automation, and launch support stay connected from the first workshop through delivery.
               </p>
               <div className="about-teaser__badges">
                 <div className="about-teaser__badge">
@@ -574,7 +445,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== TESTIMONIALS ===== */}
+      {/* Testimonials return here only after client approval and verification. */}
+      {SHOW_UNVERIFIED_SECTIONS && (
+      <>
       <section className="testimonials section" id="testimonials">
         <div className="container">
           <div className="section-header reveal">
@@ -612,6 +485,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      </>
+      )}
 
       {/* ===== INDUSTRIES WE SERVE ===== */}
       <section className="industries-section section" id="industries">
@@ -666,7 +542,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== PROCESS SECTION ===== */}
+      {/* The primary process section above is the single source of process guidance. */}
+      {SHOW_UNVERIFIED_SECTIONS && (<>
       <section className="home-process section" id="process">
         <div className="container">
           <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
@@ -692,6 +569,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      </>)}
 
       {/* ===== TECH STACK SECTION ===== */}
       <section className="home-tech section bg-white">
@@ -775,7 +654,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== AWARDS & RECOGNITION ===== */}
+      {/* Recognition is intentionally hidden until third-party evidence is available. */}
+      {SHOW_UNVERIFIED_SECTIONS && (<>
       <section className="home-awards section bg-off-white">
         <div className="container">
           <div className="text-center reveal" style={{ marginBottom: '3rem' }}>
@@ -858,6 +738,8 @@ export default function Home() {
         </div>
       </section>
 
+      </>)}
+
       {/* ===== INTERACTIVE CALCULATOR PROMO ===== */}
       <section className="calc-promo-section section bg-off-white">
         <div className="container">
@@ -921,10 +803,6 @@ export default function Home() {
             <div className="final-cta__contact-info">
               <a href="mailto:hanovadevs@gmail.com" className="final-cta__email">
                 <strong>hanovadevs@gmail.com</strong>
-              </a>
-              <span className="divider">|</span>
-              <a href="tel:+19177355385" className="final-cta__email">
-                <strong>+1 (917) 735-5385</strong>
               </a>
             </div>
           </div>

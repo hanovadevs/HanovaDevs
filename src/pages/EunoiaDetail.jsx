@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './EunoiaDetail.css'
+
+const SHOW_UNVERIFIED_REVIEWS = false
 
 const featureCategories = [
   {
@@ -98,35 +100,6 @@ const eunoiaReviews = [
   { id: 31, author: "Joseph B.", role: "Executive Coach", avatar: "J", rating: 5, date: "8 months ago", text: "I recommend Eunoia to my clients who suffer from screen fatigue. Its calm design and structural simplicity help restore focus and sanity." },
   { id: 32, author: "Grace H.", role: "Fine Artist", avatar: "G", rating: 5, date: "8 months ago", text: "An inspiring digital sanctuary. It represents a highly thoughtful and artistic approach to modern productivity software." }
 ]
-
-// --- Stat Counter Component ---
-function AnimatedCounter({ value, suffix = '' }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        observer.disconnect()
-        const duration = 1500
-        const start = performance.now()
-        const animate = (now) => {
-          const progress = Math.min((now - start) / duration, 1)
-          const eased = 1 - Math.pow(1 - progress, 3)
-          setCount(Math.round(eased * value))
-          if (progress < 1) requestAnimationFrame(animate)
-        }
-        requestAnimationFrame(animate)
-      }
-    }, { threshold: 0.5 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [value])
-
-  return <span ref={ref}>{count}{suffix}</span>
-}
 
 const eunoiaFaqs = [
   {
@@ -262,7 +235,7 @@ export default function EunoiaDetail() {
                 <span className="ed-hero__pulse" />
                 V1.0 Released
               </div>
-              <img src="/products/eunoia/logo.png" alt="Eunoia Logo" className="ed-hero__logo" />
+              <img src="/products/eunoia/logo.webp" alt="Eunoia Logo" className="ed-hero__logo" />
               <h1>Your mind, <span className="ed-gradient">beautifully</span> organized.</h1>
               <p className="ed-hero__tagline">
                 A calm, local-first desktop companion combining planning, journaling, focus sessions, and a proactive AI assistant.
@@ -284,7 +257,7 @@ export default function EunoiaDetail() {
                   <div className="ed-hero__dots"><span /><span /><span /></div>
                   <div className="ed-hero__title">Eunoia - Daily Planner</div>
                 </div>
-                <img src="/products/eunoia/E1.png" alt="Eunoia Overview" className="ed-hero__img" />
+                <img src="/products/eunoia/E1.webp" alt="Eunoia Overview" className="ed-hero__img" />
               </div>
               <div className="ed-hero__float-card ed-hero__float-card--1">
                 <span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Local Vault Secured
@@ -310,9 +283,9 @@ export default function EunoiaDetail() {
             <div className="ed-gallery__main-frame">
               <img 
                 key={activeScreenshot}
-                src={`/products/eunoia/${screenshots[activeScreenshot]}.png`} 
-                alt={`Eunoia interface ${activeScreenshot + 1}`} 
-                className="ed-gallery__main-img" 
+                src={`/products/eunoia/${screenshots[activeScreenshot]}.webp`}
+                alt={`Eunoia interface ${activeScreenshot + 1}`}
+                className="ed-gallery__main-img"
               />
             </div>
             <div className="ed-gallery__thumbs">
@@ -322,7 +295,7 @@ export default function EunoiaDetail() {
                   className={`ed-gallery__thumb ${activeScreenshot === i ? 'ed-gallery__thumb--active' : ''}`}
                   onClick={() => setActiveScreenshot(i)}
                 >
-                  <img src={`/products/eunoia/${img}.png`} alt={`Thumbnail ${i+1}`} />
+                  <img src={`/products/eunoia/${img}.webp`} alt={`Thumbnail ${i+1}`} />
                 </button>
               ))}
             </div>
@@ -340,7 +313,7 @@ export default function EunoiaDetail() {
               <p>Stop splitting your workflow across 5 different apps. Eunoia brings the essential tools of productivity and mindfulness into a single, cohesive desktop experience.</p>
               
               <div className="ed-features__tabs">
-                {featureCategories.map((cat, idx) => (
+                {featureCategories.map((cat) => (
                   <button
                     key={cat.id}
                     className={`ed-features__tab ${activeCategory === cat.id ? 'ed-features__tab--active' : ''}`}
@@ -373,7 +346,7 @@ export default function EunoiaDetail() {
               </div>
             </div>
             <div className="reveal">
-              <img src={`/products/eunoia/${screenshots[8]}.png`} alt="Eunoia Insights" style={{width: '100%', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)'}} />
+              <img src={`/products/eunoia/${screenshots[8]}.webp`} alt="Eunoia Insights" style={{width: '100%', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)'}} />
             </div>
           </div>
         </div>
@@ -429,7 +402,7 @@ export default function EunoiaDetail() {
       </section>
 
       {/* ===== REVIEWS ===== */}
-      <section className="ed-reviews section" id="reviews">
+      {SHOW_UNVERIFIED_REVIEWS && <section className="ed-reviews section" id="reviews">
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">Community Love</span>
@@ -566,7 +539,7 @@ export default function EunoiaDetail() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
       
       {/* ===== FAQ SECTION ===== */}
       <section className="ed-faq section bg-light" id="faq">
@@ -605,7 +578,7 @@ export default function EunoiaDetail() {
       <section className="ed-cta" id="download">
         <div className="ed-cta__bg" />
         <div className="container" style={{ textAlign: 'center' }}>
-          <img src="/products/eunoia/logo.png" alt="Eunoia" className="ed-cta__logo" />
+          <img src="/products/eunoia/logo.webp" alt="Eunoia" className="ed-cta__logo" />
           <h2>Ready to clear your mind?</h2>
           <p>Get Eunoia today and take control of your daily routine. Available for Windows, macOS, and Linux.</p>
           <div className="ed-cta__actions">

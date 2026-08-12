@@ -44,7 +44,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Terra Sol Grounding',
-      logo: '/projects/terrasol.png',
+      logo: '/projects/terrasol.webp',
       summary: 'Re-engineered an immersive grounding sheet product showcase that bridges education and instant purchasing.',
       metrics: [
         { label: 'Conversion Lift', value: '+142%' },
@@ -130,7 +130,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'EarthSync Wellness',
-      logo: '/projects/earthsync.png',
+      logo: '/projects/earthsync.webp',
       summary: 'Cultivated a highly engaged spatial community around modern lifestyle grounding and wellness routines.',
       metrics: [
         { label: 'Organic Engagement', value: '+210%' },
@@ -216,7 +216,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Crown Accumulator Corp',
-      logo: '/projects/crown.png',
+      logo: '/projects/crown.webp',
       summary: 'Dominated industrial energy and heavy machinery search queries with strategic content clustering.',
       metrics: [
         { label: 'Organic Traffic', value: '+340%' },
@@ -302,7 +302,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Eunoia Spatial Systems',
-      logo: '/projects/earthsync.png',
+      logo: '/projects/earthsync.webp',
       summary: 'Rebranded an emerging spatial platform to stand out as a highly credible premium enterprise tool.',
       metrics: [
         { label: 'Enterprise Pipeline', value: '+180%' },
@@ -388,7 +388,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Nexus Health Systems',
-      logo: '/projects/nexus.png',
+      logo: '/projects/nexus.webp',
       summary: 'Engineered a real-time hospital inventory and patient intake cloud dashboard.',
       metrics: [
         { label: 'Intake Wait Times', value: '-52%' },
@@ -474,7 +474,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'TechVault Enterprise',
-      logo: '/projects/crown.png',
+      logo: '/projects/crown.webp',
       summary: 'Scaled search and native ad campaigns targeting enterprise data managers.',
       metrics: [
         { label: 'Cost-Per-Acquisition', value: '-45%' },
@@ -531,19 +531,19 @@ const servicesData = {
       {
         title: 'Aether AI Identity',
         category: 'Logo Design',
-        image: '/projects/design_logo.png',
+        image: '/projects/design_logo.webp',
         desc: 'A premium minimalist geometric logo mark and branding system developed for a next-generation AI platform.'
       },
       {
         title: 'Cypher Exhibition Poster',
         category: 'Poster Design',
-        image: '/projects/design_poster.png',
+        image: '/projects/design_poster.webp',
         desc: 'A high-impact Swiss-punk fusion design poster highlighting spatial typography and neon color contrasts.'
       },
       {
         title: 'Bloom Botanical Packaging',
         category: 'Packaging Design',
-        image: '/projects/design_packaging.png',
+        image: '/projects/design_packaging.webp',
         desc: 'Premium sustainable amber glass cosmetics bottle labeling with minimalist botanical illustration line art.'
       }
     ],
@@ -580,7 +580,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Bloom Botanicals',
-      logo: '/projects/crown.png',
+      logo: '/projects/crown.webp',
       summary: 'Created a complete visual identity system for a premium plant-based wellness brand launch.',
       metrics: [
         { label: 'Brand Recognition', value: '+185%' },
@@ -682,7 +682,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Aura Wellness Group',
-      logo: '/projects/crown.png',
+      logo: '/projects/crown.webp',
       summary: 'Deployed an AI-powered voice assistant and website chatbot that automated lead triage, call booking, and database synchronization.',
       metrics: [
         { label: 'Manual Work Reduction', value: '-82%' },
@@ -749,7 +749,7 @@ const servicesData = {
     title: 'UGC Ads & Marketing',
     category: 'Marketing',
     tagline: 'Crush ad fatigue and scale your ROAS with high-converting user-generated content.',
-    heroImage: '/projects/ugc_ad_skincare.png',
+    heroImage: '/projects/ugc_ad_skincare.webp',
     intro: 'In the digital marketing landscape of 2026, traditional high-production commercial ads are no longer effective. Consumers have developed banner blindness, immediately scrolling past anything that feels like a corporate pitch. The solution is User-Generated Content (UGC) — raw, authentic, native-style videos created by real people that blend seamlessly into social feeds. At HanovaDevs, we treat UGC as a data-driven science. We script, cast, shoot, edit, and A/B test high-impact creatives engineered to capture attention in the first 3 seconds and drive immediate conversions.',
     features: [
       {
@@ -784,7 +784,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'RAQS Clothing Brand',
-      logo: '/projects/raqs.png',
+      logo: '/projects/raqs.webp',
       summary: 'Engineered a pre-launch UGC campaign that accumulated over 15,000 email signups with a 4.2x projected return on ad spend.',
       metrics: [
         { label: 'Hook Rate (3s)', value: '+48.3%' },
@@ -840,7 +840,7 @@ const servicesData = {
     ],
     gallery: [
       {
-        image: '/projects/ugc_ad_skincare.png',
+        image: '/projects/ugc_ad_skincare.webp',
         category: 'CREATOR SPARK AD',
         title: 'SkinGlow Hydration Serum',
         desc: 'Product review & demonstration by beauty creator. Focused on hydration, texture, and organic morning routine integration.',
@@ -851,7 +851,7 @@ const servicesData = {
         cta: 'Shop Now'
       },
       {
-        image: '/projects/ugc_ad_candle.png',
+        image: '/projects/ugc_ad_candle.webp',
         category: 'BRAND SPARK AD',
         title: 'Aura Home Soy Scented Candle',
         desc: 'Aesthetic mood-setting video showcasing warm atmosphere, premium packaging, and crackling wood-wick sensory experience.',
@@ -862,7 +862,7 @@ const servicesData = {
         cta: 'Shop Now'
       },
       {
-        image: '/projects/ugc_ad_raqs.png',
+        image: '/projects/ugc_ad_raqs.webp',
         category: 'CREATOR SPARK AD',
         title: 'RAQS Minimalist Streetwear',
         desc: 'Mirror selfie styling guide featuring the upcoming organic cotton oversized tee. Highlights fit, fabric weight, and drape.',
@@ -873,7 +873,7 @@ const servicesData = {
         cta: 'Learn More'
       },
       {
-        image: '/projects/ugc_ad_terrasol.png',
+        image: '/projects/ugc_ad_terrasol.webp',
         category: 'BRAND SPARK AD',
         title: 'Terra Sol Grounding Bed Sheet',
         desc: 'Educational bedroom vlog explaining the science of grounding sheets, showing the silver conductive grid and sleep improvements.',
@@ -884,7 +884,7 @@ const servicesData = {
         cta: 'Learn More'
       },
       {
-        image: '/projects/ugc_ad_tech.png',
+        image: '/projects/ugc_ad_tech.webp',
         category: 'CREATOR SPARK AD',
         title: 'AeroPods Pro Wireless Earbuds',
         desc: 'Fast-paced street interview & active noise cancellation reaction video. Showcases style, fit, and audio clarity.',
@@ -895,7 +895,7 @@ const servicesData = {
         cta: 'Shop Now'
       },
       {
-        image: '/projects/ugc_ad_fitness.png',
+        image: '/projects/ugc_ad_fitness.webp',
         category: 'CREATOR SPARK AD',
         title: 'IronHydrate Insulated Water Bottle',
         desc: 'Gym bag check & workout hydration vlog. Emphasizes temperature retention, leak-proof lid, and sleek design.',
@@ -911,7 +911,7 @@ const servicesData = {
     title: 'Shopify Store Development',
     category: 'E-Commerce',
     tagline: 'High-converting Shopify stores engineered for maximum sales.',
-    heroImage: '/projects/shopify_store_showcase_1.png',
+    heroImage: '/projects/shopify_store_showcase_1.webp',
     intro: 'Your Shopify store is more than a product catalog — it is a conversion engine. We design and develop custom Shopify OS 2.0 stores that load instantly, tell your brand story, and drive friction-free checkouts. From custom Liquid programming and bespoke cart drawers to advanced app integrations (Klaviyo, Recharge, subscription models) and ERP syncing, we ensure your store is optimized for scale. Our development philosophy centers on maximizing Average Order Value (AOV) and conversion rate, turning window shoppers into loyal subscribers.',
     features: [
       {
@@ -946,7 +946,7 @@ const servicesData = {
     ],
     caseStudy: {
       clientName: 'Aura Home Candle Co.',
-      logo: '/projects/aurahome.png',
+      logo: '/projects/aurahome.webp',
       summary: 'Re-engineered a slow e-commerce storefront into a high-speed, subscription-first brand portal.',
       metrics: [
         { label: 'Conversion Lift', value: '+58%' },
@@ -994,19 +994,19 @@ const servicesData = {
     ],
     gallery: [
       {
-        image: '/projects/shopify_store_showcase_1.png',
+        image: '/projects/shopify_store_showcase_1.webp',
         category: 'DESKTOP SHOWCASE',
         title: 'Bespoke Shopify OS 2.0 Storefront',
         desc: 'A clean, high-end desktop e-commerce storefront showcasing luxury products and minimalist navigation.'
       },
       {
-        image: '/projects/shopify_store_showcase_2.png',
+        image: '/projects/shopify_store_showcase_2.webp',
         category: 'MOBILE OPTIMIZED',
         title: 'Mobile Product Landing Page',
         desc: 'A conversion-engineered mobile interface featuring clear pricing, ratings, and a sticky Add to Cart button.'
       },
       {
-        image: '/projects/shopify_dashboard.png',
+        image: '/projects/shopify_dashboard.webp',
         category: 'ANALYTICS ENGINE',
         title: 'Shopify E-Commerce Dashboard',
         desc: 'Real-time revenue growth, conversion rate optimization telemetry, and sales metrics tracking.'

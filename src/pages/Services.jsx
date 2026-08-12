@@ -27,7 +27,7 @@ const services = [
     title: 'Shopify Store Development',
     tagline: 'E-commerce store setups & custom themes',
     desc: 'High-speed, conversion-engineered Shopify stores and custom Liquid themes built to scale sales.',
-    image: '/projects/shopify_store_showcase_1.png',
+    image: '/projects/shopify_store_showcase_1.webp',
     techStack: ['Shopify OS 2.0', 'Liquid', 'Checkout Customizer', 'Klaviyo', 'Recharge']
   },
   {
@@ -43,7 +43,7 @@ const services = [
     title: 'UGC Ads & Marketing',
     tagline: 'High-Converting User-Generated Content',
     desc: 'Data-driven, native-style TikTok and Instagram Reel creatives designed to crush ad fatigue and scale your ROAS.',
-    image: '/projects/ugc_ad_skincare.png',
+    image: '/projects/ugc_ad_skincare.webp',
     techStack: ['TikTok Spark Ads', 'Meta Reels', 'Creator Sourcing', 'Ad Scripting', 'A/B Hook Testing']
   },
   {

@@ -34,6 +34,17 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setDropdownOpen(false)
+        setMobileOpen(false)
+      }
+    }
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
+  useEffect(() => {
     setMobileOpen(false)
     setDropdownOpen(false)
   }, [location])
@@ -77,11 +88,13 @@ export default function Navbar() {
                   className={`navbar__link navbar__link--dropdown ${isInsightsActive ? 'navbar__link--active' : ''}`}
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   aria-expanded={dropdownOpen}
+                  aria-haspopup="true"
+                  aria-controls="insights-menu"
                 >
                   {link.label}
                   <svg className={`navbar__chevron ${dropdownOpen ? 'navbar__chevron--open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9" /></svg>
                 </button>
-                <div className={`navbar__dropdown ${dropdownOpen ? 'navbar__dropdown--open' : ''}`}>
+                <div id="insights-menu" className={`navbar__dropdown ${dropdownOpen ? 'navbar__dropdown--open' : ''}`}>
                   {link.dropdown.map(item => (
                     <Link key={item.path} to={item.path} className="navbar__dropdown-item">
                       <strong>{item.label}</strong>
@@ -110,6 +123,8 @@ export default function Navbar() {
           className={`navbar__burger ${mobileOpen ? 'navbar__burger--open' : ''}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
           id="mobile-menu-toggle"
         >
           <span /><span /><span />
@@ -117,8 +132,8 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}>
-        <nav className="mobile-menu__nav">
+      <div id="mobile-navigation" aria-hidden={!mobileOpen} className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}>
+        <nav className="mobile-menu__nav" aria-label="Mobile navigation">
           {navLinks.map((link, i) => (
             link.dropdown ? (
               <div key={link.label} className="mobile-menu__group">

@@ -717,7 +717,7 @@ export default function News() {
             </div>
           ) : (
             <div className="nw-masonry">
-              {gridArticles.map((article, i) => (
+              {gridArticles.map((article) => (
                 <div
                   key={article.id}
                   className={`nw-card ${article.variant === 'compact' ? 'nw-card--compact' : ''} ${article.variant === 'featured' ? 'nw-card--featured' : ''} reveal-up`}

@@ -5,11 +5,11 @@ import './OmnaiDetail.css'
 
 /* ─── DATA ─── */
 const screenshots = [
-  { src: '/products/omnai/B1.png', caption: 'New Tab — AI Tool Marketplace', desc: 'The default new tab experience. Access 50+ AI tools from a single, searchable interface.' },
-  { src: '/products/omnai/B2.png', caption: 'Browsing with AI Sidebar', desc: 'Chat with AI about any page you\'re viewing. Summarize, translate, or ask questions in real-time.' },
-  { src: '/products/omnai/B3.png', caption: 'AI Orchestrator Pipeline', desc: 'Chain multiple AI tools into automated workflows. Save, share, and re-run your pipelines.' },
-  { src: '/products/omnai/B4.png', caption: 'Privacy Intelligence Dashboard', desc: 'Real-time privacy scoring for every website. Track trackers, cookies, and data exposure.' },
-  { src: '/products/omnai/B5.png', caption: 'Developer Tools AI Layer', desc: 'AI-powered error explanations, network analysis, and accessibility auditing built right in.' },
+  { src: '/products/omnai/B1.webp', caption: 'New Tab — AI Tool Marketplace', desc: 'The default new tab experience. Access 50+ AI tools from a single, searchable interface.' },
+  { src: '/products/omnai/B2.webp', caption: 'Browsing with AI Sidebar', desc: 'Chat with AI about any page you\'re viewing. Summarize, translate, or ask questions in real-time.' },
+  { src: '/products/omnai/B3.webp', caption: 'AI Orchestrator Pipeline', desc: 'Chain multiple AI tools into automated workflows. Save, share, and re-run your pipelines.' },
+  { src: '/products/omnai/B4.webp', caption: 'Privacy Intelligence Dashboard', desc: 'Real-time privacy scoring for every website. Track trackers, cookies, and data exposure.' },
+  { src: '/products/omnai/B5.webp', caption: 'Developer Tools AI Layer', desc: 'AI-powered error explanations, network analysis, and accessibility auditing built right in.' },
 ]
 
 const featureCategories = [
@@ -320,7 +320,7 @@ export default function OmnaiDetail() {
                     omnai://newtab
                   </div>
                 </div>
-                <img src="/products/omnai/B1.png" alt="Omnai Browser" className="od-hero__img" />
+                <img src="/products/omnai/B1.webp" alt="Omnai Browser" className="od-hero__img" />
               </div>
               <div className="od-hero__float-card od-hero__float-card--1">
                 <span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><path d="M12 8v3"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/><path d="M9 18h6"/></svg></span> AI Pipeline Active
@@ -619,7 +619,7 @@ export default function OmnaiDetail() {
       <section className="od-cta" id="omnai-cta">
         <div className="od-cta__bg" />
         <div className="container text-center">
-          <img src="/products/omnai/logo.png" alt="" className="od-cta__logo reveal-scale" />
+          <img src="/products/omnai/logo.webp" alt="" className="od-cta__logo reveal-scale" />
           <h2 className="reveal reveal-delay-1">Ready to browse <span className="od-gradient">intelligently?</span></h2>
           <p className="reveal reveal-delay-2">The features on this page are not moonshots. They are gaps that every user feels every day. We're building them one at a time.</p>
           <div className="od-cta__actions reveal reveal-delay-3">

@@ -60,7 +60,7 @@ export default function Products() {
                     <div className="cp-frame__dots"><span /><span /><span /></div>
                     <div className="cp-frame__url">omnai://welcome</div>
                   </div>
-                  <img src="/products/omnai/B1.png" alt="Omnai Browser UI" className="cp-frame__img" />
+                  <img src="/products/omnai/B1.webp" alt="Omnai Browser UI" className="cp-frame__img" />
                 </div>
               </Link>
             </div>
@@ -75,7 +75,7 @@ export default function Products() {
           <div className="cp-showcase__layout cp-showcase__layout--reverse">
             <div className="cp-showcase__text reveal-right">
               <div className="cp-badge cp-badge--eunoia">V1.0 Released</div>
-              <img src="/products/eunoia/logo.png" alt="Eunoia Logo" className="cp-logo-icon" />
+              <img src="/products/eunoia/logo.webp" alt="Eunoia Logo" className="cp-logo-icon" />
               <h2>Eunoia Desktop</h2>
               <p className="cp-showcase__desc">
                 Your personal AI desktop assistant. A calming, local-first companion combining task planning, journaling, focus sessions, and proactive AI.
@@ -97,7 +97,7 @@ export default function Products() {
                     <div className="cp-frame__dots"><span /><span /><span /></div>
                     <div className="cp-frame__title">Eunoia Companion</div>
                   </div>
-                  <img src="/products/eunoia/E1.png" alt="Eunoia Application UI" className="cp-frame__img" />
+                  <img src="/products/eunoia/E1.webp" alt="Eunoia Application UI" className="cp-frame__img" />
                 </div>
               </Link>
             </div>
