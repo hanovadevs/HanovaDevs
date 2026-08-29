@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="tealGrad1" x1="100" y1="28" x2="132" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="tealGrad2" x1="100" y1="172" x2="68" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+  </defs>
+  <!-- Top Petal (Teal) -->
+  <path d="M100 28 L132 60 L132 102 L100 70 Z" fill="url(#tealGrad1)"/>
+  <!-- Right Petal (Midnight) -->
+  <path d="M172 100 L140 132 L98 132 L130 100 Z" fill="#071A2B"/>
+  <!-- Bottom Petal (Teal) -->
+  <path d="M100 172 L68 140 L68 98 L100 130 Z" fill="url(#tealGrad2)"/>
+  <!-- Left Petal (Midnight) -->
+  <path d="M28 100 L60 68 L102 68 L70 100 Z" fill="#071A2B"/>
+</svg>

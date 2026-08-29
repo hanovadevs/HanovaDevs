@@ -101,10 +101,10 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <div className="footer__logo">
-              <img src="/octopus.png" alt="HanovaDevs" width="40" height="40" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src="/white.png" alt="HanovaDevs Logo" width="38" height="38" />
               <div>
-                <h4 className="footer__brand-name">HanovaDevs</h4>
-                <span className="footer__tagline">Digital Marketing Agency</span>
+                <h4 className="footer__brand-name">Hanova<span style={{ color: 'var(--teal-primary)' }}>Devs</span></h4>
+                <span className="footer__tagline">Software Agency & AI Solutions</span>
               </div>
             </div>
             <p className="footer__desc">

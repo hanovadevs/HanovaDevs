@@ -1,12 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="38" r="22" fill="#1A3EE8"/>
-  <ellipse cx="42" cy="34" rx="4" ry="5" fill="#fff"/>
-  <ellipse cx="58" cy="34" rx="4" ry="5" fill="#fff"/>
-  <path d="M30 55 Q25 75 15 85" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M35 58 Q32 78 28 90" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M42 60 Q42 80 40 92" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M50 62 Q50 82 50 94" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M58 60 Q58 80 60 92" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M65 58 Q68 78 72 90" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M70 55 Q75 75 85 85" stroke="#1A3EE8" stroke-width="5" fill="none" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="favTeal1" x1="100" y1="36" x2="130" y2="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="favTeal2" x1="100" y1="164" x2="70" y2="95" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded Squircle App Icon Background -->
+  <rect width="200" height="200" rx="46" fill="#F5F7F8"/>
+  <rect x="1" y="1" width="198" height="198" rx="45" stroke="#E2E8F0" stroke-width="2"/>
+  
+  <!-- 4-Petal Geometric Emblem -->
+  <!-- Top Petal (Teal) -->
+  <path d="M100 36 L128 64 L128 102 L100 74 Z" fill="url(#favTeal1)"/>
+  <!-- Right Petal (Midnight) -->
+  <path d="M164 100 L136 128 L98 128 L126 100 Z" fill="#071A2B"/>
+  <!-- Bottom Petal (Teal) -->
+  <path d="M100 164 L72 136 L72 98 L100 126 Z" fill="url(#favTeal2)"/>
+  <!-- Left Petal (Midnight) -->
+  <path d="M36 100 L64 72 L102 72 L74 100 Z" fill="#071A2B"/>
 </svg>

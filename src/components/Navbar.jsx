@@ -74,10 +74,11 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''}`} id="main-nav">
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" aria-label="HanovaDevs Home">
-          <img src="/octopus.png" alt="HanovaDevs octopus" className="navbar__logo-icon" width="36" height="36" />
-          <div className="navbar__wordmark">
-            <span className="navbar__brand-name">HanovaDevs</span>
-          </div>
+          <img 
+            src="/Software_Agency_bg.png" 
+            alt="HanovaDevs Software Agency" 
+            className="navbar__logo-full" 
+          />
         </Link>
 
         <nav className="navbar__nav" aria-label="Main navigation">

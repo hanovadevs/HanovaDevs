@@ -789,7 +789,7 @@ export default function Journal() {
                 <h2>{featuredPost.title}</h2>
                 <p>{featuredPost.excerpt}</p>
                 <div className="jn-featured__author">
-                  <img src="/octopus.png" alt="" width="28" height="28" />
+                  <img src="/white.png" alt="" width="28" height="28" />
                   <span>{featuredPost.author}</span>
                 </div>
               </div>
@@ -817,7 +817,7 @@ export default function Journal() {
                   <p>{post.excerpt}</p>
                   <div className="jn-card__footer">
                     <div className="jn-card__author">
-                      <img src="/octopus.png" alt="" width="22" height="22" />
+                      <img src="/icon.png" alt="" width="22" height="22" />
                       <span>{post.author}</span>
                     </div>
                     <span className="jn-card__link">Read →</span>

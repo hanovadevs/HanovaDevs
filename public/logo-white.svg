@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 120" fill="none">
+  <defs>
+    <linearGradient id="logoWhiteTeal1" x1="55" y1="18" x2="77" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5EEAD4"/>
+      <stop offset="100%" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="logoWhiteTeal2" x1="55" y1="102" x2="33" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#5EEAD4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 4-Petal Emblem (Left centered, ~100x100 scaled) -->
+  <g transform="translate(10, 0)">
+    <!-- Top Petal (Teal) -->
+    <path d="M55 18 L76 39 L76 66 L55 45 Z" fill="url(#logoWhiteTeal1)"/>
+    <!-- Right Petal (Ice White / Slate) -->
+    <path d="M102 60 L81 81 L54 81 L75 60 Z" fill="#F5F7F8"/>
+    <!-- Bottom Petal (Teal) -->
+    <path d="M55 102 L34 81 L34 54 L55 75 Z" fill="url(#logoWhiteTeal2)"/>
+    <!-- Left Petal (Ice White / Slate) -->
+    <path d="M8 60 L29 39 L56 39 L35 60 Z" fill="#F5F7F8"/>
+  </g>
+
+  <!-- Vertical Divider Line -->
+  <line x1="140" y1="20" x2="140" y2="100" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Wordmark -->
+  <g transform="translate(160, 0)">
+    <!-- Hanova (Off-White) + Devs (Teal) -->
+    <text x="0" y="62" font-family="'Syne', 'Outfit', 'Inter', -apple-system, sans-serif" font-weight="800" font-size="44" fill="#F5F7F8" letter-spacing="-0.02em">Hanova<tspan fill="#14B8A6">Devs</tspan></text>
+    <!-- SOFTWARE AGENCY Subtitle -->
+    <text x="2" y="88" font-family="'Space Grotesk', 'DM Sans', sans-serif" font-weight="700" font-size="14" fill="#94A3B8" letter-spacing="0.32em">SOFTWARE AGENCY</text>
+  </g>
+</svg>

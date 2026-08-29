@@ -4,21 +4,38 @@
 
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
-  /* Brand Colors */
-  --royal-blue: #1A3EE8;
-  --royal-blue-rgb: 26, 62, 232;
-  --electric-blue: #4D79FF;
-  --electric-blue-rgb: 77, 121, 255;
-  --deep-navy: #0A1628;
-  --deep-navy-rgb: 10, 22, 40;
-  --blue-grey: #5A6A8A;
+  /* Core Brand Colors (Teal + Midnight) */
+  --teal-primary: #14B8A6;
+  --teal-primary-rgb: 20, 184, 166;
+  --teal-light: #2DD4BF;
+  --teal-light-rgb: 45, 212, 191;
+  --teal-glow: #5EEAD4;
+  --teal-dark: #0D9488;
+  --teal-dark-rgb: 13, 148, 136;
+  --teal-deep: #0F766E;
+
+  --midnight: #071A2B;
+  --midnight-rgb: 7, 26, 43;
+  --midnight-surface: #0E2942;
+  --midnight-surface-rgb: 14, 41, 66;
+  --midnight-card: #0B2238;
+  --midnight-border: #183C5D;
+
+  /* Legacy aliases mapped to new Teal + Midnight palette */
+  --royal-blue: var(--teal-primary);
+  --royal-blue-rgb: var(--teal-primary-rgb);
+  --electric-blue: var(--teal-light);
+  --electric-blue-rgb: var(--teal-light-rgb);
+  --deep-navy: var(--midnight);
+  --deep-navy-rgb: var(--midnight-rgb);
+  --blue-grey: #5A6D80;
 
   /* Neutrals */
   --white: #FFFFFF;
-  --off-white: #F5F7FF;
-  --light-grey: #EEF0F8;
-  --medium-grey: #C4CAD8;
-  --dark-text: #0D1B3E;
+  --off-white: #F5F7F8;
+  --light-grey: #E5E9EE;
+  --medium-grey: #CBD5E1;
+  --dark-text: #071A2B;
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
@@ -41,11 +58,11 @@
   --radius-pill: 100px;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(var(--royal-blue-rgb), 0.06);
-  --shadow-md: 0 4px 20px rgba(var(--royal-blue-rgb), 0.08);
-  --shadow-lg: 0 8px 40px rgba(var(--royal-blue-rgb), 0.12);
-  --shadow-xl: 0 16px 60px rgba(var(--royal-blue-rgb), 0.16);
-  --shadow-hover: 0 12px 44px rgba(var(--royal-blue-rgb), 0.18);
+  --shadow-sm: 0 2px 8px rgba(var(--teal-primary-rgb), 0.08);
+  --shadow-md: 0 4px 20px rgba(var(--teal-primary-rgb), 0.12);
+  --shadow-lg: 0 8px 40px rgba(var(--teal-primary-rgb), 0.16);
+  --shadow-xl: 0 16px 60px rgba(var(--teal-primary-rgb), 0.2);
+  --shadow-hover: 0 12px 44px rgba(var(--teal-primary-rgb), 0.22);
 
   /* Transitions */
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -322,8 +339,8 @@ button {
 }
 
 .btn-primary:hover {
-  background: #1535CC;
-  box-shadow: 0 8px 32px rgba(var(--royal-blue-rgb), 0.4);
+  background: var(--teal-dark);
+  box-shadow: 0 8px 32px rgba(var(--teal-primary-rgb), 0.4);
   transform: translateY(-2px);
 }
 
@@ -701,7 +718,7 @@ button {
 }
 
 .calc-preview-card:hover .calc-preview-btn {
-  background: #2563eb;
+  background: var(--teal-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--royal-blue-rgb), 0.25);
+  box-shadow: 0 4px 12px rgba(var(--teal-primary-rgb), 0.3);
 }

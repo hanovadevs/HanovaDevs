@@ -509,7 +509,8 @@ export default function AdminDashboard() {
       <nav className="admin-top-navbar">
         <div className="admin-top-navbar__inner container">
           <div className="admin-brand">
-            <span className="admin-brand__logo">⚡ HANOVA DEVS</span>
+            <img src="/white.png" alt="HanovaDevs" width="22" height="22" />
+            <span className="admin-brand__logo">HANOVA<span style={{ color: 'var(--teal-primary)' }}>DEVS</span></span>
             <span className="admin-brand__pill">OPERATIONS DESK</span>
             <span className="admin-live-pulse" title="System Live">
               <span className="pulse-dot" /> System Online

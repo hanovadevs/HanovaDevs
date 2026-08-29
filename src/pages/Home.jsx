@@ -268,7 +268,7 @@ export default function Home() {
               "We believe that great software is more than just code — it's the <em>invisible bridge</em> between human ambition and digital reality."
             </h2>
             <div className="mission-statement__author">
-              <img src="/octopus.png" alt="" width="24" height="24" />
+              <img src="/icon.png" alt="" width="24" height="24" />
               <span>HanovaDevs Leadership</span>
             </div>
           </div>
@@ -288,7 +288,7 @@ export default function Home() {
                   loading="lazy"
                 />
                 <div className="about-teaser__floating-card">
-                  <img src="/octopus.png" alt="" width="32" height="32" />
+                  <img src="/icon.png" alt="" width="32" height="32" />
                   <div>
                     <strong>HanovaDevs</strong>
                     <span>Est. 2022</span>
@@ -802,7 +802,7 @@ export default function Home() {
       <section className="final-cta" id="final-cta">
         <div className="final-cta__bg" />
         <div className="container text-center">
-          <img src="/octopus.png" alt="" className="final-cta__icon reveal-scale" />
+          <img src="/icon.png" alt="HanovaDevs" className="final-cta__icon reveal-scale" width="64" height="64" />
           <h2 className="final-cta__headline reveal reveal-delay-1">Ready to go digital?</h2>
           <p className="final-cta__sub reveal reveal-delay-2">
             Let's turn your vision into a digital reality. No jargon, just results.

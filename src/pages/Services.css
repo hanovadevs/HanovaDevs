@@ -128,13 +128,13 @@
 }
 
 .services-bento__card--featured {
-  border-color: rgba(99, 102, 241, 0.45) !important;
-  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2) !important;
+  border-color: rgba(var(--teal-primary-rgb), 0.5) !important;
+  box-shadow: 0 12px 40px rgba(var(--teal-primary-rgb), 0.2) !important;
 }
 
 .services-bento__featured-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  background: linear-gradient(135deg, var(--teal-primary), var(--teal-dark));
   color: #fff;
   font-size: 0.65rem;
   font-weight: 800;
@@ -143,7 +143,7 @@
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   margin-bottom: 0.5rem;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 8px rgba(var(--teal-primary-rgb), 0.3);
   width: fit-content;
 }
 

@@ -85,7 +85,7 @@ export default async function handler(req, res) {
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
     }
     .header {
-      background: linear-gradient(135deg, #1A3EE8 0%, #3B82F6 100%);
+      background: linear-gradient(135deg, #071A2B 0%, #0D2D49 50%, #14B8A6 100%);
       padding: 35px 30px;
       text-align: center;
     }
@@ -109,7 +109,7 @@ export default async function handler(req, res) {
     }
     .content h2 {
       font-size: 20px;
-      color: #0f172a;
+      color: #071A2B;
       margin-top: 0;
       font-weight: 700;
     }
@@ -120,9 +120,9 @@ export default async function handler(req, res) {
       margin-bottom: 20px;
     }
     .details-box {
-      background-color: #f5f7ff;
-      border: 1px solid #e2e8f0;
-      border-left: 4px solid #1A3EE8;
+      background-color: #f0fdfa;
+      border: 1px solid #ccfbf1;
+      border-left: 4px solid #14B8A6;
       border-radius: 8px;
       padding: 20px;
       margin: 24px 0;
@@ -144,13 +144,13 @@ export default async function handler(req, res) {
       letter-spacing: 0.05em;
     }
     .detail-value {
-      color: #0f172a;
+      color: #071A2B;
       font-weight: 600;
     }
     .notice-box {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1e40af;
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      color: #0f766e;
       padding: 14px 18px;
       border-radius: 8px;
       font-size: 13px;
@@ -163,14 +163,14 @@ export default async function handler(req, res) {
     }
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, #1A3EE8 0%, #3B82F6 100%);
+      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
       color: #ffffff !important;
       text-decoration: none;
       padding: 14px 36px;
       font-weight: 700;
       font-size: 14px;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(26, 62, 232, 0.2);
+      box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
     }
     .footer {
       background-color: #f8fafc;

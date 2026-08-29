@@ -18,7 +18,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     "@id": "https://hanovadevs.com/#organization",
     "name": "HanovaDevs",
     "url": "https://hanovadevs.com",
-    "logo": "https://hanovadevs.com/favicon.svg",
+    "logo": "https://hanovadevs.com/logo.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
     "description": "Digital agency and custom software studio providing web engineering, AI automation, design, and digital marketing services.",
     "knowsAbout": [
@@ -72,7 +72,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     "@id": "https://hanovadevs.com/#service-business",
     "name": "HanovaDevs",
     "url": "https://hanovadevs.com",
-    "logo": "https://hanovadevs.com/favicon.svg",
+    "logo": "https://hanovadevs.com/logo.svg",
     "image": "https://hanovadevs.com/hero-glass-bg.png",
     "description": "Digital agency and custom software studio providing web engineering, AI automation, design, and digital marketing.",
     "priceRange": "$$$",
@@ -136,7 +136,7 @@ export default function SEO({ title, description, keywords, url, type = "website
       <meta name="title" content={siteTitle} />
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={metaKeywords} />
-      <meta name="theme-color" content="#08090d" />
+      <meta name="theme-color" content="#071A2B" />
       <meta name="application-name" content="HanovaDevs" />
       <meta name="apple-mobile-web-app-title" content="HanovaDevs" />
       <link rel="canonical" href={siteUrl} />

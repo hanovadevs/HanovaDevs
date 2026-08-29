@@ -293,7 +293,7 @@ export default function JournalPost() {
             <p className="jn-post__excerpt-v2">{post.excerpt}</p>
             
             <div className="jn-post__author-strip">
-              <img src="/octopus.png" alt="HanovaDevs Logo" className="author-avatar" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src="/white.png" alt="HanovaDevs Logo" className="author-avatar" />
               <div className="author-info">
                 <strong>HanovaDevs Editorial</strong>
                 <span>Technology & Digital Strategy</span>
@@ -356,7 +356,7 @@ export default function JournalPost() {
 
           {/* Author Bio Section */}
           <div className="jn-post__author-bio-v2 card-glass">
-            <img src="/octopus.png" alt="HanovaDevs" width="60" height="60" style={{ filter: 'brightness(0) invert(1)' }} />
+            <img src="/white.png" alt="HanovaDevs" width="56" height="56" />
             <div className="bio-text">
               <h4>HanovaDevs Research</h4>
               <p>We are a high-performance software engineering and digital growth agency. We publish insights on technology trends, UX optimization, local AI scaling, and technical SEO based on verified client implementations.</p>

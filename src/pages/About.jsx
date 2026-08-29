@@ -106,12 +106,14 @@ export default function About() {
         </div>
         <div className="about-hero__content container">
           <img
-            src="/octopus.png"
-            alt="HanovaDevs"
-            className="about-hero__octopus reveal"
+            src="/white.png"
+            alt="HanovaDevs Emblem"
+            className="about-hero__emblem reveal"
+            width="90"
+            height="90"
           />
           <h1 className="reveal reveal-delay-1">We are <span className="gradient-text">HanovaDevs.</span></h1>
-          <span className="about-hero__subtitle reveal reveal-delay-2">Digital Marketing Agency</span>
+          <span className="about-hero__subtitle reveal reveal-delay-2">Software Agency & AI Solutions</span>
         </div>
       </section>
 
