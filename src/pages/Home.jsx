@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import TrustLegalSection from '../components/TrustLegalSection'
 import { journalPosts } from './Journal'
 import { researchArticles } from './Research'
 import './Home.css'
@@ -47,15 +48,27 @@ const serviceCards = [
     features: ['React / Next.js', 'Responsive Design', 'CMS Integration']
   },
   {
-    id: 'digital-advertising',
+    id: 'software-development',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
       </svg>
     ),
-    title: 'Digital Marketing',
-    desc: 'Data-driven campaigns across Google Ads, Meta, and LinkedIn that convert traffic into loyal customers.',
-    features: ['Google Ads', 'Social Media', 'Content Strategy']
+    title: 'Custom Software',
+    desc: 'Scalable backend architectures, SaaS applications, and secure REST/GraphQL API systems built for high throughput.',
+    features: ['Node / Python', 'PostgreSQL', 'Cloud Infrastructure']
+  },
+  {
+    id: 'shopify-development',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" />
+      </svg>
+    ),
+    title: 'Shopify Development',
+    desc: 'High-speed, conversion-engineered Shopify OS 2.0 stores, custom Liquid themes, and subscription checkouts.',
+    features: ['Custom Liquid', 'Shopify OS 2.0', 'Klaviyo / Recharge']
   },
   {
     id: 'seo',
@@ -797,6 +810,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== TRUST & TRANSPARENCY (LEGAL SYSTEM) ===== */}
+      <TrustLegalSection />
 
       {/* ===== FINAL CTA ===== */}
       <section className="final-cta" id="final-cta">

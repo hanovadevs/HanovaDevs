@@ -39,7 +39,7 @@ export default function Footer() {
   const quickLinks = [
     { path: '/', label: 'Home' },
     { path: '/services', label: 'Services' },
-    { path: '/services/graphic-design', label: 'Graphic Design' },
+    { path: '/services/software-development', label: 'Custom Software' },
     { path: '/services/ai-automation', label: 'AI Automation' },
     { path: '/about', label: 'About Us' },
     { path: '/projects', label: 'Projects' },
@@ -59,8 +59,8 @@ export default function Footer() {
 
   const legalLinks = [
     { path: '/contact', label: 'Contact' },
-    { path: '#', label: 'Privacy Policy' },
-    { path: '#', label: 'Terms of Service' },
+    { path: '/privacy-policy', label: 'Privacy Policy' },
+    { path: '/terms-of-service', label: 'Terms of Service' },
   ]
 
   return (
@@ -79,19 +79,24 @@ export default function Footer() {
                 <span>You're in! Welcome to the HanovaDevs community.</span>
               </div>
             ) : (
-              <>
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="footer__newsletter-input"
-                />
-                <button type="submit" className="btn btn-primary footer__newsletter-btn" disabled={subscribing}>
-                  {subscribing ? 'Joining...' : 'Subscribe'}
-                </button>
-              </>
+              <div className="footer__newsletter-input-wrap">
+                <div className="footer__newsletter-fields">
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="footer__newsletter-input"
+                  />
+                  <button type="submit" className="btn btn-primary footer__newsletter-btn" disabled={subscribing}>
+                    {subscribing ? 'Joining...' : 'Subscribe'}
+                  </button>
+                </div>
+                <p className="footer__newsletter-legal">
+                  By subscribing, you agree to receive communications from HanovaDevs. See our <Link to="/privacy-policy">Privacy Policy</Link>.
+                </p>
+              </div>
             )}
           </form>
         </div>

@@ -1,0 +1,169 @@
+/* ============================================
+   HanovaDevs — Trust & Transparency Section
+   ============================================ */
+
+.trust-legal {
+  position: relative;
+  background-color: var(--white);
+  padding: var(--space-3xl) 0;
+}
+
+.trust-legal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.trust-legal__card {
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(var(--teal-primary-rgb), 0.12);
+  background: rgba(255, 255, 255, 0.85);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-legal__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal-primary), var(--teal-light));
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.trust-legal__card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--teal-primary-rgb), 0.35);
+  box-shadow: 0 16px 48px rgba(var(--teal-primary-rgb), 0.12);
+}
+
+.trust-legal__card:hover::before {
+  opacity: 1;
+}
+
+.trust-legal__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.trust-legal__icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(var(--teal-primary-rgb), 0.1);
+  color: var(--teal-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) ease;
+}
+
+.trust-legal__card:hover .trust-legal__icon-wrap {
+  transform: scale(1.08);
+  background: rgba(var(--teal-primary-rgb), 0.16);
+}
+
+.trust-legal__tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue-grey);
+  background: var(--off-white);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--light-grey);
+}
+
+.trust-legal__title {
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  font-weight: 700;
+  color: var(--midnight);
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.trust-legal__desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--blue-grey);
+  margin-bottom: 1.25rem;
+}
+
+.trust-legal__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--light-grey);
+}
+
+.trust-legal__highlights li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--midnight);
+}
+
+.trust-legal__highlights .bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: rgba(var(--teal-primary-rgb), 0.12);
+  color: var(--teal-dark);
+  font-size: 0.65rem;
+  font-weight: 800;
+  border-radius: 50%;
+}
+
+.trust-legal__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--teal-primary);
+  margin-top: auto;
+  transition: all var(--duration-fast) ease;
+}
+
+.trust-legal__link svg {
+  transition: transform var(--duration-fast) ease;
+}
+
+.trust-legal__link:hover {
+  color: var(--teal-dark);
+}
+
+.trust-legal__link:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 860px) {
+  .trust-legal__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .trust-legal__card {
+    padding: 1.75rem;
+  }
+}

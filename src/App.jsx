@@ -23,6 +23,8 @@ const News = lazy(() => import('./pages/News'))
 const TechStack = lazy(() => import('./pages/TechStack'))
 const Calculator = lazy(() => import('./pages/Calculator'))
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const AIChatbot = lazy(() => import('./components/AIChatbot'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -94,6 +96,10 @@ function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/news" element={<News />} />
           <Route path="/stack" element={<TechStack />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+          <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
           <Route path="/admin" element={<Navigate to="/" replace />} />
           <Route path="/hanova-portal-2026" element={<AdminDashboard />} />
           {/* Blog → Journal redirects for SEO */}

@@ -131,6 +131,31 @@
   min-height: 120px;
 }
 
+.contact-form__submit-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.contact-form__legal-notice {
+  font-size: 0.78rem;
+  color: var(--blue-grey);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.contact-form__legal-notice a {
+  color: var(--teal-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-form__legal-notice a:hover {
+  color: var(--teal-dark);
+}
+
 .contact-form__submit {
   align-self: flex-start;
   font-size: 1.05rem;

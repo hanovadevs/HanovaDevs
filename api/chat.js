@@ -244,7 +244,7 @@ ${bookingsContext}`;
           phone: { type: 'string', description: 'The client\'s phone number (optional)' },
           service: { 
             type: 'string', 
-            enum: ['web-design', 'shopify-development', 'social-media', 'ugc-ads', 'seo', 'branding', 'software-development', 'digital-advertising', 'graphic-design', 'ai-automation'],
+            enum: ['web-design', 'shopify-development', 'seo', 'branding', 'software-development', 'ai-automation'],
             description: 'The service they are interested in' 
           },
           date: { type: 'string', description: 'The preferred date (YYYY-MM-DD format)' },

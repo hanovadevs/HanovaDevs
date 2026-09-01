@@ -614,3 +614,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .w-100 {
   width: 100%;
 }
+
+.calc-legal-disclaimer {
+  font-size: 0.76rem !important;
+  color: var(--blue-grey) !important;
+  line-height: 1.45 !important;
+  margin: 0.85rem 0 0 0 !important;
+  text-align: center;
+}
+
+.calc-legal-disclaimer a {
+  color: var(--teal-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.calc-legal-disclaimer a:hover {
+  color: var(--teal-dark);
+}
+

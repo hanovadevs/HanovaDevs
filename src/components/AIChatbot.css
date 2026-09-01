@@ -597,12 +597,12 @@
 
 /* Footer Input Area */
 .ai-chatbot-input-area {
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 1rem 0.35rem;
   border-top: 1px solid rgba(var(--teal-primary-rgb), 0.1);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   margin-top: auto;
 }
 
@@ -647,6 +647,24 @@
   cursor: not-allowed;
   background: none;
   transform: none;
+}
+
+.ai-chatbot-legal-notice {
+  padding: 0 1rem 0.5rem;
+  font-size: 0.68rem;
+  color: var(--blue-grey);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.ai-chatbot-legal-notice a {
+  color: var(--teal-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ai-chatbot-legal-notice a:hover {
+  color: var(--teal-dark);
 }
 
 /* Mobile responsive layout */

@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './Contact.css'
 
@@ -667,31 +668,36 @@ export default function Contact() {
 
                   {/* Submit Button */}
                   {(activeTab === 'message' || selectedTime) && (
-                    <button type="submit" className="btn btn-primary contact-form__submit" disabled={sending}>
-                      {sending ? (
-                        <>
-                          <span className="contact-form__spinner" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          {activeTab === 'call' ? 'Confirm & Book Strategy Session' : 'Send Message'}
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            {activeTab === 'call' ? (
-                              <>
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                              </>
-                            ) : (
-                              <>
-                                <line x1="22" y1="2" x2="11" y2="13"/>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                              </>
-                            )}
-                          </svg>
-                        </>
-                      )}
-                    </button>
+                    <div className="contact-form__submit-wrap">
+                      <button type="submit" className="btn btn-primary contact-form__submit" disabled={sending}>
+                        {sending ? (
+                          <>
+                            <span className="contact-form__spinner" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            {activeTab === 'call' ? 'Confirm & Book Strategy Session' : 'Send Message'}
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                              {activeTab === 'call' ? (
+                                <>
+                                  <line x1="12" y1="5" x2="12" y2="19" />
+                                  <line x1="5" y1="12" x2="19" y2="12" />
+                                </>
+                              ) : (
+                                <>
+                                  <line x1="22" y1="2" x2="11" y2="13"/>
+                                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </>
+                              )}
+                            </svg>
+                          </>
+                        )}
+                      </button>
+                      <p className="contact-form__legal-notice">
+                        By submitting this form, you acknowledge our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-service">Terms of Service</Link>.
+                      </p>
+                    </div>
                   )}
                 </form>
               )}

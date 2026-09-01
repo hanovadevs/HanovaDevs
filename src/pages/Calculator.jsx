@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './Calculator.css'
 
@@ -29,30 +30,10 @@ export default function Calculator() {
   const [softwareDb, setSoftwareDb] = useState(true)
   const [softwareType, setSoftwareType] = useState('web') // 'web', 'mobile', 'desktop'
 
-  // UGC Ads Options
-  const [ugcVideos, setUgcVideos] = useState(6)
-  const [ugcCreators, setUgcCreators] = useState(2)
-  const [ugcPlatforms, setUgcPlatforms] = useState({
-    tiktok: true,
-    instagram: true,
-    youtube: false
-  })
-  const [ugcScripting, setUgcScripting] = useState(true)
-
   // AI Automation Options
   const [aiWorkflows, setAiWorkflows] = useState(3)
   const [aiIntegrations, setAiIntegrations] = useState('medium') // 'simple', 'medium', 'complex'
   const [aiType, setAiType] = useState('chatbot') // 'chatbot', 'workflows', 'rag'
-
-  // Graphic Design Options
-  const [designLogos, setDesignLogos] = useState(true)
-  const [designPosters, setDesignPosters] = useState(false)
-  const [designPackaging, setDesignPackaging] = useState(false)
-  const [designApparel, setDesignApparel] = useState(false)
-
-  // Social Media Options
-  const [smPlatforms, setSmPlatforms] = useState(2)
-  const [smFrequency, setSmFrequency] = useState('medium') // 'low', 'medium', 'high'
 
   // Shopify Store Options
   const [shopifyTheme, setShopifyTheme] = useState('standard') // 'standard', 'custom'
@@ -86,11 +67,6 @@ export default function Calculator() {
   const revenueLift = targetRevenue - currentRevenue
   const cpaSavings = currentCpa - targetCpa
   const roasLift = targetRoas - currentRoas
-
-  // Toggle helper for platforms checkbox
-  const handlePlatformToggle = (platform) => {
-    setUgcPlatforms(prev => ({ ...prev, [platform]: !prev[platform] }))
-  }
 
   // --- Estimator Price & Timeline Calculations ---
   const calculateEstimate = () => {
@@ -127,16 +103,6 @@ export default function Calculator() {
       // Platform type adjustment
       if (softwareType === 'mobile') basePrice += 400
       if (softwareType === 'desktop') basePrice += 300
-    } else if (serviceType === 'ugc-ads') {
-      basePrice = ugcVideos * 50
-      basePrice += ugcCreators * 30
-      
-      // Counting active platforms
-      const activePlatformsCount = Object.values(ugcPlatforms).filter(Boolean).length
-      if (activePlatformsCount > 1) basePrice += (activePlatformsCount - 1) * 40
-      if (ugcScripting) basePrice += 60
-
-      timelineWeeks = '5-10 Days'
     } else if (serviceType === 'ai-automation') {
       basePrice = 490
       basePrice += aiWorkflows * 90
@@ -148,23 +114,6 @@ export default function Calculator() {
       if (aiType === 'chatbot') basePrice += 120
 
       timelineWeeks = aiWorkflows <= 3 ? '1-2' : '2-4'
-    } else if (serviceType === 'graphic-design') {
-      basePrice = 90 // Base for design consultation
-      if (designLogos) basePrice += 80
-      if (designPosters) basePrice += 45
-      if (designPackaging) basePrice += 120
-      if (designApparel) basePrice += 60
-
-      timelineWeeks = '3-7 Days'
-    } else if (serviceType === 'social-media') {
-      // Calculated as a setup/first-month fee
-      basePrice = 150
-      basePrice += smPlatforms * 45
-      
-      if (smFrequency === 'medium') basePrice += 45
-      if (smFrequency === 'high') basePrice += 90
-
-      timelineWeeks = 'Setup in 1 Week'
     } else if (serviceType === 'shopify-development') {
       basePrice = 490
       if (shopifyTheme === 'custom') basePrice += 200
@@ -215,20 +164,8 @@ export default function Calculator() {
       details = `${webPages} pages, ${webComplexity} design complexity, Stack: ${webStack}${webCms ? ', with CMS' : ''}`
     } else if (serviceType === 'software-development') {
       details = `${softwareScale} scale ${softwareType} software${softwareDb ? ' with database' : ''}`
-    } else if (serviceType === 'ugc-ads') {
-      const platformsList = Object.keys(ugcPlatforms).filter(k => ugcPlatforms[k]).join('/')
-      details = `${ugcVideos} videos, ${ugcCreators} creators, Platforms: ${platformsList}${ugcScripting ? ', with Scripting' : ''}`
     } else if (serviceType === 'ai-automation') {
       details = `${aiWorkflows} automated workflows, Type: ${aiType}, Integrations: ${aiIntegrations}`
-    } else if (serviceType === 'graphic-design') {
-      const assets = []
-      if (designLogos) assets.push('Logo Suite')
-      if (designPosters) assets.push('Posters/Banners')
-      if (designPackaging) assets.push('Packaging')
-      if (designApparel) assets.push('Apparel')
-      details = `Graphic Design for: ${assets.join(', ') || 'None'}`
-    } else if (serviceType === 'social-media') {
-      details = `Social Media Setup: ${smPlatforms} platforms, Posting Frequency: ${smFrequency}`
     } else if (serviceType === 'shopify-development') {
       const integrations = []
       if (shopifyKlaviyo) integrations.push('Klaviyo')
@@ -258,7 +195,7 @@ export default function Calculator() {
     <div className="calculator-page">
       <SEO 
         title="Interactive Growth & Cost Estimator Hub — HanovaDevs"
-        description="Calculate your potential revenue lift with optimized UGC ads and high-performance web design, or estimate your custom project budget."
+        description="Estimate your custom project budget, development timelines, and ROI across web design, custom software, AI automation, and Shopify development."
         url="/calculator"
         breadcrumbs={[
           { name: 'Home', item: '/' },
@@ -518,28 +455,10 @@ export default function Calculator() {
                       ⚙️ Software
                     </button>
                     <button 
-                      className={`service-opt-btn ${serviceType === 'ugc-ads' ? 'active' : ''}`}
-                      onClick={() => setServiceType('ugc-ads')}
-                    >
-                      📸 UGC Ads
-                    </button>
-                    <button 
                       className={`service-opt-btn ${serviceType === 'ai-automation' ? 'active' : ''}`}
                       onClick={() => setServiceType('ai-automation')}
                     >
                       🤖 AI Bots
-                    </button>
-                    <button 
-                      className={`service-opt-btn ${serviceType === 'graphic-design' ? 'active' : ''}`}
-                      onClick={() => setServiceType('graphic-design')}
-                    >
-                      🎨 Design
-                    </button>
-                    <button 
-                      className={`service-opt-btn ${serviceType === 'social-media' ? 'active' : ''}`}
-                      onClick={() => setServiceType('social-media')}
-                    >
-                      📱 Social
                     </button>
                   </div>
                 </div>
@@ -703,73 +622,6 @@ export default function Calculator() {
                     </>
                   )}
 
-                  {/* UGC Ads Fields */}
-                  {serviceType === 'ugc-ads' && (
-                    <>
-                      <div className="calc-input-group">
-                        <div className="calc-input-header">
-                          <label htmlFor="ugc-vids">Number of Ad Creatives</label>
-                          <span className="calc-value-display">{ugcVideos} Videos</span>
-                        </div>
-                        <input 
-                          id="ugc-vids"
-                          type="range" 
-                          min="3" 
-                          max="24" 
-                          step="3" 
-                          value={ugcVideos} 
-                          onChange={(e) => setUgcVideos(Number(e.target.value))} 
-                        />
-                        <div className="calc-range-bounds"><span>3 Videos</span><span>24 Videos</span></div>
-                      </div>
-
-                      <div className="calc-input-group">
-                        <div className="calc-input-header">
-                          <label htmlFor="ugc-creators">Number of Content Creators</label>
-                          <span className="calc-value-display">{ugcCreators} Creators</span>
-                        </div>
-                        <input 
-                          id="ugc-creators"
-                          type="range" 
-                          min="1" 
-                          max="6" 
-                          step="1" 
-                          value={ugcCreators} 
-                          onChange={(e) => setUgcCreators(Number(e.target.value))} 
-                        />
-                        <div className="calc-range-bounds"><span>1 Creator</span><span>6 Creators</span></div>
-                      </div>
-
-                      <div className="calc-input-group">
-                        <label>Target Social Networks</label>
-                        <div style={{ display: 'flex', gap: '20px', marginTop: '8px' }}>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={ugcPlatforms.tiktok} onChange={() => handlePlatformToggle('tiktok')} />
-                            TikTok Spark Ads
-                          </label>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={ugcPlatforms.instagram} onChange={() => handlePlatformToggle('instagram')} />
-                            Instagram Reels
-                          </label>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={ugcPlatforms.youtube} onChange={() => handlePlatformToggle('youtube')} />
-                            YouTube Shorts
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className="calc-input-group calc-input-group--checkbox">
-                        <input 
-                          id="ugc-script"
-                          type="checkbox" 
-                          checked={ugcScripting} 
-                          onChange={(e) => setUgcScripting(e.target.checked)} 
-                        />
-                        <label htmlFor="ugc-script">Include psychology-backed ad concept scripting & hook writing</label>
-                      </div>
-                    </>
-                  )}
-
                   {/* AI Automation Fields */}
                   {serviceType === 'ai-automation' && (
                     <>
@@ -840,82 +692,6 @@ export default function Calculator() {
                           >
                             Complex (Enterprise integrations)
                             <span>e.g., Database triggers, custom LLM fine-tuning, security audits</span>
-                          </button>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {/* Graphic Design Fields */}
-                  {serviceType === 'graphic-design' && (
-                    <>
-                      <div className="calc-input-group">
-                        <label>Select Design Assets Required</label>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '12px' }}>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={designLogos} onChange={(e) => setDesignLogos(e.target.checked)} />
-                            Logo & Brand Identity Suite
-                          </label>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={designPosters} onChange={(e) => setDesignPosters(e.target.checked)} />
-                            Marketing Banners, Flyers, & Digital Posters
-                          </label>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={designPackaging} onChange={(e) => setDesignPackaging(e.target.checked)} />
-                            Premium Product Packaging / Label Design
-                          </label>
-                          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', cursor: 'pointer' }}>
-                            <input type="checkbox" checked={designApparel} onChange={(e) => setDesignApparel(e.target.checked)} />
-                            Custom Apparel / T-Shirt Branding (like RAQS)
-                          </label>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {/* Social Media Fields */}
-                  {serviceType === 'social-media' && (
-                    <>
-                      <div className="calc-input-group">
-                        <div className="calc-input-header">
-                          <label htmlFor="sm-plat">Number of Social Channels</label>
-                          <span className="calc-value-display">{smPlatforms} Platforms</span>
-                        </div>
-                        <input 
-                          id="sm-plat"
-                          type="range" 
-                          min="1" 
-                          max="4" 
-                          step="1" 
-                          value={smPlatforms} 
-                          onChange={(e) => setSmPlatforms(Number(e.target.value))} 
-                        />
-                        <div className="calc-range-bounds"><span>1 (e.g. Instagram)</span><span>4+ (Multi-channel)</span></div>
-                      </div>
-
-                      <div className="calc-input-group">
-                        <label>Posting Frequency & Content Sourcing</label>
-                        <div className="toggle-options">
-                          <button 
-                            className={`toggle-opt-btn ${smFrequency === 'low' ? 'active' : ''}`}
-                            onClick={() => setSmFrequency('low')}
-                          >
-                            Light Presence (1-2 posts per week)
-                            <span>Core brand updates, basic templates</span>
-                          </button>
-                          <button 
-                            className={`toggle-opt-btn ${smFrequency === 'medium' ? 'active' : ''}`}
-                            onClick={() => setSmFrequency('medium')}
-                          >
-                            Active Growth (3-4 posts per week)
-                            <span>Custom graphics, carousel slides, organic outreach</span>
-                          </button>
-                          <button 
-                            className={`toggle-opt-btn ${smFrequency === 'high' ? 'active' : ''}`}
-                            onClick={() => setSmFrequency('high')}
-                          >
-                            Aggressive Scaling (Daily posts / Reels)
-                            <span>Daily content calendar, video edits, active community management</span>
                           </button>
                         </div>
                       </div>
@@ -1067,6 +843,9 @@ export default function Calculator() {
                   <button onClick={handleSecureQuote} className="btn btn-primary w-100">
                     Secure this Quote & Book Call 🔒
                   </button>
+                  <p className="calc-legal-disclaimer">
+                    * Estimates are ballpark projections for planning and budgeting guidance. Formal commitments are confirmed via custom SOW. See our <Link to="/terms-of-service">Terms of Service</Link>.
+                  </p>
                 </div>
               </div>
             </div>

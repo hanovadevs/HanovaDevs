@@ -91,92 +91,6 @@ const servicesData = {
       }
     ]
   },
-  'social-media': {
-    title: 'Social Media Marketing',
-    category: 'Marketing',
-    tagline: 'Grow your brand organically and engage your community.',
-    heroImage: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&q=80',
-    intro: 'Social media is more than just posting — it’s about starting conversations. We create data-driven content strategies that resonate with your target audience across Instagram, LinkedIn, TikTok, and Twitter. We turn passive scrollers into active brand advocates. Our team focuses on high-impact storytelling and visual excellence, ensuring that your brand doesn\'t just exist on social media, but dominates it.',
-    features: [
-      {
-        title: 'Content Strategy',
-        desc: 'Comprehensive planning, ideation, and content calendars.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
-      },
-      {
-        title: 'Community Management',
-        desc: 'Active engagement, comment moderation, and brand voice consistency.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-      },
-      {
-        title: 'Analytics & Reporting',
-        desc: 'Monthly insights, engagement metrics, and growth tracking.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
-      }
-    ],
-    technicalSpecs: [
-      { key: 'Channels', value: 'Instagram, LinkedIn, TikTok, X' },
-      { key: 'Tools', value: 'Hootsuite, Buffer, Canva Pro' },
-      { key: 'Ad Formats', value: 'Reels, Carousels, Static Posts' },
-      { key: 'Reporting', value: 'Weekly Sentiment Analysis' },
-      { key: 'Growth', value: 'Organic & Paid Integration' }
-    ],
-    deliverables: [
-      { title: 'Competitor Brand Sentiment Audit', desc: 'Thorough landscape evaluation of competitors, keyword engagement gaps, and messaging style guides.' },
-      { title: 'Comprehensive Content Pillar Blueprint', desc: 'A multi-tier guide mapping your themes directly to viral hooks and structural platform trends.' },
-      { title: 'Custom Assets & Graphics Creation', desc: 'Bespoke high-quality graphics, branded templates, and motion video assets tailored for engagement.' },
-      { title: 'Active Community Outreach System', desc: 'Coordinated proactive messaging and engagement strategies with developers and wellness personas.' },
-      { title: 'Monthly Insights Pipeline', desc: 'Detailed tracking dashboards breaking down conversion paths, follower expansion, and real ROI.' }
-    ],
-    caseStudy: {
-      clientName: 'EarthSync Wellness',
-      logo: '/projects/earthsync.webp',
-      summary: 'Cultivated a highly engaged spatial community around modern lifestyle grounding and wellness routines.',
-      metrics: [
-        { label: 'Organic Engagement', value: '+210%' },
-        { label: 'Viral Impressions', value: '1.2M+' },
-        { label: 'Brand Trust Score', value: '+85%' }
-      ],
-      challenge: 'Struggled to gain organic traction in the saturated fitness market, relying solely on expensive paid search ads.',
-      solution: 'Launched micro-narrative video series showcasing grounding products in real-world scenarios, paired with an active developer community outreach plan.',
-      link: '/projects'
-    },
-    process: [
-      { step: '01', title: 'Audit', desc: 'Analyzing your current social presence and competitors.' },
-      { step: '02', title: 'Strategy', desc: 'Defining content pillars and channel priorities.' },
-      { step: '03', title: 'Creation', desc: 'Producing high-quality visuals and storytelling copy.' },
-      { step: '04', title: 'Growth', desc: 'Daily engagement and performance scaling.' }
-    ],
-    blogs: [],
-    advancements: [
-      'AI-driven sentiment analysis',
-      'Cross-platform audience retargeting',
-      'Automated social listening pipelines',
-      'A/B tested viral content hooks'
-    ],
-    relatedLinks: [
-      { title: 'Brand Identity & Strategy', path: '/services/branding' },
-      { title: 'Digital Advertising', path: '/services/digital-advertising' }
-    ],
-    faqs: [
-      {
-        question: 'What channels do you specialize in for B2B and B2C brands?',
-        answer: 'We customize platforms to match consumer behavior. For B2C brands we focus heavily on high-engagement visual hooks across Instagram and TikTok. For complex B2B enterprises we build authoritative thought leadership scripts on LinkedIn.'
-      },
-      {
-        question: 'How do you define organic brand voice guidelines?',
-        answer: 'We hold discovery sessions to map your target audience personas. We then define structured content pillars, visual assets guides, brand sentiment responses, and vocabulary sheets to align all content under a unified brand tone.'
-      },
-      {
-        question: 'Do you provide full video scripting and creative editing?',
-        answer: 'Yes. Our multidisciplinary team handles the full content lifecycle, including professional storyboarding, scripts, custom transitions, voiceovers, and post-production scaling optimized for modern attention spans.'
-      },
-      {
-        question: 'How do you measure campaign success and organic growth?',
-        answer: 'We focus on valuable engagement metrics (shares, saves, direct comments) and brand traffic growth over vanity metrics. You receive a monthly data pipeline illustrating lead generation and customer attribution.'
-      }
-    ]
-  },
   'seo': {
     title: 'SEO & Performance Marketing',
     category: 'Growth',
@@ -242,7 +156,7 @@ const servicesData = {
     ],
     relatedLinks: [
       { title: 'Web Design & Development', path: '/services/web-design' },
-      { title: 'Digital Advertising', path: '/services/digital-advertising' }
+      { title: 'Custom Software Development', path: '/services/software-development' }
     ],
     faqs: [
       {
@@ -328,7 +242,7 @@ const servicesData = {
     ],
     relatedLinks: [
       { title: 'Web Design & Development', path: '/services/web-design' },
-      { title: 'Social Media Marketing', path: '/services/social-media' }
+      { title: 'Custom Software Development', path: '/services/software-development' }
     ],
     faqs: [
       {
@@ -435,214 +349,6 @@ const servicesData = {
       }
     ]
   },
-  'digital-advertising': {
-    title: 'Digital Advertising',
-    category: 'Growth',
-    tagline: 'Maximize ROI with precision-targeted ad campaigns.',
-    heroImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1600&q=80',
-    intro: 'Stop wasting budget on ads that don\'t convert. Our digital advertising team creates high-converting campaigns across Google, Meta, TikTok, and LinkedIn. We constantly A/B test creatives and refine audiences to ensure every dollar you spend generates measurable return. We use advanced machine-learning algorithms to predict high-performing segments before you even spend a dollar.',
-    features: [
-      {
-        title: 'PPC Campaigns',
-        desc: 'Google Ads management focusing on high-intent search queries.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
-      },
-      {
-        title: 'Social Ads',
-        desc: 'Engaging video and image ads on Meta, Instagram, and TikTok.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
-      },
-      {
-        title: 'Conversion Optimization',
-        desc: 'Landing page design and split testing to maximize ad performance.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
-      }
-    ],
-    technicalSpecs: [
-      { key: 'Platforms', value: 'Google, Meta, TikTok, LinkedIn' },
-      { key: 'Attribution', value: 'Multi-Touch, First-Click' },
-      { key: 'Pixels', value: 'CAPI, Pixel, GTM' },
-      { key: 'Creatives', value: 'Dynamic, A/B Tested' },
-      { key: 'Optimization', value: 'LTV-Based Bidding' }
-    ],
-    deliverables: [
-      { title: 'High-Resolution Visual Creative Packs', desc: 'Bespoke high-converting design layouts and custom video cuts optimized strictly to platform algorithms.' },
-      { title: 'Conversions API (CAPI) Pixel Setup', desc: 'Advanced server-to-server connection bypassing ad-blockers and capturing 100% accurate buyer event mapping.' },
-      { title: 'Rigorous Structured A/B Pipelines', desc: 'Weekly testing schedules checking copy variations, benefit highlights, and targeted hooks.' },
-      { title: 'Targeted Lead Magnet Funnel Design', desc: 'Frictionless, fully-responsive lead capture forms and conversion-ready landing designs.' },
-      { title: 'LTV-Based Scaling Map', desc: 'Precise financial models displaying how to optimize budgets cleanly as customer acquisition costs scale.' }
-    ],
-    caseStudy: {
-      clientName: 'TechVault Enterprise',
-      logo: '/projects/crown.webp',
-      summary: 'Scaled search and native ad campaigns targeting enterprise data managers.',
-      metrics: [
-        { label: 'Cost-Per-Acquisition', value: '-45%' },
-        { label: 'Return On Ad Spend', value: '4.8x' },
-        { label: 'Qualified Lead Vol', value: '+300%' }
-      ],
-      challenge: 'Inefficient keyword targeting led to high ad costs with unqualified consumer clicks instead of high-value business leads.',
-      solution: 'Built precision-targeted LinkedIn and Meta ad structures coupled with server-side Conversions API (CAPI) tracking to feed absolute attribution models.',
-      link: '/projects'
-    },
-    process: [
-      { step: '01', title: 'Targeting', desc: 'Defining granular audience segments.' },
-      { step: '02', title: 'Creatives', desc: 'Developing high-impact visual and copy assets.' },
-      { step: '03', title: 'Testing', desc: 'Small-scale tests to identify winning patterns.' },
-      { step: '04', title: 'Scaling', desc: 'Increasing budget on high-performing segments.' }
-    ],
-    blogs: [],
-    advancements: [
-      'Machine-learning bid optimization',
-      'Dynamic creative testing (DCT)',
-      'Advanced pixel tracking & server-side API',
-      'Multi-touch attribution modeling'
-    ],
-    relatedLinks: [
-      { title: 'SEO & Performance Marketing', path: '/services/seo' },
-      { title: 'Social Media Marketing', path: '/services/social-media' }
-    ],
-    faqs: [
-      {
-        question: 'How do you prevent client budgets from being wasted on cold ads?',
-        answer: 'We enforce strict dynamic A/B creative testing (DCT) with low testing budgets, analyzing initial engagement before scaling up budgets on verified high-ROI ad groups.'
-      },
-      {
-        question: 'What is the Conversions API (CAPI) and why is it mandatory?',
-        answer: 'Traditional browser pixels are blocked by modern browsers (iOS 14+, ad blockers). CAPI sends conversion events directly from our servers to platforms (Meta/Google), restoring complete conversion tracking accuracy.'
-      },
-      {
-        question: 'Do you write and produce the visual assets for the ad groups?',
-        answer: 'Yes, we design all ad assets, including custom conversion hooks, responsive vector layout graphics, dynamic video cuts, and target-audience-centric copywriting.'
-      },
-      {
-        question: 'What metrics do you prioritize in monthly ad reports?',
-        answer: 'We focus strictly on business growth numbers: Cost-Per-Acquisition (CPA), Return On Ad Spend (ROAS), and final Marketing Qualified Leads (MQL).'
-      }
-    ]
-  },
-  'graphic-design': {
-    title: 'Graphic Design Services',
-    category: 'Creative',
-    tagline: 'Visual storytelling that makes your brand impossible to ignore.',
-    heroImage: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1600&q=80',
-    intro: 'Great design is the silent ambassador of your brand. At HanovaDevs, we don\'t just create graphics — we engineer visual systems that communicate your brand\'s DNA at every touchpoint. From premium logo marks and business identity kits to eye-catching social media posts, packaging designs, apparel graphics, and large-format marketing collateral, our design studio delivers production-ready assets that feel alive and demand attention. Every pixel is intentional, every composition is strategically crafted, and every deliverable is print-ready and digital-optimized from day one.',
-    gallery: [
-      {
-        title: 'Aether AI Identity',
-        category: 'Logo Design',
-        image: '/projects/design_logo.webp',
-        desc: 'A premium minimalist geometric logo mark and branding system developed for a next-generation AI platform.'
-      },
-      {
-        title: 'Cypher Exhibition Poster',
-        category: 'Poster Design',
-        image: '/projects/design_poster.webp',
-        desc: 'A high-impact Swiss-punk fusion design poster highlighting spatial typography and neon color contrasts.'
-      },
-      {
-        title: 'Bloom Botanical Packaging',
-        category: 'Packaging Design',
-        image: '/projects/design_packaging.webp',
-        desc: 'Premium sustainable amber glass cosmetics bottle labeling with minimalist botanical illustration line art.'
-      }
-    ],
-    features: [
-      {
-        title: 'Logo & Brand Identity',
-        desc: 'Custom logo marks, wordmarks, monograms, and complete brand identity kits with usage guidelines.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-      },
-      {
-        title: 'Marketing Collateral',
-        desc: 'Posters, flyers, social media graphics, business cards, infographics, and presentation decks.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
-      },
-      {
-        title: 'Packaging & Apparel',
-        desc: 'Product packaging, label design, T-shirt graphics, merchandise mockups, and retail-ready assets.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
-      }
-    ],
-    technicalSpecs: [
-      { key: 'Design Tools', value: 'Adobe Illustrator, Photoshop, InDesign' },
-      { key: 'Prototyping', value: 'Figma, Adobe XD' },
-      { key: 'Motion', value: 'After Effects, Lottie' },
-      { key: 'File Formats', value: 'AI, EPS, SVG, PDF, PNG, PSD' },
-      { key: 'Print Standards', value: 'CMYK, 300 DPI, Bleed-Ready' }
-    ],
-    deliverables: [
-      { title: 'Complete Logo Identity Suite', desc: 'Primary logo, secondary marks, icon variations, monochrome versions, and a comprehensive brand guidelines document covering spacing, sizing, and usage rules.' },
-      { title: 'Social Media Asset Library', desc: 'Custom-designed templates for Instagram posts, stories, LinkedIn banners, Facebook covers, and TikTok thumbnails — all sized and exported for immediate publishing.' },
-      { title: 'Print-Ready Marketing Kit', desc: 'Professional posters, flyers, brochures, business cards, letterheads, and presentation decks formatted to CMYK print standards with proper bleed and crop marks.' },
-      { title: 'Product Packaging & Label Design', desc: 'Retail-quality packaging dielines, label artwork, and unboxing presentation designs with photorealistic 3D mockup renders for stakeholder review.' },
-      { title: 'Apparel & Merchandise Graphics', desc: 'High-resolution T-shirt prints, hoodie graphics, cap embroidery files, and promotional merchandise designs with garment-specific color separations.' }
-    ],
-    caseStudy: {
-      clientName: 'Bloom Botanicals',
-      logo: '/projects/crown.webp',
-      summary: 'Created a complete visual identity system for a premium plant-based wellness brand launch.',
-      metrics: [
-        { label: 'Brand Recognition', value: '+185%' },
-        { label: 'Retail Shelf Standout', value: 'Top 3' },
-        { label: 'Social Engagement', value: '+240%' }
-      ],
-      challenge: 'Generic templated packaging failed to differentiate products on crowded retail shelves, while inconsistent social media graphics diluted the brand message.',
-      solution: 'Engineered a cohesive botanical illustration system spanning logo, packaging, social templates, and in-store signage — creating instant brand recognition and premium shelf appeal.',
-      link: '/projects'
-    },
-    process: [
-      { step: '01', title: 'Discovery', desc: 'Understanding your brand vision, audience, and competitive landscape.' },
-      { step: '02', title: 'Concepts', desc: 'Exploring multiple creative directions with mood boards and sketches.' },
-      { step: '03', title: 'Refinement', desc: 'Iterating on the chosen direction with pixel-perfect precision.' },
-      { step: '04', title: 'Delivery', desc: 'Exporting production-ready files across all required formats and sizes.' }
-    ],
-    blogs: [],
-    advancements: [
-      'AI-assisted generative design exploration',
-      'Variable font systems for responsive brand identities',
-      '3D packaging visualization with photorealistic rendering',
-      'Motion design tokens for animated brand guidelines'
-    ],
-    relatedLinks: [
-      { title: 'Brand Identity & Strategy', path: '/services/branding' },
-      { title: 'Social Media Marketing', path: '/services/social-media' }
-    ],
-    faqs: [
-      {
-        question: 'How many logo concepts will I receive before we finalize the design?',
-        answer: 'We present 3 to 5 unique creative directions in the initial round, each fully explored with mock applications. After you select a direction, we provide 2 to 3 iterative refinement rounds to perfect every detail — from kerning and weight to colorway and icon proportions.'
-      },
-      {
-        question: 'What file formats do you deliver, and are they print-ready?',
-        answer: 'Every project includes vector-based source files (AI, EPS, SVG), raster exports (PNG, JPEG at 72 DPI for web and 300 DPI for print), and fully layered PSD/PDF files. Print assets are prepared in CMYK color mode with proper bleed margins and crop marks for commercial offset printing.'
-      },
-      {
-        question: 'Can you design packaging for products that require specific dieline templates?',
-        answer: 'Absolutely. We work with your manufacturer\'s dieline specifications or create custom dielines from scratch. Our packaging designs include 3D mockup renders so you can see exactly how the product will look on shelf before committing to production runs.'
-      },
-      {
-        question: 'Do you create social media content calendars alongside the design assets?',
-        answer: 'Yes — if paired with our Social Media Marketing service, we provide a complete content strategy with themed visual templates, caption copy, hashtag clusters, and a monthly publishing calendar. Standalone design clients receive ready-to-use template packs with editable Figma/Canva files for in-house content teams.'
-      },
-      {
-        question: 'What is included in a complete brand identity kit?',
-        answer: 'Our brand identity kits include primary and secondary logos, approved color palettes with HEX/RGB/CMYK codes, typography pairings with licensing guidance, iconography systems, business cards, email signatures, social media templates, letterhead and envelope designs, and a comprehensive brand guidelines PDF covering spacing rules, minimum sizing, and do\'s and don\'ts for usage.'
-      },
-      {
-        question: 'Can you design T-shirt graphics and apparel-ready artwork?',
-        answer: 'Yes, we specialize in high-resolution apparel graphics optimized for DTG (direct-to-garment), screen printing, and embroidery production. We provide color-separated files, placement guides, and garment mockups so you can visualize the final product before going to print.'
-      },
-      {
-        question: 'How do you ensure design consistency across all brand touchpoints?',
-        answer: 'We build unified design systems with shared color tokens, typographic scales, and component libraries stored in Figma. Every asset — from social posts to packaging — references these shared tokens, ensuring visual cohesion no matter where your brand appears.'
-      },
-      {
-        question: 'Do you offer infographic and data visualization design?',
-        answer: 'Yes, we create visually compelling infographics, report layouts, and data dashboards that transform complex information into clean, shareable visual stories. These are optimized for both digital sharing (social media, presentations) and high-resolution print output.'
-      }
-    ]
-  },
   'ai-automation': {
     title: 'AI Automation & Calling Assistants',
     category: 'Featured Niche',
@@ -742,168 +448,6 @@ const servicesData = {
       {
         question: 'What ROI can I expect from AI automation implementation?',
         answer: 'Our clients typically see 40% to 80% reduction in manual processing time, 2x to 5x faster task completion, and measurable error rate reduction within the first month. The specific ROI depends on your automation scope, but we provide a detailed impact projection during the initial audit phase and track actual performance metrics post-deployment to demonstrate real value.'
-      }
-    ]
-  },
-  'ugc-ads': {
-    title: 'UGC Ads & Marketing',
-    category: 'Marketing',
-    tagline: 'Crush ad fatigue and scale your ROAS with high-converting user-generated content.',
-    heroImage: '/projects/ugc_ad_skincare.webp',
-    intro: 'In the digital marketing landscape of 2026, traditional high-production commercial ads are no longer effective. Consumers have developed banner blindness, immediately scrolling past anything that feels like a corporate pitch. The solution is User-Generated Content (UGC) — raw, authentic, native-style videos created by real people that blend seamlessly into social feeds. At HanovaDevs, we treat UGC as a data-driven science. We script, cast, shoot, edit, and A/B test high-impact creatives engineered to capture attention in the first 3 seconds and drive immediate conversions.',
-    features: [
-      {
-        title: 'Creator Sourcing & Casting',
-        desc: 'Access to a curated network of creators matching your brand demographics.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><circle cx="9" cy="7" r="4" /><path d="M9 21v-2a4 4 0 0 0-4-4H1v2" /></svg>
-      },
-      {
-        title: 'Data-Driven Scripting',
-        desc: 'Every video is structured with psychological hooks, benefit callouts, and high-intent CTAs.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
-      },
-      {
-        title: 'A/B Hook & Angle Testing',
-        desc: 'We produce and test multiple hook variants to maximize CTR and lower customer acquisition costs.',
-        icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" /><path d="M12 8v8" /><path d="M8 12h8" /></svg>
-      }
-    ],
-    technicalSpecs: [
-      { key: 'Platforms', value: 'TikTok, Instagram Reels, YouTube Shorts' },
-      { key: 'Ad Formats', value: 'Spark Ads, Reels Ads, Dark Posts, Whitelisting' },
-      { key: 'Key Metrics', value: '3-Sec Hook Rate, Hold Rate, CTR, ROAS' },
-      { key: 'Deliverables', value: 'Raw Footage, Polished Edits, Hook Variations' },
-      { key: 'Testing Cycles', value: 'Rapid 7-Day Creative Iteration' }
-    ],
-    deliverables: [
-      { title: 'High-Converting UGC Video Creatives', desc: '6 fully-edited, high-converting social ad creatives ready for launch on TikTok, Meta, or YouTube.' },
-      { title: 'A/B Hook Variations', desc: '3 distinct hook variants for each concept to optimize the crucial first 3 seconds of watch time.' },
-      { title: 'Custom Scripting & Visual Storyboards', desc: 'Psychology-backed scripts written by conversion experts before filming begins.' },
-      { title: 'Professional Creator Sourcing', desc: 'Demographic-targeted casting, contract management, and creative direction.' },
-      { title: 'Post-Campaign Performance Analysis', desc: 'Detailed feedback loop analyzing hook rates, hold rates, and conversion metrics to guide the next batch.' }
-    ],
-    caseStudy: {
-      clientName: 'RAQS Clothing Brand',
-      logo: '/projects/raqs.webp',
-      summary: 'Engineered a pre-launch UGC campaign that accumulated over 15,000 email signups with a 4.2x projected return on ad spend.',
-      metrics: [
-        { label: 'Hook Rate (3s)', value: '+48.3%' },
-        { label: 'Cost Per Acquisition', value: '-34%' },
-        { label: 'Email Signups', value: '15,240+' }
-      ],
-      challenge: 'New clothing brand with zero organic presence needing to build trust and gather pre-launch subscribers on a tight budget.',
-      solution: 'Sourced 5 diverse fashion creators to film authentic "unboxing & styling" mirror vlogs. A/B tested 4 different visual hooks, routing winning creatives to high-intent sign-up landing pages.',
-      link: '/projects'
-    },
-    process: [
-      { step: '01', title: 'Concept', desc: 'Analyzing product benefits and writing high-impact scripts.' },
-      { step: '02', title: 'Casting', desc: 'Sourcing and briefing the perfect creators for your brand.' },
-      { step: '03', title: 'Production', desc: 'Filming, editing, and adding native social overlays.' },
-      { step: '04', title: 'Optimization', desc: 'Testing hooks and iterating based on real performance data.' }
-    ],
-    blogs: ['ugc-ads-conversion-science'],
-    advancements: [
-      '3-Second attention hook optimization',
-      'Creator whitelisting and dark post setups',
-      'Dynamic captions and native engagement overlays',
-      'Looming hook analysis for TikTok & Meta algorithms'
-    ],
-    relatedLinks: [
-      { title: 'Digital Advertising', path: '/services/digital-advertising' },
-      { title: 'Social Media Marketing', path: '/services/social-media' }
-    ],
-    faqs: [
-      {
-        question: 'What is UGC and why is it outperforming traditional studio ads?',
-        answer: 'User-Generated Content (UGC) is content created by everyday consumers or content creators that looks organic and native to the platform. Unlike traditional studio ads which trigger "ad fatigue" and skepticism, UGC blends into a user\'s social feed like a recommendation from a friend. This lowers the viewer\'s defensive guard, resulting in significantly higher click-through rates (CTR) and lower acquisition costs (CAC).'
-      },
-      {
-        question: 'Do we have to find the content creators ourselves?',
-        answer: 'No, we handle the entire process end-to-end. We cast, vet, contract, and manage creators from our curated network who match your target audience demographics. You simply approve the creators and the scripts before we begin production.'
-      },
-      {
-        question: 'Can we use these videos for organic posts as well as paid ads?',
-        answer: 'Absolutely. You receive full usage rights for all edited videos. You can post them organically on TikTok, Instagram, and YouTube, or use them as paid creatives. We can also set up "Creator Whitelisting" (Spark Ads) where we run ads directly through the creator\'s social handle for maximum authenticity.'
-      },
-      {
-        question: 'How many hook variations do you provide?',
-        answer: 'By default, we provide 3 distinct hook variations (the first 3 seconds) for each video concept. Since the hook is responsible for over 70% of an ad\'s performance, A/B testing different hooks allows us to find the absolute highest-performing creative angle without paying for entirely new videos.'
-      },
-      {
-        question: 'What is the typical turnaround time for a batch of UGC videos?',
-        answer: 'Our standard turnaround time is 14 days from script approval to final delivered assets. This includes creator sourcing, shipping products, filming, editing, and adding native text overlays/captions.'
-      },
-      {
-        question: 'How do you measure the success of a UGC ad campaign?',
-        answer: 'We analyze key diagnostic metrics: the 3-Second Hook Rate (what % of people watch past 3 seconds), the Hold Rate (average watch time), the Click-Through Rate (CTR), and ultimately, the Return on Ad Spend (ROAS). We use these insights to continuously optimize and script the next batch of creatives.'
-      }
-    ],
-    gallery: [
-      {
-        image: '/projects/ugc_ad_skincare.webp',
-        category: 'CREATOR SPARK AD',
-        title: 'SkinGlow Hydration Serum',
-        desc: 'Product review & demonstration by beauty creator. Focused on hydration, texture, and organic morning routine integration.',
-        creator: '@sophia_glows',
-        caption: 'My absolute holy grail for glass skin! ✨ If you want that dewy glow all day, this is your sign. #glassskin #skincaretips #glow',
-        likes: '12.4K',
-        comments: '342',
-        cta: 'Shop Now'
-      },
-      {
-        image: '/projects/ugc_ad_candle.webp',
-        category: 'BRAND SPARK AD',
-        title: 'Aura Home Soy Scented Candle',
-        desc: 'Aesthetic mood-setting video showcasing warm atmosphere, premium packaging, and crackling wood-wick sensory experience.',
-        creator: '@cozy_spaces',
-        caption: 'Sundays are for cozy vibes and fresh scents. 🕯️ The new Vanilla Amber candle is literally heaven in a jar. #cozyhome #candlelovers #relax',
-        likes: '8.9K',
-        comments: '184',
-        cta: 'Shop Now'
-      },
-      {
-        image: '/projects/ugc_ad_raqs.webp',
-        category: 'CREATOR SPARK AD',
-        title: 'RAQS Minimalist Streetwear',
-        desc: 'Mirror selfie styling guide featuring the upcoming organic cotton oversized tee. Highlights fit, fabric weight, and drape.',
-        creator: '@jaden_styles',
-        caption: 'RAQS is dropping soon and this heavyweight tee is a 10/10. Drape is perfect. Stay tuned for the launch! 🔥 #streetwear #minimalistfashion #raqs',
-        likes: '15.6K',
-        comments: '512',
-        cta: 'Learn More'
-      },
-      {
-        image: '/projects/ugc_ad_terrasol.webp',
-        category: 'BRAND SPARK AD',
-        title: 'Terra Sol Grounding Bed Sheet',
-        desc: 'Educational bedroom vlog explaining the science of grounding sheets, showing the silver conductive grid and sleep improvements.',
-        creator: '@mindful_living',
-        caption: 'Honestly, my sleep quality has been on another level since trying out this grounding sheet. Here is how it works. ⚡ #grounding #wellnessjourney #deepsleep',
-        likes: '7.2K',
-        comments: '219',
-        cta: 'Learn More'
-      },
-      {
-        image: '/projects/ugc_ad_tech.webp',
-        category: 'CREATOR SPARK AD',
-        title: 'AeroPods Pro Wireless Earbuds',
-        desc: 'Fast-paced street interview & active noise cancellation reaction video. Showcases style, fit, and audio clarity.',
-        creator: '@tech_reviews',
-        caption: 'Testing the ANC on these new AeroPods Pro in the middle of NYC traffic... I am actually shocked. 🤯 #techreview #earbuds #audiophile',
-        likes: '24.1K',
-        comments: '683',
-        cta: 'Shop Now'
-      },
-      {
-        image: '/projects/ugc_ad_fitness.webp',
-        category: 'CREATOR SPARK AD',
-        title: 'IronHydrate Insulated Water Bottle',
-        desc: 'Gym bag check & workout hydration vlog. Emphasizes temperature retention, leak-proof lid, and sleek design.',
-        creator: '@fit_life_clara',
-        caption: 'Cold water after a heavy leg day hits different. 💦 Keeping my water ice-cold for 24+ hours. Link in bio! #gymessential #fitnessmotivation #hydrate',
-        likes: '11.3K',
-        comments: '198',
-        cta: 'Shop Now'
       }
     ]
   },
@@ -1166,79 +710,29 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* Portfolio/Showcase Gallery Section (Optional) */}
+      {/* Portfolio/Showcase Gallery Section */}
       {service.gallery && (
         <section className="service-detail__gallery section">
           <div className="container">
             <div className="text-center reveal" style={{ marginBottom: '3.5rem' }}>
-              <span className="section-label">
-                {id === 'ugc-ads' ? 'UGC Ad Creative Examples' : 'Design Gallery'}
-              </span>
-              <h2>
-                {id === 'ugc-ads' ? (
-                  <>High-Converting <em>UGC Ad Showcase</em></>
-                ) : (
-                  <>Our <em>Creative Showcase</em></>
-                )}
-              </h2>
+              <span className="section-label">Design Gallery</span>
+              <h2>Our <em>Creative Showcase</em></h2>
               <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
-                {id === 'ugc-ads' 
-                  ? 'Take a look at some of our high-converting UGC ad creatives, designed to capture attention and drive conversions.'
-                  : 'Take a look at some of our recent logo design, branding systems, and premium packaging work.'
-                }
+                Take a look at some of our recent logo design, branding systems, and premium packaging work.
               </p>
             </div>
             
-            <div className={`service-detail__gallery-grid ${id === 'ugc-ads' ? 'ugc-gallery-grid' : ''}`}>
+            <div className="service-detail__gallery-grid">
               {service.gallery.map((item, i) => (
-                <div key={i} className={`service-detail__gallery-card reveal reveal-delay-${(i % 3) + 1} ${id === 'ugc-ads' ? 'ugc-gallery-card' : ''}`}>
-                  {id === 'ugc-ads' ? (
-                    <div className="ugc-phone-frame">
-                      <div className="ugc-phone-notch"></div>
-                      <div className="ugc-phone-screen">
-                        <img src={item.image} alt={item.title} className="ugc-phone-image" loading="lazy" />
-                        <div className="ugc-overlay-top">
-                          <span className={`ugc-ad-badge ${item.category.toLowerCase().includes('creator') ? 'ugc-creator-badge' : 'ugc-brand-badge'}`}>
-                            {item.category}
-                          </span>
-                        </div>
-                        <div className="ugc-overlay-right">
-                          <div className="ugc-action-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor" className="ugc-heart-icon"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            <span>{item.likes}</span>
-                          </div>
-                          <div className="ugc-action-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
-                            <span>{item.comments}</span>
-                          </div>
-                          <div className="ugc-action-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
-                            <span>Share</span>
-                          </div>
-                        </div>
-                        <div className="ugc-overlay-bottom">
-                          <span className="ugc-creator-handle">{item.creator}</span>
-                          <p className="ugc-caption">{item.caption}</p>
-                          <button className="ugc-cta-button">{item.cta} ›</button>
-                        </div>
-                      </div>
-                      <div className="ugc-phone-info-card">
-                        <h3>{item.title}</h3>
-                        <p>{item.desc}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="gallery-card__image-wrapper">
-                        <img src={item.image} alt={item.title} loading="lazy" />
-                        <span className="gallery-card__category">{item.category}</span>
-                      </div>
-                      <div className="gallery-card__info">
-                        <h3>{item.title}</h3>
-                        <p>{item.desc}</p>
-                      </div>
-                    </>
-                  )}
+                <div key={i} className={`service-detail__gallery-card reveal reveal-delay-${(i % 3) + 1}`}>
+                  <div className="gallery-card__image-wrapper">
+                    <img src={item.image} alt={item.title} loading="lazy" />
+                    <span className="gallery-card__category">{item.category}</span>
+                  </div>
+                  <div className="gallery-card__info">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>

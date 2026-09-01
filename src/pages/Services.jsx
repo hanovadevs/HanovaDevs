@@ -14,15 +14,6 @@ const services = [
     techStack: ['AI Voice Agents', 'Website Chatbots', 'AI Booking Assistants', 'GPT-4o / Claude 3.5', 'n8n / LangChain']
   },
   {
-    id: 'web-design',
-    title: 'Web Design & Development',
-    tagline: 'Fast, Responsive, Scalable',
-    desc: 'We build beautiful, high-performance websites that convert visitors into customers.',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
-    large: true,
-    techStack: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'Lighthouse']
-  },
-  {
     id: 'shopify-development',
     title: 'Shopify Store Development',
     tagline: 'E-commerce store setups & custom themes',
@@ -31,20 +22,13 @@ const services = [
     techStack: ['Shopify OS 2.0', 'Liquid', 'Checkout Customizer', 'Klaviyo', 'Recharge']
   },
   {
-    id: 'social-media',
-    title: 'Social Media Marketing',
-    tagline: 'Grow your brand organically',
-    desc: 'Engage your audience across every platform with content that resonates.',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-    techStack: ['Instagram', 'LinkedIn', 'TikTok', 'Buffer', 'Canva Pro']
-  },
-  {
-    id: 'ugc-ads',
-    title: 'UGC Ads & Marketing',
-    tagline: 'High-Converting User-Generated Content',
-    desc: 'Data-driven, native-style TikTok and Instagram Reel creatives designed to crush ad fatigue and scale your ROAS.',
-    image: '/projects/ugc_ad_skincare.webp',
-    techStack: ['TikTok Spark Ads', 'Meta Reels', 'Creator Sourcing', 'Ad Scripting', 'A/B Hook Testing']
+    id: 'software-development',
+    title: 'Custom Software Development',
+    tagline: 'Apps, tools, automation',
+    desc: 'Bespoke software solutions designed to solve your toughest business challenges.',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
+    large: true,
+    techStack: ['Node.js', 'Python', 'Rust', 'PostgreSQL', 'Docker', 'AWS']
   },
   {
     id: 'seo',
@@ -55,38 +39,21 @@ const services = [
     techStack: ['GA4', 'GSC', 'SEMrush', 'Schema JSON-LD', 'Ahrefs']
   },
   {
+    id: 'web-design',
+    title: 'Web Design & Development',
+    tagline: 'Fast, Responsive, Scalable',
+    desc: 'We build beautiful, high-performance websites that convert visitors into customers.',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
+    large: true,
+    techStack: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'Lighthouse']
+  },
+  {
     id: 'branding',
     title: 'Brand Identity & Strategy',
     tagline: 'Logos, positioning, messaging',
     desc: 'Craft a brand identity that stands out and tells your story with clarity.',
     image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80',
-    large: true,
     techStack: ['Logo Design', 'Typography', 'Style Guides', 'Brand Voice', 'Asset Kits']
-  },
-  {
-    id: 'software-development',
-    title: 'Custom Software Development',
-    tagline: 'Apps, tools, automation',
-    desc: 'Bespoke software solutions designed to solve your toughest business challenges.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
-    techStack: ['Node.js', 'Python', 'Rust', 'PostgreSQL', 'Docker', 'AWS']
-  },
-  {
-    id: 'digital-advertising',
-    title: 'Digital Advertising',
-    tagline: 'Facebook, Google, TikTok Ads',
-    desc: 'Precision-targeted ad campaigns that maximize ROI across all platforms.',
-    image: 'https://images.unsplash.com/photo-1542744173-05336fcc7ad4?w=800&q=80',
-    techStack: ['Google Ads', 'Meta Ads', 'TikTok Ads', 'Conversations API', 'GTM']
-  },
-  {
-    id: 'graphic-design',
-    title: 'Graphic Design Services',
-    tagline: 'Logos, Packaging, Marketing Assets',
-    desc: 'Stunning visual identities and print-ready designs that make your brand unforgettable.',
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80',
-    large: true,
-    techStack: ['Adobe Suite', 'Figma', 'Illustrator', 'Photoshop', 'After Effects']
   },
 ]
 
@@ -95,7 +62,7 @@ export default function Services() {
     <div className="services-page">
       <SEO 
         title="Our Services — HanovaDevs"
-        description="Explore HanovaDevs' premium digital services, from web design and scalable custom software to enterprise-grade SEO and social media marketing."
+        description="Explore HanovaDevs' premium digital services, from web design and scalable custom software to enterprise-grade SEO and AI automation."
         url="/services"
         breadcrumbs={[
           { name: 'Home', item: '/' },

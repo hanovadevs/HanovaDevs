@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useId } from 'react'
+import { Link } from 'react-router-dom'
 import { saveAppointment, saveChatTranscript, getAppointments, getChatbotQA, getChatbotConfig } from '../lib/supabaseClient'
 import './AIChatbot.css'
 
@@ -25,17 +26,17 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
     setBookingData(prev => ({ ...prev, email: userText.trim() }))
     setBookingState('collecting_service')
     return {
-      content: "Thank you! What service area are you interested in? (e.g. AI Automation, Web Design, Shopify Store Setup, UGC Ads, Branding, SEO)"
+      content: "Thank you! What service area are you interested in? (e.g. AI Automation, Web Design, Shopify Store Setup, Custom Software, Branding, SEO)"
     }
   }
 
   if (bookingState === 'collecting_service') {
     let matchedService = 'ai-automation'
-    if (text.includes('design') || text.includes('web') || text.includes('dev')) matchedService = 'web-design'
+    if (text.includes('software') || text.includes('app') || text.includes('tool')) matchedService = 'software-development'
+    else if (text.includes('web') || text.includes('website')) matchedService = 'web-design'
     else if (text.includes('shopify') || text.includes('store') || text.includes('commerce')) matchedService = 'shopify-development'
-    else if (text.includes('ugc') || text.includes('ad') || text.includes('marketing')) matchedService = 'ugc-ads'
-    else if (text.includes('brand') || text.includes('logo')) matchedService = 'branding'
-    else if (text.includes('seo') || text.includes('search')) matchedService = 'seo'
+    else if (text.includes('brand') || text.includes('logo') || text.includes('design')) matchedService = 'branding'
+    else if (text.includes('seo') || text.includes('search') || text.includes('marketing')) matchedService = 'seo'
 
     setBookingData(prev => ({ ...prev, service: matchedService }))
     setBookingState('collecting_timezone')
@@ -790,6 +791,9 @@ export default function AIChatbot() {
                   <polygon points="22 2 15 22 11 13 2 9 22 2" />
                 </svg>
               </button>
+            </div>
+            <div className="ai-chatbot-legal-notice">
+              Inquiries processed to assist requests. <Link to="/privacy-policy">Privacy Policy</Link>
             </div>
           </div>
         </div>
