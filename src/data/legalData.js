@@ -9,32 +9,36 @@
  */
 
 export const legalMetadata = {
-  lastUpdated: 'September 1, 2026',
-  effectiveDate: 'September 1, 2026',
+  lastUpdated: 'September 2, 2026',
+  effectiveDate: 'September 2, 2026',
   companyName: 'HanovaDevs',
   websiteUrl: 'https://hanovadevs.com',
   contactEmail: 'hanovadevs@gmail.com',
-  location: 'Global / Remote Operations (Headquartered in Lahore, Pakistan)'
+  location: '100% Remote-First Digital Studio (Global Operations • Hub: Lahore, Pakistan)'
 }
 
 export const privacyPolicyData = {
   title: 'Privacy Policy',
   eyebrow: 'LEGAL • PRIVACY',
-  subtitle: 'How HanovaDevs collects, uses, protects, and manages information when you interact with our website, digital tools, and engineering services.',
+  subtitle: 'How HanovaDevs collects, uses, protects, and manages information across our 100% remote digital agency operations and cloud platforms.',
   badge: 'Your privacy matters',
   sections: [
     {
       id: 'introduction',
       number: '01',
-      title: 'Introduction',
+      title: 'Introduction & 100% Remote Operations',
       content: [
         {
           type: 'paragraph',
-          text: 'Welcome to HanovaDevs ("we," "us," "our," or "HanovaDevs"). We operate as a digital agency and custom software studio specializing in AI automation systems, conversational agents, custom software engineering, web application development, SEO, and digital consulting.'
+          text: 'Welcome to HanovaDevs ("we," "us," "our," or "HanovaDevs"). We operate as a 100% remote-first digital agency and custom software studio specializing in AI automation systems, conversational agents, custom software engineering, web application development, SEO, and digital consulting.'
         },
         {
           type: 'paragraph',
-          text: 'This Privacy Policy explains how we collect, use, disclose, and safeguard personal and business information when you visit our website (https://hanovadevs.com), use our interactive tools (such as our Project Estimator and AI Assistant Aria), schedule consultations, or engage our team for digital services.'
+          text: 'HanovaDevs operates entirely through digital and cloud-based infrastructure without physical walk-in office locations. All client consultations, discovery sessions, engineering collaboration, and support services are delivered remotely.'
+        },
+        {
+          type: 'paragraph',
+          text: 'This Privacy Policy explains how we collect, use, disclose, and safeguard personal and business information when you visit our website (https://hanovadevs.com), use our interactive tools (such as our Project Estimator and AI Assistant Aria), schedule remote video/voice consultations, or engage our team for digital engineering services.'
         },
         {
           type: 'callout',
@@ -61,10 +65,10 @@ export const privacyPolicyData = {
           items: [
             'Contact & Identification Details: Name, email address, phone number, company or brand name, and job title when you submit an inquiry or book a discovery meeting.',
             'Project Scope & Budget Information: Project goals, technical requirements, target delivery timelines, selected feature sets, and estimated investment ranges provided via our Contact Form or Project Estimator.',
-            'Consultation & Booking Details: Preferred meeting dates, times, timezones, and call agendas submitted through our consultation scheduler.',
+            'Consultation & Remote Scheduling Details: Preferred meeting dates, times, timezones, and call agendas submitted through our digital consultation scheduler (for remote Google Meet or Zoom sessions).',
             'AI Assistant Interactions: Chat messages, inquiry prompts, and contact details shared during conversations with our website AI assistant (Aria).',
             'Newsletter Subscriptions: Email address submitted to receive engineering insights, tech case studies, and studio news.',
-            'Client Communications: Notes, feedback, project files, and specifications shared during project discovery and active engineering sprints.'
+            'Client Communications: Notes, feedback, project files, and specifications shared during remote discovery and active engineering sprints.'
           ]
         },
         {
@@ -88,12 +92,12 @@ export const privacyPolicyData = {
       content: [
         {
           type: 'paragraph',
-          text: 'We utilize collected information solely for legitimate business operations and service delivery purposes, including:'
+          text: 'We utilize collected information solely for legitimate business operations and digital service delivery purposes, including:'
         },
         {
           type: 'list',
           items: [
-            'Responding to inquiries, project proposals, and scheduling technical discovery sessions.',
+            'Responding to inquiries, project proposals, and scheduling remote technical discovery sessions.',
             'Scoping, architecting, developing, and deploying custom software and automation solutions.',
             'Operating and refining our interactive cost calculators, AI assistant responses, and site navigation.',
             'Delivering technical newsletters, case study releases, and agency announcements (with full unsubscribe controls).',
@@ -156,7 +160,7 @@ export const privacyPolicyData = {
             'Cloud Hosting & Edge CDN: Vercel Inc. (Global edge infrastructure, serverless compute, and performance telemetry).',
             'Database & Backend Storage: Supabase Inc. (Encrypted database management for lead triage and booking records).',
             'Communication & Email Dispatch: Formsubmit / Nodemailer / SMTP gateways for contact routing and inquiry dispatch.',
-            'Calendar & Scheduling: Google Calendar API links for generating user-directed calendar invitation events.'
+            'Calendar & Scheduling: Google Calendar API links for generating user-directed remote calendar invitation events.'
           ]
         }
       ]
@@ -187,7 +191,7 @@ export const privacyPolicyData = {
       content: [
         {
           type: 'paragraph',
-          text: 'We implement industry-standard administrative, technical, and physical safeguards to prevent unauthorized access, disclosure, alteration, or destruction of information.'
+          text: 'We implement industry-standard administrative, technical, and cybersecurity safeguards to prevent unauthorized access, disclosure, alteration, or destruction of information across our remote cloud infrastructure.'
         },
         {
           type: 'list',
@@ -202,11 +206,11 @@ export const privacyPolicyData = {
     {
       id: 'international-transfers',
       number: '09',
-      title: 'International Data Processing',
+      title: 'International Data Processing & Remote Operations',
       content: [
         {
           type: 'paragraph',
-          text: 'HanovaDevs serves clients globally across North America, Europe, Asia, and Australia. Information we collect may be processed and stored on cloud servers distributed worldwide.'
+          text: 'HanovaDevs operates as a global remote-first team serving clients across North America, Europe, Asia, and Australia. Information we collect may be processed and stored on cloud servers distributed worldwide.'
         },
         {
           type: 'paragraph',
@@ -279,13 +283,14 @@ export const privacyPolicyData = {
       content: [
         {
           type: 'paragraph',
-          text: 'If you have questions, feedback, or privacy-related requests regarding this Privacy Policy or our data management practices, please contact our team:'
+          text: 'If you have questions, feedback, or privacy-related requests regarding this Privacy Policy or our remote data management practices, please contact our team:'
         },
         {
           type: 'list',
           items: [
             'Email: hanovadevs@gmail.com',
             'Website: https://hanovadevs.com',
+            'Operations: 100% Remote-First Digital Studio & Software Agency',
             'Response Commitment: All inquiries receive a reply within 24–48 business hours.'
           ]
         }
@@ -297,7 +302,7 @@ export const privacyPolicyData = {
 export const termsOfServiceData = {
   title: 'Terms of Service',
   eyebrow: 'LEGAL • TERMS',
-  subtitle: 'The terms governing access to HanovaDevs, our website, custom software engineering, digital services, and client engagements.',
+  subtitle: 'The terms governing access to HanovaDevs, our website, 100% remote software engineering, digital services, and client engagements.',
   badge: 'Clear & transparent terms',
   sections: [
     {
@@ -358,8 +363,48 @@ export const termsOfServiceData = {
       ]
     },
     {
-      id: 'proposals-quotes-and-estimates',
+      id: 'remote-operations-and-employment',
       number: '04',
+      title: '100% Remote Operations, Digital Delivery & Remote Work Policy',
+      content: [
+        {
+          type: 'paragraph',
+          text: 'HanovaDevs operates exclusively as a 100% digital, remote-first agency and software studio. We do not operate physical walk-in office locations, on-site public branches, or in-person service centers.'
+        },
+        {
+          type: 'callout',
+          title: 'Remote-Only Client Collaboration',
+          text: 'All client consultations, discovery workshops, sprint demos, technical reviews, deliverable approvals, and communications are conducted digitally via secure remote channels (e.g., Google Meet, Zoom, Slack, email, and collaborative staging portals). HanovaDevs does not provide on-site personnel or in-person visits.'
+        },
+        {
+          type: 'heading',
+          text: 'A. Remote Service Delivery & Project Management'
+        },
+        {
+          type: 'list',
+          items: [
+            'Digital Sprints: Engineering sprints, deployments, and QA testing are executed entirely within cloud infrastructure and remote development pipelines.',
+            'No On-Site Staffing: We do not dispatch personnel for on-premises client staffing, physical hardware maintenance, or physical office installations.',
+            'Global Timezone Alignment: Our distributed team supports clients across North America, Europe, Asia, and Australasia through coordinated meeting slots and transparent asynchronous workflows.'
+          ]
+        },
+        {
+          type: 'heading',
+          text: 'B. 100% Remote Employment & Recruitment Policy'
+        },
+        {
+          type: 'list',
+          items: [
+            'Strictly Remote Jobs: All employment opportunities, engineering roles, design positions, and contractor engagements offered by HanovaDevs are strictly 100% remote jobs. We do not offer or require on-site employment or physical office presence.',
+            'Legitimate Hiring Channels: All HanovaDevs job openings, candidate evaluations, technical assessments, and employment contracts are administered exclusively through official remote digital channels and verified @hanovadevs.com / hanovadevs@gmail.com communications.',
+            'Recruitment Fraud Protection: HanovaDevs will never ask candidates for fees, equipment purchases, or in-person visits to unverified physical locations.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'proposals-quotes-and-estimates',
+      number: '05',
       title: 'Proposals, Quotations & Project Estimator Disclaimer',
       content: [
         {
@@ -378,7 +423,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'payments-and-invoicing',
-      number: '05',
+      number: '06',
       title: 'Payments, Invoicing & Retainers',
       content: [
         {
@@ -397,7 +442,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'client-responsibilities',
-      number: '06',
+      number: '07',
       title: 'Client Responsibilities & Project Timelines',
       content: [
         {
@@ -416,7 +461,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'scope-changes-and-revisions',
-      number: '07',
+      number: '08',
       title: 'Project Scope, Change Requests & Revisions',
       content: [
         {
@@ -434,7 +479,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'intellectual-property-rights',
-      number: '08',
+      number: '09',
       title: 'Intellectual Property Rights',
       content: [
         {
@@ -454,7 +499,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'portfolio-and-case-studies',
-      number: '09',
+      number: '10',
       title: 'Portfolio & Case Study Showcase',
       content: [
         {
@@ -465,7 +510,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'service-disclaimers-and-outcomes',
-      number: '10',
+      number: '11',
       title: 'Service Disclaimers & No Guarantee of Specific Business Results',
       content: [
         {
@@ -485,7 +530,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'third-party-infrastructure',
-      number: '11',
+      number: '12',
       title: 'Hosting, Domains & Third-Party Infrastructure',
       content: [
         {
@@ -496,7 +541,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'confidentiality',
-      number: '12',
+      number: '13',
       title: 'Confidentiality',
       content: [
         {
@@ -507,7 +552,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'limitation-of-liability',
-      number: '13',
+      number: '14',
       title: 'Limitation of Liability',
       content: [
         {
@@ -522,7 +567,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'indemnification',
-      number: '14',
+      number: '15',
       title: 'Indemnification',
       content: [
         {
@@ -533,7 +578,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'suspension-and-termination',
-      number: '15',
+      number: '16',
       title: 'Suspension & Termination',
       content: [
         {
@@ -544,7 +589,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'governing-law-and-disputes',
-      number: '16',
+      number: '17',
       title: 'Governing Law & Dispute Resolution',
       content: [
         {
@@ -559,7 +604,7 @@ export const termsOfServiceData = {
     },
     {
       id: 'severability-and-entire-agreement',
-      number: '17',
+      number: '18',
       title: 'Severability & Entire Agreement',
       content: [
         {
@@ -570,19 +615,19 @@ export const termsOfServiceData = {
     },
     {
       id: 'contact-information',
-      number: '18',
+      number: '19',
       title: 'Contact Information',
       content: [
         {
           type: 'paragraph',
-          text: 'For questions regarding these Terms of Service or to request a custom Master Services Agreement (MSA), please contact our legal and partnerships team:'
+          text: 'For questions regarding these Terms of Service, remote operations, or to request a custom Master Services Agreement (MSA), please contact our legal and partnerships team:'
         },
         {
           type: 'list',
           items: [
             'Email: hanovadevs@gmail.com',
             'Website: https://hanovadevs.com',
-            'Entity: HanovaDevs Digital Agency & Custom Software Studio'
+            'Operations: 100% Remote-First Digital Agency & Custom Software Studio'
           ]
         }
       ]

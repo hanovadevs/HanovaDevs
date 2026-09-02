@@ -140,6 +140,10 @@ function AnimatedCounter({ value, suffix }) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setCount(value)
+      return
+    }
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !animated.current) {
         animated.current = true
@@ -289,11 +293,11 @@ export default function OmnaiDetail() {
             <div className="od-hero__text reveal">
               <div className="od-hero__badge">
                 <span className="od-hero__pulse" />
-                In Active Development
+                In-House Product • Powered by HanovaDevs
               </div>
               <h1>The browser, <span className="od-gradient">reimagined</span> with AI.</h1>
               <p className="od-hero__tagline">
-                Every major browser was built before AI existed. They bolt chatbots onto old architectures as an afterthought. Omnai is different — AI isn't a feature, it's the foundation.
+                Omnai Browser is a proprietary in-house product engineered and powered by HanovaDevs. Every major browser was built before AI existed. They bolt chatbots onto old architectures as an afterthought. Omnai is different — AI isn't a feature, it's the foundation.
               </p>
               <p className="od-hero__sub">
                 Chain AI tools into automated pipelines. Remember your research across sessions. Get real-time privacy intelligence. Debug code with AI-powered dev tools. All in one browser.
@@ -621,7 +625,7 @@ export default function OmnaiDetail() {
         <div className="container text-center">
           <img src="/products/omnai/logo.webp" alt="" className="od-cta__logo reveal-scale" />
           <h2 className="reveal reveal-delay-1">Ready to browse <span className="od-gradient">intelligently?</span></h2>
-          <p className="reveal reveal-delay-2">The features on this page are not moonshots. They are gaps that every user feels every day. We're building them one at a time.</p>
+          <p className="reveal reveal-delay-2">An in-house innovation powered by HanovaDevs. We're building the next generation of AI-native web software.</p>
           <div className="od-cta__actions reveal reveal-delay-3">
             <Link to="/contact" className="btn btn-glow">Join the Waitlist</Link>
             <Link to="/products" className="od-cta__back">← Back to Products</Link>

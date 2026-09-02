@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: "What makes HanovaDevs a global leader in software engineering?",
-    answer: "We are an elite global team offering 100/100 Lighthouse performance baselines, complete client IP sovereignty, and decentralized parallel development pipelines. By housing a top-tier engineering lab and digital publication hub in Pakistan, we combine rapid execution, premium UI design systems, and advanced AI technologies to serve ambitious international brands."
+    answer: "We are an elite global team offering 100/100 Lighthouse performance baselines, complete client IP sovereignty, and decentralized remote development pipelines. Operating as a 100% remote-first engineering studio and digital innovation hub, we combine rapid execution, premium UI design systems, and advanced AI technologies to serve ambitious international brands worldwide."
   },
   {
     question: "Do you build custom websites or use templates?",

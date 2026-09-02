@@ -233,12 +233,12 @@ export default function EunoiaDetail() {
             <div className="ed-hero__text reveal">
               <div className="ed-hero__badge">
                 <span className="ed-hero__pulse" />
-                V1.0 Released
+                In-House Product • Powered by HanovaDevs
               </div>
               <img src="/products/eunoia/logo.webp" alt="Eunoia Logo" className="ed-hero__logo" />
               <h1>Your mind, <span className="ed-gradient">beautifully</span> organized.</h1>
               <p className="ed-hero__tagline">
-                A calm, local-first desktop companion combining planning, journaling, focus sessions, and a proactive AI assistant.
+                An in-house desktop productivity companion engineered and powered by HanovaDevs. Combining planning, journaling, focus sessions, and a proactive local AI assistant.
               </p>
               <p className="ed-hero__sub">
                 Windows &middot; macOS &middot; Linux &middot; Local Data Only
@@ -580,7 +580,7 @@ export default function EunoiaDetail() {
         <div className="container" style={{ textAlign: 'center' }}>
           <img src="/products/eunoia/logo.webp" alt="Eunoia" className="ed-cta__logo" />
           <h2>Ready to clear your mind?</h2>
-          <p>Get Eunoia today and take control of your daily routine. Available for Windows, macOS, and Linux.</p>
+          <p>An in-house innovation powered by HanovaDevs. Get Eunoia today and take control of your daily routine. Available for Windows, macOS, and Linux.</p>
           <div className="ed-cta__actions">
             <a href="https://drive.google.com/file/d/1Iw_OCgwdYqC1RniTpbyxdIj_ZSMi4X2o/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
             <Link to="/products" className="ed-cta__back">← Back to Products</Link>

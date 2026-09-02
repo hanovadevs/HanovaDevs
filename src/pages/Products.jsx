@@ -25,9 +25,9 @@ export default function Products() {
         <div className="cp-hero__bg" />
         <div className="container">
           <div className="cp-hero__content reveal">
-            <span className="cp-label">In-House Innovation</span>
-            <h1>Built by us, <br /><span className="cp-gradient">for the future.</span></h1>
-            <p>We build our own products to push the boundaries of what's possible with AI, local-first architectures, and modern design.</p>
+            <span className="cp-label">In-House Innovation • Powered by HanovaDevs</span>
+            <h1>Proprietary Products, <br /><span className="cp-gradient">Powered by HanovaDevs.</span></h1>
+            <p>Omnai Browser and Eunoia Desktop are our own in-house products engineered by HanovaDevs to push the boundaries of AI, local-first architectures, and modern digital productivity.</p>
           </div>
         </div>
       </section>
@@ -38,10 +38,13 @@ export default function Products() {
         <div className="container">
           <div className="cp-showcase__layout">
             <div className="cp-showcase__text reveal-left">
-              <div className="cp-badge cp-badge--omnai">In Active Development</div>
+              <div className="cp-badges-wrap">
+                <span className="cp-badge cp-badge--omnai">In Active Development</span>
+                <span className="cp-badge cp-badge--powered">⚡ Powered by HanovaDevs</span>
+              </div>
               <h2>Omnai Browser</h2>
               <p className="cp-showcase__desc">
-                A next-generation AI browser built for the modern web. Experience intelligent task orchestration, persistent memory across sessions, and robust privacy intelligence.
+                An in-house AI-native browser built and powered by HanovaDevs for the modern web. Experience intelligent task orchestration, persistent memory across sessions, and robust privacy intelligence.
               </p>
               <ul className="cp-showcase__highlights">
                 <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Native AI Pipeline Automation</li>
@@ -74,11 +77,14 @@ export default function Products() {
         <div className="container">
           <div className="cp-showcase__layout cp-showcase__layout--reverse">
             <div className="cp-showcase__text reveal-right">
-              <div className="cp-badge cp-badge--eunoia">V1.0 Released</div>
+              <div className="cp-badges-wrap">
+                <span className="cp-badge cp-badge--eunoia">V1.0 Released</span>
+                <span className="cp-badge cp-badge--powered">⚡ Powered by HanovaDevs</span>
+              </div>
               <img src="/products/eunoia/logo.webp" alt="Eunoia Logo" className="cp-logo-icon" />
               <h2>Eunoia Desktop</h2>
               <p className="cp-showcase__desc">
-                Your personal AI desktop assistant. A calming, local-first companion combining task planning, journaling, focus sessions, and proactive AI.
+                An in-house personal AI desktop assistant built and powered by HanovaDevs. A calming, local-first companion combining task planning, journaling, focus sessions, and proactive AI.
               </p>
               <ul className="cp-showcase__highlights">
                 <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Unified Planning & Diary</li>

@@ -93,17 +93,32 @@
 }
 
 /* Text */
+.cp-badges-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-sm);
+}
+
 .cp-badge {
-  display: inline-block; padding: 0.3rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 100px; font-size: 0.7rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.1em;
-  margin-bottom: var(--space-sm);
 }
 .cp-badge--omnai {
   background: rgba(79, 125, 249, 0.1); color: #00d4ff; border: 1px solid rgba(79, 125, 249, 0.2);
 }
 .cp-badge--eunoia {
   background: rgba(167, 139, 250, 0.1); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.2);
+}
+.cp-badge--powered {
+  background: rgba(20, 184, 166, 0.15);
+  color: var(--teal-light);
+  border: 1px solid rgba(20, 184, 166, 0.35);
 }
 
 .cp-logo-icon {

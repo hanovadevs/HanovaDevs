@@ -33,6 +33,7 @@ describe('Legal Pages System', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: /terms of service/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /acceptance of terms/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /100% remote operations, digital delivery & remote work policy/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /proposals, quotations & project estimator disclaimer/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /intellectual property rights/i })).toBeInTheDocument()
   })

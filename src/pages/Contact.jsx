@@ -97,22 +97,22 @@ export default function Contact() {
       durationMin = 45;
       title = "HanovaDevs Growth & UGC Strategy";
     }
-    
+
     const [hoursStr, minutesStr] = selectedTime.replace(' AM', '').replace(' PM', '').split(':');
     let hours = Number(hoursStr);
     const minutes = Number(minutesStr);
     const isPM = selectedTime.includes('PM');
     if (isPM && hours !== 12) hours += 12;
     if (!isPM && hours === 12) hours = 0;
-    
+
     const start = new Date(selectedDate);
     start.setHours(hours, minutes, 0);
-    
+
     const end = new Date(start);
     end.setMinutes(start.getMinutes() + durationMin);
-    
+
     const formatUTC = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    
+
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${formatUTC(start)}/${formatUTC(end)}&details=${encodeURIComponent('Meeting to discuss your digital project with HanovaDevs.')}&location=${encodeURIComponent('Google Meet / Video Call')}`;
   }
 
@@ -127,20 +127,20 @@ export default function Contact() {
       durationMin = 45;
       title = "HanovaDevs Growth & UGC Strategy";
     }
-    
+
     const [hoursStr, minutesStr] = selectedTime.replace(' AM', '').replace(' PM', '').split(':');
     let hours = Number(hoursStr);
     const minutes = Number(minutesStr);
     const isPM = selectedTime.includes('PM');
     if (isPM && hours !== 12) hours += 12;
     if (!isPM && hours === 12) hours = 0;
-    
+
     const start = new Date(selectedDate);
     start.setHours(hours, minutes, 0);
-    
+
     const end = new Date(start);
     end.setMinutes(start.getMinutes() + durationMin);
-    
+
     return `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=${encodeURIComponent(title)}&startdt=${start.toISOString()}&enddt=${end.toISOString()}&body=${encodeURIComponent('Meeting to discuss your digital project with HanovaDevs.')}&location=${encodeURIComponent('Google Meet / Video Call')}`;
   }
 
@@ -194,9 +194,9 @@ export default function Contact() {
 
       const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
         method: "POST",
-        headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(payload)
       })
@@ -226,7 +226,7 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
-      <SEO 
+      <SEO
         title="Contact Us"
         description="Get in touch with HanovaDevs. We are ready to discuss your next digital project, from custom software to comprehensive marketing campaigns."
         url="/contact"
@@ -254,7 +254,7 @@ export default function Contact() {
       <section className="contact-section section" id="contact-form-section">
         <div className="container">
           <div className="contact-layout">
-                        {/* Form */}
+            {/* Form */}
             <div className="contact-form-wrap reveal">
               {/* Tab Switcher */}
               {!submitted && !submissionFailed && (
@@ -286,26 +286,26 @@ export default function Contact() {
                 <div className="contact-success" style={{ background: 'var(--off-white)', border: '2px solid rgba(var(--royal-blue-rgb), 0.15)' }}>
                   <div className="contact-success__icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="12" y1="16" x2="12" y2="12"/>
-                      <line x1="12" y1="8" x2="12.01" y2="8"/>
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="16" x2="12" y2="12" />
+                      <line x1="12" y1="8" x2="12.01" y2="8" />
                     </svg>
                   </div>
                   <h3>Gateway Connection Fallback</h3>
                   <p style={{ fontSize: '0.9rem', maxWidth: '380px' }}>
-                    Our automated scheduling processor is undergoing temporary network maintenance. 
+                    Our automated scheduling processor is undergoing temporary network maintenance.
                     To lock in your request instantly, click below to open your email client pre-filled with all your details!
                   </p>
-                  
+
                   {activeTab === 'call' && (
                     <div className="scheduler-summary-badge" style={{ margin: '1rem 0', justifyContent: 'center' }}>
                       📅 <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong> ({userTimezone})
                     </div>
                   )}
 
-                  <a 
+                  <a
                     href={
-                      activeTab === 'call' 
+                      activeTab === 'call'
                         ? `mailto:hanovadevs@gmail.com?subject=Strategy Call Booking: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DRequested Date: ${selectedDate?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}%0D%0DRequested Time: ${selectedTime}%0D%0DTimezone: ${userTimezone}%0D%0DMessage: ${form.message || 'Discuss digital agency partnership'}`
                         : `mailto:hanovadevs@gmail.com?subject=New Lead: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DBudget: ${form.budget || 'Not specified'}%0D%0DMessage: ${form.message}`
                     }
@@ -324,8 +324,8 @@ export default function Contact() {
                   <div className="contact-success">
                     <div className="contact-success__icon">
                       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
                       </svg>
                     </div>
                     <h3>Call Scheduled!</h3>
@@ -352,8 +352,8 @@ export default function Contact() {
                   <div className="contact-success">
                     <div className="contact-success__icon">
                       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
                     </div>
                     <h3>Message Sent!</h3>
@@ -365,7 +365,7 @@ export default function Contact() {
                 )
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} id="contact-form">
-                  
+
                   {activeTab === 'message' ? (
                     <>
                       <div className="contact-form-header">
@@ -469,7 +469,7 @@ export default function Contact() {
                           Select Meeting Type
                         </h4>
                         <div className="scheduler-meeting-types">
-                          <div 
+                          <div
                             className={`scheduler-meeting-card ${meetingType === 'discovery' ? 'active' : ''}`}
                             onClick={() => setMeetingType('discovery')}
                           >
@@ -482,7 +482,7 @@ export default function Contact() {
                             </div>
                             <p>15m • Goals & fit</p>
                           </div>
-                          <div 
+                          <div
                             className={`scheduler-meeting-card ${meetingType === 'tech-review' ? 'active' : ''}`}
                             onClick={() => setMeetingType('tech-review')}
                           >
@@ -495,7 +495,7 @@ export default function Contact() {
                             </div>
                             <p>30m • Architecture & stack</p>
                           </div>
-                          <div 
+                          <div
                             className={`scheduler-meeting-card ${meetingType === 'growth-strategy' ? 'active' : ''}`}
                             onClick={() => setMeetingType('growth-strategy')}
                           >
@@ -592,7 +592,7 @@ export default function Contact() {
                             <span className="scheduler-step-num">4</span>
                             Confirm Your Information
                           </h4>
-                          
+
                           <div className="scheduler-summary-badge">
                             <span>📅 Booking <strong>{meetingType === 'discovery' ? '15m Discovery' : meetingType === 'tech-review' ? '30m Tech Review' : '45m Growth Strategy'}</strong> call: <strong>{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</strong> at <strong>{selectedTime}</strong></span>
                           </div>
@@ -686,8 +686,8 @@ export default function Contact() {
                                 </>
                               ) : (
                                 <>
-                                  <line x1="22" y1="2" x2="11" y2="13"/>
-                                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                  <line x1="22" y1="2" x2="11" y2="13" />
+                                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
                                 </>
                               )}
                             </svg>
@@ -714,31 +714,31 @@ export default function Contact() {
               <div className="contact-info-card card card-glass">
                 <h4>Contact Information</h4>
                 <div className="contact-info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                   <div>
                     <span className="contact-info-label">Email</span>
                     <a href="mailto:hanovadevs@gmail.com">hanovadevs@gmail.com</a>
                   </div>
                 </div>
                 <div className="contact-info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
                   <div>
                     <span className="contact-info-label">Instagram</span>
                     <a href="https://www.instagram.com/hanovadevs/" target="_blank" rel="noopener noreferrer">@hanovadevs</a>
                   </div>
                 </div>
                 <div className="contact-info-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                   <div>
-                    <span className="contact-info-label">Location</span>
-                    <span>Global — Remote First</span>
+                    <span className="contact-info-label">Operations</span>
+                    <span>100% Remote Studio — Global</span>
                   </div>
                 </div>
               </div>
 
-              {/* Office hours */}
+              {/* Studio & Support hours */}
               <div className="contact-hours-card card card-glass">
-                <h4>Office Hours</h4>
+                <h4>Studio & Support Hours (Remote)</h4>
                 <div className="contact-hours-list">
                   <div className="contact-hours-row">
                     <span>Monday – Friday</span>
@@ -750,7 +750,7 @@ export default function Contact() {
                   </div>
                   <div className="contact-hours-row">
                     <span>Sunday</span>
-                    <strong>Closed</strong>
+                    <strong>Closed (Async Queue Active)</strong>
                   </div>
                 </div>
               </div>
@@ -760,15 +760,15 @@ export default function Contact() {
                 <h4>Follow Us</h4>
                 <div className="contact-social-links">
                   <a href="https://www.instagram.com/hanovadevs/" target="_blank" rel="noopener noreferrer" className="contact-social-link hoverable" aria-label="Instagram">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
                     <span>Instagram</span>
                   </a>
-                  <a href="https://www.linkedin.com/in/hanova-devs-8516073b2/" target="_blank" rel="noopener noreferrer" className="contact-social-link hoverable" aria-label="LinkedIn">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <a href="https://www.linkedin.com/company/hanova-devs/" target="_blank" rel="noopener noreferrer" className="contact-social-link hoverable" aria-label="LinkedIn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
                     <span>LinkedIn</span>
                   </a>
                   <a href="https://github.com/hanovadevs/" target="_blank" rel="noopener noreferrer" className="contact-social-link hoverable" aria-label="GitHub">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>
                     <span>GitHub</span>
                   </a>
                 </div>
