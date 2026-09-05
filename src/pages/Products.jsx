@@ -103,7 +103,7 @@ export default function Products() {
                     <div className="cp-frame__dots"><span /><span /><span /></div>
                     <div className="cp-frame__title">Eunoia Companion</div>
                   </div>
-                  <img src="/products/eunoia/E1.webp" alt="Eunoia Application UI" className="cp-frame__img" />
+                  <img src="/products/eunoia/2.webp" alt="Eunoia Application UI" className="cp-frame__img" />
                 </div>
               </Link>
             </div>

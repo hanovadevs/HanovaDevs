@@ -45,5 +45,13 @@ describe('In-House Products — Powered by HanovaDevs', () => {
 
     expect(container.querySelector('.ed-hero__badge')).toHaveTextContent(/powered by hanovadevs/i)
     expect(container.querySelector('h1')).toHaveTextContent(/your mind, beautifully organized/i)
+
+    // Check all 10 thumbnails are present
+    const thumbs = container.querySelectorAll('.ed-gallery__thumb')
+    expect(thumbs.length).toBe(10)
+
+    // Check download link
+    const downloadLinks = container.querySelectorAll('a[href="https://drive.google.com/file/d/1RgrKL5t-QeMvOTmWadjeZKwTrEVhC91Q/view?usp=sharing"]')
+    expect(downloadLinks.length).toBeGreaterThanOrEqual(1)
   })
 })

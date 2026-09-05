@@ -64,7 +64,18 @@ const techCards = [
   { label: 'UI', value: 'Vanilla JS', icon: (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>) },
 ]
 
-const screenshots = ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9']
+const screenshots = [
+  { id: '1', title: 'Welcome & Splash', desc: 'Organize your thoughts, master your day — Powered by HanovaDevs' },
+  { id: '2', title: 'Personal Workspace', desc: 'Daily overview, tasks, focus engine & mood tracking' },
+  { id: '3', title: 'Planner Workspace', desc: 'Plan with perspective across multiple time horizons' },
+  { id: '4', title: 'Notes & Ideas', desc: 'Capture quickly, tag, and search without distraction' },
+  { id: '5', title: 'Private Journal', desc: 'PIN-protected diary with timeline and calendar reflection' },
+  { id: '6', title: 'Alarms & Focus Engine', desc: 'Pomodoro timer intervals and smart wake-up challenges' },
+  { id: '7', title: 'Documents Drive Vault', desc: 'Private encrypted local file and document archive' },
+  { id: '8', title: 'Insights & Rhythm', desc: 'Weekly effort, mood logs, and personal momentum stats' },
+  { id: '9', title: 'Settings & Themes', desc: 'Personalized ergonomics, dark/light themes, and local vault' },
+  { id: '10', title: 'AI Assistant', desc: 'Offline voice transcription and proactive daily guidance' },
+]
 
 const eunoiaReviews = [
   { id: 1, author: "Marcus B.", role: "Creative Director", avatar: "M", rating: 5, date: "3 days ago", text: "Eunoia is exactly what I needed to cut out the noise. The lo-fi soundscapes combined with the Pomodoro timer get me into a flow state instantly. Plus, knowing my journal is completely local gives me peace of mind." },
@@ -244,7 +255,7 @@ export default function EunoiaDetail() {
                 Windows &middot; macOS &middot; Linux &middot; Local Data Only
               </p>
               <div className="ed-hero__actions">
-                <a href="#download" className="btn btn-primary">Download Eunoia</a>
+                <a href="https://drive.google.com/file/d/1RgrKL5t-QeMvOTmWadjeZKwTrEVhC91Q/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
                 <a href="#features" className="ed-hero__link">
                   Explore features <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
                 </a>
@@ -257,7 +268,7 @@ export default function EunoiaDetail() {
                   <div className="ed-hero__dots"><span /><span /><span /></div>
                   <div className="ed-hero__title">Eunoia - Daily Planner</div>
                 </div>
-                <img src="/products/eunoia/E1.webp" alt="Eunoia Overview" className="ed-hero__img" />
+                <img src="/products/eunoia/2.webp" alt="Eunoia Overview" className="ed-hero__img" />
               </div>
               <div className="ed-hero__float-card ed-hero__float-card--1">
                 <span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Local Vault Secured
@@ -281,21 +292,34 @@ export default function EunoiaDetail() {
 
           <div className="ed-gallery__viewer reveal">
             <div className="ed-gallery__main-frame">
-              <img 
-                key={activeScreenshot}
-                src={`/products/eunoia/${screenshots[activeScreenshot]}.webp`}
-                alt={`Eunoia interface ${activeScreenshot + 1}`}
-                className="ed-gallery__main-img"
-              />
+              <div className="ed-gallery__main-img-wrap">
+                <img 
+                  key={activeScreenshot}
+                  src={`/products/eunoia/${screenshots[activeScreenshot].id}.webp`}
+                  alt={screenshots[activeScreenshot].title}
+                  className="ed-gallery__main-img"
+                />
+              </div>
+              <div className="ed-gallery__caption">
+                <h4>{screenshots[activeScreenshot].title}</h4>
+                <p>{screenshots[activeScreenshot].desc}</p>
+              </div>
             </div>
             <div className="ed-gallery__thumbs">
-              {screenshots.slice(0, 5).map((img, i) => (
+              {screenshots.map((item, i) => (
                 <button
-                  key={img}
+                  key={item.id}
                   className={`ed-gallery__thumb ${activeScreenshot === i ? 'ed-gallery__thumb--active' : ''}`}
                   onClick={() => setActiveScreenshot(i)}
+                  title={item.title}
                 >
-                  <img src={`/products/eunoia/${img}.webp`} alt={`Thumbnail ${i+1}`} />
+                  <div className="ed-gallery__thumb-img-wrap">
+                    <img src={`/products/eunoia/${item.id}.webp`} alt={item.title} />
+                  </div>
+                  <div className="ed-gallery__thumb-info">
+                    <span className="ed-gallery__thumb-num">Screen {String(i + 1).padStart(2, '0')}</span>
+                    <span className="ed-gallery__thumb-title">{item.title}</span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -346,7 +370,7 @@ export default function EunoiaDetail() {
               </div>
             </div>
             <div className="reveal">
-              <img src={`/products/eunoia/${screenshots[8]}.webp`} alt="Eunoia Insights" style={{width: '100%', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)'}} />
+              <img src="/products/eunoia/8.webp" alt="Eunoia Insights" style={{width: '100%', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)'}} />
             </div>
           </div>
         </div>
@@ -582,7 +606,7 @@ export default function EunoiaDetail() {
           <h2>Ready to clear your mind?</h2>
           <p>An in-house innovation powered by HanovaDevs. Get Eunoia today and take control of your daily routine. Available for Windows, macOS, and Linux.</p>
           <div className="ed-cta__actions">
-            <a href="https://drive.google.com/file/d/1Iw_OCgwdYqC1RniTpbyxdIj_ZSMi4X2o/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
+            <a href="https://drive.google.com/file/d/1RgrKL5t-QeMvOTmWadjeZKwTrEVhC91Q/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
             <Link to="/products" className="ed-cta__back">← Back to Products</Link>
           </div>
         </div>
