@@ -607,6 +607,7 @@ export default function EunoiaDetail() {
           <p>An in-house innovation powered by HanovaDevs. Get Eunoia today and take control of your daily routine. Now available on the Microsoft Store for Windows.</p>
           <div className="ed-cta__actions">
             <a href="https://apps.microsoft.com/detail/9PJ36VD01Z4X" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Get it on Microsoft Store</a>
+            <Link to="/products/eunoia/privacy" className="ed-cta__back">Privacy Policy</Link>
             <Link to="/products" className="ed-cta__back">← Back to Products</Link>
           </div>
         </div>

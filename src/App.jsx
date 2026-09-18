@@ -16,6 +16,7 @@ const Contact = lazy(() => import('./pages/Contact'))
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
 const OmnaiDetail = lazy(() => import('./pages/OmnaiDetail'))
 const EunoiaDetail = lazy(() => import('./pages/EunoiaDetail'))
+const EunoiaPrivacyPolicy = lazy(() => import('./pages/EunoiaPrivacyPolicy'))
 const Journal = lazy(() => import('./pages/Journal'))
 const JournalPost = lazy(() => import('./pages/JournalPost'))
 const Research = lazy(() => import('./pages/Research'))
@@ -89,6 +90,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/omnai" element={<OmnaiDetail />} />
           <Route path="/products/eunoia" element={<EunoiaDetail />} />
+          <Route path="/products/eunoia/privacy" element={<EunoiaPrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/journal" element={<Journal />} />
