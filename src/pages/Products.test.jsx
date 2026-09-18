@@ -50,8 +50,8 @@ describe('In-House Products — Powered by HanovaDevs', () => {
     const thumbs = container.querySelectorAll('.ed-gallery__thumb')
     expect(thumbs.length).toBe(10)
 
-    // Check download link
-    const downloadLinks = container.querySelectorAll('a[href="https://drive.google.com/file/d/1RgrKL5t-QeMvOTmWadjeZKwTrEVhC91Q/view?usp=sharing"]')
+    // Check Microsoft Store download link
+    const downloadLinks = container.querySelectorAll('a[href="https://apps.microsoft.com/detail/9PJ36VD01Z4X"]')
     expect(downloadLinks.length).toBeGreaterThanOrEqual(1)
   })
 })

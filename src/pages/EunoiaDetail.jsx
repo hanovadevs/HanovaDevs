@@ -252,10 +252,10 @@ export default function EunoiaDetail() {
                 An in-house desktop productivity companion engineered and powered by HanovaDevs. Combining planning, journaling, focus sessions, and a proactive local AI assistant.
               </p>
               <p className="ed-hero__sub">
-                Windows &middot; macOS &middot; Linux &middot; Local Data Only
+                Available on the Microsoft Store &middot; Windows &middot; Local Data Only
               </p>
               <div className="ed-hero__actions">
-                <a href="https://drive.google.com/file/d/1RgrKL5t-QeMvOTmWadjeZKwTrEVhC91Q/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
+                <a href="https://apps.microsoft.com/detail/9PJ36VD01Z4X" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Get it on Microsoft Store</a>
                 <a href="#features" className="ed-hero__link">
                   Explore features <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
                 </a>
@@ -604,9 +604,9 @@ export default function EunoiaDetail() {
         <div className="container" style={{ textAlign: 'center' }}>
           <img src="/products/eunoia/logo.webp" alt="Eunoia" className="ed-cta__logo" />
           <h2>Ready to clear your mind?</h2>
-          <p>An in-house innovation powered by HanovaDevs. Get Eunoia today and take control of your daily routine. Available for Windows, macOS, and Linux.</p>
+          <p>An in-house innovation powered by HanovaDevs. Get Eunoia today and take control of your daily routine. Now available on the Microsoft Store for Windows.</p>
           <div className="ed-cta__actions">
-            <a href="https://drive.google.com/file/d/1RgrKL5t-QeMvOTmWadjeZKwTrEVhC91Q/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Download Eunoia</a>
+            <a href="https://apps.microsoft.com/detail/9PJ36VD01Z4X" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Get it on Microsoft Store</a>
             <Link to="/products" className="ed-cta__back">← Back to Products</Link>
           </div>
         </div>
