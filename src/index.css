@@ -5,14 +5,15 @@
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
   /* Core Brand Colors (Teal + Midnight) */
-  --teal-primary: #14B8A6;
-  --teal-primary-rgb: 20, 184, 166;
-  --teal-light: #2DD4BF;
-  --teal-light-rgb: 45, 212, 191;
-  --teal-glow: #5EEAD4;
-  --teal-dark: #0D9488;
-  --teal-dark-rgb: 13, 148, 136;
-  --teal-deep: #0F766E;
+  /* Match the logo: deep teal for UI, brighter teal only for highlights. */
+  --teal-primary: #0D9488;
+  --teal-primary-rgb: 13, 148, 136;
+  --teal-light: #14B8A6;
+  --teal-light-rgb: 20, 184, 166;
+  --teal-glow: #2DD4BF;
+  --teal-dark: #0A766F;
+  --teal-dark-rgb: 10, 118, 111;
+  --teal-deep: #065A56;
 
   --midnight: #071A2B;
   --midnight-rgb: 7, 26, 43;
@@ -39,6 +40,7 @@
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
+  --font-hero: 'Outfit', 'DM Sans', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 
   /* Spacing Scale (Scaled Down) */
@@ -333,14 +335,14 @@ button {
 }
 
 .btn-primary {
-  background: var(--royal-blue);
+  background: var(--teal-dark);
   color: var(--white);
-  box-shadow: 0 4px 16px rgba(var(--royal-blue-rgb), 0.3);
+  box-shadow: 0 4px 16px rgba(var(--teal-dark-rgb), 0.3);
 }
 
 .btn-primary:hover {
-  background: var(--teal-dark);
-  box-shadow: 0 8px 32px rgba(var(--teal-primary-rgb), 0.4);
+  background: var(--teal-deep);
+  box-shadow: 0 8px 32px rgba(var(--teal-dark-rgb), 0.4);
   transform: translateY(-2px);
 }
 
@@ -357,19 +359,20 @@ button {
 }
 
 .btn-glow {
-  background: var(--royal-blue);
+  background: var(--teal-dark);
   color: var(--white);
-  box-shadow: 0 0 20px rgba(var(--royal-blue-rgb), 0.4),
-              0 0 60px rgba(var(--royal-blue-rgb), 0.2);
+  box-shadow: 0 0 20px rgba(var(--teal-dark-rgb), 0.4),
+              0 0 60px rgba(var(--teal-dark-rgb), 0.2);
   animation: glowPulse 2s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(var(--royal-blue-rgb), 0.4), 0 0 60px rgba(var(--royal-blue-rgb), 0.2); }
-  50% { box-shadow: 0 0 30px rgba(var(--royal-blue-rgb), 0.6), 0 0 80px rgba(var(--royal-blue-rgb), 0.3); }
+  0%, 100% { box-shadow: 0 0 20px rgba(var(--teal-dark-rgb), 0.4), 0 0 60px rgba(var(--teal-dark-rgb), 0.2); }
+  50% { box-shadow: 0 0 30px rgba(var(--teal-dark-rgb), 0.6), 0 0 80px rgba(var(--teal-dark-rgb), 0.3); }
 }
 
 .btn-glow:hover {
+  background: var(--teal-deep);
   transform: translateY(-3px) scale(1.02);
 }
 

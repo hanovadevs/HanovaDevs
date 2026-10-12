@@ -63,14 +63,16 @@
   max-width: none;
 }
 
-/* Headline — much smaller, tighter */
+/* A clean, modern display face keeps the hero distinctive without sacrificing readability. */
 .hero__headline {
   width: 100%;
-  font-size: clamp(1.75rem, 5vw, 5.25rem);
+  font-family: var(--font-hero);
+  font-size: clamp(1.75rem, 4.8vw, 5rem);
   color: var(--deep-navy);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
 }
 
 .hero__headline-line {
@@ -90,7 +92,7 @@
 }
 
 .hero__headline-line--accent {
-  color: var(--royal-blue);
+  color: var(--teal-primary);
 }
 
 @keyframes heroLineIn {
