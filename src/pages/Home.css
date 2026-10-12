@@ -6,6 +6,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +82,11 @@
   opacity: 0;
   transform: translateY(30px);
   animation: heroLineIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (max-width: 900px) {
+  .hero__headline { font-size: clamp(1.75rem, 8.4vw, 3.5rem); }
+  .hero__subheadline { max-width: 40ch; font-size: 1rem; }
 }
 
 .hero__headline-line:nth-child(1) {
@@ -268,6 +274,13 @@
   .hero__scroll-hint {
     bottom: 12px;
   }
+}
+
+@media (max-width: 600px) {
+  .hero__content { padding-top: calc(var(--header-height) + 3rem); padding-bottom: 5rem; }
+  .hero__text-panel { gap: 1.5rem; }
+  .hero__cta-row { display: grid; width: 100%; max-width: 320px; gap: 0.75rem; }
+  .btn--hero { width: 100%; min-height: 48px; }
 }
 
 /* ===== IMPACT STATS ===== */
@@ -681,6 +694,8 @@
   overflow-y: hidden;
   padding: 0 var(--container-padding);
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--container-padding);
 }
 
 .featured-projects__scroll::-webkit-scrollbar {
@@ -694,7 +709,8 @@
 }
 
 .featured-projects__card {
-  flex: 0 0 340px;
+  flex: 0 0 min(340px, calc(100vw - 3rem));
+  scroll-snap-align: start;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--white);
@@ -1735,7 +1751,7 @@
 .services-teaser__card--featured .services-teaser__features li { color: white; }
 .services-teaser__card--featured .services-teaser__desc { max-width: 590px; color: rgba(255,255,255,.72); }
 .services-teaser__card--featured .services-teaser__link { color: white; }
-.services-teaser__card--featured .services-teaser__features { display: grid; grid-template-columns: repeat(3,max-content); gap: .5rem 1.5rem; }
+.services-teaser__card--featured .services-teaser__features { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
 .services-teaser__card--featured .services-teaser__features svg { stroke: #aebeff; }
 .services-teaser__card--featured .services-teaser__icon-wrap { color: white; background: rgba(255,255,255,.12); }
 

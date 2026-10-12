@@ -237,7 +237,7 @@
 }
 .rs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: 1.5rem;
 }
 .rs-card {
@@ -432,9 +432,12 @@
   .rs-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .rs-filters { top: 60px; }
+  .rs-filters { top: var(--header-height); }
+  .rs-filter-btn { min-height: 44px; flex-shrink: 0; }
   .rs-modal-overlay { padding: 0.5rem; }
-  .rs-modal__header { height: 200px; }
+  .rs-modal__header { height: auto; min-height: 240px; }
+  .rs-modal__header img { position: absolute; inset: 0; }
+  .rs-modal__header-overlay { position: relative; min-height: 240px; padding: 4rem 1.25rem 1.25rem; }
   .rs-modal__body { padding: 1.5rem; }
   .rs-card__image { height: 160px; }
 }

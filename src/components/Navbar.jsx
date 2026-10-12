@@ -58,7 +58,12 @@ export default function Navbar() {
     if (!mobileOpen) return undefined
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    mobileMenuRef.current?.querySelector('a')?.focus({ preventScroll: true })
+    // Let the browser apply visibility and inert changes before moving focus.
+    let focusFrame = requestAnimationFrame(() => {
+      focusFrame = requestAnimationFrame(() => {
+        mobileMenuRef.current?.querySelector('a')?.focus({ preventScroll: true })
+      })
+    })
     const trapFocus = event => {
       if (event.key !== 'Tab') return
       const links = mobileMenuRef.current?.querySelectorAll('a')
@@ -76,6 +81,7 @@ export default function Navbar() {
     }
     document.addEventListener('keydown', trapFocus)
     return () => {
+      cancelAnimationFrame(focusFrame)
       document.body.style.overflow = previousOverflow
       document.removeEventListener('keydown', trapFocus)
     }

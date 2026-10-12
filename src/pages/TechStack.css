@@ -169,7 +169,7 @@
 .ts-filters {
   padding: var(--space-md) 0;
   position: sticky;
-  top: 70px;
+  top: var(--header-height);
   z-index: 10;
   background: rgba(6, 7, 11, 0.92);
   backdrop-filter: blur(24px);
@@ -188,6 +188,8 @@
 .ts-filters__bar::-webkit-scrollbar { display: none; }
 
 .ts-filter-btn {
+  min-height: 44px;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;

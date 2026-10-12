@@ -90,6 +90,7 @@
 
 .service-detail__intro-image {
   position: relative;
+  overflow: clip;
 }
 
 .service-detail__showcase-img {
@@ -335,6 +336,8 @@
 
 .spec-item {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: space-between;
   padding: 0.8rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -357,8 +360,40 @@
 }
 
 /* Process Path */
+.service-detail__process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
 .service-detail__process-card {
   position: relative;
+  padding: 1.5rem;
+  border: 1px solid var(--light-grey);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+}
+
+.service-detail__process-step {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: rgba(var(--teal-primary-rgb), 0.1);
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+.service-detail__process-card h3 { margin-bottom: 0.75rem; }
+
+@media (max-width: 1024px) {
+  .service-detail__process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .service-detail__process-grid { grid-template-columns: 1fr; }
 }
 
 .process-path {
@@ -372,14 +407,14 @@
   z-index: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
   .process-path { display: none; }
 }
 
 /* Insights Grid */
 .service-detail__insights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
 }
 
@@ -569,6 +604,7 @@
 
 .case-study-brand {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-sm);
   margin-bottom: var(--space-md);
@@ -718,6 +754,7 @@
 
 .cs-badge-strip {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-md);
   font-size: 0.72rem;
@@ -741,6 +778,10 @@
   .case-study-challenge-solution {
     grid-template-columns: 1fr;
   }
+  .case-study-spotlight__grid > *, .service-detail__intro-grid > *, .service-detail__advancements-wrap > * { min-width: 0; }
+  .case-study-spotlight__metrics { padding: 1.25rem; }
+  .case-study-brand h3 { font-size: 1.5rem; }
+  .service-detail__breadcrumbs { flex-wrap: wrap; }
 }
 
 /* Collapsible FAQ Accordion */

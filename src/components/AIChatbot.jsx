@@ -633,6 +633,8 @@ export default function AIChatbot() {
           setHasNewMessage(false)
         }}
         aria-label="Toggle AI Assistant"
+        aria-expanded={isOpen}
+        aria-controls="ai-assistant-panel"
       >
         {isOpen ? (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -654,7 +656,7 @@ export default function AIChatbot() {
       </button>
 
       {/* Floating Chat Panel */}
-      <div className={`ai-chatbot-panel ${isOpen ? 'ai-chatbot-panel--open' : ''}`}>
+      <div id="ai-assistant-panel" inert={!isOpen} aria-hidden={!isOpen} className={`ai-chatbot-panel ${isOpen ? 'ai-chatbot-panel--open' : ''}`}>
         
         {/* Panel Header */}
         <div className="ai-chatbot-header">
@@ -749,6 +751,7 @@ export default function AIChatbot() {
                 <input 
                   type="text" 
                   placeholder="Search timezone (e.g. London, Tokyo)..."
+                  aria-label="Search timezone"
                   value={timezoneSearch}
                   onChange={e => setTimezoneSearch(e.target.value)}
                   className="timezone-search-input"
@@ -776,6 +779,7 @@ export default function AIChatbot() {
               <input 
                 type="text" 
                 placeholder="Ask Aria anything..." 
+                aria-label="Message Aria"
                 value={inputValue} 
                 onChange={e => setInputValue(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleSend()}

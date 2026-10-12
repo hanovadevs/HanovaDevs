@@ -75,6 +75,7 @@
 /* Tab Switcher */
 .calc-tabs {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-md);
   margin-bottom: var(--space-2xl);
@@ -112,7 +113,7 @@
 /* Interface Grid */
 .calc-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: var(--space-2xl);
   align-items: start;
 }
@@ -156,6 +157,8 @@
 
 .calc-input-header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.6rem;
@@ -632,5 +635,15 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .calc-legal-disclaimer a:hover {
   color: var(--teal-dark);
+}
+
+@media (max-width: 600px) {
+  .calc-hero { padding-top: calc(var(--header-height) + 2.5rem); }
+  .calc-hero__content h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  .calc-card { padding: 1.25rem; min-width: 0; }
+  .calc-tabs { gap: 0.5rem; }
+  .calc-tab-btn { flex: 1; min-height: 48px; padding: 0.75rem; font-size: 0.875rem; }
+  .calc-result-main-value, .summary-value { overflow-wrap: anywhere; }
+  .calc-result-header, .calc-card-header { flex-wrap: wrap; }
 }
 

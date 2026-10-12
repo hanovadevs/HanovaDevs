@@ -787,6 +787,7 @@
 .nw2-page { background: #f7f8fc; color: var(--deep-navy); }
 .nw2-hero { padding: 11rem 0 5rem; background: #080e1d; color: white; }
 .nw2-hero__inner { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
+.nw2-hero__inner > *, .nw2-tools__inner > *, .nw2-lead > * { min-width: 0; max-width: 100%; }
 .nw2-eyebrow { display: block; margin-bottom: 1rem; color: #91a8ff; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .nw2-hero h1 { color: white; font-size: clamp(3rem, 7vw, 6.5rem); line-height: .92; letter-spacing: -.055em; }
 .nw2-hero h1 span { color: #7894ff; }
@@ -801,10 +802,11 @@
 .nw2-search { display: flex; align-items: center; gap: .7rem; padding: .75rem 1rem; border: 1px solid #dce2ed; border-radius: 12px; background: #f8faff; transition: border-color .2s, box-shadow .2s; }
 .nw2-search:focus-within { border-color: var(--royal-blue); box-shadow: 0 0 0 3px rgba(var(--royal-blue-rgb),.1); }
 .nw2-search svg { width: 18px; fill: none; stroke: #64708a; stroke-width: 2; }
-.nw2-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--deep-navy); font: inherit; }
+.nw2-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--deep-navy); font: inherit; }
+.nw2-search svg { flex-shrink: 0; }
 .nw2-categories { display: flex; justify-content: flex-end; gap: .45rem; overflow-x: auto; scrollbar-width: none; }
 .nw2-categories::-webkit-scrollbar { display: none; }
-.nw2-categories button { padding: .62rem .9rem; border: 1px solid transparent; border-radius: 999px; color: #64708a; font-size: .82rem; font-weight: 700; white-space: nowrap; }
+.nw2-categories button { flex-shrink: 0; min-height: 44px; padding: .62rem .9rem; border: 1px solid transparent; border-radius: 999px; color: #64708a; font-size: .82rem; font-weight: 700; white-space: nowrap; }
 .nw2-categories button:hover { color: var(--royal-blue); background: #edf1ff; }
 .nw2-categories button.is-active { color: white; background: var(--royal-blue); }
 .nw2-feed { padding-top: 4.5rem; padding-bottom: 7rem; }
@@ -856,7 +858,7 @@
 
 @media (max-width: 600px) {
   .nw2-hero { padding: 8rem 0 3rem; }
-  .nw2-hero h1 { font-size: 3.2rem; }
+  .nw2-hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); line-height: 1.05; }
   .nw2-feed { padding-top: 3rem; }
   .nw2-feed__header { align-items: start; flex-direction: column; gap: .5rem; }
   .nw2-grid { grid-template-columns: 1fr; }

@@ -366,6 +366,14 @@
   color: var(--royal-blue);
 }
 
+@media (max-width: 600px) {
+  .contact-hero { padding-top: calc(var(--header-height) + 2.5rem); }
+  .contact-info-item div { min-width: 0; overflow-wrap: anywhere; }
+  .contact-form__submit { width: 100%; }
+  .contact-form__submit-wrap { align-items: stretch; }
+  .calendar-add-buttons { grid-template-columns: 1fr; }
+}
+
 /* FAQ Section */
 .contact-faq {
   margin-top: var(--space-3xl);

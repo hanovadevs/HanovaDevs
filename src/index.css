@@ -372,7 +372,9 @@ button {
   transition: all var(--duration-normal) var(--ease-smooth);
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 100%;
+  text-align: center;
 }
 
 .btn-primary {
@@ -580,7 +582,7 @@ button {
 
 .calc-promo-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 4rem;
   align-items: center;
   position: relative;
@@ -765,4 +767,18 @@ button {
   background: var(--teal-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(var(--teal-primary-rgb), 0.3);
+}
+
+@media (max-width: 1024px) {
+  .reveal-left, .reveal-right { transform: translateY(24px); }
+  .calc-preview-card { padding: 1.25rem; }
+}
+
+/* Keep this after reveal styles so reduced motion never leaves content hidden. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-up, .reveal-down, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
 }
