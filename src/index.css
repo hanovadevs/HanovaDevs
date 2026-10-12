@@ -82,6 +82,7 @@
   /* Container */
   --container-max: 1200px;
   --container-padding: clamp(1rem, 4vw, 2rem);
+  --header-height: 84px;
 }
 
 /* Fluid responsive variable scaling */
@@ -94,9 +95,6 @@
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 13px;
-  }
   :root {
     --space-md: 1rem;
     --space-lg: 1.5rem;
@@ -107,9 +105,6 @@
 }
 
 @media (max-width: 480px) {
-  html {
-    font-size: 12px;
-  }
   :root {
     --space-sm: 0.6rem;
     --space-md: 0.85rem;
@@ -142,8 +137,34 @@ body {
   color: var(--dark-text);
   background-color: var(--white);
   line-height: 1.6;
-  overflow-x: hidden;
   cursor: default;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+main, .container, .grid {
+  min-width: 0;
+}
+
+.container > *, .grid > * {
+  min-width: 0;
+}
+
+h1, h2, h3, h4, p, li {
+  overflow-wrap: break-word;
+}
+
+img, video, iframe, canvas {
+  max-width: 100%;
+}
+
+input, select, textarea {
+  min-width: 0;
+  max-width: 100%;
+  font-family: var(--font-body);
 }
 
 /* Refined cursor behavior on interactive elements */
@@ -267,6 +288,26 @@ button {
 
 @media (max-width: 768px) {
   button { cursor: pointer; }
+}
+
+@media (max-width: 1120px) {
+  :root { --header-height: 72px; }
+}
+
+@media (max-width: 1024px) {
+  html { font-size: 16px; }
+  p { font-size: 0.9375rem; }
+  .btn { min-height: 44px; white-space: normal; text-align: center; }
+}
+
+@media (max-width: 768px) {
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover { transform: none; }
 }
 
 /* --- Container --- */

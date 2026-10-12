@@ -42,7 +42,7 @@ export default function SEO({ title, description, keywords, url, type = "website
     },
     "sameAs": [
       "https://www.instagram.com/hanovadevs/",
-      "https://www.linkedin.com/in/hanova-devs-8516073b2/",
+      "https://www.linkedin.com/company/hanova-devs",
       "https://github.com/hanovadevs/"
     ],
     "address": {

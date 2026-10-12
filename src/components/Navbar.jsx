@@ -25,24 +25,29 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)
+  const mobileMenuRef = useRef(null)
+  const toggleRef = useRef(null)
   const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
     const closeOnEscape = (event) => {
       if (event.key === 'Escape') {
+        if (mobileOpen) toggleRef.current?.focus()
+        else if (dropdownOpen) dropdownRef.current?.querySelector('button')?.focus()
         setDropdownOpen(false)
         setMobileOpen(false)
       }
     }
     document.addEventListener('keydown', closeOnEscape)
     return () => document.removeEventListener('keydown', closeOnEscape)
-  }, [])
+  }, [mobileOpen, dropdownOpen])
 
   useEffect(() => {
     setMobileOpen(false)
@@ -50,9 +55,40 @@ export default function Navbar() {
   }, [location])
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (!mobileOpen) return undefined
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    mobileMenuRef.current?.querySelector('a')?.focus({ preventScroll: true })
+    const trapFocus = event => {
+      if (event.key !== 'Tab') return
+      const links = mobileMenuRef.current?.querySelectorAll('a')
+      const last = links?.[links.length - 1]
+      if (event.shiftKey && document.activeElement === toggleRef.current) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        toggleRef.current?.focus()
+      } else if (event.shiftKey && document.activeElement === links?.[0]) {
+        event.preventDefault()
+        toggleRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', trapFocus)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', trapFocus)
+    }
   }, [mobileOpen])
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1121px)')
+    const closeOnDesktop = event => {
+      if (event.matches) setMobileOpen(false)
+    }
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => desktop.removeEventListener('change', closeOnDesktop)
+  }, [])
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -121,9 +157,10 @@ export default function Navbar() {
         </Link>
 
         <button
+          ref={toggleRef}
           className={`navbar__burger ${mobileOpen ? 'navbar__burger--open' : ''}`}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
           id="mobile-menu-toggle"
@@ -133,7 +170,8 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div id="mobile-navigation" aria-hidden={!mobileOpen} className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}>
+      {mobileOpen && <button className="mobile-menu__backdrop" aria-label="Close navigation" tabIndex={-1} onClick={() => { setMobileOpen(false); toggleRef.current?.focus() }} />}
+      <div ref={mobileMenuRef} id="mobile-navigation" inert={!mobileOpen} aria-hidden={!mobileOpen} className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}>
         <nav className="mobile-menu__nav" aria-label="Mobile navigation">
           {navLinks.map((link, i) => (
             link.dropdown ? (
