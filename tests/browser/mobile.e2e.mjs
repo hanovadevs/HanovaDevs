@@ -106,7 +106,7 @@ test('assistant and mobile form fields stay usable in a short viewport', async (
   await page.goto('/contact', { waitUntil: 'domcontentloaded' })
   const fields = page.locator('.contact-form input, .contact-form select, .contact-form textarea')
   await expect(fields.first()).toBeVisible()
-  if (page.viewportSize().width <= 768) {
+  if (page.viewportSize().width <= 1120) {
     for (const field of await fields.all()) expect(await field.evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBeGreaterThanOrEqual(16)
   }
   await page.getByRole('button', { name: 'Toggle AI Assistant' }).click()

@@ -58,12 +58,16 @@ export default function Navbar() {
     if (!mobileOpen) return undefined
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    // Let the browser apply visibility and inert changes before moving focus.
-    let focusFrame = requestAnimationFrame(() => {
-      focusFrame = requestAnimationFrame(() => {
-        mobileMenuRef.current?.querySelector('a')?.focus({ preventScroll: true })
-      })
-    })
+    let focusFrame
+    const focusFirstLink = () => {
+      const first = mobileMenuRef.current?.querySelector('a')
+      if (first && getComputedStyle(first).visibility === 'visible') {
+        first.focus({ preventScroll: true })
+      } else {
+        focusFrame = requestAnimationFrame(focusFirstLink)
+      }
+    }
+    focusFrame = requestAnimationFrame(focusFirstLink)
     const trapFocus = event => {
       if (event.key !== 'Tab') return
       const links = mobileMenuRef.current?.querySelectorAll('a')
@@ -117,7 +121,11 @@ export default function Navbar() {
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" aria-label="HanovaDevs Home">
           <img 
-            src="/Software_Agency_bg.png" 
+            src="/agency-logo-720.webp"
+            srcSet="/agency-logo-360.webp 360w, /agency-logo-720.webp 720w"
+            sizes="(max-width: 1120px) 130px, 180px"
+            width="720"
+            height="277"
             alt="HanovaDevs Software Agency" 
             className="navbar__logo-full" 
           />

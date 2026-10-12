@@ -15,6 +15,7 @@ const routes = process.env.RESPONSIVE_ROUTES?.split(',') || allRoutes
 const browser = await chromium.launch()
 const results = []
 await mkdir('artifacts/responsive', { recursive: true })
+const reducedMotion = process.env.RESPONSIVE_MOTION === 'normal' ? 'no-preference' : 'reduce'
 
 function measureLayout() {
   const viewport = document.documentElement.clientWidth
@@ -52,13 +53,13 @@ function measureLayout() {
 
 try {
   for (const width of widths) {
-    const context = await browser.newContext({ viewport: { width, height: width < 600 ? 740 : 900 }, reducedMotion: 'reduce', isMobile: width < 600, hasTouch: width <= 1024 })
+    const context = await browser.newContext({ viewport: { width, height: width < 600 ? 740 : 900 }, reducedMotion, isMobile: width < 600, hasTouch: width <= 1024 })
     const page = await context.newPage()
     for (const route of routes) {
       const errors = []
       const captureError = error => errors.push(error.message)
       page.on('pageerror', captureError)
-      await page.goto(`${baseURL}${route}`, { waitUntil: 'domcontentloaded' })
+      await page.goto(`${baseURL}${route}`, { waitUntil: 'domcontentloaded', timeout: 60000 })
       await page.locator('main h1, .admin-login, .portal-login, .admin-login-card').first().waitFor({ timeout: 20000 })
       await page.evaluate(() => document.fonts.ready)
       await page.evaluate(async () => {
@@ -79,6 +80,7 @@ try {
       page.off('pageerror', captureError)
     }
     await context.close()
+    await writeFile('artifacts/responsive/layout-report.json', JSON.stringify({ results, failures: results.filter(result => result.scrollWidth > result.width + 2 || result.overflow.length || result.headingOverflow.length || result.errors.length) }, null, 2))
     console.log(`Checked ${routes.length} routes at ${width}px`)
   }
   const failures = results.filter(result => result.scrollWidth > result.width + 2 || result.overflow.length || result.headingOverflow.length || result.errors.length)

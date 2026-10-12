@@ -291,7 +291,7 @@ button {
 }
 
 @media (max-width: 1120px) {
-  :root { --header-height: 72px; }
+  :root { --header-height: calc(72px + env(safe-area-inset-top)); }
 }
 
 @media (max-width: 1024px) {
@@ -300,7 +300,7 @@ button {
   .btn { min-height: 44px; white-space: normal; text-align: center; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1120px) {
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea {
     font-size: 16px !important;
   }
@@ -308,6 +308,8 @@ button {
 
 @media (hover: none) and (pointer: coarse) {
   .btn:hover { transform: none; }
+  button, a.btn { min-height: 44px; min-width: 44px; touch-action: manipulation; }
+  .btn svg { flex-shrink: 0; }
 }
 
 /* --- Container --- */
@@ -315,8 +317,8 @@ button {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-left: max(var(--container-padding), env(safe-area-inset-left));
+  padding-right: max(var(--container-padding), env(safe-area-inset-right));
 }
 
 /* --- Section Spacing --- */
@@ -461,11 +463,11 @@ button {
 }
 
 .reveal-left {
-  transform: translateX(-50px);
+  transform: translateX(calc(-1 * min(32px, var(--container-padding))));
 }
 
 .reveal-right {
-  transform: translateX(50px);
+  transform: translateX(min(32px, var(--container-padding)));
 }
 
 .reveal-scale {
@@ -769,7 +771,7 @@ button {
   box-shadow: 0 4px 12px rgba(var(--teal-primary-rgb), 0.3);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1120px) {
   .reveal-left, .reveal-right { transform: translateY(24px); }
   .calc-preview-card { padding: 1.25rem; }
 }

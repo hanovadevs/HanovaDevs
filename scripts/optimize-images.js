@@ -12,7 +12,7 @@ async function walk(directory) {
   }))).flat()
 }
 
-for (const root of roots) {
+for (const root of process.argv.includes('--brand-only') ? [] : roots) {
   for (const input of await walk(root)) {
     if (path.extname(input).toLowerCase() !== '.png') continue
     const output = input.replace(/\.png$/i, '.webp')
@@ -21,4 +21,19 @@ for (const root of roots) {
     const after = (await stat(output)).size
     console.log(`${input}: ${Math.round(before / 1024)}KB -> ${Math.round(after / 1024)}KB`)
   }
+}
+
+const brandImages = [
+  { input: 'public/Software_Agency_bg.png', output: 'public/agency-logo-360.webp', width: 360, quality: 90 },
+  { input: 'public/Software_Agency_bg.png', output: 'public/agency-logo-720.webp', width: 720, quality: 90 },
+  { input: 'public/white.png', output: 'public/agency-logo-white.webp', width: 128, quality: 90 },
+  { input: 'public/hero-glass-bg.png', output: 'public/hero-glass-mobile.webp', width: 768, quality: 82 },
+  { input: 'public/hero-glass-bg.png', output: 'public/hero-glass-bg.webp', width: 1024, quality: 84 },
+]
+
+for (const { input, output, width, quality } of brandImages) {
+  const before = (await stat(input)).size
+  await sharp(input).resize({ width, withoutEnlargement: true }).webp({ quality, effort: 5 }).toFile(output)
+  const after = (await stat(output)).size
+  console.log(`${output}: ${Math.round(before / 1024)}KB -> ${Math.round(after / 1024)}KB`)
 }

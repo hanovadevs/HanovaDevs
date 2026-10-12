@@ -239,7 +239,17 @@ export default function Home() {
 
         {/* Glass crystal background */}
         <div className="hero__glass-bg">
-          <img src="/hero-glass-bg.png" alt="" className="hero__glass-img" />
+          <img
+            src="/hero-glass-bg.webp"
+            srcSet="/hero-glass-mobile.webp 768w, /hero-glass-bg.webp 1024w"
+            sizes="100vw"
+            width="1024"
+            height="1024"
+            fetchPriority="high"
+            decoding="async"
+            alt=""
+            className="hero__glass-img"
+          />
         </div>
 
         <div className="hero__content container">

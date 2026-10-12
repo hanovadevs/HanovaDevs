@@ -109,7 +109,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <div className="footer__logo">
-              <img src="/white.png" alt="HanovaDevs Logo" width="38" height="38" />
+              <img src="/agency-logo-white.webp" alt="HanovaDevs Logo" width="38" height="38" loading="lazy" decoding="async" />
               <div>
                 <h4 className="footer__brand-name">Hanova<span style={{ color: 'var(--teal-primary)' }}>Devs</span></h4>
                 <span className="footer__tagline">Software Agency & AI Solutions</span>
