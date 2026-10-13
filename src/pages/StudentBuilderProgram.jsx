@@ -74,8 +74,17 @@ export default function StudentBuilderProgram() {
         <EditorialImage name="idea-notebook" alt="Illustrative hands sketching a simple interface beside a laptop and notebook" className="sbp-photo--idea" />
       </div></section>
       <section className="sbp-section sbp-builders" id="builders" aria-labelledby="builders-title"><div className="container">
-        <SectionTitle eyebrow="The people who give this journey its purpose" title={<span id="builders-title">Meet the student builders.</span>} text="Eleven people. A shared willingness to learn, contribute and keep building. Every name here is part of the story." />
-        <div className="sbp-builders__grid">{studentBuilders.map((builder, index) => <article className={`sbp-builder sbp-builder--${index % 3}`} key={builder.name} aria-labelledby={`builder-${index}`}><span className="sbp-initials" aria-hidden="true">{builder.initials}</span><p className="sbp-builder__role">Student Builder</p><h3 id={`builder-${index}`}>{builder.name}</h3><p className="sbp-builder__thanks">{builder.thanks}</p><a href={builder.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`View ${builder.name} on LinkedIn`}>View LinkedIn<span className="sr-only"> (opens in a new tab)</span></a></article>)}</div>
+        <SectionTitle eyebrow="The people who give this journey its purpose" title={<span id="builders-title">Meet the student builders.</span>} text={`${studentBuilders.length} people. A shared willingness to learn, contribute and keep building. Every name here is part of the story.`} />
+        <div className="sbp-builders__grid">{studentBuilders.map((builder, index) => (
+          <article className={`sbp-builder sbp-builder--${index % 3}`} key={builder.id} data-builder-id={builder.id} aria-labelledby={`builder-${builder.id}`}>
+            <span className="sbp-initials" aria-hidden="true">{builder.initials}</span>
+            <p className="sbp-builder__id"><span className="sr-only">Participant ID: </span>{builder.id}</p>
+            <p className="sbp-builder__role">Student Builder</p>
+            <h3 id={`builder-${builder.id}`}>{builder.name}</h3>
+            <p className="sbp-builder__thanks">{builder.thanks}</p>
+            {builder.linkedin && <a href={builder.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`View ${builder.name} on LinkedIn`}>View LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>}
+          </article>
+        ))}</div>
       </div></section>
       <section className="sbp-section sbp-mentors" id="mentors" aria-labelledby="mentors-title"><div className="container">
         <SectionTitle eyebrow="Experience shared, not kept to ourselves" title={<span id="mentors-title">Guided by the people<br /><em>who build every day.</em></span>} text="Our full leadership team supports the program, connecting students with practical experience, feedback and collaborative ways of working." />

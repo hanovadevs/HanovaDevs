@@ -2,7 +2,7 @@
 
 Route: `/student-builder-program`. Public program content and participant roster come from the user-approved implementation brief. The cohort is presented as in progress within October-December 2026, for approximately eight weeks. No exact dates, eligibility, fees, application status, certificate conditions or investment terms are invented.
 
-All eleven LinkedIn URLs retain their supplied slug spellings. No participant email addresses or guessed portraits are published. Participant cards use initials; mentor cards reuse the shared approved leadership data. Personal mentor LinkedIn links are absent from that data and are omitted.
+The corrected twelve-person roster displays participant IDs HD-SB-001 through HD-SB-012 in ascending order. Wajiha Fatima is HD-SB-008 and Mark Angelo is HD-SB-009. Muhammad Haroon Zafar is not included in the owner's revised roster. Harish Ghafar uses the updated supplied name spelling, with the existing LinkedIn URL unchanged. The ten supplied LinkedIn URLs retain their slug spellings; no links are invented for Wajiha or Mark. No participant email addresses or guessed portraits are published. Participant cards use initials; mentor cards reuse the shared approved leadership data. Personal mentor LinkedIn links are absent from that data and are omitted.
 
 ## Assets and provenance
 

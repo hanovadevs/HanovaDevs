@@ -10,24 +10,40 @@ import { studentBuilderSchema } from '../lib/studentBuilderSchema'
 afterEach(() => { cleanup(); vi.unstubAllGlobals() })
 const renderProgram = () => render(<HelmetProvider><MemoryRouter><StudentBuilderProgram /></MemoryRouter></HelmetProvider>)
 const roster = [
-  ['Muhammad Haroon Zafar', 'muhammad-haroon-zafar-7a05a23a0'], ['Abdul Haseeb', 'abdul-haseeb-956337294'],
-  ['Hussain Aftab', 'hussain-aftab-ba572a386'], ['Muhammad Bilal Raza', 'muhammad-bilal-raza-81921b388'],
-  ['Haris Ghafar', 'haris-ghafar'], ['Hafiz Muhammad Burhan Sadiq', 'm-burhan-sadiq-b59aa9336'],
-  ['Yusra Shahid', 'yusra-shahid-40a61725a'], ['Muhammad Anas', 'anas-arshad-927885385'],
-  ['Muhammad Waleed', 'muhammed-waleed-66961b412'], ['Ayesha Fatima', 'ayesha-fatima-sehab'], ['Iffa Mateen', 'iffa-mateen-9353ab3a0'],
+  ['HD-SB-001', 'Muhammad Bilal Raza', 'muhammad-bilal-raza-81921b388'],
+  ['HD-SB-002', 'Muhammad Anas', 'anas-arshad-927885385'],
+  ['HD-SB-003', 'Yusra Shahid', 'yusra-shahid-40a61725a'],
+  ['HD-SB-004', 'Harish Ghafar', 'haris-ghafar'],
+  ['HD-SB-005', 'Ayesha Fatima', 'ayesha-fatima-sehab'],
+  ['HD-SB-006', 'Iffa Mateen', 'iffa-mateen-9353ab3a0'],
+  ['HD-SB-007', 'Muhammad Waleed', 'muhammed-waleed-66961b412'],
+  ['HD-SB-008', 'Wajiha Fatima', null],
+  ['HD-SB-009', 'Mark Angelo', null],
+  ['HD-SB-010', 'Abdul Haseeb', 'abdul-haseeb-956337294'],
+  ['HD-SB-011', 'Hussain Aftab', 'hussain-aftab-ba572a386'],
+  ['HD-SB-012', 'Hafiz Muhammad Burhan Sadiq', 'm-burhan-sadiq-b59aa9336'],
 ]
 
 describe('Student Builder Program', () => {
-  it('publishes exactly the eleven supplied builders and LinkedIn URL slugs', () => {
+  it('publishes the corrected twelve builders in ID order with only supplied LinkedIn links', () => {
     renderProgram()
-    expect(studentBuilders).toHaveLength(11)
+    expect(studentBuilders).toHaveLength(12)
+    expect(new Set(studentBuilders.map(builder => builder.id)).size).toBe(12)
+    expect(studentBuilders.map(builder => [builder.id, builder.name])).toEqual(roster.map(([id, name]) => [id, name]))
     const builders = screen.getByRole('region', { name: 'Meet the student builders.' })
-    expect(within(builders).getAllByRole('article')).toHaveLength(11)
-    for (const [name, slug] of roster) {
-      expect(within(builders).getByRole('heading', { name, exact: true })).toBeInTheDocument()
-      expect(within(builders).getByRole('link', { name: `View ${name} on LinkedIn` })).toHaveAttribute('href', `https://www.linkedin.com/in/${slug}/`)
+    const cards = within(builders).getAllByRole('article')
+    expect(cards).toHaveLength(12)
+    expect(builders).toHaveTextContent('12 people.')
+    for (const [index, [id, name, slug]] of roster.entries()) {
+      const card = cards[index]
+      expect(card).toHaveAttribute('data-builder-id', id)
+      expect(within(card).getByRole('heading', { name, exact: true })).toBeInTheDocument()
+      expect(card).toHaveTextContent(`Participant ID: ${id}`)
+      if (slug) expect(within(card).getByRole('link', { name: `View ${name} on LinkedIn` })).toHaveAttribute('href', `https://www.linkedin.com/in/${slug}/`)
+      else expect(within(card).queryByRole('link')).not.toBeInTheDocument()
     }
     expect(builders.querySelectorAll('img')).toHaveLength(0)
+    expect(within(builders).queryByRole('heading', { name: 'Muhammad Haroon Zafar' })).not.toBeInTheDocument()
     expect(JSON.stringify(studentBuilders)).not.toMatch(/@|email|university|rating/i)
   })
 

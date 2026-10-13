@@ -43,8 +43,16 @@ for (const route of publicRoutes) {
     assert.equal(program.timeToComplete, 'P8W')
     assert.equal(program.educationalProgramMode, 'online')
     assert(!program.startDate && !program.endDate && !program.offers, 'No invented program dates or fees')
-    assert.equal(document.querySelectorAll('.sbp-builder').length, 11)
-    for (const builder of studentBuilders) assert(document.querySelector(`a[href="${builder.linkedin}"]`), `${builder.name}: LinkedIn destination`)
+    const cards = [...document.querySelectorAll('.sbp-builder')]
+    assert.equal(cards.length, 12)
+    assert.deepEqual(cards.map(card => card.dataset.builderId), Array.from({ length: 12 }, (_, index) => `HD-SB-${String(index + 1).padStart(3, '0')}`))
+    for (const builder of studentBuilders) {
+      const card = document.querySelector(`[data-builder-id="${builder.id}"]`)
+      assert(card.querySelector('h3').textContent === builder.name, `${builder.id}: participant identity`)
+      assert(card.querySelector('.sbp-builder__id').textContent.includes(builder.id), `${builder.id}: visible ID`)
+      if (builder.linkedin) assert(card.querySelector(`a[href="${builder.linkedin}"]`), `${builder.name}: LinkedIn destination`)
+      else assert(!card.querySelector('a'), `${builder.name}: do not invent a profile link`)
+    }
     assert.equal(document.querySelectorAll('.sbp-mentor').length, 4)
     assert.equal(document.querySelectorAll('.sbp-faq details').length, programFaqs.length)
     assert(!document.querySelector('.sbp-page').textContent.includes('@'), 'No public participant emails')

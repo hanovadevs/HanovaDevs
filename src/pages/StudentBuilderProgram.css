@@ -86,6 +86,7 @@
 .sbp-builder { flex: 0 0 calc((100% - 2.5rem)/3); min-width: 0; position: relative; display: flex; flex-direction: column; padding: 1.75rem; border: 1px solid #d7e2d9; border-radius: 24px 24px 10px 24px; background: #fff; }
 .sbp-initials { display: grid; place-items: center; width: 58px; height: 64px; border-radius: 45% 45% 12px 12px; background: #e5eee5; color: #315c4a; font: 500 1rem var(--font-hero); margin-bottom: 1.25rem; }
 .sbp-builder--1 .sbp-initials { color: #6a5141; background: #f0eade; }.sbp-builder--2 .sbp-initials { color: #345a73; background: #e3edf3; }
+.sbp-page .sbp-builder__id { position: absolute; top: 1.9rem; right: 1.75rem; margin: 0; padding: .35rem .55rem; border: 1px solid #d7e2d9; border-radius: 100px; background: #f2f6f0; color: #38574a; font-size: .7rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .035em; white-space: nowrap; }
 .sbp-page .sbp-builder__role { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--sbp-accent); margin-bottom: .4rem; }
 .sbp-builder h3 { min-height: 2.5em; font-size: 1.4rem; }
 .sbp-page .sbp-builder__thanks { font-size: .9rem; margin-top: 1rem; margin-bottom: 1.25rem; }
