@@ -35,7 +35,7 @@ export default function TrustLegalSection() {
                 <span className="bullet">✓</span> Zero data broker selling
               </li>
               <li>
-                <span className="bullet">✓</span> Encrypted edge telemetry
+                <span className="bullet">✓</span> Optional analytics controls
               </li>
               <li>
                 <span className="bullet">✓</span> Transparent analytics & cookies
@@ -73,7 +73,7 @@ export default function TrustLegalSection() {
 
             <ul className="trust-legal__highlights">
               <li>
-                <span className="bullet">✓</span> 100% Client IP sovereignty
+                <span className="bullet">✓</span> Agreed ownership & handover
               </li>
               <li>
                 <span className="bullet">✓</span> Clear milestone deliverables

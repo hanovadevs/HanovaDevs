@@ -31,7 +31,11 @@ export function CookieConsentProvider({ children }) {
     document.addEventListener('keydown', onKey)
     const overflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = overflow; document.removeEventListener('keydown', onKey) }
+    return () => {
+      document.body.style.overflow = overflow
+      document.removeEventListener('keydown', onKey)
+      requestAnimationFrame(() => returnFocus.current?.focus())
+    }
   }, [settingsOpen])
   const save = allowed => {
     const wasEnabled = preferences?.analytics

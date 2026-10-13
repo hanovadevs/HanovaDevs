@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test'
 
+test.beforeEach(async ({ context }) => {
+  await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
+})
+
 async function expectContained(locator, page) {
   await expect(locator).toBeVisible()
   const bounds = await locator.boundingBox()

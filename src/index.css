@@ -343,7 +343,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--royal-blue);
+  color: var(--teal-dark);
   margin-bottom: var(--space-sm);
   position: relative;
   padding-left: 24px;
