@@ -1,4 +1,5 @@
 .leadership {
+  scroll-margin-top: calc(var(--header-height, 88px) + 1rem);
   position: relative;
   isolation: isolate;
   overflow: hidden;

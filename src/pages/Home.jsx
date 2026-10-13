@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import ProgramSpotlight from '../components/ProgramSpotlight'
+import BuildingFeature from '../components/BuildingFeature'
 import TrustLegalSection from '../components/TrustLegalSection'
 import { journalPosts } from '../data/journal'
 import { company, clientProjects } from '../data/company'
@@ -239,6 +240,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BuildingFeature />
 
       {/* ===== ABOUT TEASER ===== */}
       <section className="about-teaser section" id="about-teaser">

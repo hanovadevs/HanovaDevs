@@ -91,6 +91,7 @@
 .sbp-page .sbp-builder__thanks { font-size: .9rem; margin-top: 1rem; margin-bottom: 1.25rem; }
 .sbp-builder > a { margin-top: auto; display: inline-flex; align-items: center; min-height: 44px; color: var(--sbp-accent); font-size: .9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
 .sbp-mentors::before { width: 110%; height: 115%; right: -65%; top: -65%; background: #f2f5ef; border: 0; }
+.sbp-page .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .sbp-mentors__grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1.25rem; }
 .sbp-mentor { min-width: 0; }.sbp-mentor figure { position: relative; margin: 0 0 1.5rem; }
 .sbp-mentor img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 28%; border-radius: 48% 48% 14px 14px / 30% 30% 14px 14px; background: #e6ece5; display: block; }
