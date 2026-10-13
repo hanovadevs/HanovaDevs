@@ -13,7 +13,7 @@ test('Hira’s official role is reachable, readable and linked to the company en
   await expect(page.locator('.navbar__logo-full')).toBeVisible()
   await expect(page.locator('.navbar__logo-inverse')).toBeHidden()
   await page.evaluate(() => document.fonts.ready)
-  await page.locator('main img').evaluate(async image => { await image.decode() })
+  await page.locator('.leader-profile__portrait img').evaluate(async image => { await image.decode() })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true)
   const graph = await page.locator('script[type="application/ld+json"]').evaluate(node => JSON.parse(node.textContent)['@graph'])
   const profile = graph.find(node => node['@type'] === 'ProfilePage')

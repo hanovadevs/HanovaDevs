@@ -15,21 +15,10 @@ export default function LeadershipTeam() {
           {leadershipTeam.map(member => (
             <article key={member.id} className={`leader-card leader-card--${member.tone}`} aria-labelledby={`leader-${member.id}`}>
               <div className="leader-card__portrait">
-                {member.image ? (
-                  <img src={member.image} srcSet={`${member.smallImage} 480w, ${member.image} 800w`}
-                    sizes="(max-width: 560px) calc(100vw - 80px), (max-width: 1100px) 40vw, 260px"
-                    width="800" height="800" alt={member.alt} loading="lazy" decoding="async" />
-                ) : (
-                  <div className="leader-avatar" role="img" aria-label="Faceless illustrated avatar for Noor Fatima">
-                    <div className="leader-avatar__halo" />
-                    <div className="leader-avatar__shoulders" />
-                    <div className="leader-avatar__neck" />
-                    <div className="leader-avatar__hair" />
-                    <div className="leader-avatar__face" />
-                    <div className="leader-avatar__collar" />
-                    <span className="leader-avatar__label">Illustrated avatar</span>
-                  </div>
-                )}
+                <img src={member.image} srcSet={`${member.smallImage} 480w, ${member.image} 800w`}
+                  sizes="(max-width: 560px) calc(100vw - 80px), (max-width: 1100px) 40vw, 260px"
+                  width="800" height="800" alt={member.alt} loading="lazy" decoding="async" />
+                {member.illustration && <span className="leader-card__illustration">AI-generated illustration</span>}
               </div>
               <div className="leader-card__info">
                 <p className="leader-card__role">{member.role}</p>

@@ -3,6 +3,7 @@ import { readFile, access } from 'node:fs/promises'
 import { JSDOM } from 'jsdom'
 import { publicRoutes, legacyRedirects } from '../src/data/routes.js'
 import { company } from '../src/data/company.js'
+import { leadershipProfiles, leadershipFaqs } from '../src/data/leadershipProfiles.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const seenTitles = new Set()
@@ -23,12 +24,17 @@ for (const route of publicRoutes) {
   assert(hira, `${route}: co-founder entity`)
   assert.equal(hira.jobTitle, 'Co-founder & Chief Operating Officer')
   assert(organization.founder.some(founder => founder['@id'] === hira['@id']), `${route}: co-founder relationship`)
-  if (route === company.coFounder.path) {
+  const member = leadershipProfiles.find(person => person.profile === route)
+  if (member) {
     const profile = schemas[0]['@graph'].find(node => node['@type'] === 'ProfilePage')
-    assert.equal(profile.mainEntity['@id'], hira['@id'])
-    assert.equal(document.querySelector('h1').textContent, hira.name)
-    assert(document.querySelector('main').textContent.includes(hira.description), 'Profile schema matches visible bio')
-    assert.equal(document.querySelector('meta[property="og:image"]').content, `${company.url}${company.coFounder.image}`)
+    assert.equal(profile.mainEntity['@id'], member.entityId)
+    assert.equal(document.querySelector('h1').textContent, member.name)
+    assert(document.querySelector('main').textContent.includes(member.description), 'Profile schema matches visible bio')
+    assert.equal(document.querySelector('meta[property="og:image"]').content, `${company.url}${member.image}`)
+    assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity.length, 7)
+    for (const faq of leadershipFaqs(member)) assert(document.querySelector('main').textContent.includes(faq.answer), `${route}: visible FAQ answer`)
+    assert.equal(schemas[0]['@graph'].filter(node => node['@id'] === member.entityId).length, 1)
+    if (member.illustration) assert(!schemas[0]['@graph'].find(node => node['@id'] === member.entityId).image, 'Do not present fictional avatar as an actual likeness in Person schema')
   }
   assert(!JSON.stringify(schemas).match(/aggregateRating|ratingValue|streetAddress|"award"/), `${route}: evidence-safe schema`)
   assert(!document.querySelector('script[src*="googletagmanager"], script[src*="_vercel/insights"], iframe[src*="googletagmanager"]'), `${route}: no optional trackers in HTML`)

@@ -6,6 +6,9 @@
 - [About and founder](https://hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
 - [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
 - [Hira Maqsood](https://hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
+- [Ali Haider company profile](https://hanovadevs.com/team/ali-haider): Founder and CEO; company direction and business strategy. Founded HanovaDevs in 2022.
+- [Noor Fatima](https://hanovadevs.com/team/noor-fatima): Chief Marketing Officer; brand direction and marketing communication. Profile artwork is an illustrated placeholder, not a photograph.
+- [Faizan Javed](https://hanovadevs.com/team/faizan-javed): Chief Technology Officer; technology direction and engineering decisions.
 - [Contact](https://hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
 - [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
 

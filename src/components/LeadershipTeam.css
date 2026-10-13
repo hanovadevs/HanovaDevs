@@ -71,15 +71,7 @@
 .leadership__story p { max-width: 740px; font-size: .95rem; line-height: 1.75; color: #536961; }
 .leadership__story a { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; padding-block: .5rem; color: #0a766f; font-size: .9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
 
-/* A deliberately faceless portrait illustration, not a stock photograph or UI icon. */
-.leader-avatar { width: 100%; height: 100%; position: relative; overflow: hidden; background: linear-gradient(145deg, #eef1ea, #d6e0d3); }
-.leader-avatar__halo { position: absolute; width: 88%; aspect-ratio: 1; top: 5%; left: 6%; border-radius: 50%; background: #e7e9db; border: 1px solid #ffffffa0; }
-.leader-avatar__shoulders { position: absolute; width: 112%; height: 50%; bottom: -7%; left: -6%; border-radius: 48% 48% 0 0 / 40% 40% 0 0; background: linear-gradient(110deg, #194c48, #326b5f 48%, #123b3b); }
-.leader-avatar__neck { position: absolute; width: 20%; height: 23%; top: 48%; left: 40%; border-radius: 0 0 45% 45%; background: linear-gradient(100deg, #b9977c, #d2b198); }
-.leader-avatar__hair { position: absolute; width: 49%; height: 44%; top: 13%; left: 25.5%; border-radius: 48% 48% 35% 35%; background: linear-gradient(120deg, #303f3b, #172b29); }
-.leader-avatar__face { position: absolute; width: 36%; height: 35%; top: 24%; left: 32%; border-radius: 40% 40% 48% 48%; background: linear-gradient(105deg, #d1ad92, #e5c7ad 55%, #c8a58e); box-shadow: inset -7px -3px 18px #8f765014; }
-.leader-avatar__collar { position: absolute; width: 42%; height: 8%; top: 65%; left: 29%; border-radius: 0 0 50% 50%; border-bottom: 6px solid #6b9481; }
-.leader-avatar__label { position: absolute; bottom: .75rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #33483d; background: #edf2e9ed; border: 1px solid #fff8; border-radius: 100px; padding: .35rem .65rem; font-size: .65rem; }
+.leader-card__illustration { position: absolute; bottom: .65rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #33483d; background: #edf2e9f5; border: 1px solid #fff8; border-radius: 100px; padding: .35rem .65rem; font-size: .65rem; }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .leader-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px #163e2a12; }

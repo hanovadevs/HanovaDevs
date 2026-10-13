@@ -1,4 +1,5 @@
 import { company } from '../data/company'
+import { leadershipTeam } from '../data/leadership'
 
 export function canonicalUrl(path = '/') {
   const pathname = new URL(path || '/', company.url).pathname.replace(/\/+$/, '') || '/'
@@ -16,8 +17,7 @@ export function organizationGraph() {
       contactPoint: { '@type': 'ContactPoint', contactType: 'customer enquiries', email: company.email, availableLanguage: 'English' },
       knowsAbout: ['Custom software', 'Web development', 'Ecommerce', 'AI automation', 'Technical SEO', 'Brand identity'],
     },
-    { '@type': 'Person', '@id': `${company.founder.url}/#person`, name: company.founder.name, url: company.founder.url, image: `${company.url}${company.founder.image}`, jobTitle: 'Founder & CEO', worksFor: { '@id': `${company.url}/#organization` } },
-    { '@type': 'Person', '@id': `${company.coFounder.url}#person`, name: company.coFounder.name, url: company.coFounder.url, image: `${company.url}${company.coFounder.image}`, jobTitle: company.coFounder.jobTitle, description: company.coFounder.description, knowsAbout: company.coFounder.knowsAbout, worksFor: { '@id': `${company.url}/#organization` }, mainEntityOfPage: { '@id': `${company.coFounder.url}#webpage` } },
+    ...leadershipTeam.map(member => ({ '@type': 'Person', '@id': member.entityId, name: member.name, url: `${company.url}${member.profile}`, ...(member.illustration ? {} : { image: `${company.url}${member.image}` }), jobTitle: member.jobTitle, description: member.description, knowsAbout: member.knowsAbout, worksFor: { '@id': `${company.url}/#organization` }, mainEntityOfPage: { '@id': `${company.url}${member.profile}#webpage` }, ...(member.externalProfile ? { sameAs: [member.externalProfile] } : {}) })),
     { '@type': 'WebSite', '@id': `${company.url}/#website`, url: `${company.url}/`, name: company.name, alternateName: company.alternateName, inLanguage: 'en', publisher: { '@id': `${company.url}/#organization` } },
   ]
 }

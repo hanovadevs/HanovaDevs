@@ -192,6 +192,18 @@
       "dest": "/team/hira-maqsood/index.html"
     },
     {
+      "src": "^/team/ali-haider/?$",
+      "dest": "/team/ali-haider/index.html"
+    },
+    {
+      "src": "^/team/noor-fatima/?$",
+      "dest": "/team/noor-fatima/index.html"
+    },
+    {
+      "src": "^/team/faizan-javed/?$",
+      "dest": "/team/faizan-javed/index.html"
+    },
+    {
       "src": "^/projects/?$",
       "dest": "/projects/index.html"
     },

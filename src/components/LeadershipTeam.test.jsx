@@ -17,11 +17,13 @@ describe('Leadership cards', () => {
 
   it('uses the three supplied portraits and an explicitly labelled faceless illustration', () => {
     const { container } = render(<LeadershipTeam />)
-    expect(container.querySelectorAll('img')).toHaveLength(3)
+    expect(container.querySelectorAll('img')).toHaveLength(4)
     expect(screen.getByAltText(/hira maqsood/i)).toHaveAttribute('src', '/people/hira-maqsood.webp')
     expect(screen.getByAltText(/faizan javed/i)).toHaveAttribute('src', '/people/faizan-javed.webp')
     expect(screen.getByAltText(/ali haider/i)).toHaveAttribute('src', '/people/ali-haider.webp')
     expect(screen.getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toHaveAttribute('src', '/people/noor-fatima-avatar.webp')
+    expect(screen.getByText('AI-generated illustration')).toBeInTheDocument()
     expect(container.querySelectorAll('svg, i, [class*="icon"]')).toHaveLength(0)
     expect(screen.getByRole('link', { name: 'Explore Ali’s profile' })).toHaveAttribute('href', 'https://ali.hanovadevs.com')
   })

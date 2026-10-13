@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { company } from '../data/company'
 import { canonicalUrl, pageGraph } from '../lib/seo'
 
-export default function SEO({ title, description, url, type = 'website', image, schemaMarkup, faqList, breadcrumbs, noIndex = false, pageType, publishedAt, modifiedAt, mainEntity }) {
+export default function SEO({ title, description, url, type = 'website', image, imageAlt, schemaMarkup, faqList, breadcrumbs, noIndex = false, pageType, publishedAt, modifiedAt, mainEntity }) {
   const cleanTitle = title?.replace(/\s*[|—–-]\s*HanovaDevs.*$/i, '')
   const siteTitle = cleanTitle ? `${cleanTitle} | HanovaDevs` : 'HanovaDevs | Custom Software, Web Development & AI Automation'
   const metaDescription = description || company.description
@@ -23,7 +23,7 @@ export default function SEO({ title, description, url, type = 'website', image, 
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={metaImage} />
-      <meta property="og:image:alt" content={cleanTitle || 'HanovaDevs software company'} />
+      <meta property="og:image:alt" content={imageAlt || cleanTitle || 'HanovaDevs software company'} />
       <meta property="og:site_name" content="HanovaDevs" />
       <meta property="og:locale" content="en_US" />
       <meta name="twitter:card" content="summary_large_image" />
