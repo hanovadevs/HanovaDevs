@@ -1,6 +1,7 @@
+import { companyFaqs } from '../data/company'
 import { useState, useEffect, useRef, useId } from 'react'
 import { Link } from 'react-router-dom'
-import { saveAppointment, saveChatTranscript, getAppointments, getChatbotQA, getChatbotConfig } from '../lib/supabaseClient'
+import { saveAppointment, saveChatTranscript, getAppointments } from '../lib/supabaseClient'
 import './AIChatbot.css'
 
 // Simulated local intelligence engine for local testing offline/without key
@@ -114,7 +115,7 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
       setBookingData(finalBookingData)
       setBookingState('confirmed')
       return {
-        content: `🎉 **Booking Confirmed!**\n\nThank you, **${finalBookingData.name}**. I have registered your discovery call on **${finalBookingData.date}** at **${finalBookingData.time}** (${finalBookingData.timezone}) for your **${finalBookingData.service.replace('-', ' ')}** project.\n\n📬 **Please check your email inbox (and your Spam / Promotions folder just in case!)** for a confirmation note. Our engineering team is reviewing your details, and a **Google Meet link will be shared with you soon**!`
+        content: `**Request received**\n\nThank you, **${finalBookingData.name}**. I have recorded your discovery-call request on **${finalBookingData.date}** at **${finalBookingData.time}** (${finalBookingData.timezone}) for your **${finalBookingData.service.replace('-', ' ')}** project.\n\nPlease check your email for any follow-up. An email or meeting link is not guaranteed until the team confirms your request. Our engineering team is reviewing your details, and the team can confirm the time and meeting details by email.`
       }
     } catch (err) {
       console.error(err)
@@ -128,7 +129,7 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
   if (text.includes('joke') || text.includes('funny') || text.includes('laugh')) {
     const jokes = [
       "Why don't scientists trust atoms? ...Because they make up everything! ⚛️\n\nSpeaking of building things, what kind of digital project are you looking to launch?",
-      "Why do programmers prefer dark mode? ...Because light attracts bugs! 🐛\n\nLuckily, our custom Next.js builds at HanovaDevs are bug-free and lightning fast!",
+      "Why do programmers prefer dark mode? ...Because light attracts bugs! 🐛\n\nLuckily, we can discuss the website or software you want to build!",
       "There are 10 types of people in the world: those who understand binary, and those who don't! 😉\n\nCan I help you automate any tech or design workflows today?"
     ]
     const randomJoke = jokes[Math.floor(Math.random() * jokes.length)]
@@ -171,7 +172,7 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
 
   if (text.includes('web') || text.includes('design') || text.includes('react') || text.includes('next')) {
     return {
-      content: "We engineer lightning-fast websites and web applications using React, Next.js, and Vite. Our sites achieve 100/100 Lighthouse performance scores to maximize search indexing. Would you like to schedule a call to discuss a website project?"
+      content: "We engineer lightning-fast websites and web applications using React, Next.js, and Vite. We agree performance goals and validate results under representative test conditions. Would you like to schedule a call to discuss a website project?"
     }
   }
 
@@ -183,7 +184,7 @@ const generateSimulatedResponse = async (userText, history, bookingState, setBoo
 
   if (text.includes('work') || text.includes('portfolio') || text.includes('project') || text.includes('done') || text.includes('omnai') || text.includes('eunoia') || text.includes('codator')) {
     return {
-      content: "We have built some amazing systems recently!\n• **Omnai**: AI vector document workspace for enterprise research\n• **Eunoia**: Premium luxury brand digital showcase\n• **CODATOR**: Gamified coding league portal for FAST-NUCES\n• **TerraSol**: Real-time solar telemetry monitoring\n\nYou can explore our full interactive gallery on our **/projects** page!"
+      content: "HanovaDevs was founded in 2022 by Ali Haider. Our client work includes EarthSync Essentials (Veli), Terra Sol Grounding (Sara), Crown Accumulators (Shahid Mahmood) and RAQS (Noor Fatima). Eunoia is available on Microsoft Store, and Omnai Browser is launching soon. Explore **/projects**, **/reviews** and **/products** for details."
     }
   }
 
@@ -423,8 +424,8 @@ export default function AIChatbot() {
           status: app.status
         }))
       }
-      customQA = await getChatbotQA()
-      customConfig = await getChatbotConfig()
+      customQA = companyFaqs.map(faq => ({ question: faq.question, answer: faq.answer }))
+      // Public answers use reviewed company facts rather than unapproved CMS instructions.
     } catch (dbErr) {
       console.warn("Could not load context for chat:", dbErr)
     }
@@ -544,7 +545,7 @@ export default function AIChatbot() {
                 }
               } else {
                 // Fallback to static confirmation if second pass fails
-                const fallbackConfirm = `🎉 **Booking Confirmed!**\n\nThank you, **${fullBookingData.name}**. I have registered your discovery call on **${fullBookingData.date}** at **${fullBookingData.time}** (${fullBookingData.timezone}) for your **${fullBookingData.service.replace('-', ' ')}** project.\n\n📬 **Please check your email inbox (and your Spam / Promotions folder just in case!)** for a confirmation note. Our engineering team is reviewing your details, and a **Google Meet link will be shared with you soon**!`
+                const fallbackConfirm = `**Request received**\n\nThank you, **${fullBookingData.name}**. I have recorded your discovery-call request on **${fullBookingData.date}** at **${fullBookingData.time}** (${fullBookingData.timezone}) for your **${fullBookingData.service.replace('-', ' ')}** project.\n\nPlease check your email for any follow-up. An email or meeting link is not guaranteed until the team confirms your request. Our engineering team is reviewing your details, and the team can confirm the time and meeting details by email.`
                 setMessages(prev => {
                   const next = [...prev];
                   if (next.length > 0 && next[next.length - 1].role === 'assistant') {

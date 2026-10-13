@@ -7,7 +7,7 @@ export default function EunoiaPrivacyPolicy() {
     <>
       <SEO
         title="Eunoia Privacy Policy"
-        description="Privacy policy for the Eunoia desktop app by HanovaDevs. Learn how Eunoia protects your data with a local-first, zero-cloud architecture — your data never leaves your device."
+        description="Eunoia privacy information from HanovaDevs: local workspace storage, optional cloud AI and voice processing, provider connections, and your data choices."
         url="/products/eunoia/privacy"
         breadcrumbs={[
           { name: 'Home', item: '/' },

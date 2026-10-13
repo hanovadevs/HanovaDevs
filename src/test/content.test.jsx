@@ -10,6 +10,7 @@ import { canonicalUrl, organizationGraph, pageGraph } from '../lib/seo'
 import { consentCookie, readConsent } from '../lib/consent'
 import Reviews from '../pages/Reviews'
 import About from '../pages/About'
+import { eunoiaPrivacyPolicyData } from '../data/eunoiaLegalData'
 
 const wrap = element => render(<HelmetProvider><MemoryRouter>{element}</MemoryRouter></HelmetProvider>)
 describe('Company accuracy and discovery', () => {
@@ -56,6 +57,12 @@ describe('Company accuracy and discovery', () => {
     wrap(<About />)
     expect(screen.getByAltText('Ali Haider, founder of HanovaDevs')).toHaveAttribute('src', '/people/ali-haider.webp')
     expect(screen.getByRole('link', { name: /explore ali/i })).toHaveAttribute('href', 'https://ali.hanovadevs.com')
+  })
+  it('discloses optional cloud processing in Eunoia without a fake network audit', () => {
+    const notice = JSON.stringify(eunoiaPrivacyPolicyData)
+    expect(notice).toContain('optional OpenAI connection')
+    expect(notice).toContain('audio may be sent to OpenAI')
+    expect(notice).not.toMatch(/Verified by the Community|Zero External AI Calls|your data never leaves/i)
   })
   it('offers filterable client stories without invented attributed reviews', () => {
     const { container } = wrap(<Reviews />)

@@ -6,9 +6,15 @@ Reviewed: October 13, 2026.
 
 The company owner supplied the 2022 founding year, Ali Haider's identity and portrait, the founder URL, Eunoia's Microsoft Store release status, Omnai's upcoming launch, and these project relationships: Veli / EarthSync Essentials, Sara / Terra Sol Grounding, Shahid Mahmood / Crown Accumulators, Noor Fatima / RAQS. These are owner-attested facts, not an independent company-size or performance audit. The founder website and Store listing were not independently fetched successfully during this audit. Check the links and package details before release.
 
+External identity inconsistency: the supplied LinkedIn company page currently lists Founded 2024, while the owner explicitly confirmed 2022. The website uses 2022. Update that LinkedIn field through the company administrator account to make the public entity information consistent: https://www.linkedin.com/company/hanova-devs. The GitHub profile links back to hanovadevs.com and the Instagram handle; the Instagram page itself was not readable during verification. No company headcount is asserted on this website.
+
 Public content uses a shared registry in `src/data/company.js`. The public portfolio is curated from that registry rather than unreviewed database copy. Admin portfolio content must pass the same evidence review before it is reintroduced to public pages.
 
+Fresh offline/admin portfolio and FAQ defaults also use that registry. Existing database rows and browser-stored admin edits were not deleted or overwritten. Seed timestamps identify this reviewed default content, not a client's delivery date.
+
 Removed: invented product reviews and article comments, unsupported portfolio metrics, speculative future-news claims, fake office/support coverage, fake stock-team identity, unsubstantiated proficiency scores, and blanket Lighthouse, accessibility, SOC 2 and business-result guarantees. Service copy now describes scope and validation rather than a universal outcome. Aria's incorrect product and client descriptions were corrected. Existing estimator values remain illustrative, not quotes or measured ROI.
+
+Eunoia's privacy notice was checked against the current sibling product source (`E:/Personal projects/Eunoia/electron/main.js`, `electron/local-ai-service.js`, and `src/eunoia-brain.js`). That source includes local AI plus optional OpenAI chat, transcription and speech requests; the old zero-cloud and community-audit claims were inaccurate and removed. Confirm correspondence with the exact Store release before relying on release-specific wording. The public assistant now uses reviewed company FAQs rather than client-submitted or unreviewed CMS directives; admin FAQ/promo changes are not automatically published through Aria.
 
 The review page contains project stories and qualitative delivery outcomes. Draft testimonials are in `CLIENT_REVIEW_DRAFTS.md`, not in the public site. No client quote or rating should be published without actual feedback and attribution approval. Company-controlled reviews do not establish eligibility for Google Organization review stars: https://developers.google.com/search/docs/appearance/structured-data/review-snippet
 
@@ -38,4 +44,12 @@ Before deployment, inspect GTM-WNB5ZMNL in the Google dashboard. Ensure every an
 6. Confirm client publication permission and any measured results before adding reviews.
 7. Maintain source dates and product status when news or releases change. Refresh sitemap lastmod only when content changes materially.
 
+For a browser check of the production HTML, start `npm run preview` and run `node scripts/check-prerendered-browser.mjs`. Preview routing serves the generated route files and mirrors the production redirects/404 instead of Vite's homepage fallback. The preview does not emulate the hosted serverless APIs.
+
 No search ranking, indexing time, company size, client revenue result or certification is guaranteed.
+
+## Local verification results
+
+Lint and production build passed. All 23 unit tests passed. The six-resolution browser suite passed 65 tests with one desktop navigation skip. Responsive checks passed 44 focused layouts and 56 site-wide layouts with no failures. Automated accessibility checks of About and Reviews found no serious or critical violations; keyboard focus, dialog Escape, consent persistence/revocation, article navigation, news controls and gallery selection were exercised. This is not a complete human screen-reader or WCAG conformance audit.
+
+All 31 built public pages passed metadata, schema, asset and sitemap checks. Chromium loaded all 31 with JavaScript disabled. Production-bundle smoke checks verified unique metadata, client filtering and gallery interaction without page errors. Local preview returned the expected 404 and 308 status codes. Hosted Vercel routing, live API delivery, actual GTM tags, Search Console indexing and client approval remain separate release checks.

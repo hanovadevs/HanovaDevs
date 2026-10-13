@@ -1,3 +1,4 @@
+import { company, clientProjects, companyFaqs } from '../data/company.js'
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
@@ -212,88 +213,11 @@ export async function saveChatTranscript(transcript) {
 // ----------------------------------------------------
 // CMS: PROJECTS MANAGEMENT
 // ----------------------------------------------------
-const defaultProjectsList = [
-  {
-    id: 'raqs',
-    title: 'RAQS Official',
-    category: 'Luxury E-Commerce',
-    description: 'Minimalist couture storefront with Sufi-inspired art, Shopify drop pipeline, and high-speed image transitions.',
-    metrics: '100/100 PageSpeed',
-    image_url: '/projects/raqs.png',
-    live_url: 'https://www.raqsofficial.store',
-    created_at: new Date(Date.now() - 3600000 * 7).toISOString()
-  },
-  {
-    id: 'earthsync',
-    title: 'EarthSync Essential',
-    category: 'E-Commerce & Wellness',
-    description: 'Earthing sheets and medical-grade grounding shop with scientific explainers and nature-inspired aesthetic.',
-    metrics: '+45% Conversion Rate',
-    image_url: '/projects/earthsync.png',
-    live_url: 'https://www.earthsyncessential.com',
-    created_at: new Date(Date.now() - 3600000 * 6).toISOString()
-  },
-  {
-    id: 'terrasol',
-    title: 'Terra Sol Grounding',
-    category: 'E-Commerce & Wellness',
-    description: 'Multi-section e-commerce ecosystem with Amazon API connectivity, 20+ peer-reviewed studies index, and Gemini AI search.',
-    metrics: '4.8★ Avg Rating',
-    image_url: '/projects/terrasol.png',
-    live_url: 'https://www.terrasolgrounding.com',
-    created_at: new Date(Date.now() - 3600000 * 5).toISOString()
-  },
-  {
-    id: 'nexus',
-    title: 'Nexus Health',
-    category: 'Telemedicine SaaS',
-    description: 'Next-generation telemedicine dashboard connecting practitioners with remote patients in real-time.',
-    metrics: '99.9% Platform Uptime',
-    image_url: '/projects/nexus.png',
-    live_url: 'https://www.nexushealth.io',
-    created_at: new Date(Date.now() - 3600000 * 4).toISOString()
-  },
-  {
-    id: 'crown',
-    title: 'Crown Accumulator',
-    category: 'Industrial B2B Portfolio',
-    description: 'Industrial manufacturer of automotive, tractor, and solar batteries with high-performance B2B filtering.',
-    metrics: '< 0.8s Load Time',
-    image_url: '/projects/crown.png',
-    live_url: 'https://www.crownaccumulator.com',
-    created_at: new Date(Date.now() - 3600000 * 3).toISOString()
-  },
-  {
-    id: 'lumiere',
-    title: 'Lumière Paris',
-    category: 'Luxury Fashion',
-    description: 'Avant-garde luxury fashion house digital boutique with lookbook checkout flow.',
-    metrics: '+32% AOV Increase',
-    image_url: '/projects/lumiere.png',
-    live_url: 'https://www.lumiere-paris.fr',
-    created_at: new Date(Date.now() - 3600000 * 2).toISOString()
-  },
-  {
-    id: 'aero',
-    title: 'AeroSpace Dynamics',
-    category: 'Logistics Analytics',
-    description: 'Cybernetic fleet operator command center for global freight and satellite logistics.',
-    metrics: '10k+ Data Points/Sec',
-    image_url: '/projects/aero.png',
-    live_url: 'https://www.aerospacedynamics.io',
-    created_at: new Date(Date.now() - 3600000 * 1).toISOString()
-  },
-  {
-    id: 'codator',
-    title: 'CODATOR Core & Portal',
-    category: 'Community OS & SaaS',
-    description: 'Gamified community management portal with interactive CLI terminal and real-time event check-ins.',
-    metrics: '68+ Active Members',
-    image_url: '/projects/codator.png',
-    live_url: 'https://codator.vercel.app',
-    created_at: new Date().toISOString()
-  }
-]
+const defaultProjectsList = clientProjects.map(project => ({
+  id: project.id, title: project.title, category: project.category,
+  description: project.overview, metrics: '', image_url: project.image, live_url: project.url,
+  created_at: `${company.reviewedAt}T00:00:00Z`,
+}))
 
 export async function getProjects() {
   if (isSupabaseConfigured) {
@@ -362,43 +286,10 @@ export async function deleteProject(id) {
 // ----------------------------------------------------
 // AI CHATBOT: KNOWLEDGE BASE Q&A & CONFIG
 // ----------------------------------------------------
-const defaultQAList = [
-  {
-    id: 'qa-1',
-    question: 'What is your typical project timeline?',
-    answer: 'Our standard web app development sprint ranges from 2 to 4 weeks. AI automation bots and integrations take between 1 to 2 weeks.',
-    category: 'Timeline',
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'qa-2',
-    question: 'What technology stack do you use?',
-    answer: 'We specialize in Next.js, React, Vanilla CSS, Node.js Serverless Functions, Supabase PostgreSQL, and Anthropic Claude AI.',
-    category: 'Tech Stack',
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'qa-3',
-    question: 'Do you offer ongoing retainer & maintenance plans?',
-    answer: 'Yes! We offer monthly retainer packages for system maintenance, continuous AI fine-tuning, cloud infrastructure monitoring, and feature updates.',
-    category: 'Pricing & Retainers',
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'qa-4',
-    question: 'How does the client discovery call process work?',
-    answer: 'Once you book a consultation slot through Aria or our scheduling page, you receive an instant email confirmation. Our team reviews your goals and emails a dedicated Google Meet room link.',
-    category: 'Process',
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'qa-5',
-    question: 'Can you build custom AI Chatbots for my existing website?',
-    answer: 'Absolutely! We design 24/7 conversational AI guides tailored to your brand, complete with appointment booking tools, lead capture, and CRM integration.',
-    category: 'AI Chatbots',
-    created_at: new Date().toISOString()
-  }
-]
+const defaultQAList = companyFaqs.map((faq, index) => ({
+  id: `company-qa-${index + 1}`, question: faq.question, answer: faq.answer,
+  category: 'Company', created_at: `${company.reviewedAt}T00:00:00Z`,
+}))
 
 export async function getChatbotQA() {
   if (isSupabaseConfigured) {

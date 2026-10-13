@@ -138,9 +138,9 @@ export const privacyPolicyData = {
         {
           type: 'list',
           items: [
-            'Processing Context: Messages you submit to Aria are transmitted via encrypted API connections to secure serverless functions powered by modern language models (such as Google Gemini or OpenAI) solely to formulate helpful, immediate responses.',
-            'No Training on Client Confidential Data: We do not permit third-party AI model providers to use your confidential business inquiries or project submissions to train publicly accessible machine learning models.',
-            'Chat Records: We may retain anonymized chat records to review assistant accuracy, improve service recommendations, and follow up on client quote requests.'
+            'Processing Context: Messages submitted to Aria may be sent through our server-side API to Anthropic to generate a response when the assistant is configured. A local fallback may be used when that service is unavailable. Do not send secrets or information you are not authorized to share.',
+            'Provider Terms: Processing, retention and any provider training rules depend on the configured service and applicable account terms. We do not claim a universal no-training or zero-retention guarantee.',
+            'Chat Records: Chat transcripts and booking details may be retained for follow-up and service review. They can include the personal information you choose to enter; they are not necessarily anonymous.'
           ]
         }
       ]
@@ -158,6 +158,7 @@ export const privacyPolicyData = {
           type: 'list',
           items: [
             'Cloud Hosting & Edge CDN: Vercel Inc. (Global edge infrastructure, serverless compute, and performance telemetry).',
+            'Typeface Delivery: The website requests fonts from Google Fonts and its font CDN. Those requests include technical connection information and are separate from optional analytics.',
             'Database & Backend Storage: Supabase Inc. (Encrypted database management for lead triage and booking records).',
             'Communication & Email Dispatch: Formsubmit / Nodemailer / SMTP gateways for contact routing and inquiry dispatch.',
             'Calendar & Scheduling: Google Calendar API links for generating user-directed remote calendar invitation events.'

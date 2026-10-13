@@ -1,3 +1,4 @@
+import { companyFaqs } from '../src/data/company.js'
 // Vercel Serverless Function: api/chat.js
 // Proxies chatbot messages securely to Anthropic's Claude API
 
@@ -20,7 +21,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages, bookedSlots, customQA, customConfig } = req.body;
+  const { messages, bookedSlots } = req.body;
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'Invalid messages body' });
   }
@@ -64,23 +65,8 @@ export default async function handler(req, res) {
     bookingsContext += "\nAll standard working hour slots are currently available for booking.";
   }
 
-  let customKnowledgeContext = '';
-  if (customQA && Array.isArray(customQA) && customQA.length > 0) {
-    customKnowledgeContext += '\n\nDYNAMIC ADMIN KNOWLEDGE BASE & FAQs:\n' +
-      customQA.map(q => `- Q: ${q.question}\n  A: ${q.answer}`).join('\n');
-  }
-
-  if (customConfig) {
-    if (customConfig.promo_banner) {
-      customKnowledgeContext += `\n\nCURRENT PROMOTIONAL BANNER: ${customConfig.promo_banner}\n(Mention this offer when relevant to the client!)`;
-    }
-    if (customConfig.system_notes) {
-      customKnowledgeContext += `\n\nADMIN SPECIAL DIRECTIVE: ${customConfig.system_notes}`;
-    }
-    if (customConfig.persona_mode) {
-      customKnowledgeContext += `\n\nPERSONA MODE: Adopt a ${customConfig.persona_mode} conversational tone.`;
-    }
-  }
+  const customKnowledgeContext = '\n\nREVIEWED COMPANY QUESTIONS:\n' +
+    companyFaqs.map(faq => `- Q: ${faq.question}\n  A: ${faq.answer}`).join('\n');
 
   const SYSTEM_PROMPT = `You are Aria, the official AI Guide & Scheduling Consultant for HanovaDevs, a premium digital product studio and marketing agency founded by Ali Haider.
 
