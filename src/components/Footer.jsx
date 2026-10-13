@@ -43,6 +43,7 @@ export default function Footer() {
     { path: '/services/software-development', label: 'Custom Software' },
     { path: '/services/ai-automation', label: 'AI Automation' },
     { path: '/about', label: 'About Us' },
+    { path: '/student-builder-program', label: 'Student Builder Program' },
     { path: '/projects', label: 'Projects' },
     { path: '/reviews', label: 'Client Stories & Reviews' },
   ]

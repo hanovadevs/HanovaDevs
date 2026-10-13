@@ -4,6 +4,7 @@ import { JSDOM } from 'jsdom'
 import { publicRoutes, legacyRedirects } from '../src/data/routes.js'
 import { company } from '../src/data/company.js'
 import { leadershipProfiles, leadershipFaqs } from '../src/data/leadershipProfiles.js'
+import { builderProgram, studentBuilders, programFaqs } from '../src/data/studentBuilderProgram.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const seenTitles = new Set()
@@ -37,6 +38,19 @@ for (const route of publicRoutes) {
     if (member.illustration) assert(!schemas[0]['@graph'].find(node => node['@id'] === member.entityId).image, 'Do not present fictional avatar as an actual likeness in Person schema')
   }
   assert(!JSON.stringify(schemas).match(/aggregateRating|ratingValue|streetAddress|"award"/), `${route}: evidence-safe schema`)
+  if (route === builderProgram.path) {
+    const program = schemas[0]['@graph'].find(node => node['@type'] === 'EducationalOccupationalProgram')
+    assert.equal(program.timeToComplete, 'P8W')
+    assert.equal(program.educationalProgramMode, 'online')
+    assert(!program.startDate && !program.endDate && !program.offers, 'No invented program dates or fees')
+    assert.equal(document.querySelectorAll('.sbp-builder').length, 11)
+    for (const builder of studentBuilders) assert(document.querySelector(`a[href="${builder.linkedin}"]`), `${builder.name}: LinkedIn destination`)
+    assert.equal(document.querySelectorAll('.sbp-mentor').length, 4)
+    assert.equal(document.querySelectorAll('.sbp-faq details').length, programFaqs.length)
+    assert(!document.querySelector('.sbp-page').textContent.includes('@'), 'No public participant emails')
+    await access(`dist/program/student-builder-social.png`)
+    assert(document.querySelector('.sbp-recognition').textContent.includes('not an issued certificate'))
+  }
   assert(!document.querySelector('script[src*="googletagmanager"], script[src*="_vercel/insights"], iframe[src*="googletagmanager"]'), `${route}: no optional trackers in HTML`)
   assert(!html.includes('\uFFFD'), `${route}: no replacement characters`)
   for (const image of document.querySelectorAll('img[src^="/"]')) await access(`dist${image.getAttribute('src')}`)

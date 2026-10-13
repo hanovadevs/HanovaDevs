@@ -234,7 +234,7 @@ const renderFormattedText = (text) => {
       cleanLine = cleanLine.trim().substring(2);
     }
 
-    const regex = /(\*\*(.*?)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)|(\/(?:calculator|projects|services|contact|about)))/g;
+    const regex = /(\*\*(.*?)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)|(\/(?:student-builder-program|calculator|projects|services|contact|about)))/g;
     const parts = [];
     let lastIndex = 0;
     let match;

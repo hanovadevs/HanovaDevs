@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import LeadershipTeam from '../components/LeadershipTeam'
+import ProgramSpotlight from '../components/ProgramSpotlight'
 import { company, companyFaqs } from '../data/company'
 import './About.css'
 import './CompanyPages.css'
@@ -16,6 +17,7 @@ export default function About() {
         <div className="about-facts"><div><strong>2022</strong><span>Founded</span></div><div><strong>Ali Haider</strong><span>Founder & CEO</span></div><div><strong>Software + AI</strong><span>Our focus</span></div></div>
       </div></section>
       <LeadershipTeam />
+      <ProgramSpotlight />
       <section className="section bg-off-white"><div className="container"><div className="section-header"><span className="section-label">How we work</span><h2>Clear thinking, from brief to delivery.</h2></div><div className="about-values__grid">
         {[['Understand the business', 'Start with the people, workflows, and constraints that a project needs to serve. Technology follows the purpose.'], ['Build with care', 'Connect interface design, engineering, accessibility, and testing through a scope that everyone can understand.'], ['Measure what matters', 'Agree useful measures before launch, establish a baseline, and distinguish delivered work from results that still need observation.']].map(([title, text]) => <article className="about-values__card card" key={title}><h3>{title}</h3><p>{text}</p></article>)}
       </div></div></section>

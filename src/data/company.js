@@ -1,3 +1,5 @@
+import { builderProgram } from './studentBuilderProgram.js'
+
 export const company = {
   name: 'HanovaDevs',
   alternateName: 'Hanova Devs',
@@ -76,6 +78,7 @@ export const clientProjects = [
 export const companyFaqs = [
   { question: 'Who founded HanovaDevs, and when?', answer: 'Ali Haider founded HanovaDevs in 2022. You can learn more about the founder at ali.hanovadevs.com.' },
   { question: 'Who is Hira Maqsood at HanovaDevs?', answer: company.coFounder.description },
+  { question: 'What is the HanovaDevs Student Builder Program?', answer: `${builderProgram.description} The current cohort is in progress. Learn more at ${builderProgram.url}. Certificates and small rewards are program benefits; promising ideas may be discussed for potential support and investment, not guaranteed funding.` },
   { question: 'What does HanovaDevs do?', answer: 'HanovaDevs offers custom software development, web design and development, Shopify development, AI automation, SEO and analytics, and brand identity services.' },
   { question: 'Which businesses are a good fit?', answer: 'We work with businesses that need a clearer digital presence, a custom business application, an ecommerce experience, or practical automation. Scope, budget, and support needs are discussed before a proposal.' },
   { question: 'Is Eunoia available?', answer: 'Yes. Eunoia has launched on Microsoft Store. The official listing is linked from the Eunoia product page.' },

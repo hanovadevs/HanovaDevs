@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
 import About from './pages/About'
+import StudentBuilderProgram from './pages/StudentBuilderProgram'
 import HiraProfile from './pages/HiraProfile'
 import TeamProfile from './pages/TeamProfile'
 import Projects from './pages/Projects'
@@ -33,6 +34,7 @@ export function render(url) {
     <Navbar /><main><Routes>
       <Route path="/" element={<Home />} /><Route path="/services" element={<Services />} />
       <Route path="/services/:id" element={<ServiceDetail />} /><Route path="/about" element={<About />} />
+      <Route path="/student-builder-program" element={<StudentBuilderProgram />} />
       <Route path="/team/hira-maqsood" element={<HiraProfile />} />
       <Route path="/team/:id" element={<TeamProfile />} />
       <Route path="/projects" element={<Projects />} /><Route path="/reviews" element={<Reviews />} />

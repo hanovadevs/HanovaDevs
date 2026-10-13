@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import ProgramSpotlight from '../components/ProgramSpotlight'
 import TrustLegalSection from '../components/TrustLegalSection'
 import { journalPosts } from '../data/journal'
 import { company, clientProjects } from '../data/company'
@@ -223,6 +224,7 @@ export default function Home() {
       </section>
 
       {/* ===== MISSION STATEMENT ===== */}
+      <ProgramSpotlight />
       <section className="mission-statement section">
         <div className="container">
           <div className="mission-statement__content reveal-up">

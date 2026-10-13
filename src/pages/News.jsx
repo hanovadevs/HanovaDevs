@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import SEO from '../components/SEO'
+import ProgramSpotlight from '../components/ProgramSpotlight'
 import './News.css'
 
 import { newsArticles, newsUpdatedAt } from '../data/news'
@@ -88,6 +89,7 @@ export default function News() {
       </header>
 
       <div className="nw2-main">
+        <ProgramSpotlight />
         <section className="nw2-tools" aria-label="Filter news">
           <div className="container nw2-tools__inner">
             <label className="nw2-search">

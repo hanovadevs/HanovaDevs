@@ -3,6 +3,7 @@
 > Software company founded in 2022 by Ali Haider. Custom software, web development, ecommerce, AI automation, SEO and analytics, and brand identity.
 
 ## Company information
+- [Student Builder Program](https://hanovadevs.com/student-builder-program): Active October–December 2026 cohort; approximately eight weeks, virtual. Eleven named student builders, the full HanovaDevs team as mentors, real project exposure, GitHub collaboration, certificates and small rewards. Selected ideas may be discussed for further support and potential investment; funding is not guaranteed. Certificate preview is a sample, not an issued credential.
 - [About and founder](https://hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
 - [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
 - [Hira Maqsood](https://hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
