@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises'
+import { writeFile, mkdir } from 'node:fs/promises'
 import sharp from 'sharp'
 
 await mkdir('public/program', { recursive: true })
@@ -7,7 +7,7 @@ for (const name of ['builder-workspace', 'learning-workspace', 'idea-notebook'])
     await sharp(`designs/program/${name}.png`).resize({ width, withoutEnlargement: true }).webp({ quality: 82, effort: 5 }).toFile(`public/program/${name}-${width}.webp`)
   }
 }
-const logo = `data:image/webp;base64,${(await readFile('public/agency-logo-720.webp')).toString('base64')}`
+const logo = `data:image/png;base64,${(await sharp('public/agency-logo-720.webp').png().toBuffer()).toString('base64')}`
 const certificate = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="848" viewBox="0 0 1200 848">
 <title>Sample Student Builder Program certificate design</title><desc>A design preview only, not an issued certificate or accredited qualification.</desc>
 <rect width="1200" height="848" fill="#faf9f4"/><path d="M1050 0H1200V848H1030C1130 625 990 450 1080 260C1125 160 1090 75 1050 0Z" fill="#e4eee6"/><path d="M1150 -50C1010 180 1260 350 1080 630C1040 700 1045 820 1120 900" fill="none" stroke="#0a766f" stroke-width="2"/>
@@ -29,7 +29,7 @@ const certificate = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height
 await writeFile('public/program/certificate-sample.svg', certificate, 'utf8')
 await sharp(Buffer.from(certificate)).png().toFile('public/program/certificate-sample.png')
 
-const photo = `data:image/webp;base64,${(await readFile('public/program/builder-workspace-1200.webp')).toString('base64')}`
+const photo = `data:image/jpeg;base64,${(await sharp('public/program/builder-workspace-1200.webp').jpeg({ quality: 85 }).toBuffer()).toString('base64')}`
 const social = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <title>HanovaDevs Student Builder Program social preview</title><defs><clipPath id="photo"><path d="M800 65C950 25 1180 130 1180 295V575H745V245C745 165 758 90 800 65Z"/></clipPath></defs>
 <rect width="1200" height="630" fill="#faf9f4"/><ellipse cx="1130" cy="245" rx="500" ry="500" fill="#e4eee6"/><ellipse cx="1190" cy="265" rx="500" ry="490" fill="none" stroke="#b7d0c1"/>

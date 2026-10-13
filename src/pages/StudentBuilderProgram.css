@@ -64,6 +64,9 @@
 .sbp-benefit--1, .sbp-benefit--8 { grid-column: span 4; background: var(--sbp-mint); border-radius: 30px 8px 30px 30px; border: 0; padding: 2rem; }
 .sbp-benefit--1 h3, .sbp-benefit--8 h3 { font-size: 1.7rem; }
 .sbp-benefit--2 { grid-column: span 2; }
+.sbp-benefit--6, .sbp-benefit--7 { grid-column: span 3; }
+.sbp-benefit--8 { grid-column: span 6; }
+.sbp-benefit--8 p { max-width: 780px; }
 .sbp-page .sbp-permissions { font-size: .85rem; margin-top: 2rem; padding-left: 1rem; border-left: 2px solid #85b5a3; }
 .sbp-recognition { background: #faf8f0; }
 .sbp-recognition::before { width: 85%; height: 125%; right: -38%; top: -70%; background: #efece0; border: 0; }
