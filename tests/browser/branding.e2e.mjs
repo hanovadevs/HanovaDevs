@@ -22,12 +22,12 @@ test('logo matches the real header surface across scroll, routes and viewport ch
   await expect(original).toBeVisible(); await expect(inverse).toBeHidden()
   await page.setViewportSize({ width: 1440, height: 900 })
   await expect(inverse).toBeVisible(); await expect(original).toBeHidden()
-  for (const path of ['/stack', '/products/eunoia', '/products/omnai', '/products/eunoia/privacy', '/reviews']) {
+  for (const path of ['/services', '/products', '/projects', '/stack', '/products/eunoia', '/products/omnai', '/products/eunoia/privacy', '/reviews']) {
     await page.goto(path)
     await expect(original).toBeVisible(); await expect(inverse).toBeHidden()
     await expect(page.locator('#main-nav')).not.toHaveClass(/navbar--dark/)
   }
-  for (const path of ['/services', '/services/web-design', '/products', '/journal', '/news', '/research', '/projects']) {
+  for (const path of ['/services/web-design', '/journal', '/news', '/research']) {
     await page.goto(path)
     await expect(inverse).toBeVisible(); await expect(original).toBeHidden()
   }

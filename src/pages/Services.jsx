@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './Services.css'
+import './PageHeroes.css'
 
 const services = [
   {
@@ -70,17 +71,17 @@ export default function Services() {
         ]}
       />
       
-      {/* Cinematic Hero */}
-      <section className="services-hero" id="services-hero">
-        <div className="services-hero__bg-image" />
-        <div className="services-hero__glow-1" />
-        <div className="services-hero__glow-2" />
-        <div className="services-hero__grid-bg" />
+      <section className="services-hero page-hero-light page-hero-light--services" id="services-hero">
+        <div className="page-hero-light__curves" aria-hidden="true" />
         <div className="container">
-          <div className="services-hero__content reveal">
-            <span className="section-label services-hero__label">Capabilities</span>
+          <div className="services-hero__content page-hero-light__content reveal">
+            <span className="page-hero-light__eyebrow">Our capabilities</span>
             <h1>Engineering <br /><span className="gradient-text">Value.</span></h1>
             <p>End-to-end custom software development and data-driven marketing engineered to scale operations and compound business growth.</p>
+            <div className="page-hero-light__actions">
+              <a href="#services-grid" className="btn btn-primary">Explore services</a>
+              <Link to="/contact" className="page-hero-light__link">Discuss your project</Link>
+            </div>
           </div>
         </div>
       </section>

@@ -112,8 +112,8 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  // Product detail, technology and legal pages have light heroes; their parent routes do not.
-  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news', '/services'].includes(location.pathname)
+  // Only dark hero surfaces need the inverse desktop logo and navigation colors.
+  const isDarkPage = ['/about', '/research', '/journal', '/news'].includes(location.pathname)
     || location.pathname.startsWith('/journal/')
     || location.pathname.startsWith('/services/')
   const isInsightsActive = ['/journal', '/reviews', '/research', '/news', '/stack', '/calculator'].some(p => location.pathname.startsWith(p))

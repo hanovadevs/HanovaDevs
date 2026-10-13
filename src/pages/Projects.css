@@ -1,60 +1,11 @@
-/* ═══════════════════════════════════════
-   CINEMATIC PROJECTS PAGE
-   ═══════════════════════════════════════ */
-
 .projects-page {
   background: #0f1115;
   color: var(--white);
   min-height: 100vh;
 }
 
-/* ════════════════════════════
-   HERO
-   ════════════════════════════ */
-.pj-hero {
-  position: relative;
-  padding: clamp(8rem, 20vh, 12rem) 0 var(--space-3xl);
-  text-align: center;
-  overflow: hidden;
-  background: #0f1115;
-}
-.pj-hero__bg {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
-  pointer-events: none;
-}
-.pj-hero__content {
-  max-width: 800px; margin: 0 auto;
-  position: relative;
-}
-.pj-label {
-  display: inline-block;
-  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.15em; color: rgba(255,255,255,0.6);
-  margin-bottom: var(--space-md);
-  padding: 0.4rem 1.2rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 100px;
-}
-.pj-hero h1 {
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  line-height: 1.1; margin-bottom: var(--space-md);
-  color: var(--white);
-  letter-spacing: -0.02em;
-}
-.pj-gradient {
-  background: linear-gradient(135deg, #fff, rgba(255,255,255,0.3));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.pj-hero p {
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  color: rgba(255,255,255,0.5);
-  max-width: 600px; margin: 0 auto;
-  line-height: 1.7;
-}
+.pj-hero { text-align: center; }
+.pj-hero__content { margin: 0 auto; }
 
 /* ════════════════════════════
    CASE STUDIES

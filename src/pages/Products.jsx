@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import './Products.css'
+import './PageHeroes.css'
 
 export default function Products() {
   useEffect(() => {
@@ -21,13 +22,17 @@ export default function Products() {
       />
 
       {/* ===== HERO ===== */}
-      <section className="cp-hero">
-        <div className="cp-hero__bg" />
+      <section className="cp-hero page-hero-light page-hero-light--products">
+        <div className="page-hero-light__curves" aria-hidden="true" />
         <div className="container">
-          <div className="cp-hero__content reveal">
-            <span className="cp-label">In-House Innovation • Powered by HanovaDevs</span>
+          <div className="cp-hero__content page-hero-light__content reveal">
+            <span className="page-hero-light__eyebrow">In-house innovation</span>
             <h1>Proprietary Products, <br /><span className="cp-gradient">Powered by HanovaDevs.</span></h1>
             <p>Omnai Browser and Eunoia Desktop are our own in-house products engineered by HanovaDevs to push the boundaries of AI, local-first architectures, and modern digital productivity.</p>
+            <div className="page-hero-light__actions">
+              <Link to="/products/eunoia" className="btn btn-primary">Discover Eunoia</Link>
+              <Link to="/products/omnai" className="page-hero-light__link">Explore Omnai</Link>
+            </div>
           </div>
         </div>
       </section>

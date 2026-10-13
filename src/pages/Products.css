@@ -1,57 +1,11 @@
-/* ═══════════════════════════════════════
-   CINEMATIC PRODUCTS PORTAL
-   ═══════════════════════════════════════ */
-
 .cinematic-products {
-  background: #060b18; /* Deep dark bg */
+  background: #060b18;
   color: var(--white);
   min-height: 100vh;
 }
 
-/* ════════════════════════════
-   HERO
-   ════════════════════════════ */
-.cp-hero {
-  position: relative;
-  padding: clamp(8rem, 20vh, 14rem) 0 var(--space-3xl);
-  text-align: center;
-  overflow: hidden;
-}
-.cp-hero__bg {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(79, 125, 249, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-.cp-hero__content {
-  max-width: 800px; margin: 0 auto;
-  position: relative;
-}
-.cp-label {
-  display: inline-block;
-  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.15em; color: #00d4ff;
-  margin-bottom: var(--space-md);
-  padding: 0.4rem 1.2rem;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 100px;
-}
-.cp-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  line-height: 1.1; margin-bottom: var(--space-md);
-  color: var(--white);
-}
-.cp-gradient {
-  background: linear-gradient(135deg, #4f7df9, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.cp-hero p {
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  color: rgba(255,255,255,0.6);
-  max-width: 600px; margin: 0 auto;
-}
+.cp-hero { text-align: center; }
+.cp-hero__content { margin: 0 auto; }
 
 /* ════════════════════════════
    SHOWCASE SECTIONS

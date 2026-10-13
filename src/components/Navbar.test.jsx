@@ -21,8 +21,8 @@ describe('Navbar keyboard behavior', () => {
   })
 
   it.each([
-    ['/about', true], ['/products', true], ['/projects', true], ['/journal/future-of-web-dev', true],
-    ['/services', true], ['/services/web-design', true], ['/news', true],
+    ['/about', true], ['/products', false], ['/projects', false], ['/journal/future-of-web-dev', true],
+    ['/services', false], ['/services/web-design', true], ['/news', true],
     ['/', false], ['/reviews', false], ['/stack', false], ['/products/eunoia', false],
     ['/products/omnai', false], ['/products/eunoia/privacy', false], ['/privacy-policy', false],
   ])('matches the header theme to the hero on %s', (path, dark) => {
