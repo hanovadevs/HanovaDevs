@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import LeadershipTeam from '../components/LeadershipTeam'
 import { company, companyFaqs } from '../data/company'
 import './About.css'
 import './CompanyPages.css'
@@ -12,12 +13,9 @@ export default function About() {
         <span className="section-label">Independent thinking. Practical engineering.</span>
         <h1>Built on purpose.<br /><span className="gradient-text">Growing through craft.</span></h1>
         <p>HanovaDevs is a software company founded in 2022 by Ali Haider. We turn business needs into thoughtful digital products, from a customer’s first visit to the tools a team uses every day.</p>
-        <div className="about-facts"><div><strong>2022</strong><span>Founded</span></div><div><strong>Ali Haider</strong><span>Founder</span></div><div><strong>Software + AI</strong><span>Our focus</span></div></div>
+        <div className="about-facts"><div><strong>2022</strong><span>Founded</span></div><div><strong>Ali Haider</strong><span>Founder & CEO</span></div><div><strong>Software + AI</strong><span>Our focus</span></div></div>
       </div></section>
-      <section className="section"><div className="container founder-layout">
-        <div className="founder-photo"><img src="/people/ali-haider.webp" srcSet="/people/ali-haider-480.webp 480w, /people/ali-haider.webp 800w" sizes="(max-width: 768px) 100vw, 420px" width="800" height="800" alt="Ali Haider, founder of HanovaDevs" /><span>Ali Haider · Founder</span></div>
-        <div><span className="section-label">Meet the founder</span><h2>Ali Haider</h2><p className="founder-lead">A company built around the connection between engineering, design, and useful business outcomes.</p><p>Ali Haider founded HanovaDevs in 2022. The company brings custom software development, web experiences, ecommerce, and AI automation together so that a business can plan its digital work as one connected system.</p><p>Our work includes client projects for EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS. We also build our own products: Eunoia is available on Microsoft Store, and Omnai Browser is preparing for launch.</p><a href={company.founder.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Explore Ali’s profile ↗</a></div>
-      </div></section>
+      <LeadershipTeam />
       <section className="section bg-off-white"><div className="container"><div className="section-header"><span className="section-label">How we work</span><h2>Clear thinking, from brief to delivery.</h2></div><div className="about-values__grid">
         {[['Understand the business', 'Start with the people, workflows, and constraints that a project needs to serve. Technology follows the purpose.'], ['Build with care', 'Connect interface design, engineering, accessibility, and testing through a scope that everyone can understand.'], ['Measure what matters', 'Agree useful measures before launch, establish a baseline, and distinguish delivered work from results that still need observation.']].map(([title, text]) => <article className="about-values__card card" key={title}><h3>{title}</h3><p>{text}</p></article>)}
       </div></div></section>

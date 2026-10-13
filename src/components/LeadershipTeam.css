@@ -1,0 +1,88 @@
+.leadership {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f5f8f7;
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.leadership::before,
+.leadership::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.leadership::before {
+  width: 105%;
+  height: 90%;
+  right: -53%;
+  top: 4%;
+  border: 1px solid #dcebe5;
+  transform: rotate(-22deg);
+  background: linear-gradient(130deg, #e6f1ec66, transparent 65%);
+}
+
+.leadership::after {
+  width: 105%;
+  height: 90%;
+  right: -58%;
+  top: 13%;
+  border: 1px solid #dcebe588;
+  transform: rotate(-22deg);
+}
+
+.leadership__heading { max-width: 740px; margin-bottom: 2.75rem; }
+.leadership__eyebrow { display: block; margin-bottom: 1.1rem; color: #0a766f; font: 600 .8rem var(--font-body); letter-spacing: .15em; text-transform: uppercase; }
+.leadership__heading h2 { font: 500 clamp(2.1rem, 4vw, 3.8rem)/1.08 var(--font-hero); letter-spacing: -.045em; color: #071a2b; }
+.leadership__heading em { color: #0a766f; font-style: normal; }
+.leadership__heading > p { max-width: 570px; color: #536961; line-height: 1.75; margin-top: 1.25rem; font-size: 1.05rem; }
+.leadership__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem); }
+
+.leader-card {
+  --portrait-tone: #dceae6;
+  --curve-tone: #c4dcd3;
+  --role-tone: #165c51;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 36px;
+  background: var(--portrait-tone);
+  border: 1px solid #071a2b0c;
+  box-shadow: 0 8px 30px #163e2a06;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.leader-card--rose { --portrait-tone: #efe4e5; --curve-tone: #dfcdd1; --role-tone: #754251; }
+.leader-card--sage { --portrait-tone: #e5ece1; --curve-tone: #d1dfc9; --role-tone: #446047; }
+.leader-card--blue { --portrait-tone: #e2eaf0; --curve-tone: #c9d9e5; --role-tone: #345a73; }
+.leader-card::before { content: ''; position: absolute; width: 125%; height: 65%; border-radius: 50%; top: 0; left: -60%; background: var(--curve-tone); transform: rotate(24deg); pointer-events: none; }
+.leader-card::after { content: ''; position: absolute; width: 120%; height: 75%; border: 1px solid #ffffff80; border-radius: 50%; right: -65%; top: -7%; transform: rotate(-25deg); pointer-events: none; }
+.leader-card__portrait { position: relative; z-index: 1; margin: 1.4rem 1.4rem 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 48% 48% 14% 14% / 30% 30% 10% 10%; background: #dfe3e1; }
+.leader-card__portrait > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.leader-card__info { position: relative; z-index: 2; min-height: 168px; padding: 2rem 1.5rem 1.75rem; margin-top: 1.15rem; border-radius: 50% 50% 0 0 / 24px 24px 0 0; background: #fff; }
+.leader-card__role { color: var(--role-tone); font-size: .82rem; font-weight: 600; margin-bottom: .65rem; letter-spacing: .015em; }
+.leader-card__info h3 { font: 500 clamp(1.4rem, 1.8vw, 1.85rem)/1.12 var(--font-hero); letter-spacing: -.025em; color: #071a2b; }
+.leader-card__focus { margin-top: .85rem; color: #5c7067; font-size: .85rem; line-height: 1.55; }
+.leadership__story { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 2.75rem; padding-top: 1.75rem; border-top: 1px solid #d8e6df; }
+.leadership__story p { max-width: 740px; font-size: .95rem; line-height: 1.75; color: #536961; }
+.leadership__story a { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; padding-block: .5rem; color: #0a766f; font-size: .9rem; font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
+
+/* A deliberately faceless portrait illustration, not a stock photograph or UI icon. */
+.leader-avatar { width: 100%; height: 100%; position: relative; overflow: hidden; background: linear-gradient(145deg, #eef1ea, #d6e0d3); }
+.leader-avatar__halo { position: absolute; width: 88%; aspect-ratio: 1; top: 5%; left: 6%; border-radius: 50%; background: #e7e9db; border: 1px solid #ffffffa0; }
+.leader-avatar__shoulders { position: absolute; width: 112%; height: 50%; bottom: -7%; left: -6%; border-radius: 48% 48% 0 0 / 40% 40% 0 0; background: linear-gradient(110deg, #194c48, #326b5f 48%, #123b3b); }
+.leader-avatar__neck { position: absolute; width: 20%; height: 23%; top: 48%; left: 40%; border-radius: 0 0 45% 45%; background: linear-gradient(100deg, #b9977c, #d2b198); }
+.leader-avatar__hair { position: absolute; width: 49%; height: 44%; top: 13%; left: 25.5%; border-radius: 48% 48% 35% 35%; background: linear-gradient(120deg, #303f3b, #172b29); }
+.leader-avatar__face { position: absolute; width: 36%; height: 35%; top: 24%; left: 32%; border-radius: 40% 40% 48% 48%; background: linear-gradient(105deg, #d1ad92, #e5c7ad 55%, #c8a58e); box-shadow: inset -7px -3px 18px #8f765014; }
+.leader-avatar__collar { position: absolute; width: 42%; height: 8%; top: 65%; left: 29%; border-radius: 0 0 50% 50%; border-bottom: 6px solid #6b9481; }
+.leader-avatar__label { position: absolute; bottom: .75rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #33483d; background: #edf2e9ed; border: 1px solid #fff8; border-radius: 100px; padding: .35rem .65rem; font-size: .65rem; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .leader-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px #163e2a12; }
+}
+@media (max-width: 1100px) { .leadership__grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.5rem; }.leader-card__portrait { aspect-ratio: 1; }.leader-card__info { min-height: 154px; }.leader-card__info h3 { font-size: 1.8rem; }.leadership__story { align-items: flex-start; flex-direction: column; gap: .75rem; } }
+@media (max-width: 560px) { .leadership__grid { grid-template-columns: 1fr; gap: 1.5rem; }.leadership__heading { margin-bottom: 2rem; }.leader-card { border-radius: 30px; }.leader-card__portrait { margin: 1.25rem 1.5rem 0; aspect-ratio: 5 / 6; }.leader-card__info { padding: 1.75rem; min-height: 155px; }.leader-card__info h3 { font-size: 1.85rem; }.leader-card__role, .leader-card__focus { font-size: .95rem; } }
+@media (prefers-reduced-motion: reduce) { .leader-card { transition: none; } }
