@@ -1,4 +1,4 @@
-import { builderProgram } from '../data/studentBuilderProgram.js'
+import { builderProgram } from '../data/programOverview.js'
 import { company } from '../data/company.js'
 
 export function studentBuilderSchema() {

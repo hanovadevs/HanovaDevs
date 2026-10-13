@@ -1,4 +1,4 @@
-import { builderProgram } from './studentBuilderProgram.js'
+import { builderProgram } from './programOverview.js'
 
 export const company = {
   name: 'HanovaDevs',

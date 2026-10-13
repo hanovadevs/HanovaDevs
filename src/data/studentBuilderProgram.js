@@ -1,11 +1,5 @@
 // Program facts and the public roster supplied by HanovaDevs. No private contact data.
-export const builderProgram = {
-  name: 'Student Builder Program', path: '/student-builder-program',
-  url: 'https://hanovadevs.com/student-builder-program',
-  cohort: 'October–December 2026', duration: '8-week virtual program', mode: 'Virtual',
-  status: 'In progress', reviewedAt: '2026-10-13',
-  description: 'HanovaDevs’ Student Builder Program is an approximately eight-week virtual experience within the October–December 2026 cohort window. Students gain real project exposure, mentorship, teamwork and GitHub collaboration.',
-}
+export { builderProgram } from './programOverview.js'
 
 export const studentBuilders = [
   { name: 'Muhammad Haroon Zafar', initials: 'HZ', linkedin: 'https://www.linkedin.com/in/muhammad-haroon-zafar-7a05a23a0/', thanks: 'Thank you, Muhammad Haroon Zafar, for being part of this journey. We hope this experience helps you take your next steps with confidence.' },

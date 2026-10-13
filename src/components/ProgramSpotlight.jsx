@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { builderProgram } from '../data/studentBuilderProgram'
+import { builderProgram } from '../data/programOverview'
 import './ProgramSpotlight.css'
 
 export default function ProgramSpotlight() {
