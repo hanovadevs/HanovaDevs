@@ -18,7 +18,6 @@ export default function LeadershipTeam() {
                 <img src={member.image} srcSet={`${member.smallImage} 480w, ${member.image} 800w`}
                   sizes="(max-width: 560px) calc(100vw - 80px), (max-width: 1100px) 40vw, 260px"
                   width="800" height="800" alt={member.alt} loading="lazy" decoding="async" />
-                {member.illustration && <span className="leader-card__illustration">AI-generated illustration</span>}
               </div>
               <div className="leader-card__info">
                 <p className="leader-card__role">{member.role}</p>

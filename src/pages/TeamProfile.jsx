@@ -28,7 +28,7 @@ export default function TeamProfile({ memberId }) {
           </div>
           <figure className="leader-profile__portrait">
             <img src={member.image} srcSet={`${member.smallImage} 480w, ${member.image} 800w`} sizes="(max-width: 760px) 90vw, 400px" width="800" height="800" alt={member.alt} fetchPriority="high" />
-            <figcaption>{member.name} · {member.role}, HanovaDevs{member.illustration && <span>AI-generated illustration · not a photograph</span>}</figcaption>
+            <figcaption>{member.name} · {member.role}, HanovaDevs</figcaption>
           </figure>
         </div>
       </section>

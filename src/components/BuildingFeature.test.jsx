@@ -6,11 +6,11 @@ import BuildingFeature from './BuildingFeature'
 afterEach(cleanup)
 
 describe('building feature', () => {
-  it('uses the approved USA premises description without inventing an address or headquarters', () => {
+  it('uses brand-focused copy without publishing a location or headquarters claim', () => {
     render(<MemoryRouter><BuildingFeature /></MemoryRouter>)
     const section = screen.getByRole('region', { name: 'Room for ideas.Space to build.' })
-    expect(section).toHaveTextContent('Our USA premises')
-    expect(section).not.toHaveTextContent(/headquarters|New York|California|owned|concept/i)
+    expect(section).toHaveTextContent('At HanovaDevs, our people give every idea its purpose.')
+    expect(section).not.toHaveTextContent(/USA|premises|headquarters|New York|California|owned|concept/i)
     const image = screen.getByRole('img')
     expect(image).toHaveAttribute('loading', 'lazy')
     expect(image).toHaveAttribute('width', '1536')

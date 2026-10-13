@@ -29,7 +29,7 @@ test('all leadership profiles have working links, portraits, keyboard FAQs and m
     const graph = await page.locator('script[type="application/ld+json"]').evaluate(node => JSON.parse(node.textContent)['@graph'])
     expect(graph.find(node => node['@type'] === 'ProfilePage').mainEntity['@id']).toBe(member.entityId)
     expect(graph.find(node => node['@type'] === 'FAQPage').mainEntity).toHaveLength(7)
-    if (member.illustration) await expect(page.getByText('AI-generated illustration · not a photograph')).toBeVisible()
+    if (member.illustration) await expect(page.getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toBeVisible()
     await page.addScriptTag({ content: readFileSync('node_modules/axe-core/axe.min.js', 'utf8') })
     const violations = await page.evaluate(async () => (await window.axe.run(document.querySelector('main'))).violations.filter(item => ['serious', 'critical'].includes(item.impact)).map(item => ({ id: item.id, targets: item.nodes.map(node => node.target) })))
     expect(violations, member.name).toEqual([])

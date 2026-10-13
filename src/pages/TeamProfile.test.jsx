@@ -33,9 +33,10 @@ describe('Leadership profiles', () => {
     expect(graph.find(node => node['@type'] === 'ProfilePage').mainEntity['@id']).toBe(member.entityId)
   })
 
-  it('discloses Noor’s illustration and does not claim the avatar is her actual likeness', () => {
+  it('keeps Noor’s descriptive avatar alt text without adding an image disclosure caption', () => {
     renderProfile('/team/noor-fatima')
-    expect(screen.getByText('AI-generated illustration · not a photograph')).toBeInTheDocument()
+    expect(screen.queryByText('AI-generated illustration · not a photograph')).not.toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toBeInTheDocument()
     expect(organizationGraph().find(node => node.name === 'Noor Fatima')).not.toHaveProperty('image')
   })
 

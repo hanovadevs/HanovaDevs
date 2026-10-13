@@ -8,7 +8,7 @@ test('premises feature loads, stays responsive and has working keyboard navigati
     const section = page.locator('#company-space')
     await section.scrollIntoViewIfNeeded()
     await expect(section.getByRole('heading')).toHaveText('Room for ideas.Space to build.')
-    await expect(section).toContainText('USA premises')
+    await expect(section).not.toContainText(/USA|premises/i)
     const image = section.getByRole('img')
     await expect(image).toBeVisible()
     await image.evaluate(image => image.decode())

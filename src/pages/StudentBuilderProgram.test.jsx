@@ -36,7 +36,7 @@ describe('Student Builder Program', () => {
     const mentors = screen.getByRole('region', { name: /guided by the people/i })
     expect(within(mentors).getAllByRole('article')).toHaveLength(leadershipTeam.length)
     for (const member of leadershipTeam) expect(within(mentors).getByRole('link', { name: `Meet ${member.name}` })).toHaveAttribute('href', member.profile)
-    expect(within(mentors).getByText('AI-generated illustration')).toBeInTheDocument()
+    expect(within(mentors).getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toBeInTheDocument()
   })
 
   it('keeps status, approximate duration and benefit claims accurate', () => {
@@ -50,7 +50,8 @@ describe('Student Builder Program', () => {
     const prose = [...container.querySelectorAll('.sbp-section')].map(section => section.textContent).join(' ')
     expect(prose).not.toMatch(/@|guaranteed career|guaranteed investment|registration open|graduated|lorem ipsum/i)
     expect(container.querySelector('.sbp-recognition')).toHaveTextContent('not an issued certificate')
-    expect(container.querySelectorAll('.sbp-photo figcaption')).toHaveLength(3)
+    expect(container.querySelectorAll('.sbp-photo img')).toHaveLength(3)
+    expect(container.querySelectorAll('.sbp-photo figcaption, .sbp-mentor figcaption')).toHaveLength(0)
     expect(container.querySelectorAll('.sbp-faq details')).toHaveLength(6)
   })
 
