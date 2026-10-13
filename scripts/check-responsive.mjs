@@ -4,11 +4,11 @@ import { chromium } from '@playwright/test'
 const baseURL = process.env.RESPONSIVE_BASE_URL || 'http://127.0.0.1:5173'
 const widths = (process.env.RESPONSIVE_WIDTHS || '320,360,390,430,768,820,1024,1280,1440,1920').split(',').map(Number)
 const allRoutes = [
-  '/', '/services', '/about', '/projects', '/products', '/contact',
+  '/', '/services', '/about', '/projects', '/reviews', '/products', '/contact',
   '/news', '/research', '/journal', '/stack', '/calculator',
   '/products/omnai', '/products/eunoia', '/products/eunoia/privacy',
   '/privacy-policy', '/terms-of-service', '/missing-page', '/hanova-portal-2026',
-  '/journal/future-of-web-dev', '/journal/autonomous-agent-swarms-quantum-mesh',
+  '/journal/future-of-web-dev', '/journal/autonomous-agent-swarms-quantum-mesh', '/journal/hanovadevs-software-company-guide',
   ...['web-design', 'software-development', 'ai-automation', 'shopify-development', 'seo', 'branding'].map(id => `/services/${id}`),
 ]
 const routes = process.env.RESPONSIVE_ROUTES?.split(',') || allRoutes

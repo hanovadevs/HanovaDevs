@@ -2,11 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /hanova-portal-2026
-Disallow: /private
-Disallow: /scratch
-
-# Host
-Host: https://hanovadevs.com
-
-# Sitemap Link
+Disallow: /api/
+Disallow: /private/
+Disallow: /scratch/
 Sitemap: https://hanovadevs.com/sitemap.xml

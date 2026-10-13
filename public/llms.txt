@@ -1,0 +1,34 @@
+# HanovaDevs
+
+> Software company founded in 2022 by Ali Haider. Custom software, web development, ecommerce, AI automation, SEO and analytics, and brand identity.
+
+## Company information
+- [About and founder](https://hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
+- [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
+- [Contact](https://hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
+- [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
+
+## Work and services
+- [Services](https://hanovadevs.com/services): Scope of available services.
+- [Portfolio](https://hanovadevs.com/projects): EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS.
+- [Client stories and reviews](https://hanovadevs.com/reviews): Owner-provided client relationships and project descriptions; no unverified ratings or revenue figures.
+- [Technology approach](https://hanovadevs.com/stack): Tools selected according to requirements.
+- [Estimator](https://hanovadevs.com/calculator): Illustrative planning estimates, not binding quotations.
+
+## Products
+- [Eunoia](https://hanovadevs.com/products/eunoia): Desktop personal workspace; available on Microsoft Store.
+- [Eunoia official store listing](https://apps.microsoft.com/detail/9PJ36VD01Z4X): Current release, requirements and store availability.
+- [Omnai Browser](https://hanovadevs.com/products/omnai): AI-focused desktop browser, launching soon. Public release date not announced.
+
+## Editorial sources
+- [Company guide](https://hanovadevs.com/journal/hanovadevs-software-company-guide): Original long-form guide to the company and choosing a software partner.
+- [Journal](https://hanovadevs.com/journal): Practical engineering and business guides.
+- [News](https://hanovadevs.com/news): Source-linked technology briefing; editorial update October 13, 2026.
+- [Research library](https://hanovadevs.com/research): Short introductions with original research and standards links.
+- [Sitemap](https://hanovadevs.com/sitemap.xml): Public route inventory.
+
+## Policies
+- [Privacy](https://hanovadevs.com/privacy-policy): Data handling and optional analytics choices.
+- [Terms](https://hanovadevs.com/terms-of-service): Service and estimator terms.
+
+Information reviewed October 13, 2026. Founder details, release status and client relationships were supplied by the company owner. No independent industry ranking, client performance audit or universal best-company claim is asserted.

@@ -52,7 +52,7 @@ export function CookieConsentProvider({ children }) {
   const openSettings = () => { returnFocus.current = document.activeElement; setAnalytics(preferences?.analytics || false); setSettingsOpen(true) }
   return (
     <ConsentContext.Provider value={{ preferences, openSettings }}>
-      {children}
+      <div inert={settingsOpen}>{children}</div>
       {ready && !preferences && !settingsOpen && <section className="cookie-banner" aria-label="Cookie choices">
         <div><span className="cookie-eyebrow">Your privacy, your choice</span><h2>A little clarity about cookies.</h2><p>Essential storage keeps your preferences working. Optional analytics helps us understand visits and improve performance. It stays off until you enable it.</p><Link to="/privacy-policy#analytics-and-cookies">Read our privacy policy</Link></div>
         <div className="cookie-actions"><button className="btn cookie-secondary" onClick={() => save(false)}>Essential only</button><button className="btn cookie-secondary" onClick={openSettings}>Choose settings</button><button className="btn btn-primary" onClick={() => save(true)}>Allow analytics</button></div>

@@ -9,12 +9,12 @@
  */
 
 export const legalMetadata = {
-  lastUpdated: 'September 2, 2026',
+  lastUpdated: 'October 13, 2026',
   effectiveDate: 'September 2, 2026',
   companyName: 'HanovaDevs',
   websiteUrl: 'https://hanovadevs.com',
   contactEmail: 'contact@hanovadevs.com',
-  location: '100% Remote-First Digital Studio (Global Operations • Hub: Lahore, Pakistan)'
+  location: 'Remote-first software company'
 }
 
 export const privacyPolicyData = {
@@ -114,14 +114,14 @@ export const privacyPolicyData = {
       content: [
         {
           type: 'paragraph',
-          text: 'HanovaDevs prioritizes lightweight, privacy-respecting technology. We use minimal browser storage mechanisms necessary for application functionality and non-invasive performance measurement.'
+          text: 'HanovaDevs prioritizes lightweight, privacy-respecting technology. Essential storage supports requested functionality. Optional analytics remains disabled until you enable it through our cookie controls.'
         },
         {
           type: 'list',
           items: [
-            'Essential Functional Storage: Session storage and local storage to remember your UI preferences (such as calculator inputs and timezone selections) during your active visit.',
-            'Aggregated Performance Analytics: We leverage edge-based performance analytics (such as Vercel Analytics) that measure page load times and engagement without tracking your identity across unrelated third-party websites.',
-            'Cookie Controls: You can configure your browser to reject cookies or alert you when cookies are sent. Essential features of our site will continue to function normally even if non-essential cookies are disabled.'
+            'Essential storage: The first-party hanova_consent cookie remembers your choice for 180 days. Saved news is stored locally when you use that feature; portal authentication uses session storage. These are not advertising profiles.',
+            'Optional analytics: With your permission, Vercel Web Analytics and Speed Insights measure visits and performance, and Google Tag Manager loads analytics tags. These services may process page URLs, technical information and usage events. Advertising consent is not enabled by this website.',
+            'Your choice: Essential only and Allow analytics are available in the initial banner. Use Cookie settings in the footer to change your choice. Disabling active analytics reloads the page to stop measurement scripts and removes known first-party Google analytics cookies. You can also manage storage through your browser.'
           ]
         }
       ]
@@ -196,8 +196,8 @@ export const privacyPolicyData = {
         {
           type: 'list',
           items: [
-            'Encryption: All web traffic and API transmissions are encrypted using modern Transport Layer Security (TLS 1.3 / HTTPS).',
-            'Access Controls: Access to client databases and inquiry records is restricted to authenticated engineering personnel with multi-factor authentication.',
+            'Transport security: Production website requests use HTTPS. The negotiated protocol depends on the browser and hosting provider.',
+            'Access controls: Administrative access is authenticated and should be limited to authorized personnel. Client-project controls and any multi-factor requirements are agreed and assessed for that project.',
             'Data Retention: We retain personal information only for as long as necessary to fulfill the purposes outlined in this policy, manage ongoing client engagements, or comply with legal and audit requirements.'
           ]
         }
@@ -210,7 +210,7 @@ export const privacyPolicyData = {
       content: [
         {
           type: 'paragraph',
-          text: 'HanovaDevs operates as a global remote-first team serving clients across North America, Europe, Asia, and Australia. Information we collect may be processed and stored on cloud servers distributed worldwide.'
+          text: 'HanovaDevs works remotely. Our hosting and processing providers may operate in locations outside your country. Information we collect may be processed and stored on cloud servers distributed worldwide.'
         },
         {
           type: 'paragraph',

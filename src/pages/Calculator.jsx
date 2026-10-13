@@ -830,7 +830,7 @@ export default function Calculator() {
                   <h3>What is included in this estimate?</h3>
                   <ul>
                     <li>✓ <strong>100% IP Sovereignty:</strong> You own all source code and design tokens.</li>
-                    <li>✓ <strong>100/100 Lighthouse Speed:</strong> Engineered to load instantly.</li>
+                    <li>✓ <strong>Performance Checks:</strong> Tested against an agreed performance budget.</li>
                     <li>✓ <strong>Fully Responsive Layouts:</strong> Pixel-perfect on mobile, tablet, and desktop.</li>
                     <li>✓ <strong>Dedicated Project Dashboard:</strong> Real-time sprint tracking and staging links.</li>
                     <li>✓ <strong>SEO & Schema Setup:</strong> Structured metadata configured for Google rankings.</li>

@@ -16,7 +16,7 @@ export default function News() {
   const [query, setQuery] = useState('')
   const [selectedArticle, setSelectedArticle] = useState(null)
   const [savedIds, setSavedIds] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('hd_saved_news') || '[]') } catch { return [] }
+    try { const value = JSON.parse(localStorage.getItem('hd_saved_news') || '[]'); return Array.isArray(value) ? value.filter(id => typeof id === 'number' || typeof id === 'string') : [] } catch { return [] }
   })
   const closeButtonRef = useRef(null)
 
@@ -30,21 +30,30 @@ export default function News() {
   }, [activeCategory, query, savedIds])
 
   useEffect(() => {
-    localStorage.setItem('hd_saved_news', JSON.stringify(savedIds))
+    try { localStorage.setItem('hd_saved_news', JSON.stringify(savedIds)) } catch { /* Storage may be disabled by the browser. */ }
   }, [savedIds])
 
   useEffect(() => {
     if (!selectedArticle) return undefined
+    const previousFocus = document.activeElement
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     closeButtonRef.current?.focus()
     const closeOnEscape = event => {
       if (event.key === 'Escape') setSelectedArticle(null)
+      if (event.key === 'Tab') {
+        const controls = closeButtonRef.current?.closest('[role="dialog"]')?.querySelectorAll('button, a')
+        if (!controls?.length) return
+        const first = controls[0], last = controls[controls.length - 1]
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+      }
     }
     document.addEventListener('keydown', closeOnEscape)
     return () => {
       document.body.style.overflow = previousOverflow
       document.removeEventListener('keydown', closeOnEscape)
+      previousFocus?.focus()
     }
   }, [selectedArticle])
 
@@ -59,7 +68,7 @@ export default function News() {
     <div className="news-page nw2-page">
       <SEO
         title="Technology News Briefing"
-        description="A source-backed briefing covering the latest developments in AI, cybersecurity, digital products, research, business, and space technology."
+        description="A source-backed briefing covering the latest developments in AI, cybersecurity, digital products, research, and business technology."
         url="/news"
         breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'News', item: '/news' }]}
       />

@@ -1,12 +1,322 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "src": "^/privacy/?$",
+      "headers": {
+        "Location": "/privacy-policy"
+      },
+      "status": 308
     },
     {
-      "source": "/((?!assets/|api/|.*\\..*$).*)",
-      "destination": "/index.html"
+      "src": "^/terms/?$",
+      "headers": {
+        "Location": "/terms-of-service"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/hanovadevs-software-company-guide/?$",
+      "headers": {
+        "Location": "/journal/hanovadevs-software-company-guide"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/future-of-web-dev/?$",
+      "headers": {
+        "Location": "/journal/future-of-web-dev"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/autonomous-agent-swarms-quantum-mesh/?$",
+      "headers": {
+        "Location": "/journal/autonomous-agent-swarms-quantum-mesh"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/ai-privacy-first/?$",
+      "headers": {
+        "Location": "/journal/ai-privacy-first"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/seo-trap-2026/?$",
+      "headers": {
+        "Location": "/journal/seo-trap-2026"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/custom-software-advantage/?$",
+      "headers": {
+        "Location": "/journal/custom-software-advantage"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/octopus-philosophy/?$",
+      "headers": {
+        "Location": "/journal/octopus-philosophy"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/ugc-ads-conversion-science/?$",
+      "headers": {
+        "Location": "/journal/ugc-ads-conversion-science"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/emotional-ai-ux/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/emotional-ai-ux/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/spatial-computing-beyond-arvr/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/spatial-computing-beyond-arvr/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/rust-eating-the-web/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/rust-eating-the-web/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/edge-ai-device-becomes-cloud/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/edge-ai-device-becomes-cloud/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/post-framework-era/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/post-framework-era/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/neuromorphic-wetware-intelligence/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/neuromorphic-wetware-intelligence/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/journal/quantum-diamond-semiconductors/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/quantum-diamond-semiconductors/?$",
+      "headers": {
+        "Location": "/journal"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "^/services/?$",
+      "dest": "/services/index.html"
+    },
+    {
+      "src": "^/about/?$",
+      "dest": "/about/index.html"
+    },
+    {
+      "src": "^/projects/?$",
+      "dest": "/projects/index.html"
+    },
+    {
+      "src": "^/reviews/?$",
+      "dest": "/reviews/index.html"
+    },
+    {
+      "src": "^/products/?$",
+      "dest": "/products/index.html"
+    },
+    {
+      "src": "^/products/eunoia/?$",
+      "dest": "/products/eunoia/index.html"
+    },
+    {
+      "src": "^/products/omnai/?$",
+      "dest": "/products/omnai/index.html"
+    },
+    {
+      "src": "^/products/eunoia/privacy/?$",
+      "dest": "/products/eunoia/privacy/index.html"
+    },
+    {
+      "src": "^/contact/?$",
+      "dest": "/contact/index.html"
+    },
+    {
+      "src": "^/calculator/?$",
+      "dest": "/calculator/index.html"
+    },
+    {
+      "src": "^/journal/?$",
+      "dest": "/journal/index.html"
+    },
+    {
+      "src": "^/research/?$",
+      "dest": "/research/index.html"
+    },
+    {
+      "src": "^/news/?$",
+      "dest": "/news/index.html"
+    },
+    {
+      "src": "^/stack/?$",
+      "dest": "/stack/index.html"
+    },
+    {
+      "src": "^/privacy-policy/?$",
+      "dest": "/privacy-policy/index.html"
+    },
+    {
+      "src": "^/terms-of-service/?$",
+      "dest": "/terms-of-service/index.html"
+    },
+    {
+      "src": "^/services/web-design/?$",
+      "dest": "/services/web-design/index.html"
+    },
+    {
+      "src": "^/services/shopify-development/?$",
+      "dest": "/services/shopify-development/index.html"
+    },
+    {
+      "src": "^/services/software-development/?$",
+      "dest": "/services/software-development/index.html"
+    },
+    {
+      "src": "^/services/seo/?$",
+      "dest": "/services/seo/index.html"
+    },
+    {
+      "src": "^/services/ai-automation/?$",
+      "dest": "/services/ai-automation/index.html"
+    },
+    {
+      "src": "^/services/branding/?$",
+      "dest": "/services/branding/index.html"
+    },
+    {
+      "src": "^/journal/hanovadevs-software-company-guide/?$",
+      "dest": "/journal/hanovadevs-software-company-guide/index.html"
+    },
+    {
+      "src": "^/journal/future-of-web-dev/?$",
+      "dest": "/journal/future-of-web-dev/index.html"
+    },
+    {
+      "src": "^/journal/autonomous-agent-swarms-quantum-mesh/?$",
+      "dest": "/journal/autonomous-agent-swarms-quantum-mesh/index.html"
+    },
+    {
+      "src": "^/journal/ai-privacy-first/?$",
+      "dest": "/journal/ai-privacy-first/index.html"
+    },
+    {
+      "src": "^/journal/seo-trap-2026/?$",
+      "dest": "/journal/seo-trap-2026/index.html"
+    },
+    {
+      "src": "^/journal/custom-software-advantage/?$",
+      "dest": "/journal/custom-software-advantage/index.html"
+    },
+    {
+      "src": "^/journal/octopus-philosophy/?$",
+      "dest": "/journal/octopus-philosophy/index.html"
+    },
+    {
+      "src": "^/journal/ugc-ads-conversion-science/?$",
+      "dest": "/journal/ugc-ads-conversion-science/index.html"
+    },
+    {
+      "src": "^/hanova-portal-2026/?$",
+      "dest": "/hanova-portal-2026/index.html"
+    },
+    {
+      "src": "^/admin/?$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
     }
   ]
 }

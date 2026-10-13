@@ -2,12 +2,12 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import TrustLegalSection from '../components/TrustLegalSection'
-import { journalPosts } from './Journal'
-import { researchArticles } from './Research'
+import { journalPosts } from '../data/journal'
+import { company, clientProjects } from '../data/company'
+import { researchArticles } from '../data/research'
 import './Home.css'
 
 /* ─── DATA ─── */
-const SHOW_UNVERIFIED_SECTIONS = false
 const heroParticles = Array.from({ length: 20 }, (_, i) => ({
   id: i,
   left: (i * 37) % 100,
@@ -98,64 +98,7 @@ const serviceCards = [
   },
 ]
 
-const projects = [
-  {
-    title: 'RAQS Official',
-    category: 'Luxury E-Commerce',
-    metric: 'Elite UX',
-    image: '/projects/raqs.webp',
-    url: 'https://www.raqsofficial.store'
-  },
-  {
-    title: 'EarthSync Essential',
-    category: 'E-Commerce & Wellness',
-    metric: '+45% Conv.',
-    image: '/projects/earthsync.webp',
-    url: 'https://www.earthsyncessential.com'
-  },
-  {
-    title: 'Terra Sol Grounding',
-    category: 'E-Commerce & Wellness',
-    metric: '20+ Studies',
-    image: '/projects/terrasol.webp',
-    url: 'https://www.terrasolgrounding.com'
-  },
-  {
-    title: 'Nexus Health',
-    category: 'Telemedicine SaaS',
-    metric: '99.9% Uptime',
-    image: '/projects/nexus.webp',
-    url: 'https://www.nexushealth.io'
-  },
-  {
-    title: 'Crown Accumulator',
-    category: 'Industrial B2B Portfolio',
-    metric: '3x B2B Leads',
-    image: '/projects/crown.webp',
-    url: 'https://www.crownaccumulator.com'
-  },
-  {
-    title: 'Lumière Paris',
-    category: 'Luxury Fashion',
-    metric: '+32% AOV',
-    image: '/projects/lumiere.webp',
-    url: 'https://www.lumiere-paris.fr'
-  },
-  {
-    title: 'AeroSpace Dynamics',
-    category: 'Logistics Analytics',
-    metric: '12ms Resp.',
-    image: '/projects/aero.webp',
-    url: 'https://www.aerospacedynamics.io'
-  },
-  {
-    title: 'CODATOR Core & Portal',
-    category: 'Community OS & SaaS',
-    metric: '68+ Members',
-    image: '/projects/codator.webp',
-    url: 'https://codator.vercel.app'
-  }
-]
+const projects = clientProjects.map(project => ({ ...project, metric: `For ${project.owner}` }))
 
 const processSteps = [
   {
@@ -204,9 +147,6 @@ const processSteps = [
 
 /* ─── COMPONENT ─── */
 export default function Home() {
-  const testimonials = [{ quote: '', author: '', role: '', avatar: '' }]
-  const activeTestimonial = 0
-  const setActiveTestimonial = () => {}
   const projectsScrollRef = useRef(null)
 
   const particles = heroParticles
@@ -214,8 +154,8 @@ export default function Home() {
   return (
     <div className="home-page">
       <SEO
-        title="Digital Marketing Agency & Custom Software Studio"
-        description="HanovaDevs engineers scalable web applications, executes high-converting digital marketing campaigns, and builds powerful brand identities to drive your business growth."
+        title="Custom Software, Web Development & AI Automation"
+        description={company.description}
         url=""
       />
       {/* ===== HERO ===== */}
@@ -288,11 +228,11 @@ export default function Home() {
           <div className="mission-statement__content reveal-up">
             <span className="section-label">Our Philosophy</span>
             <h2 className="mission-statement__text">
-              "We believe that great software is more than just code — it's the <em>invisible bridge</em> between human ambition and digital reality."
+              Useful software connects <em>clear thinking</em>, thoughtful design and dependable engineering.
             </h2>
             <div className="mission-statement__author">
               <img src="/icon.png" alt="" width="24" height="24" />
-              <span>HanovaDevs Leadership</span>
+              <span>The HanovaDevs approach</span>
             </div>
           </div>
         </div>
@@ -305,8 +245,8 @@ export default function Home() {
             <div className="about-teaser__visual reveal-left">
               <div className="about-teaser__img-stack">
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=500&fit=crop"
-                  alt="HanovaDevs team collaboration"
+                  src={company.founder.image}
+                  alt="Ali Haider, founder of HanovaDevs"
                   className="about-teaser__img about-teaser__img--main"
                   loading="lazy"
                 />
@@ -323,7 +263,7 @@ export default function Home() {
               <span className="section-label">Who We Are</span>
               <h2>A studio built on <span className="gradient-text">craft & ambition.</span></h2>
               <p>
-                We design and build focused digital systems for ecommerce and service businesses. Strategy, interface design, engineering, automation, and launch support stay connected from the first workshop through delivery.
+                Founded in 2022 by Ali Haider, HanovaDevs designs and builds focused digital systems for ecommerce and service businesses. Strategy, interface design, engineering, automation, and launch support stay connected from the first workshop through delivery.
               </p>
               <div className="about-teaser__badges">
                 <div className="about-teaser__badge">
@@ -392,31 +332,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== GLOBAL NETWORK ===== */}
-      <section className="global-network section">
-        <div className="container">
-          <div className="global-network__inner">
-            <div className="global-network__text reveal-left">
-              <span className="section-label">Network</span>
-              <h2>Global Reach, <span className="gradient-text">Local Impact.</span></h2>
-              <p>Our engineers and strategists operate across 4 continents, providing 24/7 support and localized market expertise.</p>
-              <div className="global-network__cities">
-                {['New York', 'London', 'Dubai', 'Singapore', 'Lagos', 'Berlin'].map((city, i) => (
-                  <span key={i} className="city-tag">{city}</span>
-                ))}
-              </div>
-            </div>
-            <div className="global-network__map reveal-right">
-              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80" alt="World Map" className="global-map-img" />
-              <div className="map-point map-point--ny" />
-              <div className="map-point map-point--london" />
-              <div className="map-point map-point--dubai" />
-              <div className="map-point map-point--singapore" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===== OUR PROCESS ===== */}
       <section className="process section" id="process">
         <div className="container">
@@ -463,7 +378,7 @@ export default function Home() {
                 <div className="featured-projects__info">
                   <span className="featured-projects__tag">{project.category}</span>
                   <h4>{project.title}</h4>
-                  <Link to="/projects" className="featured-projects__link">
+                  <Link to="/reviews" className="featured-projects__link">
                     View Case Study
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                   </Link>
@@ -481,62 +396,18 @@ export default function Home() {
       </section>
 
       {/* Testimonials return here only after client approval and verification. */}
-      {SHOW_UNVERIFIED_SECTIONS && (
-      <>
-      <section className="testimonials section" id="testimonials">
-        <div className="container">
-          <div className="section-header reveal">
-            <span className="section-label">Testimonials</span>
-            <h2>What our clients say</h2>
-          </div>
-          <div className="testimonials__carousel reveal reveal-delay-1">
-            <div className="testimonials__card">
-              <svg className="testimonials__quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="rgba(var(--royal-blue-rgb), 0.1)"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.689 11 13.186 11 15c0 1.933-1.567 3.5-3.5 3.5-1.248 0-2.349-.63-2.917-1.179zM14.583 17.321C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.689 21 13.186 21 15c0 1.933-1.567 3.5-3.5 3.5-1.248 0-2.349-.63-2.917-1.179z" /></svg>
-              <blockquote className="testimonials__text">
-                "{testimonials[activeTestimonial].quote}"
-              </blockquote>
-              <div className="testimonials__author">
-                <img
-                  src={testimonials[activeTestimonial].avatar}
-                  alt={testimonials[activeTestimonial].author}
-                  className="testimonials__avatar"
-                />
-                <div>
-                  <strong>{testimonials[activeTestimonial].author}</strong>
-                  <span>{testimonials[activeTestimonial].role}</span>
-                </div>
-              </div>
-            </div>
-            <div className="testimonials__dots">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  className={`testimonials__dot ${i === activeTestimonial ? 'testimonials__dot--active' : ''}`}
-                  onClick={() => setActiveTestimonial(i)}
-                  aria-label={`Show testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      </>
-      )}
+      
 
       {/* ===== INDUSTRIES WE SERVE ===== */}
       <section className="industries-section section" id="industries">
         <div className="container">
           <div className="section-header reveal text-center" style={{ margin: '0 auto var(--space-xl)' }}>
             <span className="section-label">Expertise</span>
-            <h2>Industries we serve</h2>
+            <h2>Who we build for</h2>
           </div>
           <div className="industries__grid">
             {[
-              'Healthcare', 'FinTech', 'E-Commerce',
-              'SaaS & Tech', 'Real Estate', 'Logistics',
-              'Education & EdTech', 'Hospitality', 'Manufacturing',
-              'Entertainment', 'Automotive', 'Web3 & Crypto'
+              'Ecommerce', 'Service Businesses', 'Fashion & Retail', 'Industrial Businesses', 'Software & Products', 'Founders & Teams'
             ].map((industry, i) => (
               <div key={i} className={`industries__card reveal-scale reveal-delay-${i % 6}`}>
                 <h4>{industry}</h4>
@@ -558,19 +429,19 @@ export default function Home() {
             <div className="products-teaser__cards">
               <div className="products-teaser__card card card-glass reveal-right reveal-delay-1">
                 <div className="products-teaser__badge products-teaser__badge--dev">
-                  <span className="products-teaser__pulse" /> In Development
+                  <span className="products-teaser__pulse" /> Launching soon
                 </div>
                 <h3>Omnai Browser</h3>
-                <p>A next-generation AI-powered browser built for the modern web. Smart tabs, native AI chat, and blazing-fast performance.</p>
+                <p>An AI-focused desktop browser, preparing for launch. Explore the development preview and product direction.</p>
                 <Link to="/products" className="btn btn-ghost" style={{ marginTop: 'auto' }}>Learn More</Link>
               </div>
               <div className="products-teaser__card card card-glass reveal-right reveal-delay-2">
                 <div className="products-teaser__badge products-teaser__badge--launch">
-                  <span className="products-teaser__pulse products-teaser__pulse--green" /> Ready to Launch
+                  <span className="products-teaser__pulse products-teaser__pulse--green" /> Available on Microsoft Store
                 </div>
                 <h3>Eunoia</h3>
-                <p>Your personal AI desktop assistant — think, organize, and execute at peak performance with beautiful design.</p>
-                <Link to="/products" className="btn btn-primary" style={{ marginTop: 'auto' }}>Join Waitlist</Link>
+                <p>A desktop workspace for planning, notes, journaling and focused work. Now available on Microsoft Store.</p>
+                <a href={company.products.eunoia.storeUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: 'auto' }}>Get Eunoia ↗</a>
               </div>
             </div>
           </div>
@@ -578,34 +449,7 @@ export default function Home() {
       </section>
 
       {/* The primary process section above is the single source of process guidance. */}
-      {SHOW_UNVERIFIED_SECTIONS && (<>
-      <section className="home-process section" id="process">
-        <div className="container">
-          <div className="text-center reveal" style={{ marginBottom: '4rem' }}>
-            <span className="section-label">Our Philosophy</span>
-            <h2>The Engineering <span className="gradient-text">Mindset</span></h2>
-            <p style={{ color: 'var(--blue-grey)', maxWidth: '600px', margin: '0 auto' }}>
-              We follow a rigorous, data-driven methodology to ensure every line of code serves your business objectives.
-            </p>
-          </div>
-          <div className="home-process__grid">
-            {[
-              { step: '01', title: 'Strategic Discovery', desc: 'We audit your current state and map out a precise roadmap to your goals.' },
-              { step: '02', title: 'Iterative Engineering', desc: 'Agile development cycles with continuous feedback and transparency.' },
-              { step: '03', title: 'Quality Assurance', desc: 'Rigorous stress testing for performance, security, and accessibility.' },
-              { step: '04', title: 'Global Scale', desc: 'Deployment on high-availability cloud infrastructure for worldwide reach.' }
-            ].map((p, i) => (
-              <div key={i} className={`home-process__card reveal-up reveal-delay-${i}`}>
-                <div className="home-process__step">{p.step}</div>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      </>)}
+      
 
       {/* ===== TECH STACK SECTION ===== */}
       <section className="home-tech section bg-white">
@@ -690,90 +534,7 @@ export default function Home() {
       </section>
 
       {/* Recognition is intentionally hidden until third-party evidence is available. */}
-      {SHOW_UNVERIFIED_SECTIONS && (<>
-      <section className="home-awards section bg-off-white">
-        <div className="container">
-          <div className="text-center reveal" style={{ marginBottom: '3rem' }}>
-            <span className="section-label">Recognition</span>
-            <h2>Built with <span className="gradient-text">Excellence</span></h2>
-          </div>
-          <div className="home-awards__grid reveal-up">
-            {[
-              { 
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                    <path d="M4 22h16" />
-                    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
-                    <path d="M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4Z" />
-                  </svg>
-                ), 
-                title: 'Top Web Agency', 
-                sub: '2025 Digital Awards' 
-              },
-              { 
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                  </svg>
-                ), 
-                title: '99.9% Uptime', 
-                sub: 'Infrastructure SLA' 
-              },
-              { 
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                ), 
-                title: 'SOC 2 Practices', 
-                sub: 'Security Compliant' 
-              },
-              { 
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                ), 
-                title: 'Global Delivery', 
-                sub: '4 Continents' 
-              },
-              { 
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                ), 
-                title: '5-Star Reviews', 
-                sub: 'Client Satisfaction' 
-              },
-              { 
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-                    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-                  </svg>
-                ), 
-                title: '40+ Launches', 
-                sub: 'Successful Deployments' 
-              }
-            ].map((award, i) => (
-              <div key={i} className="home-awards__card">
-                <span className="home-awards__icon">{award.icon}</span>
-                <strong>{award.title}</strong>
-                <span>{award.sub}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      </>)}
+      
 
       {/* ===== INTERACTIVE CALCULATOR PROMO ===== */}
       <section className="calc-promo-section section bg-off-white">

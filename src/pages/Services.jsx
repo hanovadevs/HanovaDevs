@@ -7,11 +7,11 @@ const services = [
     id: 'ai-automation',
     title: 'AI Automation & Calling Assistants',
     tagline: 'AI chatbots, voice assistants, and business systems',
-    desc: 'Bespoke website AI chatbots, human-like voice assistants for automated call booking, and secure AI management portals to run operations autonomously.',
+    desc: 'Bespoke website AI chatbots, human-like voice assistants for automated call booking, and management portals with defined permissions and human-review paths.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
     large: true,
     featured: true,
-    techStack: ['AI Voice Agents', 'Website Chatbots', 'AI Booking Assistants', 'GPT-4o / Claude 3.5', 'n8n / LangChain']
+    techStack: ['AI Voice Agents', 'Website Chatbots', 'AI Booking Assistants', 'Model Integrations', 'n8n / LangChain']
   },
   {
     id: 'shopify-development',
@@ -34,7 +34,7 @@ const services = [
     id: 'seo',
     title: 'SEO & Performance Marketing',
     tagline: 'Rank higher, get found',
-    desc: 'Data-driven SEO strategies that put you on page one and keep you there.',
+    desc: 'Technical SEO, useful content and reporting to improve discoverability. Rankings are not guaranteed.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
     techStack: ['GA4', 'GSC', 'SEMrush', 'Schema JSON-LD', 'Ahrefs']
   },
@@ -136,7 +136,7 @@ export default function Services() {
                 </svg>
               </div>
               <h3>Performance-First Engineering</h3>
-              <p>We target 100/100 Lighthouse performance metrics as our coding baseline. By engineering server-side rendered frameworks, optimizing queries, and eliminating blocking client-side JavaScript, we build applications that load instantly and convert passively.</p>
+              <p>We define performance budgets and test loading, responsiveness and layout stability on representative devices. Image optimisation, appropriate rendering and focused JavaScript help improve the experience; measurements are reported with their test conditions.</p>
             </div>
             
             <div className="methodology-card reveal-up reveal-delay-1">
@@ -149,7 +149,7 @@ export default function Services() {
                 </svg>
               </div>
               <h3>Data-Driven Marketing</h3>
-              <p>No assumptions. We map keyword clusters, ad campaigns, and visual assets directly based on verified consumer search behavior and predictive conversion metrics.</p>
+              <p>We connect content and campaign decisions to the available audience and search data, then evaluate results against agreed objectives.</p>
             </div>
             
             <div className="methodology-card reveal-up reveal-delay-2">

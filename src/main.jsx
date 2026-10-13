@@ -9,6 +9,9 @@ import { initializeErrorMonitoring } from './lib/monitoring.js'
 
 initializeErrorMonitoring()
 
+// Native React 19 metadata takes ownership after the static first paint.
+document.head.querySelectorAll('[data-hanova-seo]').forEach(element => element.remove())
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>

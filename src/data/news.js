@@ -2,6 +2,8 @@ export const newsUpdatedAt = '2026-10-13'
 
 // Editorial summaries of the linked primary announcements; publication dates belong to the sources.
 export const newsArticles = [
+  { id: 'eunoia-store-release', title: 'Eunoia is available on Microsoft Store', publishedAt: '2026-10-13', source: 'HanovaDevs · Product update', sourceUrl: 'https://apps.microsoft.com/detail/9PJ36VD01Z4X', category: 'Digital Products', tags: ['Eunoia', 'Microsoft Store', 'HanovaDevs'], image: '/news/product.svg', excerpt: 'Our desktop workspace for planning, notes, journaling and focus has a public Microsoft Store destination.', summary: "Eunoia has launched on Microsoft Store, according to the company’s release update. Use the official listing to check current availability, pricing and system requirements. This is an editorial status update, not a claim that the original launch occurred on this date." },
+  { id: 'omnai-launch-preview', title: 'Omnai Browser is preparing for launch', publishedAt: '2026-10-13', source: 'HanovaDevs · Product update', sourceUrl: 'https://hanovadevs.com/products/omnai', category: 'Digital Products', tags: ['Omnai', 'Browser', 'HanovaDevs'], image: '/news/product.svg', excerpt: 'A preview of our AI-focused desktop browser is available while the team prepares the release.', summary: "Omnai Browser is launching soon; a public release date has not been announced. The product page includes development screenshots and explains the current product direction. The final interface, features and requirements may change before release." },
   {
     id: 'azure-maia-expansion', publishedAt: '2026-10-12', category: 'Infrastructure', source: 'Microsoft',
     title: 'Microsoft plans a larger Azure Maia inference rollout',
