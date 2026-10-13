@@ -219,7 +219,7 @@ export default async function handler(req, res) {
         
         ${isRequestEmail ? `
           <div class="notice-box">
-            📬 <strong>Spam Folder Reminder:</strong> Please check your <strong>Spam</strong> or <strong>Promotions</strong> folder just in case our emails land there! Add <code>hanovadevs@gmail.com</code> to your contacts to ensure you receive your Google Meet room link.
+            📬 <strong>Spam Folder Reminder:</strong> Please check your <strong>Spam</strong> or <strong>Promotions</strong> folder just in case our emails land there! Add <code>contact@hanovadevs.com</code> to your contacts to ensure you receive your Google Meet room link.
           </div>
         ` : `
           <p>Please click the button below to join the virtual call at your scheduled time. We recommend joining from a quiet space with your webcam enabled:</p>
@@ -229,7 +229,7 @@ export default async function handler(req, res) {
         `}
       </div>
       <div class="footer">
-        <p>This is an automated email from HanovaDevs for your requested consultation slot.<br>If you need to make changes, please reply to this email or reach us at hanovadevs@gmail.com.</p>
+        <p>This is an automated email from HanovaDevs for your requested consultation slot.<br>If you need to make changes, please reply to this email or reach us at contact@hanovadevs.com.</p>
         <p>© 2026 HanovaDevs. All rights reserved.</p>
       </div>
     </div>
@@ -244,6 +244,7 @@ export default async function handler(req, res) {
 
     await transporter.sendMail({
       from: `"HanovaDevs" <${emailUser}>`,
+      replyTo: 'contact@hanovadevs.com',
       to,
       subject: emailSubject,
       html: htmlTemplate

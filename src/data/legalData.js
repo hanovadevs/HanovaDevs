@@ -13,7 +13,7 @@ export const legalMetadata = {
   effectiveDate: 'September 2, 2026',
   companyName: 'HanovaDevs',
   websiteUrl: 'https://hanovadevs.com',
-  contactEmail: 'hanovadevs@gmail.com',
+  contactEmail: 'contact@hanovadevs.com',
   location: '100% Remote-First Digital Studio (Global Operations • Hub: Lahore, Pakistan)'
 }
 
@@ -239,7 +239,7 @@ export const privacyPolicyData = {
         },
         {
           type: 'paragraph',
-          text: 'To exercise any of these rights, please contact us at hanovadevs@gmail.com. We respond to all verified requests in a timely manner.'
+          text: 'To exercise any of these rights, please contact us at contact@hanovadevs.com. We respond to all verified requests in a timely manner.'
         }
       ]
     },
@@ -288,7 +288,7 @@ export const privacyPolicyData = {
         {
           type: 'list',
           items: [
-            'Email: hanovadevs@gmail.com',
+            'Email: contact@hanovadevs.com',
             'Website: https://hanovadevs.com',
             'Operations: 100% Remote-First Digital Studio & Software Agency',
             'Response Commitment: All inquiries receive a reply within 24–48 business hours.'
@@ -396,7 +396,7 @@ export const termsOfServiceData = {
           type: 'list',
           items: [
             'Strictly Remote Jobs: All employment opportunities, engineering roles, design positions, and contractor engagements offered by HanovaDevs are strictly 100% remote jobs. We do not offer or require on-site employment or physical office presence.',
-            'Legitimate Hiring Channels: All HanovaDevs job openings, candidate evaluations, technical assessments, and employment contracts are administered exclusively through official remote digital channels and verified @hanovadevs.com / hanovadevs@gmail.com communications.',
+            'Legitimate Hiring Channels: All HanovaDevs job openings, candidate evaluations, technical assessments, and employment contracts are administered exclusively through official remote digital channels and verified @hanovadevs.com / contact@hanovadevs.com communications.',
             'Recruitment Fraud Protection: HanovaDevs will never ask candidates for fees, equipment purchases, or in-person visits to unverified physical locations.'
           ]
         }
@@ -625,7 +625,7 @@ export const termsOfServiceData = {
         {
           type: 'list',
           items: [
-            'Email: hanovadevs@gmail.com',
+            'Email: contact@hanovadevs.com',
             'Website: https://hanovadevs.com',
             'Operations: 100% Remote-First Digital Agency & Custom Software Studio'
           ]

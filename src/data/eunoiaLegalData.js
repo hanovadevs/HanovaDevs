@@ -17,7 +17,7 @@ export const eunoiaLegalMetadata = {
   companyName: 'HanovaDevs',
   websiteUrl: 'https://hanovadevs.com',
   productUrl: 'https://hanovadevs.com/products/eunoia',
-  contactEmail: 'hanovadevs@gmail.com',
+  contactEmail: 'contact@hanovadevs.com',
   storeUrl: 'https://apps.microsoft.com/detail/9PJ36VD01Z4X'
 }
 
@@ -257,7 +257,7 @@ export const eunoiaPrivacyPolicyData = {
         },
         {
           type: 'paragraph',
-          text: 'Parents and guardians should supervise their children\'s use of any desktop software. If you have concerns about a minor using Eunoia, please contact us at hanovadevs@gmail.com.'
+          text: 'Parents and guardians should supervise their children\'s use of any desktop software. If you have concerns about a minor using Eunoia, please contact us at contact@hanovadevs.com.'
         }
       ]
     },
@@ -309,7 +309,7 @@ export const eunoiaPrivacyPolicyData = {
         {
           type: 'list',
           items: [
-            'Email: hanovadevs@gmail.com',
+            'Email: contact@hanovadevs.com',
             'Website: https://hanovadevs.com',
             'Product Page: https://hanovadevs.com/products/eunoia',
             'Microsoft Store: https://apps.microsoft.com/detail/9PJ36VD01Z4X',

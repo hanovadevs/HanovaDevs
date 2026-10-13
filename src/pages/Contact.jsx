@@ -192,7 +192,7 @@ export default function Contact() {
         _captcha: "false"
       }
 
-      const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/contact@hanovadevs.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -306,8 +306,8 @@ export default function Contact() {
                   <a
                     href={
                       activeTab === 'call'
-                        ? `mailto:hanovadevs@gmail.com?subject=Strategy Call Booking: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DRequested Date: ${selectedDate?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}%0D%0DRequested Time: ${selectedTime}%0D%0DTimezone: ${userTimezone}%0D%0DMessage: ${form.message || 'Discuss digital agency partnership'}`
-                        : `mailto:hanovadevs@gmail.com?subject=New Lead: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DBudget: ${form.budget || 'Not specified'}%0D%0DMessage: ${form.message}`
+                        ? `mailto:contact@hanovadevs.com?subject=Strategy Call Booking: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DRequested Date: ${selectedDate?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}%0D%0DRequested Time: ${selectedTime}%0D%0DTimezone: ${userTimezone}%0D%0DMessage: ${form.message || 'Discuss digital agency partnership'}`
+                        : `mailto:contact@hanovadevs.com?subject=New Lead: ${form.name}&body=Hello HanovaDevs Team,%0D%0DName: ${form.name}%0D%0DEmail: ${form.email}%0D%0DPhone: ${form.phone || 'Not provided'}%0D%0DCompany: ${form.company || 'Not provided'}%0D%0DBudget: ${form.budget || 'Not specified'}%0D%0DMessage: ${form.message}`
                     }
                     className="btn btn-primary"
                     style={{ display: 'inline-flex', gap: '0.5rem', width: '100%', justifyContent: 'center', textDecoration: 'none' }}
@@ -717,7 +717,7 @@ export default function Contact() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                   <div>
                     <span className="contact-info-label">Email</span>
-                    <a href="mailto:hanovadevs@gmail.com">hanovadevs@gmail.com</a>
+                    <a href="mailto:contact@hanovadevs.com">contact@hanovadevs.com</a>
                   </div>
                 </div>
                 <div className="contact-info-item">

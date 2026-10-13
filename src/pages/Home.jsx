@@ -839,8 +839,8 @@ export default function Home() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
             </Link>
             <div className="final-cta__contact-info">
-              <a href="mailto:hanovadevs@gmail.com" className="final-cta__email">
-                <strong>hanovadevs@gmail.com</strong>
+              <a href="mailto:contact@hanovadevs.com" className="final-cta__email">
+                <strong>contact@hanovadevs.com</strong>
               </a>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
+import SiteAnalytics from './components/SiteAnalytics'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -11,6 +10,7 @@ const Home = lazy(() => import('./pages/Home'))
 const Services = lazy(() => import('./pages/Services'))
 const About = lazy(() => import('./pages/About'))
 const Projects = lazy(() => import('./pages/Projects'))
+const Reviews = lazy(() => import('./pages/Reviews'))
 const Products = lazy(() => import('./pages/Products'))
 const Contact = lazy(() => import('./pages/Contact'))
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
@@ -87,6 +87,7 @@ function App() {
           <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/reviews" element={<Reviews />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/omnai" element={<OmnaiDetail />} />
           <Route path="/products/eunoia" element={<EunoiaDetail />} />
@@ -113,8 +114,7 @@ function App() {
       </main>
       {!isAdminRoute && <Footer />}
       {!isAdminRoute && <AIChatbot />}
-      <Analytics />
-      <SpeedInsights />
+      <SiteAnalytics />
       </ErrorBoundary>
     </>
   )

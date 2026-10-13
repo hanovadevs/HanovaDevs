@@ -103,7 +103,7 @@ Let's turn it into something people can use, remember, and value.
 **HanovaDevs**
 
 Website: https://www.hanovadevs.com
-Email: [hanovadevs@gmail.com](mailto:hanovadevs@gmail.com)
+Email: [contact@hanovadevs.com](mailto:contact@hanovadevs.com)
 
 ---
 

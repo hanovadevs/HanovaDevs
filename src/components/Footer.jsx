@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
+import { CookieSettingsButton } from './CookieConsent'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -13,7 +14,7 @@ export default function Footer() {
     setSubscribing(true)
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/hanovadevs@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/contact@hanovadevs.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -43,6 +44,7 @@ export default function Footer() {
     { path: '/services/ai-automation', label: 'AI Automation' },
     { path: '/about', label: 'About Us' },
     { path: '/projects', label: 'Projects' },
+    { path: '/reviews', label: 'Client Stories & Reviews' },
   ]
 
   const insightLinks = [
@@ -119,9 +121,9 @@ export default function Footer() {
               Custom software & marketing for modern businesses. We engineer digital experiences that drive growth.
             </p>
             <div className="footer__contact-info">
-              <a href="mailto:hanovadevs@gmail.com">
+              <a href="mailto:contact@hanovadevs.com">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                hanovadevs@gmail.com
+                contact@hanovadevs.com
               </a>
             </div>
             <div className="footer__socials">
@@ -160,6 +162,7 @@ export default function Footer() {
             {legalLinks.map(link => (
               <Link key={link.label} to={link.path} className="footer__link">{link.label}</Link>
             ))}
+            <CookieSettingsButton />
           </div>
         </div>
 
