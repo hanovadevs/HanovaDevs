@@ -5,8 +5,14 @@ export const company = {
   email: 'contact@hanovadevs.com',
   founded: '2022',
   reviewedAt: '2026-10-13',
-  description: 'HanovaDevs is a software company founded in 2022 by Ali Haider. We build custom software, business websites, ecommerce experiences, and AI automation, alongside our own desktop products.',
+  description: 'HanovaDevs is a software company founded in 2022 by Ali Haider, with Hira Maqsood as co-founder and COO. We build custom software, websites, ecommerce and AI automation, alongside our own desktop products.',
   founder: { name: 'Ali Haider', url: 'https://ali.hanovadevs.com', image: '/people/ali-haider.webp' },
+  coFounder: {
+    name: 'Hira Maqsood', role: 'Co-founder & COO', jobTitle: 'Co-founder & Chief Operating Officer',
+    path: '/team/hira-maqsood', url: 'https://hanovadevs.com/team/hira-maqsood', image: '/people/hira-maqsood.webp',
+    description: 'Hira Maqsood is the co-founder and Chief Operating Officer of HanovaDevs. Her work focuses on original ideas, creative problem-solving, strategic planning, and coordinating operations and delivery.',
+    knowsAbout: ['Creative ideation', 'Creative problem-solving', 'Strategic planning', 'Business operations', 'Project delivery'],
+  },
   socials: {
     linkedin: 'https://www.linkedin.com/company/hanova-devs',
     instagram: 'https://www.instagram.com/hanovadevs/',
@@ -69,6 +75,7 @@ export const clientProjects = [
 
 export const companyFaqs = [
   { question: 'Who founded HanovaDevs, and when?', answer: 'Ali Haider founded HanovaDevs in 2022. You can learn more about the founder at ali.hanovadevs.com.' },
+  { question: 'Who is Hira Maqsood at HanovaDevs?', answer: company.coFounder.description },
   { question: 'What does HanovaDevs do?', answer: 'HanovaDevs offers custom software development, web design and development, Shopify development, AI automation, SEO and analytics, and brand identity services.' },
   { question: 'Which businesses are a good fit?', answer: 'We work with businesses that need a clearer digital presence, a custom business application, an ecommerce experience, or practical automation. Scope, budget, and support needs are discussed before a proposal.' },
   { question: 'Is Eunoia available?', answer: 'Yes. Eunoia has launched on Microsoft Store. The official listing is linked from the Eunoia product page.' },

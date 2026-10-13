@@ -18,6 +18,18 @@ for (const route of publicRoutes) {
   const schemas = [...document.querySelectorAll('script[type="application/ld+json"]')].map(node => JSON.parse(node.textContent))
   assert.equal(schemas.length, 1, `${route}: one JSON-LD graph`)
   assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'Organization').foundingDate, '2022')
+  const organization = schemas[0]['@graph'].find(node => node['@type'] === 'Organization')
+  const hira = schemas[0]['@graph'].find(node => node['@type'] === 'Person' && node.name === 'Hira Maqsood')
+  assert(hira, `${route}: co-founder entity`)
+  assert.equal(hira.jobTitle, 'Co-founder & Chief Operating Officer')
+  assert(organization.founder.some(founder => founder['@id'] === hira['@id']), `${route}: co-founder relationship`)
+  if (route === company.coFounder.path) {
+    const profile = schemas[0]['@graph'].find(node => node['@type'] === 'ProfilePage')
+    assert.equal(profile.mainEntity['@id'], hira['@id'])
+    assert.equal(document.querySelector('h1').textContent, hira.name)
+    assert(document.querySelector('main').textContent.includes(hira.description), 'Profile schema matches visible bio')
+    assert.equal(document.querySelector('meta[property="og:image"]').content, `${company.url}${company.coFounder.image}`)
+  }
   assert(!JSON.stringify(schemas).match(/aggregateRating|ratingValue|streetAddress|"award"/), `${route}: evidence-safe schema`)
   assert(!document.querySelector('script[src*="googletagmanager"], script[src*="_vercel/insights"], iframe[src*="googletagmanager"]'), `${route}: no optional trackers in HTML`)
   assert(!html.includes('\uFFFD'), `${route}: no replacement characters`)

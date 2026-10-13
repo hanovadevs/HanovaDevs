@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
 import About from './pages/About'
+import HiraProfile from './pages/HiraProfile'
 import Projects from './pages/Projects'
 import Reviews from './pages/Reviews'
 import Products from './pages/Products'
@@ -31,6 +32,7 @@ export function render(url) {
     <Navbar /><main><Routes>
       <Route path="/" element={<Home />} /><Route path="/services" element={<Services />} />
       <Route path="/services/:id" element={<ServiceDetail />} /><Route path="/about" element={<About />} />
+      <Route path="/team/hira-maqsood" element={<HiraProfile />} />
       <Route path="/projects" element={<Projects />} /><Route path="/reviews" element={<Reviews />} />
       <Route path="/products" element={<Products />} /><Route path="/products/eunoia" element={<EunoiaDetail />} />
       <Route path="/products/omnai" element={<OmnaiDetail />} /><Route path="/products/eunoia/privacy" element={<EunoiaPrivacyPolicy />} />

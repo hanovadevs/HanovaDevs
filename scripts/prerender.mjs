@@ -8,6 +8,7 @@ import { company } from '../src/data/company.js'
 const template = await readFile('dist/index.html', 'utf8')
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'))
 const pageSource = route => {
+  if (route === '/team/hira-maqsood') return 'src/pages/HiraProfile.jsx'
   if (route.startsWith('/services/')) return 'src/pages/ServiceDetail.jsx'
   if (route.startsWith('/journal/')) return 'src/pages/JournalPost.jsx'
   return `src/pages/${({ '/': 'Home', '/services': 'Services', '/about': 'About', '/projects': 'Projects', '/reviews': 'Reviews', '/products': 'Products', '/products/eunoia': 'EunoiaDetail', '/products/omnai': 'OmnaiDetail', '/products/eunoia/privacy': 'EunoiaPrivacyPolicy', '/contact': 'Contact', '/calculator': 'Calculator', '/journal': 'Journal', '/research': 'Research', '/news': 'News', '/stack': 'TechStack', '/privacy-policy': 'PrivacyPolicy', '/terms-of-service': 'TermsOfService' })[route] || 'NotFound'}.jsx`

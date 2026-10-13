@@ -9,6 +9,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 const Home = lazy(() => import('./pages/Home'))
 const Services = lazy(() => import('./pages/Services'))
 const About = lazy(() => import('./pages/About'))
+const HiraProfile = lazy(() => import('./pages/HiraProfile'))
 const Projects = lazy(() => import('./pages/Projects'))
 const Reviews = lazy(() => import('./pages/Reviews'))
 const Products = lazy(() => import('./pages/Products'))
@@ -86,6 +87,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/team/hira-maqsood" element={<HiraProfile />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/products" element={<Products />} />

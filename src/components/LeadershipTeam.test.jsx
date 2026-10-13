@@ -12,6 +12,7 @@ describe('Leadership cards', () => {
       expect(within(card).getByRole('heading', { level: 3 })).toHaveTextContent(name)
       expect(within(card).getByText(role, { exact: true })).toBeInTheDocument()
     }
+    expect(screen.getByRole('link', { name: 'Meet Hira Maqsood' })).toHaveAttribute('href', '/team/hira-maqsood')
   })
 
   it('uses the three supplied portraits and an explicitly labelled faceless illustration', () => {

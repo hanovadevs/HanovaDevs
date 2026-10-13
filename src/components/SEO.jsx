@@ -2,13 +2,13 @@ import { Helmet } from 'react-helmet-async'
 import { company } from '../data/company'
 import { canonicalUrl, pageGraph } from '../lib/seo'
 
-export default function SEO({ title, description, url, type = 'website', image, schemaMarkup, faqList, breadcrumbs, noIndex = false, pageType, publishedAt, modifiedAt }) {
+export default function SEO({ title, description, url, type = 'website', image, schemaMarkup, faqList, breadcrumbs, noIndex = false, pageType, publishedAt, modifiedAt, mainEntity }) {
   const cleanTitle = title?.replace(/\s*[|—–-]\s*HanovaDevs.*$/i, '')
   const siteTitle = cleanTitle ? `${cleanTitle} | HanovaDevs` : 'HanovaDevs | Custom Software, Web Development & AI Automation'
   const metaDescription = description || company.description
   const siteUrl = canonicalUrl(url)
   const metaImage = image ? new URL(image, company.url).href : `${company.url}/og-image.jpg`
-  const schema = pageGraph({ url: siteUrl, title: siteTitle, description: metaDescription, pageType, breadcrumbs, faqList, schemaMarkup })
+  const schema = pageGraph({ url: siteUrl, title: siteTitle, description: metaDescription, pageType, breadcrumbs, faqList, schemaMarkup, mainEntity })
   return (
     <Helmet>
       <title>{siteTitle}</title>

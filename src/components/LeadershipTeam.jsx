@@ -35,12 +35,13 @@ export default function LeadershipTeam() {
                 <p className="leader-card__role">{member.role}</p>
                 <h3 id={`leader-${member.id}`}>{member.name}</h3>
                 <p className="leader-card__focus">{member.focus}</p>
+                {member.profile && <a className="leader-card__profile" href={member.profile}>Meet {member.name}</a>}
               </div>
             </article>
           ))}
         </div>
         <div className="leadership__story">
-          <p>Founded in 2022 by Ali Haider, HanovaDevs brings design, engineering and business context together to build useful digital experiences.</p>
+          <p>Founded in 2022 by Ali Haider, HanovaDevs brings design, engineering and business context together. Co-founder and COO Hira Maqsood connects original ideas and strategic planning with operations and delivery.</p>
           <a href={company.founder.url} target="_blank" rel="noopener noreferrer">Explore Ali’s profile</a>
         </div>
       </div>

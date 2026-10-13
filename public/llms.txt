@@ -5,6 +5,7 @@
 ## Company information
 - [About and founder](https://hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
 - [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
+- [Hira Maqsood](https://hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
 - [Contact](https://hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
 - [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
 

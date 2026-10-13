@@ -188,6 +188,10 @@
       "dest": "/about/index.html"
     },
     {
+      "src": "^/team/hira-maqsood/?$",
+      "dest": "/team/hira-maqsood/index.html"
+    },
+    {
       "src": "^/projects/?$",
       "dest": "/projects/index.html"
     },
