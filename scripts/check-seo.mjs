@@ -44,8 +44,8 @@ for (const route of publicRoutes) {
     assert.equal(program.educationalProgramMode, 'online')
     assert(!program.startDate && !program.endDate && !program.offers, 'No invented program dates or fees')
     const cards = [...document.querySelectorAll('.sbp-builder')]
-    assert.equal(cards.length, 12)
-    assert.deepEqual(cards.map(card => card.dataset.builderId), Array.from({ length: 12 }, (_, index) => `HD-SB-${String(index + 1).padStart(3, '0')}`))
+    assert.equal(cards.length, 13)
+    assert.deepEqual(cards.map(card => card.dataset.builderId), Array.from({ length: 13 }, (_, index) => `HD-SB-${String(index + 1).padStart(3, '0')}`))
     for (const builder of studentBuilders) {
       const card = document.querySelector(`[data-builder-id="${builder.id}"]`)
       assert(card.querySelector('h3').textContent === builder.name, `${builder.id}: participant identity`)

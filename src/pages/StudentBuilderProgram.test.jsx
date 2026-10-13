@@ -17,23 +17,24 @@ const roster = [
   ['HD-SB-005', 'Ayesha Fatima', 'ayesha-fatima-sehab'],
   ['HD-SB-006', 'Iffa Mateen', 'iffa-mateen-9353ab3a0'],
   ['HD-SB-007', 'Muhammad Waleed', 'muhammed-waleed-66961b412'],
-  ['HD-SB-008', 'Wajiha Fatima', null],
-  ['HD-SB-009', 'Mark Angelo', null],
+  ['HD-SB-008', 'Wajiha Fatima', 'wajiha-fatima-229b18380'],
+  ['HD-SB-009', 'Mark Angelo', 'mark-angelo-0baa1038a'],
   ['HD-SB-010', 'Abdul Haseeb', 'abdul-haseeb-956337294'],
   ['HD-SB-011', 'Hussain Aftab', 'hussain-aftab-ba572a386'],
   ['HD-SB-012', 'Hafiz Muhammad Burhan Sadiq', 'm-burhan-sadiq-b59aa9336'],
+  ['HD-SB-013', 'Muhammad Haroon Zafar', 'muhammad-haroon-zafar-7a05a23a0'],
 ]
 
 describe('Student Builder Program', () => {
-  it('publishes the corrected twelve builders in ID order with only supplied LinkedIn links', () => {
+  it('publishes all thirteen builders in ID order with the supplied LinkedIn links', () => {
     renderProgram()
-    expect(studentBuilders).toHaveLength(12)
-    expect(new Set(studentBuilders.map(builder => builder.id)).size).toBe(12)
+    expect(studentBuilders).toHaveLength(13)
+    expect(new Set(studentBuilders.map(builder => builder.id)).size).toBe(13)
     expect(studentBuilders.map(builder => [builder.id, builder.name])).toEqual(roster.map(([id, name]) => [id, name]))
     const builders = screen.getByRole('region', { name: 'Meet the student builders.' })
     const cards = within(builders).getAllByRole('article')
-    expect(cards).toHaveLength(12)
-    expect(builders).toHaveTextContent('12 people.')
+    expect(cards).toHaveLength(13)
+    expect(builders).toHaveTextContent('13 people.')
     for (const [index, [id, name, slug]] of roster.entries()) {
       const card = cards[index]
       expect(card).toHaveAttribute('data-builder-id', id)
@@ -43,7 +44,7 @@ describe('Student Builder Program', () => {
       else expect(within(card).queryByRole('link')).not.toBeInTheDocument()
     }
     expect(builders.querySelectorAll('img')).toHaveLength(0)
-    expect(within(builders).queryByRole('heading', { name: 'Muhammad Haroon Zafar' })).not.toBeInTheDocument()
+    expect(within(builders).getByRole('heading', { name: 'Muhammad Haroon Zafar' })).toBeInTheDocument()
     expect(JSON.stringify(studentBuilders)).not.toMatch(/@|email|university|rating/i)
   })
 

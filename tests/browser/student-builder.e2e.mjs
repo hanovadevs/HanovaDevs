@@ -12,8 +12,8 @@ test('program roster, mentors, anchors, FAQs, assets and sharing work across res
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build somethingthat matters.')
   await page.evaluate(() => document.fonts.ready)
   await expect(page.locator('.navbar__logo-full')).toBeVisible()
-  await expect(page.locator('.sbp-builder')).toHaveCount(12)
-  expect(await page.locator('.sbp-builder').evaluateAll(cards => cards.map(card => card.dataset.builderId))).toEqual(Array.from({ length: 12 }, (_, index) => `HD-SB-${String(index + 1).padStart(3, '0')}`))
+  await expect(page.locator('.sbp-builder')).toHaveCount(13)
+  expect(await page.locator('.sbp-builder').evaluateAll(cards => cards.map(card => card.dataset.builderId))).toEqual(Array.from({ length: 13 }, (_, index) => `HD-SB-${String(index + 1).padStart(3, '0')}`))
   for (const builder of studentBuilders) {
     const card = page.locator('.sbp-builder').filter({ has: page.getByRole('heading', { name: builder.name, exact: true }) })
     await expect(card.locator('.sbp-builder__id')).toHaveText(`Participant ID: ${builder.id}`)
