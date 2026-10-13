@@ -45,8 +45,30 @@
   transform: scale(1.03);
 }
 
-.navbar--dark .navbar__logo-full {
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+.navbar__logo-inverse {
+  display: none;
+  align-items: center;
+  gap: 9px;
+  width: 180px;
+  height: 68px;
+  color: #f8fafc;
+  transition: transform 0.25s ease;
+}
+.navbar__inverse-mark { display: block; flex: 0 0 34px; width: 34px; height: 34px; object-fit: contain; }
+.navbar__inverse-copy { display: flex; flex-direction: column; gap: 5px; padding-left: 10px; border-left: 1px solid #72d9d580; }
+.navbar__inverse-name { font: 600 21px/1 var(--font-hero); letter-spacing: -.035em; white-space: nowrap; }
+.navbar__inverse-name > span { color: #26c4c2; }
+.navbar__inverse-tagline { font: 600 8px/1.2 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: #7ce0dc; white-space: nowrap; }
+.navbar__logo:hover .navbar__logo-inverse { transform: scale(1.03); }
+
+@media (min-width: 1121px) {
+  .navbar--dark .navbar__logo-full { display: none; }
+  .navbar--dark .navbar__logo-inverse { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__logo-full, .navbar__logo-inverse { transition: none; }
+  .navbar__logo:hover .navbar__logo-full, .navbar__logo:hover .navbar__logo-inverse { transform: none; }
 }
 
 /* Nav Links */

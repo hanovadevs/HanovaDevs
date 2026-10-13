@@ -20,6 +20,19 @@ describe('Navbar keyboard behavior', () => {
     expect(insights).toHaveAttribute('aria-expanded', 'false')
   })
 
+  it.each([
+    ['/about', true], ['/products', true], ['/projects', true], ['/journal/future-of-web-dev', true],
+    ['/services', true], ['/services/web-design', true], ['/news', true],
+    ['/', false], ['/reviews', false], ['/stack', false], ['/products/eunoia', false],
+    ['/products/omnai', false], ['/products/eunoia/privacy', false], ['/privacy-policy', false],
+  ])('matches the header theme to the hero on %s', (path, dark) => {
+    const { container } = render(<MemoryRouter initialEntries={[path]}><Navbar /></MemoryRouter>)
+    expect(container.querySelector('header').classList.contains('navbar--dark')).toBe(dark)
+    expect(container.querySelector('.navbar__inverse-mark')).toHaveAttribute('src', '/agency-logo-white.webp')
+    expect(container.querySelector('.navbar__inverse-name')).toHaveTextContent('HanovaDevs')
+    expect(screen.getByRole('link', { name: 'HanovaDevs Home' })).toHaveAttribute('href', '/')
+  })
+
   it('keeps a closed menu inert, restores focus with Escape, and unlocks scrolling', async () => {
     render(<MemoryRouter><Navbar /></MemoryRouter>)
     const toggle = screen.getByRole('button', { name: 'Open menu' })

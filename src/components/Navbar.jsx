@@ -112,9 +112,10 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news', '/stack'].some(p =>
-    location.pathname === p || location.pathname.startsWith(p + '/')
-  )
+  // Product detail, technology and legal pages have light heroes; their parent routes do not.
+  const isDarkPage = ['/products', '/about', '/projects', '/research', '/journal', '/news', '/services'].includes(location.pathname)
+    || location.pathname.startsWith('/journal/')
+    || location.pathname.startsWith('/services/')
   const isInsightsActive = ['/journal', '/reviews', '/research', '/news', '/stack', '/calculator'].some(p => location.pathname.startsWith(p))
 
   return (
@@ -130,6 +131,13 @@ export default function Navbar() {
             alt="HanovaDevs Software Agency" 
             className="navbar__logo-full" 
           />
+          <span className="navbar__logo-inverse" aria-hidden="true">
+            <img src="/agency-logo-white.webp" width="128" height="128" alt="" className="navbar__inverse-mark" decoding="async" />
+            <span className="navbar__inverse-copy">
+              <span className="navbar__inverse-name">Hanova<span>Devs</span></span>
+              <span className="navbar__inverse-tagline">Software Agency</span>
+            </span>
+          </span>
         </Link>
 
         <nav className="navbar__nav" aria-label="Main navigation">
