@@ -432,6 +432,12 @@ export default function Home() {
               <p>Beyond agency work, we're creating our own tools — products we wish existed, designed to push the boundaries of what's possible.</p>
             </div>
             <div className="products-teaser__cards">
+              <div className="products-teaser__card card card-glass">
+                <div className="products-teaser__badge products-teaser__badge--dev">Mobile product preview</div>
+                <h3>Stepsy</h3>
+                <p>A HanovaDevs mobile app project connecting everyday walking with planned points, partner discounts and rewards.</p>
+                <Link to="/products/stepsy" className="btn btn-primary" style={{ marginTop: 'auto' }}>Explore the Stepsy story</Link>
+              </div>
               <div className="products-teaser__card card card-glass reveal-right reveal-delay-1">
                 <div className="products-teaser__badge products-teaser__badge--dev">
                   <span className="products-teaser__pulse" /> Launching soon

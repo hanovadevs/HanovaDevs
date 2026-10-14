@@ -8,6 +8,7 @@ import { company } from '../src/data/company.js'
 const template = await readFile('dist/index.html', 'utf8')
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'))
 const pageSource = route => {
+  if (route === '/products/stepsy') return 'src/pages/StepsyDetail.jsx'
   if (route === '/student-builder-program') return 'src/pages/StudentBuilderProgram.jsx'
   if (route === '/team/hira-maqsood') return 'src/pages/HiraProfile.jsx'
   if (route.startsWith('/team/')) return 'src/pages/TeamProfile.jsx'

@@ -15,6 +15,7 @@ import Projects from './pages/Projects'
 import Reviews from './pages/Reviews'
 import Products from './pages/Products'
 import EunoiaDetail from './pages/EunoiaDetail'
+import StepsyDetail from './pages/StepsyDetail'
 import OmnaiDetail from './pages/OmnaiDetail'
 import EunoiaPrivacyPolicy from './pages/EunoiaPrivacyPolicy'
 import Contact from './pages/Contact'
@@ -40,6 +41,7 @@ export function render(url) {
       <Route path="/projects" element={<Projects />} /><Route path="/reviews" element={<Reviews />} />
       <Route path="/products" element={<Products />} /><Route path="/products/eunoia" element={<EunoiaDetail />} />
       <Route path="/products/omnai" element={<OmnaiDetail />} /><Route path="/products/eunoia/privacy" element={<EunoiaPrivacyPolicy />} />
+      <Route path="/products/stepsy" element={<StepsyDetail />} />
       <Route path="/contact" element={<Contact />} /><Route path="/calculator" element={<Calculator />} />
       <Route path="/journal" element={<Journal />} /><Route path="/journal/:slug" element={<JournalPost />} />
       <Route path="/research" element={<Research />} /><Route path="/news" element={<News />} />

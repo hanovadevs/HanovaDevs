@@ -13,7 +13,7 @@ export default function Products() {
     <div className="cinematic-products">
       <SEO
         title="Products — HanovaDevs"
-        description="Discover our cutting-edge AI products. Omnai Browser and Eunoia Desktop Companion."
+        description="Explore HanovaDevs products: Eunoia on Microsoft Store, Omnai Browser launching soon, and Stepsy, our mobile walking and partner-rewards project."
         url="/products"
         breadcrumbs={[
           { name: 'Home', item: '/' },
@@ -28,10 +28,11 @@ export default function Products() {
           <div className="cp-hero__content page-hero-light__content reveal">
             <span className="page-hero-light__eyebrow">In-house innovation</span>
             <h1>Proprietary Products, <br /><span className="cp-gradient">Powered by HanovaDevs.</span></h1>
-            <p>Omnai Browser and Eunoia Desktop are our own in-house products engineered by HanovaDevs to push the boundaries of AI, local-first architectures, and modern digital productivity.</p>
+            <p>From desktop workspaces to everyday movement: explore Eunoia, Omnai Browser and Stepsy, our in-house products and projects built by HanovaDevs.</p>
             <div className="page-hero-light__actions">
               <Link to="/products/eunoia" className="btn btn-primary">Discover Eunoia</Link>
               <Link to="/products/omnai" className="page-hero-light__link">Explore Omnai</Link>
+              <Link to="/products/stepsy" className="page-hero-light__link">Meet Stepsy</Link>
             </div>
           </div>
         </div>
@@ -115,6 +116,8 @@ export default function Products() {
           </div>
         </div>
       </section>
+
+      <section className="cp-stepsy" id="stepsy" aria-labelledby="cp-stepsy-title"><div className="container cp-stepsy__layout"><div><span className="cp-badge cp-badge--stepsy">Product preview · Mobile</span><p className="cp-stepsy__byline">Developed by HanovaDevs</p><h2 id="cp-stepsy-title">Stepsy.<br /><em>Every step. More possibility.</em></h2><p>A mobile app project connecting walking with planned points, partner discounts and rewards. Designed around everyday habits, with Pakistan as the intended first market.</p><p className="cp-stepsy__note">Launch availability and reward rules are still being defined.</p><Link to="/products/stepsy" className="btn btn-primary">Experience the Stepsy story</Link></div><Link to="/products/stepsy" className="cp-stepsy__visual" aria-label="Explore the Stepsy mobile product preview"><img src="/products/stepsy/walking-1122.webp" srcSet="/products/stepsy/walking-640.webp 640w, /products/stepsy/walking-1122.webp 1122w" sizes="(max-width: 760px) 90vw, 40vw" width="1122" height="1402" alt="Stepsy walking and rewards product concept" loading="lazy" decoding="async" /></Link></div></section>
 
       {/* ===== BOTTOM CTA ===== */}
       <section className="cp-cta">

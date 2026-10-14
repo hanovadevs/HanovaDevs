@@ -220,6 +220,10 @@
       "dest": "/products/index.html"
     },
     {
+      "src": "^/products/stepsy/?$",
+      "dest": "/products/stepsy/index.html"
+    },
+    {
       "src": "^/products/eunoia/?$",
       "dest": "/products/eunoia/index.html"
     },

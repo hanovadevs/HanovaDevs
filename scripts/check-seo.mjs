@@ -5,6 +5,7 @@ import { publicRoutes, legacyRedirects } from '../src/data/routes.js'
 import { company } from '../src/data/company.js'
 import { leadershipProfiles, leadershipFaqs } from '../src/data/leadershipProfiles.js'
 import { builderProgram, studentBuilders, programFaqs } from '../src/data/studentBuilderProgram.js'
+import { stepsy, stepsyScenes, stepsyFaqs } from '../src/data/stepsy.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const seenTitles = new Set()
@@ -58,6 +59,17 @@ for (const route of publicRoutes) {
     assert(!document.querySelector('.sbp-page').textContent.includes('@'), 'No public participant emails')
     await access(`dist/program/student-builder-social.png`)
     assert(document.querySelector('.sbp-recognition').textContent.includes('not an issued certificate'))
+  }
+  if (route === stepsy.path) {
+    assert.equal(document.querySelectorAll('.stepsy-scene').length, stepsyScenes.length)
+    assert.equal(document.querySelectorAll('.stepsy-faq details').length, stepsyFaqs.length)
+    for (const scene of stepsyScenes) assert(document.querySelector(`#stepsy-${scene.id} img`).getAttribute('src').includes(scene.image), `${scene.id}: source image in static HTML`)
+    assert(!document.querySelector('[data-cinematic]'), 'No animation-dependent content in prerendered HTML')
+    assert(!document.querySelector('a[href*="apps.apple.com"], a[href*="play.google.com"]'), 'No invented store listing')
+    assert(document.querySelector('.stepsy-page').textContent.includes('not live deals or signed merchant partnerships'))
+    const product = schemas[0]['@graph'].find(node => node['@type'] === 'CreativeWork' && node.name === 'Stepsy')
+    assert(product && !product.offers && !product.aggregateRating && !product.operatingSystem, 'Factual preview schema')
+    await access('dist/products/stepsy/social.png')
   }
   assert(!document.querySelector('script[src*="googletagmanager"], script[src*="_vercel/insights"], iframe[src*="googletagmanager"]'), `${route}: no optional trackers in HTML`)
   assert(!html.includes('\uFFFD'), `${route}: no replacement characters`)

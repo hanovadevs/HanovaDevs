@@ -58,6 +58,7 @@ export default function Footer() {
   const productLinks = [
     { path: '/products/omnai', label: 'Omnai Browser' },
     { path: '/products/eunoia', label: 'Eunoia App' },
+    { path: '/products/stepsy', label: 'Stepsy' },
   ]
 
   const legalLinks = [

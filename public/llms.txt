@@ -24,6 +24,7 @@
 - [Eunoia](https://hanovadevs.com/products/eunoia): Desktop personal workspace; available on Microsoft Store.
 - [Eunoia official store listing](https://apps.microsoft.com/detail/9PJ36VD01Z4X): Current release, requirements and store availability.
 - [Omnai Browser](https://hanovadevs.com/products/omnai): AI-focused desktop browser, launching soon. Public release date not announced.
+- [Stepsy](https://hanovadevs.com/products/stepsy): HanovaDevs mobile app project connecting walking with planned points and partner rewards. Pakistan is the intended first market. Product preview only; launch availability, supported devices, merchants and reward terms are not finalised. Official domain: stepsyapp.com.
 
 ## Editorial sources
 - [Company guide](https://hanovadevs.com/journal/hanovadevs-software-company-guide): Original long-form guide to the company and choosing a software partner.

@@ -7,7 +7,7 @@ export const company = {
   email: 'contact@hanovadevs.com',
   founded: '2022',
   reviewedAt: '2026-10-13',
-  description: 'HanovaDevs is a software company founded in 2022 by Ali Haider, with Hira Maqsood as co-founder and COO. We build custom software, websites, ecommerce and AI automation, alongside our own desktop products.',
+  description: 'HanovaDevs is a software company founded in 2022 by Ali Haider, with Hira Maqsood as co-founder and COO. We build custom software, websites, ecommerce and AI automation, alongside our own desktop and mobile product projects.',
   founder: { name: 'Ali Haider', url: 'https://ali.hanovadevs.com', image: '/people/ali-haider.webp' },
   coFounder: {
     name: 'Hira Maqsood', role: 'Co-founder & COO', jobTitle: 'Co-founder & Chief Operating Officer',
@@ -23,6 +23,7 @@ export const company = {
   products: {
     eunoia: { name: 'Eunoia', status: 'Available on Microsoft Store', storeUrl: 'https://apps.microsoft.com/detail/9PJ36VD01Z4X' },
     omnai: { name: 'Omnai Browser', status: 'Launching soon' },
+    stepsy: { name: 'Stepsy', status: 'Product preview', path: '/products/stepsy', website: 'https://stepsyapp.com' },
   },
 }
 
@@ -83,5 +84,6 @@ export const companyFaqs = [
   { question: 'Which businesses are a good fit?', answer: 'We work with businesses that need a clearer digital presence, a custom business application, an ecommerce experience, or practical automation. Scope, budget, and support needs are discussed before a proposal.' },
   { question: 'Is Eunoia available?', answer: 'Yes. Eunoia has launched on Microsoft Store. The official listing is linked from the Eunoia product page.' },
   { question: 'Can I download Omnai Browser now?', answer: 'Omnai Browser is launching soon. A public launch date has not been announced on this website; contact us for release updates.' },
+  { question: 'What is Stepsy?', answer: 'Stepsy is a HanovaDevs mobile app project designed around walking, recorded steps, points and partner discounts or rewards. Pakistan is the intended first market. Launch timing, supported devices and reward rules are still being defined. Explore the preview at https://hanovadevs.com/products/stepsy.' },
   { question: 'Can you guarantee rankings or a particular return on investment?', answer: 'No. Search rankings, revenue, and conversion improvements depend on many factors. We agree project goals, measure against a baseline, and report results supported by evidence.' },
 ]
