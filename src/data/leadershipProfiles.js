@@ -37,20 +37,20 @@ const profiles = {
     ],
   },
   'noor-fatima': {
-    intro: 'A strong brand makes a company easier to understand. Noor’s marketing role brings audience needs, clear messaging and consistent presentation into the way HanovaDevs communicates its work.',
-    headline: 'A clear brand. A meaningful connection.',
-    approach: 'Make the message useful to the person reading it. Brand and marketing decisions should help people understand an offering, recognise its relevance and choose an appropriate next step.',
+    intro: 'Clear business needs and a clear message belong together. Noor’s marketing and business-analysis role connects audience understanding, brand presentation and the requirements behind useful digital work.',
+    headline: 'Clear thinking. Meaningful connections.',
+    approach: 'Understand the business need, then make the message useful to the person reading it. Business analysis and marketing should connect what an offering needs to achieve with how people understand and experience it.',
     contributions: [
       ['Brand direction', 'Helping connect the company’s identity with the way its services and products are presented.'],
       ['Clear communication', 'Shaping audience-focused messaging that makes an offering easier to understand.'],
-      ['Marketing alignment', 'Connecting brand and growth priorities with the company’s design, product and business direction.'],
+      ['Business analysis', 'Clarifying business needs and connecting requirements with the company’s design, product and delivery conversations.'],
     ],
     questions: [
-      ['Who is Noor Fatima at HanovaDevs?', 'Noor Fatima is the Chief Marketing Officer, or CMO, of HanovaDevs. Her role focuses on brand direction, marketing communication and audience connection.'],
+      ['Who is Noor Fatima at HanovaDevs?', 'Noor Fatima is the Chief Marketing Officer, or CMO, and Business Analyst at HanovaDevs. Her role connects brand direction, marketing communication, audience understanding and business needs.'],
       ['What does CMO stand for?', 'CMO stands for Chief Marketing Officer, a leadership role focused on marketing and brand direction.'],
       ['What does Noor’s marketing role focus on?', 'Her focus is brand direction, clear communication and aligning marketing with the company’s offering and audience. A shared message helps people understand the services and products that are relevant to them.'],
       ['How does marketing connect with software and design?', 'Marketing helps clarify the audience and message. Design and engineering turn that context into a usable digital experience. The work benefits from a shared brief and clear priorities.'],
-      ['Is the image on Noor Fatima’s profile a photograph?', 'No. It is an AI-generated faceless illustration used as a placeholder. It does not depict Noor’s actual appearance or claim to be a photograph of her.'],
+      ['What does Noor’s business-analysis role involve?', 'Her business-analysis role focuses on understanding business needs, clarifying requirements and connecting those requirements with product, design and delivery discussions. It complements her marketing and audience-focused work.'],
     ],
   },
   'faizan-javed': {
@@ -78,6 +78,6 @@ export function leadershipFaqs(member) {
   return [
     ...member.questions.map(([question, answer]) => ({ question, answer })),
     { question: `How can I contact ${member.name} about a project?`, answer: 'Use the HanovaDevs Contact page or email contact@hanovadevs.com. Include your goals and current constraints so the company can route your enquiry to the appropriate person. These are company enquiry channels, not personal contact details.' },
-    { question: 'Who else is on the HanovaDevs leadership team?', answer: 'The leadership team includes Ali Haider, Founder & CEO; Hira Maqsood, Co-founder & COO; Noor Fatima, CMO; and Faizan Javed, CTO. Their individual profiles are linked from the About page.' },
+    { question: 'Who else is on the HanovaDevs leadership team?', answer: `The leadership team includes ${leadershipTeam.map(person => `${person.name}, ${person.role}`).join('; ')}. Their individual profiles are linked from the About page.` },
   ]
 }

@@ -9,7 +9,7 @@ test('leadership cards load the correct portraits, fit the viewport and remain a
   const team = page.locator('#leadership')
   await team.scrollIntoViewIfNeeded()
   await expect(team.getByRole('article')).toHaveCount(4)
-  for (const [name, role] of [['Ali Haider', 'Founder & CEO'], ['Hira Maqsood', 'Co-founder & COO'], ['Noor Fatima', 'CMO'], ['Faizan Javed', 'CTO']]) {
+  for (const [name, role] of [['Ali Haider', 'Founder & CEO'], ['Hira Maqsood', 'Co-founder & COO'], ['Noor Fatima', 'CMO & Business Analyst'], ['Faizan Javed', 'CTO']]) {
     const card = team.getByRole('article', { name })
     await card.scrollIntoViewIfNeeded()
     await expect(card.getByRole('heading', { name })).toBeVisible()
@@ -20,7 +20,7 @@ test('leadership cards load the correct portraits, fit the viewport and remain a
     const photo = card.locator('img')
     if (await photo.count()) await expect.poll(() => photo.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true)
   }
-  await expect(team.getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toBeVisible()
+  await expect(team.getByRole('img', { name: 'Noor Fatima, CMO and Business Analyst at HanovaDevs' })).toBeVisible()
   await expect(team.locator('svg, [class*="icon"]')).toHaveCount(0)
   await page.addScriptTag({ content: readFileSync('node_modules/axe-core/axe.min.js', 'utf8') })
   const violations = await page.evaluate(async () => (await window.axe.run(document.querySelector('#leadership'))).violations.filter(item => ['serious', 'critical'].includes(item.impact)).map(item => item.id))

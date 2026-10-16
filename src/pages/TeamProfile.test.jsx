@@ -33,11 +33,14 @@ describe('Leadership profiles', () => {
     expect(graph.find(node => node['@type'] === 'ProfilePage').mainEntity['@id']).toBe(member.entityId)
   })
 
-  it('keeps Noor’s descriptive avatar alt text without adding an image disclosure caption', () => {
+  it('uses Noor’s supplied portrait and both roles in her profile and search metadata', () => {
     renderProfile('/team/noor-fatima')
     expect(screen.queryByText('AI-generated illustration · not a photograph')).not.toBeInTheDocument()
-    expect(screen.getByRole('img', { name: 'Faceless illustrated avatar for Noor Fatima' })).toBeInTheDocument()
-    expect(organizationGraph().find(node => node.name === 'Noor Fatima')).not.toHaveProperty('image')
+    expect(screen.getByRole('img', { name: 'Noor Fatima, CMO and Business Analyst at HanovaDevs' })).toHaveAttribute('src', '/people/noor-fatima.webp')
+    expect(organizationGraph().find(node => node.name === 'Noor Fatima')).toMatchObject({ image: 'https://hanovadevs.com/people/noor-fatima.webp', jobTitle: 'Chief Marketing Officer & Business Analyst' })
+    expect(screen.getByText('Chief Marketing Officer & Business Analyst', { exact: true })).toBeInTheDocument()
+    expect(screen.getByText('What does Noor’s business-analysis role involve?')).toBeInTheDocument()
+    expect(screen.queryByText('Is the image on Noor Fatima’s profile a photograph?')).not.toBeInTheDocument()
   })
 
   it('keeps the founder’s supplied personal website linked', () => {
