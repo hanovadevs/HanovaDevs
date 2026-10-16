@@ -16,7 +16,7 @@ describe('Stepsy product preview', () => {
     expect(container.querySelectorAll('.stepsy-scene img')).toHaveLength(5)
     for (const scene of stepsyScenes) {
       const chapter = screen.getByRole('article', { name: scene.title })
-      expect(within(chapter).getByRole('img')).toHaveAttribute('src', `/products/stepsy/${scene.image}-1122.webp`)
+      expect(within(chapter).getByRole('img')).toHaveAttribute('src', `/media/stepsy/${scene.image}-1122.webp`)
       expect(within(chapter).getByRole('img')).toHaveAttribute('width', '1122')
       expect(chapter).toHaveTextContent(scene.detail)
       expect(screen.getByRole('navigation', { name: 'Stepsy story chapters' }).querySelector(`a[href="#stepsy-${scene.id}"]`)).toBeInTheDocument()

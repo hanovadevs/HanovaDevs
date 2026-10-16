@@ -1,4 +1,5 @@
 export const stepsy = {
+  assetBase: '/media/stepsy',
   name: 'Stepsy', path: '/products/stepsy', website: 'https://stepsyapp.com',
   status: 'Product preview',
   description: 'Stepsy is a HanovaDevs mobile app project designed to connect everyday walking with points, partner discounts and rewards. Pakistan is the intended first market; reward rules and launch availability are still being defined.',

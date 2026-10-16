@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile, access } from 'node:fs/promises'
+import { readFile, access, readdir } from 'node:fs/promises'
 import { JSDOM } from 'jsdom'
 import { publicRoutes, legacyRedirects } from '../src/data/routes.js'
 import { company } from '../src/data/company.js'
@@ -8,6 +8,18 @@ import { builderProgram, studentBuilders, programFaqs } from '../src/data/studen
 import { stepsy, stepsyScenes, stepsyFaqs } from '../src/data/stepsy.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
+const checkedAssets = new Set()
+async function checkAsset(url) {
+  const cleanPath = decodeURIComponent(url.split('?')[0])
+  if (checkedAssets.has(cleanPath)) return
+  let directory = 'dist'
+  for (const segment of cleanPath.split('/').filter(Boolean)) {
+    assert((await readdir(directory)).includes(segment), `${url}: missing asset or case mismatch at ${directory}/${segment}`)
+    directory += `/${segment}`
+  }
+  await access(directory)
+  checkedAssets.add(cleanPath)
+}
 const seenTitles = new Set()
 for (const route of publicRoutes) {
   const html = await readFile(route === '/' ? 'dist/index.html' : `dist${route}/index.html`, 'utf8')
@@ -69,11 +81,17 @@ for (const route of publicRoutes) {
     assert(document.querySelector('.stepsy-page').textContent.includes('not live deals or signed merchant partnerships'))
     const product = schemas[0]['@graph'].find(node => node['@type'] === 'CreativeWork' && node.name === 'Stepsy')
     assert(product && !product.offers && !product.aggregateRating && !product.operatingSystem, 'Factual preview schema')
-    await access('dist/products/stepsy/social.png')
+    await checkAsset('/media/stepsy/social.png')
   }
   assert(!document.querySelector('script[src*="googletagmanager"], script[src*="_vercel/insights"], iframe[src*="googletagmanager"]'), `${route}: no optional trackers in HTML`)
   assert(!html.includes('\uFFFD'), `${route}: no replacement characters`)
-  for (const image of document.querySelectorAll('img[src^="/"]')) await access(`dist${image.getAttribute('src')}`)
+  for (const image of document.querySelectorAll('img[src^="/"]')) {
+    await checkAsset(image.getAttribute('src'))
+    for (const source of (image.getAttribute('srcset') || '').split(',').filter(Boolean)) {
+      const url = source.trim().split(/\s+/)[0]
+      if (url.startsWith('/')) await checkAsset(url)
+    }
+  }
   for (const link of document.querySelectorAll('link[rel="stylesheet"][href^="/"]')) await access(`dist${link.getAttribute('href')}`)
   assert(config.routes.some(rule => rule.src && new RegExp(rule.src).test(route) && rule.dest?.endsWith('index.html')), `${route}: deployment route`)
   dom.window.close()

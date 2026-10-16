@@ -8,10 +8,13 @@ test.beforeEach(async ({ context }) => {
 
 test('Stepsy preview, supplied images, chapter anchors and FAQs work across sizes', async ({ page }) => {
   const errors = []
+  const failedImages = []
   page.on('pageerror', error => errors.push(error.message))
+  page.on('response', response => { if (response.request().resourceType() === 'image' && response.status() >= 400) failedImages.push(response.url()) })
   await page.goto('/products/stepsy')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Every step.More possibility.')
   await expect(page.locator('.stepsy-scene')).toHaveCount(5)
+  await page.locator('.stepsy-hero img').evaluate(image => image.decode())
   for (const scene of stepsyScenes) {
     const chapter = page.locator(`#stepsy-${scene.id}`)
     await chapter.scrollIntoViewIfNeeded()
@@ -29,6 +32,7 @@ test('Stepsy preview, supplied images, chapter anchors and FAQs work across size
   expect(await page.evaluate(async () => (await window.axe.run(document.querySelector('main'))).violations.filter(item => ['serious', 'critical'].includes(item.impact)).map(item => ({ id: item.id, nodes: item.nodes.map(node => node.target) })))).toEqual([])
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true)
   expect(errors).toEqual([])
+  expect(failedImages).toEqual([])
 })
 
 test('cinematic scroll transitions, still-view toggle and reduced-motion changes are real', async ({ page }) => {
@@ -41,6 +45,8 @@ test('cinematic scroll transitions, still-view toggle and reduced-motion changes
   for (const [index, scene] of stepsyScenes.entries()) {
     await page.locator(`#stepsy-${scene.id}`).scrollIntoViewIfNeeded()
     await expect.poll(async () => Number(await frames.nth(index).evaluate(node => getComputedStyle(node).opacity))).toBeGreaterThan(.95)
+    await frames.nth(index).locator('img').evaluate(image => image.decode())
+    await expect(story).toHaveAttribute('data-active-scene', scene.id)
   }
   await page.getByRole('button', { name: 'Use still view' }).click()
   await expect(story).not.toHaveAttribute('data-cinematic', 'true')
@@ -54,7 +60,7 @@ test('cinematic scroll transitions, still-view toggle and reduced-motion changes
   await expect(story).toHaveAttribute('data-cinematic', 'true')
   await page.getByRole('link', { name: 'HanovaDevs / Our products' }).click()
   await expect(page).toHaveURL('/products')
-  expect(await page.locator('.stepsy-film__stage').count()).toBe(0)
+  await expect(page.locator('.stepsy-film__stage')).toHaveCount(0)
 })
 
 test('Stepsy is linked from the product hub, Home and footer', async ({ page }) => {
