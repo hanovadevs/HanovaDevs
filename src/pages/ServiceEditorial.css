@@ -130,6 +130,12 @@
 .sv-palette { display: grid; grid-template-columns: repeat(4, 1fr); border-radius: 10px; overflow: hidden; }
 .sv-palette span { font-size: .6rem; padding: 40px 10px 10px; }
 .work-page .sv-caption { font-size: .6rem; color: #5f7772; margin: 22px 0 0; text-align: center; }
+.service-fit li > span, .service-card-number, .service-process-list li > span, .service-handover-sheet li > span { color: #436d5d; }
+.service-resource-list span { color: #496b5d; }
+.sv-commerce-top > span, .sv-kicker { color: #5e5945; }
+.sv-search-result > span { color: #4d684a; }
+.sv-ai-answer > span { color: #3e6755; }
+.sv-footnote, .sv-ai-sources > span { color: #466b5c; }
 @media (max-width: 1000px) {
   .service-editorial-hero__grid { gap: 35px; }
   .service-overview-grid, .service-handover-grid, .service-faq-grid { gap: 40px; }

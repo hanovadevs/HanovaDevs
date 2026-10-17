@@ -5,7 +5,7 @@ export default function ServiceScenarios({ scenarios }) {
   const id = useId()
   const tabs = useRef([])
   function keyboard(event, index) {
-    let next = index
+    let next
     if (event.key === 'ArrowRight') next = (index + 1) % scenarios.length
     else if (event.key === 'ArrowLeft') next = (index - 1 + scenarios.length) % scenarios.length
     else if (event.key === 'Home') next = 0

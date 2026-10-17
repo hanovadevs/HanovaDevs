@@ -116,7 +116,6 @@ export default function Navbar() {
   // Only dark hero surfaces need the inverse desktop logo and navigation colors.
   const isDarkPage = ['/about', '/research', '/journal', '/news'].includes(location.pathname)
     || location.pathname.startsWith('/journal/')
-    || location.pathname.startsWith('/services/')
   const isInsightsActive = ['/journal', '/reviews', '/research', '/news', '/stack', '/calculator'].some(p => location.pathname.startsWith(p))
 
   return (

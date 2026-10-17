@@ -104,6 +104,8 @@
 .case-observations p { font-size: .9rem; margin-bottom: 0; }
 .case-measurement-note { display: grid; grid-template-columns: .75fr 1.25fr; gap: 45px; margin-top: 40px; padding-top: 35px; border-top: 1px solid #c9ded3; }
 .case-measurement-note p { font-size: .83rem; }
+.case-approach-grid article > span { color: #456c5b; }
+.case-browser-bar { color: #52696c; }
 @media (max-width: 900px) {
   .work-section-heading { align-items: start; gap: 25px; }
   .work-section-heading > p { width: 42%; }
