@@ -12,7 +12,7 @@ try {
     try {
       const response = await page.goto(project.url, { waitUntil: 'domcontentloaded', timeout: 30000 })
       if (!response?.ok() || new URL(page.url()).hostname.replace(/^www\./, '') !== new URL(project.url).hostname.replace(/^www\./, '')) throw new Error('Unexpected response or destination')
-      await page.waitForFunction(() => document.body.innerText.trim().length > 250 && document.querySelector('h1, h2'), { timeout: 20000 })
+      await page.waitForFunction(() => document.body.innerText.trim().length > 250 && document.querySelector('h1, h2'), undefined, { timeout: 20000 })
       await page.evaluate(() => document.fonts.ready)
       await page.waitForTimeout(8000)
       const visibleText = await page.locator('body').innerText()
@@ -21,7 +21,9 @@ try {
         await page.setViewportSize(viewport)
         await page.evaluate(() => scrollTo(0, 0))
         await page.waitForTimeout(1800)
-        await sharp(await page.screenshot()).webp({ quality: 84 }).toFile(`public/case-studies/${project.id}-${view}.webp`)
+        const capture = await page.screenshot()
+        await sharp(capture).webp({ quality: 84 }).toFile(`public/case-studies/${project.id}-${view}.webp`)
+        if (view === 'desktop') await sharp(capture).resize(800).webp({ quality: 82 }).toFile(`public/case-studies/${project.id}-card.webp`)
       }
       await page.setViewportSize({ width: 1440, height: 1000 })
       await page.evaluate(() => scrollTo(0, Math.min(innerHeight * 0.9, document.documentElement.scrollHeight - innerHeight)))

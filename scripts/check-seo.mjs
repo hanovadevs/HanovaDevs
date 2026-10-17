@@ -6,6 +6,8 @@ import { company } from '../src/data/company.js'
 import { leadershipProfiles, leadershipFaqs } from '../src/data/leadershipProfiles.js'
 import { builderProgram, studentBuilders, programFaqs } from '../src/data/studentBuilderProgram.js'
 import { stepsy, stepsyScenes, stepsyFaqs } from '../src/data/stepsy.js'
+import { services } from '../src/data/services.js'
+import { caseStudies } from '../src/data/caseStudies.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const checkedAssets = new Set()
@@ -51,6 +53,26 @@ for (const route of publicRoutes) {
     if (member.illustration) assert(!schemas[0]['@graph'].find(node => node['@id'] === member.entityId).image, 'Do not present fictional avatar as an actual likeness in Person schema')
   }
   assert(!JSON.stringify(schemas).match(/aggregateRating|ratingValue|streetAddress|"award"/), `${route}: evidence-safe schema`)
+  const service = services.find(item => route === `/services/${item.id}`)
+  if (service) {
+    const entity = schemas[0]['@graph'].find(node => node['@type'] === 'Service')
+    assert.equal(entity.name, service.title)
+    assert(!entity.offers && !entity.aggregateRating, `${route}: no unsupported price or rating`)
+    assert.equal(document.querySelectorAll('.work-faq-list details').length, service.faqs.length)
+    for (const faq of service.faqs) assert(document.querySelector('main').textContent.includes(faq.answer), `${route}: visible FAQ answer`)
+    assert.equal(document.querySelectorAll('.service-capabilities article').length, 4)
+    assert(document.querySelector('main a[href*="source=service"]'), `${route}: contextual enquiry path`)
+  }
+  const study = caseStudies.find(item => item.path === route)
+  if (study) {
+    const entity = schemas[0]['@graph'].find(node => node['@type'] === 'CreativeWork')
+    assert.equal(entity.name, `${study.title} website case study`)
+    assert.equal(document.querySelector('.case-desktop-capture img').getAttribute('src'), study.image)
+    assert.equal(document.querySelector('.case-mobile-capture img').getAttribute('src'), study.mobileImage)
+    assert(document.querySelector('#case-evidence').textContent.includes('No verified before-and-after revenue'), `${route}: honest measurement status`)
+    assert.equal(document.querySelector('time').getAttribute('datetime'), study.reviewedAt)
+    assert(document.querySelector('main a[href*="source=case-study"]'), `${route}: case enquiry context`)
+  }
   if (route === builderProgram.path) {
     const program = schemas[0]['@graph'].find(node => node['@type'] === 'EducationalOccupationalProgram')
     assert.equal(program.timeToComplete, 'P8W')

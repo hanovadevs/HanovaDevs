@@ -22,7 +22,9 @@ describe('Navbar keyboard behavior', () => {
 
   it.each([
     ['/about', true], ['/products', false], ['/projects', false], ['/journal/future-of-web-dev', true],
-    ['/services', false], ['/services/web-design', true], ['/news', true],
+    ['/services', false], ['/services/web-design', false], ['/news', true],
+    ['/services/shopify-development', false], ['/services/software-development', false],
+    ['/services/seo', false], ['/services/ai-automation', false], ['/services/branding', false], ['/projects/crown', false],
     ['/', false], ['/reviews', false], ['/stack', false], ['/products/eunoia', false],
     ['/products/omnai', false], ['/products/eunoia/privacy', false], ['/privacy-policy', false],
   ])('matches the header theme to the hero on %s', (path, dark) => {
