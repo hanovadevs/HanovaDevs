@@ -133,14 +133,14 @@ export const privacyPolicyData = {
       content: [
         {
           type: 'paragraph',
-          text: 'Our website features "Aria," an interactive AI assistant designed to answer questions about our services, calculate rough budget estimates, and help visitors schedule calls.'
+          text: 'Our website features "Aria," an AI assistant that explains our services, products and team, links to illustrative project estimates, and helps visitors prepare an enquiry. A contact request is not a confirmed meeting.'
         },
         {
           type: 'list',
           items: [
             'Processing Context: Messages submitted to Aria may be sent through our server-side API to Anthropic to generate a response when the assistant is configured. A local fallback may be used when that service is unavailable. Do not send secrets or information you are not authorized to share.',
             'Provider Terms: Processing, retention and any provider training rules depend on the configured service and applicable account terms. We do not claim a universal no-training or zero-retention guarantee.',
-            'Chat Records: Chat transcripts and booking details may be retained for follow-up and service review. They can include the personal information you choose to enter; they are not necessarily anonymous.'
+            'Contact Handoff: The website does not automatically save Aria conversations to the company database. If you submit the contact form, your name, email and enquiry are emailed to our team. Recent conversation excerpts are included only if you select the optional sharing checkbox. Sent enquiries may be retained for follow-up; they are not anonymous.'
           ]
         }
       ]

@@ -3,11 +3,12 @@ import react from '@vitejs/plugin-react'
 import { publicRoutes, legacyRedirects } from './src/data/routes.js'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
+import { assistantDevApi } from './server/assistantDevMiddleware.js'
 
 // https://vite.dev/config/
 export default defineConfig(({ isPreview }) => ({
   appType: isPreview ? 'mpa' : 'spa',
-  plugins: [react(), {
+  plugins: [react(), assistantDevApi(), {
     name: 'prerender-preview-routing',
     configurePreviewServer(server) {
       // Match the production clean-URL destinations instead of Vite's SPA fallback.
