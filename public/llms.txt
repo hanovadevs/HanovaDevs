@@ -3,19 +3,30 @@
 > Software company founded in 2022 by Ali Haider. Custom software, web development, ecommerce, AI automation, SEO and analytics, and brand identity.
 
 ## Company information
-- [Student Builder Program](https://hanovadevs.com/student-builder-program): Active October–December 2026 cohort; approximately eight weeks, virtual. Eleven named student builders, the full HanovaDevs team as mentors, real project exposure, GitHub collaboration, certificates and small rewards. Selected ideas may be discussed for further support and potential investment; funding is not guaranteed. Certificate preview is a sample, not an issued credential.
+- [Student Builder Program](https://hanovadevs.com/student-builder-program): Active October–December 2026 cohort; approximately eight weeks, virtual. Thirteen named student builders, the full HanovaDevs team as mentors, real project exposure, GitHub collaboration, certificates and small rewards. Selected ideas may be discussed for further support and potential investment; funding is not guaranteed. Certificate preview is a sample, not an issued credential.
 - [About and founder](https://hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
 - [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
 - [Hira Maqsood](https://hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
 - [Ali Haider company profile](https://hanovadevs.com/team/ali-haider): Founder and CEO; company direction and business strategy. Founded HanovaDevs in 2022.
-- [Noor Fatima](https://hanovadevs.com/team/noor-fatima): Chief Marketing Officer; brand direction and marketing communication. Profile artwork is an illustrated placeholder, not a photograph.
+- [Noor Fatima](https://hanovadevs.com/team/noor-fatima): Chief Marketing Officer and Business Analyst; brand direction, audience communication and business analysis.
 - [Faizan Javed](https://hanovadevs.com/team/faizan-javed): Chief Technology Officer; technology direction and engineering decisions.
 - [Contact](https://hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
 - [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
 
 ## Work and services
 - [Services](https://hanovadevs.com/services): Scope of available services.
+- [Web design and development](https://hanovadevs.com/services/web-design): Audience-led websites, responsive interfaces, content and integrations.
+- [Shopify development](https://hanovadevs.com/services/shopify-development): Storefronts, themes, catalogue planning and scoped integrations. Platform capabilities and third-party fees are agreed before delivery.
+- [Custom software](https://hanovadevs.com/services/software-development): Workflow-led applications, data modelling, access rules and practical handover.
+- [SEO and analytics](https://hanovadevs.com/services/seo): Technical foundations, useful content and evidence-led measurement. Rankings and AI visibility are not guaranteed.
+- [AI automation](https://hanovadevs.com/services/ai-automation): Approved knowledge, scoped workflows, human review and fallback paths.
+- [Brand identity](https://hanovadevs.com/services/branding): Positioning, visual language, colour, typography and scoped brand assets.
 - [Portfolio](https://hanovadevs.com/projects): EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS.
+- [EarthSync Essentials case study](https://hanovadevs.com/projects/earthsync): Product discovery and supporting information; actual desktop and mobile website captures.
+- [Terra Sol case study](https://hanovadevs.com/projects/terrasol): Product information and visible buying destinations; actual website captures.
+- [Crown Accumulators case study](https://hanovadevs.com/projects/crown): Corporate and product-information website with business enquiry entry points.
+- [RAQS case study](https://hanovadevs.com/projects/raqs): Fashion storefront, collection discovery and brand storytelling.
+Case-study interface evidence was reviewed on October 17, 2026. Screenshots document visible interfaces, not a complete functional audit or verified sales, conversion, traffic or ROI improvements. Client claims shown in captures are not independently endorsed.
 - [Client stories and reviews](https://hanovadevs.com/reviews): Owner-provided client relationships and project descriptions; no unverified ratings or revenue figures.
 - [Technology approach](https://hanovadevs.com/stack): Tools selected according to requirements.
 - [Estimator](https://hanovadevs.com/calculator): Illustrative planning estimates, not binding quotations.

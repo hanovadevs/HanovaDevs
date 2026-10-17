@@ -212,6 +212,10 @@
       "dest": "/projects/index.html"
     },
     {
+      "src": "^/projects/(earthsync|terrasol|crown|raqs)/?$",
+      "dest": "/projects/$1/index.html"
+    },
+    {
       "src": "^/reviews/?$",
       "dest": "/reviews/index.html"
     },

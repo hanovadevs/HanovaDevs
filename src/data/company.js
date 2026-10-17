@@ -32,7 +32,7 @@ export const company = {
 export const clientProjects = [
   {
     id: 'earthsync', title: 'EarthSync Essentials', owner: 'Veli', initials: 'V',
-    category: 'Wellness ecommerce', theme: 'light', image: '/projects/earthsync.webp',
+    category: 'Wellness ecommerce', theme: 'light', image: '/case-studies/earthsync-card.webp',
     url: 'https://www.earthsyncessential.com', accent: '#49765b',
     overview: 'A digital storefront for EarthSync Essentials, a brand offering grounding and earthing products.',
     challenge: 'Present the product range clearly and help visitors understand the brand before choosing a product.',
@@ -43,7 +43,7 @@ export const clientProjects = [
   },
   {
     id: 'terrasol', title: 'Terra Sol Grounding', owner: 'Sara', initials: 'S',
-    category: 'Wellness ecommerce', theme: 'terrasol', image: '/projects/terrasol.webp',
+    category: 'Wellness ecommerce', theme: 'terrasol', image: '/case-studies/terrasol-card.webp',
     url: 'https://www.terrasolgrounding.com', accent: '#a27842',
     overview: 'A website for Terra Sol Grounding, bringing its grounding sheets, mats, and brand information into one customer-facing experience.',
     challenge: 'Organize the brand and product information into a clear journey from exploration to purchase.',
@@ -54,7 +54,7 @@ export const clientProjects = [
   },
   {
     id: 'crown', title: 'Crown Accumulators', owner: 'Shahid Mahmood', initials: 'SM',
-    category: 'Industrial business', theme: 'dark', image: '/projects/crown.webp',
+    category: 'Industrial business', theme: 'dark', image: '/case-studies/crown-card.webp',
     url: 'https://www.crownaccumulator.com', accent: '#b98e22',
     overview: 'An industrial website for Crown Accumulators, presenting its battery business and product information to prospective customers.',
     challenge: 'Make a technical product business easier to explore and give customers a direct route to contact the company.',
@@ -65,7 +65,7 @@ export const clientProjects = [
   },
   {
     id: 'raqs', title: 'RAQS', owner: 'Noor Fatima', initials: 'NF',
-    category: 'Fashion ecommerce', theme: 'raqs', image: '/projects/raqs.webp',
+    category: 'Fashion ecommerce', theme: 'raqs', image: '/case-studies/raqs-card.webp',
     url: 'https://www.raqsofficial.store', accent: '#8c7853',
     overview: 'A fashion storefront for RAQS, giving the brand a dedicated place to present its clothing and collections.',
     challenge: 'Translate the brand’s visual identity into a focused online shopping experience.',

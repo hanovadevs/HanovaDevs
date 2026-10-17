@@ -13,6 +13,7 @@ const StudentBuilderProgram = lazy(() => import('./pages/StudentBuilderProgram')
 const HiraProfile = lazy(() => import('./pages/HiraProfile'))
 const TeamProfile = lazy(() => import('./pages/TeamProfile'))
 const Projects = lazy(() => import('./pages/Projects'))
+const CaseStudy = lazy(() => import('./pages/CaseStudy'))
 const Reviews = lazy(() => import('./pages/Reviews'))
 const Products = lazy(() => import('./pages/Products'))
 const Contact = lazy(() => import('./pages/Contact'))
@@ -94,6 +95,7 @@ function App() {
           <Route path="/team/hira-maqsood" element={<HiraProfile />} />
           <Route path="/team/:id" element={<TeamProfile />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<CaseStudy />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/omnai" element={<OmnaiDetail />} />

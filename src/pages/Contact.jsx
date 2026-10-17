@@ -49,11 +49,11 @@ export default function Contact() {
     const details = params.get('details')
 
     if (service || budget || details) {
-      let customMessage = `Calculator Projections:\n`
+      let customMessage = params.get('source') ? 'Project enquiry:\n' : 'Calculator Projections:\n'
       if (service) customMessage += `- Service: ${service}\n`
       if (budget) customMessage += `- Estimated Budget: ${budget}\n`
       if (details) customMessage += `- Selections: ${details}\n`
-      customMessage += `\nLet's align on these requirements during our call.`
+      customMessage += `\nPlease review these requirements and let me know the next steps.`
 
       setForm(prev => ({
         ...prev,
