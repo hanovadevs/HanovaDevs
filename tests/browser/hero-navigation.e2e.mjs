@@ -1,0 +1,91 @@
+import { test, expect } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+
+test.beforeEach(async ({ context }) => {
+  await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
+})
+
+async function auditHeader(page) {
+  await page.addScriptTag({ content: readFileSync('node_modules/axe-core/axe.min.js', 'utf8') })
+  const issues = await page.evaluate(async () => (await window.axe.run(document.querySelector('#main-nav'))).violations.filter(item => ['serious', 'critical'].includes(item.impact)).map(item => ({ id: item.id, nodes: item.nodes.map(node => node.target) })))
+  expect(issues).toEqual([])
+}
+
+test('supplied hero background, readable two-line title and primary actions', async ({ page }) => {
+  const errors = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/')
+  const hero = page.locator('#hero')
+  await expect(hero.locator('h1')).toBeVisible()
+  await page.evaluate(() => document.fonts.ready)
+  await expect.poll(() => hero.locator('img').evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true)
+  expect(await hero.locator('img').getAttribute('src')).toContain('hero-scene-1774')
+  for (const line of await hero.locator('.hero__headline-line').all()) {
+    expect(await line.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true)
+    expect(await line.evaluate(node => getComputedStyle(node).opacity)).toBe('1')
+  }
+  for (const name of ['Start a Project', 'View Our Work']) {
+    const button = hero.getByRole('link', { name, exact: true })
+    await expect(button).toBeVisible()
+    const box = await button.boundingBox()
+    expect(box.height).toBeGreaterThanOrEqual(44)
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
+  await page.screenshot({ path: `artifacts/hero-nav/hero-${test.info().project.name}.png` })
+  expect(errors).toEqual([])
+})
+
+test('navigation disclosure, current page, keyboard focus and route handoff', async ({ page }) => {
+  await page.goto('/projects/growtech-crm/planning')
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  if (page.viewportSize().width <= 1120) {
+    const toggle = page.getByRole('button', { name: 'Open menu' })
+    await toggle.click()
+    const menu = page.locator('#mobile-navigation')
+    await expect(menu.getByRole('link', { name: 'Home', exact: true })).toBeFocused()
+    await expect(menu.getByRole('link', { name: 'Projects', exact: true })).toHaveAttribute('aria-current', 'page')
+    await auditHeader(page)
+    await page.screenshot({ path: `artifacts/hero-nav/menu-${test.info().project.name}.png` })
+    await menu.getByRole('link', { name: /Project Estimator/ }).click()
+    await expect(page).toHaveURL('/calculator')
+    await expect(menu).toBeHidden()
+    expect(await page.evaluate(() => document.body.style.overflow)).not.toBe('hidden')
+  } else {
+    const insights = page.getByRole('button', { name: 'Insights' })
+    await expect(page.locator('.navbar__nav a[aria-current=page]')).toHaveAttribute('href', '/projects')
+    await insights.focus()
+    await insights.press('ArrowDown')
+    await expect(page.locator('#insights-menu a').first()).toBeFocused()
+    await auditHeader(page)
+    await page.screenshot({ path: 'artifacts/hero-nav/insights-desktop.png' })
+    await page.keyboard.press('Escape')
+    await expect(insights).toBeFocused()
+    await expect(page.locator('#insights-menu')).toBeHidden()
+    await insights.click()
+    await page.locator('#insights-menu').getByRole('link', { name: /Project Estimator/ }).click()
+    await expect(page).toHaveURL('/calculator')
+    await expect(insights).toHaveAttribute('aria-expanded', 'false')
+  }
+})
+
+test('desktop options fit at breakpoint, laptop and wide resolutions on light and dark headers', async ({ page }) => {
+  test.skip(test.info().project.name !== 'desktop', 'Desktop breakpoint coverage')
+  for (const width of [1121, 1280, 1536, 1920]) {
+    await page.setViewportSize({ width, height: 900 })
+    for (const path of ['/', '/about']) {
+      await page.goto(path)
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+      const header = page.locator('#main-nav')
+      const logo = await header.locator('.navbar__logo').boundingBox()
+      const nav = await header.locator('.navbar__nav').boundingBox()
+      const quote = await header.locator('.navbar__cta').boundingBox()
+      expect(logo.x + logo.width).toBeLessThanOrEqual(nav.x)
+      expect(nav.x + nav.width).toBeLessThanOrEqual(quote.x)
+      await header.getByRole('button', { name: 'Insights' }).click()
+      const menu = await page.locator('#insights-menu').boundingBox()
+      expect(menu.x).toBeGreaterThanOrEqual(0)
+      expect(menu.x + menu.width).toBeLessThanOrEqual(width)
+      await auditHeader(page)
+    }
+  }
+})

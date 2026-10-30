@@ -12,15 +12,17 @@ const navLinks = [
   {
     label: 'Insights',
     dropdown: [
-      { path: '/journal', label: 'Journal', desc: 'Original articles by our team' },
-      { path: '/reviews', label: 'Client Stories & Reviews', desc: 'Client partnerships and project work' },
-      { path: '/research', label: 'Research Hub', desc: 'Curated industry research' },
-      { path: '/news', label: 'News', desc: 'Latest technology headlines' },
-      { path: '/stack', label: 'Tech Stack', desc: 'Our interactive arsenal' },
-      { path: '/calculator', label: 'Estimator & ROI', desc: 'ROAS & Project Estimator' },
+      { path: '/journal', label: 'Journal', desc: 'Ideas and engineering perspectives', group: 'Learn & discover' },
+      { path: '/research', label: 'Research Hub', desc: 'Original sources, clearly introduced', group: 'Learn & discover' },
+      { path: '/news', label: 'News', desc: 'Technology and company updates', group: 'Learn & discover' },
+      { path: '/reviews', label: 'Client Stories & Reviews', desc: 'The context behind our project work', group: 'Plan & evaluate' },
+      { path: '/stack', label: 'Tech Stack', desc: 'Our tools and technical approach', group: 'Plan & evaluate' },
+      { path: '/calculator', label: 'Project Estimator', desc: 'Explore an indicative project budget', group: 'Plan & evaluate' },
     ]
   },
 ]
+const resourceGroups = ['Learn & discover', 'Plan & evaluate']
+const isCurrent = (pathname, path) => path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`)
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -30,6 +32,16 @@ export default function Navbar() {
   const mobileMenuRef = useRef(null)
   const toggleRef = useRef(null)
   const location = useLocation()
+  const focusDropdown = (event) => {
+    if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return
+    event.preventDefault()
+    setDropdownOpen(true)
+    const last = event.key === 'ArrowUp'
+    requestAnimationFrame(() => {
+      const links = dropdownRef.current?.querySelectorAll('.navbar__dropdown a')
+      links?.[last ? links.length - 1 : 0]?.focus()
+    })
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -109,8 +121,8 @@ export default function Navbar() {
         setDropdownOpen(false)
       }
     }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    document.addEventListener('pointerdown', handleClickOutside)
+    return () => document.removeEventListener('pointerdown', handleClickOutside)
   }, [])
 
   // Only dark hero surfaces need the inverse desktop logo and navigation colors.
@@ -125,7 +137,7 @@ export default function Navbar() {
           <img 
             src="/agency-logo-720.webp"
             srcSet="/agency-logo-360.webp 360w, /agency-logo-720.webp 720w"
-            sizes="(max-width: 1120px) 130px, 180px"
+            sizes="(max-width: 1120px) 150px, 180px"
             width="720"
             height="277"
             alt="HanovaDevs Software Agency" 
@@ -143,31 +155,32 @@ export default function Navbar() {
         <nav className="navbar__nav" aria-label="Main navigation">
           {navLinks.map(link => (
             link.dropdown ? (
-              <div key={link.label} className="navbar__dropdown-wrap" ref={dropdownRef}>
+              <div key={link.label} className="navbar__dropdown-wrap" ref={dropdownRef} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdownOpen(false) }}>
                 <button
                   className={`navbar__link navbar__link--dropdown ${isInsightsActive ? 'navbar__link--active' : ''}`}
                   onClick={() => setDropdownOpen(!dropdownOpen)}
+                  onKeyDown={focusDropdown}
                   aria-expanded={dropdownOpen}
-                  aria-haspopup="true"
                   aria-controls="insights-menu"
                 >
                   {link.label}
                   <svg className={`navbar__chevron ${dropdownOpen ? 'navbar__chevron--open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9" /></svg>
                 </button>
-                <div id="insights-menu" className={`navbar__dropdown ${dropdownOpen ? 'navbar__dropdown--open' : ''}`}>
-                  {link.dropdown.map(item => (
-                    <Link key={item.path} to={item.path} className="navbar__dropdown-item">
-                      <strong>{item.label}</strong>
-                      <span>{item.desc}</span>
+                <div id="insights-menu" hidden={!dropdownOpen} inert={!dropdownOpen} className={`navbar__dropdown ${dropdownOpen ? 'navbar__dropdown--open' : ''}`}>
+                  <p className="navbar__dropdown-intro">Explore ideas. Understand the work. Plan your next step.</p>
+                  {resourceGroups.map(group => <div className="navbar__resource-group" key={group}><p className="navbar__group-label">{group}</p>{link.dropdown.filter(item => item.group === group).map(item => (
+                    <Link key={item.path} to={item.path} aria-current={isCurrent(location.pathname, item.path) ? 'page' : undefined} className="navbar__dropdown-item">
+                      <strong>{item.label}</strong><span>{item.desc}</span>
                     </Link>
-                  ))}
+                  ))}</div>)}
                 </div>
               </div>
             ) : (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`navbar__link ${location.pathname === link.path ? 'navbar__link--active' : ''}`}
+                className={`navbar__link ${isCurrent(location.pathname, link.path) ? 'navbar__link--active' : ''}`}
+                aria-current={isCurrent(location.pathname, link.path) ? 'page' : undefined}
               >
                 {link.label}
               </Link>
@@ -195,27 +208,32 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && <button className="mobile-menu__backdrop" aria-label="Close navigation" tabIndex={-1} onClick={() => { setMobileOpen(false); toggleRef.current?.focus() }} />}
       <div ref={mobileMenuRef} id="mobile-navigation" inert={!mobileOpen} aria-hidden={!mobileOpen} className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}>
+        <p className="mobile-menu__heading">Explore HanovaDevs</p>
         <nav className="mobile-menu__nav" aria-label="Mobile navigation">
           {navLinks.map((link, i) => (
             link.dropdown ? (
               <div key={link.label} className="mobile-menu__group">
-                <span className="mobile-menu__group-label" style={{ animationDelay: `${0.1 + i * 0.06}s` }}>{link.label}</span>
+                <span className="mobile-menu__group-label">{link.label} & resources</span>
+                <div className="mobile-menu__resources">
                 {link.dropdown.map(item => (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`mobile-menu__link mobile-menu__link--sub ${location.pathname === item.path ? 'mobile-menu__link--active' : ''}`}
+                    className={`mobile-menu__link mobile-menu__link--sub ${isCurrent(location.pathname, item.path) ? 'mobile-menu__link--active' : ''}`}
+                    aria-current={isCurrent(location.pathname, item.path) ? 'page' : undefined}
                     style={{ animationDelay: `${0.1 + (i + 0.5) * 0.06}s` }}
                   >
-                    {item.label}
+                    <span>{item.label}</span><small>{item.desc}</small>
                   </Link>
                 ))}
+                </div>
               </div>
             ) : (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`mobile-menu__link ${location.pathname === link.path ? 'mobile-menu__link--active' : ''}`}
+                className={`mobile-menu__link ${isCurrent(location.pathname, link.path) ? 'mobile-menu__link--active' : ''}`}
+                aria-current={isCurrent(location.pathname, link.path) ? 'page' : undefined}
                 style={{ animationDelay: `${0.1 + i * 0.06}s` }}
               >
                 {link.label}

@@ -19,6 +19,29 @@ describe('Navbar keyboard behavior', () => {
     fireEvent.keyDown(document, { key: 'Escape' })
     expect(insights).toHaveAttribute('aria-expanded', 'false')
   })
+  it('keeps closed resources hidden and opens the first link with ArrowDown', async () => {
+    render(<MemoryRouter><Navbar /></MemoryRouter>)
+    const button = screen.getByRole('button', { name: 'Insights' })
+    const panel = document.getElementById('insights-menu')
+    expect(panel).toHaveAttribute('hidden')
+    expect(panel).toHaveAttribute('inert')
+    fireEvent.keyDown(button, { key: 'ArrowDown' })
+    await waitFor(() => expect(panel.querySelector('a')).toHaveFocus())
+    expect(panel).not.toHaveAttribute('inert')
+    fireEvent.pointerDown(document.body)
+    expect(panel).toHaveAttribute('hidden')
+  })
+  it('closes resources when keyboard focus leaves the disclosure', () => {
+    render(<MemoryRouter><Navbar /></MemoryRouter>)
+    const button = screen.getByRole('button', { name: 'Insights' })
+    fireEvent.click(button)
+    fireEvent.blur(button, { relatedTarget: screen.getAllByRole('link', { name: 'Get a Quote' })[0] })
+    expect(button).toHaveAttribute('aria-expanded', 'false')
+  })
+  it.each(['/projects/growtech-crm/planning', '/services/software-development', '/products/stepsy'])('marks the parent navigation for %s', path => {
+    const { container } = render(<MemoryRouter initialEntries={[path]}><Navbar /></MemoryRouter>)
+    expect(container.querySelector('.navbar__nav [aria-current="page"]')).toHaveAttribute('href', `/${path.split('/')[1]}`)
+  })
 
   it.each([
     ['/about', true], ['/products', false], ['/projects', false], ['/journal/future-of-web-dev', true],
