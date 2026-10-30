@@ -19,6 +19,8 @@
   box-shadow: 0 2px 20px rgba(var(--royal-blue-rgb), 0.06);
   padding: 0.35rem 0;
 }
+/* Open navigation sits above the non-modal consent banner, below consent settings. */
+.navbar--menu-open { z-index: 450; }
 
 .navbar__inner {
   display: flex;
@@ -170,8 +172,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px 14px;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.06);
   border-radius: 18px;
   padding: 1rem;
@@ -210,7 +211,7 @@
   font-size: 0.72rem; line-height: 1.6; color: #526875;
 }
 .navbar--dark .navbar__dropdown {
-  background: rgba(15, 17, 21, 0.98);
+  background: #0c1f2d;
   border-color: rgba(255,255,255,0.08);
 }
 .navbar--dark .navbar__dropdown-item strong { color: #fff; }
@@ -300,9 +301,7 @@
   max-height: calc(100dvh - var(--header-height) - 1.5rem - env(safe-area-inset-bottom));
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #fff;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0,0,0,0.05);
   border-radius: 16px;

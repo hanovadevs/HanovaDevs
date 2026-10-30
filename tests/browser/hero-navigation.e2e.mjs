@@ -89,3 +89,21 @@ test('desktop options fit at breakpoint, laptop and wide resolutions on light an
     }
   }
 })
+
+test('first-visit cookie choices do not cover the open mobile navigation', async ({ page, context }) => {
+  test.skip(page.viewportSize().width > 1120, 'Mobile layering check')
+  await context.clearCookies()
+  await page.goto('/')
+  await expect(page.getByRole('region', { name: 'Cookie choices' })).toBeVisible()
+  await page.getByRole('button', { name: 'Open menu' }).click()
+  const quote = page.locator('#mobile-navigation').getByRole('link', { name: 'Get a Quote' })
+  await quote.focus()
+  const onTop = await quote.evaluate(node => {
+    const box = node.getBoundingClientRect()
+    return node.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2))
+  })
+  expect(onTop).toBe(true)
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('region', { name: 'Cookie choices' })).toBeVisible()
+  expect((await context.cookies()).some(cookie => cookie.name === 'hanova_consent')).toBe(false)
+})

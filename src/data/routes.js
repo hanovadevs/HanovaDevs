@@ -11,7 +11,7 @@ export const publicRoutes = [
   '/privacy-policy', '/terms-of-service', ...serviceIds.map(id => `/services/${id}`),
   ...journalPosts.map(post => `/journal/${post.slug}`),
 ]
-export const routeModifiedAt = route => route === '/projects' || route.startsWith('/projects/') ? '2026-10-30' : ['/services', '/reviews', '/contact'].includes(route) || route.startsWith('/services/') ? '2026-10-17' : null
+export const routeModifiedAt = route => route === '/' || route === '/projects' || route.startsWith('/projects/') ? '2026-10-30' : ['/services', '/reviews', '/contact'].includes(route) || route.startsWith('/services/') ? '2026-10-17' : null
 export const legacyRedirects = [
   ['/privacy', '/privacy-policy'], ['/terms', '/terms-of-service'], ['/blog', '/journal'],
   ...journalPosts.map(post => [`/blog/${post.slug}`, `/journal/${post.slug}`]),

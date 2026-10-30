@@ -131,7 +131,7 @@ export default function Navbar() {
   const isInsightsActive = ['/journal', '/reviews', '/research', '/news', '/stack', '/calculator'].some(p => location.pathname.startsWith(p))
 
   return (
-    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''}`} id="main-nav">
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isDarkPage && !scrolled ? 'navbar--dark' : ''} ${mobileOpen ? 'navbar--menu-open' : ''}`} id="main-nav">
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" aria-label="HanovaDevs Home">
           <img 

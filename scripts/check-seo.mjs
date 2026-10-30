@@ -54,6 +54,11 @@ for (const route of publicRoutes) {
     if (member.illustration) assert(!schemas[0]['@graph'].find(node => node['@id'] === member.entityId).image, 'Do not present fictional avatar as an actual likeness in Person schema')
   }
   assert(!JSON.stringify(schemas).match(/aggregateRating|ratingValue|streetAddress|"award"/), `${route}: evidence-safe schema`)
+  if (route === '/') {
+    assert.equal(document.querySelector('.hero__glass-img').getAttribute('src'), '/hero-scene-1774.webp')
+    assert.equal(document.querySelector('.hero__glass-img').getAttribute('fetchpriority'), 'high')
+    assert.equal(document.querySelectorAll('.hero__headline-line').length, 2)
+  }
   const service = services.find(item => route === `/services/${item.id}`)
   if (service) {
     const entity = schemas[0]['@graph'].find(node => node['@type'] === 'Service')
