@@ -22,6 +22,7 @@ describe('Evidence-led SEO and project discovery', () => {
   })
   it('publishes matching human-readable and structured homepage answers', () => {
     const { container } = wrap(<Home />)
+    expect(container.querySelector('.hero__scroll-hint')).toBeNull()
     const faqs = container.querySelectorAll('.home-answers details')
     expect(faqs).toHaveLength(homeAnswers.length)
     for (const item of homeAnswers) expect(container.querySelector('.home-answers')).toHaveTextContent(item.answer)

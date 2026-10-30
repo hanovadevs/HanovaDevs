@@ -191,11 +191,6 @@ export default function Home() {
 
         </div>
 
-        {/* Scroll indicator */}
-        <div className="hero__scroll-hint">
-          <span className="hero__scroll-label">Scroll</span>
-          <div className="hero__scroll-line" />
-        </div>
       </section>
 
       {/* ===== MISSION STATEMENT ===== */}
