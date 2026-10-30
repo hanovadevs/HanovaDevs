@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
+import { company } from '../../src/data/company.js'
+import { homeAnswers } from '../../src/data/homeAnswers.js'
 
 test.beforeEach(async ({ context }) => {
   await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
@@ -33,6 +35,23 @@ test('supplied hero background, readable two-line title and primary actions', as
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
   await page.screenshot({ path: `artifacts/hero-nav/hero-${test.info().project.name}.png` })
   expect(errors).toEqual([])
+})
+
+test('homepage answers, case-study discovery and preferred canonical host', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('.home-answers details')).toHaveCount(homeAnswers.length)
+  await expect(page.locator('head link[rel=canonical]')).toHaveAttribute('href', `${company.url}/`)
+  await expect(page.locator('#featured-projects .featured-projects__link')).toHaveCount(7)
+  const answer = page.locator('.home-answers details').nth(1)
+  await answer.locator('summary').focus()
+  await answer.locator('summary').press('Enter')
+  await expect(answer).toHaveAttribute('open', '')
+  await expect(answer.locator('p')).toHaveText(homeAnswers[1].answer)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
+  await page.screenshot({ path: `artifacts/hero-nav/company-answers-${test.info().project.name}.png` })
+  await answer.getByRole('link', { name: /Custom software development/ }).click()
+  await expect(page).toHaveURL('/services/software-development')
+  await expect(page.locator('head link[rel=canonical]')).toHaveAttribute('href', `${company.url}/services/software-development`)
 })
 
 test('navigation disclosure, current page, keyboard focus and route handoff', async ({ page }) => {

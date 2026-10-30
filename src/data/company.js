@@ -3,15 +3,15 @@ import { builderProgram } from './programOverview.js'
 export const company = {
   name: 'HanovaDevs',
   alternateName: 'Hanova Devs',
-  url: 'https://hanovadevs.com',
+  url: 'https://www.hanovadevs.com',
   email: 'contact@hanovadevs.com',
   founded: '2022',
   reviewedAt: '2026-10-13',
-  description: 'HanovaDevs is a software company founded in 2022 by Ali Haider, with Hira Maqsood as co-founder and COO. We build custom software, websites, ecommerce and AI automation, alongside our own desktop and mobile product projects.',
+  description: 'HanovaDevs is a software development agency founded in 2022 by Ali Haider, with Hira Maqsood as co-founder and COO. We build custom software, CRM systems, websites, ecommerce experiences and AI automation, alongside our own product projects.',
   founder: { name: 'Ali Haider', url: 'https://ali.hanovadevs.com', image: '/people/ali-haider.webp' },
   coFounder: {
     name: 'Hira Maqsood', role: 'Co-founder & COO', jobTitle: 'Co-founder & Chief Operating Officer',
-    path: '/team/hira-maqsood', url: 'https://hanovadevs.com/team/hira-maqsood', image: '/people/hira-maqsood.webp',
+    path: '/team/hira-maqsood', url: 'https://www.hanovadevs.com/team/hira-maqsood', image: '/people/hira-maqsood.webp',
     description: 'Hira Maqsood is the co-founder and Chief Operating Officer of HanovaDevs. Her work focuses on original ideas, creative problem-solving, strategic planning, and coordinating operations and delivery.',
     knowsAbout: ['Creative ideation', 'Creative problem-solving', 'Strategic planning', 'Business operations', 'Project delivery'],
   },
@@ -84,6 +84,6 @@ export const companyFaqs = [
   { question: 'Which businesses are a good fit?', answer: 'We work with businesses that need a clearer digital presence, a custom business application, an ecommerce experience, or practical automation. Scope, budget, and support needs are discussed before a proposal.' },
   { question: 'Is Eunoia available?', answer: 'Yes. Eunoia has launched on Microsoft Store. The official listing is linked from the Eunoia product page.' },
   { question: 'Can I download Omnai Browser now?', answer: 'Omnai Browser is launching soon. A public launch date has not been announced on this website; contact us for release updates.' },
-  { question: 'What is Stepsy?', answer: 'Stepsy is a HanovaDevs mobile app project designed around walking, recorded steps, points and partner discounts or rewards. Pakistan is the intended first market. Launch timing, supported devices and reward rules are still being defined. Explore the preview at https://hanovadevs.com/products/stepsy.' },
+  { question: 'What is Stepsy?', answer: 'Stepsy is a HanovaDevs mobile app project designed around walking, recorded steps, points and partner discounts or rewards. Pakistan is the intended first market. Launch timing, supported devices and reward rules are still being defined. Explore the preview at https://www.hanovadevs.com/products/stepsy.' },
   { question: 'Can you guarantee rankings or a particular return on investment?', answer: 'No. Search rankings, revenue, and conversion improvements depend on many factors. We agree project goals, measure against a baseline, and report results supported by evidence.' },
 ]

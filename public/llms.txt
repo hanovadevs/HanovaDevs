@@ -3,58 +3,58 @@
 > Software company founded in 2022 by Ali Haider. Custom software, web development, ecommerce, AI automation, SEO and analytics, and brand identity.
 
 ## Company information
-- [Student Builder Program](https://hanovadevs.com/student-builder-program): Active October–December 2026 cohort; approximately eight weeks, virtual. Thirteen named student builders, the full HanovaDevs team as mentors, real project exposure, GitHub collaboration, certificates and small rewards. Selected ideas may be discussed for further support and potential investment; funding is not guaranteed. Certificate preview is a sample, not an issued credential.
-- [About and founder](https://hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
+- [Student Builder Program](https://www.hanovadevs.com/student-builder-program): Active October–December 2026 cohort; approximately eight weeks, virtual. Thirteen named student builders, the full HanovaDevs team as mentors, real project exposure, GitHub collaboration, certificates and small rewards. Selected ideas may be discussed for further support and potential investment; funding is not guaranteed. Certificate preview is a sample, not an issued credential.
+- [About and founder](https://www.hanovadevs.com/about): Company story, founder profile, and frequently asked questions.
 - [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
-- [Hira Maqsood](https://hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
-- [Ali Haider company profile](https://hanovadevs.com/team/ali-haider): Founder and CEO; company direction and business strategy. Founded HanovaDevs in 2022.
-- [Noor Fatima](https://hanovadevs.com/team/noor-fatima): Chief Marketing Officer and Business Analyst; brand direction, audience communication and business analysis.
-- [Faizan Javed](https://hanovadevs.com/team/faizan-javed): Chief Technology Officer; technology direction and engineering decisions.
-- [Contact](https://hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
+- [Hira Maqsood](https://www.hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
+- [Ali Haider company profile](https://www.hanovadevs.com/team/ali-haider): Founder and CEO; company direction and business strategy. Founded HanovaDevs in 2022.
+- [Noor Fatima](https://www.hanovadevs.com/team/noor-fatima): Chief Marketing Officer and Business Analyst; brand direction, audience communication and business analysis.
+- [Faizan Javed](https://www.hanovadevs.com/team/faizan-javed): Chief Technology Officer; technology direction and engineering decisions.
+- [Contact](https://www.hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
 - [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
 
 ## Work and services
-- [Services](https://hanovadevs.com/services): Scope of available services.
-- [Web design and development](https://hanovadevs.com/services/web-design): Audience-led websites, responsive interfaces, content and integrations.
-- [Shopify development](https://hanovadevs.com/services/shopify-development): Storefronts, themes, catalogue planning and scoped integrations. Platform capabilities and third-party fees are agreed before delivery.
-- [Custom software](https://hanovadevs.com/services/software-development): Workflow-led applications, data modelling, access rules and practical handover.
-- [SEO and analytics](https://hanovadevs.com/services/seo): Technical foundations, useful content and evidence-led measurement. Rankings and AI visibility are not guaranteed.
-- [AI automation](https://hanovadevs.com/services/ai-automation): Approved knowledge, scoped workflows, human review and fallback paths.
-- [Brand identity](https://hanovadevs.com/services/branding): Positioning, visual language, colour, typography and scoped brand assets.
-- [Portfolio](https://hanovadevs.com/projects): EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS.
-- [EarthSync Essentials case study](https://hanovadevs.com/projects/earthsync): Product discovery and supporting information; actual desktop and mobile website captures.
-- [Terra Sol case study](https://hanovadevs.com/projects/terrasol): Product information and visible buying destinations; actual website captures.
-- [Crown Accumulators case study](https://hanovadevs.com/projects/crown): Corporate and product-information website with business enquiry entry points.
-- [RAQS case study](https://hanovadevs.com/projects/raqs): Fashion storefront, collection discovery and brand storytelling.
+- [Services](https://www.hanovadevs.com/services): Scope of available services.
+- [Web design and development](https://www.hanovadevs.com/services/web-design): Audience-led websites, responsive interfaces, content and integrations.
+- [Shopify development](https://www.hanovadevs.com/services/shopify-development): Storefronts, themes, catalogue planning and scoped integrations. Platform capabilities and third-party fees are agreed before delivery.
+- [Custom software](https://www.hanovadevs.com/services/software-development): Workflow-led applications, data modelling, access rules and practical handover.
+- [SEO and analytics](https://www.hanovadevs.com/services/seo): Technical foundations, useful content and evidence-led measurement. Rankings and AI visibility are not guaranteed.
+- [AI automation](https://www.hanovadevs.com/services/ai-automation): Approved knowledge, scoped workflows, human review and fallback paths.
+- [Brand identity](https://www.hanovadevs.com/services/branding): Positioning, visual language, colour, typography and scoped brand assets.
+- [Portfolio](https://www.hanovadevs.com/projects): EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS.
+- [EarthSync Essentials case study](https://www.hanovadevs.com/projects/earthsync): Product discovery and supporting information; actual desktop and mobile website captures.
+- [Terra Sol case study](https://www.hanovadevs.com/projects/terrasol): Product information and visible buying destinations; actual website captures.
+- [Crown Accumulators case study](https://www.hanovadevs.com/projects/crown): Corporate and product-information website with business enquiry entry points.
+- [RAQS case study](https://www.hanovadevs.com/projects/raqs): Fashion storefront, collection discovery and brand storytelling.
 Case-study interface evidence was reviewed on October 17, 2026. Screenshots document visible interfaces, not a complete functional audit or verified sales, conversion, traffic or ROI improvements. Client claims shown in captures are not independently endorsed.
-- [GrowTech Advertising Website](https://hanovadevs.com/projects/growtech-website): Agency website, specialist positioning and account-review enquiry presentation.
-- [GrowTech Advertising CRM](https://hanovadevs.com/projects/growtech-crm): Admin-only agency workspace, presented through supplied screenshots.
-  - [Planning and time blocking](https://hanovadevs.com/projects/growtech-crm/planning)
-  - [Teams and collaboration](https://hanovadevs.com/projects/growtech-crm/teams)
-  - [Knowledge and SOP library](https://hanovadevs.com/projects/growtech-crm/knowledge)
-- [Crown Accumulator CRM](https://hanovadevs.com/projects/crown-crm): Admin-only factory-management interface, with private financial values obscured.
-  - [Products and inventory](https://hanovadevs.com/projects/crown-crm/inventory)
-  - [Transactions and financial records](https://hanovadevs.com/projects/crown-crm/transactions)
+- [GrowTech Advertising Website](https://www.hanovadevs.com/projects/growtech-website): Agency website, specialist positioning and account-review enquiry presentation.
+- [GrowTech Advertising CRM](https://www.hanovadevs.com/projects/growtech-crm): Admin-only agency workspace, presented through supplied screenshots.
+  - [Planning and time blocking](https://www.hanovadevs.com/projects/growtech-crm/planning)
+  - [Teams and collaboration](https://www.hanovadevs.com/projects/growtech-crm/teams)
+  - [Knowledge and SOP library](https://www.hanovadevs.com/projects/growtech-crm/knowledge)
+- [Crown Accumulator CRM](https://www.hanovadevs.com/projects/crown-crm): Admin-only factory-management interface, with private financial values obscured.
+  - [Products and inventory](https://www.hanovadevs.com/projects/crown-crm/inventory)
+  - [Transactions and financial records](https://www.hanovadevs.com/projects/crown-crm/transactions)
 These additional project screenshots were supplied and reviewed on October 30, 2026. Workflow descriptions document visible interfaces, not verified backend execution, access-control enforcement, AI accuracy or accounting reconciliation. Owner feedback is a positive overall summary relayed by HanovaDevs, not a direct client quotation or star rating.
-- [Client stories and reviews](https://hanovadevs.com/reviews): Owner-provided client relationships and project descriptions; no unverified ratings or revenue figures.
-- [Technology approach](https://hanovadevs.com/stack): Tools selected according to requirements.
-- [Estimator](https://hanovadevs.com/calculator): Illustrative planning estimates, not binding quotations.
+- [Client stories and reviews](https://www.hanovadevs.com/reviews): Owner-provided client relationships and project descriptions; no unverified ratings or revenue figures.
+- [Technology approach](https://www.hanovadevs.com/stack): Tools selected according to requirements.
+- [Estimator](https://www.hanovadevs.com/calculator): Illustrative planning estimates, not binding quotations.
 
 ## Products
-- [Eunoia](https://hanovadevs.com/products/eunoia): Desktop personal workspace; available on Microsoft Store.
+- [Eunoia](https://www.hanovadevs.com/products/eunoia): Desktop personal workspace; available on Microsoft Store.
 - [Eunoia official store listing](https://apps.microsoft.com/detail/9PJ36VD01Z4X): Current release, requirements and store availability.
-- [Omnai Browser](https://hanovadevs.com/products/omnai): AI-focused desktop browser, launching soon. Public release date not announced.
-- [Stepsy](https://hanovadevs.com/products/stepsy): HanovaDevs mobile app project connecting walking with planned points and partner rewards. Pakistan is the intended first market. Product preview only; launch availability, supported devices, merchants and reward terms are not finalised. Official domain: stepsyapp.com.
+- [Omnai Browser](https://www.hanovadevs.com/products/omnai): AI-focused desktop browser, launching soon. Public release date not announced.
+- [Stepsy](https://www.hanovadevs.com/products/stepsy): HanovaDevs mobile app project connecting walking with planned points and partner rewards. Pakistan is the intended first market. Product preview only; launch availability, supported devices, merchants and reward terms are not finalised. Official domain: stepsyapp.com.
 
 ## Editorial sources
-- [Company guide](https://hanovadevs.com/journal/hanovadevs-software-company-guide): Original long-form guide to the company and choosing a software partner.
-- [Journal](https://hanovadevs.com/journal): Practical engineering and business guides.
-- [News](https://hanovadevs.com/news): Source-linked technology briefing; editorial update October 13, 2026.
-- [Research library](https://hanovadevs.com/research): Short introductions with original research and standards links.
-- [Sitemap](https://hanovadevs.com/sitemap.xml): Public route inventory.
+- [Company guide](https://www.hanovadevs.com/journal/hanovadevs-software-company-guide): Original long-form guide to the company and choosing a software partner.
+- [Journal](https://www.hanovadevs.com/journal): Practical engineering and business guides.
+- [News](https://www.hanovadevs.com/news): Source-linked technology briefing; editorial update October 13, 2026.
+- [Research library](https://www.hanovadevs.com/research): Short introductions with original research and standards links.
+- [Sitemap](https://www.hanovadevs.com/sitemap.xml): Public route inventory.
 
 ## Policies
-- [Privacy](https://hanovadevs.com/privacy-policy): Data handling and optional analytics choices.
-- [Terms](https://hanovadevs.com/terms-of-service): Service and estimator terms.
+- [Privacy](https://www.hanovadevs.com/privacy-policy): Data handling and optional analytics choices.
+- [Terms](https://www.hanovadevs.com/terms-of-service): Service and estimator terms.
 
-Information reviewed October 13, 2026. Founder details, release status and client relationships were supplied by the company owner. No independent industry ranking, client performance audit or universal best-company claim is asserted.
+Company-discovery content and the expanded company guide were updated October 30, 2026. Canonical website: https://www.hanovadevs.com/. The public portfolio includes websites and custom CRM systems, with direct workflow walkthroughs. Product and news review dates are identified separately above. Founder details, release status and client relationships were supplied by the company owner. No independent industry ranking, client performance audit or universal best-company claim is asserted.

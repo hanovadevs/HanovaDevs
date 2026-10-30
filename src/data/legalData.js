@@ -12,7 +12,7 @@ export const legalMetadata = {
   lastUpdated: 'October 13, 2026',
   effectiveDate: 'September 2, 2026',
   companyName: 'HanovaDevs',
-  websiteUrl: 'https://hanovadevs.com',
+  websiteUrl: 'https://www.hanovadevs.com',
   contactEmail: 'contact@hanovadevs.com',
   location: 'Remote-first software company'
 }
@@ -38,7 +38,7 @@ export const privacyPolicyData = {
         },
         {
           type: 'paragraph',
-          text: 'This Privacy Policy explains how we collect, use, disclose, and safeguard personal and business information when you visit our website (https://hanovadevs.com), use our interactive tools (such as our Project Estimator and AI Assistant Aria), schedule remote video/voice consultations, or engage our team for digital engineering services.'
+          text: 'This Privacy Policy explains how we collect, use, disclose, and safeguard personal and business information when you visit our website (https://www.hanovadevs.com), use our interactive tools (such as our Project Estimator and AI Assistant Aria), schedule remote video/voice consultations, or engage our team for digital engineering services.'
         },
         {
           type: 'callout',
@@ -290,7 +290,7 @@ export const privacyPolicyData = {
           type: 'list',
           items: [
             'Email: contact@hanovadevs.com',
-            'Website: https://hanovadevs.com',
+            'Website: https://www.hanovadevs.com',
             'Operations: 100% Remote-First Digital Studio & Software Agency',
             'Response Commitment: All inquiries receive a reply within 24–48 business hours.'
           ]
@@ -317,7 +317,7 @@ export const termsOfServiceData = {
         },
         {
           type: 'paragraph',
-          text: 'By accessing or using our website (https://hanovadevs.com), interacting with our digital calculators and AI tools, requesting project proposals, or contracting our custom engineering and digital agency services, you acknowledge that you have read, understood, and agreed to be bound by these Terms.'
+          text: 'By accessing or using our website (https://www.hanovadevs.com), interacting with our digital calculators and AI tools, requesting project proposals, or contracting our custom engineering and digital agency services, you acknowledge that you have read, understood, and agreed to be bound by these Terms.'
         },
         {
           type: 'callout',
@@ -627,7 +627,7 @@ export const termsOfServiceData = {
           type: 'list',
           items: [
             'Email: contact@hanovadevs.com',
-            'Website: https://hanovadevs.com',
+            'Website: https://www.hanovadevs.com',
             'Operations: 100% Remote-First Digital Agency & Custom Software Studio'
           ]
         }

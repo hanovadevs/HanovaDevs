@@ -4,11 +4,11 @@ import { canonicalUrl, pageGraph } from '../lib/seo'
 
 export default function SEO({ title, description, url, type = 'website', image, imageAlt, schemaMarkup, faqList, breadcrumbs, noIndex = false, pageType, publishedAt, modifiedAt, mainEntity }) {
   const cleanTitle = title?.replace(/\s*[|—–-]\s*HanovaDevs.*$/i, '')
-  const siteTitle = cleanTitle ? `${cleanTitle} | HanovaDevs` : 'HanovaDevs | Custom Software, Web Development & AI Automation'
+  const siteTitle = cleanTitle ? `${cleanTitle} | HanovaDevs` : 'HanovaDevs | Software Development Agency'
   const metaDescription = description || company.description
   const siteUrl = canonicalUrl(url)
   const metaImage = image ? new URL(image, company.url).href : `${company.url}/og-image.jpg`
-  const schema = pageGraph({ url: siteUrl, title: siteTitle, description: metaDescription, pageType, breadcrumbs, faqList, schemaMarkup, mainEntity })
+  const schema = pageGraph({ url: siteUrl, title: siteTitle, description: metaDescription, pageType, breadcrumbs, faqList, schemaMarkup, mainEntity, image: metaImage, imageAlt: imageAlt || cleanTitle || 'HanovaDevs software development agency' })
   return (
     <Helmet>
       <title>{siteTitle}</title>
@@ -30,6 +30,7 @@ export default function SEO({ title, description, url, type = 'website', image, 
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content={imageAlt || cleanTitle || 'HanovaDevs software development agency'} />
       {publishedAt && <meta property="article:published_time" content={publishedAt} />}
       {modifiedAt && <meta property="article:modified_time" content={modifiedAt} />}
       <script type="application/ld+json">{JSON.stringify(schema).replace(/</g, '\\u003c')}</script>

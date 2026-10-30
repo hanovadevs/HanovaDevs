@@ -29,6 +29,7 @@ export default function JournalPost() {
     <article className="journal-article">
       <SEO title={post.title} description={post.excerpt} url={path} type="article" image={post.image}
         publishedAt={post.publishedAt} modifiedAt={post.modifiedAt}
+        mainEntity={{ '@id': `${url}#article` }}
         breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'Journal', item: '/journal' }, { name: post.title, item: path }]}
         schemaMarkup={{ '@type': 'BlogPosting', '@id': `${url}#article`, headline: post.title, description: post.excerpt,
           url, mainEntityOfPage: { '@id': `${url}#webpage` }, image: new URL(post.image, company.url).href,
@@ -43,6 +44,7 @@ export default function JournalPost() {
           <p>{post.excerpt}</p>
           <div className="article-meta">
             <span>By HanovaDevs Editorial</span><time dateTime={post.publishedAt}>{post.date}</time>
+            {post.modifiedAt !== post.publishedAt && <span>Updated <time dateTime={post.modifiedAt}>{new Date(`${post.modifiedAt}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time></span>}
             <span>{post.readTime} read · {post.wordCount.toLocaleString('en-US')} words</span>
           </div>
         </div>

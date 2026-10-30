@@ -73,6 +73,7 @@ describe('Case-study evidence and navigation', () => {
   it('filters projects without losing clear case-study destinations', () => {
     const { container } = route('/projects')
     expect(container.querySelectorAll('.work-card')).toHaveLength(7)
+    expect(container.querySelectorAll('.work-card--featured')).toHaveLength(7)
     fireEvent.click(screen.getByRole('button', { name: 'CRM & operations' }))
     expect(container.querySelectorAll('.work-card')).toHaveLength(2)
     expect(screen.getByRole('status')).toHaveTextContent('2 case studies')

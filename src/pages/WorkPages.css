@@ -2,6 +2,8 @@
 .work-feature--gold { --work-wash: #f6f2e8; --work-accent: #755a24; --feature-fill: #eee5d0; }
 .work-feature--mint { --work-wash: #edf7f2; --work-accent: #22674f; --feature-fill: #dceee5; }
 .work-feature--violet { --work-wash: #f2f0fa; --work-accent: #59459a; --feature-fill: #e6e0f3; }
+.work-feature--blue { --work-wash: #eff4f8; --work-accent: #365c7b; --feature-fill: #dfe9f1; }
+.work-feature--rose { --work-wash: #faf0f2; --work-accent: #814659; --feature-fill: #efdee5; }
 .work-card.work-card--featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.16fr 1fr; background: var(--work-wash); border-radius: 28px 68px 28px 28px; }
 .work-card--featured .work-card__image-link { display: grid; align-items: center; padding: 26px 0 26px 26px; min-width: 0; }
 .work-card--featured .work-card__image { width: 100%; padding: 26px 20px 50px; background: var(--feature-fill); border-radius: 20px 45px 20px 20px; }

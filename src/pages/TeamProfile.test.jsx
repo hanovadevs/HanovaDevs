@@ -25,11 +25,11 @@ describe('Leadership profiles', () => {
   })
 
   it.each(leadershipProfiles)('links $name to one consistent Person entity and profile page', member => {
-    const graph = pageGraph({ url: `https://hanovadevs.com${member.profile}`, title: member.name, description: member.description, pageType: 'ProfilePage', mainEntity: { '@id': member.entityId } })['@graph']
+    const graph = pageGraph({ url: `https://www.hanovadevs.com${member.profile}`, title: member.name, description: member.description, pageType: 'ProfilePage', mainEntity: { '@id': member.entityId } })['@graph']
     const person = graph.filter(node => node['@id'] === member.entityId)
     expect(person).toHaveLength(1)
     expect(person[0].jobTitle).toBe(member.jobTitle)
-    expect(person[0].mainEntityOfPage['@id']).toBe(`https://hanovadevs.com${member.profile}#webpage`)
+    expect(person[0].mainEntityOfPage['@id']).toBe(`https://www.hanovadevs.com${member.profile}#webpage`)
     expect(graph.find(node => node['@type'] === 'ProfilePage').mainEntity['@id']).toBe(member.entityId)
   })
 
@@ -37,7 +37,7 @@ describe('Leadership profiles', () => {
     renderProfile('/team/noor-fatima')
     expect(screen.queryByText('AI-generated illustration · not a photograph')).not.toBeInTheDocument()
     expect(screen.getByRole('img', { name: 'Noor Fatima, CMO and Business Analyst at HanovaDevs' })).toHaveAttribute('src', '/people/noor-fatima.webp')
-    expect(organizationGraph().find(node => node.name === 'Noor Fatima')).toMatchObject({ image: 'https://hanovadevs.com/people/noor-fatima.webp', jobTitle: 'Chief Marketing Officer & Business Analyst' })
+    expect(organizationGraph().find(node => node.name === 'Noor Fatima')).toMatchObject({ image: 'https://www.hanovadevs.com/people/noor-fatima.webp', jobTitle: 'Chief Marketing Officer & Business Analyst' })
     expect(screen.getByText('Chief Marketing Officer & Business Analyst', { exact: true })).toBeInTheDocument()
     expect(screen.getByText('What does Noor’s business-analysis role involve?')).toBeInTheDocument()
     expect(screen.queryByText('Is the image on Noor Fatima’s profile a photograph?')).not.toBeInTheDocument()

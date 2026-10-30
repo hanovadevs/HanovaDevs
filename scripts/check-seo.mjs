@@ -9,6 +9,7 @@ import { stepsy, stepsyScenes, stepsyFaqs } from '../src/data/stepsy.js'
 import { services } from '../src/data/services.js'
 import { caseStudies } from '../src/data/caseStudies.js'
 import { projectWorkflows } from '../src/data/projectWorkflows.js'
+import { homeAnswers } from '../src/data/homeAnswers.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const checkedAssets = new Set()
@@ -32,6 +33,7 @@ for (const route of publicRoutes) {
   assert.equal(document.querySelectorAll('meta[name="description"]').length, 1, `${route}: one description`)
   assert.equal(document.querySelectorAll('link[rel="canonical"]').length, 1, `${route}: one canonical`)
   assert.equal(document.querySelector('link[rel="canonical"]').href, `${company.url}${route}`, `${route}: correct canonical`)
+  assert.equal(new URL(document.querySelector('meta[property="og:url"]').content).origin, company.url, `${route}: consistent preferred host`)
   assert(!seenTitles.has(document.title), `${route}: unique title`); seenTitles.add(document.title)
   const schemas = [...document.querySelectorAll('script[type="application/ld+json"]')].map(node => JSON.parse(node.textContent))
   assert.equal(schemas.length, 1, `${route}: one JSON-LD graph`)
@@ -58,6 +60,17 @@ for (const route of publicRoutes) {
     assert.equal(document.querySelector('.hero__glass-img').getAttribute('src'), '/hero-scene-1774.webp')
     assert.equal(document.querySelector('.hero__glass-img').getAttribute('fetchpriority'), 'high')
     assert.equal(document.querySelectorAll('.hero__headline-line').length, 2)
+    assert.equal(document.querySelectorAll('.home-answers details').length, homeAnswers.length)
+    for (const answer of homeAnswers) assert(document.querySelector('.home-answers').textContent.includes(answer.answer), 'Visible answers match structured answers')
+    for (const study of caseStudies) assert(document.querySelector(`#featured-projects a[href="${study.path}"]`), 'Homepage links directly to each case study')
+    assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity.length, homeAnswers.length)
+  }
+  if (route === '/projects' || route === '/services') {
+    const items = route === '/projects' ? caseStudies : services
+    const list = schemas[0]['@graph'].find(node => node['@type'] === 'ItemList')
+    assert.equal(list.numberOfItems, items.length)
+    for (const item of list.itemListElement) assert(document.querySelector(`main a[href="${new URL(item.url).pathname}"]`), 'Collection schema links to visible destinations')
+    if (route === '/projects') assert.equal(document.querySelectorAll('.work-card--featured').length, caseStudies.length)
   }
   const service = services.find(item => route === `/services/${item.id}`)
   if (service) {
@@ -135,7 +148,14 @@ for (const route of publicRoutes) {
   dom.window.close()
 }
 const sitemap = new JSDOM(await readFile('dist/sitemap.xml', 'utf8'), { contentType: 'text/xml' })
-assert.deepEqual([...sitemap.window.document.querySelectorAll('loc')].map(node => node.textContent), publicRoutes.map(route => `${company.url}${route}`))
+assert.deepEqual([...sitemap.window.document.getElementsByTagNameNS('http://www.sitemaps.org/schemas/sitemap/0.9', 'loc')].map(node => node.textContent), publicRoutes.map(route => `${company.url}${route}`))
+const imageEntries = [...sitemap.window.document.getElementsByTagNameNS('http://www.google.com/schemas/sitemap-image/1.1', 'loc')]
+assert.equal(imageEntries.length, caseStudies.length + projectWorkflows.length)
+for (const entry of imageEntries) {
+  assert.equal(new URL(entry.textContent).origin, company.url)
+  await checkAsset(new URL(entry.textContent).pathname)
+}
+assert((await readFile('dist/robots.txt', 'utf8')).includes(`Sitemap: ${company.url}/sitemap.xml`))
 sitemap.window.close()
 const missing = new JSDOM(await readFile('dist/404.html', 'utf8'))
 assert(missing.window.document.querySelector('meta[name="robots"]').content.includes('noindex'))

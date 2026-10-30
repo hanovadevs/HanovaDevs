@@ -23,9 +23,9 @@ describe('Company accuracy and discovery', () => {
     expect(clientProjects.every(project => project.quote === null && project.rating === null)).toBe(true)
   })
   it('uses clean path-only canonical URLs', () => {
-    expect(canonicalUrl('/news/?query=AI#story')).toBe('https://hanovadevs.com/news')
-    expect(canonicalUrl('https://example.com/about?tracking=yes')).toBe('https://hanovadevs.com/about')
-    expect(canonicalUrl('/')).toBe('https://hanovadevs.com/')
+    expect(canonicalUrl('/news/?query=AI#story')).toBe('https://www.hanovadevs.com/news')
+    expect(canonicalUrl('https://example.com/about?tracking=yes')).toBe('https://www.hanovadevs.com/about')
+    expect(canonicalUrl('/')).toBe('https://www.hanovadevs.com/')
   })
   it('does not fabricate ratings, street addresses or awards in structured data', () => {
     const graph = organizationGraph()

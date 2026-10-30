@@ -65,11 +65,13 @@ const stories = {
   },
 }
 
-export const caseStudies = [...featuredProjects, ...clientProjects.map(project => ({
+export const caseStudies = [...featuredProjects, ...clientProjects.map((project, index) => ({
   ...project, ...stories[project.id], path: `/projects/${project.id}`,
   reviewedAt: caseStudyReviewedAt, image: `/case-studies/${project.id}-desktop.webp`,
   mobileImage: `/case-studies/${project.id}-mobile.webp`, detailImage: `/case-studies/${project.id}-detail.webp`,
   cardImage: `/case-studies/${project.id}-card.webp`,
+  tone: { earthsync: 'mint', terrasol: 'gold', crown: 'blue', raqs: 'rose' }[project.id],
+  edition: String(index + 4).padStart(2, '0'),
 }))]
 
 export const caseStudyById = Object.fromEntries(caseStudies.map(study => [study.id, study]))

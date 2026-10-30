@@ -73,6 +73,7 @@ test('project filtering, case-study navigation and unknown destinations', async 
   await page.goto('/projects')
   await checkPage(page)
   await expect(page.locator('.work-card')).toHaveCount(7)
+  await expect(page.locator('.work-card--featured')).toHaveCount(7)
   await page.screenshot({ path: `artifacts/work/project-collection-${test.info().project.name}.png`, fullPage: true })
   await page.getByRole('button', { name: 'CRM & operations' }).click()
   await expect(page.locator('.work-card')).toHaveCount(2)

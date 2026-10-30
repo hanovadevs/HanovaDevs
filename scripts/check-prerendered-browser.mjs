@@ -10,7 +10,7 @@ try {
   for (const route of publicRoutes) {
     await page.goto(`${origin}${route}`, { waitUntil: 'domcontentloaded' })
     await page.locator('main h1').waitFor({ state: 'visible' })
-    assert.equal(await page.locator('head link[rel="canonical"]').getAttribute('href'), `https://hanovadevs.com${route}`)
+    assert.equal(await page.locator('head link[rel="canonical"]').getAttribute('href'), `https://www.hanovadevs.com${route}`)
     assert.equal(await page.locator('head meta[name="description"]').count(), 1)
     assert.equal(await page.locator('head script[type="application/ld+json"]').count(), 1)
     assert.equal(await page.locator('script[src*="googletagmanager"], iframe[src*="googletagmanager"]').count(), 0)

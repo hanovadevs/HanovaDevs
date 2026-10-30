@@ -5,4 +5,4 @@ Disallow: /hanova-portal-2026
 Disallow: /api/
 Disallow: /private/
 Disallow: /scratch/
-Sitemap: https://hanovadevs.com/sitemap.xml
+Sitemap: https://www.hanovadevs.com/sitemap.xml

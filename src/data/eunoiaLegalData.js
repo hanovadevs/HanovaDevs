@@ -4,7 +4,7 @@
  */
 export const eunoiaLegalMetadata = {
   lastUpdated: 'October 13, 2026', effectiveDate: 'October 13, 2026',
-  appName: 'Eunoia', companyName: 'HanovaDevs', websiteUrl: 'https://hanovadevs.com',
+  appName: 'Eunoia', companyName: 'HanovaDevs', websiteUrl: 'https://www.hanovadevs.com',
   contactEmail: 'contact@hanovadevs.com', location: 'Remote-first software company',
 }
 export const eunoiaPrivacyPolicyData = {
@@ -43,7 +43,7 @@ export const eunoiaPrivacyPolicyData = {
     ] },
     { id: 'contact-us', number: '08', title: 'Contact and Updates', content: [
       { type: 'paragraph', text: 'For privacy or product questions, email contact@hanovadevs.com. Tell us the installed Eunoia version and the feature involved, without including passwords or API keys. We update this notice when material product data flows change.' },
-      { type: 'list', items: ['Developer: HanovaDevs, founded in 2022 by Ali Haider.', 'Product page: https://hanovadevs.com/products/eunoia', 'Official Store listing: https://apps.microsoft.com/detail/9PJ36VD01Z4X', 'Website privacy and cookies: https://hanovadevs.com/privacy-policy'] },
+      { type: 'list', items: ['Developer: HanovaDevs, founded in 2022 by Ali Haider.', 'Product page: https://www.hanovadevs.com/products/eunoia', 'Official Store listing: https://apps.microsoft.com/detail/9PJ36VD01Z4X', 'Website privacy and cookies: https://www.hanovadevs.com/privacy-policy'] },
     ] },
   ],
 }

@@ -4,6 +4,8 @@ import { JSDOM } from 'jsdom'
 import { render } from '../dist-ssr/entry-server.js'
 import { publicRoutes, routeModifiedAt } from '../src/data/routes.js'
 import { company } from '../src/data/company.js'
+import { caseStudies } from '../src/data/caseStudies.js'
+import { projectWorkflows } from '../src/data/projectWorkflows.js'
 
 const template = await readFile('dist/index.html', 'utf8')
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'))
@@ -49,7 +51,11 @@ await createPage('/404', 'dist/404.html')
 // Portal stays client-rendered and excluded from discovery. Never render admin data at build time.
 await mkdir('dist/hanova-portal-2026', { recursive: true })
 await writeFile('dist/hanova-portal-2026/index.html', template.replace('<head>', '<head><meta name="robots" content="noindex, nofollow">'), 'utf8')
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicRoutes.map(route => `  <url><loc>${company.url}${route}</loc><lastmod>${routeModifiedAt(route) || company.reviewedAt}</lastmod></url>`).join('\n')}\n</urlset>\n`
+const portfolioImages = new Map([...caseStudies, ...projectWorkflows].map(item => [item.path, item.image]))
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${publicRoutes.map(route => {
+  const image = portfolioImages.get(route)
+  return `  <url><loc>${company.url}${route}</loc><lastmod>${routeModifiedAt(route) || company.reviewedAt}</lastmod>${image ? `<image:image><image:loc>${company.url}${image}</image:loc></image:image>` : ''}</url>`
+}).join('\n')}\n</urlset>\n`
 await writeFile('dist/sitemap.xml', sitemap, 'utf8')
 await writeFile('public/sitemap.xml', sitemap, 'utf8')
 console.log(`Prerendered ${publicRoutes.length} public routes and a real 404 page; sitemap generated from the same inventory.`)

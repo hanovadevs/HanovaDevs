@@ -5,7 +5,9 @@ import ProgramSpotlight from '../components/ProgramSpotlight'
 import BuildingFeature from '../components/BuildingFeature'
 import TrustLegalSection from '../components/TrustLegalSection'
 import { journalPosts } from '../data/journal'
-import { company, clientProjects } from '../data/company'
+import { company } from '../data/company'
+import { caseStudies } from '../data/caseStudies'
+import { homeAnswers } from '../data/homeAnswers'
 import { researchArticles } from '../data/research'
 import './Home.css'
 
@@ -91,7 +93,7 @@ const serviceCards = [
   },
 ]
 
-const projects = clientProjects.map(project => ({ ...project, metric: `For ${project.owner}` }))
+const projects = caseStudies.map(project => ({ ...project, image: project.cardImage, metric: project.adminOnly ? 'Admin-only CRM' : 'Public website' }))
 
 const processSteps = [
   {
@@ -145,8 +147,9 @@ export default function Home() {
   return (
     <div className="home-page">
       <SEO
-        title="Custom Software, Web Development & AI Automation"
-        description={company.description}
+        title="Software Development Agency & Custom CRMs"
+        description="HanovaDevs builds custom software, CRM systems, websites and AI automation for agencies, ecommerce and industrial businesses. Explore our work and delivery approach."
+        faqList={homeAnswers}
         url=""
       />
       {/* ===== HERO ===== */}
@@ -237,7 +240,7 @@ export default function Home() {
             </div>
             <div className="about-teaser__content reveal-right reveal-delay-2">
               <span className="section-label">Who We Are</span>
-              <h2>A studio built on <span className="gradient-text">craft & ambition.</span></h2>
+              <h2>A software agency for <span className="gradient-text">real business workflows.</span></h2>
               <p>
                 Founded in 2022 by Ali Haider, HanovaDevs designs and builds focused digital systems for ecommerce and service businesses. Strategy, interface design, engineering, automation, and launch support stay connected from the first workshop through delivery.
               </p>
@@ -313,7 +316,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">How We Work</span>
-            <h2>Our proven process</h2>
+            <h2>From discovery to handover</h2>
             <p>A structured, transparent approach that keeps you in the loop from day one.</p>
           </div>
           <div className="process__grid">
@@ -338,7 +341,7 @@ export default function Home() {
           <div className="section-header reveal">
             <span className="section-label">Our Work</span>
             <h2>Featured projects</h2>
-            <p>Delivering measurable results for ambitious brands.</p>
+            <p>Websites and business systems, with the context behind the work.</p>
           </div>
         </div>
         <div className="featured-projects__scroll" ref={projectsScrollRef}>
@@ -353,8 +356,8 @@ export default function Home() {
                 </div>
                 <div className="featured-projects__info">
                   <span className="featured-projects__tag">{project.category}</span>
-                  <h4>{project.title}</h4>
-                  <Link to="/reviews" className="featured-projects__link">
+                  <h3>{project.title}</h3>
+                  <Link to={project.path} className="featured-projects__link" aria-label={`Read the ${project.title} case study`}>
                     View Case Study
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                   </Link>
@@ -566,6 +569,8 @@ export default function Home() {
 
       {/* ===== TRUST & TRANSPARENCY (LEGAL SYSTEM) ===== */}
       <TrustLegalSection />
+
+      <section className="home-answers section" aria-labelledby="home-answers-title"><div className="container home-answers__layout"><div><span className="section-label">Before we build</span><h2 id="home-answers-title">A clearer picture<br />of <span className="gradient-text">HanovaDevs.</span></h2><p>What we build, where to see the work, and how to decide whether we are the right fit for your project.</p><Link to="/about">Meet the company and leadership →</Link></div><div>{homeAnswers.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p><Link to={item.path}>{item.label} →</Link></details>)}</div></div></section>
 
       {/* ===== FINAL CTA ===== */}
       <section className="final-cta" id="final-cta">
