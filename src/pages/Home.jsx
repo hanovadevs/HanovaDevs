@@ -10,15 +10,6 @@ import { researchArticles } from '../data/research'
 import './Home.css'
 
 /* ─── DATA ─── */
-const heroParticles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  left: (i * 37) % 100,
-  top: (i * 61) % 100,
-  size: (i % 4) + 1,
-  duration: 10 + (i % 10),
-  delay: i % 8,
-}))
-
 const serviceCards = [
   {
     id: 'ai-automation',
@@ -151,8 +142,6 @@ const processSteps = [
 export default function Home() {
   const projectsScrollRef = useRef(null)
 
-  const particles = heroParticles
-
   return (
     <div className="home-page">
       <SEO
@@ -162,31 +151,13 @@ export default function Home() {
       />
       {/* ===== HERO ===== */}
       <section className="hero" id="hero">
-        <div className="hero__particles">
-          {particles.map(p => (
-            <div
-              key={p.id}
-              className="hero__particle"
-              style={{
-                left: `${p.left}%`,
-                top: `${p.top}%`,
-                width: `${p.size}px`,
-                height: `${p.size}px`,
-                animationDuration: `${p.duration}s`,
-                animationDelay: `${p.delay}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Glass crystal background */}
-        <div className="hero__glass-bg">
+        <div className="hero__glass-bg" aria-hidden="true">
           <img
-            src="/hero-glass-bg.webp"
-            srcSet="/hero-glass-mobile.webp 768w, /hero-glass-bg.webp 1024w"
+            src="/hero-scene-1774.webp"
+            srcSet="/hero-scene-960.webp 960w, /hero-scene-1774.webp 1774w"
             sizes="100vw"
-            width="1024"
-            height="1024"
+            width="1774"
+            height="887"
             fetchPriority="high"
             decoding="async"
             alt=""

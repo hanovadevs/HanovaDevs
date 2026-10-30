@@ -2,11 +2,13 @@ import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { services } from '../../src/data/services.js'
 import { caseStudies } from '../../src/data/caseStudies.js'
+import { projectWorkflows } from '../../src/data/projectWorkflows.js'
 
 test.beforeEach(async ({ context }) => {
   await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
 })
 async function checkPage(page) {
+  await expect(page.locator('main h1')).toBeVisible()
   await page.evaluate(() => { for (const image of document.querySelectorAll('main img')) image.loading = 'eager' })
   await expect.poll(() => page.locator('main img').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
@@ -53,8 +55,29 @@ for (const study of caseStudies) test(`${study.id}: screenshot evidence, outcome
   await expect(page.locator('.contact-form textarea')).toHaveValue(new RegExp(study.title))
 })
 
+for (const workflow of projectWorkflows) test(`${workflow.projectId}/${workflow.id}: workflow story and navigation`, async ({ page }) => {
+  await page.goto(workflow.path)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(workflow.title)
+  await checkPage(page)
+  await expect(page.locator('.workflow-switcher [aria-current="page"]')).toHaveAttribute('href', workflow.path)
+  const faq = page.locator('.work-faq-list details').first()
+  await faq.locator('summary').focus()
+  await faq.locator('summary').press('Enter')
+  await expect(faq).toHaveAttribute('open', '')
+  await page.screenshot({ path: `artifacts/work/workflow-${workflow.projectId}-${workflow.id}-${test.info().project.name}.png` })
+  await page.getByRole('link', { name: 'Discuss a similar workflow ↗' }).click()
+  await expect(page.locator('.contact-form textarea')).toHaveValue(new RegExp(workflow.title.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+})
+
 test('project filtering, case-study navigation and unknown destinations', async ({ page }) => {
   await page.goto('/projects')
+  await checkPage(page)
+  await expect(page.locator('.work-card')).toHaveCount(7)
+  await page.screenshot({ path: `artifacts/work/project-collection-${test.info().project.name}.png`, fullPage: true })
+  await page.getByRole('button', { name: 'CRM & operations' }).click()
+  await expect(page.locator('.work-card')).toHaveCount(2)
+  await expect(page.getByRole('status')).toHaveText('2 case studies')
+  await expect(page.locator('.work-access-note')).toHaveCount(2)
   await page.getByRole('button', { name: 'Industrial business' }).click()
   await expect(page.locator('.work-card')).toHaveCount(1)
   await page.getByRole('link', { name: 'Read the case study', exact: true }).click()

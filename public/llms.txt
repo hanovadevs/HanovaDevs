@@ -27,6 +27,15 @@
 - [Crown Accumulators case study](https://hanovadevs.com/projects/crown): Corporate and product-information website with business enquiry entry points.
 - [RAQS case study](https://hanovadevs.com/projects/raqs): Fashion storefront, collection discovery and brand storytelling.
 Case-study interface evidence was reviewed on October 17, 2026. Screenshots document visible interfaces, not a complete functional audit or verified sales, conversion, traffic or ROI improvements. Client claims shown in captures are not independently endorsed.
+- [GrowTech Advertising Website](https://hanovadevs.com/projects/growtech-website): Agency website, specialist positioning and account-review enquiry presentation.
+- [GrowTech Advertising CRM](https://hanovadevs.com/projects/growtech-crm): Admin-only agency workspace, presented through supplied screenshots.
+  - [Planning and time blocking](https://hanovadevs.com/projects/growtech-crm/planning)
+  - [Teams and collaboration](https://hanovadevs.com/projects/growtech-crm/teams)
+  - [Knowledge and SOP library](https://hanovadevs.com/projects/growtech-crm/knowledge)
+- [Crown Accumulator CRM](https://hanovadevs.com/projects/crown-crm): Admin-only factory-management interface, with private financial values obscured.
+  - [Products and inventory](https://hanovadevs.com/projects/crown-crm/inventory)
+  - [Transactions and financial records](https://hanovadevs.com/projects/crown-crm/transactions)
+These additional project screenshots were supplied and reviewed on October 30, 2026. Workflow descriptions document visible interfaces, not verified backend execution, access-control enforcement, AI accuracy or accounting reconciliation. Owner feedback is a positive overall summary relayed by HanovaDevs, not a direct client quotation or star rating.
 - [Client stories and reviews](https://hanovadevs.com/reviews): Owner-provided client relationships and project descriptions; no unverified ratings or revenue figures.
 - [Technology approach](https://hanovadevs.com/stack): Tools selected according to requirements.
 - [Estimator](https://hanovadevs.com/calculator): Illustrative planning estimates, not binding quotations.
