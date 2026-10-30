@@ -212,9 +212,17 @@
       "dest": "/projects/index.html"
     },
     {
-      "src": "^/projects/(earthsync|terrasol|crown|raqs)/?$",
+      "src": "^/projects/(earthsync|terrasol|crown|raqs|growtech-website|growtech-crm|crown-crm)/?$",
       "dest": "/projects/$1/index.html"
     },
+      {
+      "src": "^/projects/(growtech-crm)/(planning|teams|knowledge)/?$",
+      "dest": "/projects/$1/$2/index.html"
+      },
+      {
+      "src": "^/projects/(crown-crm)/(inventory|transactions)/?$",
+      "dest": "/projects/$1/$2/index.html"
+      },
     {
       "src": "^/reviews/?$",
       "dest": "/reviews/index.html"

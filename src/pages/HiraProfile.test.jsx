@@ -3,12 +3,25 @@ import { MemoryRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { afterEach, describe, expect, it } from 'vitest'
 import HiraProfile from './HiraProfile'
+import TeamProfile from './TeamProfile'
 import { company } from '../data/company'
 import { organizationGraph, pageGraph } from '../lib/seo'
 
 afterEach(cleanup)
 
 describe('Hira Maqsood company profile', () => {
+  it.each([
+    ['ali-haider', 'Ali Haider', 'ali@hanovadevs.com'],
+    ['hira-maqsood', 'Hira Maqsood', 'hira@hanovadevs.com'],
+    ['noor-fatima', 'Noor Fatima', 'noor@hanovadevs.com'],
+  ])('uses the supplied work email for %s in contact links, FAQs and structured data', (id, name, email) => {
+    render(<HelmetProvider><MemoryRouter><TeamProfile memberId={id} /></MemoryRouter></HelmetProvider>)
+    expect(screen.getByRole('link', { name: `Email ${name.split(' ')[0]}: ${email}` })).toHaveAttribute('href', `mailto:${email}`)
+    const question = screen.getByText(`How can I contact ${name} about a project?`)
+    expect(question.closest('details')).toHaveTextContent(email)
+    expect(organizationGraph().find(node => node.name === name).email).toBe(email)
+    expect(organizationGraph().find(node => node['@type'] === 'Organization').email).toBe('contact@hanovadevs.com')
+  })
   it('identifies her role, planning strengths and supplied portrait without invented credentials', () => {
     const { container } = render(<HelmetProvider><MemoryRouter><HiraProfile /></MemoryRouter></HelmetProvider>)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Hira Maqsood')

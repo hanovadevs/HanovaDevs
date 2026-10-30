@@ -24,6 +24,7 @@ export default function TeamProfile({ memberId }) {
             <p className="leader-profile__lead">{member.description}</p>
             <p>{member.intro}</p>
             <Link to="/contact" className="btn btn-primary">Discuss an idea with our team</Link>
+            {member.email && <a className="leader-profile__external" href={`mailto:${member.email}`}>Email {member.name.split(' ')[0]}: {member.email}</a>}
             {member.externalProfile && <a className="leader-profile__external" href={member.externalProfile} target="_blank" rel="noopener noreferrer">Visit {member.name.split(' ')[0]}’s personal website</a>}
           </div>
           <figure className="leader-profile__portrait">

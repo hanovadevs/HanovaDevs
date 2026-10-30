@@ -83,6 +83,7 @@ export default function StudentBuilderProgram() {
             <h3 id={`builder-${builder.id}`}>{builder.name}</h3>
             <p className="sbp-builder__thanks">{builder.thanks}</p>
             {builder.linkedin && <a href={builder.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`View ${builder.name} on LinkedIn`}>View LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>}
+            {builder.github && <a href={builder.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${builder.name} on GitHub`}>View GitHub<span className="sr-only"> (opens in a new tab)</span></a>}
           </article>
         ))}</div>
       </div></section>

@@ -77,7 +77,9 @@ export const leadershipProfiles = leadershipTeam.map(member => ({ ...member, ...
 export function leadershipFaqs(member) {
   return [
     ...member.questions.map(([question, answer]) => ({ question, answer })),
-    { question: `How can I contact ${member.name} about a project?`, answer: 'Use the HanovaDevs Contact page or email contact@hanovadevs.com. Include your goals and current constraints so the company can route your enquiry to the appropriate person. These are company enquiry channels, not personal contact details.' },
+    { question: `How can I contact ${member.name} about a project?`, answer: member.email
+      ? `Email ${member.name} at ${member.email}, their HanovaDevs work email. Include your project goals and current constraints. For general enquiries, use the Contact page or contact@hanovadevs.com.`
+      : 'Use the HanovaDevs Contact page or email contact@hanovadevs.com. Include your goals and current constraints so the company can route your enquiry to the appropriate person.' },
     { question: 'Who else is on the HanovaDevs leadership team?', answer: `The leadership team includes ${leadershipTeam.map(person => `${person.name}, ${person.role}`).join('; ')}. Their individual profiles are linked from the About page.` },
   ]
 }

@@ -1,4 +1,5 @@
 import { clientProjects } from './company.js'
+import { featuredProjects } from './featuredProjects.js'
 
 export const caseStudyReviewedAt = '2026-10-17'
 const stories = {
@@ -64,11 +65,11 @@ const stories = {
   },
 }
 
-export const caseStudies = clientProjects.map(project => ({
+export const caseStudies = [...featuredProjects, ...clientProjects.map(project => ({
   ...project, ...stories[project.id], path: `/projects/${project.id}`,
   reviewedAt: caseStudyReviewedAt, image: `/case-studies/${project.id}-desktop.webp`,
   mobileImage: `/case-studies/${project.id}-mobile.webp`, detailImage: `/case-studies/${project.id}-detail.webp`,
   cardImage: `/case-studies/${project.id}-card.webp`,
-}))
+}))]
 
 export const caseStudyById = Object.fromEntries(caseStudies.map(study => [study.id, study]))

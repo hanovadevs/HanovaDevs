@@ -13,7 +13,7 @@ const pageSource = route => {
   if (route === '/team/hira-maqsood') return 'src/pages/HiraProfile.jsx'
   if (route.startsWith('/team/')) return 'src/pages/TeamProfile.jsx'
   if (route.startsWith('/services/')) return 'src/pages/ServiceDetail.jsx'
-  if (route.startsWith('/projects/')) return 'src/pages/CaseStudy.jsx'
+  if (route.startsWith('/projects/')) return route.split('/').length === 4 ? 'src/pages/ProjectWorkflow.jsx' : 'src/pages/CaseStudy.jsx'
   if (route.startsWith('/journal/')) return 'src/pages/JournalPost.jsx'
   return `src/pages/${({ '/': 'Home', '/services': 'Services', '/about': 'About', '/projects': 'Projects', '/reviews': 'Reviews', '/products': 'Products', '/products/eunoia': 'EunoiaDetail', '/products/omnai': 'OmnaiDetail', '/products/eunoia/privacy': 'EunoiaPrivacyPolicy', '/contact': 'Contact', '/calculator': 'Calculator', '/journal': 'Journal', '/research': 'Research', '/news': 'News', '/stack': 'TechStack', '/privacy-policy': 'PrivacyPolicy', '/terms-of-service': 'TermsOfService' })[route] || 'NotFound'}.jsx`
 }

@@ -3,7 +3,7 @@ export { builderProgram } from './programOverview.js'
 
 export const studentBuilders = [
   { id: 'HD-SB-001', name: 'Muhammad Bilal Raza', initials: 'BR', linkedin: 'https://www.linkedin.com/in/muhammad-bilal-raza-81921b388/', thanks: 'Muhammad Bilal Raza, thank you for being part of the Student Builder Program. We look forward to the ideas and work your journey will bring.' },
-  { id: 'HD-SB-002', name: 'Muhammad Anas', initials: 'MA', linkedin: 'https://www.linkedin.com/in/anas-arshad-927885385/', thanks: 'Muhammad Anas, we appreciate your participation. Keep asking questions, exploring possibilities, and building your own path.' },
+  { id: 'HD-SB-002', name: 'Muhammad Omer Atif', initials: 'OA', github: 'https://github.com/Omer-Atif', thanks: 'Muhammad Omer Atif, we appreciate your participation. Keep asking questions, exploring possibilities, and building your own path.' },
   { id: 'HD-SB-003', name: 'Yusra Shahid', initials: 'YS', linkedin: 'https://www.linkedin.com/in/yusra-shahid-40a61725a/', thanks: 'Yusra Shahid, thank you for being part of the program. We hope you carry this experience forward into ideas and projects that matter to you.' },
   { id: 'HD-SB-004', name: 'Harish Ghafar', initials: 'HG', linkedin: 'https://www.linkedin.com/in/haris-ghafar/', thanks: 'Harish Ghafar, we are glad to have you in this community. Keep turning your curiosity into practical work and meaningful progress.' },
   { id: 'HD-SB-005', name: 'Ayesha Fatima', initials: 'AF', linkedin: 'https://www.linkedin.com/in/ayesha-fatima-sehab/', thanks: 'Ayesha Fatima, we are glad you are part of our builder community. May this experience encourage you to keep learning and bring your ideas to life.' },

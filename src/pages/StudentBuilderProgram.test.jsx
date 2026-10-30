@@ -11,7 +11,7 @@ afterEach(() => { cleanup(); vi.unstubAllGlobals() })
 const renderProgram = () => render(<HelmetProvider><MemoryRouter><StudentBuilderProgram /></MemoryRouter></HelmetProvider>)
 const roster = [
   ['HD-SB-001', 'Muhammad Bilal Raza', 'muhammad-bilal-raza-81921b388'],
-  ['HD-SB-002', 'Muhammad Anas', 'anas-arshad-927885385'],
+  ['HD-SB-002', 'Muhammad Omer Atif', null],
   ['HD-SB-003', 'Yusra Shahid', 'yusra-shahid-40a61725a'],
   ['HD-SB-004', 'Harish Ghafar', 'haris-ghafar'],
   ['HD-SB-005', 'Ayesha Fatima', 'ayesha-fatima-sehab'],
@@ -41,6 +41,7 @@ describe('Student Builder Program', () => {
       expect(within(card).getByRole('heading', { name, exact: true })).toBeInTheDocument()
       expect(card).toHaveTextContent(`Participant ID: ${id}`)
       if (slug) expect(within(card).getByRole('link', { name: `View ${name} on LinkedIn` })).toHaveAttribute('href', `https://www.linkedin.com/in/${slug}/`)
+      else if (id === 'HD-SB-002') expect(within(card).getByRole('link', { name: `View ${name} on GitHub` })).toHaveAttribute('href', 'https://github.com/Omer-Atif')
       else expect(within(card).queryByRole('link')).not.toBeInTheDocument()
     }
     expect(builders.querySelectorAll('img')).toHaveLength(0)

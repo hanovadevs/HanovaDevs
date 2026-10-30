@@ -8,6 +8,7 @@ import { builderProgram, studentBuilders, programFaqs } from '../src/data/studen
 import { stepsy, stepsyScenes, stepsyFaqs } from '../src/data/stepsy.js'
 import { services } from '../src/data/services.js'
 import { caseStudies } from '../src/data/caseStudies.js'
+import { projectWorkflows } from '../src/data/projectWorkflows.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const checkedAssets = new Set()
@@ -66,12 +67,21 @@ for (const route of publicRoutes) {
   const study = caseStudies.find(item => item.path === route)
   if (study) {
     const entity = schemas[0]['@graph'].find(node => node['@type'] === 'CreativeWork')
-    assert.equal(entity.name, `${study.title} website case study`)
+    assert.equal(entity.name, `${study.title} ${study.featured ? 'project' : 'website'} case study`)
     assert.equal(document.querySelector('.case-desktop-capture img').getAttribute('src'), study.image)
-    assert.equal(document.querySelector('.case-mobile-capture img').getAttribute('src'), study.mobileImage)
+    if (study.mobileImage) assert.equal(document.querySelector('.case-mobile-capture img').getAttribute('src'), study.mobileImage)
+    else assert(!document.querySelector('.case-mobile-capture'), 'No invented mobile screenshot')
     assert(document.querySelector('#case-evidence').textContent.includes('No verified before-and-after revenue'), `${route}: honest measurement status`)
     assert.equal(document.querySelector('time').getAttribute('datetime'), study.reviewedAt)
     assert(document.querySelector('main a[href*="source=case-study"]'), `${route}: case enquiry context`)
+  }
+  const workflow = projectWorkflows.find(item => item.path === route)
+  if (workflow) {
+    assert.equal(document.querySelector('h1').textContent, workflow.title)
+    assert.equal(document.querySelector('.workflow-hero-figure img').getAttribute('src'), workflow.image)
+    assert.equal(document.querySelectorAll('.work-faq-list details').length, workflow.faqs.length)
+    assert(document.querySelector('.workflow-switcher a[aria-current="page"]'))
+    assert(!document.querySelector('iframe'), 'Private applications must not be embedded')
   }
   if (route === builderProgram.path) {
     const program = schemas[0]['@graph'].find(node => node['@type'] === 'EducationalOccupationalProgram')
@@ -86,6 +96,7 @@ for (const route of publicRoutes) {
       assert(card.querySelector('h3').textContent === builder.name, `${builder.id}: participant identity`)
       assert(card.querySelector('.sbp-builder__id').textContent.includes(builder.id), `${builder.id}: visible ID`)
       if (builder.linkedin) assert(card.querySelector(`a[href="${builder.linkedin}"]`), `${builder.name}: LinkedIn destination`)
+      else if (builder.github) assert(card.querySelector(`a[href="${builder.github}"]`), `${builder.name}: GitHub destination`)
       else assert(!card.querySelector('a'), `${builder.name}: do not invent a profile link`)
     }
     assert.equal(document.querySelectorAll('.sbp-mentor').length, 4)

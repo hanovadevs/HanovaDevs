@@ -5,12 +5,14 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import ServiceDetail from '../pages/ServiceDetail'
 import Projects from '../pages/Projects'
 import CaseStudy from '../pages/CaseStudy'
+import ProjectWorkflow from '../pages/ProjectWorkflow'
 import { services } from '../data/services'
 import { caseStudies } from '../data/caseStudies'
 import { publicRoutes } from '../data/routes'
+import { projectWorkflows } from '../data/projectWorkflows'
 
 afterEach(cleanup)
-const route = path => render(<HelmetProvider><MemoryRouter initialEntries={[path]}><Routes><Route path="/services/:id" element={<ServiceDetail />} /><Route path="/projects" element={<Projects />} /><Route path="/projects/:id" element={<CaseStudy />} /></Routes></MemoryRouter></HelmetProvider>)
+const route = path => render(<HelmetProvider><MemoryRouter initialEntries={[path]}><Routes><Route path="/services/:id" element={<ServiceDetail />} /><Route path="/projects" element={<Projects />} /><Route path="/projects/:id" element={<CaseStudy />} /><Route path="/projects/:id/:moduleId" element={<ProjectWorkflow />} /></Routes></MemoryRouter></HelmetProvider>)
 
 describe('Service journeys', () => {
   it.each(services)('renders a distinct, complete $title page', service => {
@@ -50,12 +52,18 @@ describe('Case-study evidence and navigation', () => {
   it.each(caseStudies)('renders $title with public captures and bounded outcome claims', study => {
     const { container } = route(study.path)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(study.title)
-    expect(screen.getByAltText(`${study.title} desktop homepage screenshot`)).toHaveAttribute('src', study.image)
-    expect(screen.getByAltText(`${study.title} mobile homepage screenshot`)).toHaveAttribute('src', study.mobileImage)
+    expect(screen.getByAltText(study.imageAlt || `${study.title} desktop homepage screenshot`)).toHaveAttribute('src', study.image)
+    if (study.mobileImage) expect(screen.getByAltText(`${study.title} mobile homepage screenshot`)).toHaveAttribute('src', study.mobileImage)
+    else expect(container.querySelector('.case-mobile-capture')).toBeNull()
     expect(container.querySelector('#case-evidence')).toHaveTextContent('No verified before-and-after revenue')
     expect(container.querySelectorAll('.case-observations article')).toHaveLength(2)
     expect(container.querySelectorAll('.case-deliverables li')).toHaveLength(4)
-    expect(container.querySelector('time')).toHaveAttribute('datetime', '2026-10-17')
+    expect(container.querySelector('time')).toHaveAttribute('datetime', study.reviewedAt)
+    if (study.adminOnly) {
+      expect(container.querySelector('.work-access-note')).toHaveTextContent('Admin-only')
+      expect(screen.getByLabelText('Owner feedback summary')).toHaveTextContent('not a direct client quotation')
+      expect(container.querySelectorAll('blockquote, iframe')).toHaveLength(0)
+    }
     expect(publicRoutes).toContain(study.path)
     const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]').textContent)
     expect(graph['@graph'].some(item => item['@type'] === 'CreativeWork')).toBe(true)
@@ -64,12 +72,28 @@ describe('Case-study evidence and navigation', () => {
   })
   it('filters projects without losing clear case-study destinations', () => {
     const { container } = route('/projects')
-    expect(container.querySelectorAll('.work-card')).toHaveLength(4)
+    expect(container.querySelectorAll('.work-card')).toHaveLength(7)
+    fireEvent.click(screen.getByRole('button', { name: 'CRM & operations' }))
+    expect(container.querySelectorAll('.work-card')).toHaveLength(2)
+    expect(screen.getByRole('status')).toHaveTextContent('2 case studies')
     fireEvent.click(screen.getByRole('button', { name: 'Industrial business' }))
     expect(container.querySelectorAll('.work-card')).toHaveLength(1)
     expect(screen.getByRole('heading', { name: 'Crown Accumulators' })).toBeVisible()
     expect(screen.getByRole('status')).toHaveTextContent('1 case study')
     expect(screen.getByRole('link', { name: 'Read the case study' })).toHaveAttribute('href', '/projects/crown')
+  })
+  it.each(projectWorkflows)('renders the $title workflow with bounded claims and FAQs', workflow => {
+    const { container } = route(workflow.path)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(workflow.title)
+    expect(container.querySelectorAll('.workflow-detail-grid article')).toHaveLength(4)
+    expect(container.querySelectorAll('.work-faq-list details')).toHaveLength(2)
+    expect(container.querySelector('.workflow-switcher a[aria-current="page"]')).toHaveAttribute('href', workflow.path)
+    expect(publicRoutes).toContain(workflow.path)
+    expect(container.querySelector('iframe')).toBeNull()
+  })
+  it.each(['/projects/growtech-crm/missing', '/projects/crown-crm/planning', '/projects/constructor/planning'])('rejects an unsupported workflow at %s', path => {
+    route(path)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('doesn’t exist')
   })
   it.each(['missing-project', 'constructor'])('does not treat %s as a case study', id => {
     route(`/projects/${id}`)

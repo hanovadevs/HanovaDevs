@@ -13,6 +13,7 @@ import HiraProfile from './pages/HiraProfile'
 import TeamProfile from './pages/TeamProfile'
 import Projects from './pages/Projects'
 import CaseStudy from './pages/CaseStudy'
+import ProjectWorkflow from './pages/ProjectWorkflow'
 import Reviews from './pages/Reviews'
 import Products from './pages/Products'
 import EunoiaDetail from './pages/EunoiaDetail'
@@ -39,7 +40,7 @@ export function render(url) {
       <Route path="/student-builder-program" element={<StudentBuilderProgram />} />
       <Route path="/team/hira-maqsood" element={<HiraProfile />} />
       <Route path="/team/:id" element={<TeamProfile />} />
-      <Route path="/projects" element={<Projects />} /><Route path="/projects/:id" element={<CaseStudy />} /><Route path="/reviews" element={<Reviews />} />
+      <Route path="/projects" element={<Projects />} /><Route path="/projects/:id" element={<CaseStudy />} /><Route path="/projects/:id/:moduleId" element={<ProjectWorkflow />} /><Route path="/reviews" element={<Reviews />} />
       <Route path="/products" element={<Products />} /><Route path="/products/eunoia" element={<EunoiaDetail />} />
       <Route path="/products/omnai" element={<OmnaiDetail />} /><Route path="/products/eunoia/privacy" element={<EunoiaPrivacyPolicy />} />
       <Route path="/products/stepsy" element={<StepsyDetail />} />

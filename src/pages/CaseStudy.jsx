@@ -4,12 +4,14 @@ import ProjectCard from '../components/ProjectCard'
 import { caseStudies, caseStudyById } from '../data/caseStudies'
 import { company } from '../data/company'
 import NotFound from './NotFound'
+import FeaturedCaseStudy from './FeaturedCaseStudy'
 import './WorkPages.css'
 
 export default function CaseStudy() {
   const { id } = useParams()
   const study = Object.hasOwn(caseStudyById, id) ? caseStudyById[id] : null
   if (!study) return <NotFound />
+  if (study.featured) return <FeaturedCaseStudy study={study} />
   const contact = `/contact?source=case-study&service=${encodeURIComponent('A website project')}&details=${encodeURIComponent(`I’d like to discuss a project inspired by the ${study.title} case study.`)}`
   return <div className={`work-page case-study case-study--${id}`}>
     <SEO title={`${study.title} — Website Case Study`} description={study.summary} url={study.path} image={study.image} imageAlt={`${study.title} website captured on 17 October 2026`} pageType="WebPage" breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'Projects', item: '/projects' }, { name: study.title, item: study.path }]} schemaMarkup={{ '@type': 'CreativeWork', '@id': `${company.url}${study.path}#case-study`, name: `${study.title} website case study`, description: study.summary, url: `${company.url}${study.path}`, image: `${company.url}${study.image}`, author: { '@id': `${company.url}/#organization` }, about: { '@type': 'Thing', name: study.title } }} />

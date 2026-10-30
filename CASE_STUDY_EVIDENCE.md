@@ -1,5 +1,15 @@
 # Case-study evidence
 
+## Additions reviewed 2026-10-30
+
+Three project previews were supplied by HanovaDevs: GrowTech Advertising Website, GrowTech Advertising CRM and Crown Accumulator CRM. Five additional supplied screenshots document GrowTech planning, teams and knowledge-library screens, and Crown products and transactions. Copy describes only the visible presentation and company-supplied delivery context; private apps were not authenticated into, modified or functionally audited.
+
+`node scripts/prepare-featured-projects.mjs` generates optimized portfolio assets from the original local screenshots. The published files permanently obscure Crown dashboard balances, inventory quantities/pricing, transaction references/counterparties/amounts, and GrowTech identifiable team/work details. Originals remain outside public assets. No fake mobile screenshots were created. The public previews do not bypass client authentication.
+
+The user relayed that owner feedback was positive. CRM feedback panels explicitly credit that summary to HanovaDevs, without invented quotations, ratings, specific praise or outcome metrics. Do not turn these summaries into direct owner endorsements without actual approved wording.
+
+The public marketing website and application URLs were referenced for identity; this review does not verify live submission, AI, permission enforcement, accounting accuracy or workflow execution. Each additional workflow page identifies these limits in context.
+
 Reviewed 2026-10-17. Company-supplied client relationships and broad delivery context remain in `src/data/company.js`. Editorial case-study records are in `src/data/caseStudies.js`.
 
 ## Captures

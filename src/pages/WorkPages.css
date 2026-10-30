@@ -1,4 +1,39 @@
 .work-page { --work-ink: #0a2435; --work-muted: #526875; --work-accent: #087273; --work-wash: #edf6f2; --work-border: #d9e5e3; color: var(--work-ink); background: #fff; }
+.work-feature--gold { --work-wash: #f6f2e8; --work-accent: #755a24; --feature-fill: #eee5d0; }
+.work-feature--mint { --work-wash: #edf7f2; --work-accent: #22674f; --feature-fill: #dceee5; }
+.work-feature--violet { --work-wash: #f2f0fa; --work-accent: #59459a; --feature-fill: #e6e0f3; }
+.work-card.work-card--featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.16fr 1fr; background: var(--work-wash); border-radius: 28px 68px 28px 28px; }
+.work-card--featured .work-card__image-link { display: grid; align-items: center; padding: 26px 0 26px 26px; min-width: 0; }
+.work-card--featured .work-card__image { width: 100%; padding: 26px 20px 50px; background: var(--feature-fill); border-radius: 20px 45px 20px 20px; }
+.work-card--featured .work-card__image img { aspect-ratio: auto; box-shadow: 0 18px 30px #102c3c14; }
+.work-card--featured .work-card__body { padding: 44px; }
+.work-card--featured .work-card__body h3 { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
+.work-card__edition { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--work-accent); font-size: .65rem; font-weight: 600; margin-bottom: 30px; }
+.work-card--featured .work-card__facts { gap: 14px; padding-block: 16px; margin-block: 18px; }
+.work-page .work-access-note { padding: 10px 15px; border: 1px solid var(--work-accent); border-radius: 9px; color: var(--work-accent); font-size: .75rem; line-height: 1.7; width: fit-content; }
+.case-device-stage.case-device-stage--single { padding-right: 0; }
+.case-workflows, .workflow-details { background: var(--work-wash); }
+.case-workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; }
+.case-workflow-card { display: block; padding: 24px; color: inherit; background: #fff; border: 1px solid var(--work-border); border-radius: 22px 44px 22px 22px; transition: transform .25s, box-shadow .25s; }
+.case-workflow-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px #102c3c0d; }
+.case-workflow-card img { width: 100%; height: auto; display: block; margin: 24px 0; border: 1px solid var(--work-border); border-radius: 8px; }
+.case-workflow-card p { font-size: .85rem; }
+.case-owner-note { display: grid; grid-template-columns: 1fr 1.25fr; gap: 44px; padding: 40px; margin-top: 40px; border: 1px solid var(--work-border); background: #fff; border-radius: 8px 60px 8px 35px; }
+.case-owner-note--violet { border-radius: 45px 8px 50px 8px; }
+.case-owner-note p { margin-top: 0; }
+.workflow-switcher { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0; }
+.workflow-switcher a { padding: 12px 18px; background: #fff; border: 1px solid var(--work-border); border-radius: 24px; font-size: .8rem; color: var(--work-accent); }
+.workflow-switcher a[aria-current=page] { background: var(--work-accent); color: #fff; }
+.workflow-hero-figure { margin: 38px 0 0; }
+.workflow-hero-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--work-border); border-radius: 18px; box-shadow: 0 22px 50px #102c3c15; }
+.workflow-hero-figure figcaption { font-size: .75rem; line-height: 1.8; color: var(--work-muted); margin-top: 18px; }
+.workflow-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-top: 45px; }
+.workflow-detail-grid article { padding: 30px; background: #fff; border: 1px solid var(--work-border); border-radius: 16px; }
+.workflow-sequence { counter-reset: journey; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-block: 40px; }
+.workflow-sequence li { counter-increment: journey; border-top: 1px solid var(--work-border); padding: 22px 0; line-height: 1.6; font-size: .9rem; }
+.workflow-sequence li::before { content: '0' counter(journey); display: block; font-size: .7rem; color: var(--work-accent); margin-bottom: 16px; }
+@media (max-width: 900px) { .work-card.work-card--featured { grid-template-columns: 1fr; }.work-card--featured .work-card__image-link { padding: 20px 20px 0; }.work-card--featured .work-card__body { padding: 30px; }.case-owner-note { grid-template-columns: 1fr; gap: 18px; } }
+@media (max-width: 640px) { .workflow-detail-grid, .workflow-sequence { grid-template-columns: 1fr; gap: 16px; }.work-card--featured .work-card__image { padding: 20px 12px 45px; }.work-card--featured .work-card__body { padding: 25px 22px; }.case-owner-note { padding: 28px; }.workflow-detail-grid article { padding: 24px; } }
 .work-tone--sand { --work-wash: #f5f1e8; --work-accent: #73603b; }
 .work-tone--blue { --work-wash: #eef3f8; --work-accent: #355c7c; }
 .work-tone--sage { --work-wash: #eff4e9; --work-accent: #46643a; }
