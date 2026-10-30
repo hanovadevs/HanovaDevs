@@ -1,5 +1,11 @@
 # Case-study evidence
 
+## Zozo — reviewed 2026-10-30
+
+Zozo is a technology discovery and comparison platform, not an ecommerce store. The owner supplied six screenshots: homepage (`205000`), phones (`205023`), electric vehicles (`205047`), brands (`205100`), phone comparison (`205152`) and device details (`205503`), from `Screenshot 2026-10-30 {time}.png` in the local Pictures/Screenshots directory. These exact images were visually inspected. `node scripts/prepare-zozo-assets.mjs` trims the browser scrollbar and creates seven optimized WebP assets, preserving the original files outside public assets.
+
+The public homepage at https://zozo.pk/ was read to corroborate category/search/comparison navigation and its informational price disclaimer. The case study describes the visible research interface, not a commerce checkout. No login, alert, message, purchase or other write was submitted. Product specifications, price references, currency estimates and catalogue counts are not independently verified. No owner testimonial, traffic metric or commercial improvement is invented. `/projects/zozo` includes the main homepage and a keyboard-operable five-view screenshot gallery, visible FAQs and matching FAQ structured data.
+
 ## Additions reviewed 2026-10-30
 
 Three project previews were supplied by HanovaDevs: GrowTech Advertising Website, GrowTech Advertising CRM and Crown Accumulator CRM. Five additional supplied screenshots document GrowTech planning, teams and knowledge-library screens, and Crown products and transactions. Copy describes only the visible presentation and company-supplied delivery context; private apps were not authenticated into, modified or functionally audited.

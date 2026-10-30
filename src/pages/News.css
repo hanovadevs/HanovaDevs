@@ -804,7 +804,7 @@
 .nw2-search svg { width: 18px; fill: none; stroke: #64708a; stroke-width: 2; }
 .nw2-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--deep-navy); font: inherit; }
 .nw2-search svg { flex-shrink: 0; }
-.nw2-categories { display: flex; justify-content: flex-end; gap: .45rem; overflow-x: auto; scrollbar-width: none; }
+.nw2-categories { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .45rem; }
 .nw2-categories::-webkit-scrollbar { display: none; }
 .nw2-categories button { flex-shrink: 0; min-height: 44px; padding: .62rem .9rem; border: 1px solid transparent; border-radius: 999px; color: #64708a; font-size: .82rem; font-weight: 700; white-space: nowrap; }
 .nw2-categories button:hover { color: var(--royal-blue); background: #edf1ff; }
@@ -850,7 +850,7 @@
   .nw2-hero__inner { align-items: start; flex-direction: column; }
   .nw2-tools { position: static; }
   .nw2-tools__inner { grid-template-columns: 1fr; gap: .8rem; }
-  .nw2-categories { justify-content: flex-start; }
+  .nw2-categories { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
   .nw2-lead { grid-template-columns: 1fr; }
   .nw2-lead > img { min-height: 280px; max-height: 360px; }
   .nw2-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }

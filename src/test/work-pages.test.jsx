@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { HelmetProvider } from 'react-helmet-async'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import ServiceDetail from '../pages/ServiceDetail'
@@ -72,8 +72,12 @@ describe('Case-study evidence and navigation', () => {
   })
   it('filters projects without losing clear case-study destinations', () => {
     const { container } = route('/projects')
-    expect(container.querySelectorAll('.work-card')).toHaveLength(7)
-    expect(container.querySelectorAll('.work-card--featured')).toHaveLength(7)
+    expect(container.querySelectorAll('.work-card')).toHaveLength(caseStudies.length)
+    expect(container.querySelectorAll('.work-card--featured')).toHaveLength(caseStudies.length)
+    fireEvent.click(screen.getByRole('button', { name: 'Websites', exact: true }))
+    expect(screen.getByRole('heading', { name: 'Zozo. Website' })).toBeVisible()
+    fireEvent.click(screen.getByRole('button', { name: 'Commerce & brands' }))
+    expect(screen.queryByRole('heading', { name: 'Zozo. Website' })).toBeNull()
     fireEvent.click(screen.getByRole('button', { name: 'CRM & operations' }))
     expect(container.querySelectorAll('.work-card')).toHaveLength(2)
     expect(screen.getByRole('status')).toHaveTextContent('2 case studies')
@@ -82,6 +86,26 @@ describe('Case-study evidence and navigation', () => {
     expect(screen.getByRole('heading', { name: 'Crown Accumulators' })).toBeVisible()
     expect(screen.getByRole('status')).toHaveTextContent('1 case study')
     expect(screen.getByRole('link', { name: 'Read the case study' })).toHaveAttribute('href', '/projects/crown')
+  })
+  it('presents Zozo as a research platform with accessible screen selection and factual FAQs', () => {
+    const { container } = route('/projects/zozo')
+    const zozo = caseStudies.find(study => study.id === 'zozo')
+    expect(container.querySelector('.work-lead')).toHaveTextContent('not an ecommerce store')
+    const tabs = screen.getAllByRole('tab')
+    expect(tabs).toHaveLength(5)
+    fireEvent.click(tabs[3])
+    expect(screen.getByRole('tabpanel')).toHaveTextContent('Put the differences in one place.')
+    expect(within(screen.getByRole('tabpanel')).getByRole('img')).toHaveAttribute('src', '/case-studies/zozo-compare.webp')
+    fireEvent.keyDown(tabs[3], { key: 'End' })
+    expect(tabs[4]).toHaveFocus()
+    expect(tabs[4]).toHaveAttribute('aria-selected', 'true')
+    fireEvent.keyDown(tabs[4], { key: 'ArrowRight' })
+    expect(tabs[0]).toHaveFocus()
+    const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]').textContent)['@graph']
+    expect(graph.find(node => node['@type'] === 'FAQPage').mainEntity.map(faq => faq.acceptedAnswer.text)).toEqual(zozo.faqs.map(faq => faq.answer))
+    expect(container.querySelectorAll('#case-questions details')).toHaveLength(3)
+    expect(container.querySelectorAll('blockquote, iframe')).toHaveLength(0)
+    expect(new Set(caseStudies.map(study => study.edition)).size).toBe(caseStudies.length)
   })
   it.each(projectWorkflows)('renders the $title workflow with bounded claims and FAQs', workflow => {
     const { container } = route(workflow.path)

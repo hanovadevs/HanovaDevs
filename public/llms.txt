@@ -21,7 +21,8 @@
 - [SEO and analytics](https://www.hanovadevs.com/services/seo): Technical foundations, useful content and evidence-led measurement. Rankings and AI visibility are not guaranteed.
 - [AI automation](https://www.hanovadevs.com/services/ai-automation): Approved knowledge, scoped workflows, human review and fallback paths.
 - [Brand identity](https://www.hanovadevs.com/services/branding): Positioning, visual language, colour, typography and scoped brand assets.
-- [Portfolio](https://www.hanovadevs.com/projects): EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS.
+- [Portfolio](https://www.hanovadevs.com/projects): Zozo, GrowTech Advertising, Crown Accumulator, EarthSync Essentials, Terra Sol Grounding and RAQS; public websites, discovery platforms and private CRM workspaces.
+- [Zozo case study](https://www.hanovadevs.com/projects/zozo): Technology discovery and price/specification research for phones, earbuds and electric vehicles. Not an ecommerce store. Six supplied screenshots document the homepage, phone and EV catalogues, brand directory, side-by-side phone comparison and device details. Prices and catalogue counts are not independently verified outcomes.
 - [EarthSync Essentials case study](https://www.hanovadevs.com/projects/earthsync): Product discovery and supporting information; actual desktop and mobile website captures.
 - [Terra Sol case study](https://www.hanovadevs.com/projects/terrasol): Product information and visible buying destinations; actual website captures.
 - [Crown Accumulators case study](https://www.hanovadevs.com/projects/crown): Corporate and product-information website with business enquiry entry points.

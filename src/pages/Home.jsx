@@ -154,29 +154,15 @@ export default function Home() {
       />
       {/* ===== HERO ===== */}
       <section className="hero" id="hero">
-        <div className="hero__glass-bg" aria-hidden="true">
-          <img
-            src="/hero-scene-1774.webp"
-            srcSet="/hero-scene-960.webp 960w, /hero-scene-1774.webp 1774w"
-            sizes="100vw"
-            width="1774"
-            height="887"
-            fetchPriority="high"
-            decoding="async"
-            alt=""
-            className="hero__glass-img"
-          />
-        </div>
-
         <div className="hero__content container">
           <div className="hero__text-panel">
+            <p className="hero__eyebrow">For ecommerce &amp; service businesses</p>
             <h1 className="hero__headline">
-              <span className="hero__headline-line">Web platforms and</span>
-              <span className="hero__headline-line hero__headline-line--accent">growth systems.</span>
+              <span className="hero__headline-line">Better websites.</span>{' '}
+              <span className="hero__headline-line hero__headline-line--accent">Smarter software.</span>
             </h1>
             <p className="hero__subheadline">
-              We help ecommerce and service businesses launch faster, automate
-              repetitive work, and turn more visitors into customers.
+              We build websites, custom CRMs and AI automation that make your business easier to run.
             </p>
             <div className="hero__cta-row">
               <Link to="/contact" className="btn btn-primary btn--hero">
@@ -187,10 +173,25 @@ export default function Home() {
                 View Our Work
               </Link>
             </div>
+            <p className="hero__supporting">One team for strategy, design and development.</p>
           </div>
-
+          <div className="hero__visual" aria-hidden="true">
+            <div className="hero__artwork">
+              <img
+                src="/hero-scene-1774.webp"
+                srcSet="/hero-scene-960.webp 960w, /hero-scene-1774.webp 1774w"
+                sizes="(max-width: 900px) 100vw, 52vw"
+                width="1774"
+                height="887"
+                fetchPriority="high"
+                decoding="async"
+                alt=""
+                className="hero__glass-img"
+              />
+            </div>
+            <div className="hero__visual-caption"><span>Customer-facing websites</span><span>Connected business systems</span></div>
+          </div>
         </div>
-
       </section>
 
       {/* ===== MISSION STATEMENT ===== */}

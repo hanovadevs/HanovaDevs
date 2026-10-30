@@ -212,7 +212,7 @@
       "dest": "/projects/index.html"
     },
     {
-      "src": "^/projects/(earthsync|terrasol|crown|raqs|growtech-website|growtech-crm|crown-crm)/?$",
+      "src": "^/projects/(earthsync|terrasol|crown|raqs|growtech-website|growtech-crm|crown-crm|zozo)/?$",
       "dest": "/projects/$1/index.html"
     },
       {

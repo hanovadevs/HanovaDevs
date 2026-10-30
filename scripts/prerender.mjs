@@ -51,10 +51,10 @@ await createPage('/404', 'dist/404.html')
 // Portal stays client-rendered and excluded from discovery. Never render admin data at build time.
 await mkdir('dist/hanova-portal-2026', { recursive: true })
 await writeFile('dist/hanova-portal-2026/index.html', template.replace('<head>', '<head><meta name="robots" content="noindex, nofollow">'), 'utf8')
-const portfolioImages = new Map([...caseStudies, ...projectWorkflows].map(item => [item.path, item.image]))
+const portfolioImages = new Map([...caseStudies, ...projectWorkflows].map(item => [item.path, [item.image, ...(item.showcase || []).map(view => view.image)]]))
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${publicRoutes.map(route => {
-  const image = portfolioImages.get(route)
-  return `  <url><loc>${company.url}${route}</loc><lastmod>${routeModifiedAt(route) || company.reviewedAt}</lastmod>${image ? `<image:image><image:loc>${company.url}${image}</image:loc></image:image>` : ''}</url>`
+  const images = portfolioImages.get(route) || []
+  return `  <url><loc>${company.url}${route}</loc><lastmod>${routeModifiedAt(route) || company.reviewedAt}</lastmod>${images.map(image => `<image:image><image:loc>${company.url}${image}</image:loc></image:image>`).join('')}</url>`
 }).join('\n')}\n</urlset>\n`
 await writeFile('dist/sitemap.xml', sitemap, 'utf8')
 await writeFile('public/sitemap.xml', sitemap, 'utf8')

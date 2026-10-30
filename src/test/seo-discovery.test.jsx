@@ -23,6 +23,10 @@ describe('Evidence-led SEO and project discovery', () => {
   it('publishes matching human-readable and structured homepage answers', () => {
     const { container } = wrap(<Home />)
     expect(container.querySelector('.hero__scroll-hint')).toBeNull()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Better websites. Smarter software.')
+    expect(container.querySelector('.hero__text-panel img')).toBeNull()
+    expect(container.querySelector('.hero__glass-bg')).toBeNull()
+    expect(container.querySelector('.hero__visual img')).toHaveAttribute('src', '/hero-scene-1774.webp')
     const faqs = container.querySelectorAll('.home-answers details')
     expect(faqs).toHaveLength(homeAnswers.length)
     for (const item of homeAnswers) expect(container.querySelector('.home-answers')).toHaveTextContent(item.answer)
@@ -33,7 +37,7 @@ describe('Evidence-led SEO and project discovery', () => {
   })
   it('gives every project an equal full-width presentation and a corresponding list entry', () => {
     const { container } = wrap(<Projects />)
-    expect(container.querySelectorAll('.work-card--featured')).toHaveLength(7)
+    expect(container.querySelectorAll('.work-card--featured')).toHaveLength(caseStudies.length)
     expect([...container.querySelectorAll('.work-card__edition')].map(node => node.textContent)).toEqual(caseStudies.map(study => `Selected work / ${study.edition}${study.adminOnly ? 'Admin-only application' : 'Public website'}`))
     const graph = collectionGraph('/projects', 'Projects', caseStudies.map(study => ({ name: study.title, path: study.path })))
     expect(graph.itemListElement.map(item => item.url)).toEqual(caseStudies.map(study => `${company.url}${study.path}`))

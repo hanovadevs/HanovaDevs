@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { company } from '../../src/data/company.js'
 import { homeAnswers } from '../../src/data/homeAnswers.js'
+import { caseStudies } from '../../src/data/caseStudies.js'
 
 test.beforeEach(async ({ context }) => {
   await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
@@ -13,7 +14,7 @@ async function auditHeader(page) {
   expect(issues).toEqual([])
 }
 
-test('supplied hero background, readable two-line title and primary actions', async ({ page }) => {
+test('hero copy stays separate from artwork with a readable title and working actions', async ({ page }) => {
   const errors = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -22,6 +23,15 @@ test('supplied hero background, readable two-line title and primary actions', as
   await page.evaluate(() => document.fonts.ready)
   await expect.poll(() => hero.locator('img').evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true)
   expect(await hero.locator('img').getAttribute('src')).toContain('hero-scene-1774')
+  await expect(hero.locator('h1')).toHaveText('Better websites. Smarter software.')
+  await expect(hero.locator('.hero__subheadline')).toHaveText('We build websites, custom CRMs and AI automation that make your business easier to run.')
+  const copy = await hero.locator('.hero__text-panel').boundingBox()
+  const art = await hero.locator('.hero__visual').boundingBox()
+  if (page.viewportSize().width > 900) {
+    expect(copy.x + copy.width + 20).toBeLessThanOrEqual(art.x)
+  } else {
+    expect(copy.y + copy.height + 20).toBeLessThanOrEqual(art.y)
+  }
   for (const line of await hero.locator('.hero__headline-line').all()) {
     expect(await line.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true)
     expect(await line.evaluate(node => getComputedStyle(node).opacity)).toBe('1')
@@ -34,6 +44,11 @@ test('supplied hero background, readable two-line title and primary actions', as
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
   await page.screenshot({ path: `artifacts/hero-nav/hero-${test.info().project.name}.png` })
+  await hero.getByRole('link', { name: 'View Our Work', exact: true }).click()
+  await expect(page).toHaveURL('/projects')
+  await page.goto('/')
+  await page.locator('#hero').getByRole('link', { name: 'Start a Project', exact: true }).click()
+  await expect(page).toHaveURL('/contact')
   expect(errors).toEqual([])
 })
 
@@ -41,7 +56,7 @@ test('homepage answers, case-study discovery and preferred canonical host', asyn
   await page.goto('/')
   await expect(page.locator('.home-answers details')).toHaveCount(homeAnswers.length)
   await expect(page.locator('head link[rel=canonical]')).toHaveAttribute('href', `${company.url}/`)
-  await expect(page.locator('#featured-projects .featured-projects__link')).toHaveCount(7)
+  await expect(page.locator('#featured-projects .featured-projects__link')).toHaveCount(caseStudies.length)
   const answer = page.locator('.home-answers details').nth(1)
   await answer.locator('summary').focus()
   await answer.locator('summary').press('Enter')

@@ -102,6 +102,12 @@ for (const route of publicRoutes) {
     assert(document.querySelector('#case-evidence').textContent.includes('No verified before-and-after revenue'), `${route}: honest measurement status`)
     assert.equal(document.querySelector('time').getAttribute('datetime'), study.reviewedAt)
     assert(document.querySelector('main a[href*="source=case-study"]'), `${route}: case enquiry context`)
+    if (study.showcase) {
+      assert.equal(document.querySelectorAll('.case-showcase__panel').length, study.showcase.length)
+      for (const view of study.showcase) assert(document.querySelector(`main img[src="${view.image}"]`), `${route}: supplied showcase capture`)
+      assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity.length, study.faqs.length)
+      for (const faq of study.faqs) assert(document.querySelector('#case-questions').textContent.includes(faq.answer), `${route}: visible FAQ answer`)
+    }
   }
   const workflow = projectWorkflows.find(item => item.path === route)
   if (workflow) {
@@ -160,7 +166,7 @@ for (const route of publicRoutes) {
 const sitemap = new JSDOM(await readFile('dist/sitemap.xml', 'utf8'), { contentType: 'text/xml' })
 assert.deepEqual([...sitemap.window.document.getElementsByTagNameNS('http://www.sitemaps.org/schemas/sitemap/0.9', 'loc')].map(node => node.textContent), publicRoutes.map(route => `${company.url}${route}`))
 const imageEntries = [...sitemap.window.document.getElementsByTagNameNS('http://www.google.com/schemas/sitemap-image/1.1', 'loc')]
-assert.equal(imageEntries.length, caseStudies.length + projectWorkflows.length)
+assert.equal(imageEntries.length, caseStudies.length + projectWorkflows.length + caseStudies.reduce((total, study) => total + (study.showcase?.length || 0), 0))
 for (const entry of imageEntries) {
   assert.equal(new URL(entry.textContent).origin, company.url)
   await checkAsset(new URL(entry.textContent).pathname)

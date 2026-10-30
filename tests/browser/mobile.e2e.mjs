@@ -14,7 +14,7 @@ async function expectContained(locator, page) {
 
 test('hero and company LinkedIn link fit the screen', async ({ page }) => {
   await page.goto('/', { waitUntil: 'domcontentloaded' })
-  await expect(page.getByRole('heading', { name: 'Web platforms and growth systems.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Better websites. Smarter software.' })).toBeVisible()
   await page.evaluate(() => document.fonts.ready)
   const headlines = page.locator('.hero__headline-line')
   await expect(headlines).toHaveCount(2)
