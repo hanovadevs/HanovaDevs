@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFile, access, readdir } from 'node:fs/promises'
 import { JSDOM } from 'jsdom'
-import { publicRoutes, legacyRedirects } from '../src/data/routes.js'
+import { publicRoutes, legacyRedirects, routeModifiedAt } from '../src/data/routes.js'
 import { company } from '../src/data/company.js'
 import { leadershipProfiles, leadershipFaqs } from '../src/data/leadershipProfiles.js'
 import { builderProgram, studentBuilders, programFaqs } from '../src/data/studentBuilderProgram.js'
@@ -10,6 +10,7 @@ import { services } from '../src/data/services.js'
 import { caseStudies } from '../src/data/caseStudies.js'
 import { projectWorkflows } from '../src/data/projectWorkflows.js'
 import { homeAnswers } from '../src/data/homeAnswers.js'
+import { newsArticles, newsUpdatedAt } from '../src/data/news.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const checkedAssets = new Set()
@@ -64,6 +65,15 @@ for (const route of publicRoutes) {
     for (const answer of homeAnswers) assert(document.querySelector('.home-answers').textContent.includes(answer.answer), 'Visible answers match structured answers')
     for (const study of caseStudies) assert(document.querySelector(`#featured-projects a[href="${study.path}"]`), 'Homepage links directly to each case study')
     assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity.length, homeAnswers.length)
+  }
+  if (route === '/news') {
+    const list = schemas[0]['@graph'].find(node => node['@type'] === 'ItemList')
+    assert.equal(list.numberOfItems, newsArticles.length)
+    assert.equal(document.querySelectorAll('.nw2-lead, .nw2-card').length, newsArticles.length)
+    assert.equal(document.querySelector('.nw2-lead time').getAttribute('datetime'), newsArticles[0].publishedAt)
+    assert.equal(routeModifiedAt(route), newsUpdatedAt)
+    for (const article of newsArticles) assert(document.querySelector(`main a[href="${article.sourceUrl}"]`), 'Each briefing item links to its source without JavaScript')
+    assert(!schemas[0]['@graph'].some(node => node['@type'] === 'NewsArticle'), 'Curated sources are not original HanovaDevs reporting')
   }
   if (route === '/projects' || route === '/services') {
     const items = route === '/projects' ? caseStudies : services

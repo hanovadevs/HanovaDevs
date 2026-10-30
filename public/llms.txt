@@ -49,7 +49,7 @@ These additional project screenshots were supplied and reviewed on October 30, 2
 ## Editorial sources
 - [Company guide](https://www.hanovadevs.com/journal/hanovadevs-software-company-guide): Original long-form guide to the company and choosing a software partner.
 - [Journal](https://www.hanovadevs.com/journal): Practical engineering and business guides.
-- [News](https://www.hanovadevs.com/news): Source-linked technology briefing; editorial update October 13, 2026.
+- [News](https://www.hanovadevs.com/news): Source-linked technology briefing; editorial update October 30, 2026. Recent Google, GitHub and Vercel announcements are ordered by original publication date; older company updates retain their own dates.
 - [Research library](https://www.hanovadevs.com/research): Short introductions with original research and standards links.
 - [Sitemap](https://www.hanovadevs.com/sitemap.xml): Public route inventory.
 

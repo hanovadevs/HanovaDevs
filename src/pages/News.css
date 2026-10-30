@@ -1378,3 +1378,7 @@
     flex-grow: 1;
   }
 }
+.nw2-editorial-context { padding: 20px; margin-block: 20px; background: #edf6f3; border-left: 3px solid #237e78; border-radius: 0 12px 12px 0; }
+.nw2-editorial-context h3 { margin-bottom: 10px; font: 600 1rem/1.5 var(--font-body); color: #0a2435; }
+.nw2-editorial-context p { font-size: .9rem; line-height: 1.8; color: #405d68; }
+.nw2-editorial-context small { display: block; margin-top: 12px; font-size: .72rem; color: #526875; }

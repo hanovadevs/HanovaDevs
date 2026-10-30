@@ -4,12 +4,13 @@ import ProgramSpotlight from '../components/ProgramSpotlight'
 import './News.css'
 
 import { newsArticles, newsUpdatedAt } from '../data/news'
+import { company } from '../data/company'
 
 const categories = ['All', 'Saved', ...new Set(newsArticles.map(article => article.category))]
-const updatedAt = new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(`${newsUpdatedAt}T12:00:00Z`))
+const updatedAt = new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${newsUpdatedAt}T12:00:00Z`))
 
 function formatDate(value) {
-  return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(`${value}T12:00:00Z`))
+  return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`))
 }
 
 export default function News() {
@@ -69,8 +70,11 @@ export default function News() {
     <div className="news-page nw2-page">
       <SEO
         title="Technology News Briefing"
-        description="A source-backed briefing covering the latest developments in AI, cybersecurity, digital products, research, and business technology."
+        description="The October 30, 2026 HanovaDevs briefing: recent Google, GitHub and Vercel announcements, original source links and practical context for software teams."
         url="/news"
+        pageType="CollectionPage"
+        mainEntity={{ '@id': `${company.url}/news#briefing` }}
+        schemaMarkup={{ '@type': 'ItemList', '@id': `${company.url}/news#briefing`, name: 'HanovaDevs technology briefing', numberOfItems: filteredArticles.length, itemListElement: filteredArticles.map((article, index) => ({ '@type': 'ListItem', position: index + 1, name: article.title, url: article.sourceUrl })) }}
         breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'News', item: '/news' }]}
       />
 
@@ -79,7 +83,7 @@ export default function News() {
           <div>
             <span className="nw2-eyebrow">HanovaDevs briefing</span>
             <h1>Technology news,<br /><span>without the noise.</span></h1>
-            <p>A concise, source-backed view of the developments worth your attention.</p>
+            <p>A concise, source-backed view of the developments worth your attention. Curated by HanovaDevs—not a live news feed.</p>
           </div>
           <div className="nw2-update" aria-label={`Last editorial update ${updatedAt}`}>
             <span className="nw2-update__dot" />
@@ -152,6 +156,7 @@ export default function News() {
             <NewsMeta article={selectedArticle} />
             <h2 id="news-dialog-title">{selectedArticle.title}</h2>
             <p className="nw2-dialog__summary">{selectedArticle.summary}</p>
+            {selectedArticle.whyItMatters && <div className="nw2-editorial-context"><h3>Why it matters</h3><p>{selectedArticle.whyItMatters}</p><small>HanovaDevs editorial perspective</small></div>}
             <div className="nw2-tags">{selectedArticle.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
             <p className="nw2-source-note">HanovaDevs summary. Use the original source for complete reporting and subsequent corrections.</p>
             <div className="nw2-dialog__actions">
@@ -166,7 +171,7 @@ export default function News() {
 }
 
 function NewsMeta({ article }) {
-  return <div className="nw2-meta"><span>{article.category}</span><time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time><span>{article.source}</span></div>
+  return <div className="nw2-meta"><span>{article.category}</span><time dateTime={article.publishedAt} title={article.kind === 'company' ? 'Company editorial update date' : 'Original source publication date'}>{formatDate(article.publishedAt)}</time><span>{article.source}</span></div>
 }
 
 function ArticleActions({ article, saved, onPreview, onSave }) {

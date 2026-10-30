@@ -45,7 +45,7 @@ describe('Company accuracy and discovery', () => {
     expect(retiredJournalSlugs.every(slug => !publicRoutes.includes(`/journal/${slug}`))).toBe(true)
   })
   it('dates and links every news item and avoids future-dated publication', () => {
-    expect(newsUpdatedAt).toBe('2026-10-13')
+    expect(newsUpdatedAt).toBe('2026-10-30')
     expect(newsArticles.length).toBeGreaterThanOrEqual(7)
     for (const article of newsArticles) {
       expect(article.publishedAt <= newsUpdatedAt).toBe(true)
