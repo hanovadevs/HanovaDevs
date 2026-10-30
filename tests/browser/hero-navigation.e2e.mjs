@@ -14,7 +14,7 @@ async function auditHeader(page) {
   expect(issues).toEqual([])
 }
 
-test('hero copy stays separate from artwork with a readable title and working actions', async ({ page }) => {
+test('hero restores the background image, centered two-line title and working actions', async ({ page }) => {
   const errors = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -23,15 +23,14 @@ test('hero copy stays separate from artwork with a readable title and working ac
   await page.evaluate(() => document.fonts.ready)
   await expect.poll(() => hero.locator('img').evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true)
   expect(await hero.locator('img').getAttribute('src')).toContain('hero-scene-1774')
-  await expect(hero.locator('h1')).toHaveText('Better websites. Smarter software.')
-  await expect(hero.locator('.hero__subheadline')).toHaveText('We build websites, custom CRMs and AI automation that make your business easier to run.')
+  await expect(hero.locator('h1')).toHaveText('Web platforms and growth systems.')
+  await expect(hero.locator('.hero__subheadline')).toHaveText('We help ecommerce and service businesses launch faster, automate repetitive work, and turn more visitors into customers.')
   const copy = await hero.locator('.hero__text-panel').boundingBox()
-  const art = await hero.locator('.hero__visual').boundingBox()
-  if (page.viewportSize().width > 900) {
-    expect(copy.x + copy.width + 20).toBeLessThanOrEqual(art.x)
-  } else {
-    expect(copy.y + copy.height + 20).toBeLessThanOrEqual(art.y)
-  }
+  expect(Math.abs(copy.x + copy.width / 2 - page.viewportSize().width / 2)).toBeLessThanOrEqual(1)
+  expect(await hero.locator('.hero__text-panel').evaluate(node => getComputedStyle(node).textAlign)).toBe('center')
+  expect(await hero.locator('.hero__glass-bg').evaluate(node => getComputedStyle(node).position)).toBe('absolute')
+  expect(await hero.locator('.hero__glass-bg').evaluate(node => getComputedStyle(node, '::after').content)).toBe('none')
+  await expect(hero.locator('.hero__scroll-hint')).toHaveCount(0)
   for (const line of await hero.locator('.hero__headline-line').all()) {
     expect(await line.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true)
     expect(await line.evaluate(node => getComputedStyle(node).opacity)).toBe('1')
