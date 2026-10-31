@@ -66,7 +66,7 @@ With preview running in a separate terminal, `npm run test:prerender` checks eve
 
 - The contact page sends requests to FormSubmit for `contact@hanovadevs.com`. Mailbox activation and delivery must be checked separately; a mocked test is not proof of email delivery.
 - Aria uses `/api/chat` and `/api/assistant-contact`. Its reviewed company knowledge is in `src/data/`; SMTP handoff runs server-side. Keep provider and SMTP credentials server-only. The assistant has a reviewed-answer fallback when the model provider is unavailable.
-- `/api/report-error` handles the existing error-monitoring boundary. See the deployment checklist for its configuration.
+- `/api/report-error` accepts browser error reports into server logs. External alerting and retention are separate operational setup, not a configured monitoring service.
 - The former admin pages and database client/schema are removed. Retired admin URLs resolve to the normal 404; there is no private shell to deploy. Remote database resources and historical data were not deleted.
 
 See [deployment checks](docs/deployment/security-deployment.md) before publishing. No production deployment is performed by reorganizing this repository.
