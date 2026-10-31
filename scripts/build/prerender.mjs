@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises'
+import { readFile, writeFile, mkdir, access } from 'node:fs/promises'
 import path from 'node:path'
 import { JSDOM } from 'jsdom'
 import { render } from '../../dist-ssr/entry-server.js'
@@ -17,7 +17,16 @@ const pageSource = route => {
   if (route.startsWith('/services/')) return 'src/pages/services/ServiceDetail.jsx'
   if (route.startsWith('/projects/')) return route.split('/').length === 4 ? 'src/pages/projects/ProjectWorkflow.jsx' : 'src/pages/projects/CaseStudy.jsx'
   if (route.startsWith('/journal/')) return 'src/pages/insights/JournalPost.jsx'
-  return `src/pages/${({ '/': 'Home', '/services': 'Services', '/about': 'About', '/projects': 'Projects', '/reviews': 'Reviews', '/products': 'Products', '/products/eunoia': 'EunoiaDetail', '/products/omnai': 'OmnaiDetail', '/products/eunoia/privacy': 'EunoiaPrivacyPolicy', '/contact': 'Contact', '/calculator': 'Calculator', '/journal': 'Journal', '/research': 'Research', '/news': 'News', '/stack': 'TechStack', '/privacy-policy': 'PrivacyPolicy', '/terms-of-service': 'TermsOfService' })[route] || 'NotFound'}.jsx`
+  const pages = {
+    '/': 'home/Home', '/services': 'services/Services', '/about': 'company/About',
+    '/projects': 'projects/Projects', '/reviews': 'reviews/Reviews', '/products': 'products/Products',
+    '/products/eunoia': 'products/EunoiaDetail', '/products/omnai': 'products/OmnaiDetail',
+    '/products/eunoia/privacy': 'legal/EunoiaPrivacyPolicy', '/contact': 'contact/Contact',
+    '/calculator': 'tools/Calculator', '/journal': 'insights/Journal', '/research': 'insights/Research',
+    '/news': 'insights/News', '/stack': 'company/TechStack',
+    '/privacy-policy': 'legal/PrivacyPolicy', '/terms-of-service': 'legal/TermsOfService',
+  }
+  return `src/pages/${pages[route] || 'errors/NotFound'}.jsx`
 }
 function stylesFor(source, collected = new Set()) {
   const entry = manifest[source]
@@ -33,9 +42,11 @@ async function createPage(route, destination) {
   document.head.querySelectorAll('title, meta:not([charset]):not([name="viewport"]), link[rel="canonical"], script[type="application/ld+json"]').forEach(element => element.remove())
   document.head.insertAdjacentHTML('beforeend', result.head)
   const linked = new Set([...document.querySelectorAll('link[rel="stylesheet"]')].map(link => link.getAttribute('href')))
-  const pageName = path.basename(pageSource(route))
+  const sourceFile = pageSource(route)
+  await access(sourceFile)
+  const pageName = path.basename(sourceFile)
   // Vite may promote a page imported both statically and lazily to a shared chunk.
-  const source = Object.keys(manifest).find(key => key.startsWith('src/pages/') && path.basename(key) === pageName)
+  const source = manifest[sourceFile] ? sourceFile : Object.keys(manifest).find(key => key.startsWith('src/pages/') && path.basename(key) === pageName)
     || Object.keys(manifest).find(key => manifest[key].name === path.basename(pageName, '.jsx'))
   if (!source) throw new Error(`Missing page source for ${route}: ${pageName}`)
   for (const css of stylesFor(source)) {
