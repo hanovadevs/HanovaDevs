@@ -78,7 +78,7 @@ export default function Journal() {
                 <h2>{featuredPost.title}</h2>
                 <p>{featuredPost.excerpt}</p>
                 <div className="jn-featured__author">
-                  <img src="/white.png" alt="" width="28" height="28" />
+                  <img src="/agency-logo-white.webp" alt="" width="28" height="28" />
                   <span>{featuredPost.author}</span>
                 </div>
               </div>

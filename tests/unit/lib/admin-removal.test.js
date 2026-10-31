@@ -17,6 +17,7 @@ describe('retired admin and database integration', () => {
     }
     expect(publicRoutes).not.toContain('/admin')
     expect(publicRoutes).not.toContain('/hanova-portal-2026')
+    expect(readFileSync('public/robots.txt', 'utf8')).not.toMatch(/\/admin|hanova-portal-2026/)
   })
 
   it('retains the independent public contact and assistant boundaries', () => {

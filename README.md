@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Vite starts the website and the local Aria API middleware. Public content does not require database credentials. Keep local secrets in ignored environment files; never commit them or prefix server credentials with `VITE_`.
+Vite starts the website and the local Aria API middleware. Public content does not require database credentials. Keep local secrets in ignored environment files; never commit them or prefix server credentials with `VITE_`. The cleanup removed obsolete database/browser-login entries from local environment files while preserving unrelated settings.
 
 ## Folder guide
 
