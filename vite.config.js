@@ -16,14 +16,13 @@ export default defineConfig(({ isPreview }) => ({
         const request = new URL(req.url, 'http://localhost')
         const pathname = request.pathname.replace(/\/+$/, '') || '/'
         const redirect = legacyRedirects.find(([from]) => from === pathname)
-        if (redirect || pathname === '/admin') {
+        if (redirect) {
           res.statusCode = 308
-          res.setHeader('Location', redirect ? redirect[1] : '/')
+          res.setHeader('Location', redirect[1])
           res.end()
           return
         }
         if (publicRoutes.includes(pathname)) req.url = (pathname === '/' ? '/index.html' : `${pathname}/index.html`) + request.search
-        else if (pathname === '/hanova-portal-2026') req.url = '/hanova-portal-2026/index.html'
         else if (!pathname.includes('.')) {
           try {
             const html = await readFile(path.resolve(server.config.root, server.config.build.outDir, '404.html'), 'utf8')
@@ -39,6 +38,6 @@ export default defineConfig(({ isPreview }) => ({
   build: { manifest: true },
   test: {
     environment: 'jsdom',
-    setupFiles: './src/test/setup.js',
+    setupFiles: './tests/setup.js',
   },
 }))

@@ -1,112 +1,72 @@
-# HanovaDevs
+# HanovaDevs website
 
-## Digital Products. Digital Growth.
+Public company website built with React, Vite and route-level code splitting. The production build prerenders the public route inventory, SEO metadata, sitemap and a real 404 page. There is no admin panel, authentication system or database connection.
 
-HanovaDevs is a digital agency focused on designing, developing, and marketing digital products that help ambitious businesses grow.
+## Local setup
 
-We combine modern design, scalable technology, automation, and digital marketing to turn ideas into useful, high-performing digital experiences.
+Use a current Node.js LTS release and npm. Run all commands from the repository root (on Windows, use `npm.cmd` if PowerShell blocks `npm`).
 
-## What We Do
+```sh
+npm ci
+npm run dev
+```
 
-### Web Development
+Vite starts the website and the local Aria API middleware. Public content does not require database credentials. Keep local secrets in ignored environment files; never commit them or prefix server credentials with `VITE_`.
 
-We build modern, responsive, and scalable websites and web applications designed around real business goals.
+## Folder guide
 
-* Business websites
-* Landing pages
-* Web applications
-* E-commerce platforms
-* Custom web solutions
+```text
+api/                 Vercel API handlers (must stay at the root)
+server/              Shared request guards and local API middleware
+src/
+  app/               Browser entry, application routes and SSR entry
+  pages/             Pages grouped by feature: company, projects, products, etc.
+  components/        Reusable UI grouped by responsibility
+  data/              Reviewed company, team, project, service and editorial content
+  hooks/             Shared React hooks
+  lib/               SEO, consent, monitoring and program schema helpers
+  styles/            Global and shared page styles
+public/              Published, directly addressable assets and crawler files
+assets/source/       Original image masters; not served or copied into dist
+scripts/
+  assets/            Image preparation and capture tools
+  build/             HTML and sitemap prerendering
+  checks/            Structure, SEO, responsive and production-browser checks
+tests/
+  unit/              Component, content and server-handler tests
+  browser/           Playwright interaction and responsive tests
+docs/                Content evidence, feature and deployment notes
+```
 
-### App Development
+Start with [the documentation index](docs/README.md) and [asset guidance](assets/README.md).
 
-We create mobile and desktop applications with a strong focus on usability, performance, and reliable architecture.
+## Editing the site
 
-* Mobile applications
-* Desktop applications
-* SaaS products
-* Custom business applications
+- Edit approved facts and page content in `src/data/`. Project case studies and workflows have separate data registries.
+- Routes live in `src/app/App.jsx`; public discovery routes live in `src/data/routes.js`. Update the SSR renderer and deployment routes when adding a page.
+- Use published root-relative image paths, not paths inside `assets/source/`. Preserve exact filename casing for Linux deployments.
+- Image scripts run from the root, for example `node scripts/assets/prepare-hira-portrait.mjs`. `npm run optimize:images` rebuilds the active product and brand WebPs; the production build prepares the hero and Stepsy variants automatically. Some optional generators require ignored local image masters.
 
-### UI/UX Design
+## Validation and production build
 
-We design interfaces that are visually refined, intuitive, and built around the user's journey.
+```sh
+npm run lint
+npm test
+npm run test:structure
+npm run build
+npm run test:seo
+npm run preview -- --host 127.0.0.1 --port 4173
+```
 
-Our design process focuses on:
+With preview running in a separate terminal, `npm run test:prerender` checks every public route with JavaScript disabled. `npm run test:mobile` runs browser suites against the local dev server. Run builds and browser suites sequentially on Windows to avoid generated-file watcher conflicts.
 
-* User experience
-* Interface design
-* Responsive layouts
-* Design systems
-* Interactive prototypes
+`dist/`, `dist-ssr/`, `artifacts/`, `test-results/` and `playwright-report/` are generated and ignored. They can be rebuilt; do not treat them as source.
 
-### Digital Marketing
+## Contact, Aria and monitoring
 
-We help businesses turn their digital presence into measurable growth.
+- The contact page sends requests to FormSubmit for `contact@hanovadevs.com`. Mailbox activation and delivery must be checked separately; a mocked test is not proof of email delivery.
+- Aria uses `/api/chat` and `/api/assistant-contact`. Its reviewed company knowledge is in `src/data/`; SMTP handoff runs server-side. Keep provider and SMTP credentials server-only. The assistant has a reviewed-answer fallback when the model provider is unavailable.
+- `/api/report-error` handles the existing error-monitoring boundary. See the deployment checklist for its configuration.
+- The former admin pages and database client/schema are removed. Retired admin URLs resolve to the normal 404; there is no private shell to deploy. Remote database resources and historical data were not deleted.
 
-* Search engine optimization
-* Digital marketing
-* Performance marketing
-* Conversion optimization
-* Growth strategy
-
-## Our Approach
-
-We believe good digital products are built at the intersection of **design, technology, and strategy**.
-
-Our process is simple:
-
-**Understand → Design → Build → Launch → Improve**
-
-Every project starts with understanding the problem, followed by thoughtful design and development. After launch, we use data and feedback to continuously improve the product.
-
-## Selected Work
-
-Some of the projects and products developed by HanovaDevs include:
-
-* **Business Website** — Modern business website development
-* **MagnaRestaurant** — Restaurant-focused digital experience
-* **Crown Accumulator** — Custom web platform
-* **Terra-Sol Grounding** — Business website and digital solution
-* **EarthSync** — Digital product development
-* **Eunoia** — Web application development
-
-## Technology
-
-We work with modern technologies and tools to build reliable digital products.
-
-**Frontend**
-
-React, Next.js, TypeScript, JavaScript, HTML, CSS
-
-**Backend**
-
-Node.js, APIs, databases, authentication systems
-
-**Platforms & Tools**
-
-Git, GitHub, Vercel, Supabase, PostgreSQL, automation platforms, and modern AI technologies
-
-## Building More Than Websites
-
-Our goal is not simply to deliver websites or applications.
-
-We build **digital products that solve problems, improve operations, and create measurable business value.**
-
-From a company's first website to a complete SaaS platform, we work with businesses throughout the entire digital journey.
-
-## Let's Build Something
-
-Have an idea, a business that needs a stronger digital presence, or a product you want to bring to life?
-
-Let's turn it into something people can use, remember, and value.
-
-**HanovaDevs**
-
-Website: https://www.hanovadevs.com
-Email: [contact@hanovadevs.com](mailto:contact@hanovadevs.com)
-
----
-
-## License
-
-This repository and its contents are the property of HanovaDevs unless otherwise stated.
+See [deployment checks](docs/deployment/security-deployment.md) before publishing. No production deployment is performed by reorganizing this repository.

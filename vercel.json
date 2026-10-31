@@ -336,17 +336,6 @@
       "dest": "/journal/ugc-ads-conversion-science/index.html"
     },
     {
-      "src": "^/hanova-portal-2026/?$",
-      "dest": "/hanova-portal-2026/index.html"
-    },
-    {
-      "src": "^/admin/?$",
-      "headers": {
-        "Location": "/"
-      },
-      "status": 308
-    },
-    {
       "handle": "filesystem"
     },
     {

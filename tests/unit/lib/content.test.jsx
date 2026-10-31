@@ -1,0 +1,93 @@
+import { fireEvent, render, screen } from '@testing-library/react'
+import { HelmetProvider } from 'react-helmet-async'
+import { MemoryRouter } from 'react-router-dom'
+import { describe, expect, it } from 'vitest'
+import { company, clientProjects } from '../../../src/data/company'
+import { clientStories } from '../../../src/data/clientStories'
+import { journalPosts, retiredJournalSlugs } from '../../../src/data/journal'
+import { newsArticles, newsUpdatedAt } from '../../../src/data/news'
+import { publicRoutes } from '../../../src/data/routes'
+import { canonicalUrl, organizationGraph, pageGraph } from '../../../src/lib/seo'
+import { consentCookie, readConsent } from '../../../src/lib/consent'
+import Reviews from '../../../src/pages/reviews/Reviews'
+import About from '../../../src/pages/company/About'
+import { eunoiaPrivacyPolicyData } from '../../../src/data/eunoiaLegalData'
+
+const wrap = element => render(<HelmetProvider><MemoryRouter>{element}</MemoryRouter></HelmetProvider>)
+describe('Company accuracy and discovery', () => {
+  it('keeps the owner-provided identity and release facts consistent', () => {
+    expect(company.founded).toBe('2022'); expect(company.founder.name).toBe('Ali Haider')
+    expect(company.email).toBe('contact@hanovadevs.com')
+    expect(company.products.eunoia.status).toBe('Available on Microsoft Store')
+    expect(company.products.omnai.status).toBe('Launching soon')
+    expect(clientProjects.map(project => project.owner)).toEqual(['Veli', 'Sara', 'Shahid Mahmood', 'Noor Fatima'])
+    expect(clientProjects.every(project => project.quote === null && project.rating === null)).toBe(true)
+  })
+  it('uses clean path-only canonical URLs', () => {
+    expect(canonicalUrl('/news/?query=AI#story')).toBe('https://www.hanovadevs.com/news')
+    expect(canonicalUrl('https://example.com/about?tracking=yes')).toBe('https://www.hanovadevs.com/about')
+    expect(canonicalUrl('/')).toBe('https://www.hanovadevs.com/')
+  })
+  it('does not fabricate ratings, street addresses or awards in structured data', () => {
+    const graph = organizationGraph()
+    expect(graph.find(item => item['@type'] === 'Organization').foundingDate).toBe('2022')
+    expect(graph.find(item => item['@type'] === 'Person').name).toBe('Ali Haider')
+    expect(JSON.stringify(graph)).not.toMatch(/aggregateRating|ratingValue|streetAddress|award|LocalBusiness/)
+    expect(pageGraph({ url: canonicalUrl('/about'), title: 'About', description: 'Company', faqList: [{ question: 'Who?', answer: 'Ali Haider' }] })['@graph'].at(-1)['@type']).toBe('FAQPage')
+  })
+  it('publishes an original long-form company guide and a consistent public inventory', () => {
+    const guide = journalPosts.find(post => post.slug === 'hanovadevs-software-company-guide')
+    expect(guide.wordCount).toBeGreaterThan(3000)
+    expect(guide.content).toContain('founded in 2022 by Ali Haider')
+    expect(guide.content).not.toMatch(/<script|pravatar|client testimonial.*5 stars/i)
+    expect(publicRoutes).toContain(`/journal/${guide.slug}`)
+    expect(publicRoutes).toContain('/reviews')
+    expect(publicRoutes.some(route => route.includes('admin') || route.includes('portal'))).toBe(false)
+    expect(retiredJournalSlugs.every(slug => !publicRoutes.includes(`/journal/${slug}`))).toBe(true)
+  })
+  it('dates and links every news item and avoids future-dated publication', () => {
+    expect(newsUpdatedAt).toBe('2026-10-30')
+    expect(newsArticles.length).toBeGreaterThanOrEqual(7)
+    for (const article of newsArticles) {
+      expect(article.publishedAt <= newsUpdatedAt).toBe(true)
+      expect(article.sourceUrl).toMatch(/^https:\/\//)
+      expect(article.summary.length).toBeGreaterThan(0)
+    }
+  })
+  it('renders the supplied founder portrait and official profile link', () => {
+    wrap(<About />)
+    expect(screen.getByAltText('Ali Haider, founder of HanovaDevs')).toHaveAttribute('src', '/people/ali-haider.webp')
+    expect(screen.getByRole('link', { name: /explore ali/i })).toHaveAttribute('href', 'https://ali.hanovadevs.com')
+  })
+  it('discloses optional cloud processing in Eunoia without a fake network audit', () => {
+    const notice = JSON.stringify(eunoiaPrivacyPolicyData)
+    expect(notice).toContain('optional OpenAI connection')
+    expect(notice).toContain('audio may be sent to OpenAI')
+    expect(notice).not.toMatch(/Verified by the Community|Zero External AI Calls|your data never leaves/i)
+  })
+  it('offers filterable client stories without invented attributed reviews', () => {
+    const { container } = wrap(<Reviews />)
+    expect(container.querySelectorAll('.review-story')).toHaveLength(clientStories.length)
+    expect(container.querySelectorAll('.review-story:not(#story-growtech) blockquote')).toHaveLength(0)
+    expect(container.querySelector('#story-growtech blockquote')).toHaveTextContent('We had an excellent experience')
+    fireEvent.click(screen.getByRole('button', { name: 'Industrial business' }))
+    expect(container.querySelectorAll('.review-story')).toHaveLength(1)
+    expect(container.querySelector('.review-story')).toHaveTextContent('Shahid Mahmood')
+    expect(screen.getByRole('button', { name: /prepare email draft/i })).toBeInTheDocument()
+  })
+})
+describe('Cookie preferences', () => {
+  it('defaults absent, corrupt or obsolete preferences to no optional consent', () => {
+    expect(readConsent()).toBeNull()
+    expect(readConsent('hanova_consent=%notjson')).toBeNull()
+    expect(readConsent(`hanova_consent=${encodeURIComponent(JSON.stringify({ version: 0, analytics: true }))}`)).toBeNull()
+    expect(readConsent('hanova_consent=null')).toBeNull()
+  })
+  it('round-trips a secure first-party choice with a 180-day lifetime', () => {
+    const cookie = consentCookie(false)
+    expect(cookie).toContain('Max-Age=15552000'); expect(cookie).toContain('SameSite=Lax'); expect(cookie).toContain('Secure')
+    expect(readConsent(cookie)).toEqual({ version: 1, analytics: false })
+    expect(readConsent(consentCookie(true, false))).toEqual({ version: 1, analytics: true })
+    expect(consentCookie(true, false)).not.toContain('Secure')
+  })
+})

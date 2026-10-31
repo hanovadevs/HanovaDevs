@@ -159,7 +159,6 @@ export const privacyPolicyData = {
           items: [
             'Cloud Hosting & Edge CDN: Vercel Inc. (Global edge infrastructure, serverless compute, and performance telemetry).',
             'Typeface Delivery: The website requests fonts from Google Fonts and its font CDN. Those requests include technical connection information and are separate from optional analytics.',
-            'Database & Backend Storage: Supabase Inc. (Encrypted database management for lead triage and booking records).',
             'Communication & Email Dispatch: Formsubmit / Nodemailer / SMTP gateways for contact routing and inquiry dispatch.',
             'Calendar & Scheduling: Google Calendar API links for generating user-directed remote calendar invitation events.'
           ]
@@ -436,7 +435,7 @@ export const termsOfServiceData = {
           items: [
             'Milestone Billing: Standard project engagements typically require an upfront commencement deposit (e.g., 30%–50%) prior to sprint initiation, with milestone installments linked to verified deliverable handoffs (e.g., UI approval, staging deployment, final production release).',
             'Retainers & Ongoing Support: Monthly automation maintenance, SLA support, and dedicated developer retainers are billed in advance of each service cycle.',
-            'Taxes & Third-Party Fees: Client is responsible for any applicable local taxes, payment processing charges, cloud infrastructure hosting fees (AWS, Vercel, Supabase), third-party API token costs (OpenAI, Gemini, VAPI), and font or domain licenses.'
+            'Taxes & Third-Party Fees: Client is responsible for any applicable local taxes, payment processing charges, cloud infrastructure hosting fees (AWS, Vercel), third-party API token costs (OpenAI, Gemini, VAPI), and font or domain licenses.'
           ]
         }
       ]
@@ -536,7 +535,7 @@ export const termsOfServiceData = {
       content: [
         {
           type: 'paragraph',
-          text: 'HanovaDevs assists with deploying applications to modern cloud providers (e.g., Vercel, AWS, Supabase, Cloudflare, Shopify). However, HanovaDevs is not a hosting provider. We are not liable for service outages, data center hardware failures, DNS propagations, third-party API rate limits, or platform downtime caused by external infrastructure vendors.'
+          text: 'HanovaDevs assists with deploying applications to modern cloud providers (e.g., Vercel, AWS, Cloudflare, Shopify). However, HanovaDevs is not a hosting provider. We are not liable for service outages, data center hardware failures, DNS propagations, third-party API rate limits, or platform downtime caused by external infrastructure vendors.'
         }
       ]
     },

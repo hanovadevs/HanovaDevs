@@ -1,0 +1,13 @@
+# Stepsy product preview
+
+Route: `/products/stepsy`. Entry points: Products hub, Home product section, footer, sitemap and `llms.txt`. Content comes from `src/data/stepsy.js`; the company knowledge source also identifies Stepsy as an in-house mobile project.
+
+The presentation uses the five owner-supplied PNGs in `public/products/Stepsy/`, unchanged. Responsive 640px and 1122px WebP copies and a flat, native-layout social card are generated into the distinct lowercase folder `public/media/stepsy/` by `node scripts/assets/prepare-stepsy-assets.mjs`, now part of the production build. The earlier implementation mixed the tracked `Stepsy` directory with lowercase asset URLs; the live lowercase URL returned 404 while the capitalised path returned image/webp. Production SEO checks now verify exact path casing and every responsive image candidate, even on Windows. No artwork, official product logo or phone interface has been redrawn. No additional generated-image captions are added.
+
+The opening draws a curved ribbon and stages the headline and artwork. Desktop scrolling (at least 1000px wide and 700px high) crossfades, rotates, scales and translates five image frames in a sticky visual stage, synchronised with the story copy, background tint, active chapter, scene counter and progress track. Smaller screens use the same chapters in normal document flow with image movement. Supporting sections reveal in sequence, and the partner ticket moves with scroll. A still-view control, live reduced-motion handling and route-unmount cleanup are included. The entire page and all chapter images work without JavaScript. No scroll hijacking, autoplay sound or video downloads.
+
+The React page lazy-loads GSAP and ScrollTrigger for animation. Animations are scoped to the story and reverted using matchMedia cleanup. Technical references: [GSAP matchMedia](https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/), [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/).
+
+Pakistan is the intended first market, not a statement of availability. This is a product preview, not a launched app. The copy does not establish conversion rates, cash value, live discounts, signed merchants, platform support, launch cities, dates, fees or investment terms. Internal hosting proposals and budget discussions are not presented as public product features. Preview numbers are illustrative. Structured data describes the product preview as a CreativeWork, with no fabricated app-store, review or offer data.
+
+No deployment, app-store publishing, tracking-provider change or signup/backend feature is part of this implementation.
