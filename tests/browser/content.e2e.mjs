@@ -52,18 +52,18 @@ test('cookie settings are keyboard operable, analytics is opt-in, and revocation
 test('client stories are filterable and display project delivery without invented reviews', async ({ page, context }) => {
   await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
   await page.goto('/reviews')
-  await expect(page.locator('.review-story')).toHaveCount(4)
-  await expect(page.locator('.review-story blockquote')).toHaveCount(0)
+  await expect(page.locator('.review-story')).toHaveCount(6)
+  await expect(page.locator('.review-story:not(#story-growtech) blockquote')).toHaveCount(0)
   await page.getByRole('button', { name: 'Industrial business' }).click()
   const story = page.locator('.review-story')
   await expect(story).toHaveCount(1); await expect(story).toContainText('Shahid Mahmood')
   await story.locator('summary').click()
   await expect(story.getByText('Corporate website', { exact: true })).toBeVisible()
   await expect(story.getByRole('link', { name: 'Visit website' })).toHaveAttribute('href', 'https://www.crownaccumulator.com')
-  await page.getByRole('button', { name: 'All work' }).click(); await expect(page.locator('.review-story')).toHaveCount(4)
+  await page.getByRole('button', { name: 'All work' }).click(); await expect(page.locator('.review-story')).toHaveCount(6)
   await page.getByLabel('Your name', { exact: true }).fill('Client reviewer')
   await page.getByLabel('Your feedback', { exact: true }).fill('A specific review that explains our own experience.')
-  await expect(page.getByRole('button', { name: 'Email your review' })).toBeEnabled()
+  await expect(page.getByRole('button', { name: 'Prepare email draft' })).toBeEnabled()
 })
 
 test('company article has working contents and unique route metadata', async ({ page, context }) => {

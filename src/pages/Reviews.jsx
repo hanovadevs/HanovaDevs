@@ -1,40 +1,89 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import { clientProjects, company } from '../data/company'
+import { company } from '../data/company'
+import { caseStudies } from '../data/caseStudies'
+import { clientStories, clientStoryFilters, createReviewEmail } from '../data/clientStories'
+import { collectionGraph } from '../lib/seo'
 import './Reviews.css'
-
-const filters = ['All work', ...new Set(clientProjects.map(project => project.category))]
 
 export default function Reviews() {
   const [category, setCategory] = useState('All work')
-  const [form, setForm] = useState({ name: '', project: clientProjects[0].id, rating: '', feedback: '' })
-  const stories = useMemo(() => clientProjects.filter(project => category === 'All work' || project.category === category), [category])
-  const edit = event => setForm(value => ({ ...value, [event.target.name]: event.target.value }))
-  const emailReview = event => {
-    event.preventDefault()
-    const project = clientProjects.find(item => item.id === form.project)
-    const body = `Name: ${form.name}\nProject: ${project.title}\nRating: ${form.rating || 'Not specified'}\n\n${form.feedback}\n\nPlease contact me to confirm attribution and publication permission.`
-    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(`Client feedback: ${project.title}`)}&body=${encodeURIComponent(body)}`
+  const [form, setForm] = useState({ name: '', project: caseStudies[0].id, rating: '', feedback: '' })
+  const [draft, setDraft] = useState('')
+  const stories = clientStories.filter(story => category === 'All work' || story.category === category)
+  const edit = event => {
+    setForm(value => ({ ...value, [event.target.name]: event.target.value }))
+    setDraft('')
   }
-  return (
-    <div className="reviews-page">
-      <SEO title="Client Stories & Reviews — Real Projects, Clear Outcomes" description="Meet the clients behind EarthSync Essentials, Terra Sol Grounding, Crown Accumulators, and RAQS. Explore HanovaDevs project stories and share your experience." url="/reviews" pageType="CollectionPage" breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'Client stories & reviews', item: '/reviews' }]} />
-      <section className="reviews-hero"><div className="container reviews-hero__layout">
-        <div><span className="reviews-eyebrow">Client stories & reviews</span><h1>Good work.<br /><em>Real partnerships.</em></h1><p>A closer look at the people and businesses behind our work. Different industries, shared care for the experience their customers receive.</p><a className="btn btn-primary" href="#client-stories">Explore the stories ↓</a></div>
-        <aside className="reviews-people"><span className="reviews-eyebrow">The people behind the projects</span>{clientProjects.map(project => <div className="reviews-person" key={project.id}><span className="reviews-avatar" style={{ '--client-accent': project.accent }}>{project.initials}</span><div><strong>{project.owner}</strong><span>Owner · {project.title}</span></div><span className="reviews-person__arrow" aria-hidden="true">↗</span></div>)}<p>Four client relationships, each with a story of its own.</p></aside>
-      </div></section>
-      <section className="section container" id="client-stories"><div className="reviews-section-heading"><div><span className="reviews-eyebrow">Selected partnerships</span><h2>What we built together.</h2></div><Link to="/projects">View the portfolio ↗</Link></div>
-        <div className="reviews-filters" role="group" aria-label="Filter client stories">{filters.map(filter => <button key={filter} aria-pressed={category === filter} className={category === filter ? 'is-active' : ''} onClick={() => setCategory(filter)}>{filter}</button>)}</div>
-        <div className="reviews-grid" aria-live="polite">{stories.map(project => <article key={project.id} className="review-story" style={{ '--client-accent': project.accent }}>
-          <Link to={`/projects/${project.id}`} className="review-story__image"><img src={project.image} width="800" height="556" loading="lazy" alt={`${project.title} website screenshot`} /><span>{project.category}</span></Link>
-          <div className="review-story__body"><div className="reviews-person"><span className="reviews-avatar">{project.initials}</span><div><strong>{project.owner}</strong><span>Owner · {project.title}</span></div></div><h3>{project.title}</h3><p>{project.overview}</p>{project.quote && <blockquote>{project.quote}</blockquote>}<div className="review-story__outcome"><span>Project outcome</span><p>{project.result}</p></div><details><summary>Explore the project focus</summary><p>{project.challenge}</p><ul>{project.deliverables.map(item => <li key={item}>{item}</li>)}</ul></details><div className="review-story__links"><Link to={`/projects/${project.id}`}>Read the case study →</Link><a href={project.url} target="_blank" rel="noopener noreferrer">Visit website ↗</a></div></div>
-        </article>)}</div>
-        <p className="reviews-editorial-note">Client identities and project relationships are provided by HanovaDevs. These are project summaries; attributed reviews and measured results are published after approval.</p>
-      </section>
-      <section className="reviews-feedback section"><div className="container reviews-feedback__layout"><div><span className="reviews-eyebrow">Your experience matters</span><h2>Worked with us?<br /><em>Tell your story.</em></h2><p>Share what the collaboration was like, what we delivered, and what could be better. Specific, honest feedback is the most useful kind.</p><p>We confirm authorship and publication permission before featuring a review.</p><Link to="/contact">Need help with your project instead? →</Link></div>
-        <form className="reviews-form" onSubmit={emailReview}><label>Your name<input name="name" autoComplete="name" value={form.name} onChange={edit} required maxLength="100" /></label><label>Project<select name="project" value={form.project} onChange={edit}>{clientProjects.map(project => <option value={project.id} key={project.id}>{project.title}</option>)}</select></label><fieldset><legend>Your rating <span>(optional)</span></legend><div className="reviews-rating">{[1,2,3,4,5].map(rating => <label key={rating}><input type="radio" name="rating" value={rating} checked={form.rating === String(rating)} onChange={edit} aria-label={`${rating} out of 5`} /><span aria-hidden="true">{rating} ★</span></label>)}</div></fieldset><label>Your feedback<textarea name="feedback" rows="5" value={form.feedback} onChange={edit} required minLength="20" maxLength="3000" placeholder="What did we work on, and how did the experience go?" /></label><button className="btn btn-primary" type="submit">Email your review ↗</button><p>Opens your email app with a draft addressed to <a href={`mailto:${company.email}`}>{company.email}</a>.</p></form>
-      </div></section>
-    </div>
-  )
+  const prepareReview = event => {
+    event.preventDefault()
+    setDraft(createReviewEmail(form))
+  }
+
+  return <div className="reviews-page">
+    <SEO title="Client Stories & Reviews" description="Meet the people behind HanovaDevs projects: Affan Mughal of GrowTech Advertising, Crown Accumulators, EarthSync, Terra Sol, RAQS and the Zozo platform."
+      url="/reviews" pageType="CollectionPage" mainEntity={{ '@id': `${company.url}/reviews#collection` }}
+      schemaMarkup={collectionGraph('/reviews', 'HanovaDevs client project stories', stories.flatMap(story => story.projects.map(project => ({ name: project.title, path: project.path }))))}
+      breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'Client stories & reviews', item: '/reviews' }]} />
+
+    <section className="reviews-hero">
+      <div className="reviews-hero__curve" aria-hidden="true" />
+      <div className="container reviews-hero__inner">
+        <span className="reviews-eyebrow">Client stories &amp; reviews</span>
+        <h1>Different businesses.<br />{' '}<em>Work that connects.</em></h1>
+        <p>The people, the context and the work we built together. Explore the story behind each website and business system.</p>
+        <div className="reviews-hero__actions"><a className="btn btn-primary" href="#client-stories">Explore the stories <span aria-hidden="true">↓</span></a><a className="reviews-text-link" href="#share-experience">Share your experience</a></div>
+        <div className="reviews-hero__index" aria-label="Client collection">
+          <span>{String(clientStories.length).padStart(2, '0')} client stories</span><span>{String(caseStudies.length).padStart(2, '0')} project case studies</span><span>Websites, platforms &amp; custom CRMs</span>
+        </div>
+      </div>
+    </section>
+
+    <section className="reviews-collection section" id="client-stories">
+      <div className="container">
+        <div className="reviews-section-heading"><div><span className="reviews-eyebrow">A closer look</span><h2>Every partnership<br />{' '}<em>has its own shape.</em></h2></div><p>The work behind each relationship, with feedback in clients’ own words where supplied. Open a case study to explore the context and the delivered experience.</p></div>
+        <div className="reviews-toolbar"><div className="reviews-filters" role="group" aria-label="Filter client stories">{clientStoryFilters.map(filter => <button key={filter} aria-pressed={category === filter} onClick={() => setCategory(filter)}>{filter}</button>)}</div><p role="status">{stories.length} {stories.length === 1 ? 'story' : 'stories'}</p></div>
+
+        <div className="reviews-grid">
+          <svg className="reviews-grid__thread" viewBox="0 0 1100 1800" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M280 0C1080 60 1060 530 550 580S-90 1120 550 1180 1120 1650 800 1800" /></svg>
+          {stories.map(story => <article key={story.id} id={`story-${story.id}`} className={`review-story review-story--${story.tone}`}>
+            <Link to={story.projects[0].path} className="review-story__image" aria-label={`Explore the ${story.title} story`}><img src={story.image} width="960" height="600" loading="lazy" alt={`${story.title} website screenshot`} /></Link>
+            <div className="review-story__body">
+              <span className="reviews-eyebrow">{story.category}</span>
+              <h3>{story.title}</h3>
+              {story.owner && <p className="review-story__person"><strong>{story.owner}</strong><span>{story.role}</span></p>}
+              <p className="review-story__intro">{story.intro}</p>
+              {story.review && <figure className="review-story__review">
+                <div className="review-story__review-heading"><span>Client review</span><span aria-label={`${story.review.rating} out of 5`}>{story.review.rating} / 5</span></div>
+                <blockquote><p>{story.review.excerpt}</p></blockquote>
+                <figcaption>{story.owner} · {story.role}, {story.title}</figcaption>
+                <details><summary>Read Affan’s full review <span aria-hidden="true">+</span></summary><h4>{story.review.title}</h4><blockquote>{story.review.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</blockquote></details>
+              </figure>}
+              {story.feedback && <aside className="review-story__feedback" aria-label={`${story.title} feedback summary`}><span>Feedback snapshot</span><p>{story.feedback}</p></aside>}
+              <details className="review-story__detail"><summary>What we worked on <span aria-hidden="true">+</span></summary><p>{story.focus}</p><ul>{story.delivered.map(item => <li key={item}>{item}</li>)}</ul></details>
+              <div className="review-story__projects"><span>{story.projects.length > 1 ? 'Explore the projects' : 'Inside the project'}</span>{story.projects.map(project => <Link key={project.id} to={project.path} aria-label={`${project.title} case study`}><span>{project.title}</span><span aria-hidden="true">↗</span></Link>)}</div>
+              <a className="review-story__visit" href={story.projects[0].url} target="_blank" rel="noopener noreferrer">Visit website <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>)}
+        </div>
+        <aside className="reviews-editorial-note"><span className="reviews-eyebrow">A note on the stories</span><p>Affan Mughal’s review and five-star rating were supplied for publication. Other feedback summaries are labelled as company-relayed, not direct quotations. Client comments reflect their experience, not an independent performance audit. We do not invent reviews or business-growth figures. Private CRMs are shown through portfolio screenshots, not public demos.</p><Link to="/projects" className="reviews-text-link">Explore the full project collection ↗</Link></aside>
+      </div>
+    </section>
+
+    <section className="reviews-feedback section" id="share-experience">
+      <div className="container reviews-feedback__layout">
+        <div><span className="reviews-eyebrow">Your perspective, in your words</span><h2>Worked with us?<br />{' '}<em>Tell your story.</em></h2><p>What felt useful? What did we deliver? What could we improve? Specific, honest feedback helps the next collaboration.</p><p className="reviews-feedback__note">We confirm authorship and publication permission before featuring a review. Preparing a draft does not send or publish it.</p><Link className="reviews-text-link" to="/contact">Looking to start a project instead? ↗</Link></div>
+        <form className="reviews-form" onSubmit={prepareReview}>
+          <label>Your name<input name="name" autoComplete="name" value={form.name} onChange={edit} required maxLength="100" /></label>
+          <label><span id="reviews-project-label">Project</span><select name="project" aria-labelledby="reviews-project-label" value={form.project} onChange={edit}>{caseStudies.map(project => <option value={project.id} key={project.id}>{project.title}</option>)}</select></label>
+          <fieldset><legend>Your rating <span>(optional)</span></legend><div className="reviews-rating">{[1, 2, 3, 4, 5].map(rating => <label key={rating}><input type="radio" name="rating" value={rating} checked={form.rating === String(rating)} onChange={edit} aria-label={`${rating} out of 5`} /><span aria-hidden="true">{rating}</span></label>)}</div></fieldset>
+          <label>Your feedback<textarea name="feedback" rows="5" value={form.feedback} onChange={edit} required minLength="20" maxLength="3000" placeholder="Tell us about your project and your experience working with us." /></label>
+          <button className="btn btn-primary" type="submit">Prepare email draft</button>
+          <p>Review the details, then open your email app to send to <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+          {draft && <div className="reviews-draft"><p role="status">Your draft is ready. It has not been sent.</p><a href={draft} className="reviews-text-link">Open email app <span aria-hidden="true">↗</span></a><small>If your device has no email app configured, send your feedback directly to {company.email}.</small></div>}
+        </form>
+      </div>
+    </section>
+  </div>
 }

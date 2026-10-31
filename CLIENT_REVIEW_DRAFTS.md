@@ -1,6 +1,10 @@
 # Client review drafts — not approved for publication
 
-These are suggested wording only, written at the company owner's request. They are not actual client statements, verified reviews, or evidence of results. None is published on the website. Send each draft to the named client for correction and express approval before attributing it publicly. Do not add a star rating or performance figure without a source.
+## Live-page refresh — 31 October 2026
+
+The reviews page now groups eight case studies into six client stories. The company owner confirmed Affan Mughal as GrowTech Advertising’s Founder, then supplied his complete five-star review for publication. The GrowTech card publishes that review’s excerpt and full text, with paragraph formatting preserved and the original emphasis markers removed. His praise is attributed opinion, not an independently measured productivity result. No Review or AggregateRating schema is added to the agency’s self-hosted client page. Crown’s website and CRM share another story with a labelled, company-relayed positive feedback summary, not an invented quotation. Zozo is included as a discovery/comparison platform with no invented owner name. All six stories link to the actual case studies. The feedback form prepares a mailto draft; it does not send mail or publish reviews automatically.
+
+The Veli, Sara, Shahid Mahmood and Noor Fatima drafts below are suggested wording only, written at the company owner's request. They are not actual client statements, verified reviews, or evidence of results. None of these drafts is published on the website. Send each draft to the named client for correction and express approval before attributing it publicly. Do not add a star rating or performance figure without a source. Affan’s separately supplied review is not one of these drafts.
 
 ## Veli — EarthSync Essentials
 

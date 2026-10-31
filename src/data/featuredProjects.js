@@ -4,7 +4,7 @@ const screenshot = id => `/case-studies/${id}-desktop.webp`
 // Private interfaces are portfolio previews, not public demos or audited systems.
 export const featuredProjects = [
   {
-    id: 'growtech-website', title: 'GrowTech Advertising Website', client: 'GrowTech Advertising',
+    id: 'growtech-website', title: 'GrowTech Advertising Website', client: 'GrowTech Advertising', owner: 'Affan Mughal', ownerRole: 'Founder',
     category: 'Agency website', group: 'Websites', tone: 'gold', edition: '01',
     url: 'https://growtechadvertising.com/', workType: 'Public marketing website',
     headline: 'A clear first impression. A purposeful next step.',
@@ -27,7 +27,7 @@ export const featuredProjects = [
     reviewNote: 'This case study uses the homepage screenshot supplied by HanovaDevs on 30 October 2026. Agency performance claims appearing in the screenshot are not independently verified here. Live form delivery and campaign results were not tested.',
   },
   {
-    id: 'growtech-crm', title: 'GrowTech Advertising CRM', client: 'GrowTech Advertising',
+    id: 'growtech-crm', title: 'GrowTech Advertising CRM', client: 'GrowTech Advertising', owner: 'Affan Mughal', ownerRole: 'Founder',
     category: 'Agency operations CRM', group: 'CRM & operations', tone: 'mint', edition: '02', adminOnly: true,
     url: 'https://dashboard.growtechadvertising.com/dashboard', workType: 'Admin-only agency workspace',
     headline: 'The work behind the work, brought into focus.',

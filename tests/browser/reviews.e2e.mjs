@@ -1,0 +1,87 @@
+import { test, expect } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+import { clientStories } from '../../src/data/clientStories.js'
+import { caseStudies } from '../../src/data/caseStudies.js'
+
+test.beforeEach(async ({ context }) => {
+  await context.addCookies([{ name: 'hanova_consent', value: encodeURIComponent(JSON.stringify({ version: 1, analytics: false })), url: 'http://127.0.0.1:5173' }])
+})
+
+test('reviews: curved collection is readable, complete and accessible across resolutions', async ({ page }) => {
+  const errors = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/reviews')
+  const cards = page.locator('.review-story')
+  await expect(cards).toHaveCount(clientStories.length)
+  const growtech = page.locator('#story-growtech')
+  await expect(growtech).toContainText('Affan Mughal')
+  await expect(growtech.locator('.review-story__person')).toContainText('Founder')
+  await expect(page.locator('.review-story:not(#story-growtech) blockquote')).toHaveCount(0)
+  await expect(growtech.getByLabel('5 out of 5')).toHaveText('5 / 5')
+  await page.evaluate(() => { for (const image of document.querySelectorAll('main img')) image.loading = 'eager' })
+  await expect.poll(() => cards.locator('img').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true)
+  await page.evaluate(() => document.fonts.ready)
+  const first = await cards.nth(0).boundingBox(), second = await cards.nth(1).boundingBox()
+  if (page.viewportSize().width > 700) {
+    expect(second.y - first.y).toBeGreaterThanOrEqual(80)
+    expect(first.x + first.width + 25).toBeLessThan(second.x)
+  } else {
+    expect(Math.abs(first.x - second.x)).toBeLessThan(1)
+    expect(first.y + first.height + 20).toBeLessThan(second.y)
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
+  await page.addScriptTag({ content: readFileSync('node_modules/axe-core/axe.min.js', 'utf8') })
+  const violations = await page.evaluate(async () => (await window.axe.run(document.querySelector('main'))).violations.filter(issue => ['serious', 'critical'].includes(issue.impact)).map(issue => ({ id: issue.id, targets: issue.nodes.map(node => node.target) })))
+  expect(violations).toEqual([])
+  await page.screenshot({ path: `artifacts/reviews/collection-${test.info().project.name}.png`, fullPage: true })
+  expect(errors).toEqual([])
+})
+
+test('reviews: filters, expanded project context and CRM handoff work with keyboard input', async ({ page }) => {
+  await page.goto('/reviews')
+  const agency = page.getByRole('button', { name: 'Agency & operations' })
+  await agency.focus()
+  await agency.press('Enter')
+  await expect(page.getByRole('status')).toHaveText('1 story')
+  const card = page.locator('.review-story')
+  const review = card.locator('.review-story__review details')
+  await review.locator('summary').focus()
+  await review.locator('summary').press('Enter')
+  await expect(review).toHaveAttribute('open', '')
+  await expect(review).toContainText('Five stars, well deserved!')
+  await card.locator('.review-story__detail summary').focus()
+  await card.locator('.review-story__detail summary').press('Enter')
+  await expect(card.locator('.review-story__detail')).toHaveAttribute('open', '')
+  await expect(card).toContainText('Amazon PPC')
+  await card.getByRole('link', { name: 'GrowTech Advertising CRM case study', exact: true }).click()
+  await expect(page).toHaveURL('/projects/growtech-crm')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('GrowTech Advertising CRM')
+  await page.goBack()
+  await page.getByRole('button', { name: 'Discovery platforms' }).click()
+  await expect(page.locator('.review-story h3')).toHaveText('Zozo')
+  await page.locator('.review-story summary').click()
+  await expect(page.locator('.review-story')).toContainText('not an ecommerce checkout')
+})
+
+test('reviews: feedback validates and prepares a correct email draft without claiming delivery', async ({ page }) => {
+  await page.goto('/reviews')
+  await expect(page.getByLabel('Project', { exact: true }).locator('option')).toHaveCount(caseStudies.length)
+  await page.getByRole('button', { name: 'Prepare email draft' }).click()
+  await expect(page.getByRole('link', { name: 'Open email app' })).toHaveCount(0)
+  await page.getByLabel('Your name', { exact: true }).fill('A client & reviewer')
+  await page.getByLabel('Project', { exact: true }).selectOption('growtech-crm')
+  await page.getByRole('radio', { name: '4 out of 5' }).check()
+  await page.getByLabel('Your feedback', { exact: true }).fill('An honest account of our own collaboration and project handover.')
+  await page.getByRole('button', { name: 'Prepare email draft' }).click()
+  await expect(page.getByText('Your draft is ready. It has not been sent.')).toBeVisible()
+  const href = await page.getByRole('link', { name: 'Open email app' }).getAttribute('href')
+  const url = new URL(href)
+  expect(url.protocol).toBe('mailto:')
+  expect(url.pathname).toBe('contact@hanovadevs.com')
+  expect(url.searchParams.get('subject')).toBe('Client feedback: GrowTech Advertising CRM')
+  expect(url.searchParams.get('body')).toContain('Name: A client & reviewer')
+  expect(url.searchParams.get('body')).toContain('Rating: 4')
+  expect(url.searchParams.get('body')).toContain('confirm attribution and publication permission')
+  await page.getByLabel('Your feedback', { exact: true }).fill('An updated account of our own collaboration and project handover.')
+  await expect(page.getByRole('link', { name: 'Open email app' })).toHaveCount(0)
+})

@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 import { company, clientProjects } from '../data/company'
+import { clientStories } from '../data/clientStories'
 import { journalPosts, retiredJournalSlugs } from '../data/journal'
 import { newsArticles, newsUpdatedAt } from '../data/news'
 import { publicRoutes } from '../data/routes'
@@ -66,12 +67,13 @@ describe('Company accuracy and discovery', () => {
   })
   it('offers filterable client stories without invented attributed reviews', () => {
     const { container } = wrap(<Reviews />)
-    expect(container.querySelectorAll('.review-story')).toHaveLength(4)
-    expect(container.querySelectorAll('blockquote')).toHaveLength(0)
+    expect(container.querySelectorAll('.review-story')).toHaveLength(clientStories.length)
+    expect(container.querySelectorAll('.review-story:not(#story-growtech) blockquote')).toHaveLength(0)
+    expect(container.querySelector('#story-growtech blockquote')).toHaveTextContent('We had an excellent experience')
     fireEvent.click(screen.getByRole('button', { name: 'Industrial business' }))
     expect(container.querySelectorAll('.review-story')).toHaveLength(1)
     expect(container.querySelector('.review-story')).toHaveTextContent('Shahid Mahmood')
-    expect(screen.getByRole('button', { name: /email your review/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /prepare email draft/i })).toBeInTheDocument()
   })
 })
 describe('Cookie preferences', () => {

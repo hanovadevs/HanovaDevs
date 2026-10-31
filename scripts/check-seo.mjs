@@ -11,6 +11,7 @@ import { caseStudies } from '../src/data/caseStudies.js'
 import { projectWorkflows } from '../src/data/projectWorkflows.js'
 import { homeAnswers } from '../src/data/homeAnswers.js'
 import { newsArticles, newsUpdatedAt } from '../src/data/news.js'
+import { clientStories, clientStoriesUpdatedAt } from '../src/data/clientStories.js'
 
 const config = JSON.parse(await readFile('vercel.json', 'utf8'))
 const checkedAssets = new Set()
@@ -83,6 +84,19 @@ for (const route of publicRoutes) {
     if (route === '/projects') assert.equal(document.querySelectorAll('.work-card--featured').length, caseStudies.length)
   }
   const service = services.find(item => route === `/services/${item.id}`)
+  if (route === '/reviews') {
+    assert.equal(document.querySelectorAll('.review-story').length, clientStories.length)
+    assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'ItemList').numberOfItems, caseStudies.length)
+    assert(document.querySelector('#story-growtech').textContent.includes('Affan Mughal'))
+    assert(document.querySelector('#story-growtech').textContent.includes('Founder'))
+    assert.equal(routeModifiedAt(route), clientStoriesUpdatedAt)
+    assert(!document.querySelector('.review-story:not(#story-growtech) blockquote'), 'No invented attributed quotes')
+    const suppliedReview = clientStories.find(story => story.id === 'growtech').review
+    assert(document.querySelector('#story-growtech blockquote').textContent.includes(suppliedReview.excerpt), 'Supplied client review excerpt')
+    for (const paragraph of suppliedReview.paragraphs) assert(document.querySelector('#story-growtech .review-story__review details').textContent.includes(paragraph), 'Full supplied review remains crawlable')
+    assert(!/aggregateRating|reviewRating|ratingValue/.test(JSON.stringify(schemas)), 'No unsupported rating schema')
+    for (const study of caseStudies) assert(document.querySelector(`main a[href="${study.path}"]`), 'Reviews link to every case study')
+  }
   if (service) {
     const entity = schemas[0]['@graph'].find(node => node['@type'] === 'Service')
     assert.equal(entity.name, service.title)
