@@ -29,7 +29,7 @@
 .review-story:hover { border-color: #aac8bd; box-shadow: 0 12px 32px #183e3210; }
 .review-story--sage { --story-wash: #eff3e9; }.review-story--lavender { --story-wash: #f0edf7; }.review-story--sand { --story-wash: #f6f0e4; }.review-story--blue { --story-wash: #eaf1f8; }.review-story--rose { --story-wash: #f7edef; }
 .review-story__image { display: block; padding: 24px 24px 0; background: var(--story-wash); overflow: hidden; }
-.review-story__image img { display: block; width: 100%; aspect-ratio: 1.8; height: auto; object-fit: cover; object-position: top; border: 1px solid #d5e0d8; border-bottom: 0; border-radius: 10px 10px 0 0; transition: transform .3s; }
+.review-story__image img { display: block; width: 100%; aspect-ratio: 1.8; height: auto; object-fit: cover; object-position: left top; border: 1px solid #d5e0d8; border-bottom: 0; border-radius: 10px 10px 0 0; transition: transform .3s; }
 .review-story__image:hover img { transform: translateY(-3px); }
 .review-story__body { padding: 30px; }
 .review-story__body > .reviews-eyebrow { font-size: .6rem; margin-bottom: 11px; }
