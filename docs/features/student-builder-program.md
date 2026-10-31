@@ -6,7 +6,7 @@ The thirteen-person roster displays participant IDs HD-SB-001 through HD-SB-013 
 
 ## Assets and provenance
 
-The built-in image-generation tool created three illustrative workspace photographs. They are not records of cohort activity. At the owner's request, image disclosure captions are omitted from the website; descriptive illustrative alt text is retained. No faces or purported participant likenesses appear. Original PNGs remain in `designs/program/` (local and ignored). Public 640px and 1200px WebP variants are in `public/program/`.
+The built-in image-generation tool created three illustrative workspace photographs. They are not records of cohort activity. At the owner's request, image disclosure captions are omitted from the website; descriptive illustrative alt text is retained. No faces or purported participant likenesses appear. Original PNGs remain in `assets/source/designs/program/` (local and ignored). Public 640px and 1200px WebP variants are in `public/program/`.
 
 The certificate and social preview use deterministic SVG layout with the existing HanovaDevs logo, flat brand colours and embedded images. The certificate is conspicuously marked SAMPLE and is not an issued credential. Vector sources and PNG previews are in `public/program/certificate-sample.*` and `public/program/student-builder-social.*`. Rebuild assets with `node scripts/assets/prepare-program-assets.mjs` when the original local images are available.
 

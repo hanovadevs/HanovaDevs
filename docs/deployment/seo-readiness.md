@@ -7,7 +7,7 @@
 - The homepage explicitly describes the software-development agency and custom CRM offering. Six visible questions and answers use the same source as FAQ structured data. All seven case studies are linked from the homepage; unsupported measurable-results wording was removed.
 - Project and service directory pages have ItemList entities matching the visible destinations. Individual service pages identify their Service entity. Primary page images and social-image descriptions are included in route metadata.
 - The company guide includes relevant website/CRM examples and workflow links. Its original publication date remains intact; the expanded guide has a visible updated date matching its metadata and sitemap date.
-- The build prerenders the public route inventory with unique titles/descriptions, canonicals, structured data and meaningful content. The sitemap includes portfolio images using Google's image-sitemap namespace. Private/admin routes remain excluded.
+- The build prerenders the public route inventory with unique titles/descriptions, canonicals, structured data and meaningful content. The sitemap includes portfolio images using Google's image-sitemap namespace. The former admin routes are removed and return the normal HTTP 404; no private shell is built or indexed.
 - Regression checks cover canonical consistency, visible/schema agreement, direct project links, complete image files, portfolio image sitemap entries and unsupported-rating exclusions.
 
 ## After deployment

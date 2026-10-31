@@ -18,9 +18,14 @@ try {
   const missing = await page.goto(`${origin}/a-page-that-does-not-exist`)
   assert.equal(missing.status(), 404)
   assert((await page.locator('main h1').textContent()).includes('doesn’t exist'))
+  for (const retired of ['/admin', '/hanova-portal-2026', '/api/send-email']) {
+    const response = await page.goto(`${origin}${retired}`)
+    assert.equal(response.status(), 404, `${retired} must return a real 404`)
+    assert((await page.locator('main h1').textContent()).includes('doesn’t exist'))
+  }
   const redirect = await context.request.get(`${origin}/blog`, { maxRedirects: 0 })
   assert.equal(redirect.status(), 308)
   assert.equal(redirect.headers().location, '/journal')
   await context.close()
-  console.log(`PASS: ${publicRoutes.length} production pages load meaningful headings and route metadata with JavaScript disabled; preview returns HTTP 404 and legacy HTTP 308.`)
+  console.log(`PASS: ${publicRoutes.length} production pages load meaningful headings and route metadata with JavaScript disabled; unknown and retired admin URLs return HTTP 404; legacy redirect returns HTTP 308.`)
 } finally { await browser.close() }
