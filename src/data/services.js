@@ -1,9 +1,11 @@
+import { serviceExperiences } from './serviceExperiences.js'
+
 const sharedFaqs = [
   { question: 'How are cost and delivery dates agreed?', answer: 'We review the requirements, integrations, available assets and review responsibilities before proposing a price and delivery plan. The website estimator is an illustrative planning tool, not a binding quotation or a promised delivery date.' },
   { question: 'What happens at handover?', answer: 'The proposal defines source and design access, documentation, account ownership, licensing and any training or support. Third-party subscriptions, maintenance and future feature work are identified separately rather than assumed to be included.' },
 ]
 
-export const services = [
+const coreServices = [
   {
     id: 'web-design', title: 'Web Design & Development', shortTitle: 'Web experiences', category: 'Design & engineering', tone: 'mint',
     headline: 'A better first impression. A clearer next step.',
@@ -24,7 +26,7 @@ export const services = [
     process: [['Map the journey', 'Identify the audience, content gaps and most important visitor actions.'], ['Design the system', 'Review key layouts and interaction states before expanding the page set.'], ['Build & connect', 'Implement responsive components and agreed content or form integrations.'], ['Test & hand over', 'Review devices, keyboard paths, metadata and publishing responsibilities.']],
     deliverables: ['An agreed sitemap and page scope', 'Responsive page templates and components', 'Configured content and enquiry paths in scope', 'A launch checklist with documented test conditions', 'Handover notes and agreed account access'],
     quality: [['Usability', 'Review navigation, form labels, keyboard focus and meaningful error states.'], ['Performance', 'Assess loading and layout stability using representative pages and stated test conditions.'], ['Discoverability', 'Check page titles, canonical URLs, crawlable content and redirect requirements.']],
-    stack: ['React', 'Next.js', 'Vite', 'Responsive CSS', 'CMS integrations'], cases: ['earthsync', 'crown'], planner: true, journal: 'future-of-web-dev',
+    stack: ['React', 'Next.js', 'Vite', 'Responsive CSS', 'CMS integrations'], cases: ['growtech-website', 'zozo'], planner: true, journal: 'future-of-web-dev',
     faqs: [
       { question: 'Can we update the website ourselves?', answer: 'Yes, where an editing workflow is part of the scope. We agree which content needs a CMS, who will publish it and what training or documentation is needed. Not every website requires the same editing system.' },
       { question: 'Do you redesign existing websites?', answer: 'Yes. We review the current pages, content, integrations and migration requirements before recommending changes. Retaining useful URLs and planning redirects are part of a considered redesign.' },
@@ -185,4 +187,12 @@ export const services = [
   },
 ]
 
+export const services = coreServices.map(service => {
+  const experience = serviceExperiences[service.id]
+  return {
+    ...service,
+    experience,
+    faqs: [{ question: `What types of projects does your ${service.title.toLowerCase()} service cover?`, answer: `Possible project types include ${experience.projects.map(([title]) => title.toLowerCase()).join(', ')}. We define the deliverables, dependencies and acceptance criteria in the proposal for your project.` }, ...service.faqs],
+  }
+})
 export const serviceById = Object.fromEntries(services.map(service => [service.id, service]))

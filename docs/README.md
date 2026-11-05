@@ -17,6 +17,7 @@
 
 ## Feature notes
 
+- [Service-page experience and image provenance](features/service-experiences.md)
 - [Aria assistant](features/aria-assistant.md)
 - [Building feature](features/building-feature.md)
 - [Stepsy product presentation](features/stepsy-product.md)

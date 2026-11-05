@@ -23,6 +23,17 @@ describe('Service journeys', () => {
     expect(container.querySelectorAll('.service-handover-sheet li')).toHaveLength(5)
     expect(container.querySelectorAll('.work-faq-list details')).toHaveLength(service.faqs.length)
     expect(container.querySelector('.service-visual')).toHaveClass(`service-visual--${service.id}`)
+    expect(container.querySelectorAll('.service-project-type')).toHaveLength(6)
+    expect(container.querySelectorAll('.service-problem')).toHaveLength(10)
+    expect(container.querySelectorAll('.service-engagement-grid article')).toHaveLength(3)
+    expect(container.querySelectorAll('.service-preparation-list li')).toHaveLength(4)
+    expect(container.querySelectorAll('.service-measurement-grid li')).toHaveLength(3)
+    expect(container.querySelector('.service-visual img')).toHaveAttribute('src', service.experience.image)
+    for (const [problem, solution, validation] of service.experience.problems) {
+      expect(container.textContent).toContain(problem)
+      expect(container.textContent).toContain(solution)
+      expect(container.textContent).toContain(validation)
+    }
     expect(container.querySelector('main')?.textContent || container.textContent).not.toMatch(/Timeline Reduced by ~35%|exactly what we deliver|Scoped .* aligned with your project requirements/)
     const link = screen.getByRole('link', { name: /Discuss your project/ })
     const url = new URL(link.href)

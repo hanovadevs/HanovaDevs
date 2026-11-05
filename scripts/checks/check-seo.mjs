@@ -104,6 +104,17 @@ for (const route of publicRoutes) {
     assert.equal(document.querySelectorAll('.work-faq-list details').length, service.faqs.length)
     for (const faq of service.faqs) assert(document.querySelector('main').textContent.includes(faq.answer), `${route}: visible FAQ answer`)
     assert.equal(document.querySelectorAll('.service-capabilities article').length, 4)
+    assert.equal(document.querySelectorAll('.service-project-type').length, 6)
+    assert.equal(document.querySelectorAll('.service-problem').length, 10)
+    assert.equal(document.querySelectorAll('.service-engagement-grid article').length, 3)
+    assert.equal(document.querySelectorAll('.service-preparation-list li').length, 4)
+    assert.equal(document.querySelectorAll('.service-measurement-grid li').length, 3)
+    assert.equal(document.querySelector('.service-visual img').getAttribute('src'), service.experience.image)
+    for (const [problem, solution, validation] of service.experience.problems) {
+      assert(document.querySelector('#service-problems').textContent.includes(problem), `${route}: crawlable problem`)
+      assert(document.querySelector('#service-problems').textContent.includes(solution), `${route}: crawlable solution`)
+      assert(document.querySelector('#service-problems').textContent.includes(validation), `${route}: crawlable validation`)
+    }
     assert(document.querySelector('main a[href*="source=service"]'), `${route}: contextual enquiry path`)
   }
   const study = caseStudies.find(item => item.path === route)
