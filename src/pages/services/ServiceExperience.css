@@ -19,7 +19,7 @@
 .service-visual__bar > span:first-child { letter-spacing: 4px; color: #75988d; }
 .service-visual__frame img { display: block; width: 100%; height: auto; }
 .service-visual--screen .service-visual__frame > a { display: block; padding: 15px; background: #fff; }
-.service-visual--screen .service-visual__frame img { aspect-ratio: 1.55; object-fit: cover; object-position: top; border: 1px solid #e1e7e5; border-radius: 7px; }
+.service-visual--screen .service-visual__frame img { object-fit: contain; border: 1px solid #e1e7e5; border-radius: 7px; }
 .service-visual--photo .service-visual__frame { border-radius: 24px 100px 24px 24px; }
 .service-visual--photo .service-visual__frame img { aspect-ratio: 1.28; object-fit: cover; }
 .service-visual figcaption { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .7rem; color: #35575c; padding: 18px 5px 0; line-height: 1.7; }
@@ -51,7 +51,7 @@
 .service-problems__intro { position: sticky; top: calc(var(--header-height) + 110px); }
 .service-problems__intro h2 { font-size: clamp(2rem, 3vw, 3.2rem); }
 .service-problems__intro > p { max-width: 390px; }
-.service-problems__index { display: block; margin-top: 55px; font-size: clamp(3rem, 6vw, 6.5rem); color: #cee0d6; line-height: 1; letter-spacing: -.07em; }
+.service-problems__index { display: block; margin-top: 55px; font-size: clamp(3rem, 6vw, 6.5rem); color: #627e70; line-height: 1; letter-spacing: -.07em; }
 .service-problem { border-bottom: 1px solid #c6d9ce; }
 .service-problem:first-child { border-top: 1px solid #c6d9ce; }
 .service-problem summary { display: grid; grid-template-columns: 30px 1fr 25px; gap: 18px; align-items: center; list-style: none; cursor: pointer; padding: 24px 8px; }
@@ -61,7 +61,7 @@
 .service-problem__toggle { width: 25px; height: 25px; text-align: center; color: #21665e; font-size: 1.3rem; line-height: 25px; transition: transform .2s; }
 .service-problem[open] .service-problem__toggle { transform: rotate(45deg); }
 .service-problem[open] summary h3 { color: #075c5e; font-weight: 600; }
-.service-problem__answer { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 0 8px 26px 56px; }
+.service-problem__answer { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 8px 8px 26px 56px; }
 .service-problem__answer > div + div { border-left: 1px solid #c9dbd0; padding-left: 22px; }
 .service-problem__answer h4 { font: 600 .69rem/1.5 var(--font-body, sans-serif); letter-spacing: .07em; text-transform: uppercase; color: #24584f; margin: 0 0 12px; }
 .service-problem__answer p { font-size: .85rem; margin: 0; line-height: 1.85; color: #405d60; }
@@ -129,6 +129,7 @@
   .service-experience .service-process-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
+  .service-hero-line { display: none; }
   .service-experience .service-editorial-hero { padding-top: calc(var(--header-height) + 18px); }
   .service-experience .service-editorial-hero__grid { grid-template-columns: 1fr; gap: 10px; padding-bottom: 28px; }
   .service-experience .service-editorial-hero h1 { font-size: clamp(2.65rem, 8vw, 4rem); max-width: 650px; }

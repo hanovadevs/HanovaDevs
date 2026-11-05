@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function ServiceVisual({ service }) {
   const experience = service.experience
   const photo = experience.imageKind === 'photo'
-  const visual = <img src={experience.image} srcSet={photo ? `${experience.image.replace('-1280.', '-640.')} 640w, ${experience.image} 1280w` : undefined} sizes={photo ? '(max-width: 760px) 92vw, 48vw' : undefined} alt={experience.imageAlt} width={photo ? 1280 : 1600} height={photo ? 853 : 1000} fetchPriority="high" decoding="async" />
+  const visual = <img src={experience.image} srcSet={photo ? `${experience.image.replace('-1280.', '-640.')} 640w, ${experience.image} 1280w` : undefined} sizes={photo ? '(max-width: 760px) 92vw, 48vw' : undefined} alt={experience.imageAlt} width={photo ? 1280 : experience.imageWidth} height={photo ? 853 : experience.imageHeight} fetchPriority="high" decoding="async" />
   return <figure className={`service-visual service-visual--${service.id} service-visual--${experience.imageKind}`}>
     <div className="service-visual__halo" aria-hidden="true" />
     <div className="service-visual__frame">

@@ -5,7 +5,7 @@ export const serviceExperiences = {
   'web-design': {
     promise: 'Make your website your clearest introduction.',
     image: '/case-studies/growtech-website-desktop.webp', imageAlt: 'Delivered GrowTech Advertising website with its service proposition and account-review journey',
-    imageLabel: 'In practice / GrowTech Advertising', imagePath: '/projects/growtech-website', imageKind: 'screen',
+    imageLabel: 'In practice / GrowTech Advertising', imagePath: '/projects/growtech-website', imageKind: 'screen', imageWidth: 1600, imageHeight: 789,
     editorial: 'automation-workshop', editorialAlt: 'Illustrative planning workspace with paper journey cards and a laptop',
     projects: [
       ['Company & service websites', 'Explain the offer, answer buyer questions and guide a qualified enquiry.', 'Service pages · About · Contact'],
@@ -38,7 +38,7 @@ export const serviceExperiences = {
   'shopify-development': {
     promise: 'A storefront that makes choosing feel natural.',
     image: '/case-studies/earthsync-desktop.webp', imageAlt: 'EarthSync Essentials storefront showing the brand and product-discovery experience',
-    imageLabel: 'Related commerce work / EarthSync Essentials', imagePath: '/projects/earthsync', imageKind: 'screen',
+    imageLabel: 'Related commerce work / EarthSync Essentials', imagePath: '/projects/earthsync', imageKind: 'screen', imageWidth: 1440, imageHeight: 1000,
     editorial: 'identity-studio', editorialAlt: 'Illustrative brand planning workspace with paper and colour samples',
     projects: [
       ['New Shopify stores', 'Bring catalogue, brand, navigation and essential store settings into one launch.', 'Theme sections · Products · Collections'],
@@ -71,7 +71,7 @@ export const serviceExperiences = {
   'software-development': {
     promise: 'Bring scattered work into one considered system.',
     image: '/case-studies/growtech-crm-desktop.webp', imageAlt: 'GrowTech Advertising CRM with operational overview, daily planning and team-workspace navigation',
-    imageLabel: 'Delivered workspace / GrowTech Advertising CRM', imagePath: '/projects/growtech-crm', imageKind: 'screen',
+    imageLabel: 'Delivered workspace / GrowTech Advertising CRM', imagePath: '/projects/growtech-crm', imageKind: 'screen', imageWidth: 1600, imageHeight: 787,
     editorial: 'automation-workshop', editorialAlt: 'Illustrative workflow mapping with connected paper task cards',
     projects: [
       ['Custom CRM workspaces', 'Organise the client lifecycle and the work around each account.', 'Client records · Follow-ups · Activity views'],

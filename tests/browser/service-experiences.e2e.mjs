@@ -7,6 +7,13 @@ test.beforeEach(async ({ context }) => {
 
 for (const service of services) test(`${service.id}: buyer guidance, native problem disclosure and specific project enquiry`, async ({ page }) => {
   await page.goto(`/services/${service.id}`)
+  await page.getByRole('navigation', { name: 'On this service page' }).getByRole('link', { name: 'Project types', exact: true }).click()
+  await expect.poll(async () => {
+    const title = await page.locator('#service-projects-title').boundingBox()
+    const header = await page.locator('#main-nav').boundingBox()
+    const nav = await page.locator('.work-jump-nav').boundingBox()
+    return title.y >= header.height + nav.height
+  }).toBe(true)
   await expect(page.locator('.service-project-type')).toHaveCount(6)
   const problems = page.locator('.service-problem')
   await expect(problems).toHaveCount(10)
