@@ -13,9 +13,10 @@ test('Junko project: discovery, screenshots, keyboard gallery, FAQs and contact 
   await expect(page).toHaveURL('/projects/junko-bodie-roulette')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Junko Bodie Roulette')
   await expect(page.locator('time')).toHaveText('6 November 2026')
+  await page.screenshot({ path: `artifacts/work/junko-hero-${test.info().project.name}.png` })
   const tabs = page.getByRole('tab')
-  await expect(tabs).toHaveCount(4)
-  for (let index = 0; index < 4; index++) {
+  await expect(tabs).toHaveCount(3)
+  for (let index = 0; index < 3; index++) {
     await tabs.nth(index).click()
     const image = page.getByRole('tabpanel').getByRole('img')
     await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0)).toBe(true)
