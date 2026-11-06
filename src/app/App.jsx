@@ -36,8 +36,9 @@ const NotFound = lazy(() => import('../pages/errors/NotFound'))
 // Vite removes this module and its fictional fixtures from production builds.
 const ReviewCardPreview = import.meta.env.DEV ? lazy(() => import('../pages/design/ReviewCardPreview')) : null
 
-function App() {
+function App({ initialHome = null }) {
   const location = useLocation()
+  const HomePage = initialHome || Home
 
   useEffect(() => {
     const selector = '.reveal, .reveal-up, .reveal-down, .reveal-left, .reveal-right, .reveal-scale'
@@ -87,7 +88,7 @@ function App() {
       <main>
         <Suspense fallback={<div className="route-loading" role="status">Loading…</div>}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/about" element={<About />} />
@@ -123,7 +124,7 @@ function App() {
         </Suspense>
       </main>
       <Footer />
-      <AIChatbot />
+      <Suspense fallback={null}><AIChatbot /></Suspense>
       <SiteAnalytics />
       </ErrorBoundary>
     </>

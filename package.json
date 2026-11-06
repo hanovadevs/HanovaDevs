@@ -8,6 +8,7 @@
     "build": "node scripts/assets/prepare-hero-assets.mjs && node scripts/assets/prepare-stepsy-assets.mjs && node scripts/assets/prepare-service-assets.mjs && vite build && vite build --ssr src/app/entry-server.jsx --outDir dist-ssr && node scripts/build/prerender.mjs",
     "test:seo": "node scripts/checks/check-seo.mjs",
     "test:structure": "node scripts/checks/check-structure.mjs",
+    "test:hero:startup": "node scripts/checks/check-hero-startup.mjs",
     "test:reviews:production": "node scripts/checks/check-review-preview.mjs",
     "test:prerender": "node scripts/checks/check-prerendered-browser.mjs",
     "lint": "eslint .",
