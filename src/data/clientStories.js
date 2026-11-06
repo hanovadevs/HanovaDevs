@@ -1,7 +1,7 @@
 import { caseStudyById, caseStudies } from './caseStudies.js'
 import { company } from './company.js'
 
-export const clientStoriesUpdatedAt = '2026-10-31'
+export const clientStoriesUpdatedAt = '2026-11-06'
 export const clientStories = [
   {
     id: 'growtech', title: 'GrowTech Advertising', category: 'Agency & operations', tone: 'mint',
@@ -59,6 +59,13 @@ export const clientStories = [
     intro: 'An editorial digital storefront that gives a fashion brand room to express its own identity.',
     focus: 'Collection imagery, brand storytelling and customer information support the journey from discovering the label to exploring its clothing.',
     delivered: ['Fashion storefront', 'Collection discovery', 'Brand storytelling'],
+  },
+  {
+    id: 'junko-bodie-roulette', title: 'Junko Bodie Roulette', category: 'Interactive platforms', tone: 'sand', projectIds: ['junko-bodie-roulette'],
+    owner: null, role: null,
+    intro: 'An interactive learning experience with a clear play-money purpose.',
+    focus: 'The platform connects a simulator introduction, probability calculator and educational reading. The website identifies its audience as adults 21+ and does not offer real-money wagering or cash prizes.',
+    delivered: ['Interactive learning website', 'Public odds calculator', 'Educational content'],
   },
 ].map(story => ({ ...story, projects: story.projectIds.map(id => caseStudyById[id]), image: caseStudyById[story.projectIds[0]].cardImage }))
 

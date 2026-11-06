@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../../components/shared/SEO'
+import ReviewCard from '../../components/reviews/ReviewCard'
+import { approvedReviews } from '../../data/approvedReviews'
 import { company } from '../../data/company'
 import { caseStudies } from '../../data/caseStudies'
 import { clientStories, clientStoryFilters, createReviewEmail } from '../../data/clientStories'
@@ -54,12 +56,7 @@ export default function Reviews() {
               <h3>{story.title}</h3>
               {story.owner && <p className="review-story__person"><strong>{story.owner}</strong><span>{story.role}</span></p>}
               <p className="review-story__intro">{story.intro}</p>
-              {story.review && <figure className="review-story__review">
-                <div className="review-story__review-heading"><span>Client review</span><span aria-label={`${story.review.rating} out of 5`}>{story.review.rating} / 5</span></div>
-                <blockquote><p>{story.review.excerpt}</p></blockquote>
-                <figcaption>{story.owner} · {story.role}, {story.title}</figcaption>
-                <details><summary>Read Affan’s full review <span aria-hidden="true">+</span></summary><h4>{story.review.title}</h4><blockquote>{story.review.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</blockquote></details>
-              </figure>}
+              {story.review && <ReviewCard review={approvedReviews.find(review => review.id === story.id)} className="review-story__review" showFullReview />}
               {story.feedback && <aside className="review-story__feedback" aria-label={`${story.title} feedback summary`}><span>Feedback snapshot</span><p>{story.feedback}</p></aside>}
               <details className="review-story__detail"><summary>What we worked on <span aria-hidden="true">+</span></summary><p>{story.focus}</p><ul>{story.delivered.map(item => <li key={item}>{item}</li>)}</ul></details>
               <div className="review-story__projects"><span>{story.projects.length > 1 ? 'Explore the projects' : 'Inside the project'}</span>{story.projects.map(project => <Link key={project.id} to={project.path} aria-label={`${project.title} case study`}><span>{project.title}</span><span aria-hidden="true">↗</span></Link>)}</div>

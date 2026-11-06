@@ -18,7 +18,8 @@ export const routeModifiedAt = route => {
   if (route === '/news') return newsUpdatedAt
   if (route === '/reviews') return clientStoriesUpdatedAt
   if (route === '/services' || route.startsWith('/services/')) return servicesReviewedAt
-  if (route === '/' || route === '/projects' || route.startsWith('/projects/')) return '2026-10-30'
+  if (route === '/' || route === '/projects') return '2026-11-06'
+  if (route.startsWith('/projects/')) return caseStudies.find(study => study.path === route)?.modifiedAt || '2026-10-30'
   if (route.startsWith('/journal/')) return journalPosts.find(post => route === `/journal/${post.slug}`)?.modifiedAt || null
   return route === '/contact' ? '2026-10-17' : null
 }

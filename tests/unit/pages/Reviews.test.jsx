@@ -19,13 +19,13 @@ describe('Client story collection', () => {
     expect(clientStories.find(story => story.id === 'zozo').owner).toBeNull()
     expect(routeModifiedAt('/reviews')).toBe(clientStoriesUpdatedAt)
   })
-  it('renders six minimal stories and collection metadata instead of fabricated review ratings', () => {
+  it('renders every project story and collection metadata instead of fabricated review ratings', () => {
     const { container } = show()
-    expect(container.querySelectorAll('.review-story')).toHaveLength(6)
+    expect(container.querySelectorAll('.review-story')).toHaveLength(clientStories.length)
     expect(container.querySelectorAll('.review-story:not(#story-growtech) blockquote')).toHaveLength(0)
     expect(container.querySelector('#story-growtech blockquote')).toHaveTextContent('We had an excellent experience')
     const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]').textContent)['@graph']
-    expect(graph.find(node => node['@type'] === 'ItemList').numberOfItems).toBe(8)
+    expect(graph.find(node => node['@type'] === 'ItemList').numberOfItems).toBe(caseStudies.length)
     expect(JSON.stringify(graph)).not.toMatch(/aggregateRating|reviewRating|ratingValue|"@type":"Review"/)
     for (const study of caseStudies) expect(screen.getByRole('link', { name: `${study.title} case study`, exact: true })).toHaveAttribute('href', study.path)
   })

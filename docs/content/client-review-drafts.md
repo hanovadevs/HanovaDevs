@@ -1,5 +1,17 @@
 # Client review drafts — not approved for publication
 
+## Review-card studio — 6 November 2026
+
+Run `npm.cmd run dev`, then open `http://localhost:5173/design/reviews` (use the port Vite prints if different). This development-only page holds the 20 names and draft reviews supplied by the company owner after requesting invented reviews. They are unverified sample attributions, not established client endorsements; each card retains its sample label and has no rating. It is not an authenticated/admin page. It is not linked in public navigation, is marked noindex/nofollow, and Vite removes its module and fixtures from production. The built site returns a real 404 at this path.
+
+- Filter by theme, open **Edit sample**, and replace the draft text to preview it immediately. Edits are memory-only and disappear on refresh.
+- **Download all 20 drafts** exports every card, including edited/filtered-out ones, as JSON. Every record remains `sample: true` and `approvedForPublication: false`. Downloading does not publish or save into the repo.
+- Editable source: `src/pages/design/reviewSamples.js`. Replace wording with actual feedback; a proposed draft can be sent to a client for correction and express approval, but is not itself evidence of their experience.
+- Public cards use `src/components/reviews/ReviewCard.jsx`. The homepage spotlight and Reviews page use the same typography, curved shapes and source attribution. `src/data/approvedReviews.js` derives only the existing supplied review from `clientStories.js`. Repeated placements of Affan’s review are excerpts from **one review**, not multiple independent reviews.
+- To publish a new review, first obtain the real wording, exact attribution and permission. Add the approved feedback to the corresponding story in `clientStories.js` (or explicitly extend the public registry for a new client), retaining its approval evidence separately. Do not import the design fixture module into any public page or registry. Do not infer a rating from positive wording.
+
+After `npm.cmd run build`, run `npm.cmd run test:reviews:production`. Optionally pass a local production-preview base URL to also check the 404: `npm.cmd run test:reviews:production -- http://127.0.0.1:42877`. Unit and browser tests cover draft labels, filtering, live edits, export flags, mobile layout, keyboard operation and approved-review attribution.
+
 ## Live-page refresh — 31 October 2026
 
 The reviews page now groups eight case studies into six client stories. The company owner confirmed Affan Mughal as GrowTech Advertising’s Founder, then supplied his complete five-star review for publication. The GrowTech card publishes that review’s excerpt and full text, with paragraph formatting preserved and the original emphasis markers removed. His praise is attributed opinion, not an independently measured productivity result. No Review or AggregateRating schema is added to the agency’s self-hosted client page. Crown’s website and CRM share another story with a labelled, company-relayed positive feedback summary, not an invented quotation. Zozo is included as a discovery/comparison platform with no invented owner name. All six stories link to the actual case studies. The feedback form prepares a mailto draft; it does not send mail or publish reviews automatically.

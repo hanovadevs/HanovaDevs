@@ -336,6 +336,10 @@
       "dest": "/journal/ugc-ads-conversion-science/index.html"
     },
     {
+      "src": "^/projects/junko-bodie-roulette/?$",
+      "dest": "/projects/junko-bodie-roulette/index.html"
+    },
+    {
       "handle": "filesystem"
     },
     {

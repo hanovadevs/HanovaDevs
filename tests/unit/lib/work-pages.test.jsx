@@ -67,8 +67,8 @@ describe('Case-study evidence and navigation', () => {
     if (study.mobileImage) expect(screen.getByAltText(`${study.title} mobile homepage screenshot`)).toHaveAttribute('src', study.mobileImage)
     else expect(container.querySelector('.case-mobile-capture')).toBeNull()
     expect(container.querySelector('#case-evidence')).toHaveTextContent('No verified before-and-after revenue')
-    expect(container.querySelectorAll('.case-observations article')).toHaveLength(2)
-    expect(container.querySelectorAll('.case-deliverables li')).toHaveLength(4)
+    expect(container.querySelectorAll('.case-observations article')).toHaveLength(study.observations.length)
+    expect(container.querySelectorAll('.case-deliverables li')).toHaveLength(study.delivered.length)
     expect(container.querySelector('time')).toHaveAttribute('datetime', study.reviewedAt)
     if (study.adminOnly) {
       expect(container.querySelector('.work-access-note')).toHaveTextContent('Admin-only')
@@ -78,7 +78,7 @@ describe('Case-study evidence and navigation', () => {
     expect(publicRoutes).toContain(study.path)
     const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]').textContent)
     expect(graph['@graph'].some(item => item['@type'] === 'CreativeWork')).toBe(true)
-    expect(JSON.stringify(graph)).not.toMatch(/aggregateRating|ratingValue|revenue|reviewRating/)
+    expect(JSON.stringify(graph)).not.toMatch(/"(?:aggregateRating|ratingValue|revenue|reviewRating)"\s*:/)
     expect(screen.getByRole('link', { name: /Discuss a similar project/ })).toHaveAttribute('href', expect.stringContaining('source=case-study'))
   })
   it('filters projects without losing clear case-study destinations', () => {

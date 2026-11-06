@@ -40,17 +40,9 @@
 .review-story__feedback { border-left: 2px solid #a8c8ba; padding-left: 15px; margin-bottom: 20px; }
 .review-story__feedback > span { font-size: .65rem; font-weight: 600; color: #285b54; }
 .review-story__feedback p { font-size: .77rem; margin: 6px 0 0; }
-.review-story__review { margin: 24px 0; padding: 20px; background: #f1f7f3; border: 1px solid #d8e5dc; border-radius: 16px 28px 16px 16px; }
-.review-story__review-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: #23584d; font: 600 .66rem/1.5 var(--font-body); text-transform: uppercase; letter-spacing: .06em; }
-.review-story__review-heading > span:last-child { padding: 5px 8px; border: 1px solid #bfd7c9; border-radius: 20px; white-space: nowrap; }
-.review-story__review blockquote { margin: 14px 0; padding: 0; border: 0; }
-.review-story__review blockquote p { font-size: .88rem; color: #294e4b; line-height: 1.85; }
-.review-story__review figcaption { color: #47645d; font-size: .7rem; line-height: 1.7; }
-.review-story__review details { border-top: 1px solid #cedfd4; margin-top: 16px; padding-top: 5px; }
-.review-story__review summary { min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; font-size: .74rem; font-weight: 600; color: #096d68; list-style: none; }
-.review-story__review summary::-webkit-details-marker { display: none; }.review-story__review details[open] summary > span { transform: rotate(45deg); }
-.review-story__review h4 { font: 600 .93rem/1.6 var(--font-body); color: #183c3d; margin-top: 12px; }
-.review-story__review details blockquote p { font-size: .81rem; margin-top: 14px; }
+.review-story__review { margin: 24px 0; padding: 24px; border-top-right-radius: 40px; }
+.review-story__review blockquote p { font-size: .94rem; }
+.review-story__review .testimonial-card__full blockquote p { font-size: .84rem; }
 .review-story__detail { border-block: 1px solid #e0e8e2; padding-block: 4px; }
 .review-story__detail summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 44px; font-size: .78rem; font-weight: 600; color: #31585b; cursor: pointer; list-style: none; }
 .review-story__detail summary::-webkit-details-marker { display: none; }.review-story__detail summary > span { font-size: 20px; font-weight: 400; }.review-story__detail[open] summary > span { transform: rotate(45deg); }

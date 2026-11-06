@@ -1,3 +1,5 @@
+import { junkoProject } from './junkoProject.js'
+
 const screenshot = id => `/case-studies/${id}-desktop.webp`
 
 // Delivery context and screenshots supplied by HanovaDevs, 30 October 2026.
@@ -104,4 +106,5 @@ export const featuredProjects = [
       { question: 'What does this case study demonstrate?', answer: 'It documents the delivered research interface using six company-supplied screenshots: the homepage, phone catalogue, EV catalogue, brand directory, comparison view and device detail page. It does not claim independently verified prices, conversion improvements or sales results.' },
     ],
   },
-].map(project => ({ ...project, featured: true, path: `/projects/${project.id}`, reviewedAt: '2026-10-30', evidenceLabel: 'Company-supplied screenshot', imageAlt: `${project.title} ${project.adminOnly ? 'administrative dashboard' : 'homepage'} screenshot` }))
+  junkoProject,
+].map(project => ({ ...project, featured: true, path: `/projects/${project.id}`, reviewedAt: project.reviewedAt || '2026-10-30', evidenceLabel: project.evidenceLabel || 'Company-supplied screenshot', imageAlt: project.imageAlt || `${project.title} ${project.adminOnly ? 'administrative dashboard' : 'homepage'} screenshot` }))

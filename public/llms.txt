@@ -14,6 +14,7 @@
 - [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
 
 ## Work and services
+- [Junko Bodie Roulette case study](https://www.hanovadevs.com/projects/junko-bodie-roulette): Delivered by HanovaDevs. An adult (21+) educational play-money simulator platform with a public odds calculator and learning guides. No real-money wagering or cash prizes. Public screenshots reviewed November 6, 2026; no client testimonial or measured business-growth result is asserted.
 - [Services](https://www.hanovadevs.com/services): Scope of available services.
 - [Web design and development](https://www.hanovadevs.com/services/web-design): Audience-led websites, responsive interfaces, content and integrations.
 - [Shopify development](https://www.hanovadevs.com/services/shopify-development): Storefronts, themes, catalogue planning and scoped integrations. Platform capabilities and third-party fees are agreed before delivery.
@@ -37,7 +38,7 @@ Case-study interface evidence was reviewed on October 17, 2026. Screenshots docu
   - [Products and inventory](https://www.hanovadevs.com/projects/crown-crm/inventory)
   - [Transactions and financial records](https://www.hanovadevs.com/projects/crown-crm/transactions)
 These additional project screenshots were supplied and reviewed on October 30, 2026. Workflow descriptions document visible interfaces, not verified backend execution, access-control enforcement, AI accuracy or accounting reconciliation. Owner feedback is a positive overall summary relayed by HanovaDevs, not a direct client quotation or star rating.
-- [Client stories and reviews](https://www.hanovadevs.com/reviews): Refreshed October 31, 2026. Six client stories covering eight case studies. GrowTech Advertising’s Founder, Affan Mughal, supplied a five-star review of its website and agency-management platform; the page includes an excerpt and full review. His comments reflect his experience, not independent performance measurements. Crown’s website and CRM share a story with a separately labelled company-relayed feedback summary. Zozo is a research/comparison platform, not ecommerce. No other direct quotes or ratings are invented. The feedback form prepares an email draft for the visitor to send; it does not automatically send or publish feedback.
+- [Client stories and reviews](https://www.hanovadevs.com/reviews): Seven client project stories covering nine case studies, including Junko Bodie Roulette, as of November 6, 2026. GrowTech Advertising’s Founder, Affan Mughal, supplied a five-star review of its website and agency-management platform; the page includes an excerpt and full review. His comments reflect his experience, not independent performance measurements. Crown’s website and CRM share a story with a separately labelled company-relayed feedback summary. Zozo is a research/comparison platform, not ecommerce. No other direct quotes or ratings are invented. The feedback form prepares an email draft for the visitor to send; it does not automatically send or publish feedback.
 - [Technology approach](https://www.hanovadevs.com/stack): Tools selected according to requirements.
 - [Estimator](https://www.hanovadevs.com/calculator): Illustrative planning estimates, not binding quotations.
 

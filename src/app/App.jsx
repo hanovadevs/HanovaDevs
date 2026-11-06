@@ -33,6 +33,8 @@ const PrivacyPolicy = lazy(() => import('../pages/legal/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('../pages/legal/TermsOfService'))
 const AIChatbot = lazy(() => import('../components/assistant/AIChatbot'))
 const NotFound = lazy(() => import('../pages/errors/NotFound'))
+// Vite removes this module and its fictional fixtures from production builds.
+const ReviewCardPreview = import.meta.env.DEV ? lazy(() => import('../pages/design/ReviewCardPreview')) : null
 
 function App() {
   const location = useLocation()
@@ -96,6 +98,7 @@ function App() {
           <Route path="/projects/:id" element={<CaseStudy />} />
           <Route path="/projects/:id/:moduleId" element={<ProjectWorkflow />} />
           <Route path="/reviews" element={<Reviews />} />
+          {import.meta.env.DEV && <Route path="/design/reviews" element={<ReviewCardPreview />} />}
           <Route path="/products" element={<Products />} />
           <Route path="/products/omnai" element={<OmnaiDetail />} />
           <Route path="/products/eunoia" element={<EunoiaDetail />} />

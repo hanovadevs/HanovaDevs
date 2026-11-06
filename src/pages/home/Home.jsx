@@ -4,6 +4,7 @@ import SEO from '../../components/shared/SEO'
 import ProgramSpotlight from '../../components/company/ProgramSpotlight'
 import BuildingFeature from '../../components/company/BuildingFeature'
 import TrustLegalSection from '../../components/company/TrustLegalSection'
+import ReviewSpotlight from '../../components/reviews/ReviewSpotlight'
 import { journalPosts } from '../../data/journal'
 import { company } from '../../data/company'
 import { caseStudies } from '../../data/caseStudies'
@@ -558,6 +559,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ReviewSpotlight />
 
       {/* ===== TRUST & TRANSPARENCY (LEGAL SYSTEM) ===== */}
       <TrustLegalSection />
