@@ -24,7 +24,7 @@ try {
     console.log(JSON.stringify({ route, title: await page.title(), heading: await page.locator('h1').first().innerText() }))
     const capture = await page.screenshot({ path: `${source}/${name}.png` })
     const asset = sharp(capture)
-    if (name === 'calculator') asset.extract({ left: 720, top: 80, width: 680, height: 850 })
+    if (name === 'calculator') asset.extract({ left: 720, top: 210, width: 680, height: 790 })
     await asset.webp({ quality: 85 }).toFile(`${output}/junko-bodie-roulette-${name}.webp`)
     if (name === 'desktop') {
       await sharp(capture).resize(800).webp({ quality: 83 }).toFile(`${output}/junko-bodie-roulette-card.webp`)
