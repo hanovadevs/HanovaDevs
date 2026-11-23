@@ -157,11 +157,11 @@ export default function Home() {
       <section className="hero" id="hero">
         <div className="hero__glass-bg" aria-hidden="true">
           <img
-            src="/hero-scene-1774.webp"
-            srcSet="/hero-scene-960.webp 960w, /hero-scene-1774.webp 1774w"
+            src="/hero-ecosystem-1672.webp"
+            srcSet="/hero-ecosystem-960.webp 960w, /hero-ecosystem-1672.webp 1672w"
             sizes="100vw"
-            width="1774"
-            height="887"
+            width="1672"
+            height="941"
             fetchPriority="high"
             decoding="async"
             alt=""

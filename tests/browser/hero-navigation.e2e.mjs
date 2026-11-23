@@ -14,7 +14,7 @@ async function auditHeader(page) {
   expect(issues).toEqual([])
 }
 
-test('hero restores the background image, centered two-line title and working actions', async ({ page }) => {
+test('hero uses the ecosystem background, left-aligned two-line title and working actions', async ({ page }) => {
   const errors = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -22,12 +22,13 @@ test('hero restores the background image, centered two-line title and working ac
   await expect(hero.locator('h1')).toBeVisible()
   await page.evaluate(() => document.fonts.ready)
   await expect.poll(() => hero.locator('img').evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true)
-  expect(await hero.locator('img').getAttribute('src')).toContain('hero-scene-1774')
+  expect(await hero.locator('img').getAttribute('src')).toContain('hero-ecosystem-1672')
   await expect(hero.locator('h1')).toHaveText('Web platforms and growth systems.')
   await expect(hero.locator('.hero__subheadline')).toHaveText('We help ecommerce and service businesses launch faster, automate repetitive work, and turn more visitors into customers.')
   const copy = await hero.locator('.hero__text-panel').boundingBox()
-  expect(Math.abs(copy.x + copy.width / 2 - page.viewportSize().width / 2)).toBeLessThanOrEqual(1)
-  expect(await hero.locator('.hero__text-panel').evaluate(node => getComputedStyle(node).textAlign)).toBe('center')
+  const contentLeft = await hero.locator('.hero__content').evaluate(node => node.getBoundingClientRect().left + parseFloat(getComputedStyle(node).paddingLeft))
+  expect(Math.abs(copy.x - contentLeft)).toBeLessThanOrEqual(1)
+  expect(await hero.locator('.hero__text-panel').evaluate(node => getComputedStyle(node).textAlign)).toBe('left')
   expect(await hero.locator('.hero__glass-bg').evaluate(node => getComputedStyle(node).position)).toBe('absolute')
   expect(await hero.locator('.hero__glass-bg').evaluate(node => getComputedStyle(node, '::after').content)).toBe('none')
   await expect(hero.locator('.hero__scroll-hint')).toHaveCount(0)

@@ -60,7 +60,7 @@ for (const route of publicRoutes) {
   }
   assert(!JSON.stringify(schemas).match(/aggregateRating|ratingValue|streetAddress|"award"/), `${route}: evidence-safe schema`)
   if (route === '/') {
-    assert.equal(document.querySelector('.hero__glass-img').getAttribute('src'), '/hero-scene-1774.webp')
+    assert.equal(document.querySelector('.hero__glass-img').getAttribute('src'), '/hero-ecosystem-1672.webp')
     assert.equal(document.querySelector('.hero__glass-img').getAttribute('fetchpriority'), 'high')
     assert.equal(document.querySelectorAll('.hero__headline-line').length, 2)
     assert.equal(document.querySelectorAll('.home-answers details').length, homeAnswers.length)

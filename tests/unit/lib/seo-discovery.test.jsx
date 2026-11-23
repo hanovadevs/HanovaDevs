@@ -26,7 +26,7 @@ describe('Evidence-led SEO and project discovery', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Web platforms and growth systems.')
     expect(container.querySelector('.hero__text-panel img')).toBeNull()
     expect(container.querySelector('.hero__visual')).toBeNull()
-    expect(container.querySelector('.hero__glass-bg img')).toHaveAttribute('src', '/hero-scene-1774.webp')
+    expect(container.querySelector('.hero__glass-bg img')).toHaveAttribute('src', '/hero-ecosystem-1672.webp')
     const faqs = container.querySelectorAll('.home-answers details')
     expect(faqs).toHaveLength(homeAnswers.length)
     for (const item of homeAnswers) expect(container.querySelector('.home-answers')).toHaveTextContent(item.answer)
