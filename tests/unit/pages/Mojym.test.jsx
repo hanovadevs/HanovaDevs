@@ -8,10 +8,24 @@ import { organizationGraph } from '../../../src/lib/seo'
 import { publicRoutes } from '../../../src/data/routes'
 import { mojym } from '../../../src/data/mojym'
 import { mojymGuide } from '../../../src/data/mojymGuide'
+import { mojymReviews } from '../../../src/data/mojymReviews'
 
 afterEach(cleanup)
 const show = Component => render(<HelmetProvider><MemoryRouter><Component /></MemoryRouter></HelmetProvider>)
 describe('Mojym and leadership publication', () => {
+  it('preserves all 20 supplied reviews without adding ratings or verification claims', () => {
+    const { container } = show(MojymDetail)
+    const section = container.querySelector('#owner-reviews')
+    expect(mojymReviews).toHaveLength(20)
+    expect(section.querySelectorAll('figure')).toHaveLength(20)
+    expect(section.querySelectorAll('.mj-owner-stories__more figure')).toHaveLength(14)
+    for (const review of mojymReviews) {
+      expect(section.textContent).toContain(review.author)
+      expect(section.textContent).toContain(review.quote)
+    }
+    expect(section.textContent).not.toMatch(/verified|five stars|5\s*\/\s*5/i)
+    expect(container.querySelector('script[type="application/ld+json"]').textContent).not.toMatch(/aggregateRating|ratingValue/)
+  })
   it('uses the owner-confirmed completion status consistently', () => {
     expect(mojym.status).toBe('Complete product')
     expect(mojymGuide).not.toMatch(/still being developed|remain unfinished/)

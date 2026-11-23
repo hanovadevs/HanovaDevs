@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../../components/shared/SEO'
 import { mojym } from '../../data/mojym'
+import MojymReviews from '../../components/products/MojymReviews'
 import './Mojym.css'
 
 export default function MojymDetail() {
@@ -19,6 +20,7 @@ export default function MojymDetail() {
     <section className="mj-workspace"><div className="container"><div className="mj-section-heading"><div><p className="mj-eyebrow">Inside the workspace</p><h2>Built around your working day.</h2></div><Link to="/products/mojym/how-to-use">Read the practical guide →</Link></div><div className="mj-selector" aria-label="Choose an interface view">{mojym.screenshots.map((item, index) => <button key={item.src} aria-pressed={active === index} onClick={() => setActive(index)}>{item.title}</button>)}</div><figure className="mj-screen"><img src={shot.src} width="1440" height="750" alt={`Mojym: ${shot.title}`} loading="lazy" /><figcaption aria-live="polite"><strong>{shot.title}</strong><p>{shot.description}</p><small>Supplied walkthrough screens; displayed figures are not customer outcomes.</small></figcaption></figure></div></section>
     <section className="container mj-capabilities"><p className="mj-eyebrow">Connected, by design</p><h2>Useful on their own.<br />Better working together.</h2><div className="mj-grid">{mojym.features.map(([title, text], index) => <article key={title}><span className="mj-number">0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <section className="container mj-fit"><div><p className="mj-eyebrow">Right information. Right people.</p><h2>A workspace that respects responsibilities.</h2><p>Owners, receptionists, managers, accountants and trainers work within their permitted roles and branches. Operational profiles and staff logins remain separate.</p><p>Use it on desktop, tablet or phone. The responsive web interface adapts navigation, records and forms to the available space.</p></div><aside><h3>Clear scope. Connected workflows.</h3><p>Payments and salary payments are recorded, not transferred. Owner fee reminders do not automatically message members.</p><p>Dedicated reports, enquiries/trials and CSV import/export are included. Online payment collection, member self-service and biometric integrations are outside the current product scope.</p><p>Ask about current availability, setup and commercial terms in your walkthrough.</p></aside></section>
+    <MojymReviews />
     <section className="container mj-faq"><p className="mj-eyebrow">Before you begin</p><h2>A few useful answers.</h2>{mojym.faqs.map(faq => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>
     <section className="mj-end container"><h2>See how Mojym fits your gym.</h2><p>Walk through the member journey, fee tracking and daily operations with our team.</p><div className="mj-actions"><Link className="btn btn-primary" to="/contact?source=mojym&service=Mojym&details=Guided%20walkthrough">Request a walkthrough</Link><Link to="/products/mojym/how-to-use">How to use Mojym →</Link></div></section>
   </div>
