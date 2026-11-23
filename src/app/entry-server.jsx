@@ -17,6 +17,8 @@ import ProjectWorkflow from '../pages/projects/ProjectWorkflow'
 import Reviews from '../pages/reviews/Reviews'
 import Products from '../pages/products/Products'
 import EunoiaDetail from '../pages/products/EunoiaDetail'
+import MojymDetail from '../pages/products/MojymDetail'
+import MojymGuide from '../pages/products/MojymGuide'
 import StepsyDetail from '../pages/products/StepsyDetail'
 import OmnaiDetail from '../pages/products/OmnaiDetail'
 import EunoiaPrivacyPolicy from '../pages/legal/EunoiaPrivacyPolicy'
@@ -43,6 +45,7 @@ export function render(url) {
       <Route path="/projects" element={<Projects />} /><Route path="/projects/:id" element={<CaseStudy />} /><Route path="/projects/:id/:moduleId" element={<ProjectWorkflow />} /><Route path="/reviews" element={<Reviews />} />
       <Route path="/products" element={<Products />} /><Route path="/products/eunoia" element={<EunoiaDetail />} />
       <Route path="/products/omnai" element={<OmnaiDetail />} /><Route path="/products/eunoia/privacy" element={<EunoiaPrivacyPolicy />} />
+      <Route path="/products/mojym" element={<MojymDetail />} /><Route path="/products/mojym/how-to-use" element={<MojymGuide />} />
       <Route path="/products/stepsy" element={<StepsyDetail />} />
       <Route path="/contact" element={<Contact />} /><Route path="/calculator" element={<Calculator />} />
       <Route path="/journal" element={<Journal />} /><Route path="/journal/:slug" element={<JournalPost />} />

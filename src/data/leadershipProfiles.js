@@ -37,7 +37,7 @@ const profiles = {
     ],
   },
   'noor-fatima': {
-    intro: 'Clear business needs and a clear message belong together. Noor’s marketing and business-analysis role connects audience understanding, brand presentation and the requirements behind useful digital work.',
+    intro: 'As a co-founder, Noor connects company direction with audience and business needs. Clear business needs and a clear message belong together. Noor’s marketing and business-analysis role connects audience understanding, brand presentation and the requirements behind useful digital work.',
     headline: 'Clear thinking. Meaningful connections.',
     approach: 'Understand the business need, then make the message useful to the person reading it. Business analysis and marketing should connect what an offering needs to achieve with how people understand and experience it.',
     contributions: [
@@ -46,7 +46,8 @@ const profiles = {
       ['Business analysis', 'Clarifying business needs and connecting requirements with the company’s design, product and delivery conversations.'],
     ],
     questions: [
-      ['Who is Noor Fatima at HanovaDevs?', 'Noor Fatima is the Chief Marketing Officer, or CMO, and Business Analyst at HanovaDevs. Her role connects brand direction, marketing communication, audience understanding and business needs.'],
+      ['Who is Noor Fatima at HanovaDevs?', 'Noor Fatima is a co-founder, Chief Marketing Officer (CMO) and Business Analyst at HanovaDevs. Her role connects brand direction, marketing communication, audience understanding and business needs.'],
+      ['Is Noor Fatima a co-founder of HanovaDevs?', 'Yes. Noor Fatima is a co-founder of HanovaDevs, alongside her roles as Chief Marketing Officer and Business Analyst.'],
       ['What does CMO stand for?', 'CMO stands for Chief Marketing Officer, a leadership role focused on marketing and brand direction.'],
       ['What does Noor’s marketing role focus on?', 'Her focus is brand direction, clear communication and aligning marketing with the company’s offering and audience. A shared message helps people understand the services and products that are relevant to them.'],
       ['How does marketing connect with software and design?', 'Marketing helps clarify the audience and message. Design and engineering turn that context into a usable digital experience. The work benefits from a shared brief and clear priorities.'],

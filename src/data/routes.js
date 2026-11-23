@@ -9,16 +9,18 @@ import { servicesReviewedAt } from './serviceExperiences.js'
 
 export const serviceIds = services.map(service => service.id)
 export const publicRoutes = [
-  '/', '/services', '/about', '/student-builder-program', ...leadershipTeam.map(member => member.profile), '/projects', '/reviews', '/products', '/products/eunoia', '/products/omnai', '/products/stepsy',
+  '/', '/services', '/about', '/student-builder-program', ...leadershipTeam.map(member => member.profile), '/projects', '/reviews', '/products', '/products/eunoia', '/products/omnai', '/products/stepsy', '/products/mojym', '/products/mojym/how-to-use',
   '/products/eunoia/privacy', '/contact', '/calculator', '/journal', '/research', '/news', '/stack', ...caseStudies.map(study => study.path), ...projectWorkflows.map(workflow => workflow.path),
   '/privacy-policy', '/terms-of-service', ...serviceIds.map(id => `/services/${id}`),
   ...journalPosts.map(post => `/journal/${post.slug}`),
 ]
 export const routeModifiedAt = route => {
+  if (route.startsWith('/products/mojym') || ['/products', '/about', '/team/noor-fatima'].includes(route)) return '2026-11-23'
   if (route === '/news') return newsUpdatedAt
   if (route === '/reviews') return clientStoriesUpdatedAt
   if (route === '/services' || route.startsWith('/services/')) return servicesReviewedAt
-  if (route === '/' || route === '/projects') return '2026-11-06'
+  if (route === '/') return '2026-11-23'
+  if (route === '/projects') return '2026-11-06'
   if (route.startsWith('/projects/')) return caseStudies.find(study => study.path === route)?.modifiedAt || '2026-10-30'
   if (route.startsWith('/journal/')) return journalPosts.find(post => route === `/journal/${post.slug}`)?.modifiedAt || null
   return route === '/contact' ? '2026-10-17' : null

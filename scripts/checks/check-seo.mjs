@@ -9,6 +9,7 @@ import { stepsy, stepsyScenes, stepsyFaqs } from '../../src/data/stepsy.js'
 import { services } from '../../src/data/services.js'
 import { caseStudies } from '../../src/data/caseStudies.js'
 import { projectWorkflows } from '../../src/data/projectWorkflows.js'
+import { mojym } from '../../src/data/mojym.js'
 import { homeAnswers } from '../../src/data/homeAnswers.js'
 import { newsArticles, newsUpdatedAt } from '../../src/data/news.js'
 import { clientStories, clientStoriesUpdatedAt } from '../../src/data/clientStories.js'
@@ -52,7 +53,7 @@ for (const route of publicRoutes) {
     assert.equal(document.querySelector('h1').textContent, member.name)
     assert(document.querySelector('main').textContent.includes(member.description), 'Profile schema matches visible bio')
     assert.equal(document.querySelector('meta[property="og:image"]').content, `${company.url}${member.image}`)
-    assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity.length, 7)
+    assert.equal(schemas[0]['@graph'].find(node => node['@type'] === 'FAQPage').mainEntity.length, leadershipFaqs(member).length)
     for (const faq of leadershipFaqs(member)) assert(document.querySelector('main').textContent.includes(faq.answer), `${route}: visible FAQ answer`)
     assert.equal(schemas[0]['@graph'].filter(node => node['@id'] === member.entityId).length, 1)
     if (member.illustration) assert(!schemas[0]['@graph'].find(node => node['@id'] === member.entityId).image, 'Do not present fictional avatar as an actual likeness in Person schema')
@@ -191,7 +192,7 @@ for (const route of publicRoutes) {
 const sitemap = new JSDOM(await readFile('dist/sitemap.xml', 'utf8'), { contentType: 'text/xml' })
 assert.deepEqual([...sitemap.window.document.getElementsByTagNameNS('http://www.sitemaps.org/schemas/sitemap/0.9', 'loc')].map(node => node.textContent), publicRoutes.map(route => `${company.url}${route}`))
 const imageEntries = [...sitemap.window.document.getElementsByTagNameNS('http://www.google.com/schemas/sitemap-image/1.1', 'loc')]
-assert.equal(imageEntries.length, caseStudies.length + projectWorkflows.length + caseStudies.reduce((total, study) => total + (study.showcase?.length || 0), 0))
+assert.equal(imageEntries.length, caseStudies.length + projectWorkflows.length + caseStudies.reduce((total, study) => total + (study.showcase?.length || 0), 0) + mojym.screenshots.length)
 for (const entry of imageEntries) {
   assert.equal(new URL(entry.textContent).origin, company.url)
   await checkAsset(new URL(entry.textContent).pathname)

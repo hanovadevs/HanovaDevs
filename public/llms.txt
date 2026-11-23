@@ -8,7 +8,7 @@
 - [Ali Haider](https://ali.hanovadevs.com): Founder website supplied by HanovaDevs.
 - [Hira Maqsood](https://www.hanovadevs.com/team/hira-maqsood): Co-founder and Chief Operating Officer; original ideas, creative problem-solving, strategic planning, operations and delivery.
 - [Ali Haider company profile](https://www.hanovadevs.com/team/ali-haider): Founder and CEO; company direction and business strategy. Founded HanovaDevs in 2022.
-- [Noor Fatima](https://www.hanovadevs.com/team/noor-fatima): Chief Marketing Officer and Business Analyst; brand direction, audience communication and business analysis.
+- [Noor Fatima](https://www.hanovadevs.com/team/noor-fatima): Co-founder, Chief Marketing Officer and Business Analyst; brand direction, audience communication and business analysis.
 - [Faizan Javed](https://www.hanovadevs.com/team/faizan-javed): Chief Technology Officer; technology direction and engineering decisions.
 - [Contact](https://www.hanovadevs.com/contact): Project enquiries; contact@hanovadevs.com.
 - [LinkedIn](https://www.linkedin.com/company/hanova-devs): Company profile.
@@ -60,3 +60,6 @@ These additional project screenshots were supplied and reviewed on October 30, 2
 - [Terms](https://www.hanovadevs.com/terms-of-service): Service and estimator terms.
 
 Company-discovery content and the expanded company guide were updated October 30, 2026. Canonical website: https://www.hanovadevs.com/. The public portfolio includes websites and custom CRM systems, with direct workflow walkthroughs. Product and news review dates are identified separately above. Founder details, release status and client relationships were supplied by the company owner. No independent industry ranking, client performance audit or universal best-company claim is asserted.
+
+- [Mojym](https://www.hanovadevs.com/products/mojym): Gym management CRM by HanovaDevs. Complete product with members, fees, attendance, trainers, classes, enquiries/trials, dedicated reports and CSV import/export. Completion confirmed by HanovaDevs on 23 November 2026. Guided walkthrough by enquiry; provisioned sign-in required. Manually recorded payments, not automatic collection.
+- [How to use Mojym](https://www.hanovadevs.com/products/mojym/how-to-use): Setup, account recovery, member workflows, invoices, coaching, salaries and troubleshooting.

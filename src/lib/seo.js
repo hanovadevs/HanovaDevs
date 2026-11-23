@@ -13,7 +13,7 @@ export function organizationGraph() {
       name: company.name, alternateName: company.alternateName, url: `${company.url}/`,
       description: company.description, foundingDate: company.founded,
       logo: `${company.url}/agency-logo-720.webp`, email: company.email,
-      founder: [{ '@id': `${company.founder.url}/#person` }, { '@id': `${company.coFounder.url}#person` }], sameAs: Object.values(company.socials),
+      founder: [{ '@id': `${company.founder.url}/#person` }, { '@id': `${company.coFounder.url}#person` }, { '@id': `${company.url}/team/noor-fatima#person` }], sameAs: Object.values(company.socials),
       contactPoint: { '@type': 'ContactPoint', contactType: 'customer enquiries', email: company.email, availableLanguage: 'English' },
       knowsAbout: ['Custom software development', 'Custom CRM systems', 'Web development', 'Ecommerce', 'AI automation', 'Technical SEO', 'Brand identity'],
     },

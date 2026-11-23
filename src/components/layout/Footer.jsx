@@ -59,6 +59,7 @@ export default function Footer() {
     { path: '/products/omnai', label: 'Omnai Browser' },
     { path: '/products/eunoia', label: 'Eunoia App' },
     { path: '/products/stepsy', label: 'Stepsy' },
+    { path: '/products/mojym', label: 'Mojym Gym CRM' },
   ]
 
   const legalLinks = [

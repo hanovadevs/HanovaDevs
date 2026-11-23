@@ -1,5 +1,7 @@
 {
   "routes": [
+    { "src": "^/products/mojym/?$", "dest": "/products/mojym/index.html" },
+    { "src": "^/products/mojym/how-to-use/?$", "dest": "/products/mojym/how-to-use/index.html" },
     {
       "src": "^/privacy/?$",
       "headers": {

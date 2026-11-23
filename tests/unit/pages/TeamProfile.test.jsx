@@ -12,13 +12,13 @@ afterEach(cleanup)
 const renderProfile = path => render(<HelmetProvider><MemoryRouter initialEntries={[path]}><Routes><Route path="/team/:id" element={<TeamProfile />} /></Routes></MemoryRouter></HelmetProvider>)
 
 describe('Leadership profiles', () => {
-  it.each(leadershipProfiles)('renders $name with seven role-specific FAQs and correct imagery', member => {
+  it.each(leadershipProfiles)('renders $name with role-specific FAQs and correct imagery', member => {
     const { container } = renderProfile(member.profile)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(member.name)
     expect(screen.getByText(member.jobTitle, { exact: true })).toBeInTheDocument()
     expect(container.querySelector('.leader-profile__portrait img')).toHaveAttribute('src', member.image)
-    expect(container.querySelectorAll('.leader-profile__answers details')).toHaveLength(7)
-    expect(leadershipFaqs(member)).toHaveLength(7)
+    expect(container.querySelectorAll('.leader-profile__answers details')).toHaveLength(member.id === 'noor-fatima' ? 8 : 7)
+    expect(leadershipFaqs(member)).toHaveLength(member.id === 'noor-fatima' ? 8 : 7)
     expect(container.querySelectorAll('.leader-profile__team-link')).toHaveLength(3)
     expect(publicRoutes).toContain(member.profile)
     expect(container.textContent).not.toMatch(/award-winning|million clients|March 2026|BSCS|University/)
@@ -36,9 +36,9 @@ describe('Leadership profiles', () => {
   it('uses Noor’s supplied portrait and both roles in her profile and search metadata', () => {
     renderProfile('/team/noor-fatima')
     expect(screen.queryByText('AI-generated illustration · not a photograph')).not.toBeInTheDocument()
-    expect(screen.getByRole('img', { name: 'Noor Fatima, CMO and Business Analyst at HanovaDevs' })).toHaveAttribute('src', '/people/noor-fatima.webp')
-    expect(organizationGraph().find(node => node.name === 'Noor Fatima')).toMatchObject({ image: 'https://www.hanovadevs.com/people/noor-fatima.webp', jobTitle: 'Chief Marketing Officer & Business Analyst' })
-    expect(screen.getByText('Chief Marketing Officer & Business Analyst', { exact: true })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Noor Fatima, co-founder, CMO and Business Analyst at HanovaDevs' })).toHaveAttribute('src', '/people/noor-fatima.webp')
+    expect(organizationGraph().find(node => node.name === 'Noor Fatima')).toMatchObject({ image: 'https://www.hanovadevs.com/people/noor-fatima.webp', jobTitle: 'Co-founder, Chief Marketing Officer & Business Analyst' })
+    expect(screen.getByText('Co-founder, Chief Marketing Officer & Business Analyst', { exact: true })).toBeInTheDocument()
     expect(screen.getByText('What does Noor’s business-analysis role involve?')).toBeInTheDocument()
     expect(screen.queryByText('Is the image on Noor Fatima’s profile a photograph?')).not.toBeInTheDocument()
   })

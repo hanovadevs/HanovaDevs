@@ -32,11 +32,11 @@ describe('Hira Maqsood company profile', () => {
     expect(container.textContent).not.toMatch(/best in the world|March 2026|University|BSCS|award-winning/i)
   })
 
-  it('links both founders to the organization without inventing a co-founder start date', () => {
+  it('links all founders to the organization without inventing a co-founder start date', () => {
     const graph = organizationGraph()
     const organization = graph.find(node => node['@type'] === 'Organization')
     const hira = graph.find(node => node.name === 'Hira Maqsood')
-    expect(organization.founder).toEqual([{ '@id': `${company.founder.url}/#person` }, { '@id': `${company.coFounder.url}#person` }])
+    expect(organization.founder).toEqual([{ '@id': `${company.founder.url}/#person` }, { '@id': `${company.coFounder.url}#person` }, { '@id': `${company.url}/team/noor-fatima#person` }])
     expect(hira.jobTitle).toBe('Co-founder & Chief Operating Officer')
     expect(hira.knowsAbout).toContain('Strategic planning')
     expect(hira.worksFor['@id']).toBe(organization['@id'])

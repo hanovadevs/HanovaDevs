@@ -6,10 +6,13 @@ import { publicRoutes, routeModifiedAt } from '../../src/data/routes.js'
 import { company } from '../../src/data/company.js'
 import { caseStudies } from '../../src/data/caseStudies.js'
 import { projectWorkflows } from '../../src/data/projectWorkflows.js'
+import { mojym } from '../../src/data/mojym.js'
 
 const template = await readFile('dist/index.html', 'utf8')
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'))
 const pageSource = route => {
+  if (route === '/products/mojym') return 'src/pages/products/MojymDetail.jsx'
+  if (route === '/products/mojym/how-to-use') return 'src/pages/products/MojymGuide.jsx'
   if (route === '/products/stepsy') return 'src/pages/products/StepsyDetail.jsx'
   if (route === '/student-builder-program') return 'src/pages/program/StudentBuilderProgram.jsx'
   if (route === '/team/hira-maqsood') return 'src/pages/company/HiraProfile.jsx'
@@ -65,6 +68,7 @@ async function createPage(route, destination) {
 for (const route of publicRoutes) await createPage(route, route === '/' ? 'dist/index.html' : `dist${route}/index.html`)
 await createPage('/404', 'dist/404.html')
 const portfolioImages = new Map([...caseStudies, ...projectWorkflows].map(item => [item.path, [item.image, ...(item.showcase || []).map(view => view.image)]]))
+portfolioImages.set(mojym.path, mojym.screenshots.map(shot => shot.src))
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${publicRoutes.map(route => {
   const images = portfolioImages.get(route) || []
   return `  <url><loc>${company.url}${route}</loc><lastmod>${routeModifiedAt(route) || company.reviewedAt}</lastmod>${images.map(image => `<image:image><image:loc>${company.url}${image}</image:loc></image:image>`).join('')}</url>`

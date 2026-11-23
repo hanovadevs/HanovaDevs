@@ -1,0 +1,30 @@
+export const mojym = {
+  status: 'Complete product', reviewedAt: '2026-11-23',
+  name: 'Mojym', path: '/products/mojym', website: 'https://mojym.hanovadevs.com',
+  description: 'Gym management software by HanovaDevs connecting members, memberships, fees, attendance, trainers and classes in one workspace.',
+  features: [
+    ['Members, not scattered records', 'Keep contact details, membership periods, notes, invoices and visits together. Search profiles and retain history when archiving inactive members.'],
+    ['Fees with a clear timeline', 'Set individual monthly fees and starting dates, review balances and follow owner reminders. Renewals retain the agreed rate and earlier terms.'],
+    ['Invoices to paid receipts', 'Issue invoices, record partial or full payments and download PDF documents. Authorized credits, refunds and reversals retain their history.'],
+    ['A considered welcome', 'Check members in and out using lookup or QR-supported workflows. Membership dates, branch permissions and configured policies inform access decisions.'],
+    ['Coaching that fits the calendar', 'Manage trainers, availability, personal sessions and classes. Scheduling checks trainer, room and member conflicts; bookings respect capacity.'],
+    ['Enquiries, reports and data tools', 'Manage enquiries and trials, review dedicated reports and use CSV import/export alongside the core gym workflows. Available actions depend on staff permissions.'],
+    ['The team behind the gym', 'Keep employees, monthly salary dues and recorded payments organized. Salary payments connect to the expense ledger without duplicating the expense.'],
+  ],
+  screenshots: [
+    { src: '/products/mojym/dashboard.webp', title: 'The daily overview', description: 'Activity, collections and outstanding invoices, with branch scope and quick actions in one view.' },
+    { src: '/products/mojym/classes.webp', title: 'A connected timetable', description: 'Week, day and list views bring classes, coaching availability and bookings together.' },
+    { src: '/products/mojym/plans.webp', title: 'Memberships with context', description: 'Review plan benefits, durations and version history before enrolling or renewing a member.' },
+    { src: '/products/mojym/attendance.webp', title: 'Clearer reception workflows', description: 'Review attendance and find a member before checking eligibility and recording a visit.' },
+  ],
+  faqs: [
+    { question: 'What is Mojym?', answer: 'Mojym is a complete gym management CRM developed by HanovaDevs. It connects members, memberships, fees, attendance, invoices, recorded payments, trainers, classes, employees, expenses, enquiries, reports and CSV data tools in a responsive web workspace.' },
+    { question: 'Does Mojym include reports and CSV import/export?', answer: 'Yes. Dedicated reports, enquiries/trials and CSV import/export are included. Access to these tools depends on your role and branch permissions.' },
+    { question: 'Who is Mojym for?', answer: 'Independent gyms, fitness studios and their operating teams. Staff access depends on role and branch permissions.' },
+    { question: 'Can members have different monthly fees?', answer: 'Yes. The owner can set an individual monthly fee and starting date during registration, then review billing dates and balances.' },
+    { question: 'Does Mojym collect payments automatically?', answer: 'No. It records payments already received by your gym. It does not charge cards, automatically debit accounts or verify bank transfers.' },
+    { question: 'Can invoices and receipts be shared?', answer: 'Invoices and paid receipts can be downloaded as PDFs and shared through your usual communication channel.' },
+    { question: 'Can staff use Mojym on a phone?', answer: 'Yes. Mojym is a responsive web application, with mobile navigation and labeled record cards. It is not a native mobile app.' },
+    { question: 'How can I try Mojym?', answer: 'Request a guided walkthrough from HanovaDevs. The application requires provisioned sign-in access; public self-service registration is not available.' },
+  ],
+}

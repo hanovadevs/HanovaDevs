@@ -7,7 +7,7 @@ export const company = {
   email: 'contact@hanovadevs.com',
   founded: '2022',
   reviewedAt: '2026-10-13',
-  description: 'HanovaDevs is a software development agency founded in 2022 by Ali Haider, with Hira Maqsood as co-founder and COO. We build custom software, CRM systems, websites, ecommerce experiences and AI automation, alongside our own product projects.',
+  description: 'HanovaDevs is a software development agency founded in 2022 by Ali Haider, with co-founders Hira Maqsood (COO) and Noor Fatima (CMO and Business Analyst). We build custom software, CRM systems, websites, ecommerce experiences and AI automation, alongside our own product projects.',
   founder: { name: 'Ali Haider', url: 'https://ali.hanovadevs.com', image: '/people/ali-haider.webp' },
   coFounder: {
     name: 'Hira Maqsood', role: 'Co-founder & COO', jobTitle: 'Co-founder & Chief Operating Officer',
@@ -21,6 +21,7 @@ export const company = {
     github: 'https://github.com/hanovadevs/',
   },
   products: {
+    mojym: { name: 'Mojym', status: 'Complete product · Guided walkthrough available', path: '/products/mojym', website: 'https://mojym.hanovadevs.com' },
     eunoia: { name: 'Eunoia', status: 'Available on Microsoft Store', storeUrl: 'https://apps.microsoft.com/detail/9PJ36VD01Z4X' },
     omnai: { name: 'Omnai Browser', status: 'Launching soon' },
     stepsy: { name: 'Stepsy', status: 'Product preview', path: '/products/stepsy', website: 'https://stepsyapp.com' },

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../../components/shared/SEO'
 import './Products.css'
+import './Mojym.css'
 import '../../styles/PageHeroes.css'
 
 export default function Products() {
@@ -13,7 +14,7 @@ export default function Products() {
     <div className="cinematic-products">
       <SEO
         title="Products — HanovaDevs"
-        description="Explore HanovaDevs products: Eunoia on Microsoft Store, Omnai Browser launching soon, and Stepsy, our mobile walking and partner-rewards project."
+        description="Explore HanovaDevs products: Eunoia on Microsoft Store, Omnai Browser launching soon, Stepsy, our walking and rewards project, and Mojym gym management CRM."
         url="/products"
         breadcrumbs={[
           { name: 'Home', item: '/' },
@@ -28,7 +29,7 @@ export default function Products() {
           <div className="cp-hero__content page-hero-light__content reveal">
             <span className="page-hero-light__eyebrow">In-house innovation</span>
             <h1>Proprietary Products, <br /><span className="cp-gradient">Powered by HanovaDevs.</span></h1>
-            <p>From desktop workspaces to everyday movement: explore Eunoia, Omnai Browser and Stepsy, our in-house products and projects built by HanovaDevs.</p>
+            <p>From desktop workspaces to everyday movement: explore Eunoia, Omnai Browser, Stepsy and Mojym, our in-house products and projects built by HanovaDevs.</p>
             <div className="page-hero-light__actions">
               <Link to="/products/eunoia" className="btn btn-primary">Discover Eunoia</Link>
               <Link to="/products/omnai" className="page-hero-light__link">Explore Omnai</Link>
@@ -38,6 +39,7 @@ export default function Products() {
         </div>
       </section>
 
+      <section className="mj-listing" id="mojym"><div className="container mj-listing__layout"><div><img src="/products/mojym/mojym-wordmark.svg" width="210" height="70" alt="Mojym" /><p className="section-label">Gym management CRM · By HanovaDevs</p><h2>Gym operations,<br />thoughtfully organized.</h2><p>Members, memberships, fees, attendance and coaching in one connected workspace. See the daily overview and keep the underlying records close at hand.</p><div className="mj-actions"><Link className="btn btn-primary" to="/products/mojym">Discover Mojym</Link><Link to="/products/mojym/how-to-use">How to use Mojym →</Link></div><p>Request a guided walkthrough. Application sign-in requires provisioned access.</p></div><Link className="mj-listing__screen" to="/products/mojym" aria-label="Explore Mojym gym management software"><img src="/products/mojym/dashboard.webp" width="1440" height="750" alt="Mojym gym operations dashboard" loading="lazy" /></Link></div></section>
       {/* ===== OMNAI BROWSER ===== */}
       <section className="cp-showcase cp-showcase--omnai" id="omnai">
         <div className="cp-showcase__glow" />

@@ -400,6 +400,12 @@ export default function Home() {
             </div>
             <div className="products-teaser__cards">
               <div className="products-teaser__card card card-glass">
+                <div className="products-teaser__badge products-teaser__badge--dev">Gym management CRM</div>
+                <h3>Mojym</h3>
+                <p>Members, fees, attendance and coaching, connected in one workspace for gym owners and their teams.</p>
+                <Link to="/products/mojym" className="btn btn-primary" style={{ marginTop: 'auto' }}>Discover Mojym</Link>
+              </div>
+              <div className="products-teaser__card card card-glass">
                 <div className="products-teaser__badge products-teaser__badge--dev">Mobile product preview</div>
                 <h3>Stepsy</h3>
                 <p>A HanovaDevs mobile app project connecting everyday walking with planned points, partner discounts and rewards.</p>

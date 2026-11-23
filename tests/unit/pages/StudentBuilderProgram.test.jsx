@@ -54,7 +54,7 @@ describe('Student Builder Program', () => {
     const mentors = screen.getByRole('region', { name: /guided by the people/i })
     expect(within(mentors).getAllByRole('article')).toHaveLength(leadershipTeam.length)
     for (const member of leadershipTeam) expect(within(mentors).getByRole('link', { name: `Meet ${member.name}` })).toHaveAttribute('href', member.profile)
-    expect(within(mentors).getByRole('img', { name: 'Noor Fatima, CMO and Business Analyst at HanovaDevs' })).toHaveAttribute('src', '/people/noor-fatima.webp')
+    expect(within(mentors).getByRole('img', { name: 'Noor Fatima, co-founder, CMO and Business Analyst at HanovaDevs' })).toHaveAttribute('src', '/people/noor-fatima.webp')
   })
 
   it('keeps status, approximate duration and benefit claims accurate', () => {

@@ -17,11 +17,11 @@ export const leadershipTeam = [
     entityId: `${company.coFounder.url}#person`, description: company.coFounder.description, knowsAbout: company.coFounder.knowsAbout,
   },
   {
-    id: 'noor-fatima', name: 'Noor Fatima', role: 'CMO & Business Analyst', jobTitle: 'Chief Marketing Officer & Business Analyst', focus: 'Brand, growth & business analysis',
+    id: 'noor-fatima', name: 'Noor Fatima', role: 'Co-founder, CMO & Business Analyst', jobTitle: 'Co-founder, Chief Marketing Officer & Business Analyst', focus: 'Brand, growth & business analysis',
     image: '/people/noor-fatima.webp', smallImage: '/people/noor-fatima-480.webp',
-    alt: 'Noor Fatima, CMO and Business Analyst at HanovaDevs', tone: 'sage', profile: '/team/noor-fatima',
+    alt: 'Noor Fatima, co-founder, CMO and Business Analyst at HanovaDevs', tone: 'sage', profile: '/team/noor-fatima',
     entityId: `${company.url}/team/noor-fatima#person`, email: 'noor@hanovadevs.com',
-    description: 'Noor Fatima is the Chief Marketing Officer and Business Analyst at HanovaDevs. Her role connects brand direction, marketing communication and business analysis with clear audience messaging and an understanding of business needs.',
+    description: 'Noor Fatima is a co-founder, Chief Marketing Officer and Business Analyst at HanovaDevs. Her role connects brand direction, marketing communication and business analysis with clear audience messaging and an understanding of business needs.',
     knowsAbout: ['Brand direction', 'Marketing communication', 'Audience messaging', 'Business analysis', 'Business requirements'],
   },
   {
