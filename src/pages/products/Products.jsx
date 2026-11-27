@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../../components/shared/SEO'
+import { collectionGraph } from '../../lib/seo'
 import './Products.css'
 import './Mojym.css'
 import '../../styles/PageHeroes.css'
@@ -16,6 +17,14 @@ export default function Products() {
         title="Products — HanovaDevs"
         description="Explore HanovaDevs products: Eunoia on Microsoft Store, Omnai Browser launching soon, Stepsy, our walking and rewards project, and Mojym gym management CRM."
         url="/products"
+        pageType="CollectionPage"
+        modifiedAt="2026-11-27"
+        schemaMarkup={collectionGraph('/products', 'Products developed by HanovaDevs', [
+          { name: 'Mojym Gym Management Software', path: '/products/mojym' },
+          { name: 'Eunoia', path: '/products/eunoia' },
+          { name: 'Omnai Browser', path: '/products/omnai' },
+          { name: 'Stepsy', path: '/products/stepsy' },
+        ])}
         breadcrumbs={[
           { name: 'Home', item: '/' },
           { name: 'Products', item: '/products' }
@@ -34,6 +43,7 @@ export default function Products() {
               <Link to="/products/eunoia" className="btn btn-primary">Discover Eunoia</Link>
               <Link to="/products/omnai" className="page-hero-light__link">Explore Omnai</Link>
               <Link to="/products/stepsy" className="page-hero-light__link">Meet Stepsy</Link>
+              <Link to="/products/mojym" className="page-hero-light__link">Explore Mojym Gym CRM</Link>
             </div>
           </div>
         </div>

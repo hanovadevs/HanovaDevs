@@ -4,6 +4,8 @@ import { MemoryRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import Home from '../../../src/pages/home/Home'
 import Projects from '../../../src/pages/projects/Projects'
+import Products from '../../../src/pages/products/Products'
+import About from '../../../src/pages/company/About'
 import { canonicalUrl, collectionGraph, organizationGraph } from '../../../src/lib/seo'
 import { homeAnswers } from '../../../src/data/homeAnswers'
 import { caseStudies } from '../../../src/data/caseStudies'
@@ -15,6 +17,20 @@ afterEach(cleanup)
 const wrap = element => render(<HelmetProvider><MemoryRouter>{element}</MemoryRouter></HelmetProvider>)
 
 describe('Evidence-led SEO and project discovery', () => {
+  it('makes Mojym discoverable in the product collection and its structured list', () => {
+    const { container } = wrap(<Products />)
+    expect(screen.getByRole('link', { name: 'Explore Mojym Gym CRM' })).toHaveAttribute('href', '/products/mojym')
+    const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]').textContent)['@graph']
+    expect(graph.find(node => node['@type'] === 'ItemList').itemListElement).toContainEqual(expect.objectContaining({ name: 'Mojym Gym Management Software', url: `${company.url}/products/mojym` }))
+    expect(graph.find(node => node['@type'] === 'CollectionPage').dateModified).toBe('2026-11-27')
+  })
+  it('includes Noor in the About page introduction and description', () => {
+    const { container } = wrap(<About />)
+    expect(container.querySelector('.about-hero')).toHaveTextContent('Its co-founders are Hira Maqsood, COO, and Noor Fatima, CMO and Business Analyst')
+    const graph = JSON.parse(container.querySelector('script[type="application/ld+json"]').textContent)['@graph']
+    expect(graph.find(node => node['@type'] === 'AboutPage').description).toContain('Noor Fatima, Co-founder')
+    expect(routeModifiedAt('/about')).toBe('2026-11-27')
+  })
   it('uses the live preferred www host without tracking queries', () => {
     expect(company.url).toBe('https://www.hanovadevs.com')
     expect(canonicalUrl('https://hanovadevs.com/projects/?source=google#work')).toBe(`${company.url}/projects`)

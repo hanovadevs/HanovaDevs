@@ -8,7 +8,7 @@ export default function SEO({ title, description, url, type = 'website', image, 
   const metaDescription = description || company.description
   const siteUrl = canonicalUrl(url)
   const metaImage = image ? new URL(image, company.url).href : `${company.url}/og-image.jpg`
-  const schema = pageGraph({ url: siteUrl, title: siteTitle, description: metaDescription, pageType, breadcrumbs, faqList, schemaMarkup, mainEntity, image: metaImage, imageAlt: imageAlt || cleanTitle || 'HanovaDevs software development agency' })
+  const schema = pageGraph({ url: siteUrl, title: siteTitle, description: metaDescription, pageType, breadcrumbs, faqList, schemaMarkup, mainEntity, publishedAt, modifiedAt, image: metaImage, imageAlt: imageAlt || cleanTitle || 'HanovaDevs software development agency' })
   return (
     <Helmet>
       <title>{siteTitle}</title>

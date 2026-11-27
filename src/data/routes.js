@@ -15,6 +15,7 @@ export const publicRoutes = [
   ...journalPosts.map(post => `/journal/${post.slug}`),
 ]
 export const routeModifiedAt = route => {
+  if (['/about', '/products'].includes(route)) return '2026-11-27'
   if (route.startsWith('/products/mojym') || ['/products', '/about', '/team/noor-fatima'].includes(route)) return '2026-11-23'
   if (route === '/news') return newsUpdatedAt
   if (route === '/reviews') return clientStoriesUpdatedAt

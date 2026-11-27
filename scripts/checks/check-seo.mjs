@@ -192,6 +192,22 @@ for (const route of publicRoutes) {
 const sitemap = new JSDOM(await readFile('dist/sitemap.xml', 'utf8'), { contentType: 'text/xml' })
 assert.deepEqual([...sitemap.window.document.getElementsByTagNameNS('http://www.sitemaps.org/schemas/sitemap/0.9', 'loc')].map(node => node.textContent), publicRoutes.map(route => `${company.url}${route}`))
 const imageEntries = [...sitemap.window.document.getElementsByTagNameNS('http://www.google.com/schemas/sitemap-image/1.1', 'loc')]
+for (const route of ['/products/mojym', '/products/mojym/how-to-use', '/team/noor-fatima']) {
+  assert(publicRoutes.includes(route), `${route}: required discovery route`)
+  const html = await readFile(`dist${route}/index.html`, 'utf8')
+  const page = new JSDOM(html)
+  assert.equal(page.window.document.querySelector('link[rel="canonical"]').href, `${company.url}${route}`)
+  assert(!page.window.document.querySelector('meta[name="robots"]').content.includes('noindex'))
+  const graph = JSON.parse(page.window.document.querySelector('script[type="application/ld+json"]').textContent)['@graph']
+  const noor = graph.find(node => node['@type'] === 'Person' && node.name === 'Noor Fatima')
+  assert(noor.jobTitle.includes('Co-founder'), `${route}: consistent Noor title`)
+  assert(graph.find(node => node['@type'] === 'Organization').founder.some(founder => founder['@id'] === noor['@id']))
+  if (route === '/products/mojym') {
+    assert(graph.some(node => node['@type'] === 'SoftwareApplication' && node.name === 'Mojym'))
+    assert(page.window.document.querySelector('main').textContent.includes('Mojym'))
+  }
+  page.window.close()
+}
 assert.equal(imageEntries.length, caseStudies.length + projectWorkflows.length + caseStudies.reduce((total, study) => total + (study.showcase?.length || 0), 0) + mojym.screenshots.length)
 for (const entry of imageEntries) {
   assert.equal(new URL(entry.textContent).origin, company.url)

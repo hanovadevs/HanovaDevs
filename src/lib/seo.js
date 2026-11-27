@@ -27,8 +27,8 @@ export function collectionGraph(path, name, items) {
     itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, url: canonicalUrl(item.path) })) }
 }
 
-export function pageGraph({ url, title, description, pageType = 'WebPage', breadcrumbs, faqList, schemaMarkup, mainEntity, image, imageAlt }) {
-  const graph = [...organizationGraph(), { '@type': pageType, '@id': `${url}#webpage`, url, name: title, description, inLanguage: 'en', isPartOf: { '@id': `${company.url}/#website` }, about: mainEntity || { '@id': `${company.url}/#organization` }, ...(mainEntity ? { mainEntity } : {}), ...(image ? { primaryImageOfPage: { '@type': 'ImageObject', url: image, ...(imageAlt ? { caption: imageAlt } : {}) } } : {}) }]
+export function pageGraph({ url, title, description, pageType = 'WebPage', breadcrumbs, faqList, schemaMarkup, mainEntity, publishedAt, modifiedAt, image, imageAlt }) {
+  const graph = [...organizationGraph(), { '@type': pageType, '@id': `${url}#webpage`, url, name: title, description, ...(publishedAt ? { datePublished: publishedAt } : {}), ...(modifiedAt ? { dateModified: modifiedAt } : {}), inLanguage: 'en', isPartOf: { '@id': `${company.url}/#website` }, about: mainEntity || { '@id': `${company.url}/#organization` }, ...(mainEntity ? { mainEntity } : {}), ...(image ? { primaryImageOfPage: { '@type': 'ImageObject', url: image, ...(imageAlt ? { caption: imageAlt } : {}) } } : {}) }]
   if (breadcrumbs?.length) graph.push({ '@type': 'BreadcrumbList', '@id': `${url}#breadcrumbs`, itemListElement: breadcrumbs.map((crumb, index) => ({ '@type': 'ListItem', position: index + 1, name: crumb.name, item: canonicalUrl(crumb.item) })) })
   if (faqList?.length) graph.push({ '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: faqList.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) })
   if (schemaMarkup) graph.push(...(Array.isArray(schemaMarkup) ? schemaMarkup : [schemaMarkup]))
